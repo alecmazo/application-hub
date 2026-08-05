@@ -29,7 +29,7 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 | App | Launch |
 | --- | --- |
 | **Turf Pad Builder** | https://alecmazo.github.io/turf-pad-builder/ |
-| **Soccer Capture** | https://github.com/alecmazo/soccer-capture (field kit → Analyzer handoff) |
+| **Soccer Capture** | https://alecmazo.github.io/soccer-capture/ |
 | **DGA Capital Research** | https://portfolio.dgacapital.com |
 | **DGA Capital Backend** | https://dga-backend.vercel.app |
 | **Soccer Analyzer** | Local / private — ingest `raw/` L/R from Soccer Capture |
