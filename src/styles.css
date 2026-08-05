@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-bg: #0a1628;
+  --color-bg-elevated: #0f1f35;
+  --color-surface: #12233c;
+  --color-card: #12233c;
+  --color-card-foreground: #e8eef6;
+  --color-foreground: #e8eef6;
+  --color-muted: #1a2d4a;
+  --color-muted-foreground: #8fa3bc;
+  --color-border: color-mix(in oklab, #e8eef6 12%, transparent);
+  --color-primary: #5bb8d4;
+  --color-primary-foreground: #061018;
+  --color-secondary: #1a2d4a;
+  --color-secondary-foreground: #e8eef6;
+  --color-accent: #5bb8d4;
+  --color-accent-foreground: #061018;
+  --color-ring: #5bb8d4;
+  --color-success: #3ecf8e;
+  --color-warn: #e0b44a;
+  --color-destructive: #e07070;
+  --color-destructive-foreground: #0a1628;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-primary) 35%, transparent);
+  }
+}
+
+/* Quiet atmospheric field — not a loud gradient blob */
+.hub-atmosphere {
+  background:
+    radial-gradient(
+      900px 480px at 12% -10%,
+      color-mix(in oklab, var(--color-primary) 14%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 420px at 92% 0%,
+      color-mix(in oklab, #2a4a78 30%, transparent),
+      transparent 55%
+    ),
+    var(--color-bg);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Card hover lift */
+.app-tile {
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.app-tile:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
+  box-shadow: 0 12px 40px -20px color-mix(in oklab, #000 70%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-tile,
+  .app-tile:hover {
+    transition: none;
+    transform: none;
+  }
+}
