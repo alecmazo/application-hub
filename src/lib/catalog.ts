@@ -49,6 +49,28 @@ export const CATALOG: CatalogEntry[] = [
     tags: ["GitHub Pages", "construction", "React"],
   },
   {
+    id: "soccer-capture",
+    repo: "soccer-capture",
+    title: "Soccer Capture",
+    tagline:
+      "DGA Sports field kit: two phones film left/right halves, a third monitors both and syncs record start. Clips hand off to Soccer Analyzer (split_half L/R → raw/).",
+    category: "live",
+    status: "live",
+    launchUrl: "https://github.com/alecmazo/soccer-capture",
+    surfaces: [
+      {
+        label: "GitHub repo",
+        url: "https://github.com/alecmazo/soccer-capture",
+      },
+      {
+        label: "Soccer Analyzer (ingest)",
+        url: "https://github.com/alecmazo/soccer-analyzer",
+      },
+    ],
+    languageHint: "TypeScript",
+    tags: ["DGA", "mobile", "WebRTC", "capture", "soccer"],
+  },
+  {
     id: "claude-research-analyst",
     repo: "claude-research-analyst",
     title: "DGA Capital Research",
@@ -75,7 +97,7 @@ export const CATALOG: CatalogEntry[] = [
     repo: "soccer-analyzer",
     title: "Soccer Analyzer",
     tagline:
-      "Single-PC soccer video analysis: multi-cam fusion, DGA_Balls detection, studio / film / teamstats dashboards.",
+      "Single-PC soccer video analysis: multi-cam fusion, DGA_Balls detection, studio / film / teamstats dashboards. Ingests Soccer Capture L/R clips from raw/.",
     category: "local",
     status: "local",
     alwaysShow: true,
