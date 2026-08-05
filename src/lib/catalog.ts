@@ -56,8 +56,12 @@ export const CATALOG: CatalogEntry[] = [
       "DGA Sports field kit: two phones film left/right halves, a third monitors both and syncs record start. Clips hand off to Soccer Analyzer (split_half L/R → raw/).",
     category: "live",
     status: "live",
-    launchUrl: "https://github.com/alecmazo/soccer-capture",
+    launchUrl: "https://alecmazo.github.io/soccer-capture/",
     surfaces: [
+      {
+        label: "Live site",
+        url: "https://alecmazo.github.io/soccer-capture/",
+      },
       {
         label: "GitHub repo",
         url: "https://github.com/alecmazo/soccer-capture",
@@ -68,7 +72,7 @@ export const CATALOG: CatalogEntry[] = [
       },
     ],
     languageHint: "TypeScript",
-    tags: ["DGA", "mobile", "WebRTC", "capture", "soccer"],
+    tags: ["DGA", "mobile", "GitHub Pages", "capture", "soccer"],
   },
   {
     id: "claude-research-analyst",
