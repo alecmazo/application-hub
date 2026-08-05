@@ -8,7 +8,7 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 /** Static SPA build for GitHub Pages (no SSR / Nitro). */
 export default defineConfig({
-  base: "/app-hub/",
+  base: "/application-hub/",
   plugins: [tailwindcss(), viteReact()],
   resolve: {
     alias: {

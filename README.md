@@ -1,19 +1,8 @@
-# App Hub — Alec Mazo
+# Application Hub — Alec Mazo
 
 Formal interactive dashboard for every application under [alecmazo](https://github.com/alecmazo).
 
-**Live URL (after Pages is enabled once):** https://alecmazo.github.io/app-hub/
-
-## Enable GitHub Pages (one-time)
-
-This repo already has a `gh-pages` branch with the built site and an Actions workflow.
-
-1. Open [Repo Settings → Pages](https://github.com/alecmazo/app-hub/settings/pages)
-2. Under **Build and deployment**:
-   - **Source:** Deploy from a branch
-   - **Branch:** `gh-pages` / `/ (root)`  
-     *or* Source: **GitHub Actions** (uses `.github/workflows/deploy-pages.yml`)
-3. Save. After a minute the hub is at **https://alecmazo.github.io/app-hub/**
+**Live:** https://alecmazo.github.io/application-hub/
 
 ## What it does
 
@@ -31,7 +20,7 @@ This repo already has a `gh-pages` branch with the built site and an Actions wor
 | Recent commits | Fetched when you select an app |
 | New public repo under `alecmazo` | Appears on next sync (no hub code change) |
 | Launch URL of an app you ship | Curated in `src/lib/catalog.ts` (or inferred from GitHub Pages / homepage) |
-| Hub UI itself | Push to `main` → rebuild SPA → update `gh-pages` (or Actions) |
+| Hub UI itself | Push to `main` → rebuild SPA → update `gh-pages` |
 
 Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), so you run the latest shipped build of that application.
 
@@ -49,11 +38,11 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 ```bash
 npm install
 npm run dev          # 0.0.0.0:8080
-npm run build:spa    # static site → dist-spa/
+npm run build:spa    # static site → dist-spa/  (base: /application-hub/)
 npm run build        # production / Vercel SSR build
 ```
 
-### Redeploy static Pages from a machine with git
+### Redeploy static Pages
 
 ```bash
 npm run build:spa

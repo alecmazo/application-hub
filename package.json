@@ -1,5 +1,5 @@
 {
-  "name": "app-hub",
+  "name": "application-hub",
   "private": true,
   "sideEffects": false,
   "type": "module",
