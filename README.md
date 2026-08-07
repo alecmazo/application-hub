@@ -28,6 +28,7 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 
 | App | Launch |
 | --- | --- |
+| **Stem Spark** | https://alecmazo.github.io/stem-spark/ |
 | **Turf Pad Builder** | https://alecmazo.github.io/turf-pad-builder/ |
 | **Soccer Capture** | https://alecmazo.github.io/soccer-capture/ |
 | **DGA Capital Research** | https://portfolio.dgacapital.com |

@@ -36,6 +36,29 @@ export type CatalogEntry = {
 export const GITHUB_USER = "alecmazo";
 
 export const CATALOG: CatalogEntry[] = [
+
+  {
+    id: "stem-spark",
+    repo: "stem-spark",
+    title: "Stem Spark",
+    tagline:
+      "Family STEM tutor for Leia & Michael — math-first mastery paths with gymnastics and soccer themes, interactive lessons, and progress tracking.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://alecmazo.github.io/stem-spark/",
+    surfaces: [
+      {
+        label: "Live site",
+        url: "https://alecmazo.github.io/stem-spark/",
+      },
+      {
+        label: "GitHub repo",
+        url: "https://github.com/alecmazo/stem-spark",
+      },
+    ],
+    languageHint: "TypeScript",
+    tags: ["education", "STEM", "kids", "math", "GitHub Pages", "React"],
+  },
   {
     id: "turf-pad-builder",
     repo: "turf-pad-builder",
