@@ -36,7 +36,52 @@ export type CatalogEntry = {
 export const GITHUB_USER = "alecmazo";
 
 export const CATALOG: CatalogEntry[] = [
-
+  {
+    id: "sliwinska",
+    repo: "sliwinska",
+    title: "Edyta Śliwińska",
+    tagline:
+      "Edyta Śliwińska digital home — Bay Area DWTS pro marketing site, wedding first-dance storefront, corporate packages, and Sliw desk.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://edytasliwinska.com",
+    surfaces: [
+      {
+        label: "Marketing site",
+        url: "https://edytasliwinska.com",
+      },
+      {
+        label: "Vercel preview",
+        url: "https://sliwinska.vercel.app",
+      },
+      {
+        label: "Weddings booking",
+        url: "https://weddings.edytasliwinska.com",
+      },
+      {
+        label: "Corporate packages",
+        url: "https://corporate.edytasliwinska.com",
+      },
+      {
+        label: "Sliw desk",
+        url: "https://sliw.edytasliwinska.com",
+      },
+      {
+        label: "GitHub repo",
+        url: "https://github.com/alecmazo/sliwinska",
+      },
+    ],
+    languageHint: "Python",
+    tags: [
+      "edytasliwinska",
+      "dance",
+      "weddings",
+      "DWTS",
+      "marketing",
+      "Vercel",
+      "Railway",
+    ],
+  },
   {
     id: "stem-spark",
     repo: "stem-spark",
