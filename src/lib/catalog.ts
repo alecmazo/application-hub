@@ -150,12 +150,12 @@ export const CATALOG: CatalogEntry[] = [
       "Elite soccer activation for a 13-year-old path — timed drills, check-offs, development tracker, and an X locker for bookmarked instruction videos.",
     category: "live",
     status: "live",
-    launchUrl: "https://soccer-activate-alecmazos-projects.vercel.app",
+    launchUrl: "https://soccer-activate.vercel.app",
     alwaysShow: true,
     surfaces: [
       {
         label: "Live app",
-        url: "https://soccer-activate-alecmazos-projects.vercel.app",
+        url: "https://soccer-activate.vercel.app",
       },
       {
         label: "GitHub repo",
