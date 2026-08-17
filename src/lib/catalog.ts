@@ -150,16 +150,16 @@ export const CATALOG: CatalogEntry[] = [
       "Elite soccer activation for a 13-year-old path — timed drills, check-offs, development tracker, and an X locker for bookmarked instruction videos you tap mid-session.",
     category: "live",
     status: "live",
-    launchUrl: "https://soccer-activate.vercel.app",
+    launchUrl: "https://alecmazo.github.io/Soccer-Activate/",
     alwaysShow: true,
     surfaces: [
       {
         label: "Live app",
-        url: "https://soccer-activate.vercel.app",
+        url: "https://alecmazo.github.io/Soccer-Activate/",
       },
       {
         label: "X video locker",
-        url: "https://soccer-activate.vercel.app/videos",
+        url: "https://alecmazo.github.io/Soccer-Activate/videos",
       },
       {
         label: "GitHub repo",
@@ -167,7 +167,7 @@ export const CATALOG: CatalogEntry[] = [
       },
     ],
     languageHint: "TypeScript",
-    tags: ["soccer", "training", "youth", "X", "React", "Vercel"],
+    tags: ["soccer", "training", "youth", "X", "React", "GitHub Pages"],
   },
   {
     id: "claude-research-analyst",
