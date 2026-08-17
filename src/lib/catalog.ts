@@ -143,6 +143,25 @@ export const CATALOG: CatalogEntry[] = [
     tags: ["DGA", "mobile", "GitHub Pages", "capture", "soccer"],
   },
   {
+    id: "Soccer-Activate",
+    repo: "Soccer-Activate",
+    title: "Soccer Activate",
+    tagline:
+      "Elite soccer activation for a 13-year-old path — timed drills, check-offs, development tracker, and an X locker for bookmarked instruction videos.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://github.com/alecmazo/Soccer-Activate",
+    alwaysShow: true,
+    surfaces: [
+      {
+        label: "GitHub repo",
+        url: "https://github.com/alecmazo/Soccer-Activate",
+      },
+    ],
+    languageHint: "TypeScript",
+    tags: ["soccer", "training", "youth", "X", "React", "Vercel"],
+  },
+  {
     id: "claude-research-analyst",
     repo: "claude-research-analyst",
     title: "DGA Capital Research",
