@@ -147,7 +147,7 @@ export const CATALOG: CatalogEntry[] = [
     repo: "Soccer-Activate",
     title: "Soccer Activate",
     tagline:
-      "Elite soccer activation for a 13-year-old path — timed drills, check-offs, development tracker, and an X locker for bookmarked instruction videos.",
+      "Elite soccer activation for a 13-year-old path — timed drills, check-offs, development tracker, and an X locker for bookmarked instruction videos you tap mid-session.",
     category: "live",
     status: "live",
     launchUrl: "https://soccer-activate.vercel.app",
@@ -156,6 +156,10 @@ export const CATALOG: CatalogEntry[] = [
       {
         label: "Live app",
         url: "https://soccer-activate.vercel.app",
+      },
+      {
+        label: "X video locker",
+        url: "https://soccer-activate.vercel.app/videos",
       },
       {
         label: "GitHub repo",
