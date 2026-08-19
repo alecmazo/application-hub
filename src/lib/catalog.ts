@@ -174,7 +174,7 @@ export const CATALOG: CatalogEntry[] = [
     repo: "OncoVigil",
     title: "OncoVigil",
     tagline:
-      "Cancer development pipeline — personalized mRNA, T-cell engagers, IL-15 Bioshield, CAR-T — with step-by-step illustrations, company contacts, and a weekly ClinicalTrials.gov refresh.",
+      "Cancer pipeline tracker with a dedicated SPOP-mutant prostate desk, weekly ClinicalTrials.gov refresh, step-by-step mechanisms, and company/trial contacts.",
     category: "live",
     status: "live",
     launchUrl: "https://alecmazo.github.io/OncoVigil/",
@@ -183,6 +183,10 @@ export const CATALOG: CatalogEntry[] = [
       {
         label: "Live app",
         url: "https://alecmazo.github.io/OncoVigil/",
+      },
+      {
+        label: "SPOP desk",
+        url: "https://alecmazo.github.io/OncoVigil/spop",
       },
       {
         label: "Mechanism lab",
@@ -196,6 +200,7 @@ export const CATALOG: CatalogEntry[] = [
     languageHint: "TypeScript",
     tags: [
       "oncology",
+      "SPOP",
       "mRNA",
       "immunotherapy",
       "prostate",
