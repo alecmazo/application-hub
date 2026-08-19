@@ -170,6 +170,41 @@ export const CATALOG: CatalogEntry[] = [
     tags: ["soccer", "training", "youth", "X", "React", "GitHub Pages"],
   },
   {
+    id: "OncoVigil",
+    repo: "OncoVigil",
+    title: "OncoVigil",
+    tagline:
+      "Cancer development pipeline — personalized mRNA, T-cell engagers, IL-15 Bioshield, CAR-T — with step-by-step illustrations, company contacts, and a weekly ClinicalTrials.gov refresh.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://alecmazo.github.io/OncoVigil/",
+    alwaysShow: true,
+    surfaces: [
+      {
+        label: "Live app",
+        url: "https://alecmazo.github.io/OncoVigil/",
+      },
+      {
+        label: "Mechanism lab",
+        url: "https://alecmazo.github.io/OncoVigil/lab",
+      },
+      {
+        label: "GitHub repo",
+        url: "https://github.com/alecmazo/OncoVigil",
+      },
+    ],
+    languageHint: "TypeScript",
+    tags: [
+      "oncology",
+      "mRNA",
+      "immunotherapy",
+      "prostate",
+      "colorectal",
+      "GitHub Pages",
+      "React",
+    ],
+  },
+  {
     id: "claude-research-analyst",
     repo: "claude-research-analyst",
     title: "DGA Capital Research",
