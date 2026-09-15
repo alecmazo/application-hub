@@ -27,19 +27,19 @@ export const LEAGUE_FILTERS: { key: "all" | LeaguePlatform; label: string }[] =
     { key: "other", label: "GotSport / other" },
   ];
 
-/** League-tier prior. Slight edge to Homegrown / Academy and ECNL vs regional. */
+/** League-tier prior only — slight edge, not a 90-point floor. */
 export function leagueTierScore(league: LeaguePlatform): number {
   switch (league) {
     case "mls-next-hg":
-      return 92;
-    case "mls-next":
-      return 90;
-    case "ecnl":
-      return 88;
-    case "ecnl-rl":
       return 72;
+    case "mls-next":
+      return 70;
+    case "ecnl":
+      return 68;
+    case "ecnl-rl":
+      return 55;
     default:
-      return 58;
+      return 42;
   }
 }
 
@@ -94,7 +94,11 @@ export function compositeScore(
   team: TeamSeed,
   maxGotsportPoints: number,
 ): RankedTeam["scoreParts"] & { score: number } {
-  const tds = team.tdsRank ? listPositionScore(team.tdsRank, 2) : null;
+  const tds = team.tdsRank
+    ? listPositionScore(team.tdsRank, 2)
+    : team.tdsPeakRank
+      ? listPositionScore(team.tdsPeakRank, 2.6) * 0.72
+      : null;
   const mls = mlsNextScore(team);
   const gs = gotsportScore(team.gotsport?.points, maxGotsportPoints);
   const leagueTier = leagueTierScore(team.league);

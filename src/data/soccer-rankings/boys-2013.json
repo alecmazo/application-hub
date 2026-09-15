@@ -370,6 +370,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 4,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -381,6 +383,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 25,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -392,6 +396,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 7,
+      "tdsAsOf": "2025-26 in-season",
       "mlsNext": { "cup": "championship-bracket" },
       "sources": ["MLS NEXT Cup", "TDS TeamRank (in-season)"]
     },
@@ -404,6 +410,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 7,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -415,6 +423,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 12,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -426,6 +436,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 10,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -437,6 +449,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 15,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -448,6 +462,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 16,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -459,6 +475,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 20,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -470,6 +488,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 23,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -481,6 +501,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 25,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -516,6 +538,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 8,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -527,6 +551,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 4,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -538,6 +564,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 11,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -549,6 +577,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 13,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -560,6 +590,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 21,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -571,6 +603,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 17,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {
@@ -582,6 +616,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 18,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -593,6 +629,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 23,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -604,6 +642,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 24,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -615,6 +655,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 12,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -670,6 +712,8 @@
       "birthYear": 2013,
       "league": "mls-next",
       "leagueLabel": "MLS NEXT",
+      "tdsPeakRank": 3,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)"]
     },
     {
@@ -845,6 +889,8 @@
       "birthYear": 2013,
       "league": "ecnl",
       "leagueLabel": "ECNL",
+      "tdsPeakRank": 20,
+      "tdsAsOf": "2025-26 in-season",
       "sources": ["TDS TeamRank (in-season)", "ECNL"]
     },
     {

@@ -26,10 +26,10 @@ TDS does **not** publish a U12 / 2014 TeamRank for 2025–26. 2014 ranks lean on
 
 Missing signals are dropped and the remaining weights are renormalized.
 
-1. **TDS TeamRank** (weight 0.42 when present) — rank 1 = 100, fading by 2 points per place
+1. **TDS TeamRank** (weight 0.42 when present) — latest U13 rank 1 = 100, fading by 2 points per place. If a club is absent from the latest table but appeared in an earlier 2025–26 public TDS top 25, `tdsPeakRank` is used at 72% strength.
 2. **MLS NEXT Cup / UpNext** (0.28) — champion 100, finalist 93, semifinal 86, quarterfinal 80, Championship bracket 74; blended with UpNext list position when both exist
 3. **GotSport points** (0.20) — scaled to the max points in that birth-year seed
-4. **League tier** (0.10) — MLS NEXT Homegrown 92, MLS NEXT 90, ECNL 88, ECNL-RL 72, other 58
+4. **League tier** (0.10) — a modest prior only: MLS NEXT Homegrown 72, MLS NEXT 70, ECNL 68, ECNL-RL 55, other 42. A league label alone does not outrank a strong published GotSport table.
 
 `usRank` = sort composite descending within the birth year.  
 `stateRank` = same sort within `state` + birth year.

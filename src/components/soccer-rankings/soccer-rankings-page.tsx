@@ -542,11 +542,11 @@ export function SoccerRankingsPage() {
                 </li>
               </ul>
               <p>
-                Composite blend: TDS list position (when present), MLS NEXT Cup
-                / UpNext, GotSport points scaled inside the birth year, plus a
-                small league-tier prior (MLS NEXT Homegrown / Academy and ECNL
-                slightly above ECNL-RL and regional). Missing fields are omitted
-                — records are never invented.
+                Composite blend: TDS list position (when present; in-season peak
+                used at reduced strength), MLS NEXT Cup / UpNext, GotSport
+                points scaled inside the birth year, plus a modest league-tier
+                prior so a platform label cannot outrank a strong published
+                table. Missing fields are omitted — records are never invented.
               </p>
               <p>
                 Refresh later by editing{" "}

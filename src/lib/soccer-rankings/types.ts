@@ -41,6 +41,11 @@ export type TeamSeed = {
   };
   /** Latest published TopDrawerSoccer TeamRank position (U13 2025–26). */
   tdsRank?: number;
+  /**
+   * Best public TDS U13 position seen in an earlier 2025–26 monthly table
+   * when the team is not in the latest top 25.
+   */
+  tdsPeakRank?: number;
   tdsAsOf?: string;
   mlsNext?: {
     cup?: MlsNextCupRound;
