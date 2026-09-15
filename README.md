@@ -31,6 +31,7 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 | **Edyta Śliwińska** (`sliwinska`) | https://edytasliwinska.com |
 | **Stem Spark** | https://alecmazo.github.io/stem-spark/ |
 | **Turf Pad Builder** | https://alecmazo.github.io/turf-pad-builder/ |
+| **Soccer Rankings** | https://alecmazo.github.io/application-hub/soccer-rankings |
 | **Soccer Capture** | https://alecmazo.github.io/soccer-capture/ |
 | **Soccer Activate** | https://soccer-activate.vercel.app |
 | **DGA Capital Research** | https://portfolio.dgacapital.com |
@@ -48,9 +49,11 @@ npm run build        # production / Vercel SSR build
 
 ### Redeploy static Pages
 
+Push to `main` runs `.github/workflows/deploy-pages.yml` (`npm run build:spa` → GitHub Pages). The Soccer Rankings deep route is copied to `dist-spa/soccer-rankings/index.html` so `https://alecmazo.github.io/application-hub/soccer-rankings` works without a rewrite.
+
 ```bash
 npm run build:spa
-# publish dist-spa/ contents to the gh-pages branch
+# or wait for the Pages workflow after merging to main
 ```
 
 ## Catalog

@@ -119,7 +119,9 @@ export function mergeCatalogWithRepos(
     return {
       catalog,
       repo,
-      description: repo?.description?.trim() || catalog.tagline,
+      description: catalog.preferTagline
+        ? catalog.tagline
+        : repo?.description?.trim() || catalog.tagline,
       language: repo?.language ?? catalog.languageHint ?? null,
       updatedAt: repo?.updated_at ?? null,
       pushedAt: repo?.pushed_at ?? null,

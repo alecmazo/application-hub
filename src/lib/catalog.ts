@@ -29,6 +29,8 @@ export type CatalogEntry = {
   alwaysShow?: boolean;
   /** Hide empty / non-product repos by default */
   hidden?: boolean;
+  /** Keep the curated tagline even when the GitHub repo has its own description */
+  preferTagline?: boolean;
   languageHint?: string;
   tags?: string[];
 };
@@ -115,6 +117,38 @@ export const CATALOG: CatalogEntry[] = [
     launchUrl: "https://alecmazo.github.io/turf-pad-builder/",
     languageHint: "TypeScript",
     tags: ["GitHub Pages", "construction", "React"],
+  },
+  {
+    id: "soccer-rankings",
+    repo: "application-hub",
+    title: "Soccer Rankings",
+    tagline:
+      "US boys club rankings for 2013 and 2014 birth years — national and state tables from public GotSport, MLS NEXT, ECNL, and TopDrawerSoccer-style sources.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://alecmazo.github.io/application-hub/soccer-rankings",
+    alwaysShow: true,
+    preferTagline: true,
+    surfaces: [
+      {
+        label: "Live rankings",
+        url: "https://alecmazo.github.io/application-hub/soccer-rankings",
+      },
+      {
+        label: "Hub home",
+        url: "https://alecmazo.github.io/application-hub/",
+      },
+    ],
+    languageHint: "TypeScript",
+    tags: [
+      "soccer",
+      "rankings",
+      "youth",
+      "MLS NEXT",
+      "ECNL",
+      "GotSport",
+      "GitHub Pages",
+    ],
   },
   {
     id: "soccer-capture",
