@@ -8,6 +8,7 @@ import type {
 
 export const SEASON_LABEL = "2025–26";
 export const COMPILED_AS_OF = "2026-09-15";
+export const CA_UNIVERSE_ESTIMATE = 1100;
 
 export const LEAGUE_LABEL: Record<LeaguePlatform, string> = {
   "mls-next": "MLS NEXT",
@@ -175,7 +176,10 @@ export function rankTeams(
   return {
     meta: {
       birthYear,
-      ageBand: birthYear === 2013 ? "U13" : "U12–U13",
+      ageBand:
+        birthYear === 2014
+          ? "2014 BY · MLS NEXT U13"
+          : "2013 BY · ECNL U13 is 2013/14",
       season: SEASON_LABEL,
       asOf: COMPILED_AS_OF,
       teamCount: scored.length,

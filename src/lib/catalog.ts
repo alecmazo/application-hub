@@ -123,7 +123,7 @@ export const CATALOG: CatalogEntry[] = [
     repo: "application-hub",
     title: "Soccer Rankings",
     tagline:
-      "US boys club rankings for 2013 and 2014 birth years — national and state tables from public GotSport, MLS NEXT, ECNL, and TopDrawerSoccer-style sources.",
+      "US boys club rankings for 2013 and 2014 birth years. MLS NEXT U13 = 2014 BY; ECNL U13 = 2013/14 school year. Public GotSport sample — not a census.",
     category: "live",
     status: "live",
     launchUrl: "https://alecmazo.github.io/application-hub/soccer-rankings",

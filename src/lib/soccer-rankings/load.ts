@@ -1,29 +1,73 @@
-import boys2013 from "@/data/soccer-rankings/boys-2013.json";
-import boys2014 from "@/data/soccer-rankings/boys-2014.json";
-import { rankTeams } from "./compute";
-import type { BirthYear, RankedDataset, TeamSeed } from "./types";
+import catalog from "@/data/soccer-rankings/teams.json";
+import { CA_UNIVERSE_ESTIMATE, COMPILED_AS_OF, rankTeams } from "./compute";
+import type {
+  AgeAlignment,
+  BirthYear,
+  CoverageMeta,
+  RankedDataset,
+  TeamSeed,
+} from "./types";
 
-type SeedFile = {
-  birthYear: BirthYear;
-  ageBand: string;
+type CatalogFile = {
   season: string;
   asOf: string;
-  teams: TeamSeed[];
+  caUniverseEstimate?: number;
+  counts?: {
+    uniqueTeams: number;
+    caUnique: number;
+    y2013: number;
+    y2014: number;
+  };
+  teams: Array<
+    Omit<TeamSeed, "birthYear"> & {
+      birthYears: BirthYear[];
+    }
+  >;
 };
 
-const FILES: Record<BirthYear, SeedFile> = {
-  2013: boys2013 as SeedFile,
-  2014: boys2014 as SeedFile,
+const FILE = catalog as CatalogFile;
+
+export const COVERAGE: CoverageMeta = {
+  asOf: FILE.asOf || COMPILED_AS_OF,
+  uniqueTeams: FILE.counts?.uniqueTeams ?? FILE.teams.length,
+  caUnique: FILE.counts?.caUnique ?? 0,
+  caUniverseEstimate: FILE.caUniverseEstimate ?? CA_UNIVERSE_ESTIMATE,
+  y2013: FILE.counts?.y2013 ?? 0,
+  y2014: FILE.counts?.y2014 ?? 0,
 };
 
 export function loadRankedYear(year: BirthYear): RankedDataset {
-  return rankTeams(FILES[year].teams, year);
+  const seeds: TeamSeed[] = FILE.teams
+    .filter((t) => t.birthYears.includes(year))
+    .map((t) => ({
+      ...t,
+      birthYear: year,
+    }));
+  const ranked = rankTeams(seeds, year);
+  return { ...ranked, coverage: COVERAGE };
 }
 
-export function seedAsOf(year: BirthYear): string {
-  return FILES[year].asOf;
+export function alignmentLabel(alignment?: AgeAlignment): string | null {
+  switch (alignment) {
+    case "mls-next-u13-2014-by":
+      return "MLS NEXT U13 = 2014 BY";
+    case "ecnl-u13-2013-14":
+      return "ECNL U13 = 2013/14 school year";
+    case "school-year-2013-14":
+      return "2013/14 school-year listing";
+    case "u12-2014-15":
+      return "GotSport U12 (2014/15 band)";
+    case "u13-year-unpublished":
+      return "U13 listing — birth year not published";
+    default:
+      return null;
+  }
+}
+
+export function seedAsOf(_year?: BirthYear): string {
+  return COVERAGE.asOf;
 }
 
 export function seedTeamCount(year: BirthYear): number {
-  return FILES[year].teams.length;
+  return year === 2013 ? COVERAGE.y2013 : COVERAGE.y2014;
 }
