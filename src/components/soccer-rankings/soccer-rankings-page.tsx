@@ -225,6 +225,9 @@ export function SoccerRankingsPage() {
                   )}
                 >
                   {y}
+                  <span className="ml-1.5 text-[11px] font-normal opacity-80">
+                    {y === 2013 ? "U13" : "U12–U13"}
+                  </span>
                 </button>
               ))}
             </div>

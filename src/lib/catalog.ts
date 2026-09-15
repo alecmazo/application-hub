@@ -29,6 +29,8 @@ export type CatalogEntry = {
   alwaysShow?: boolean;
   /** Hide empty / non-product repos by default */
   hidden?: boolean;
+  /** Keep the curated tagline even when the GitHub repo has its own description */
+  preferTagline?: boolean;
   languageHint?: string;
   tags?: string[];
 };
@@ -126,6 +128,7 @@ export const CATALOG: CatalogEntry[] = [
     status: "live",
     launchUrl: "https://alecmazo.github.io/application-hub/soccer-rankings",
     alwaysShow: true,
+    preferTagline: true,
     surfaces: [
       {
         label: "Live rankings",
