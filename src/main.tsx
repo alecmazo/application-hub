@@ -1,13 +1,17 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { AppHub } from "@/components/app-hub";
-import { SoccerRankingsPage } from "@/components/soccer-rankings/soccer-rankings-page";
 import "./styles.css";
 
-const root = document.getElementById("root");
-if (!root) {
-  throw new Error("Root element #root not found");
+function requireRoot(): HTMLElement {
+  const el = document.getElementById("root");
+  if (!el) {
+    throw new Error("Root element #root not found");
+  }
+  return el;
 }
+
+const rootEl = requireRoot();
 
 function spaPath(): string {
   const raw = window.location.pathname;
@@ -16,6 +20,17 @@ function spaPath(): string {
   return stripped.replace(/\/$/, "") || "/";
 }
 
-const page = spaPath() === "/soccer-rankings" ? <SoccerRankingsPage /> : <AppHub />;
+async function mount() {
+  let page;
+  if (spaPath() === "/soccer-rankings") {
+    const { SoccerRankingsPage } = await import(
+      "@/components/soccer-rankings/soccer-rankings-page"
+    );
+    page = <SoccerRankingsPage />;
+  } else {
+    page = <AppHub />;
+  }
+  createRoot(rootEl).render(<StrictMode>{page}</StrictMode>);
+}
 
-createRoot(root).render(<StrictMode>{page}</StrictMode>);
+void mount();

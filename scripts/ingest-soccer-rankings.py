@@ -585,10 +585,12 @@ def ingest() -> dict:
             print(f"{assoc} {state} U{age}: {total_count} teams / {total_pages} pages", flush=True)
             rows = list(first.get("team_ranking_data") or [])
             for page in range(2, total_pages + 1):
+                cached = (CACHE / f"a{age}_{assoc}_p{page}.json").exists()
                 data = fetch_page(age, assoc, page)
                 pages_ok += 1
                 rows.extend(data.get("team_ranking_data") or [])
-                time.sleep(0.08)
+                if not cached:
+                    time.sleep(0.08)
             for row in rows:
                 years, alignment = classify_years(row)
                 if not years:
