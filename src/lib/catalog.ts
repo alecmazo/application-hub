@@ -117,6 +117,37 @@ export const CATALOG: CatalogEntry[] = [
     tags: ["GitHub Pages", "construction", "React"],
   },
   {
+    id: "soccer-rankings",
+    repo: "application-hub",
+    title: "Soccer Rankings",
+    tagline:
+      "US boys club rankings for 2013 and 2014 birth years — national and state tables from public GotSport, MLS NEXT, ECNL, and TopDrawerSoccer-style sources.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://alecmazo.github.io/application-hub/soccer-rankings",
+    alwaysShow: true,
+    surfaces: [
+      {
+        label: "Live rankings",
+        url: "https://alecmazo.github.io/application-hub/soccer-rankings",
+      },
+      {
+        label: "Hub home",
+        url: "https://alecmazo.github.io/application-hub/",
+      },
+    ],
+    languageHint: "TypeScript",
+    tags: [
+      "soccer",
+      "rankings",
+      "youth",
+      "MLS NEXT",
+      "ECNL",
+      "GotSport",
+      "GitHub Pages",
+    ],
+  },
+  {
     id: "soccer-capture",
     repo: "soccer-capture",
     title: "Soccer Capture",
