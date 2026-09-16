@@ -1,4 +1,5 @@
-export type BirthYear = 2013 | 2014;
+export type AgeBand = "U12" | "U13" | "U14" | "U15" | "U16";
+export type BirthYear = number;
 
 export type LeaguePlatform =
   | "mls-next"
@@ -16,7 +17,7 @@ export type AgeAlignment =
   | "gotsport"
   | string;
 
-export type LeagueBandFilter = "all" | "mls-next-u13" | "ecnl-u13" | "other";
+export type LeagueBandFilter = "all" | "mls-next" | "ecnl" | "other";
 
 export type MlsNextCupRound =
   | "champion"
@@ -40,7 +41,9 @@ export type TeamSeed = {
   club: string;
   city?: string;
   state: string;
-  birthYear: BirthYear;
+  ageBand: AgeBand;
+  ageBands?: AgeBand[];
+  birthYear?: BirthYear;
   birthYears?: BirthYear[];
   league: LeaguePlatform;
   leagueLabel: string;
@@ -62,6 +65,12 @@ export type TeamSeed = {
     upnextAsOf?: string;
     qopNote?: string;
     record?: RecordLine;
+    conference?: string;
+    conferenceRank?: number;
+    conferenceSize?: number;
+    orgId?: number;
+    season?: string;
+    asOf?: string;
   };
   sources: string[];
 };
@@ -122,6 +131,7 @@ export type CoverageMeta = {
   caUniverseEstimate: number;
   y2013: number;
   y2014: number;
+  byAge?: Partial<Record<AgeBand, number>>;
 };
 
 export type NotOnPublicFeed = {
@@ -142,8 +152,8 @@ export type NotOnPublicFeed = {
 
 export type RankedDataset = {
   meta: {
-    birthYear: BirthYear;
-    ageBand: string;
+    birthYear?: BirthYear;
+    ageBand: AgeBand | string;
     season: string;
     asOf: string;
     teamCount: number;

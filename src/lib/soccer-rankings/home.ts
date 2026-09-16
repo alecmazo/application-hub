@@ -91,6 +91,9 @@ export function homeSearchAliases(id: string): string {
   if (id === HOME_TEAM_ID) {
     return "home marin fc ecnl 2013-14 2013/14 marin fc blue 2014 last year b14blue";
   }
+  if (id === "mlsnext-1425-U13") {
+    return "sf glens san francisco glens mls next 2014 u13";
+  }
   return "";
 }
 

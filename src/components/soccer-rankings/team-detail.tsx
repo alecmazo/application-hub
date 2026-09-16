@@ -116,13 +116,24 @@ export function TeamDetail({
         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <Chip label="US rank" value={`#${team.usRank}`} />
           <Chip label={`${team.state} rank`} value={`#${team.stateRank}`} />
-          <Chip label="Record" value={formatRecord(team.record)} />
+          <Chip
+            label="Record"
+            value={formatRecord(team.mlsNext?.record ?? team.record)}
+          />
           <Chip label="Score" value={formatScore(team.score)} />
         </div>
         <div className="mt-2 flex flex-wrap gap-1.5">
           <Badge variant="outline">{team.leagueLabel}</Badge>
           {alignmentLabel(team.ageAlignment) && (
             <Badge variant="secondary">{alignmentLabel(team.ageAlignment)}</Badge>
+          )}
+          {team.mlsNext?.conference && (
+            <Badge variant="success">
+              MLS NEXT {team.mlsNext.conference}
+              {team.mlsNext.conferenceRank
+                ? ` #${team.mlsNext.conferenceRank}`
+                : ""}
+            </Badge>
           )}
         </div>
       </div>

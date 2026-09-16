@@ -34,7 +34,8 @@ import {
   formatScore,
   winPct,
 } from "@/lib/soccer-rankings/compute";
-import { alignmentLabel, COVERAGE, loadRankedYear } from "@/lib/soccer-rankings/load";
+import { AGE_BANDS, AGE_LEGEND, ageTabHint } from "@/lib/soccer-rankings/age-map";
+import { alignmentLabel, COVERAGE, loadRankedAge } from "@/lib/soccer-rankings/load";
 import {
   HOME_CONTINUITY_COPY,
   HOME_LABEL,
@@ -49,7 +50,7 @@ import {
   sosByTeamId,
 } from "@/lib/soccer-rankings/matches";
 import type {
-  BirthYear,
+  AgeBand,
   LeagueBandFilter,
   LeaguePlatform,
   RankedTeam,
@@ -123,9 +124,9 @@ const STATE_NAMES: Record<string, string> = {
 };
 
 const BAND_FILTERS: { key: LeagueBandFilter; label: string }[] = [
-  { key: "all", label: "All age bands" },
-  { key: "mls-next-u13", label: "MLS NEXT U13 (2014 BY)" },
-  { key: "ecnl-u13", label: "ECNL U13 (2013/14)" },
+  { key: "all", label: "All platforms" },
+  { key: "mls-next", label: "MLS NEXT (birth year)" },
+  { key: "ecnl", label: "ECNL / school year" },
   { key: "other", label: "Other / GotSport" },
 ];
 
@@ -145,20 +146,21 @@ function leagueBadgeVariant(
 
 function matchesBand(t: RankedTeam, band: LeagueBandFilter): boolean {
   if (band === "all") return true;
-  if (band === "mls-next-u13") {
+  if (band === "mls-next") {
     return (
-      t.ageAlignment === "mls-next-u13-2014-by" ||
-      ((t.league === "mls-next" || t.league === "mls-next-hg") &&
-        t.gotsportAge === 13)
+      t.league === "mls-next" ||
+      t.league === "mls-next-hg" ||
+      Boolean(t.ageAlignment?.startsWith("mls-next"))
     );
   }
-  if (band === "ecnl-u13") {
+  if (band === "ecnl") {
     return (
-      t.ageAlignment === "ecnl-u13-2013-14" ||
-      (t.league === "ecnl" && t.gotsportAge === 13)
+      t.league === "ecnl" ||
+      t.league === "ecnl-rl" ||
+      Boolean(t.ageAlignment?.startsWith("ecnl") || t.ageAlignment?.startsWith("school-year"))
     );
   }
-  return t.league === "other" || t.league === "ecnl-rl";
+  return t.league === "other";
 }
 
 function compareRows(
@@ -231,7 +233,7 @@ function teamMatchesQuery(t: RankedTeam, q: string): boolean {
 }
 
 export function SoccerRankingsPage() {
-  const [year, setYear] = useState<BirthYear>(2013);
+  const [year, setYear] = useState<AgeBand>("U13");
   const [status, setStatus] = useState<Status>("loading");
   const [error, setError] = useState<string | null>(null);
   const [teams, setTeams] = useState<RankedTeam[]>([]);
@@ -262,7 +264,7 @@ export function SoccerRankingsPage() {
     setStatus("loading");
     setError(null);
     try {
-      const ranked = loadRankedYear(year);
+      const ranked = loadRankedAge(year);
       setTeams(ranked.teams);
       setStatus("ready");
     } catch (e) {
@@ -423,41 +425,40 @@ export function SoccerRankingsPage() {
               </div>
             </div>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Unofficial composite for {year}-born boys. MLS NEXT U13 is a{" "}
-              <strong className="text-foreground">2014 birth-year</strong>{" "}
-              category. ECNL U13 uses the{" "}
-              <strong className="text-foreground">2013/14 school year</strong> —
-              the same “U13” label is not the same slice across platforms.
+              Unofficial composite for boys {year}. MLS NEXT uses{" "}
+              <strong className="text-foreground">birth year</strong> (U13 = 2014
+              BY). ECNL and many GotSport clubs use{" "}
+              <strong className="text-foreground">school-year</strong> alignment
+              (ECNL U13 ≈ 2013/14). The same “U13” label is not one national
+              slice.
             </p>
           </div>
           <div className="flex flex-col items-stretch gap-2 sm:items-end">
             <div
               className="inline-flex rounded-lg border border-border bg-card p-1"
               role="tablist"
-              aria-label="Birth year"
+              aria-label="Age group"
             >
-              {([2013, 2014] as const).map((y) => (
+              {AGE_BANDS.map((y) => (
                 <button
                   key={y}
                   type="button"
                   role="tab"
                   aria-selected={year === y}
+                  title={ageTabHint(y)}
                   onClick={() => {
                     setYear(y);
                     setSortKey(stateFilter === "all" ? "usRank" : "stateRank");
                     setSortDir("asc");
                   }}
                   className={cn(
-                    "h-9 rounded-md px-3 text-sm font-medium transition-colors sm:px-4",
+                    "h-9 rounded-md px-2.5 text-sm font-medium transition-colors sm:px-3",
                     year === y
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {y}
-                  <span className="ml-1.5 text-[11px] font-normal opacity-80">
-                    {y === 2014 ? "MLS NEXT U13 BY" : "2013 BY"}
-                  </span>
                 </button>
               ))}
             </div>
@@ -471,9 +472,9 @@ export function SoccerRankingsPage() {
         </header>
 
         <div className="mt-4 flex flex-wrap items-center gap-2">
+          <Badge variant="outline">{AGE_LEGEND}</Badge>
           <Badge variant="success">MLS NEXT U13 = 2014 BY</Badge>
           <Badge variant="accent">ECNL U13 = 2013/14 school year</Badge>
-          <Badge variant="outline">GotSport U12/U13 listings mix vintages</Badge>
           <CoverageFlag
             year={year}
             rankedCount={teams.length}
@@ -488,7 +489,7 @@ export function SoccerRankingsPage() {
           <Stat
             label="Ranked this year"
             value={status === "ready" ? teams.length.toLocaleString() : "—"}
-            hint={`${year} birth-year view`}
+            hint={`${year} age tab`}
           />
           <Stat
             label="CA in this view"
@@ -1005,22 +1006,22 @@ export function SoccerRankingsPage() {
                 stay unlocked.
               </p>
               <p>
-                <strong className="text-foreground">Age-band truth (2025–26):</strong>{" "}
-                MLS NEXT U13 boys is a 2014 birth-year category. ECNL U13 is the
-                2013/14 school-year alignment, not a single-year slice. A club’s
-                “U13” side can mean different vintages across platforms.
+                <strong className="text-foreground">Age tabs U12–U16:</strong>{" "}
+                {AGE_LEGEND} MLS NEXT U13 = 2014 BY (official 2026–27 Homegrown).
+                ECNL U13 ≈ 2013/14 school year. MLS NEXT sides are never forced
+                onto school-year labels.
               </p>
               <p>
                 Ranks are computed in-browser from a public GotSport ingest plus
                 a few published TDS / MLS NEXT Cup overlays.{" "}
                 <strong className="text-foreground">usRank</strong> sorts
-                composite score among seeded teams in this birth-year view.{" "}
+                composite score among seeded teams in this age tab.{" "}
                 <strong className="text-foreground">stateRank</strong> is among
                 seeded teams in that state — not every club that exists.
               </p>
               <ul className="list-disc space-y-1 pl-5">
                 <li>
-                  GotSport public rankings API (boys U12/U13, USA), including
+                  GotSport public rankings API (boys U12–U16, USA), including
                   Cal South (CAS) and Cal North (CAN).
                 </li>
                 <li>

@@ -17,7 +17,7 @@ export function CoverageFlag({
   refreshing,
   refreshNote,
 }: {
-  year: number;
+  year: string;
   rankedCount: number;
   caInYear: number;
   onRefresh: () => void;
@@ -48,11 +48,12 @@ export function CoverageFlag({
         >
           <p className="font-medium text-foreground">Coverage</p>
           <p className="mt-2 leading-relaxed text-muted-foreground">
-            Incomplete vs the full US — CA GotSport U12/U13 is in the seed;
-            vintage universe ≈{COVERAGE.caUniverseEstimate.toLocaleString()}+.
-            This view has {rankedCount.toLocaleString()} ranked {year}-born
-            sides ({caInYear.toLocaleString()} California). US and state ranks
-            are among seeded teams only. Match cache as of {MATCH_CACHE_META.asOf}:{" "}
+            Incomplete vs the full US. GotSport U12–U16 plus MLS NEXT League
+            26/27 public standings/schedule. Vintage universe ≈
+            {COVERAGE.caUniverseEstimate.toLocaleString()}+. This {year} view
+            has {rankedCount.toLocaleString()} ranked sides (
+            {caInYear.toLocaleString()} California). US and state ranks are
+            among seeded teams only. Match cache as of {MATCH_CACHE_META.asOf}:{" "}
             {MATCH_CACHE_META.teamsWithMatches.toLocaleString()} teams /{" "}
             {MATCH_CACHE_META.matches.toLocaleString()} games.
           </p>
