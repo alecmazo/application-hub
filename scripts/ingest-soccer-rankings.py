@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""Pull public GotSport boys U12/U13 rankings into compact seed JSON.
+"""Pull public GotSport boys U12–U16 rankings into compact seed JSON.
 
 Uses the same unauthenticated JSON the rankings.gotsport.com UI calls.
 Cache lives in /tmp/gotsport-rankings-cache so reruns are cheap.
+
+Age tabs are U12–U16. MLS NEXT is assigned by birth year; ECNL / most
+GotSport clubs use school-year alignment. See METHODOLOGY.md.
 """
 
 from __future__ import annotations
@@ -13,7 +16,9 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src/data/soccer-rankings/teams.json"
@@ -137,20 +142,38 @@ ASSOCS = [
     "HI",
 ]
 
-RE_2013 = re.compile(
-    r"(?:^|[^0-9])(?:2013|b2013|\bb13\b|13b|13u)(?:[^0-9]|$)", re.I
-)
-RE_2014 = re.compile(
-    r"(?:^|[^0-9])(?:2014|b2014|\bb14\b|14b|14u)(?:[^0-9]|$)", re.I
-)
-RE_2015 = re.compile(
-    r"(?:^|[^0-9])(?:2015|b2015|\bb15\b|15b)(?:[^0-9]|$)", re.I
-)
-RE_2012 = re.compile(
-    r"(?:^|[^0-9])(?:2012|b2012|\bb12\b|12b)(?:[^0-9]|$)", re.I
-)
+RE_2011 = re.compile(r"(?:^|[^0-9])(?:2011|b2011|\bb11\b|11b)(?:[^0-9]|$)", re.I)
+RE_2012 = re.compile(r"(?:^|[^0-9])(?:2012|b2012|\bb12\b|12b)(?:[^0-9]|$)", re.I)
+RE_2013 = re.compile(r"(?:^|[^0-9])(?:2013|b2013|\bb13\b|13b|13u)(?:[^0-9]|$)", re.I)
+RE_2014 = re.compile(r"(?:^|[^0-9])(?:2014|b2014|\bb14\b|14b|14u)(?:[^0-9]|$)", re.I)
+RE_2015 = re.compile(r"(?:^|[^0-9])(?:2015|b2015|\bb15\b|15b)(?:[^0-9]|$)", re.I)
+RE_MIX_1011 = re.compile(r"2010\s*/\s*11|10\s*/\s*11|2010-11|b2010/11", re.I)
+RE_MIX_1112 = re.compile(r"2011\s*/\s*12|11\s*/\s*12|2011-12|b2011/12", re.I)
+RE_MIX_1213 = re.compile(r"2012\s*/\s*13|12\s*/\s*13|2012-13|b2012/13", re.I)
 RE_MIX_1314 = re.compile(r"2013\s*/\s*14|13\s*/\s*14|2013-14|b2013/14", re.I)
 RE_MIX_1415 = re.compile(r"2014\s*/\s*15|14\s*/\s*15|2014-15|b2014/15", re.I)
+
+AGE_BANDS = ("U12", "U13", "U14", "U15", "U16")
+GOTSPORT_AGES = (12, 13, 14, 15, 16)
+
+# Alec + official 2026–27 Homegrown PDF (born on/after Jan 1 of BY).
+# 2025–26 Homegrown PDF was one year older (U13 = 2013) — documented, not used.
+MLS_NEXT_BY_TO_BAND = {
+    2015: "U12",
+    2014: "U13",
+    2013: "U14",
+    2012: "U15",
+    2011: "U16",
+}
+SCHOOL_YEAR_MIX_TO_BAND = {
+    "2014/15": "U12",
+    "2013/14": "U13",
+    "2012/13": "U14",
+    "2011/12": "U15",
+    "2010/11": "U16",
+}
+
+MLS_NEXT_PUBLIC = ROOT / "src/data/soccer-rankings/mls-next-public.json"
 
 
 def fetch_page(age: int, assoc: str, page: int) -> dict:
@@ -206,65 +229,107 @@ def classify_league(blob: str) -> tuple[str, str]:
     return "other", "GotSport / other"
 
 
-def classify_years(row: dict) -> tuple[list[int], str]:
-    blob = f"{row.get('team_name') or ''} {row.get('club_name') or ''}"
-    age = int(row.get("age") or 0)
-    league, _ = classify_league(blob)
+def _named_years(blob: str) -> tuple[set[int], str | None]:
     years: set[int] = set()
-    alignment = "gotsport"
-
-    mix1314 = bool(RE_MIX_1314.search(blob))
-    mix1415 = bool(RE_MIX_1415.search(blob))
-    y2013 = bool(RE_2013.search(blob))
-    y2014 = bool(RE_2014.search(blob))
-    y2015 = bool(RE_2015.search(blob))
-    y2012 = bool(RE_2012.search(blob))
-
-    if mix1314:
+    mix = None
+    if RE_MIX_1415.search(blob):
+        years.update((2014, 2015))
+        mix = "2014/15"
+    if RE_MIX_1314.search(blob):
         years.update((2013, 2014))
-        alignment = "ecnl-u13-2013-14" if league.startswith("ecnl") else "school-year-2013-14"
-    if mix1415:
-        years.add(2014)
-        alignment = "u12-2014-15"
-    if y2013:
+        mix = "2013/14"
+    if RE_MIX_1213.search(blob):
+        years.update((2012, 2013))
+        mix = "2012/13"
+    if RE_MIX_1112.search(blob):
+        years.update((2011, 2012))
+        mix = "2011/12"
+    if RE_MIX_1011.search(blob):
+        years.update((2010, 2011))
+        mix = "2010/11"
+    if RE_2011.search(blob):
+        years.add(2011)
+    if RE_2012.search(blob):
+        years.add(2012)
+    if RE_2013.search(blob):
         years.add(2013)
-    if y2014:
+    if RE_2014.search(blob):
         years.add(2014)
+    if RE_2015.search(blob):
+        years.add(2015)
+    return years, mix
 
-    if league in ("mls-next", "mls-next-hg") and age == 13:
-        if y2013 and not y2014 and not mix1314:
-            years.add(2013)
+
+def classify_age_bands(row: dict) -> tuple[list[str], str, list[int]]:
+    """Return (ageBands, alignment, birthYears). MLS NEXT = birth year only."""
+    blob = f"{row.get('team_name') or ''} {row.get('club_name') or ''}"
+    gs_age = int(row.get("age") or 0)
+    league, _ = classify_league(blob)
+    named, mix = _named_years(blob)
+    is_mls = league in ("mls-next", "mls-next-hg")
+
+    if is_mls:
+        by = None
+        if 2015 in named and 2014 not in named:
+            by = 2015
+        elif 2014 in named and not mix:
+            by = 2014
+        elif 2013 in named and not mix and 2014 not in named:
+            by = 2013
+        elif 2012 in named and not mix and 2013 not in named:
+            by = 2012
+        elif 2011 in named and not mix and 2012 not in named:
+            by = 2011
+        elif mix and mix in SCHOOL_YEAR_MIX_TO_BAND:
+            # School-year token on an MLS NEXT listing — still birth-year, never school-year chip.
+            by = {
+                "U12": 2015,
+                "U13": 2014,
+                "U14": 2013,
+                "U15": 2012,
+                "U16": 2011,
+            }[SCHOOL_YEAR_MIX_TO_BAND[mix]]
+        elif gs_age in GOTSPORT_AGES:
+            by = {12: 2015, 13: 2014, 14: 2013, 15: 2012, 16: 2011}.get(gs_age)
+        if by is None:
+            return [], "skip-mls-unmapped", []
+        band = MLS_NEXT_BY_TO_BAND.get(by)
+        if not band:
+            return [], "skip-mls-unmapped", []
+        alignment = f"mls-next-{band.lower()}-{by}-by"
+        return [band], alignment, [by]
+
+    # ECNL / US Club-style / GotSport: school-year or listing age.
+    if mix and mix in SCHOOL_YEAR_MIX_TO_BAND:
+        band = SCHOOL_YEAR_MIX_TO_BAND[mix]
+        alignment = (
+            f"ecnl-{band.lower()}-{mix.replace('/', '-')}"
+            if league.startswith("ecnl")
+            else f"school-year-{mix.replace('/', '-')}"
+        )
+        return [band], alignment, sorted(named)
+
+    if gs_age in GOTSPORT_AGES:
+        band = f"U{gs_age}"
+        if league.startswith("ecnl"):
+            alignment = f"ecnl-{band.lower()}-school-year"
+        elif named:
             alignment = "gotsport"
         else:
-            years.add(2014)
-            alignment = "mls-next-u13-2014-by"
-    elif league == "ecnl" and age == 13:
-        if y2014 and not y2013 and not mix1314:
-            years.add(2014)
-            alignment = "gotsport"
-        else:
-            years.update((2013, 2014))
-            alignment = "ecnl-u13-2013-14"
+            alignment = f"{band.lower()}-year-unpublished"
+        return [band], alignment, sorted(named)
 
-    if not years:
-        if y2015 and not y2014:
-            return [], "skip-2015"
-        if y2012 and not (y2013 or y2014):
-            return [], "skip-2012"
-        if age == 13:
-            years.update((2013, 2014))
-            alignment = "u13-year-unpublished"
-        elif age == 12 and not y2015:
-            years.add(2014)
-            alignment = "u12-2014-15"
-        else:
-            return [], "skip"
+    if named:
+        # Single-year name, no GotSport age — map like school-year older-half.
+        year = min(named)
+        band = MLS_NEXT_BY_TO_BAND.get(year)  # 2014→U13 school-year older is actually 2013
+        # Non-MLS single year: 2015→U12, 2014→U13, 2013→U14? Alec school-year U13=2013/14.
+        school_older = {2015: "U12", 2014: "U13", 2013: "U13", 2012: "U14", 2011: "U15"}
+        band = school_older.get(year)
+        if band:
+            return [band], "gotsport", sorted(named)
 
-    if y2015 and years == {2014} and not mix1415 and not y2014:
-        # 2015-only U12
-        return [], "skip-2015"
-
-    return sorted(years), alignment
+    return [], "skip", []
 
 
 def display_name(row: dict) -> tuple[str, str]:
@@ -277,7 +342,13 @@ def display_name(row: dict) -> tuple[str, str]:
     return f"{club} {team}", club
 
 
-def compact(row: dict, years: list[int], alignment: str, state: str) -> dict:
+def compact(
+    row: dict,
+    bands: list[str],
+    alignment: str,
+    state: str,
+    years: list[int],
+) -> dict:
     league, label = classify_league(
         f"{row.get('team_name') or ''} {row.get('club_name') or ''}"
     )
@@ -286,7 +357,7 @@ def compact(row: dict, years: list[int], alignment: str, state: str) -> dict:
     draws = row.get("total_draws")
     losses = row.get("total_losses")
     matches = row.get("total_matches") or 0
-    as_of = row.get("ranking_date") or "2026-09-15"
+    as_of = row.get("ranking_date") or compiled_date()
     rec = None
     if matches and (wins or draws or losses):
         rec = {"w": int(wins or 0), "d": int(draws or 0), "l": int(losses or 0), "asOf": as_of}
@@ -295,6 +366,7 @@ def compact(row: dict, years: list[int], alignment: str, state: str) -> dict:
         "name": name[:120],
         "club": club[:80],
         "state": state,
+        "ageBands": bands,
         "birthYears": years,
         "league": league,
         "leagueLabel": label,
@@ -309,6 +381,23 @@ def compact(row: dict, years: list[int], alignment: str, state: str) -> dict:
         "record": rec,
         "sources": ["GotSport"],
     }
+
+
+def compiled_date() -> str:
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+
+
+def compiled_stamp() -> str:
+    return datetime.now(ZoneInfo("America/Los_Angeles")).isoformat(timespec="minutes")
+
+
+def gotsport_as_of(items: list[dict]) -> str:
+    dates = [
+        str((t.get("gotsport") or {}).get("asOf") or "")
+        for t in items
+        if (t.get("gotsport") or {}).get("asOf")
+    ]
+    return max(dates) if dates else compiled_date()
 
 
 # Small curated overlays — TDS 2013 birth-year table and MLS NEXT U13 (2014 BY).
@@ -352,7 +441,8 @@ def _pick_club(
     target = _norm(club)
     scored: list[tuple[int, dict]] = []
     for t in teams:
-        if t["state"] != state or year not in t["birthYears"]:
+        years = t.get("birthYears") or []
+        if t["state"] != state or year not in years:
             continue
         blob = _norm(t["name"] + t["club"])
         if target not in blob:
@@ -413,6 +503,7 @@ def _stub(
         "name": name,
         "club": club,
         "state": state,
+        "ageBands": [MLS_NEXT_BY_TO_BAND[y] for y in years if y in MLS_NEXT_BY_TO_BAND] or ["U13"],
         "birthYears": years,
         "league": league,
         "leagueLabel": label,
@@ -437,6 +528,7 @@ def apply_overlays(teams: list[dict]) -> None:
                 alignment="gotsport",
                 sources=["TDS TeamRank"],
             )
+            hit["ageBands"] = ["U13"]
             teams.append(hit)
         hit["tdsRank"] = rank
         hit["tdsAsOf"] = "2026-06"
@@ -471,9 +563,136 @@ def apply_overlays(teams: list[dict]) -> None:
             hit["league"] = "mls-next"
             hit["leagueLabel"] = "MLS NEXT"
             hit["ageAlignment"] = "mls-next-u13-2014-by"
+        if "U13" not in hit.get("ageBands", []):
+            hit["ageBands"] = sorted(set(hit.get("ageBands") or []) | {"U13"})
         for tag in ("MLS NEXT Cup", "UpNext"):
             if tag not in hit["sources"]:
                 hit["sources"].append(tag)
+
+    merge_mls_next_public(teams)
+
+
+def _club_tokens(name: str) -> str:
+    return _norm(re.sub(r"\b(fc|sc|academy|soccer|club|united)\b", "", name, flags=re.I))
+
+
+def merge_mls_next_public(teams: list[dict]) -> None:
+    if not MLS_NEXT_PUBLIC.exists():
+        return
+    public = json.loads(MLS_NEXT_PUBLIC.read_text())
+    by_band: dict[str, list[dict]] = {b: [] for b in AGE_BANDS}
+    for t in teams:
+        for band in t.get("ageBands") or []:
+            by_band.setdefault(band, []).append(t)
+
+    for row in public.get("teams") or []:
+        band = row.get("ageBand")
+        if band not in AGE_BANDS:
+            continue
+        target = _club_tokens(row.get("name") or "")
+        if len(target) < 5:
+            continue
+        hit = None
+        scored: list[tuple[int, dict]] = []
+        for t in by_band.get(band, []):
+            label = f"{t['name']} {t['club']}".lower()
+            if re.search(r"pre[\s-]*mls", label):
+                continue
+            blob = _club_tokens(label)
+            if target not in blob and blob not in target:
+                continue
+            official = t["league"] in ("mls-next", "mls-next-hg") or re.search(
+                r"mls\s*next|mlsnext|mls\s*ad|homegrown|\bhd\b", label
+            )
+            if not official:
+                continue
+            pts = 50 if t["league"] in ("mls-next", "mls-next-hg") else 10
+            scored.append((pts, t))
+        if scored:
+            scored.sort(key=lambda x: x[0], reverse=True)
+            hit = scored[0][1]
+        if hit is None:
+            by = row.get("birthYear")
+            hit = _stub(
+                sid=f"mlsnext-{row.get('orgId')}-{band}",
+                name=f"{row['name']} MLS NEXT {by} ({band})",
+                club=row["name"],
+                state="CA" if "francisco glens" in (row.get("name") or "").lower() else "US",
+                years=[by] if by else [],
+                league="mls-next",
+                label="MLS NEXT",
+                alignment=f"mls-next-{band.lower()}-{by}-by" if by else f"mls-next-{band.lower()}-by",
+                sources=["MLS NEXT League 26/27"],
+            )
+            hit["ageBands"] = [band]
+            hit["state"] = _guess_state(row.get("conference"), row.get("name"))
+            teams.append(hit)
+            by_band.setdefault(band, []).append(hit)
+        mls = dict(hit.get("mlsNext") or {})
+        mls.update(
+            {
+                "conference": row.get("conference"),
+                "conferenceRank": row.get("conferenceRank"),
+                "conferenceSize": row.get("conferenceSize"),
+                "orgId": row.get("orgId"),
+                "season": public.get("season"),
+                "asOf": public.get("asOf"),
+            }
+        )
+        if row.get("record"):
+            mls["record"] = row["record"]
+            if not hit.get("record"):
+                hit["record"] = row["record"]
+        hit["mlsNext"] = mls
+        if hit["league"] == "other":
+            hit["league"] = "mls-next"
+            hit["leagueLabel"] = "MLS NEXT"
+            if not str(hit.get("ageAlignment") or "").startswith("mls-next"):
+                by = row.get("birthYear")
+                hit["ageAlignment"] = (
+                    f"mls-next-{band.lower()}-{by}-by" if by else f"mls-next-{band.lower()}-by"
+                )
+        if "MLS NEXT League 26/27" not in hit["sources"]:
+            hit["sources"].append("MLS NEXT League 26/27")
+
+
+def _guess_state(conference: str | None, name: str) -> str:
+    blob = f"{conference or ''} {name}".lower()
+    if any(x in blob for x in ("northwest", "san francisco", "glens", "de anza", "sacramento", "bay area")):
+        return "CA"
+    if "florida" in blob:
+        return "FL"
+    if "southwest" in blob:
+        return "CA"
+    if "northeast" in blob:
+        return "NY"
+    if "mid-atlantic" in blob:
+        return "VA"
+    if "southeast" in blob:
+        return "GA"
+    if "mid-america" in blob or "central" in blob:
+        return "TX"
+    if "frontier" in blob:
+        return "CO"
+    return "US"
+
+
+def upsert_gotsport(teams: dict[str, dict], rec: dict) -> None:
+    prev = teams.get(rec["id"])
+    if not prev:
+        teams[rec["id"]] = rec
+        return
+    prev["ageBands"] = sorted(set(prev.get("ageBands") or []) | set(rec.get("ageBands") or []))
+    prev["birthYears"] = sorted(set(prev.get("birthYears") or []) | set(rec.get("birthYears") or []))
+    if (rec["gotsport"]["points"] or 0) > (prev.get("gotsport", {}).get("points") or 0):
+        prev["gotsport"] = rec["gotsport"]
+        prev["record"] = rec["record"]
+        prev["gotsportAge"] = rec["gotsportAge"]
+    if rec["league"] != "other" and prev["league"] == "other":
+        prev["league"] = rec["league"]
+        prev["leagueLabel"] = rec["leagueLabel"]
+    if rec["ageAlignment"].startswith("mls-next") or rec["ageAlignment"].startswith("ecnl"):
+        prev["ageAlignment"] = rec["ageAlignment"]
 
 
 def compile_from_cache() -> dict:
@@ -494,34 +713,17 @@ def compile_from_cache() -> dict:
         pages_ok += 1
         seen.add((assoc, age))
         for row in data.get("team_ranking_data") or []:
-            years, alignment = classify_years(row)
-            if not years:
-                if "2015" in alignment:
-                    skipped["2015"] += 1
-                elif "2012" in alignment:
-                    skipped["2012"] += 1
-                else:
-                    skipped["other"] += 1
+            bands, alignment, years = classify_age_bands(row)
+            if not bands:
+                skipped["other"] += 1
                 continue
-            rec = compact(row, years, alignment, state)
-            prev = teams.get(rec["id"])
-            if prev:
-                prev["birthYears"] = sorted(set(prev["birthYears"]) | set(years))
-                if (rec["gotsport"]["points"] or 0) > (prev["gotsport"]["points"] or 0):
-                    prev["gotsport"] = rec["gotsport"]
-                    prev["record"] = rec["record"]
-                    prev["gotsportAge"] = rec["gotsportAge"]
-                if rec["league"] != "other" and prev["league"] == "other":
-                    prev["league"] = rec["league"]
-                    prev["leagueLabel"] = rec["leagueLabel"]
-                if rec["ageAlignment"].startswith("mls-next") or rec[
-                    "ageAlignment"
-                ].startswith("ecnl"):
-                    prev["ageAlignment"] = rec["ageAlignment"]
-            else:
-                teams[rec["id"]] = rec
+            rec = compact(row, bands, alignment, state, years)
+            upsert_gotsport(teams, rec)
 
-    extra = {"cachedAssocs": sorted({f"{a}-U{age}" for a, age in seen})}
+    extra = {
+        "cachedAssocs": sorted({f"{a}-U{age}" for a, age in seen}),
+        "compiledAt": compiled_stamp(),
+    }
     return finalize_catalog(teams, skipped, pages_ok, extra)
 
 
@@ -537,31 +739,40 @@ def finalize_catalog(
         key=lambda t: (-int((t.get("gotsport") or {}).get("points") or 0), t["name"]),
     )
     ca = [t for t in items if t["state"] == "CA"]
+    compiled_at = compiled_stamp()
+    published = gotsport_as_of(items)
+    by_age = {
+        band: sum(1 for t in items if band in (t.get("ageBands") or []))
+        for band in AGE_BANDS
+    }
     notes = {
-        "mlsNextU13": "2014 birth-year category",
+        "mlsNextU13": "2014 birth-year category (official 2026–27 Homegrown)",
         "ecnlU13": "2013/14 school-year alignment",
+        "legend": "MLS NEXT = birth year · ECNL / US Club-style = school year where applicable.",
         "coverage": (
-            "GotSport CAS+CAN U12/U13 directory is ingested in full. "
-            "CA vintage universe ≈1,100+ competitive sides; the seed lists every "
-            "public ranking row (multiple teams per club, mixed U12/U13 bands). "
-            "US/state rank are among seeded teams. National ingest is still a sample."
+            "GotSport boys U12–U16 public ranking directory plus MLS NEXT League 26/27 "
+            "public standings/schedule overlay. US/state rank are among seeded teams "
+            "in that age tab. National ingest is still a sample outside CA U12/U13."
         ),
+        "compiledAt": compiled_at,
+        "gotsportRankingDate": published,
     }
     if extra_notes:
         notes.update(extra_notes)
     return {
         "season": "2025-26",
-        "asOf": "2026-09-15",
-        "source": "GotSport public rankings API (system.gotsport.com/api/v1/team_ranking_data)",
+        "asOf": published,
+        "compiledAt": compiled_at,
+        "source": "GotSport public rankings API + MLS NEXT public League Viewer 26/27",
         "caUniverseEstimate": 1100,
         "notes": notes,
         "counts": {
             "uniqueTeams": len(items),
             "caUnique": len(ca),
-            "y2013": sum(1 for t in items if 2013 in t["birthYears"]),
-            "y2014": sum(1 for t in items if 2014 in t["birthYears"]),
-            "skipped2015": skipped["2015"],
-            "skipped2012": skipped["2012"],
+            "byAge": by_age,
+            "y2013": sum(1 for t in items if 2013 in (t.get("birthYears") or [])),
+            "y2014": sum(1 for t in items if 2014 in (t.get("birthYears") or [])),
+            "skipped": skipped.get("other", 0),
             "pagesFetched": pages_ok,
         },
         "teams": items,
@@ -574,7 +785,7 @@ def ingest() -> dict:
     pages_ok = 0
     for assoc in ASSOCS:
         state = ASSOC_TO_STATE[assoc]
-        for age in (13, 12):
+        for age in GOTSPORT_AGES:
             first = fetch_page(age, assoc, 1)
             pages_ok += 1
             pag = first.get("pagination") or {}
@@ -592,32 +803,12 @@ def ingest() -> dict:
                 if not cached:
                     time.sleep(0.08)
             for row in rows:
-                years, alignment = classify_years(row)
-                if not years:
-                    if "2015" in alignment:
-                        skipped["2015"] += 1
-                    elif "2012" in alignment:
-                        skipped["2012"] += 1
-                    else:
-                        skipped["other"] += 1
+                bands, alignment, years = classify_age_bands(row)
+                if not bands:
+                    skipped["other"] += 1
                     continue
-                rec = compact(row, years, alignment, state)
-                prev = teams.get(rec["id"])
-                if prev:
-                    prev["birthYears"] = sorted(set(prev["birthYears"]) | set(years))
-                    if (rec["gotsport"]["points"] or 0) > (prev["gotsport"]["points"] or 0):
-                        prev["gotsport"] = rec["gotsport"]
-                        prev["record"] = rec["record"]
-                        prev["gotsportAge"] = rec["gotsportAge"]
-                    if rec["league"] != "other" and prev["league"] == "other":
-                        prev["league"] = rec["league"]
-                        prev["leagueLabel"] = rec["leagueLabel"]
-                    if rec["ageAlignment"].startswith("mls-next") or rec[
-                        "ageAlignment"
-                    ].startswith("ecnl"):
-                        prev["ageAlignment"] = rec["ageAlignment"]
-                else:
-                    teams[rec["id"]] = rec
+                rec = compact(row, bands, alignment, state, years)
+                upsert_gotsport(teams, rec)
             time.sleep(0.05)
 
     return finalize_catalog(teams, skipped, pages_ok)

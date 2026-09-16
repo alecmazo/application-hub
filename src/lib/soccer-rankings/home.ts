@@ -35,8 +35,48 @@ export const HOME_EXCLUDED_TEAM_IDS = new Set([
 const HOME_CONTINUITY_EXCLUDE_TOKEN =
   /2015|b2015|b15(?!\d)|\/\s*15|2014\s*\/\s*15|14\s*\/\s*15|b2014\/15/i;
 
+/** First load (key absent) defaults to Marin. Empty / "null" = no home pinned. */
+export const HOME_PIN_STORAGE_KEY = "soccer-rankings-home-team-id";
+
 export function isHomeTeam(id: string): boolean {
   return id === HOME_TEAM_ID;
+}
+
+export function isPinnedHomeTeam(
+  id: string,
+  pinnedId: string | null | undefined,
+): boolean {
+  return Boolean(pinnedId) && pinnedId === id;
+}
+
+/** Continuity note (Blue 2014 only) applies solely when Marin 2013/14 ECNL is pinned. */
+export function showHomeContinuity(
+  pinnedId: string | null | undefined,
+): boolean {
+  return pinnedId === HOME_TEAM_ID;
+}
+
+export function readPinnedHomeId(): string | null {
+  if (typeof window === "undefined") return HOME_TEAM_ID;
+  try {
+    const raw = window.localStorage.getItem(HOME_PIN_STORAGE_KEY);
+    if (raw === null) return HOME_TEAM_ID;
+    const trimmed = raw.trim();
+    if (!trimmed || trimmed === "null" || trimmed === "undefined") return null;
+    return trimmed;
+  } catch {
+    return HOME_TEAM_ID;
+  }
+}
+
+/** Persist pin. Empty string means unpinned. */
+export function writePinnedHomeId(id: string | null): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(HOME_PIN_STORAGE_KEY, id ?? "");
+  } catch {
+    /* private mode / quota */
+  }
 }
 
 export function isExcludedFromHomeContinuity(
@@ -50,6 +90,9 @@ export function isExcludedFromHomeContinuity(
 export function homeSearchAliases(id: string): string {
   if (id === HOME_TEAM_ID) {
     return "home marin fc ecnl 2013-14 2013/14 marin fc blue 2014 last year b14blue";
+  }
+  if (id === "mlsnext-1425-U13") {
+    return "sf glens san francisco glens mls next 2014 u13";
   }
   return "";
 }

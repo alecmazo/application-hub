@@ -1,5 +1,12 @@
 import meta from "@/data/soccer-rankings/matches-meta.json";
-import type { CompactMatch, MatchLoadResult, RankedTeam, SosSummary } from "./types";
+import mlsNextPublic from "@/data/soccer-rankings/mls-next-public.json";
+import type {
+  CompactMatch,
+  MatchLoadResult,
+  NotOnPublicFeed,
+  RankedTeam,
+  SosSummary,
+} from "./types";
 
 type MatchesFile = {
   asOf: string;
@@ -12,11 +19,26 @@ type MatchesFile = {
 
 export const MATCH_CACHE_META = {
   asOf: meta.asOf,
+  compiledAt: (meta as { compiledAt?: string }).compiledAt ?? meta.asOf,
   since: meta.since,
   source: meta.source,
   teamsWithMatches: meta.teamsWithMatches,
   matches: meta.matches,
 };
+
+export const NOT_ON_PUBLIC_FEED: NotOnPublicFeed | null =
+  ((meta as { notOnPublicFeed?: NotOnPublicFeed }).notOnPublicFeed as
+    | NotOnPublicFeed
+    | undefined) ?? null;
+
+export function notOnPublicFeedFor(gotsportId: number | null): NotOnPublicFeed | null {
+  if (!NOT_ON_PUBLIC_FEED || gotsportId == null) return null;
+  const ids = [
+    NOT_ON_PUBLIC_FEED.homeTeamId,
+    NOT_ON_PUBLIC_FEED.opponentTeamId,
+  ].filter((id): id is number => typeof id === "number");
+  return ids.includes(gotsportId) ? NOT_ON_PUBLIC_FEED : null;
+}
 
 const META_COUNTS: Record<string, number> =
   (meta as { gameCounts?: Record<string, number> }).gameCounts ?? {};
@@ -33,6 +55,15 @@ export function loadCacheFile(): Promise<MatchesFile> {
 }
 
 const memory = new Map<number, CompactMatch[]>();
+
+/** Drop in-memory live match lists so the next load hits GotSport again. */
+export function clearLiveMatchCache(gotsportId?: number): void {
+  if (gotsportId == null) {
+    memory.clear();
+    return;
+  }
+  memory.delete(gotsportId);
+}
 
 export function gotsportNumericId(teamId: string | undefined): number | null {
   if (!teamId) return null;
@@ -148,7 +179,77 @@ async function fetchLive(gotsportId: number): Promise<CompactMatch[] | null> {
   return null;
 }
 
+type MlsNextPublicFile = {
+  matches?: Array<{
+    id?: number;
+    date?: string | null;
+    ageBand?: string;
+    homeOrgId?: number | null;
+    homeName?: string;
+    awayOrgId?: number | null;
+    awayName?: string;
+    homeScore?: number | null;
+    awayScore?: number | null;
+    event?: string;
+  }>;
+  teams?: Array<{
+    orgId: number;
+    name: string;
+    ageBand: string;
+    conferenceRank?: number | null;
+  }>;
+};
+
+const MLS_NEXT_FILE = mlsNextPublic as MlsNextPublicFile;
+
+function overlayOrg(teamId: string): { orgId: number; ageBand: string } | null {
+  const m = /^mlsnext-(\d+)-(U1[2-6])$/.exec(teamId);
+  if (!m) return null;
+  return { orgId: Number(m[1]), ageBand: m[2] };
+}
+
+export function mlsNextMatchesFor(
+  orgId: number,
+  ageBand?: string,
+): CompactMatch[] {
+  return (MLS_NEXT_FILE.matches ?? [])
+    .filter(
+      (m) =>
+        (m.homeOrgId === orgId || m.awayOrgId === orgId) &&
+        (!ageBand || m.ageBand === ageBand),
+    )
+    .map((m) => ({
+      id: Number(m.id) || 0,
+      date: m.date ?? null,
+      event: m.event ?? "MLS NEXT League 26/27",
+      eventId: null,
+      competition: "MLS NEXT League 26/27",
+      kind: "league" as const,
+      homeId: m.homeOrgId ?? null,
+      homeName: m.homeName ?? "Unknown",
+      awayId: m.awayOrgId ?? null,
+      awayName: m.awayName ?? "Unknown",
+      homeScore: m.homeScore ?? null,
+      awayScore: m.awayScore ?? null,
+      winnerId: null,
+    }));
+}
+
 export async function loadTeamMatches(teamId: string): Promise<MatchLoadResult> {
+  const overlay = overlayOrg(teamId);
+  if (overlay) {
+    const matches = mlsNextMatchesFor(overlay.orgId, overlay.ageBand);
+    return {
+      matches,
+      source: matches.length ? "cache" : "none",
+      partial: true,
+      since: MATCH_CACHE_META.since,
+      gotsportTeamId: overlay.orgId,
+      error: matches.length
+        ? undefined
+        : "No completed MLS NEXT League 26/27 games published yet.",
+    };
+  }
   const gotsportId = gotsportNumericId(teamId);
   if (gotsportId == null) {
     return {
@@ -202,6 +303,14 @@ export async function loadTeamMatches(teamId: string): Promise<MatchLoadResult> 
   };
 }
 
+export async function refreshTeamMatches(
+  teamId: string,
+): Promise<MatchLoadResult> {
+  const id = gotsportNumericId(teamId);
+  if (id != null) memory.delete(id);
+  return loadTeamMatches(teamId);
+}
+
 export function byGotsportId(teams: RankedTeam[]): Map<number, RankedTeam> {
   const map = new Map<number, RankedTeam>();
   for (const t of teams) {
@@ -231,7 +340,43 @@ export async function sosByTeamId(
   const file = await loadCacheFile();
   const index = byGotsportId(yearTeams);
   const map = new Map<string, SosSummary>();
+  const mlsRank = new Map<number, number>();
+  for (const row of MLS_NEXT_FILE.teams ?? []) {
+    if (row.conferenceRank != null) mlsRank.set(row.orgId, row.conferenceRank);
+  }
   for (const t of yearTeams) {
+    const overlay = overlayOrg(t.id);
+    if (overlay) {
+      const rows = mlsNextMatchesFor(overlay.orgId, overlay.ageBand);
+      if (rows.length) {
+        const ranks = rows
+          .map((m) => {
+            const opp = overlay.orgId === m.homeId ? m.awayId : m.homeId;
+            return opp != null ? mlsRank.get(opp) : undefined;
+          })
+          .filter((n): n is number => n != null)
+          .sort((a, b) => a - b);
+        const median =
+          ranks.length === 0
+            ? null
+            : ranks.length % 2
+              ? ranks[(ranks.length - 1) / 2]
+              : Math.round(
+                  (ranks[ranks.length / 2 - 1] + ranks[ranks.length / 2]) / 2,
+                );
+        map.set(t.id, {
+          played: rows.filter((m) => m.homeScore != null && m.awayScore != null)
+            .length,
+          listed: rows.length,
+          opponentsInSeed: ranks.length,
+          medianOpponentUsRank: median,
+          top50Us: ranks.filter((n) => n <= 3).length,
+          top100Us: ranks.filter((n) => n <= 6).length,
+          top10State: ranks.filter((n) => n <= 3).length,
+        });
+      }
+      continue;
+    }
     const id = gotsportNumericId(t.id);
     if (id == null) continue;
     const rows = file.teams[String(id)];

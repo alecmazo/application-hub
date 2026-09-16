@@ -1,13 +1,18 @@
+import catalog from "@/data/soccer-rankings/teams.json";
 import type {
-  BirthYear,
   LeaguePlatform,
   RankedDataset,
   RankedTeam,
   TeamSeed,
 } from "./types";
 
-export const SEASON_LABEL = "2025–26";
-export const COMPILED_AS_OF = "2026-09-15";
+type CatalogDates = { asOf?: string; compiledAt?: string };
+
+export const SEASON_LABEL = "2025–26 · MLS NEXT 26–27";
+export const GOTSPORT_AS_OF =
+  (catalog as CatalogDates).asOf ?? "2026-09-15";
+export const COMPILED_AS_OF =
+  (catalog as CatalogDates).compiledAt ?? GOTSPORT_AS_OF;
 export const CA_UNIVERSE_ESTIMATE = 1100;
 
 export const LEAGUE_LABEL: Record<LeaguePlatform, string> = {
@@ -85,10 +90,13 @@ export function mlsNextScore(team: TeamSeed): number | null {
       cup = null;
   }
   const upnext = m.upnextRank ? listPositionScore(m.upnextRank, 3) : null;
-  if (cup == null && upnext == null) return null;
-  if (cup == null) return upnext;
-  if (upnext == null) return cup;
-  return cup * 0.62 + upnext * 0.38;
+  const conference =
+    m.conferenceRank && m.conferenceSize
+      ? Math.max(8, 100 - ((m.conferenceRank - 1) / Math.max(1, m.conferenceSize - 1)) * 55)
+      : null;
+  const parts = [cup, upnext, conference].filter((v): v is number => v != null);
+  if (!parts.length) return null;
+  return parts.reduce((a, b) => a + b, 0) / parts.length;
 }
 
 export function compositeScore(
@@ -129,9 +137,9 @@ function compareTeams(a: RankedTeam, b: RankedTeam): number {
 
 export function rankTeams(
   seeds: TeamSeed[],
-  birthYear: BirthYear,
+  ageBand: import("./types").AgeBand,
 ): RankedDataset {
-  const yearSeeds = seeds.filter((t) => t.birthYear === birthYear);
+  const yearSeeds = seeds.filter((t) => t.ageBand === ageBand);
   const maxGs = yearSeeds.reduce(
     (max, t) => Math.max(max, t.gotsport?.points ?? 0),
     0,
@@ -175,13 +183,9 @@ export function rankTeams(
 
   return {
     meta: {
-      birthYear,
-      ageBand:
-        birthYear === 2014
-          ? "2014 BY · MLS NEXT U13"
-          : "2013 BY · ECNL U13 is 2013/14",
+      ageBand,
       season: SEASON_LABEL,
-      asOf: COMPILED_AS_OF,
+      asOf: GOTSPORT_AS_OF,
       teamCount: scored.length,
     },
     teams: scored,
