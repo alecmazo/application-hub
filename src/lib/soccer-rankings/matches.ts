@@ -23,7 +23,7 @@ const META_COUNTS: Record<string, number> =
 
 let filePromise: Promise<MatchesFile> | null = null;
 
-function loadCacheFile(): Promise<MatchesFile> {
+export function loadCacheFile(): Promise<MatchesFile> {
   if (!filePromise) {
     filePromise = import("@/data/soccer-rankings/matches.json").then(
       (m) => m.default as MatchesFile,
@@ -212,12 +212,33 @@ export function byGotsportId(teams: RankedTeam[]): Map<number, RankedTeam> {
 }
 
 export function opponentCue(
-  usRank: number | undefined,
+  usRank?: number,
+  stateRank?: number,
+  state?: string,
 ): "strong" | "average" | "weaker" | "unranked" {
-  if (usRank == null) return "unranked";
-  if (usRank <= 50) return "strong";
-  if (usRank <= 200) return "average";
+  if (usRank == null && stateRank == null) return "unranked";
+  if (usRank != null && usRank <= 50) return "strong";
+  if (state === "CA" && stateRank != null && stateRank <= 10) return "strong";
+  if (usRank != null && usRank <= 200) return "average";
+  if (stateRank != null && stateRank <= 25) return "average";
+  if (usRank == null && stateRank == null) return "unranked";
   return "weaker";
+}
+
+export async function sosByTeamId(
+  yearTeams: RankedTeam[],
+): Promise<Map<string, SosSummary>> {
+  const file = await loadCacheFile();
+  const index = byGotsportId(yearTeams);
+  const map = new Map<string, SosSummary>();
+  for (const t of yearTeams) {
+    const id = gotsportNumericId(t.id);
+    if (id == null) continue;
+    const rows = file.teams[String(id)];
+    if (!rows?.length) continue;
+    map.set(t.id, summarizeSos(id, rows, index));
+  }
+  return map;
 }
 
 export function summarizeSos(
@@ -228,6 +249,7 @@ export function summarizeSos(
   const ranks: number[] = [];
   let top50 = 0;
   let top100 = 0;
+  let top10State = 0;
   let inSeed = 0;
   let scored = 0;
   for (const m of matches) {
@@ -240,6 +262,7 @@ export function summarizeSos(
     ranks.push(team.usRank);
     if (team.usRank <= 50) top50 += 1;
     if (team.usRank <= 100) top100 += 1;
+    if (team.stateRank <= 10) top10State += 1;
   }
   const sorted = [...ranks].sort((a, b) => a - b);
   const median =
@@ -257,5 +280,6 @@ export function summarizeSos(
     medianOpponentUsRank: median,
     top50Us: top50,
     top100Us: top100,
+    top10State,
   };
 }

@@ -111,6 +111,7 @@ export type SosSummary = {
   medianOpponentUsRank: number | null;
   top50Us: number;
   top100Us: number;
+  top10State: number;
 };
 
 export type CoverageMeta = {

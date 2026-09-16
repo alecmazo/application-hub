@@ -34,13 +34,23 @@ import {
   winPct,
 } from "@/lib/soccer-rankings/compute";
 import { alignmentLabel, COVERAGE, loadRankedYear } from "@/lib/soccer-rankings/load";
-import { HOME_RELATED_ID, HOME_TEAM_ID } from "@/lib/soccer-rankings/home";
-import { MATCH_CACHE_META, cachedMatchCount } from "@/lib/soccer-rankings/matches";
+import {
+  HOME_LABEL,
+  HOME_RELATED_ID,
+  HOME_RELATED_LABEL,
+  HOME_TEAM_ID,
+} from "@/lib/soccer-rankings/home";
+import {
+  MATCH_CACHE_META,
+  cachedMatchCount,
+  sosByTeamId,
+} from "@/lib/soccer-rankings/matches";
 import type {
   BirthYear,
   LeagueBandFilter,
   LeaguePlatform,
   RankedTeam,
+  SosSummary,
 } from "@/lib/soccer-rankings/types";
 import { cn } from "@/lib/utils";
 import { HomeTeamCard } from "./home-card";
@@ -54,7 +64,8 @@ type SortKey =
   | "stateRank"
   | "score"
   | "points"
-  | "record";
+  | "record"
+  | "sos";
 type SortDir = "asc" | "desc";
 type Status = "loading" | "ready" | "error";
 
@@ -146,7 +157,13 @@ function matchesBand(t: RankedTeam, band: LeagueBandFilter): boolean {
   return t.league === "other" || t.league === "ecnl-rl";
 }
 
-function compareRows(a: RankedTeam, b: RankedTeam, key: SortKey, dir: SortDir) {
+function compareRows(
+  a: RankedTeam,
+  b: RankedTeam,
+  key: SortKey,
+  dir: SortDir,
+  sosMap: Map<string, SosSummary>,
+) {
   const mul = dir === "asc" ? 1 : -1;
   switch (key) {
     case "name":
@@ -171,13 +188,49 @@ function compareRows(a: RankedTeam, b: RankedTeam, key: SortKey, dir: SortDir) {
       const pb = winPct(b.record) ?? -1;
       return mul * (pa - pb) || a.usRank - b.usRank;
     }
+    case "sos": {
+      const sa = sosMap.get(a.id)?.medianOpponentUsRank ?? 99_999;
+      const sb = sosMap.get(b.id)?.medianOpponentUsRank ?? 99_999;
+      return mul * (sa - sb) || a.usRank - b.usRank;
+    }
     default:
       return mul * (a.usRank - b.usRank);
   }
 }
 
+function dualRank(t: RankedTeam): string {
+  return `US #${t.usRank} · ${t.state} #${t.stateRank}`;
+}
+
+function sosMedianLabel(sos?: SosSummary): string {
+  return sos?.medianOpponentUsRank != null
+    ? `#${sos.medianOpponentUsRank}`
+    : "—";
+}
+
+function teamMatchesQuery(t: RankedTeam, q: string): boolean {
+  if (!q) return true;
+  const stateName = STATE_NAMES[t.state] ?? "";
+  const aliases = [
+    t.id === HOME_TEAM_ID ? "home marin fc ecnl 2013-14 2013/14" : "",
+    t.id === HOME_RELATED_ID ? "marin fc 2014 blue last year" : "",
+  ];
+  const hay = [
+    t.name,
+    t.club,
+    t.city ?? "",
+    t.state,
+    stateName,
+    t.leagueLabel,
+    ...aliases,
+  ]
+    .join(" ")
+    .toLowerCase();
+  return hay.includes(q);
+}
+
 export function SoccerRankingsPage() {
-  const [year, setYear] = useState<BirthYear>(2014);
+  const [year, setYear] = useState<BirthYear>(2013);
   const [status, setStatus] = useState<Status>("loading");
   const [error, setError] = useState<string | null>(null);
   const [teams, setTeams] = useState<RankedTeam[]>([]);
@@ -192,6 +245,9 @@ export function SoccerRankingsPage() {
   const [page, setPage] = useState(1);
   const [showMethod, setShowMethod] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(HOME_TEAM_ID);
+  const [sosMap, setSosMap] = useState<Map<string, SosSummary>>(
+    () => new Map(),
+  );
 
   useEffect(() => {
     document.title = "Soccer Rankings";
@@ -210,6 +266,16 @@ export function SoccerRankingsPage() {
       setError(e instanceof Error ? e.message : "Could not load rankings");
     }
   }, [year]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void sosByTeamId(teams).then((map) => {
+      if (!cancelled) setSosMap(map);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [teams]);
 
   const states = useMemo(() => {
     return [...new Set(teams.map((t) => t.state))].sort();
@@ -239,15 +305,21 @@ export function SoccerRankingsPage() {
       if (stateFilter !== "all" && t.state !== stateFilter) return false;
       if (leagueFilter !== "all" && t.league !== leagueFilter) return false;
       if (!matchesBand(t, bandFilter)) return false;
-      if (!q) return true;
-      const hay = [t.name, t.club, t.city ?? "", t.state, t.leagueLabel]
-        .join(" ")
-        .toLowerCase();
-      return hay.includes(q);
+      if (!teamMatchesQuery(t, q)) return false;
+      return true;
     });
-    rows.sort((a, b) => compareRows(a, b, sortKey, sortDir));
+    rows.sort((a, b) => compareRows(a, b, sortKey, sortDir, sosMap));
     return rows;
-  }, [teams, query, stateFilter, leagueFilter, bandFilter, sortKey, sortDir]);
+  }, [
+    teams,
+    query,
+    stateFilter,
+    leagueFilter,
+    bandFilter,
+    sortKey,
+    sortDir,
+    sosMap,
+  ]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageSafe = Math.min(page, pageCount);
@@ -266,7 +338,43 @@ export function SoccerRankingsPage() {
       return;
     }
     setSortKey(key);
-    setSortDir(key === "score" ? "desc" : "asc");
+    setSortDir(
+      key === "score" || key === "points" || key === "record" ? "desc" : "asc",
+    );
+  }
+
+  function focusHome() {
+    setYear(2013);
+    setQuery("Marin FC ECNL");
+    setStateFilter("all");
+    setLeagueFilter("all");
+    setBandFilter("all");
+    setSortKey("usRank");
+    setSortDir("asc");
+    setSelectedId(HOME_TEAM_ID);
+    requestAnimationFrame(() => {
+      document.getElementById("team-detail")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+
+  function focusRelated() {
+    setYear(2014);
+    setQuery("Marin FC B2014/15 Blue");
+    setStateFilter("all");
+    setLeagueFilter("all");
+    setBandFilter("all");
+    setSortKey("usRank");
+    setSortDir("asc");
+    setSelectedId(HOME_RELATED_ID);
+    requestAnimationFrame(() => {
+      document.getElementById("team-detail")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   }
 
   const caPct =
@@ -326,7 +434,6 @@ export function SoccerRankingsPage() {
                   onClick={() => {
                     setYear(y);
                     setStateFilter("all");
-                    setQuery("");
                     setSortKey("usRank");
                     setSortDir("asc");
                   }}
@@ -413,15 +520,34 @@ export function SoccerRankingsPage() {
 
         <div className="mt-6 flex flex-col gap-3">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div className="relative w-full lg:max-w-sm">
-              <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search Marin FC, club, city, or state…"
-                className="pl-9"
-                aria-label="Search teams"
-              />
+            <div className="w-full lg:max-w-md">
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  id="rankings-search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search team, club, city, or state…"
+                  className="pl-9"
+                  aria-label="Search teams"
+                />
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={focusHome}
+                  className="h-7 rounded-md border border-success/40 bg-success/10 px-2 text-[11px] font-medium text-success hover:bg-success/20"
+                >
+                  Home · {HOME_LABEL}
+                </button>
+                <button
+                  type="button"
+                  onClick={focusRelated}
+                  className="h-7 rounded-md border border-border bg-card px-2 text-[11px] font-medium text-muted-foreground hover:text-foreground"
+                >
+                  Last year · {HOME_RELATED_LABEL}
+                </button>
+              </div>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
@@ -609,6 +735,12 @@ export function SoccerRankingsPage() {
                         onClick={() => toggleSort("points")}
                       />
                       <SortTh
+                        label="SOS"
+                        active={sortKey === "sos"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("sos")}
+                      />
+                      <SortTh
                         label="Score"
                         active={sortKey === "score"}
                         dir={sortDir}
@@ -632,11 +764,17 @@ export function SoccerRankingsPage() {
                         </td>
                         <td className="px-3 py-3">
                           <p className="font-medium leading-snug">{t.name}</p>
+                          <p className="mt-0.5 font-mono-num text-xs font-medium text-foreground">
+                            {dualRank(t)}
+                          </p>
                           <p className="mt-0.5 text-xs text-muted-foreground">
                             {[t.city, t.state].filter(Boolean).join(", ")}
                             {t.club !== t.name ? ` · ${t.club}` : ""}
                           </p>
                           <div className="mt-1.5 flex flex-wrap gap-1">
+                            {t.id === HOME_TEAM_ID && (
+                              <Badge variant="success">Home</Badge>
+                            )}
                             {alignmentLabel(t.ageAlignment) && (
                               <Badge variant="secondary">
                                 {alignmentLabel(t.ageAlignment)}
@@ -672,6 +810,9 @@ export function SoccerRankingsPage() {
                         <td className="px-3 py-3 font-mono-num text-muted-foreground">
                           {formatPoints(t.gotsport?.points)}
                         </td>
+                        <td className="px-3 py-3 font-mono-num text-muted-foreground">
+                          {sosMedianLabel(sosMap.get(t.id))}
+                        </td>
                         <td className="px-3 py-3 font-mono-num font-medium">
                           {formatScore(t.score)}
                         </td>
@@ -697,6 +838,9 @@ export function SoccerRankingsPage() {
                         <p className="font-display text-lg font-semibold leading-tight">
                           {t.name}
                         </p>
+                        <p className="mt-1 font-mono-num text-sm font-medium">
+                          {dualRank(t)}
+                        </p>
                         <p className="mt-0.5 text-xs text-muted-foreground">
                           {[t.city, t.state].filter(Boolean).join(", ")} ·{" "}
                           {t.leagueLabel}
@@ -704,23 +848,28 @@ export function SoccerRankingsPage() {
                       </div>
                       <div className="text-right">
                         <p className="font-mono-num text-xl font-semibold text-primary">
-                          #{t.usRank}
+                          US #{t.usRank}
                         </p>
-                        <p className="text-[11px] text-muted-foreground">US</p>
+                        <p className="font-mono-num text-sm font-medium">
+                          {t.state} #{t.stateRank}
+                        </p>
                       </div>
                     </div>
                     <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
                       <MetaChip
-                        label={`${t.state} rank`}
-                        value={`#${t.stateRank}`}
-                      />
-                      <MetaChip
                         label="Record"
                         value={formatRecord(t.record ?? t.mlsNext?.record)}
+                      />
+                      <MetaChip
+                        label="SOS med. US"
+                        value={sosMedianLabel(sosMap.get(t.id))}
                       />
                       <MetaChip label="Score" value={formatScore(t.score)} />
                     </div>
                     <div className="mt-3 flex flex-wrap gap-1">
+                      {t.id === HOME_TEAM_ID && (
+                        <Badge variant="success">Home</Badge>
+                      )}
                       {alignmentLabel(t.ageAlignment) && (
                         <Badge variant="secondary">
                           {alignmentLabel(t.ageAlignment)}

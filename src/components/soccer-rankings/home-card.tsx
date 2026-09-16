@@ -31,7 +31,10 @@ export function HomeTeamCard({
     );
   }
   return (
-    <Card className="mt-5 border-success/40 bg-success/8 p-4 sm:p-5">
+    <Card
+      id="home-team-card"
+      className="mt-5 border-success/40 bg-success/8 p-4 sm:p-5"
+    >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-2">
           <p className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-success">
@@ -53,18 +56,38 @@ export function HomeTeamCard({
             {isHomeTeam(team.id) && <Badge variant="success">Pinned</Badge>}
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2 sm:min-w-64">
-          <RankChip label="US rank" value={`#${team.usRank}`} />
-          <RankChip label={`${team.state} rank`} value={`#${team.stateRank}`} />
+        <div className="grid grid-cols-2 gap-2 sm:min-w-72">
+          <div className="rounded-xl border border-border/80 bg-bg-elevated/50 px-3 py-2.5">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+              US rank
+            </p>
+            <p className="font-display font-mono-num text-3xl font-semibold text-primary">
+              #{team.usRank}
+            </p>
+            <p className="text-[10px] text-muted-foreground">
+              unofficial · seeded teams
+            </p>
+          </div>
+          <div className="rounded-xl border border-border/80 bg-bg-elevated/50 px-3 py-2.5">
+            <p className="text-[10px] uppercase tracking-wider text-muted-foreground">
+              {team.state} rank
+            </p>
+            <p className="font-display font-mono-num text-3xl font-semibold">
+              #{team.stateRank}
+            </p>
+            <p className="text-[10px] text-muted-foreground">
+              among seeded {team.state}
+            </p>
+          </div>
           <RankChip label="Score" value={formatScore(team.score)} />
+          <RankChip
+            label="GS pts"
+            value={team.gotsport?.points?.toLocaleString() ?? "—"}
+          />
           <RankChip
             label="Record"
             value={formatRecord(team.record)}
             className="col-span-2"
-          />
-          <RankChip
-            label="GS pts"
-            value={team.gotsport?.points?.toLocaleString() ?? "—"}
           />
         </div>
       </div>

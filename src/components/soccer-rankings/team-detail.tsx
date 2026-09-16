@@ -90,8 +90,8 @@ export function TeamDetail({
             {sos.medianOpponentUsRank != null
               ? ` · median opponent US #${sos.medianOpponentUsRank}`
               : ""}
-            {` · ${sos.top50Us} top-50 US · ${sos.top100Us} top-100 US`}. Ranks
-            are among seeded teams only.
+            {` · ${sos.top50Us} top-50 US · ${sos.top100Us} top-100 US · ${sos.top10State} top-10 in their state`}
+            . Unofficial composite among seeded teams.
           </p>
         </div>
       )}
@@ -148,7 +148,11 @@ export function TeamDetail({
                 const opp = focusId != null ? opponentOf(focusId, m) : null;
                 const oppSeed = opp?.id != null ? index.get(opp.id) : undefined;
                 const result = focusId != null ? resultFor(focusId, m) : null;
-                const cue = opponentCue(oppSeed?.usRank);
+                const cue = opponentCue(
+                  oppSeed?.usRank,
+                  oppSeed?.stateRank,
+                  oppSeed?.state,
+                );
                 const href = eventHref(m.eventId);
                 return (
                   <li key={m.id}>

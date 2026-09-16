@@ -59,3 +59,9 @@ Missing signals are dropped; remaining weights renormalize.
 
 `usRank` = sort descending within the birth-year **seed**.  
 `stateRank` = same sort within `state` + birth year **seed**.
+
+## Home team + SOS
+
+Pinned Home side: **Marin FC ECNL 2013-14 boys** (GotSport `56506`, listing name `Marin FC ECNL B2013/14`). Last year’s program listing: **Marin FC B2014/15 Blue** (`252973`). Default focus lands on Home. Search matches team name, club, city, and state.
+
+Strength of schedule uses only opponents that appear in the seed and have a cached GotSport match. Median opponent US rank, top-50 / top-100 US counts, and top-10 state counts are derived from those linked rows — never from invented games. Cue bands: **strong** = US ≤ 50 or CA state rank ≤ 10; **average** = US ≤ 200 or state rank ≤ 25; otherwise **weaker**. Ranks shown on results are this app’s unofficial composite as-of the compiled seed, not a live kickoff ranking.

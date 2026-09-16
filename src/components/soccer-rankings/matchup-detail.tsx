@@ -37,14 +37,22 @@ export function MatchupDetail({
           seed={home}
           score={match.homeScore}
           ha="Home"
-          onOpen={home ? () => onOpenTeam(home.id) : undefined}
+          onOpen={
+            match.homeId
+              ? () => onOpenTeam(home?.id ?? `gs-${match.homeId}`)
+              : undefined
+          }
         />
         <Side
           name={match.awayName}
           seed={away}
           score={match.awayScore}
           ha="Away"
-          onOpen={away ? () => onOpenTeam(away.id) : undefined}
+          onOpen={
+            match.awayId
+              ? () => onOpenTeam(away?.id ?? `gs-${match.awayId}`)
+              : undefined
+          }
         />
       </div>
       <p className="font-mono-num text-center text-2xl font-semibold">
@@ -125,14 +133,14 @@ function Side({
 }
 
 function SosLine({ seed, label }: { seed?: RankedTeam; label: string }) {
-  const cue = opponentCue(seed?.usRank);
+  const cue = opponentCue(seed?.usRank, seed?.stateRank, seed?.state);
   const text =
     cue === "strong"
-      ? "strong opponent (top 50 US in seed)"
+      ? "strong opponent (top 50 US or top 10 CA in seed)"
       : cue === "average"
-        ? "average opponent (US 51–200 in seed)"
+        ? "average opponent (US 51–200 or state top 25 in seed)"
         : cue === "weaker"
-          ? "weaker opponent (US 201+ in seed)"
+          ? "weaker opponent (outside those bands in seed)"
           : "unranked in this seed";
   return (
     <p className="text-xs text-muted-foreground">
