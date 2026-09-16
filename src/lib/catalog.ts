@@ -123,7 +123,7 @@ export const CATALOG: CatalogEntry[] = [
     repo: "application-hub",
     title: "Soccer Rankings",
     tagline:
-      "Searchable US + state ranks for 2013/2014 boys. Home: Marin FC ECNL 2013-14. MLS NEXT U13 = 2014 BY; ECNL U13 = 2013/14. GotSport-backed — unofficial among seeded teams.",
+      "Browse 2013/2014 boys by US or state, search any club, click a row for record + GotSport schedule. Marin FC 2013/14 ECNL is highlighted only (last year: Blue 2014). Unofficial among seeded teams.",
     category: "live",
     status: "live",
     launchUrl: "https://alecmazo.github.io/application-hub/soccer-rankings",

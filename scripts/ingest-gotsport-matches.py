@@ -33,8 +33,11 @@ HEADERS = {
     "User-Agent": "application-hub-soccer-rankings/1.0 (personal research; public matches)",
 }
 
-HOME_ID = 56506  # Marin FC ECNL B2013/14
-RELATED = [252973, 260095, 533186, 252967, 367188]  # Marin FC 2014 Blue + siblings
+HOME_ID = 56506  # Marin FC ECNL B2013/14; last year same id as Marin FC B14Blue
+# Last year is the same GotSport listing. Do not treat 2014/15 or 2015 Marin
+# Blue/Red/Steel lines as home continuity (252973 / 260095 / 367188).
+HOME_CONTINUITY_EXCLUDE = {252973, 260095, 367188}
+RELATED: list[int] = []
 SINCE = "2024-07-01"
 MIN_KEEP = 40
 
@@ -131,7 +134,10 @@ def gotsport_id(team: dict) -> int | None:
 
 def priority_ids(catalog: dict) -> list[int]:
     teams = catalog.get("teams") or []
-    ids: list[int] = [HOME_ID, *RELATED]
+    ids: list[int] = [
+        HOME_ID,
+        *[rid for rid in RELATED if rid not in HOME_CONTINUITY_EXCLUDE],
+    ]
     ca = [t for t in teams if t.get("state") == "CA" and gotsport_id(t)]
     for t in ca:
         if t.get("league") in ("ecnl", "ecnl-rl", "mls-next", "mls-next-hg"):
