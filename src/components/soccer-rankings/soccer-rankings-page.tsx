@@ -36,9 +36,10 @@ import {
 import { alignmentLabel, COVERAGE, loadRankedYear } from "@/lib/soccer-rankings/load";
 import {
   HOME_LABEL,
-  HOME_RELATED_ID,
-  HOME_RELATED_LABEL,
+  HOME_LAST_YEAR_LABEL,
   HOME_TEAM_ID,
+  homeSearchAliases,
+  resolveLinkedLastYearTeam,
 } from "@/lib/soccer-rankings/home";
 import {
   MATCH_CACHE_META,
@@ -211,10 +212,7 @@ function sosMedianLabel(sos?: SosSummary): string {
 function teamMatchesQuery(t: RankedTeam, q: string): boolean {
   if (!q) return true;
   const stateName = STATE_NAMES[t.state] ?? "";
-  const aliases = [
-    t.id === HOME_TEAM_ID ? "home marin fc ecnl 2013-14 2013/14" : "",
-    t.id === HOME_RELATED_ID ? "marin fc 2014 blue last year" : "",
-  ];
+  const aliases = [homeSearchAliases(t.id)];
   const hay = [
     t.name,
     t.club,
@@ -291,7 +289,7 @@ export function SoccerRankingsPage() {
     [teams],
   );
   const homeRelated = useMemo(
-    () => teams.find((t) => t.id === HOME_RELATED_ID),
+    () => resolveLinkedLastYearTeam(teams),
     [teams],
   );
   const selected = useMemo(
@@ -360,15 +358,17 @@ export function SoccerRankingsPage() {
     });
   }
 
-  function focusRelated() {
-    setYear(2014);
-    setQuery("Marin FC B2014/15 Blue");
+  function focusLastYear() {
+    // Last year is the same GotSport listing (B14Blue → ECNL 2013/14). Do not
+    // jump to Marin FC Blue 2014/15 or any 2015-named side.
+    setYear(2013);
+    setQuery("Marin FC ECNL");
     setStateFilter("all");
     setLeagueFilter("all");
     setBandFilter("all");
     setSortKey("usRank");
     setSortDir("asc");
-    setSelectedId(HOME_RELATED_ID);
+    setSelectedId(HOME_TEAM_ID);
     requestAnimationFrame(() => {
       document.getElementById("team-detail")?.scrollIntoView({
         behavior: "smooth",
@@ -492,7 +492,7 @@ export function SoccerRankingsPage() {
           team={homeTeam}
           related={homeRelated}
           onOpen={() => setSelectedId(HOME_TEAM_ID)}
-          onOpenRelated={() => setSelectedId(HOME_RELATED_ID)}
+          onOpenRelated={homeRelated ? () => setSelectedId(homeRelated.id) : undefined}
         />
 
         <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -542,10 +542,10 @@ export function SoccerRankingsPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={focusRelated}
+                  onClick={focusLastYear}
                   className="h-7 rounded-md border border-border bg-card px-2 text-[11px] font-medium text-muted-foreground hover:text-foreground"
                 >
-                  Last year · {HOME_RELATED_LABEL}
+                  Last year · {HOME_LAST_YEAR_LABEL}
                 </button>
               </div>
             </div>
@@ -913,6 +913,14 @@ export function SoccerRankingsPage() {
           </CardHeader>
           {showMethod && (
             <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
+              <p>
+                <strong className="text-foreground">Home:</strong>{" "}
+                This year: Marin FC 2013/14 ECNL · Last year: Marin FC Blue
+                2014. Same GotSport listing <code className="font-mono text-xs">56506</code>{" "}
+                (B14Blue → ECNL B2013/14). Marin FC Blue 2014/15 (
+                <code className="font-mono text-xs">252973</code>) is a
+                separate line — not Home and not last-year continuity.
+              </p>
               <p>
                 <strong className="text-foreground">Age-band truth (2025–26):</strong>{" "}
                 MLS NEXT U13 boys is a 2014 birth-year category. ECNL U13 is the

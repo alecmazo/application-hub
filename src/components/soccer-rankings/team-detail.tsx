@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatRecord, formatScore } from "@/lib/soccer-rankings/compute";
 import { alignmentLabel } from "@/lib/soccer-rankings/load";
-import { HOME_TEAM_ID } from "@/lib/soccer-rankings/home";
+import { HOME_CONTINUITY_COPY, HOME_TEAM_ID } from "@/lib/soccer-rankings/home";
 import {
   byGotsportId,
   eventHref,
@@ -75,6 +75,11 @@ export function TeamDetail({
           {team.club !== team.name ? `${team.club} · ` : ""}
           {team.state}
         </p>
+        {team.id === HOME_TEAM_ID && (
+          <p className="mt-2 text-sm font-medium text-foreground">
+            {HOME_CONTINUITY_COPY}
+          </p>
+        )}
         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
           <Chip label="US rank" value={`#${team.usRank}`} />
           <Chip label={`${team.state} rank`} value={`#${team.stateRank}`} />

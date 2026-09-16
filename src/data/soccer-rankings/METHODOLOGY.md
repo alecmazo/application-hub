@@ -62,6 +62,17 @@ Missing signals are dropped; remaining weights renormalize.
 
 ## Home team + SOS
 
-Pinned Home side: **Marin FC ECNL 2013-14 boys** (GotSport `56506`, listing name `Marin FC ECNL B2013/14`). Last year’s program listing: **Marin FC B2014/15 Blue** (`252973`). Default focus lands on Home. Search matches team name, club, city, and state.
+Pinned Home side: **Marin FC 2013/14 ECNL** (GotSport `56506`, listing name `Marin FC ECNL B2013/14`).
+
+**This year: Marin FC 2013/14 ECNL · Last year: Marin FC Blue 2014.** Last year is the **same GotSport id `56506`**, listed as `Marin FC B14Blue` through 2024–25 / spring 2026, then renamed for this ECNL school-year side. Do not treat a second row as last year.
+
+**Not Home / not continuity** (keep in the global seed if they exist, never merge with Home):
+
+| Line | This year | Last year | GotSport |
+| --- | --- | --- | --- |
+| Home program | Marin FC 2013/14 ECNL | Marin FC Blue 2014 (`B14Blue`) | `56506` |
+| Separate Blue line | Marin FC Blue 2014/15 (`B2014/15 Blue`) | Marin FC Blue 2015 (`B15Blue`) | `252973` |
+
+Home-card “related Marin” suggestions and the last-year chip exclude any name or id with **2015**, **B2015**, **B15**, **/15**, or **2014/15**. Default focus lands on Home. Search matches team name, club, city, and state.
 
 Strength of schedule uses only opponents that appear in the seed and have a cached GotSport match. Median opponent US rank, top-50 / top-100 US counts, and top-10 state counts are derived from those linked rows — never from invented games. Cue bands: **strong** = US ≤ 50 or CA state rank ≤ 10; **average** = US ≤ 200 or state rank ≤ 25; otherwise **weaker**. Ranks shown on results are this app’s unofficial composite as-of the compiled seed, not a live kickoff ranking.

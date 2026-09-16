@@ -2,9 +2,11 @@ import { Home, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
+  HOME_CONTINUITY_COPY,
   HOME_LABEL,
+  HOME_LAST_YEAR_LABEL,
+  HOME_LISTING_NAME,
   HOME_NOTE,
-  HOME_RELATED_LABEL,
   isHomeTeam,
 } from "@/lib/soccer-rankings/home";
 import { formatRecord, formatScore } from "@/lib/soccer-rankings/compute";
@@ -44,7 +46,10 @@ export function HomeTeamCard({
           <h2 className="font-display text-xl font-semibold leading-tight">
             {HOME_LABEL}
           </h2>
-          <p className="text-sm text-muted-foreground">{team.name}</p>
+          <p className="text-sm text-muted-foreground">{HOME_LISTING_NAME}</p>
+          <p className="max-w-xl text-sm font-medium leading-relaxed text-foreground">
+            {HOME_CONTINUITY_COPY}
+          </p>
           <p className="max-w-xl text-xs leading-relaxed text-muted-foreground">
             {HOME_NOTE}
           </p>
@@ -54,6 +59,7 @@ export function HomeTeamCard({
               <Badge variant="secondary">{alignmentLabel(team.ageAlignment)}</Badge>
             )}
             {isHomeTeam(team.id) && <Badge variant="success">Pinned</Badge>}
+            <Badge variant="outline">Last year: {HOME_LAST_YEAR_LABEL}</Badge>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2 sm:min-w-72">
@@ -112,7 +118,7 @@ export function HomeTeamCard({
             onClick={onOpenRelated}
             className="inline-flex h-9 items-center rounded-md border border-border bg-card px-3 text-xs font-medium text-muted-foreground hover:text-foreground"
           >
-            Last year: {HOME_RELATED_LABEL} · US #{related.usRank} · {related.state} #
+            Last year: {HOME_LAST_YEAR_LABEL} · US #{related.usRank} · {related.state} #
             {related.stateRank}
           </button>
         )}
