@@ -28,10 +28,14 @@ import {
   COMPILED_AS_OF,
   LEAGUE_FILTERS,
   SEASON_LABEL,
+  formatPoints,
   formatRecord,
   formatScore,
+  winPct,
 } from "@/lib/soccer-rankings/compute";
 import { alignmentLabel, COVERAGE, loadRankedYear } from "@/lib/soccer-rankings/load";
+import { HOME_RELATED_ID, HOME_TEAM_ID } from "@/lib/soccer-rankings/home";
+import { MATCH_CACHE_META, cachedMatchCount } from "@/lib/soccer-rankings/matches";
 import type {
   BirthYear,
   LeagueBandFilter,
@@ -39,8 +43,18 @@ import type {
   RankedTeam,
 } from "@/lib/soccer-rankings/types";
 import { cn } from "@/lib/utils";
+import { HomeTeamCard } from "./home-card";
+import { TeamDetail } from "./team-detail";
 
-type SortKey = "usRank" | "name" | "state" | "league" | "stateRank" | "score";
+type SortKey =
+  | "usRank"
+  | "name"
+  | "state"
+  | "league"
+  | "stateRank"
+  | "score"
+  | "points"
+  | "record";
 type SortDir = "asc" | "desc";
 type Status = "loading" | "ready" | "error";
 
@@ -147,6 +161,16 @@ function compareRows(a: RankedTeam, b: RankedTeam, key: SortKey, dir: SortDir) {
       return mul * (a.score - b.score) || a.usRank - b.usRank;
     case "stateRank":
       return mul * (a.stateRank - b.stateRank) || a.usRank - b.usRank;
+    case "points":
+      return (
+        mul * ((a.gotsport?.points ?? -1) - (b.gotsport?.points ?? -1)) ||
+        a.usRank - b.usRank
+      );
+    case "record": {
+      const pa = winPct(a.record) ?? -1;
+      const pb = winPct(b.record) ?? -1;
+      return mul * (pa - pb) || a.usRank - b.usRank;
+    }
     default:
       return mul * (a.usRank - b.usRank);
   }
@@ -167,6 +191,7 @@ export function SoccerRankingsPage() {
   const [sortDir, setSortDir] = useState<SortDir>("asc");
   const [page, setPage] = useState(1);
   const [showMethod, setShowMethod] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(HOME_TEAM_ID);
 
   useEffect(() => {
     document.title = "Soccer Rankings";
@@ -193,6 +218,19 @@ export function SoccerRankingsPage() {
   const caInYear = useMemo(
     () => teams.filter((t) => t.state === "CA").length,
     [teams],
+  );
+
+  const homeTeam = useMemo(
+    () => teams.find((t) => t.id === HOME_TEAM_ID),
+    [teams],
+  );
+  const homeRelated = useMemo(
+    () => teams.find((t) => t.id === HOME_RELATED_ID),
+    [teams],
+  );
+  const selected = useMemo(
+    () => teams.find((t) => t.id === selectedId) ?? homeTeam,
+    [teams, selectedId, homeTeam],
   );
 
   const filtered = useMemo(() => {
@@ -329,13 +367,26 @@ export function SoccerRankingsPage() {
             competitive vintage is about{" "}
             {COVERAGE.caUniverseEstimate.toLocaleString()}+ teams;{" "}
             {caCoverageNote}. US and state ranks are among seeded teams only.
-            Refresh the JSON with{" "}
+            Match cache: {MATCH_CACHE_META.teamsWithMatches.toLocaleString()}{" "}
+            teams / {MATCH_CACHE_META.matches.toLocaleString()} games. Refresh
+            rankings with{" "}
             <code className="font-mono text-[11px] text-foreground">
               python3 scripts/ingest-soccer-rankings.py
+            </code>
+            ; matches with{" "}
+            <code className="font-mono text-[11px] text-foreground">
+              python3 scripts/ingest-gotsport-matches.py
             </code>
             .
           </p>
         </div>
+
+        <HomeTeamCard
+          team={homeTeam}
+          related={homeRelated}
+          onOpen={() => setSelectedId(HOME_TEAM_ID)}
+          onOpenRelated={() => setSelectedId(HOME_RELATED_ID)}
+        />
 
         <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat
@@ -367,7 +418,7 @@ export function SoccerRankingsPage() {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search club or team…"
+                placeholder="Search Marin FC, club, city, or state…"
                 className="pl-9"
                 aria-label="Search teams"
               />
@@ -449,7 +500,7 @@ export function SoccerRankingsPage() {
           </p>
         )}
 
-        <div className="mt-5 flex-1">
+        <div className="mt-5 flex-1 lg:grid lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-start lg:gap-5">
           {status === "loading" && (
             <Card className="p-5">
               <div className="space-y-3">
@@ -480,6 +531,16 @@ export function SoccerRankingsPage() {
               <p className="text-sm text-muted-foreground">
                 Clear search or widen the state / league filters.
               </p>
+            </Card>
+          )}
+
+          {status === "ready" && selected && (
+            <Card className="mb-5 p-4 lg:hidden">
+              <TeamDetail
+                team={selected}
+                yearTeams={teams}
+                onOpenTeam={(id) => setSelectedId(id)}
+              />
             </Card>
           )}
 
@@ -532,7 +593,18 @@ export function SoccerRankingsPage() {
                         dir={sortDir}
                         onClick={() => toggleSort("stateRank")}
                       />
-                      <th className="px-3 py-3 font-medium">Record</th>
+                      <SortTh
+                        label="Record"
+                        active={sortKey === "record"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("record")}
+                      />
+                      <SortTh
+                        label="Pts"
+                        active={sortKey === "points"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("points")}
+                      />
                       <SortTh
                         label="Score"
                         active={sortKey === "score"}
@@ -545,7 +617,12 @@ export function SoccerRankingsPage() {
                     {pageRows.map((t) => (
                       <tr
                         key={`${t.id}-${t.birthYear}`}
-                        className="border-b border-border/70 last:border-0 hover:bg-muted/30"
+                        className={cn(
+                          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30",
+                          t.id === selectedId && "bg-primary/8",
+                          t.id === HOME_TEAM_ID && "bg-success/8",
+                        )}
+                        onClick={() => setSelectedId(t.id)}
                       >
                         <td className="px-3 py-3 font-mono-num text-base font-semibold text-primary">
                           {t.usRank}
@@ -583,6 +660,14 @@ export function SoccerRankingsPage() {
                         </td>
                         <td className="px-3 py-3 font-mono-num text-muted-foreground">
                           {formatRecord(t.record ?? t.mlsNext?.record)}
+                          {cachedMatchCount(t.id) > 0 && (
+                            <span className="ml-1 text-[10px] text-success">
+                              {cachedMatchCount(t.id)}g
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-3 py-3 font-mono-num text-muted-foreground">
+                          {formatPoints(t.gotsport?.points)}
                         </td>
                         <td className="px-3 py-3 font-mono-num font-medium">
                           {formatScore(t.score)}
@@ -595,7 +680,15 @@ export function SoccerRankingsPage() {
 
               <div className="grid gap-3 md:hidden">
                 {pageRows.map((t) => (
-                  <Card key={`${t.id}-${t.birthYear}`} className="p-4">
+                  <Card
+                    key={`${t.id}-${t.birthYear}`}
+                    className={cn(
+                      "cursor-pointer p-4",
+                      t.id === selectedId && "border-primary/40",
+                      t.id === HOME_TEAM_ID && "border-success/40",
+                    )}
+                    onClick={() => setSelectedId(t.id)}
+                  >
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p className="font-display text-lg font-semibold leading-tight">
@@ -645,6 +738,16 @@ export function SoccerRankingsPage() {
               </div>
             </>
           )}
+
+          {status === "ready" && selected && (
+            <Card className="sticky top-4 hidden p-4 lg:block">
+              <TeamDetail
+                team={selected}
+                yearTeams={teams}
+                onOpenTeam={(id) => setSelectedId(id)}
+              />
+            </Card>
+          )}
         </div>
 
         <Card className="mt-8">
@@ -686,6 +789,15 @@ export function SoccerRankingsPage() {
                 <li>
                   GotSport public rankings API (boys U12/U13, USA), including
                   Cal South (CAS) and Cal North (CAN).
+                </li>
+                <li>
+                  GotSport public match lists:{" "}
+                  <code className="font-mono text-xs">
+                    GET /api/v1/teams/{"{id}"}/matches
+                  </code>{" "}
+                  (league season + tournaments). Shipped cache + live via the
+                  Vite <code className="font-mono text-xs">/gotsport-api</code>{" "}
+                  proxy. GitHub Pages cannot call GotSport directly (no CORS).
                 </li>
                 <li>
                   MLS NEXT Cup 2026 U13 recaps applied to the 2014 view

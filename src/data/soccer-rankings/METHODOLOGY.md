@@ -20,7 +20,12 @@ Alec’s vintage figure: California alone has **≈1,100+** boys teams of this a
 
 **US rank** and **state rank** are among seeded teams only — “CA #N among ranked/seeded CA teams,” not among every club that exists. Clubs that never appear on GotSport rankings are still missing.
 
-Refresh path: `python3 scripts/ingest-soccer-rankings.py` (uses the same public JSON the [GotSport rankings](https://rankings.gotsport.com/) UI calls: `https://system.gotsport.com/api/v1/team_ranking_data`). Cached pages in `/tmp/gotsport-rankings-cache`; `python3 scripts/ingest-soccer-rankings.py --from-cache` rebuilds `teams.json` without hitting the network. Then `npm run typecheck` and `npm run build:spa`.
+Refresh path:
+
+- Rankings: `python3 scripts/ingest-soccer-rankings.py` (public JSON the [GotSport rankings](https://rankings.gotsport.com/) UI calls: `https://system.gotsport.com/api/v1/team_ranking_data`). Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network.
+- **Match histories:** `python3 scripts/ingest-gotsport-matches.py` → `src/data/soccer-rankings/matches.json`. Endpoint: `GET https://system.gotsport.com/api/v1/teams/{team_id}/matches`. Cache: `/tmp/gotsport-matches-cache`. Prefer games on/after 2024-07-01. Then `npm run typecheck` and `npm run build:spa`.
+
+The rankings table W–D–L is an **aggregate** from `team_ranking_data`. Full game lists (league + tournaments) come from the per-team matches API. GitHub Pages cannot call GotSport from the browser (no CORS); the shipped `matches.json` is the cache. Local `vite` / `preview:spa` proxy `/gotsport-api` → `system.gotsport.com` for live lists. Scores are never invented.
 
 ## Sources
 

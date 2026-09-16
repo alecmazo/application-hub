@@ -25,6 +25,14 @@ function spaDeepRoutes(): Plugin {
   };
 }
 
+const gotsportProxy = {
+  "/gotsport-api": {
+    target: "https://system.gotsport.com",
+    changeOrigin: true,
+    rewrite: (p: string) => p.replace(/^\/gotsport-api/, ""),
+  },
+};
+
 /** Static SPA build for GitHub Pages (no SSR / Nitro). */
 export default defineConfig({
   base: "/application-hub/",
@@ -34,6 +42,8 @@ export default defineConfig({
       "@": path.resolve(rootDir, "./src"),
     },
   },
+  server: { proxy: gotsportProxy },
+  preview: { proxy: gotsportProxy },
   build: {
     outDir: "dist-spa",
     emptyOutDir: true,

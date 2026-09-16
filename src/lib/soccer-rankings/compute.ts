@@ -200,3 +200,15 @@ export function formatRecord(record?: {
 export function formatScore(score: number): string {
   return score.toFixed(1);
 }
+
+export function winPct(record?: { w: number; d: number; l: number }): number | null {
+  if (!record) return null;
+  const n = record.w + record.d + record.l;
+  if (!n) return null;
+  return (record.w + record.d * 0.5) / n;
+}
+
+export function formatPoints(points?: number): string {
+  if (points == null) return "—";
+  return points.toLocaleString();
+}

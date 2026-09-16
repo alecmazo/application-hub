@@ -78,6 +78,41 @@ export type RankedTeam = TeamSeed & {
   };
 };
 
+export type CompactMatch = {
+  id: number;
+  date: string | null;
+  event: string;
+  eventId: number | null;
+  competition: string;
+  division?: string;
+  kind: "league" | "tournament" | "unknown";
+  homeId: number | null;
+  homeName: string;
+  awayId: number | null;
+  awayName: string;
+  homeScore: number | null;
+  awayScore: number | null;
+  winnerId: number | null;
+};
+
+export type MatchLoadResult = {
+  matches: CompactMatch[];
+  source: "cache" | "live" | "none";
+  partial: boolean;
+  since: string;
+  gotsportTeamId: number | null;
+  error?: string;
+};
+
+export type SosSummary = {
+  played: number;
+  listed: number;
+  opponentsInSeed: number;
+  medianOpponentUsRank: number | null;
+  top50Us: number;
+  top100Us: number;
+};
+
 export type CoverageMeta = {
   asOf: string;
   uniqueTeams: number;
