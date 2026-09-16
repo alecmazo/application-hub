@@ -71,7 +71,13 @@ export function HomeTeamCard({
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
-          onClick={onOpen}
+          onClick={() => {
+            onOpen();
+            document.getElementById("team-detail")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }}
           className="inline-flex h-9 items-center gap-1 rounded-md bg-success px-3 text-sm font-medium text-background"
         >
           Open schedule

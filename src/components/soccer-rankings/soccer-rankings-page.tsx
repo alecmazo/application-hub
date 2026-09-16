@@ -535,7 +535,10 @@ export function SoccerRankingsPage() {
           )}
 
           {status === "ready" && selected && (
-            <Card className="mb-5 p-4 lg:hidden">
+            <Card
+              id="team-detail"
+              className="mb-5 scroll-mt-4 p-4 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:sticky lg:top-4"
+            >
               <TeamDetail
                 team={selected}
                 yearTeams={teams}
@@ -545,7 +548,7 @@ export function SoccerRankingsPage() {
           )}
 
           {status === "ready" && filtered.length > 0 && (
-            <>
+            <div className="lg:col-start-1 lg:row-start-1">
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                 <p>
                   Rows {(pageSafe - 1) * PAGE_SIZE + 1}–
@@ -736,17 +739,7 @@ export function SoccerRankingsPage() {
               <div className="mt-3 flex justify-end">
                 <Pager page={pageSafe} pageCount={pageCount} onPage={setPage} />
               </div>
-            </>
-          )}
-
-          {status === "ready" && selected && (
-            <Card className="sticky top-4 hidden p-4 lg:block">
-              <TeamDetail
-                team={selected}
-                yearTeams={teams}
-                onOpenTeam={(id) => setSelectedId(id)}
-              />
-            </Card>
+            </div>
           )}
         </div>
 
