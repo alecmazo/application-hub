@@ -48,6 +48,14 @@ export function TeamDetail({
     };
   }, [team.id]);
 
+  useEffect(() => {
+    if (!selected) return;
+    document.getElementById("matchup-detail")?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+    });
+  }, [selected]);
+
   const focusId = load?.gotsportTeamId;
   const sos =
     load && focusId != null
@@ -125,6 +133,41 @@ export function TeamDetail({
                 <ExternalLink className="size-3.5" />
               </a>
             </Button>
+          )}
+
+          {selected && focusId != null && (
+            <div
+              id="matchup-detail"
+              className="scroll-mt-4 rounded-2xl border border-primary/30 bg-card p-4"
+            >
+              <div className="mb-2 flex items-center justify-between">
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                  Matchup
+                </p>
+                <button
+                  type="button"
+                  className="text-xs text-muted-foreground hover:text-foreground"
+                  onClick={() => setSelected(null)}
+                >
+                  Close
+                </button>
+              </div>
+              <MatchupDetail
+                match={selected}
+                focusId={focusId}
+                home={
+                  selected.homeId != null
+                    ? index.get(selected.homeId)
+                    : undefined
+                }
+                away={
+                  selected.awayId != null
+                    ? index.get(selected.awayId)
+                    : undefined
+                }
+                onOpenTeam={onOpenTeam}
+              />
+            </div>
           )}
 
           {load.matches.length === 0 ? (
@@ -222,29 +265,6 @@ export function TeamDetail({
         </>
       )}
 
-      {selected && focusId != null && (
-        <div className="rounded-2xl border border-primary/30 bg-card p-4">
-          <div className="mb-2 flex items-center justify-between">
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Matchup
-            </p>
-            <button
-              type="button"
-              className="text-xs text-muted-foreground hover:text-foreground"
-              onClick={() => setSelected(null)}
-            >
-              Close
-            </button>
-          </div>
-          <MatchupDetail
-            match={selected}
-            focusId={focusId}
-            home={selected.homeId != null ? index.get(selected.homeId) : undefined}
-            away={selected.awayId != null ? index.get(selected.awayId) : undefined}
-            onOpenTeam={onOpenTeam}
-          />
-        </div>
-      )}
     </div>
   );
 }
