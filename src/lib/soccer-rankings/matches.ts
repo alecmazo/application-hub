@@ -1,5 +1,11 @@
 import meta from "@/data/soccer-rankings/matches-meta.json";
-import type { CompactMatch, MatchLoadResult, RankedTeam, SosSummary } from "./types";
+import type {
+  CompactMatch,
+  MatchLoadResult,
+  NotOnPublicFeed,
+  RankedTeam,
+  SosSummary,
+} from "./types";
 
 type MatchesFile = {
   asOf: string;
@@ -12,11 +18,26 @@ type MatchesFile = {
 
 export const MATCH_CACHE_META = {
   asOf: meta.asOf,
+  compiledAt: (meta as { compiledAt?: string }).compiledAt ?? meta.asOf,
   since: meta.since,
   source: meta.source,
   teamsWithMatches: meta.teamsWithMatches,
   matches: meta.matches,
 };
+
+export const NOT_ON_PUBLIC_FEED: NotOnPublicFeed | null =
+  ((meta as { notOnPublicFeed?: NotOnPublicFeed }).notOnPublicFeed as
+    | NotOnPublicFeed
+    | undefined) ?? null;
+
+export function notOnPublicFeedFor(gotsportId: number | null): NotOnPublicFeed | null {
+  if (!NOT_ON_PUBLIC_FEED || gotsportId == null) return null;
+  const ids = [
+    NOT_ON_PUBLIC_FEED.homeTeamId,
+    NOT_ON_PUBLIC_FEED.opponentTeamId,
+  ].filter((id): id is number => typeof id === "number");
+  return ids.includes(gotsportId) ? NOT_ON_PUBLIC_FEED : null;
+}
 
 const META_COUNTS: Record<string, number> =
   (meta as { gameCounts?: Record<string, number> }).gameCounts ?? {};

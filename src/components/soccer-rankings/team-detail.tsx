@@ -14,6 +14,7 @@ import {
   eventHref,
   loadTeamMatches,
   matchesApiHref,
+  notOnPublicFeedFor,
   opponentCue,
   opponentOf,
   resultFor,
@@ -65,6 +66,7 @@ export function TeamDetail({
     load && focusId != null
       ? summarizeSos(focusId, load.matches, index)
       : null;
+  const missingFeed = notOnPublicFeedFor(focusId ?? null);
 
   return (
     <div className="space-y-5">
@@ -100,6 +102,20 @@ export function TeamDetail({
           )}
         </div>
       </div>
+
+      {missingFeed?.status === "not_yet_on_gotsport_public_feed" && (
+        <div className="rounded-xl border border-warn/35 bg-warn/10 px-3 py-2.5 text-xs leading-relaxed">
+          <p className="font-medium text-foreground">
+            Not yet on GotSport public feed
+          </p>
+          <p className="mt-1 text-muted-foreground">
+            Reported {missingFeed.date}
+            {missingFeed.timezone ? ` (${missingFeed.timezone})` : ""}:{" "}
+            {missingFeed.reported}. The public GotSport match lists and rankings
+            UI did not include this game as of this refresh, so no 1–0 is shown.
+          </p>
+        </div>
+      )}
 
       {sos && (
         <div className="rounded-xl border border-border bg-bg-elevated/40 px-3 py-2.5 text-xs leading-relaxed text-muted-foreground">

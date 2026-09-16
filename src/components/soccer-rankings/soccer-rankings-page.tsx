@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   COMPILED_AS_OF,
+  GOTSPORT_AS_OF,
   LEAGUE_FILTERS,
   SEASON_LABEL,
   formatPoints,
@@ -42,6 +43,7 @@ import {
 } from "@/lib/soccer-rankings/home";
 import {
   MATCH_CACHE_META,
+  NOT_ON_PUBLIC_FEED,
   cachedMatchCount,
   sosByTeamId,
 } from "@/lib/soccer-rankings/matches";
@@ -427,7 +429,10 @@ export function SoccerRankingsPage() {
               ))}
             </div>
             <p className="text-right font-mono text-[11px] text-muted-foreground">
-              Data as of {COMPILED_AS_OF}
+              GotSport as of {GOTSPORT_AS_OF}
+              {COMPILED_AS_OF !== GOTSPORT_AS_OF
+                ? ` · refreshed ${COMPILED_AS_OF}`
+                : ""}
             </p>
           </div>
         </header>
@@ -449,9 +454,14 @@ export function SoccerRankingsPage() {
             competitive vintage is about{" "}
             {COVERAGE.caUniverseEstimate.toLocaleString()}+ teams;{" "}
             {caCoverageNote}. US and state ranks are among seeded teams only.
-            Match cache: {MATCH_CACHE_META.teamsWithMatches.toLocaleString()}{" "}
-            teams / {MATCH_CACHE_META.matches.toLocaleString()} games. Refresh
-            rankings with{" "}
+            Match cache as of {MATCH_CACHE_META.asOf}:{" "}
+            {MATCH_CACHE_META.teamsWithMatches.toLocaleString()}{" "}
+            teams / {MATCH_CACHE_META.matches.toLocaleString()} games.
+            {NOT_ON_PUBLIC_FEED?.status ===
+            "not_yet_on_gotsport_public_feed"
+              ? ` Reported ${NOT_ON_PUBLIC_FEED.date} Marin vs El Camino Salinas ECNL is flagged not_yet_on_gotsport_public_feed — no invented 1–0.`
+              : ""}{" "}
+            Refresh rankings with{" "}
             <code className="font-mono text-[11px] text-foreground">
               python3 scripts/ingest-soccer-rankings.py
             </code>
@@ -982,8 +992,12 @@ export function SoccerRankingsPage() {
 
         <footer className="mt-8 border-t border-border pt-5 text-xs leading-relaxed text-muted-foreground">
           Unofficial composite for personal use. Not an official ranking of MLS,
-          MLS NEXT, ECNL, GotSport, or TopDrawerSoccer. Seed compiled{" "}
-          {COMPILED_AS_OF}. {year} view: {teams.length.toLocaleString()} seeded
+          MLS NEXT, ECNL, GotSport, or TopDrawerSoccer. GotSport rankings as of{" "}
+          {GOTSPORT_AS_OF}
+          {COMPILED_AS_OF !== GOTSPORT_AS_OF
+            ? `; seed refreshed ${COMPILED_AS_OF}`
+            : ""}
+          . {year} view: {teams.length.toLocaleString()} seeded
           teams. California vintage universe ≈
           {COVERAGE.caUniverseEstimate.toLocaleString()}+.
         </footer>

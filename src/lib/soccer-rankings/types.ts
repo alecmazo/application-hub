@@ -116,11 +116,28 @@ export type SosSummary = {
 
 export type CoverageMeta = {
   asOf: string;
+  compiledAt?: string;
   uniqueTeams: number;
   caUnique: number;
   caUniverseEstimate: number;
   y2013: number;
   y2014: number;
+};
+
+export type NotOnPublicFeed = {
+  status: "not_yet_on_gotsport_public_feed" | "found_on_gotsport_public_feed";
+  date: string;
+  timezone?: string;
+  reported: string;
+  homeTeamId?: number;
+  opponentTeamId?: number;
+  note?: string;
+  endpointsTried?: string[];
+  matchId?: number;
+  eventId?: number | null;
+  event?: string;
+  homeScore?: number | null;
+  awayScore?: number | null;
 };
 
 export type RankedDataset = {

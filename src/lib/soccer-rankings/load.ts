@@ -11,6 +11,7 @@ import type {
 type CatalogFile = {
   season: string;
   asOf: string;
+  compiledAt?: string;
   caUniverseEstimate?: number;
   counts?: {
     uniqueTeams: number;
@@ -29,6 +30,7 @@ const FILE = catalog as CatalogFile;
 
 export const COVERAGE: CoverageMeta = {
   asOf: FILE.asOf || COMPILED_AS_OF,
+  compiledAt: FILE.compiledAt || FILE.asOf || COMPILED_AS_OF,
   uniqueTeams: FILE.counts?.uniqueTeams ?? FILE.teams.length,
   caUnique: FILE.counts?.caUnique ?? 0,
   caUniverseEstimate: FILE.caUniverseEstimate ?? CA_UNIVERSE_ESTIMATE,

@@ -12,7 +12,7 @@ Unofficial composite for personal scouting. **Not affiliated with MLS, MLS NEXT,
 
 The app’s primary tabs are still **2013-born** and **2014-born**. A row can appear on both tabs when the public listing is a 2013/14 school-year or ECNL U13 side. Each row chips the alignment so “U13” is not treated as one national definition.
 
-Compiled as-of: **2026-09-15**
+GotSport published ranking date: **see `teams.json` `asOf`**. Seed compiled (America/Los_Angeles): **see `compiledAt`**.
 
 ## Coverage (not a census)
 
@@ -22,8 +22,9 @@ Alec’s vintage figure: California alone has **≈1,100+** boys teams of this a
 
 Refresh path:
 
-- Rankings: `python3 scripts/ingest-soccer-rankings.py` (public JSON the [GotSport rankings](https://rankings.gotsport.com/) UI calls: `https://system.gotsport.com/api/v1/team_ranking_data`). Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network.
-- **Match histories:** `python3 scripts/ingest-gotsport-matches.py` → `src/data/soccer-rankings/matches.json`. Endpoint: `GET https://system.gotsport.com/api/v1/teams/{team_id}/matches`. Cache: `/tmp/gotsport-matches-cache`. Prefer games on/after 2024-07-01. Then `npm run typecheck` and `npm run build:spa`.
+- Rankings: `python3 scripts/ingest-soccer-rankings.py` (public JSON the [GotSport rankings](https://rankings.gotsport.com/) UI calls: `https://system.gotsport.com/api/v1/team_ranking_data`). Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. Catalog `asOf` is the max GotSport `ranking_date`; `compiledAt` is the refresh day in America/Los_Angeles.
+- **Match histories:** `python3 scripts/ingest-gotsport-matches.py` → `src/data/soccer-rankings/matches.json`. Endpoints: `GET https://system.gotsport.com/api/v1/teams/{team_id}/matches`, plus the rankings-web views `?past=true&page=&per_page=10` and `?upcoming=true` for Home (`56506`), El Camino FC Salinas ECNL (`71106`), and other CA ECNL U13 2013/14 sides. Cache: `/tmp/gotsport-matches-cache`. Prefer games on/after 2024-07-01. Then `npm run typecheck` and `npm run build:spa`.
+- If a reported result is still missing after those public endpoints, `matches-meta.json` `notOnPublicFeed` is set to `not_yet_on_gotsport_public_feed` and the score is **not invented**.
 
 The rankings table W–D–L is an **aggregate** from `team_ranking_data`. Full game lists (league + tournaments) come from the per-team matches API. GitHub Pages cannot call GotSport from the browser (no CORS); the shipped `matches.json` is the cache. Local `vite` / `preview:spa` proxy `/gotsport-api` → `system.gotsport.com` for live lists. Scores are never invented.
 
@@ -62,7 +63,7 @@ Missing signals are dropped; remaining weights renormalize.
 
 ## Home team + SOS
 
-Highlighted side (badge only, not a locked landing): **Marin FC 2013/14 ECNL** (GotSport `56506`, listing name `Marin FC ECNL B2013/14`).
+Highlighted side (badge only, not a locked landing): **Marin FC 2013/14 ECNL** (GotSport `56506`, listing name `Marin FC ECNL B2013/14`). El Camino FC Salinas ECNL B2013/14 is GotSport `71106`.
 
 **This year: Marin FC 2013/14 ECNL · Last year: Marin FC Blue 2014.** Last year is the **same GotSport id `56506`**, listed as `Marin FC B14Blue` through 2024–25 / spring 2026, then renamed for this ECNL school-year side. Do not treat a second row as last year.
 

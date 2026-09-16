@@ -13,7 +13,9 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src/data/soccer-rankings/teams.json"
@@ -286,7 +288,7 @@ def compact(row: dict, years: list[int], alignment: str, state: str) -> dict:
     draws = row.get("total_draws")
     losses = row.get("total_losses")
     matches = row.get("total_matches") or 0
-    as_of = row.get("ranking_date") or "2026-09-15"
+    as_of = row.get("ranking_date") or compiled_date()
     rec = None
     if matches and (wins or draws or losses):
         rec = {"w": int(wins or 0), "d": int(draws or 0), "l": int(losses or 0), "asOf": as_of}
@@ -309,6 +311,23 @@ def compact(row: dict, years: list[int], alignment: str, state: str) -> dict:
         "record": rec,
         "sources": ["GotSport"],
     }
+
+
+def compiled_date() -> str:
+    return datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+
+
+def compiled_stamp() -> str:
+    return datetime.now(ZoneInfo("America/Los_Angeles")).isoformat(timespec="minutes")
+
+
+def gotsport_as_of(items: list[dict]) -> str:
+    dates = [
+        str((t.get("gotsport") or {}).get("asOf") or "")
+        for t in items
+        if (t.get("gotsport") or {}).get("asOf")
+    ]
+    return max(dates) if dates else compiled_date()
 
 
 # Small curated overlays — TDS 2013 birth-year table and MLS NEXT U13 (2014 BY).
@@ -521,7 +540,10 @@ def compile_from_cache() -> dict:
             else:
                 teams[rec["id"]] = rec
 
-    extra = {"cachedAssocs": sorted({f"{a}-U{age}" for a, age in seen})}
+    extra = {
+        "cachedAssocs": sorted({f"{a}-U{age}" for a, age in seen}),
+        "compiledAt": compiled_stamp(),
+    }
     return finalize_catalog(teams, skipped, pages_ok, extra)
 
 
@@ -537,6 +559,8 @@ def finalize_catalog(
         key=lambda t: (-int((t.get("gotsport") or {}).get("points") or 0), t["name"]),
     )
     ca = [t for t in items if t["state"] == "CA"]
+    compiled_at = compiled_stamp()
+    published = gotsport_as_of(items)
     notes = {
         "mlsNextU13": "2014 birth-year category",
         "ecnlU13": "2013/14 school-year alignment",
@@ -546,12 +570,15 @@ def finalize_catalog(
             "public ranking row (multiple teams per club, mixed U12/U13 bands). "
             "US/state rank are among seeded teams. National ingest is still a sample."
         ),
+        "compiledAt": compiled_at,
+        "gotsportRankingDate": published,
     }
     if extra_notes:
         notes.update(extra_notes)
     return {
         "season": "2025-26",
-        "asOf": "2026-09-15",
+        "asOf": published,
+        "compiledAt": compiled_at,
         "source": "GotSport public rankings API (system.gotsport.com/api/v1/team_ranking_data)",
         "caUniverseEstimate": 1100,
         "notes": notes,

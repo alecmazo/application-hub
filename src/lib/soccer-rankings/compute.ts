@@ -1,3 +1,4 @@
+import catalog from "@/data/soccer-rankings/teams.json";
 import type {
   BirthYear,
   LeaguePlatform,
@@ -6,8 +7,13 @@ import type {
   TeamSeed,
 } from "./types";
 
+type CatalogDates = { asOf?: string; compiledAt?: string };
+
 export const SEASON_LABEL = "2025–26";
-export const COMPILED_AS_OF = "2026-09-15";
+export const GOTSPORT_AS_OF =
+  (catalog as CatalogDates).asOf ?? "2026-09-15";
+export const COMPILED_AS_OF =
+  (catalog as CatalogDates).compiledAt ?? GOTSPORT_AS_OF;
 export const CA_UNIVERSE_ESTIMATE = 1100;
 
 export const LEAGUE_LABEL: Record<LeaguePlatform, string> = {
@@ -181,7 +187,7 @@ export function rankTeams(
           ? "2014 BY · MLS NEXT U13"
           : "2013 BY · ECNL U13 is 2013/14",
       season: SEASON_LABEL,
-      asOf: COMPILED_AS_OF,
+      asOf: GOTSPORT_AS_OF,
       teamCount: scored.length,
     },
     teams: scored,
