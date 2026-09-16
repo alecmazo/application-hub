@@ -55,6 +55,15 @@ export function loadCacheFile(): Promise<MatchesFile> {
 
 const memory = new Map<number, CompactMatch[]>();
 
+/** Drop in-memory live match lists so the next load hits GotSport again. */
+export function clearLiveMatchCache(gotsportId?: number): void {
+  if (gotsportId == null) {
+    memory.clear();
+    return;
+  }
+  memory.delete(gotsportId);
+}
+
 export function gotsportNumericId(teamId: string | undefined): number | null {
   if (!teamId) return null;
   const m = /^gs-(\d+)$/.exec(teamId);
@@ -221,6 +230,14 @@ export async function loadTeamMatches(teamId: string): Promise<MatchLoadResult> 
     error:
       "Full match list is not in the shipped cache, and the live GotSport API is blocked in this browser (no CORS on GitHub Pages). Open GotSport or refresh via the ingest script.",
   };
+}
+
+export async function refreshTeamMatches(
+  teamId: string,
+): Promise<MatchLoadResult> {
+  const id = gotsportNumericId(teamId);
+  if (id != null) memory.delete(id);
+  return loadTeamMatches(teamId);
 }
 
 export function byGotsportId(teams: RankedTeam[]): Map<number, RankedTeam> {

@@ -7,8 +7,11 @@ import { alignmentLabel } from "@/lib/soccer-rankings/load";
 import {
   HOME_CONTINUITY_COPY,
   HOME_LABEL,
-  HOME_TEAM_ID,
+  isHomeTeam,
+  isPinnedHomeTeam,
+  showHomeContinuity,
 } from "@/lib/soccer-rankings/home";
+import { PinHomeButton } from "./pin-home-button";
 import {
   byGotsportId,
   eventHref,
@@ -32,10 +35,18 @@ export function TeamDetail({
   team,
   yearTeams,
   onOpenTeam,
+  pinnedHomeId,
+  onPinHome,
+  onUnpinHome,
+  refreshNonce = 0,
 }: {
   team: RankedTeam;
   yearTeams: RankedTeam[];
   onOpenTeam: (teamId: string) => void;
+  pinnedHomeId: string | null;
+  onPinHome: (id: string) => void;
+  onUnpinHome: () => void;
+  refreshNonce?: number;
 }) {
   const [load, setLoad] = useState<MatchLoadResult | null>(null);
   const [selected, setSelected] = useState<CompactMatch | null>(null);
@@ -51,7 +62,7 @@ export function TeamDetail({
     return () => {
       cancelled = true;
     };
-  }, [team.id]);
+  }, [team.id, refreshNonce]);
 
   useEffect(() => {
     if (!selected) return;
@@ -74,19 +85,32 @@ export function TeamDetail({
         <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Team
         </p>
-        <h2 className="font-display text-2xl font-semibold leading-tight">
-          {team.name}
-        </h2>
+        <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
+          <h2 className="font-display text-2xl font-semibold leading-tight">
+            {team.name}
+          </h2>
+          <PinHomeButton
+            teamId={team.id}
+            teamName={team.name}
+            pinned={isPinnedHomeTeam(team.id, pinnedHomeId)}
+            onPin={onPinHome}
+            onUnpin={onUnpinHome}
+          />
+        </div>
         <p className="mt-1 text-sm text-muted-foreground">
           {team.club !== team.name ? `${team.club} · ` : ""}
           {team.state}
         </p>
-        {team.id === HOME_TEAM_ID && (
+        {isPinnedHomeTeam(team.id, pinnedHomeId) && (
           <div className="mt-2 space-y-1.5">
-            <Badge variant="success">{HOME_LABEL}</Badge>
-            <p className="text-sm font-medium text-foreground">
-              {HOME_CONTINUITY_COPY}
-            </p>
+            <Badge variant="success">
+              {isHomeTeam(team.id) ? HOME_LABEL : "Home"}
+            </Badge>
+            {showHomeContinuity(pinnedHomeId) && (
+              <p className="text-sm font-medium text-foreground">
+                {HOME_CONTINUITY_COPY}
+              </p>
+            )}
           </div>
         )}
         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">

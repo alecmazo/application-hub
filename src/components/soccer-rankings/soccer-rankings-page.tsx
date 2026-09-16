@@ -40,11 +40,12 @@ import {
   HOME_LABEL,
   homeSearchAliases,
   isHomeTeam,
+  isPinnedHomeTeam,
 } from "@/lib/soccer-rankings/home";
+import { usePinnedHomeTeam } from "@/lib/soccer-rankings/use-pinned-home";
 import {
-  MATCH_CACHE_META,
-  NOT_ON_PUBLIC_FEED,
   cachedMatchCount,
+  refreshTeamMatches,
   sosByTeamId,
 } from "@/lib/soccer-rankings/matches";
 import type {
@@ -55,6 +56,8 @@ import type {
   SosSummary,
 } from "@/lib/soccer-rankings/types";
 import { cn } from "@/lib/utils";
+import { CoverageFlag } from "./coverage-flag";
+import { PinHomeButton } from "./pin-home-button";
 import { TeamDetail } from "./team-detail";
 
 type SortKey =
@@ -246,6 +249,10 @@ export function SoccerRankingsPage() {
   const [sosMap, setSosMap] = useState<Map<string, SosSummary>>(
     () => new Map(),
   );
+  const { pinnedId, pinTeam, unpinHome } = usePinnedHomeTeam();
+  const [matchRefreshNonce, setMatchRefreshNonce] = useState(0);
+  const [refreshingMatches, setRefreshingMatches] = useState(false);
+  const [refreshNote, setRefreshNote] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = "Soccer Rankings";
@@ -355,14 +362,40 @@ export function SoccerRankingsPage() {
     );
   }
 
-  const caPct =
-    COVERAGE.caUniverseEstimate > 0
-      ? Math.round((COVERAGE.caUnique / COVERAGE.caUniverseEstimate) * 100)
-      : 0;
-  const caCoverageNote =
-    COVERAGE.caUnique >= COVERAGE.caUniverseEstimate
-      ? `the seed lists ${COVERAGE.caUnique.toLocaleString()} unique CA GotSport U12/U13 sides (full public ranking directory — multiple teams per club and mixed U12/U13 bands, so this is not a 1:1 map of the ≈${COVERAGE.caUniverseEstimate.toLocaleString()}+ vintage figure)`
-      : `the seed currently lists ${COVERAGE.caUnique.toLocaleString()} unique CA teams (~${caPct}% of that 1,100+ universe, across both birth years)`;
+  async function refreshFromGotsport() {
+    setRefreshingMatches(true);
+    setRefreshNote(null);
+    const targets = [...new Set([selectedId, pinnedId].filter(Boolean))] as string[];
+    try {
+      const results = await Promise.all(
+        targets.map((id) => refreshTeamMatches(id)),
+      );
+      setMatchRefreshNonce((n) => n + 1);
+      const live = results.filter((r) => r.source === "live").length;
+      if (targets.length === 0) {
+        setRefreshNote(
+          "Open a team (or pin one) to pull its live GotSport match list. Seeded ranks stay compiled.",
+        );
+      } else if (live > 0) {
+        setRefreshNote(
+          `Pulled live GotSport matches for ${live} team${live === 1 ? "" : "s"}. Seeded ranks stay as of ${GOTSPORT_AS_OF}.`,
+        );
+      } else if (results.some((r) => r.source === "cache")) {
+        setRefreshNote(
+          "GotSport live API unavailable here (no CORS on GitHub Pages). Showing the shipped match cache.",
+        );
+      } else {
+        setRefreshNote(
+          results.find((r) => r.error)?.error ??
+            "No live match list returned. Seeded ranks unchanged.",
+        );
+      }
+    } catch (e) {
+      setRefreshNote(e instanceof Error ? e.message : "Refresh failed");
+    } finally {
+      setRefreshingMatches(false);
+    }
+  }
 
   return (
     <div className="pitch-atmosphere min-h-dvh">
@@ -437,40 +470,18 @@ export function SoccerRankingsPage() {
           </div>
         </header>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap items-center gap-2">
           <Badge variant="success">MLS NEXT U13 = 2014 BY</Badge>
           <Badge variant="accent">ECNL U13 = 2013/14 school year</Badge>
           <Badge variant="outline">GotSport U12/U13 listings mix vintages</Badge>
-        </div>
-
-        <div className="mt-4 rounded-xl border border-warn/35 bg-warn/10 px-4 py-3 text-sm leading-relaxed">
-          <p className="font-medium text-foreground">
-            Coverage incomplete vs the full US — CA GotSport U12/U13 directory
-            is in; vintage universe ≈1,100+.
-          </p>
-          <p className="mt-1 text-muted-foreground">
-            Showing {teams.length.toLocaleString()} ranked {year}-born sides in
-            this view ({caInYear.toLocaleString()} California). California’s
-            competitive vintage is about{" "}
-            {COVERAGE.caUniverseEstimate.toLocaleString()}+ teams;{" "}
-            {caCoverageNote}. US and state ranks are among seeded teams only.
-            Match cache as of {MATCH_CACHE_META.asOf}:{" "}
-            {MATCH_CACHE_META.teamsWithMatches.toLocaleString()}{" "}
-            teams / {MATCH_CACHE_META.matches.toLocaleString()} games.
-            {NOT_ON_PUBLIC_FEED?.status ===
-            "not_yet_on_gotsport_public_feed"
-              ? ` Reported ${NOT_ON_PUBLIC_FEED.date} Marin vs El Camino Salinas ECNL is flagged not_yet_on_gotsport_public_feed — no invented 1–0.`
-              : ""}{" "}
-            Refresh rankings with{" "}
-            <code className="font-mono text-[11px] text-foreground">
-              python3 scripts/ingest-soccer-rankings.py
-            </code>
-            ; matches with{" "}
-            <code className="font-mono text-[11px] text-foreground">
-              python3 scripts/ingest-gotsport-matches.py
-            </code>
-            .
-          </p>
+          <CoverageFlag
+            year={year}
+            rankedCount={teams.length}
+            caInYear={caInYear}
+            onRefresh={() => void refreshFromGotsport()}
+            refreshing={refreshingMatches}
+            refreshNote={refreshNote}
+          />
         </div>
 
         <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -667,6 +678,10 @@ export function SoccerRankingsPage() {
                   team={selected}
                   yearTeams={teams}
                   onOpenTeam={openTeam}
+                  pinnedHomeId={pinnedId}
+                  onPinHome={pinTeam}
+                  onUnpinHome={unpinHome}
+                  refreshNonce={matchRefreshNonce}
                 />
               </Card>
             </div>
@@ -783,7 +798,7 @@ export function SoccerRankingsPage() {
                         aria-label={`Open ${t.name}`}
                         className={cn(
                           "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
-                          isHomeTeam(t.id) && "bg-success/5",
+                          isPinnedHomeTeam(t.id, pinnedId) && "bg-success/5",
                         )}
                         onClick={() => openTeam(t.id)}
                         onKeyDown={(e) => onRowKeyDown(e, t.id)}
@@ -792,12 +807,22 @@ export function SoccerRankingsPage() {
                           {t.usRank}
                         </td>
                         <td className="min-w-0 px-3 py-2.5">
-                          <p
-                            className="truncate font-medium"
-                            title={t.name}
-                          >
-                            {t.name}
-                          </p>
+                          <div className="flex min-w-0 items-start justify-between gap-2">
+                            <p
+                              className="min-w-0 truncate font-medium"
+                              title={t.name}
+                            >
+                              {t.name}
+                            </p>
+                            <PinHomeButton
+                              teamId={t.id}
+                              teamName={t.name}
+                              pinned={isPinnedHomeTeam(t.id, pinnedId)}
+                              onPin={pinTeam}
+                              onUnpin={unpinHome}
+                              compact
+                            />
+                          </div>
                           <p className="mt-0.5 truncate font-mono-num text-xs font-medium text-foreground">
                             {dualRank(t)}
                             <span className="ml-1.5 font-sans font-normal text-muted-foreground">
@@ -806,8 +831,10 @@ export function SoccerRankingsPage() {
                             </span>
                           </p>
                           <div className="mt-1 flex min-w-0 flex-nowrap items-center gap-1 overflow-hidden">
-                            {isHomeTeam(t.id) && (
-                              <Badge variant="success">{HOME_LABEL}</Badge>
+                            {isPinnedHomeTeam(t.id, pinnedId) && (
+                              <Badge variant="success">
+                                {isHomeTeam(t.id) ? HOME_LABEL : "Home"}
+                              </Badge>
                             )}
                             {alignmentLabel(t.ageAlignment) && (
                               <Badge variant="secondary">
@@ -858,13 +885,15 @@ export function SoccerRankingsPage() {
 
               <div className="grid gap-3 md:hidden">
                 {pageRows.map((t) => (
-                  <button
+                  <div
                     key={`${t.id}-${t.birthYear}`}
-                    type="button"
+                    role="button"
+                    tabIndex={0}
                     aria-label={`Open ${t.name}`}
                     className={cn(
-                      "w-full rounded-2xl border border-border bg-card p-4 text-left shadow-sm hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                      isHomeTeam(t.id) && "border-success/35 bg-success/5",
+                      "w-full cursor-pointer rounded-2xl border border-border bg-card p-4 text-left shadow-sm hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                      isPinnedHomeTeam(t.id, pinnedId) &&
+                        "border-success/35 bg-success/5",
                     )}
                     onClick={() => openTeam(t.id)}
                     onKeyDown={(e) => onRowKeyDown(e, t.id)}
@@ -886,6 +915,16 @@ export function SoccerRankingsPage() {
                         </p>
                       </div>
                       <div className="text-right">
+                        <div className="mb-2 flex justify-end">
+                          <PinHomeButton
+                            teamId={t.id}
+                            teamName={t.name}
+                            pinned={isPinnedHomeTeam(t.id, pinnedId)}
+                            onPin={pinTeam}
+                            onUnpin={unpinHome}
+                            compact
+                          />
+                        </div>
                         <p className="font-mono-num text-xl font-semibold text-primary">
                           US #{t.usRank}
                         </p>
@@ -906,8 +945,10 @@ export function SoccerRankingsPage() {
                       <MetaChip label="Score" value={formatScore(t.score)} />
                     </div>
                     <div className="mt-3 flex flex-wrap gap-1">
-                      {isHomeTeam(t.id) && (
-                        <Badge variant="success">{HOME_LABEL}</Badge>
+                      {isPinnedHomeTeam(t.id, pinnedId) && (
+                        <Badge variant="success">
+                          {isHomeTeam(t.id) ? HOME_LABEL : "Home"}
+                        </Badge>
                       )}
                       {alignmentLabel(t.ageAlignment) && (
                         <Badge variant="secondary">
@@ -920,7 +961,7 @@ export function SoccerRankingsPage() {
                         </Badge>
                       ))}
                     </div>
-                  </button>
+                  </div>
                 ))}
               </div>
 
@@ -953,14 +994,15 @@ export function SoccerRankingsPage() {
           {showMethod && (
             <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                <strong className="text-foreground">Highlighted side:</strong>{" "}
-                {HOME_CONTINUITY_COPY}. Same GotSport listing{" "}
-                <code className="font-mono text-xs">56506</code> (B14Blue →
-                ECNL B2013/14). Marin FC Blue 2014/15 (
+                <strong className="text-foreground">Pinned home:</strong>{" "}
+                Highlight only — pin any side from a row or team page, or unpin
+                entirely. Default pin is {HOME_LABEL} (
+                <code className="font-mono text-xs">56506</code>
+                ). Continuity ({HOME_CONTINUITY_COPY}) shows only while that
+                Marin 2013/14 ECNL side is pinned. Marin FC Blue 2014/15 (
                 <code className="font-mono text-xs">252973</code>) is a
-                separate line — not last-year continuity. The app does not lock
-                onto this side; it is only badged when it appears in the
-                current list.
+                separate line — never last-year continuity. Browse and search
+                stay unlocked.
               </p>
               <p>
                 <strong className="text-foreground">Age-band truth (2025–26):</strong>{" "}
