@@ -322,6 +322,17 @@ function recordFromMatches(
   return { w, d, l };
 }
 
+const MLS_NEXT_SCHEDULE_URLS = [
+  {
+    division: "homegrown" as const,
+    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json",
+  },
+  {
+    division: "academy" as const,
+    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json",
+  },
+];
+
 function emptyResult(
   partial: Partial<MatchLoadResult> & { endpointsTried: string[] },
 ): MatchLoadResult {
@@ -413,15 +424,15 @@ export async function loadTeamMatches(
       };
     }
     if (gotsportId == null) {
+      const canon = MLS_NEXT_SCHEDULE_URLS.filter(
+        (f) => !overlay.division || f.division === overlay.division,
+      ).map((f) => f.url);
+      const tried = endpointsTried.length ? endpointsTried : canon;
       return emptyResult({
         gotsportTeamId: null,
         mlsNextOrgId: overlay.orgId,
-        endpointsTried: endpointsTried.length
-          ? endpointsTried
-          : [
-              "src/data/soccer-rankings/mls-next-public.json (Academy + Homegrown completed games)",
-            ],
-        error: `No completed MLS NEXT ${overlay.division ?? ""} ${overlay.ageBand} games in the public League Viewer feed for org ${overlay.orgId}. Tried: ${(endpointsTried.length ? endpointsTried : ["mls-next-public.json"]).join(" · ")}`,
+        endpointsTried: tried,
+        error: `No completed MLS NEXT ${overlay.division ?? ""} ${overlay.ageBand} games in the public League Viewer feed for org ${overlay.orgId}. Tried: ${tried.join(" · ")}`,
       });
     }
   }
@@ -497,17 +508,6 @@ export async function refreshTeamMatches(
   clearLiveMatchCache();
   return loadTeamMatches(teamId, { live: true, ...opts });
 }
-
-const MLS_NEXT_SCHEDULE_URLS = [
-  {
-    division: "homegrown" as const,
-    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json",
-  },
-  {
-    division: "academy" as const,
-    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json",
-  },
-];
 
 async function fetchLiveMlsNext(
   orgId: number,
