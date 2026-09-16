@@ -135,6 +135,11 @@ export default defineConfig(({ command }) => ({
         changeOrigin: true,
         rewrite: (p) => p.replace(/^\/gotsport-api/, ""),
       },
+      "/mls-next-api": {
+        target: "https://mls-assist.theintelligenceplatform.com",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/mls-next-api/, ""),
+      },
     },
   },
   resolve: { tsconfigPaths: true },

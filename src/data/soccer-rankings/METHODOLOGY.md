@@ -39,21 +39,21 @@ Alec’s vintage figure: California alone has **≈1,100+** boys teams around th
 
 Refresh path:
 
-- Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network.
-- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json`.
+- Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. `--reoverlay` reapplies MLS NEXT / TDS overlays on the current seed.
+- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy).
 - Matches: `python3 scripts/ingest-gotsport-matches.py` → `matches.json`.
 - If a reported result is still missing after public endpoints, `matches-meta.json` `notOnPublicFeed` is `not_yet_on_gotsport_public_feed` and the score is **not invented**.
 
 ## MLS NEXT records + SOS
 
-Public endpoints used (same JSON as the official standings viewer linked from [mlssoccer.com/mlsnext/standings](https://www.mlssoccer.com/mlsnext/standings/homegrown_division/)):
+Public endpoints used (same JSON as the official standings viewer linked from [mlssoccer.com/mlsnext](https://www.mlssoccer.com/mlsnext/)):
 
-| File | URL |
-| --- | --- |
-| Standings | `https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-league-26-27.json` |
-| Schedule / scores | `https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json` |
+| Division | Standings | Schedule |
+| --- | --- | --- |
+| Homegrown | `…/standings/mls-next-league-26-27.json` | `…/schedule/mls-next-league-26-27.json` |
+| Academy | `…/standings/mls-next-2-academy-division-26-27.json` | `…/schedule/mls-next-2-academy-division-26-27.json` |
 
-Only **completed** games with both scores are kept. As of this refresh, SF Glens U13 is **0–1–0** (3–3 at Woodside, 2026-09-12) and Northwest conference **#10 / 13**. No invented W–D–L.
+Host: `mls-assist.theintelligenceplatform.com`. Only **completed** games with both scores are kept. No invented W–D–L.
 
 SOS for overlay MLS NEXT sides uses opponent **conference rank** from that public table (same spirit as GotSport opponent US/state ranks). GotSport match SOS still applies to GotSport-listed clubs.
 
@@ -64,7 +64,7 @@ SOS for overlay MLS NEXT sides uses opponent **conference rank** from that publi
 | GotSport public rankings API, boys U12–U16, USA | Name, club, association→state, points, W–D–L when published |
 | MLS NEXT League 26/27 public standings + schedule | Conference rank, completed W–D–L, scored matches |
 | MLS NEXT Cup 2026 U13 recaps | Overlay on 2014-BY / U13 MLS NEXT sides (Atlanta champion; LA Galaxy finalist; Inter Miami semifinalist) |
-| TopDrawerSoccer TeamRank boys U13 (TDS labeled **2013** BY) | Overlay on matching clubs; stub if missing |
+| TopDrawerSoccer TeamRank boys U13 (TDS labeled **2013** BY) | Overlay on matching clubs only — no ghost stubs |
 | UpNext February 2026 | Secondary U13 power-rank overlay |
 
 Records are never invented. Unknown W–D–L stays N/A.
@@ -88,7 +88,7 @@ Records are never invented. Unknown W–D–L stays N/A.
 Missing signals are dropped; remaining weights renormalize.
 
 1. TDS TeamRank (0.42) when present
-2. MLS NEXT Cup / UpNext / conference rank (0.28)
+2. MLS NEXT Cup / UpNext / conference rank after games are played (0.28). Unplayed conference #1 is **not** a national 100.
 3. GotSport points (0.20) scaled to the max in that age tab
 4. League-tier prior (0.10): Homegrown 72, MLS NEXT 70, ECNL 68, ECNL-RL 55, other 42
 

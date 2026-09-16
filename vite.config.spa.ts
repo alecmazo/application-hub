@@ -31,6 +31,11 @@ const gotsportProxy = {
     changeOrigin: true,
     rewrite: (p: string) => p.replace(/^\/gotsport-api/, ""),
   },
+  "/mls-next-api": {
+    target: "https://mls-assist.theintelligenceplatform.com",
+    changeOrigin: true,
+    rewrite: (p: string) => p.replace(/^\/mls-next-api/, ""),
+  },
 };
 
 /** Static SPA build for GitHub Pages (no SSR / Nitro). */
