@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ExternalLink, Loader2 } from "lucide-react";
+import { ExternalLink, Loader2, RefreshCw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatRecord, formatScore } from "@/lib/soccer-rankings/compute";
@@ -17,9 +17,11 @@ import {
   eventHref,
   loadTeamMatches,
   matchesApiHref,
+  mlsOverlayFromTeam,
   notOnPublicFeedFor,
   opponentCue,
   opponentOf,
+  refreshTeamMatches,
   resultFor,
   summarizeSos,
 } from "@/lib/soccer-rankings/matches";
@@ -50,19 +52,40 @@ export function TeamDetail({
 }) {
   const [load, setLoad] = useState<MatchLoadResult | null>(null);
   const [selected, setSelected] = useState<CompactMatch | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
   const index = useMemo(() => byGotsportId(yearTeams), [yearTeams]);
+  const overlay = useMemo(
+    () => mlsOverlayFromTeam(team),
+    [team.id, team.ageBand, team.mlsNext?.orgId, team.mlsNext?.division],
+  );
 
   useEffect(() => {
     let cancelled = false;
     setLoad(null);
     setSelected(null);
-    void loadTeamMatches(team.id).then((result) => {
+    void loadTeamMatches(team.id, {
+      gotsportTeamId: team.gotsportTeamId ?? null,
+      mlsNext: overlay,
+    }).then((result) => {
       if (!cancelled) setLoad(result);
     });
     return () => {
       cancelled = true;
     };
-  }, [team.id, refreshNonce]);
+  }, [team.id, team.gotsportTeamId, overlay, refreshNonce]);
+
+  async function onRefresh() {
+    setRefreshing(true);
+    try {
+      const result = await refreshTeamMatches(team.id, {
+        gotsportTeamId: team.gotsportTeamId ?? null,
+        mlsNext: overlay,
+      });
+      setLoad(result);
+    } finally {
+      setRefreshing(false);
+    }
+  }
 
   useEffect(() => {
     if (!selected) return;
@@ -72,7 +95,7 @@ export function TeamDetail({
     });
   }, [selected]);
 
-  const focusId = load?.gotsportTeamId;
+  const focusId = load?.gotsportTeamId ?? load?.mlsNextOrgId ?? overlay?.orgId;
   const sos =
     load && focusId != null
       ? summarizeSos(focusId, load.matches, index)
@@ -118,7 +141,9 @@ export function TeamDetail({
           <Chip label={`${team.state} rank`} value={`#${team.stateRank}`} />
           <Chip
             label="Record"
-            value={formatRecord(team.mlsNext?.record ?? team.record)}
+            value={formatRecord(
+              load?.record ?? team.mlsNext?.record ?? team.record,
+            )}
           />
           <Chip label="Score" value={formatScore(team.score)} />
         </div>
@@ -167,10 +192,39 @@ export function TeamDetail({
         </div>
       )}
 
+      <div className="flex flex-wrap items-center gap-2">
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={() => void onRefresh()}
+          disabled={refreshing}
+        >
+          {refreshing ? (
+            <Loader2 className="size-3.5 animate-spin" />
+          ) : (
+            <RefreshCw className="size-3.5" />
+          )}
+          Refresh
+        </Button>
+        {load?.gotsportTeamId != null && (
+          <Button variant="outline" size="sm" asChild>
+            <a
+              href={matchesApiHref(load.gotsportTeamId)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Raw GotSport matches JSON
+              <ExternalLink className="size-3.5" />
+            </a>
+          </Button>
+        )}
+      </div>
+
       {!load && (
         <p className="inline-flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="size-4 animate-spin" />
-          Loading GotSport match list…
+          Loading match list…
         </p>
       )}
 
@@ -178,24 +232,20 @@ export function TeamDetail({
         <>
           <p className="text-xs leading-relaxed text-muted-foreground">
             {load.source === "live" &&
-              "Live GotSport match list (season + tournaments)."}
+              "Live pull replaced this team’s schedule/record."}
             {load.source === "cache" &&
-              `Shipped GotSport cache since ${load.since} — coverage may be partial.`}
+              `Shipped cache since ${load.since} — coverage may be partial.`}
             {load.source === "none" && (load.error ?? "No match list yet.")}{" "}
-            Scores are only shown when GotSport published both. Nothing is
-            invented.
+            Scores are only shown when the public feed published both. Nothing
+            is invented.
           </p>
-          {focusId != null && (
-            <Button variant="outline" size="sm" asChild>
-              <a
-                href={matchesApiHref(focusId)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Raw GotSport matches JSON
-                <ExternalLink className="size-3.5" />
-              </a>
-            </Button>
+          {(load.endpointsTried?.length ?? 0) > 0 && load.matches.length === 0 && (
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Endpoints tried:{" "}
+              <span className="font-mono text-[11px]">
+                {load.endpointsTried.join(" · ")}
+              </span>
+            </p>
           )}
 
           {selected && focusId != null && (
@@ -235,18 +285,8 @@ export function TeamDetail({
 
           {load.matches.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              No cached or live matches for this team.{" "}
-              {focusId != null && (
-                <a
-                  className="text-primary underline"
-                  href={matchesApiHref(focusId)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Check GotSport
-                </a>
-              )}
-              .
+              {load.error ??
+                "Public feed returned no matches after the pull. Nothing was invented."}
             </p>
           ) : (
             <ol className="divide-y divide-border rounded-xl border border-border">

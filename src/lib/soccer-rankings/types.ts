@@ -69,9 +69,11 @@ export type TeamSeed = {
     conferenceRank?: number;
     conferenceSize?: number;
     orgId?: number;
+    division?: "academy" | "homegrown";
     season?: string;
     asOf?: string;
   };
+  gotsportTeamId?: number;
   sources: string[];
 };
 
@@ -110,6 +112,9 @@ export type MatchLoadResult = {
   partial: boolean;
   since: string;
   gotsportTeamId: number | null;
+  mlsNextOrgId?: number | null;
+  record?: RecordLine;
+  endpointsTried: string[];
   error?: string;
 };
 

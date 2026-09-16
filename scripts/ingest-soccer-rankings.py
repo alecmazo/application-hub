@@ -431,6 +431,15 @@ def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", s.lower())
 
 
+# Published-list names that do not match GotSport / League Viewer tokens 1:1.
+CLUB_ALIASES = {
+    "fcbayarea": ("bayareasurf", "fcbayareasurf", "bayarea"),
+    "sdsurf": ("sdscsurf", "sandiegosurf"),
+    "sdscsurf": ("sandiegosurf", "sdsurf"),
+    "gsa": ("gwinnettsoccer", "gsasoccer"),
+}
+
+
 def _pick_club(
     teams: list[dict],
     club: str,
@@ -445,8 +454,19 @@ def _pick_club(
         if t["state"] != state or year not in years:
             continue
         blob = _norm(t["name"] + t["club"])
-        if target not in blob:
-            continue
+        tokens = _club_tokens(t["name"] + " " + t["club"])
+        aliases = CLUB_ALIASES.get(target, ())
+        hit = (
+            target in blob
+            or target in tokens
+            or any(a and (a in blob or a in tokens) for a in aliases)
+            or (len(target) >= 6 and target in tokens)
+        )
+        if not hit:
+            # "FC Bay Area" → tokens "bayarea" inside "bayareasurf"
+            club_tok = _club_tokens(club)
+            if not club_tok or len(club_tok) < 6 or club_tok not in tokens:
+                continue
         pts = int((t.get("gotsport") or {}).get("points") or 0)
         name = (t["name"] + " " + t["club"]).lower()
         score = pts
@@ -517,19 +537,9 @@ def apply_overlays(teams: list[dict]) -> None:
     for club, state, rank in CURATED_2013_TDS:
         hit = _pick_club(teams, club, state, 2013)
         if hit is None:
-            hit = _stub(
-                sid=f"overlay-tds-2013-{_norm(club)}",
-                name=f"{club} U13 (2013)",
-                club=club,
-                state=state,
-                years=[2013],
-                league="other",
-                label="Published ranking overlay",
-                alignment="gotsport",
-                sources=["TDS TeamRank"],
-            )
-            hit["ageBands"] = ["U13"]
-            teams.append(hit)
+            # Do not invent a ghost side — unmatched TDS names stay off the table.
+            print(f"  skip TDS overlay (no GotSport match): {club} {state}", flush=True)
+            continue
         hit["tdsRank"] = rank
         hit["tdsAsOf"] = "2026-06"
         if "TDS TeamRank" not in hit["sources"]:
@@ -542,23 +552,17 @@ def apply_overlays(teams: list[dict]) -> None:
         if hit is not None and hit.get("gotsportAge") == 12:
             hit = None
         if hit is None:
-            hit = _stub(
-                sid=f"overlay-mlsnext-2014-{_norm(club)}",
-                name=f"{club} U13 (2014 BY · MLS NEXT)",
-                club=club,
-                state=state,
-                years=[2014],
-                league="mls-next",
-                label="MLS NEXT",
-                alignment="mls-next-u13-2014-by",
-                sources=["MLS NEXT Cup", "UpNext"],
-            )
-            teams.append(hit)
-        hit["mlsNext"] = {
-            "cup": cup,
-            "upnextRank": upnext,
-            "upnextAsOf": "2026-02-13",
-        }
+            print(f"  skip MLS NEXT Cup overlay (no match): {club} {state}", flush=True)
+            continue
+        mls = dict(hit.get("mlsNext") or {})
+        mls.update(
+            {
+                "cup": cup,
+                "upnextRank": upnext,
+                "upnextAsOf": "2026-02-13",
+            }
+        )
+        hit["mlsNext"] = mls
         if hit["league"] == "other":
             hit["league"] = "mls-next"
             hit["leagueLabel"] = "MLS NEXT"
@@ -576,6 +580,29 @@ def _club_tokens(name: str) -> str:
     return _norm(re.sub(r"\b(fc|sc|academy|soccer|club|united)\b", "", name, flags=re.I))
 
 
+def _division_league(division: str | None) -> tuple[str, str]:
+    if division == "homegrown":
+        return "mls-next-hg", "MLS NEXT Homegrown"
+    return "mls-next", "MLS NEXT"
+
+
+def _is_official_mls_listing(team: dict, label: str, division: str | None) -> bool:
+    if re.search(r"pre[\s-]*mls", label):
+        return False
+    league = team.get("league")
+    if division == "homegrown":
+        if league == "mls-next-hg":
+            return True
+        return bool(re.search(r"homegrown|\bmls\s*(next\s*)?(hg|hd)\b", label))
+    if division == "academy":
+        if league == "mls-next":
+            return True
+        return bool(re.search(r"mls\s*next|mlsnext|mls\s*ad|academy", label))
+    return league in ("mls-next", "mls-next-hg") or bool(
+        re.search(r"mls\s*next|mlsnext|mls\s*ad|homegrown|\bhd\b", label)
+    )
+
+
 def merge_mls_next_public(teams: list[dict]) -> None:
     if not MLS_NEXT_PUBLIC.exists():
         return
@@ -589,43 +616,49 @@ def merge_mls_next_public(teams: list[dict]) -> None:
         band = row.get("ageBand")
         if band not in AGE_BANDS:
             continue
+        division = row.get("division") or "academy"
+        league, label = _division_league(division)
         target = _club_tokens(row.get("name") or "")
         if len(target) < 5:
             continue
         hit = None
         scored: list[tuple[int, dict]] = []
         for t in by_band.get(band, []):
-            label = f"{t['name']} {t['club']}".lower()
-            if re.search(r"pre[\s-]*mls", label):
-                continue
-            blob = _club_tokens(label)
+            listing = f"{t['name']} {t['club']}".lower()
+            blob = _club_tokens(listing)
             if target not in blob and blob not in target:
                 continue
-            official = t["league"] in ("mls-next", "mls-next-hg") or re.search(
-                r"mls\s*next|mlsnext|mls\s*ad|homegrown|\bhd\b", label
-            )
-            if not official:
+            if not _is_official_mls_listing(t, listing, division):
                 continue
-            pts = 50 if t["league"] in ("mls-next", "mls-next-hg") else 10
+            # Same org already attached — reuse that row.
+            existing_org = (t.get("mlsNext") or {}).get("orgId")
+            if existing_org and existing_org != row.get("orgId"):
+                continue
+            existing_div = (t.get("mlsNext") or {}).get("division")
+            if existing_div and existing_div != division:
+                continue
+            pts = 80 if t["league"] == league else 40
+            if existing_org == row.get("orgId"):
+                pts += 100
             scored.append((pts, t))
         if scored:
             scored.sort(key=lambda x: x[0], reverse=True)
             hit = scored[0][1]
         if hit is None:
             by = row.get("birthYear")
+            suffix = "hg" if division == "homegrown" else "ad"
             hit = _stub(
-                sid=f"mlsnext-{row.get('orgId')}-{band}",
-                name=f"{row['name']} MLS NEXT {by} ({band})",
+                sid=f"mlsnext-{row.get('orgId')}-{band}-{suffix}",
+                name=f"{row['name']} {label} {by} ({band})",
                 club=row["name"],
-                state="CA" if "francisco glens" in (row.get("name") or "").lower() else "US",
+                state=_guess_state(row.get("conference"), row.get("name")),
                 years=[by] if by else [],
-                league="mls-next",
-                label="MLS NEXT",
+                league=league,
+                label=label,
                 alignment=f"mls-next-{band.lower()}-{by}-by" if by else f"mls-next-{band.lower()}-by",
                 sources=["MLS NEXT League 26/27"],
             )
             hit["ageBands"] = [band]
-            hit["state"] = _guess_state(row.get("conference"), row.get("name"))
             teams.append(hit)
             by_band.setdefault(band, []).append(hit)
         mls = dict(hit.get("mlsNext") or {})
@@ -635,46 +668,102 @@ def merge_mls_next_public(teams: list[dict]) -> None:
                 "conferenceRank": row.get("conferenceRank"),
                 "conferenceSize": row.get("conferenceSize"),
                 "orgId": row.get("orgId"),
+                "division": division,
                 "season": public.get("season"),
                 "asOf": public.get("asOf"),
             }
         )
         if row.get("record"):
             mls["record"] = row["record"]
-            if not hit.get("record"):
+            # Prefer published MLS NEXT W–D–L on official overlay sides.
+            if not hit.get("record") or str(hit.get("id") or "").startswith("mlsnext-"):
                 hit["record"] = row["record"]
         hit["mlsNext"] = mls
         if hit["league"] == "other":
-            hit["league"] = "mls-next"
-            hit["leagueLabel"] = "MLS NEXT"
-            if not str(hit.get("ageAlignment") or "").startswith("mls-next"):
-                by = row.get("birthYear")
-                hit["ageAlignment"] = (
-                    f"mls-next-{band.lower()}-{by}-by" if by else f"mls-next-{band.lower()}-by"
-                )
+            hit["league"] = league
+            hit["leagueLabel"] = label
+        if league == "mls-next-hg" and hit["league"] == "mls-next":
+            # GotSport listed Academy; Homegrown feed is the better label when names match HG.
+            if re.search(r"homegrown|\bmls\s*(next\s*)?(hg|hd)\b", f"{hit['name']} {hit['club']}".lower()):
+                hit["league"] = league
+                hit["leagueLabel"] = label
+        if not str(hit.get("ageAlignment") or "").startswith("mls-next"):
+            by = row.get("birthYear")
+            hit["ageAlignment"] = (
+                f"mls-next-{band.lower()}-{by}-by" if by else f"mls-next-{band.lower()}-by"
+            )
         if "MLS NEXT League 26/27" not in hit["sources"]:
             hit["sources"].append("MLS NEXT League 26/27")
 
 
+CONFERENCE_STATE = {
+    "florida": "FL",
+    "sunshine north": "FL",
+    "sunshine south": "FL",
+    "southwest": "CA",
+    "northwest": "CA",
+    "northern california coast": "CA",
+    "northern california redwood": "CA",
+    "southern california": "CA",
+    "pacific northwest": "WA",
+    "northeast": "NY",
+    "new england": "MA",
+    "garden state": "NJ",
+    "mid-atlantic": "VA",
+    "virginia": "VA",
+    "carolinas": "NC",
+    "southeast": "GA",
+    "south": "TX",
+    "mid-america": "TX",
+    "pioneer": "TX",
+    "central (pro player pathway)": "IL",
+    "northeast (pro player pathway)": "NY",
+    "southeast (pro player pathway)": "GA",
+    "west (pro player pathway)": "CA",
+    "frontier": "CO",
+    "mountain": "UT",
+    "desert": "AZ",
+    "great lakes north": "MI",
+    "great lakes south": "OH",
+    "heartland": "MO",
+    "north": "MN",
+    "empire": "NY",
+    "turnpike": "NJ",
+}
+
+
 def _guess_state(conference: str | None, name: str) -> str:
+    conf = (conference or "").strip().lower()
+    if conf in CONFERENCE_STATE:
+        return CONFERENCE_STATE[conf]
+    for key, state in CONFERENCE_STATE.items():
+        if key in conf:
+            return state
     blob = f"{conference or ''} {name}".lower()
-    if any(x in blob for x in ("northwest", "san francisco", "glens", "de anza", "sacramento", "bay area")):
+    if any(
+        x in blob
+        for x in (
+            "california",
+            "san francisco",
+            "los angeles",
+            "san diego",
+            "sacramento",
+            "bay area",
+            "de anza",
+        )
+    ):
         return "CA"
-    if "florida" in blob:
+    if any(x in blob for x in ("miami", "orlando", "tampa", "florida")):
         return "FL"
-    if "southwest" in blob:
-        return "CA"
-    if "northeast" in blob:
-        return "NY"
-    if "mid-atlantic" in blob:
-        return "VA"
-    if "southeast" in blob:
-        return "GA"
-    if "mid-america" in blob or "central" in blob:
+    if "dallas" in blob or "houston" in blob or "austin" in blob:
         return "TX"
-    if "frontier" in blob:
-        return "CO"
-    return "US"
+    if "chicago" in blob:
+        return "IL"
+    if "atlanta" in blob:
+        return "GA"
+    if "seattle" in blob or "portland" in blob:
+        return "WA"
+    return "CA" if "surf" in blob and "bay" in blob else "TX"
 
 
 def upsert_gotsport(teams: dict[str, dict], rec: dict) -> None:
@@ -814,10 +903,53 @@ def ingest() -> dict:
     return finalize_catalog(teams, skipped, pages_ok)
 
 
+def reoverlay_existing() -> dict:
+    """Rebuild overlays + MLS NEXT merge from the current teams.json (no GotSport refetch)."""
+    prev = json.loads(OUT.read_text())
+    kept: dict[str, dict] = {}
+    dropped = 0
+    for t in prev.get("teams") or []:
+        tid = str(t.get("id") or "")
+        if tid.startswith("mlsnext-") or tid.startswith("overlay-"):
+            dropped += 1
+            continue
+        # Drop stale conference rows; cup / GotSport stay. merge_mls_next_public rewrites.
+        if t.get("mlsNext"):
+            mls = {
+                k: t["mlsNext"][k]
+                for k in ("cup", "upnextRank", "upnextAsOf", "qopNote")
+                if k in t["mlsNext"]
+            }
+            if mls:
+                t["mlsNext"] = mls
+            else:
+                t.pop("mlsNext", None)
+        t["sources"] = [
+            s
+            for s in (t.get("sources") or [])
+            if s != "MLS NEXT League 26/27"
+        ]
+        kept[tid] = t
+    print(f"reoverlay: kept {len(kept)} dropped stubs {dropped}", flush=True)
+    skipped = (prev.get("counts") or {}).get("skipped") or 0
+    pages = (prev.get("counts") or {}).get("pagesFetched") or 0
+    extra = {
+        "reoverlay": True,
+        "compiledAt": compiled_stamp(),
+        "gotsportRankingDate": prev.get("asOf"),
+    }
+    return finalize_catalog(kept, {"other": skipped}, pages, extra)
+
+
 def main() -> None:
     import sys
 
-    data = compile_from_cache() if "--from-cache" in sys.argv else ingest()
+    if "--reoverlay" in sys.argv:
+        data = reoverlay_existing()
+    elif "--from-cache" in sys.argv:
+        data = compile_from_cache()
+    else:
+        data = ingest()
     OUT.write_text(json.dumps(data, separators=(",", ":")))
     print("wrote", OUT, "bytes", OUT.stat().st_size)
     print("counts", data["counts"])

@@ -32,6 +32,7 @@ import {
   formatPoints,
   formatRecord,
   formatScore,
+  usableRank,
   winPct,
 } from "@/lib/soccer-rankings/compute";
 import { AGE_BANDS, AGE_LEGEND, ageTabHint } from "@/lib/soccer-rankings/age-map";
@@ -51,14 +52,15 @@ import {
 } from "@/lib/soccer-rankings/matches";
 import type {
   AgeBand,
-  LeagueBandFilter,
   LeaguePlatform,
   RankedTeam,
   SosSummary,
 } from "@/lib/soccer-rankings/types";
+import { STATE_CODES, STATE_NAMES } from "@/lib/soccer-rankings/states";
 import { cn } from "@/lib/utils";
 import { CoverageFlag } from "./coverage-flag";
 import { PinHomeButton } from "./pin-home-button";
+import { RankHeader } from "./rank-header";
 import { TeamDetail } from "./team-detail";
 
 type SortKey =
@@ -76,59 +78,11 @@ type Status = "loading" | "ready" | "error";
 
 const PAGE_SIZE = 50;
 
-const STATE_NAMES: Record<string, string> = {
-  AL: "Alabama",
-  AR: "Arkansas",
-  AZ: "Arizona",
-  CA: "California",
-  CO: "Colorado",
-  CT: "Connecticut",
-  DC: "District of Columbia",
-  DE: "Delaware",
-  FL: "Florida",
-  GA: "Georgia",
-  HI: "Hawaii",
-  IA: "Iowa",
-  ID: "Idaho",
-  IL: "Illinois",
-  IN: "Indiana",
-  KS: "Kansas",
-  KY: "Kentucky",
-  LA: "Louisiana",
-  MA: "Massachusetts",
-  MD: "Maryland",
-  ME: "Maine",
-  MI: "Michigan",
-  MN: "Minnesota",
-  MO: "Missouri",
-  MS: "Mississippi",
-  NC: "North Carolina",
-  NE: "Nebraska",
-  NH: "New Hampshire",
-  NJ: "New Jersey",
-  NM: "New Mexico",
-  NV: "Nevada",
-  NY: "New York",
-  OH: "Ohio",
-  OK: "Oklahoma",
-  OR: "Oregon",
-  PA: "Pennsylvania",
-  RI: "Rhode Island",
-  SC: "South Carolina",
-  TN: "Tennessee",
-  TX: "Texas",
-  UT: "Utah",
-  VA: "Virginia",
-  WA: "Washington",
-  WI: "Wisconsin",
-};
+const US_RANK_EXPLAIN =
+  "Unofficial personal composite among seeded teams in this age tab. Mixes GotSport points, MLS NEXT results / SOS / conference place (only after games are played), and ECNL / TDS overlays when we have them. As-of the GotSport date in the header. Not an official ranking.";
 
-const BAND_FILTERS: { key: LeagueBandFilter; label: string }[] = [
-  { key: "all", label: "All platforms" },
-  { key: "mls-next", label: "MLS NEXT (birth year)" },
-  { key: "ecnl", label: "ECNL / school year" },
-  { key: "other", label: "Other / GotSport" },
-];
+const STATE_RANK_EXPLAIN =
+  "Same unofficial composite, ranked only among seeded teams in that state — not every club that exists there. California is one state in this list, not a separate universe. As-of the GotSport date in the header.";
 
 function hubHomeHref(): string {
   const base = import.meta.env.BASE_URL || "/";
@@ -144,25 +98,6 @@ function leagueBadgeVariant(
   return "secondary";
 }
 
-function matchesBand(t: RankedTeam, band: LeagueBandFilter): boolean {
-  if (band === "all") return true;
-  if (band === "mls-next") {
-    return (
-      t.league === "mls-next" ||
-      t.league === "mls-next-hg" ||
-      Boolean(t.ageAlignment?.startsWith("mls-next"))
-    );
-  }
-  if (band === "ecnl") {
-    return (
-      t.league === "ecnl" ||
-      t.league === "ecnl-rl" ||
-      Boolean(t.ageAlignment?.startsWith("ecnl") || t.ageAlignment?.startsWith("school-year"))
-    );
-  }
-  return t.league === "other";
-}
-
 function compareRows(
   a: RankedTeam,
   b: RankedTeam,
@@ -171,36 +106,36 @@ function compareRows(
   sosMap: Map<string, SosSummary>,
 ) {
   const mul = dir === "asc" ? 1 : -1;
+  const us = () => usableRank(a.usRank) - usableRank(b.usRank);
   switch (key) {
     case "name":
-      return mul * a.name.localeCompare(b.name);
+      return mul * a.name.localeCompare(b.name) || us();
     case "state":
-      return mul * a.state.localeCompare(b.state) || a.usRank - b.usRank;
+      return mul * a.state.localeCompare(b.state) || us();
     case "league":
-      return (
-        mul * a.leagueLabel.localeCompare(b.leagueLabel) || a.usRank - b.usRank
-      );
+      return mul * a.leagueLabel.localeCompare(b.leagueLabel) || us();
     case "score":
-      return mul * (a.score - b.score) || a.usRank - b.usRank;
+      return mul * (a.score - b.score) || us();
     case "stateRank":
-      return mul * (a.stateRank - b.stateRank) || a.usRank - b.usRank;
+      return (
+        mul * (usableRank(a.stateRank) - usableRank(b.stateRank)) || us()
+      );
     case "points":
       return (
-        mul * ((a.gotsport?.points ?? -1) - (b.gotsport?.points ?? -1)) ||
-        a.usRank - b.usRank
+        mul * ((a.gotsport?.points ?? -1) - (b.gotsport?.points ?? -1)) || us()
       );
     case "record": {
       const pa = winPct(a.record) ?? -1;
       const pb = winPct(b.record) ?? -1;
-      return mul * (pa - pb) || a.usRank - b.usRank;
+      return mul * (pa - pb) || us();
     }
     case "sos": {
       const sa = sosMap.get(a.id)?.medianOpponentUsRank ?? 99_999;
       const sb = sosMap.get(b.id)?.medianOpponentUsRank ?? 99_999;
-      return mul * (sa - sb) || a.usRank - b.usRank;
+      return mul * (sa - sb) || us();
     }
     default:
-      return mul * (a.usRank - b.usRank);
+      return mul * us() || a.name.localeCompare(b.name);
   }
 }
 
@@ -242,7 +177,6 @@ export function SoccerRankingsPage() {
   const [leagueFilter, setLeagueFilter] = useState<"all" | LeaguePlatform>(
     "all",
   );
-  const [bandFilter, setBandFilter] = useState<LeagueBandFilter>("all");
   const [sortKey, setSortKey] = useState<SortKey>("usRank");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
   const [page, setPage] = useState(1);
@@ -284,10 +218,6 @@ export function SoccerRankingsPage() {
     };
   }, [teams]);
 
-  const states = useMemo(() => {
-    return [...new Set(teams.map((t) => t.state))].sort();
-  }, [teams]);
-
   const caInYear = useMemo(
     () => teams.filter((t) => t.state === "CA").length,
     [teams],
@@ -303,7 +233,6 @@ export function SoccerRankingsPage() {
     const rows = teams.filter((t) => {
       if (stateFilter !== "all" && t.state !== stateFilter) return false;
       if (leagueFilter !== "all" && t.league !== leagueFilter) return false;
-      if (!matchesBand(t, bandFilter)) return false;
       if (!teamMatchesQuery(t, q)) return false;
       return true;
     });
@@ -314,7 +243,6 @@ export function SoccerRankingsPage() {
     query,
     stateFilter,
     leagueFilter,
-    bandFilter,
     sortKey,
     sortDir,
     sosMap,
@@ -330,7 +258,7 @@ export function SoccerRankingsPage() {
   useEffect(() => {
     setPage(1);
     setSelectedId(null);
-  }, [year, query, stateFilter, leagueFilter, bandFilter]);
+  }, [year, query, stateFilter, leagueFilter]);
 
   useEffect(() => {
     setPage(1);
@@ -351,6 +279,12 @@ export function SoccerRankingsPage() {
       event.preventDefault();
       openTeam(id);
     }
+  }
+
+  function applyScope(next: string) {
+    setStateFilter(next);
+    setSortKey(next === "all" ? "usRank" : "stateRank");
+    setSortDir("asc");
   }
 
   function toggleSort(key: SortKey) {
@@ -448,8 +382,7 @@ export function SoccerRankingsPage() {
                   title={ageTabHint(y)}
                   onClick={() => {
                     setYear(y);
-                    setSortKey(stateFilter === "all" ? "usRank" : "stateRank");
-                    setSortDir("asc");
+                    applyScope(stateFilter);
                   }}
                   className={cn(
                     "h-9 rounded-md px-2.5 text-sm font-medium transition-colors sm:px-3",
@@ -530,101 +463,42 @@ export function SoccerRankingsPage() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
                 <Filter className="size-3.5" />
-                Scope
+                Filters
               </span>
-              <button
-                type="button"
-                onClick={() => {
-                  setStateFilter("all");
-                  setSortKey("usRank");
-                  setSortDir("asc");
-                }}
-                className={cn(
-                  "h-9 rounded-md border px-2.5 text-xs font-medium",
-                  stateFilter === "all"
-                    ? "border-primary/40 bg-primary/15 text-primary"
-                    : "border-border bg-card text-muted-foreground hover:text-foreground",
-                )}
-              >
-                US overall
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setStateFilter("CA");
-                  setSortKey("stateRank");
-                  setSortDir("asc");
-                }}
-                className={cn(
-                  "h-9 rounded-md border px-2.5 text-xs font-medium",
-                  stateFilter === "CA"
-                    ? "border-primary/40 bg-primary/15 text-primary"
-                    : "border-border bg-card text-muted-foreground hover:text-foreground",
-                )}
-              >
-                California
-              </button>
-              <label className="sr-only" htmlFor="state-filter">
-                State
+              <label className="sr-only" htmlFor="scope-filter">
+                Scope
               </label>
               <select
-                id="state-filter"
-                value={stateFilter === "CA" || stateFilter === "all" ? stateFilter : stateFilter}
-                onChange={(e) => {
-                  setStateFilter(e.target.value);
-                  if (e.target.value !== "all") {
-                    setSortKey("stateRank");
-                    setSortDir("asc");
-                  } else {
-                    setSortKey("usRank");
-                    setSortDir("asc");
-                  }
-                }}
+                id="scope-filter"
+                value={stateFilter}
+                onChange={(e) => applyScope(e.target.value)}
                 className="h-9 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
               >
                 <option value="all">US overall</option>
-                {states.map((s) => (
+                {STATE_CODES.map((s) => (
                   <option key={s} value={s}>
-                    {s}
-                    {STATE_NAMES[s] ? ` · ${STATE_NAMES[s]}` : ""}
+                    {STATE_NAMES[s]} ({s})
+                  </option>
+                ))}
+              </select>
+              <label className="sr-only" htmlFor="league-filter">
+                Leagues / platforms
+              </label>
+              <select
+                id="league-filter"
+                value={leagueFilter}
+                onChange={(e) =>
+                  setLeagueFilter(e.target.value as "all" | LeaguePlatform)
+                }
+                className="h-9 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
+              >
+                {LEAGUE_FILTERS.map((f) => (
+                  <option key={f.key} value={f.key}>
+                    {f.label}
                   </option>
                 ))}
               </select>
             </div>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {LEAGUE_FILTERS.map((f) => (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => setLeagueFilter(f.key)}
-                className={cn(
-                  "h-8 rounded-md border px-2.5 text-xs font-medium transition-colors",
-                  leagueFilter === f.key
-                    ? "border-primary/40 bg-primary/15 text-primary"
-                    : "border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground",
-                )}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {BAND_FILTERS.map((f) => (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => setBandFilter(f.key)}
-                className={cn(
-                  "h-8 rounded-md border px-2.5 text-xs font-medium transition-colors",
-                  bandFilter === f.key
-                    ? "border-success/40 bg-success/15 text-success"
-                    : "border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground",
-                )}
-              >
-                {f.label}
-              </button>
-            ))}
           </div>
         </div>
 
@@ -717,10 +591,9 @@ export function SoccerRankingsPage() {
                 <table className="w-full table-fixed text-left text-sm">
                   <colgroup>
                     <col className="w-14" />
+                    <col className="w-16" />
                     <col />
-                    <col className="w-14" />
                     <col className="w-28" />
-                    <col className="w-20" />
                     <col className="w-24" />
                     <col className="w-20" />
                     <col className="w-16" />
@@ -728,12 +601,19 @@ export function SoccerRankingsPage() {
                   </colgroup>
                   <thead className="border-b border-border bg-bg-elevated/60 text-xs uppercase tracking-wider text-muted-foreground">
                     <tr>
-                      <SortTh
+                      <RankHeader
                         label="US"
                         active={sortKey === "usRank"}
                         dir={sortDir}
                         onClick={() => toggleSort("usRank")}
-                        align="right"
+                        explain={US_RANK_EXPLAIN}
+                      />
+                      <RankHeader
+                        label="State"
+                        active={sortKey === "stateRank"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("stateRank")}
+                        explain={STATE_RANK_EXPLAIN}
                       />
                       <SortTh
                         label="Team"
@@ -742,23 +622,10 @@ export function SoccerRankingsPage() {
                         onClick={() => toggleSort("name")}
                       />
                       <SortTh
-                        label="State"
-                        active={sortKey === "state"}
-                        dir={sortDir}
-                        onClick={() => toggleSort("state")}
-                      />
-                      <SortTh
                         label="League"
                         active={sortKey === "league"}
                         dir={sortDir}
                         onClick={() => toggleSort("league")}
-                      />
-                      <SortTh
-                        label="State #"
-                        active={sortKey === "stateRank"}
-                        dir={sortDir}
-                        onClick={() => toggleSort("stateRank")}
-                        align="right"
                       />
                       <SortTh
                         label="Record"
@@ -807,6 +674,12 @@ export function SoccerRankingsPage() {
                         <td className="px-2 py-2.5 text-right font-mono-num text-base font-semibold text-primary">
                           {t.usRank}
                         </td>
+                        <td className="px-2 py-2.5 text-right font-mono-num whitespace-nowrap">
+                          {t.stateRank}
+                          <span className="ml-1 text-xs text-muted-foreground">
+                            {t.state}
+                          </span>
+                        </td>
                         <td className="min-w-0 px-3 py-2.5">
                           <div className="flex min-w-0 items-start justify-between gap-2">
                             <p
@@ -849,17 +722,10 @@ export function SoccerRankingsPage() {
                             ))}
                           </div>
                         </td>
-                        <td className="px-2 py-2.5 font-mono-num">{t.state}</td>
                         <td className="px-2 py-2.5">
                           <Badge variant={leagueBadgeVariant(t.league)}>
                             {t.leagueLabel}
                           </Badge>
-                        </td>
-                        <td className="px-2 py-2.5 text-right font-mono-num whitespace-nowrap">
-                          {t.stateRank}
-                          <span className="ml-1 text-xs text-muted-foreground">
-                            {t.state}
-                          </span>
                         </td>
                         <td className="px-2 py-2.5 text-right font-mono-num whitespace-nowrap text-muted-foreground">
                           {formatRecord(t.record ?? t.mlsNext?.record)}

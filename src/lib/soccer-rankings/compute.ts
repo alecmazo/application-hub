@@ -25,12 +25,12 @@ export const LEAGUE_LABEL: Record<LeaguePlatform, string> = {
 
 export const LEAGUE_FILTERS: { key: "all" | LeaguePlatform; label: string }[] =
   [
-    { key: "all", label: "All leagues" },
+    { key: "all", label: "All platforms" },
     { key: "mls-next", label: "MLS NEXT" },
-    { key: "mls-next-hg", label: "MLS NEXT HG" },
+    { key: "mls-next-hg", label: "MLS NEXT Homegrown" },
     { key: "ecnl", label: "ECNL" },
     { key: "ecnl-rl", label: "ECNL-RL" },
-    { key: "other", label: "GotSport / other" },
+    { key: "other", label: "Other / GotSport" },
   ];
 
 /** League-tier prior only — slight edge, not a 90-point floor. */
@@ -63,6 +63,12 @@ export function gotsportScore(
   return Math.min(100, (points / maxPoints) * 100);
 }
 
+function playedGames(team: TeamSeed): number {
+  const rec = team.mlsNext?.record ?? team.record;
+  if (!rec) return 0;
+  return rec.w + rec.d + rec.l;
+}
+
 export function mlsNextScore(team: TeamSeed): number | null {
   const m = team.mlsNext;
   if (!m) return null;
@@ -90,9 +96,18 @@ export function mlsNextScore(team: TeamSeed): number | null {
       cup = null;
   }
   const upnext = m.upnextRank ? listPositionScore(m.upnextRank, 3) : null;
+  // Conference table position is a local signal only, and only after games
+  // have been played. Unplayed #1s used to score 100 — same as a cup
+  // champion — which parked every conference leader at US #1–#25 and pushed
+  // real clubs (e.g. FC Bay Area U13) to #26 while looking like the "first" side.
+  const played = playedGames(team);
   const conference =
-    m.conferenceRank && m.conferenceSize
-      ? Math.max(8, 100 - ((m.conferenceRank - 1) / Math.max(1, m.conferenceSize - 1)) * 55)
+    played >= 1 && m.conferenceRank && m.conferenceSize
+      ? Math.max(
+          38,
+          68 -
+            ((m.conferenceRank - 1) / Math.max(1, m.conferenceSize - 1)) * 30,
+        )
       : null;
   const parts = [cup, upnext, conference].filter((v): v is number => v != null);
   if (!parts.length) return null;
@@ -116,7 +131,11 @@ export function compositeScore(
   if (tds != null) parts.push({ w: 0.42, v: tds });
   if (mls != null) parts.push({ w: 0.28, v: mls });
   if (gs != null) parts.push({ w: 0.2, v: gs });
-  parts.push({ w: 0.1, v: leagueTier });
+  const hasOnField = parts.length > 0;
+  // League-tier prior only — do not let an unplayed Homegrown stub outrank
+  // clubs with published GotSport points (that is how FC Bay Area sat at #26
+  // while empty conference leaders occupied #1–#25).
+  parts.push({ w: hasOnField ? 0.1 : 0.04, v: hasOnField ? leagueTier : leagueTier * 0.35 });
 
   const totalW = parts.reduce((sum, p) => sum + p.w, 0);
   const score = parts.reduce((sum, p) => sum + p.v * (p.w / totalW), 0);
@@ -133,6 +152,11 @@ function compareTeams(a: RankedTeam, b: RankedTeam): number {
   const tb = b.tdsRank ?? 999;
   if (ta !== tb) return ta - tb;
   return a.name.localeCompare(b.name);
+}
+
+/** Missing / 0 ranks sort last so US overall cannot float a stub to row 1. */
+export function usableRank(n: number | undefined | null): number {
+  return typeof n === "number" && Number.isFinite(n) && n > 0 ? n : 999_999;
 }
 
 export function rankTeams(
@@ -165,6 +189,7 @@ export function rankTeams(
   scored.forEach((team, i) => {
     team.usRank = i + 1;
   });
+  // Keep the returned array in usRank ascending order (US #1 first).
 
   const byState = new Map<string, RankedTeam[]>();
   for (const team of scored) {

@@ -54,18 +54,22 @@ export function loadCacheFile(): Promise<MatchesFile> {
   return filePromise;
 }
 
-const memory = new Map<number, CompactMatch[]>();
+const memory = new Map<string, CompactMatch[]>();
 
 /** Drop in-memory live match lists so the next load hits GotSport again. */
-export function clearLiveMatchCache(gotsportId?: number): void {
-  if (gotsportId == null) {
+export function clearLiveMatchCache(teamKey?: string): void {
+  if (teamKey == null) {
     memory.clear();
     return;
   }
-  memory.delete(gotsportId);
+  memory.delete(teamKey);
 }
 
-export function gotsportNumericId(teamId: string | undefined): number | null {
+export function gotsportNumericId(
+  teamId: string | undefined,
+  fallback?: number | null,
+): number | null {
+  if (fallback != null && Number.isFinite(fallback)) return fallback;
   if (!teamId) return null;
   const m = /^gs-(\d+)$/.exec(teamId);
   return m ? Number(m[1]) : null;
@@ -107,10 +111,29 @@ export function opponentOf(
   return { id: match.homeId, name: match.homeName };
 }
 
+const GOTSPORT_ORIGIN = "https://system.gotsport.com";
+
+function corsProxied(url: string): string[] {
+  return [
+    `https://corsproxy.io/?${encodeURIComponent(url)}`,
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+  ];
+}
+
 function liveUrls(gotsportId: number): string[] {
+  const matches = `${GOTSPORT_ORIGIN}/api/v1/teams/${gotsportId}/matches`;
+  const past = `${matches}?past=true&page=1&per_page=50`;
+  const ranking = `${GOTSPORT_ORIGIN}/api/v1/team_ranking_data?team_id=${gotsportId}`;
   return [
     `/gotsport-api/api/v1/teams/${gotsportId}/matches`,
-    matchesApiHref(gotsportId),
+    `/gotsport-api/api/v1/teams/${gotsportId}/matches?past=true&page=1&per_page=50`,
+    `/gotsport-api/api/v1/team_ranking_data?team_id=${gotsportId}`,
+    matches,
+    past,
+    ranking,
+    ...corsProxied(matches),
+    ...corsProxied(past),
+    ...corsProxied(ranking),
   ];
 }
 
@@ -149,34 +172,51 @@ function compactFromLive(row: Record<string, unknown>): CompactMatch | null {
   };
 }
 
-async function fetchLive(gotsportId: number): Promise<CompactMatch[] | null> {
+function pickMatches(rows: CompactMatch[]): CompactMatch[] {
+  const recent = rows.filter((m) => (m.date ?? "") >= MATCH_CACHE_META.since);
+  const picked =
+    recent.length >= 8
+      ? recent
+      : [...rows].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).slice(0, 40);
+  picked.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  return picked;
+}
+
+function rowsFromPayload(data: unknown): CompactMatch[] {
+  const list: unknown[] = Array.isArray(data)
+    ? data
+    : data && typeof data === "object"
+      ? ((data as { matches?: unknown[] }).matches ?? [])
+      : [];
+  return list
+    .map((row) =>
+      row && typeof row === "object"
+        ? compactFromLive(row as Record<string, unknown>)
+        : null,
+    )
+    .filter((m): m is CompactMatch => m != null);
+}
+
+async function fetchLive(
+  gotsportId: number,
+): Promise<{ matches: CompactMatch[] | null; tried: string[]; hit?: string }> {
+  const tried: string[] = [];
   for (const url of liveUrls(gotsportId)) {
+    tried.push(url);
     try {
       const resp = await fetch(url, {
         headers: { Accept: "application/json" },
       });
       if (!resp.ok) continue;
       const data: unknown = await resp.json();
-      if (!Array.isArray(data)) continue;
-      const rows = data
-        .map((row) =>
-          row && typeof row === "object"
-            ? compactFromLive(row as Record<string, unknown>)
-            : null,
-        )
-        .filter((m): m is CompactMatch => m != null);
-      const recent = rows.filter((m) => (m.date ?? "") >= MATCH_CACHE_META.since);
-      const picked =
-        recent.length >= 8
-          ? recent
-          : rows.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).slice(0, 40);
-      picked.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
-      return picked;
+      const rows = rowsFromPayload(data);
+      if (!rows.length) continue;
+      return { matches: pickMatches(rows), tried, hit: url };
     } catch {
       /* try next URL — CORS or missing proxy */
     }
   }
-  return null;
+  return { matches: null, tried };
 }
 
 type MlsNextPublicFile = {
@@ -184,6 +224,7 @@ type MlsNextPublicFile = {
     id?: number;
     date?: string | null;
     ageBand?: string;
+    division?: string;
     homeOrgId?: number | null;
     homeName?: string;
     awayOrgId?: number | null;
@@ -196,34 +237,63 @@ type MlsNextPublicFile = {
     orgId: number;
     name: string;
     ageBand: string;
+    division?: string;
     conferenceRank?: number | null;
   }>;
 };
 
 const MLS_NEXT_FILE = mlsNextPublic as MlsNextPublicFile;
 
-function overlayOrg(teamId: string): { orgId: number; ageBand: string } | null {
-  const m = /^mlsnext-(\d+)-(U1[2-6])$/.exec(teamId);
+export type MlsNextOverlay = {
+  orgId: number;
+  ageBand: string;
+  division?: "academy" | "homegrown";
+};
+
+export function mlsOverlayFromTeam(team: {
+  id: string;
+  ageBand?: string;
+  mlsNext?: { orgId?: number; division?: "academy" | "homegrown" };
+}): MlsNextOverlay | null {
+  const fromId = overlayOrg(team.id);
+  if (fromId) return fromId;
+  if (team.mlsNext?.orgId != null) {
+    return {
+      orgId: team.mlsNext.orgId,
+      ageBand: team.ageBand ?? "U13",
+      division: team.mlsNext.division,
+    };
+  }
+  return null;
+}
+
+export function overlayOrg(teamId: string): MlsNextOverlay | null {
+  const m = /^mlsnext-(\d+)-(U1[2-6])(?:-(hg|ad))?$/.exec(teamId);
   if (!m) return null;
-  return { orgId: Number(m[1]), ageBand: m[2] };
+  const division =
+    m[3] === "hg" ? "homegrown" : m[3] === "ad" ? "academy" : undefined;
+  return { orgId: Number(m[1]), ageBand: m[2], division };
 }
 
 export function mlsNextMatchesFor(
   orgId: number,
   ageBand?: string,
+  division?: string,
 ): CompactMatch[] {
   return (MLS_NEXT_FILE.matches ?? [])
     .filter(
       (m) =>
         (m.homeOrgId === orgId || m.awayOrgId === orgId) &&
-        (!ageBand || m.ageBand === ageBand),
+        (!ageBand || m.ageBand === ageBand) &&
+        (!division || !m.ageBand || (m as { division?: string }).division == null ||
+          (m as { division?: string }).division === division),
     )
     .map((m) => ({
       id: Number(m.id) || 0,
       date: m.date ?? null,
       event: m.event ?? "MLS NEXT League 26/27",
       eventId: null,
-      competition: "MLS NEXT League 26/27",
+      competition: m.event ?? "MLS NEXT League 26/27",
       kind: "league" as const,
       homeId: m.homeOrgId ?? null,
       homeName: m.homeName ?? "Unknown",
@@ -235,80 +305,270 @@ export function mlsNextMatchesFor(
     }));
 }
 
-export async function loadTeamMatches(teamId: string): Promise<MatchLoadResult> {
-  const overlay = overlayOrg(teamId);
-  if (overlay) {
-    const matches = mlsNextMatchesFor(overlay.orgId, overlay.ageBand);
+function recordFromMatches(
+  focusId: number,
+  matches: CompactMatch[],
+): { w: number; d: number; l: number } | undefined {
+  let w = 0;
+  let d = 0;
+  let l = 0;
+  for (const m of matches) {
+    const r = resultFor(focusId, m);
+    if (r === "W") w += 1;
+    else if (r === "D") d += 1;
+    else if (r === "L") l += 1;
+  }
+  if (w + d + l === 0) return undefined;
+  return { w, d, l };
+}
+
+const MLS_NEXT_SCHEDULE_URLS = [
+  {
+    division: "homegrown" as const,
+    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json",
+  },
+  {
+    division: "academy" as const,
+    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json",
+  },
+];
+
+function emptyResult(
+  partial: Partial<MatchLoadResult> & { endpointsTried: string[] },
+): MatchLoadResult {
+  return {
+    matches: [],
+    source: "none",
+    partial: true,
+    since: MATCH_CACHE_META.since,
+    gotsportTeamId: null,
+    ...partial,
+  };
+}
+
+export async function loadTeamMatches(
+  teamId: string,
+  opts?: { live?: boolean; gotsportTeamId?: number | null; mlsNext?: MlsNextOverlay | null },
+): Promise<MatchLoadResult> {
+  const overlay = opts?.mlsNext ?? overlayOrg(teamId);
+  const gotsportId = gotsportNumericId(teamId, opts?.gotsportTeamId ?? null);
+  const cacheKey = `${teamId}:${gotsportId ?? ""}:${overlay?.orgId ?? ""}:${overlay?.division ?? ""}`;
+  const forceLive = Boolean(opts?.live);
+
+  if (!forceLive && memory.has(cacheKey)) {
+    const matches = memory.get(cacheKey) ?? [];
     return {
       matches,
-      source: matches.length ? "cache" : "none",
-      partial: true,
-      since: MATCH_CACHE_META.since,
-      gotsportTeamId: overlay.orgId,
-      error: matches.length
-        ? undefined
-        : "No completed MLS NEXT League 26/27 games published yet.",
-    };
-  }
-  const gotsportId = gotsportNumericId(teamId);
-  if (gotsportId == null) {
-    return {
-      matches: [],
-      source: "none",
-      partial: true,
-      since: MATCH_CACHE_META.since,
-      gotsportTeamId: null,
-      error: "No GotSport team id — overlay stub only.",
-    };
-  }
-  if (memory.has(gotsportId)) {
-    return {
-      matches: memory.get(gotsportId) ?? [],
       source: "live",
       partial: false,
       since: MATCH_CACHE_META.since,
       gotsportTeamId: gotsportId,
+      mlsNextOrgId: overlay?.orgId ?? null,
+      record: gotsportId != null ? recordFromMatches(gotsportId, matches) : undefined,
+      endpointsTried: [],
     };
   }
+
+  const endpointsTried: string[] = [];
+
+  if (overlay) {
+    const cachedMls = mlsNextMatchesFor(
+      overlay.orgId,
+      overlay.ageBand,
+      overlay.division,
+    );
+    if (forceLive) {
+      const liveMls = await fetchLiveMlsNext(
+        overlay.orgId,
+        overlay.ageBand,
+        overlay.division,
+        endpointsTried,
+      );
+      if (liveMls && liveMls.length) {
+        memory.set(cacheKey, liveMls);
+        return {
+          matches: liveMls,
+          source: "live",
+          partial: false,
+          since: MATCH_CACHE_META.since,
+          gotsportTeamId: gotsportId,
+          mlsNextOrgId: overlay.orgId,
+          record: recordFromMatches(overlay.orgId, liveMls),
+          endpointsTried,
+        };
+      }
+    }
+    if (cachedMls.length && !forceLive) {
+      return {
+        matches: cachedMls,
+        source: "cache",
+        partial: true,
+        since: MATCH_CACHE_META.since,
+        gotsportTeamId: gotsportId,
+        mlsNextOrgId: overlay.orgId,
+        record: recordFromMatches(overlay.orgId, cachedMls),
+        endpointsTried,
+      };
+    }
+    if (cachedMls.length && forceLive) {
+      return {
+        matches: cachedMls,
+        source: "cache",
+        partial: true,
+        since: MATCH_CACHE_META.since,
+        gotsportTeamId: gotsportId,
+        mlsNextOrgId: overlay.orgId,
+        record: recordFromMatches(overlay.orgId, cachedMls),
+        endpointsTried,
+        error: `Live MLS NEXT pull returned no new games. Showing shipped cache. Tried: ${endpointsTried.join(" · ") || "shipped mls-next-public.json"}`,
+      };
+    }
+    if (gotsportId == null) {
+      const canon = MLS_NEXT_SCHEDULE_URLS.filter(
+        (f) => !overlay.division || f.division === overlay.division,
+      ).map((f) => f.url);
+      const tried = endpointsTried.length ? endpointsTried : canon;
+      return emptyResult({
+        gotsportTeamId: null,
+        mlsNextOrgId: overlay.orgId,
+        endpointsTried: tried,
+        error: `No completed MLS NEXT ${overlay.division ?? ""} ${overlay.ageBand} games in the public League Viewer feed for org ${overlay.orgId}. Tried: ${tried.join(" · ")}`,
+      });
+    }
+  }
+
+  if (gotsportId == null) {
+    return emptyResult({
+      endpointsTried: [],
+      error:
+        "No GotSport team id on this row — cannot query system.gotsport.com/api/v1/teams/{id}/matches.",
+    });
+  }
+
+  if (forceLive || !overlay) {
+    const live = await fetchLive(gotsportId);
+    endpointsTried.push(...live.tried);
+    if (live.matches && live.matches.length) {
+      memory.set(cacheKey, live.matches);
+      return {
+        matches: live.matches,
+        source: "live",
+        partial: false,
+        since: MATCH_CACHE_META.since,
+        gotsportTeamId: gotsportId,
+        mlsNextOrgId: overlay?.orgId ?? null,
+        record: recordFromMatches(gotsportId, live.matches),
+        endpointsTried,
+      };
+    }
+  }
+
   const file = await loadCacheFile();
   const cachedRows = file.teams[String(gotsportId)] ?? [];
-  const live = await fetchLive(gotsportId);
-  if (live && live.length) {
-    memory.set(gotsportId, live);
-    return {
-      matches: live,
-      source: "live",
-      partial: false,
-      since: MATCH_CACHE_META.since,
-      gotsportTeamId: gotsportId,
-    };
-  }
-  if (cachedRows.length) {
+  if (cachedRows.length && !forceLive) {
     return {
       matches: cachedRows,
       source: "cache",
       partial: true,
       since: MATCH_CACHE_META.since,
       gotsportTeamId: gotsportId,
+      mlsNextOrgId: overlay?.orgId ?? null,
+      record: recordFromMatches(gotsportId, cachedRows),
+      endpointsTried,
     };
   }
-  return {
-    matches: [],
-    source: "none",
-    partial: true,
-    since: MATCH_CACHE_META.since,
+
+  const triedLabel = endpointsTried.join(" · ") || matchesApiHref(gotsportId);
+  if (cachedRows.length && forceLive) {
+    return {
+      matches: cachedRows,
+      source: "cache",
+      partial: true,
+      since: MATCH_CACHE_META.since,
+      gotsportTeamId: gotsportId,
+      mlsNextOrgId: overlay?.orgId ?? null,
+      record: recordFromMatches(gotsportId, cachedRows),
+      endpointsTried,
+      error: `GotSport live pull was empty or blocked. Showing shipped cache. Tried: ${triedLabel}`,
+    };
+  }
+
+  return emptyResult({
     gotsportTeamId: gotsportId,
-    error:
-      "Full match list is not in the shipped cache, and the live GotSport API is blocked in this browser (no CORS on GitHub Pages). Open GotSport or refresh via the ingest script.",
-  };
+    mlsNextOrgId: overlay?.orgId ?? null,
+    endpointsTried,
+    error: `GotSport returned no matches after a live pull. Endpoints tried: ${triedLabel}`,
+  });
 }
 
 export async function refreshTeamMatches(
   teamId: string,
+  opts?: { gotsportTeamId?: number | null; mlsNext?: MlsNextOverlay | null },
 ): Promise<MatchLoadResult> {
-  const id = gotsportNumericId(teamId);
-  if (id != null) memory.delete(id);
-  return loadTeamMatches(teamId);
+  clearLiveMatchCache();
+  return loadTeamMatches(teamId, { live: true, ...opts });
+}
+
+async function fetchLiveMlsNext(
+  orgId: number,
+  ageBand: string,
+  division: string | undefined,
+  tried: string[],
+): Promise<CompactMatch[] | null> {
+  const feeds = MLS_NEXT_SCHEDULE_URLS.filter(
+    (f) => !division || f.division === division,
+  );
+  const urls: string[] = [];
+  for (const f of feeds) {
+    urls.push(`/mls-next-api/data/schedule/${f.url.split("/").pop()}`, f.url, ...corsProxied(f.url));
+  }
+  for (const url of urls) {
+    tried.push(url);
+    try {
+      const resp = await fetch(url, { headers: { Accept: "application/json" } });
+      if (!resp.ok) continue;
+      const data: unknown = await resp.json();
+      const events =
+        data && typeof data === "object" && Array.isArray((data as { events?: unknown[] }).events)
+          ? ((data as { events: Record<string, unknown>[] }).events)
+          : [];
+      const rows: CompactMatch[] = [];
+      for (const ev of events) {
+        const ho = (ev.home_organisation as { id?: number; name?: string }) || {};
+        const ao = (ev.away_organisation as { id?: number; name?: string }) || {};
+        if (ho.id !== orgId && ao.id !== orgId) continue;
+        const age = String(ev.home_squad_name ?? ev.away_squad_name ?? "");
+        if (!age.toUpperCase().includes(ageBand)) continue;
+        const hs = ev.home_score;
+        const aws = ev.away_score;
+        if (!ev.completed || typeof hs !== "number" || typeof aws !== "number") {
+          continue;
+        }
+        rows.push({
+          id: Number(ev.id) || 0,
+          date: typeof ev.start_time === "string" ? ev.start_time.slice(0, 10) : null,
+          event: "MLS NEXT League 26/27",
+          eventId: null,
+          competition: "MLS NEXT League 26/27",
+          kind: "league",
+          homeId: ho.id ?? null,
+          homeName: String(ho.name ?? "Unknown"),
+          awayId: ao.id ?? null,
+          awayName: String(ao.name ?? "Unknown"),
+          homeScore: hs,
+          awayScore: aws,
+          winnerId: null,
+        });
+      }
+      if (rows.length) {
+        rows.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+        return rows;
+      }
+    } catch {
+      /* next URL */
+    }
+  }
+  return null;
 }
 
 export function byGotsportId(teams: RankedTeam[]): Map<number, RankedTeam> {
@@ -347,7 +607,11 @@ export async function sosByTeamId(
   for (const t of yearTeams) {
     const overlay = overlayOrg(t.id);
     if (overlay) {
-      const rows = mlsNextMatchesFor(overlay.orgId, overlay.ageBand);
+      const rows = mlsNextMatchesFor(
+        overlay.orgId,
+        overlay.ageBand,
+        overlay.division,
+      );
       if (rows.length) {
         const ranks = rows
           .map((m) => {
