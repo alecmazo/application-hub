@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import {
   AlertCircle,
   ArrowDown,
@@ -35,11 +35,10 @@ import {
 } from "@/lib/soccer-rankings/compute";
 import { alignmentLabel, COVERAGE, loadRankedYear } from "@/lib/soccer-rankings/load";
 import {
+  HOME_CONTINUITY_COPY,
   HOME_LABEL,
-  HOME_LAST_YEAR_LABEL,
-  HOME_TEAM_ID,
   homeSearchAliases,
-  resolveLinkedLastYearTeam,
+  isHomeTeam,
 } from "@/lib/soccer-rankings/home";
 import {
   MATCH_CACHE_META,
@@ -54,7 +53,6 @@ import type {
   SosSummary,
 } from "@/lib/soccer-rankings/types";
 import { cn } from "@/lib/utils";
-import { HomeTeamCard } from "./home-card";
 import { TeamDetail } from "./team-detail";
 
 type SortKey =
@@ -242,7 +240,7 @@ export function SoccerRankingsPage() {
   const [sortDir, setSortDir] = useState<SortDir>("asc");
   const [page, setPage] = useState(1);
   const [showMethod, setShowMethod] = useState(false);
-  const [selectedId, setSelectedId] = useState<string | null>(HOME_TEAM_ID);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [sosMap, setSosMap] = useState<Map<string, SosSummary>>(
     () => new Map(),
   );
@@ -284,17 +282,9 @@ export function SoccerRankingsPage() {
     [teams],
   );
 
-  const homeTeam = useMemo(
-    () => teams.find((t) => t.id === HOME_TEAM_ID),
-    [teams],
-  );
-  const homeRelated = useMemo(
-    () => resolveLinkedLastYearTeam(teams),
-    [teams],
-  );
   const selected = useMemo(
-    () => teams.find((t) => t.id === selectedId) ?? homeTeam,
-    [teams, selectedId, homeTeam],
+    () => (selectedId ? teams.find((t) => t.id === selectedId) : undefined),
+    [teams, selectedId],
   );
 
   const filtered = useMemo(() => {
@@ -328,7 +318,29 @@ export function SoccerRankingsPage() {
 
   useEffect(() => {
     setPage(1);
-  }, [year, query, stateFilter, leagueFilter, bandFilter, sortKey, sortDir]);
+    setSelectedId(null);
+  }, [year, query, stateFilter, leagueFilter, bandFilter]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [sortKey, sortDir]);
+
+  function openTeam(id: string) {
+    setSelectedId(id);
+    requestAnimationFrame(() => {
+      document.getElementById("team-page")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+
+  function onRowKeyDown(event: KeyboardEvent<HTMLElement>, id: string) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openTeam(id);
+    }
+  }
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) {
@@ -339,42 +351,6 @@ export function SoccerRankingsPage() {
     setSortDir(
       key === "score" || key === "points" || key === "record" ? "desc" : "asc",
     );
-  }
-
-  function focusHome() {
-    setYear(2013);
-    setQuery("Marin FC ECNL");
-    setStateFilter("all");
-    setLeagueFilter("all");
-    setBandFilter("all");
-    setSortKey("usRank");
-    setSortDir("asc");
-    setSelectedId(HOME_TEAM_ID);
-    requestAnimationFrame(() => {
-      document.getElementById("team-detail")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
-  }
-
-  function focusLastYear() {
-    // Last year is the same GotSport listing (B14Blue → ECNL 2013/14). Do not
-    // jump to Marin FC Blue 2014/15 or any 2015-named side.
-    setYear(2013);
-    setQuery("Marin FC ECNL");
-    setStateFilter("all");
-    setLeagueFilter("all");
-    setBandFilter("all");
-    setSortKey("usRank");
-    setSortDir("asc");
-    setSelectedId(HOME_TEAM_ID);
-    requestAnimationFrame(() => {
-      document.getElementById("team-detail")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    });
   }
 
   const caPct =
@@ -433,8 +409,7 @@ export function SoccerRankingsPage() {
                   aria-selected={year === y}
                   onClick={() => {
                     setYear(y);
-                    setStateFilter("all");
-                    setSortKey("usRank");
+                    setSortKey(stateFilter === "all" ? "usRank" : "stateRank");
                     setSortDir("asc");
                   }}
                   className={cn(
@@ -488,13 +463,6 @@ export function SoccerRankingsPage() {
           </p>
         </div>
 
-        <HomeTeamCard
-          team={homeTeam}
-          related={homeRelated}
-          onOpen={() => setSelectedId(HOME_TEAM_ID)}
-          onOpenRelated={homeRelated ? () => setSelectedId(homeRelated.id) : undefined}
-        />
-
         <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat
             label="Ranked this year"
@@ -532,44 +500,67 @@ export function SoccerRankingsPage() {
                   aria-label="Search teams"
                 />
               </div>
-              <div className="mt-2 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  onClick={focusHome}
-                  className="h-7 rounded-md border border-success/40 bg-success/10 px-2 text-[11px] font-medium text-success hover:bg-success/20"
-                >
-                  Home · {HOME_LABEL}
-                </button>
-                <button
-                  type="button"
-                  onClick={focusLastYear}
-                  className="h-7 rounded-md border border-border bg-card px-2 text-[11px] font-medium text-muted-foreground hover:text-foreground"
-                >
-                  Last year · {HOME_LAST_YEAR_LABEL}
-                </button>
-              </div>
+              <p className="mt-2 text-xs text-muted-foreground">
+                Matching teams appear in the list. Click or press Enter on a row
+                to open that team’s record and schedule.
+              </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
                 <Filter className="size-3.5" />
-                Filters
+                Scope
               </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setStateFilter("all");
+                  setSortKey("usRank");
+                  setSortDir("asc");
+                }}
+                className={cn(
+                  "h-9 rounded-md border px-2.5 text-xs font-medium",
+                  stateFilter === "all"
+                    ? "border-primary/40 bg-primary/15 text-primary"
+                    : "border-border bg-card text-muted-foreground hover:text-foreground",
+                )}
+              >
+                US overall
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStateFilter("CA");
+                  setSortKey("stateRank");
+                  setSortDir("asc");
+                }}
+                className={cn(
+                  "h-9 rounded-md border px-2.5 text-xs font-medium",
+                  stateFilter === "CA"
+                    ? "border-primary/40 bg-primary/15 text-primary"
+                    : "border-border bg-card text-muted-foreground hover:text-foreground",
+                )}
+              >
+                California
+              </button>
               <label className="sr-only" htmlFor="state-filter">
                 State
               </label>
               <select
                 id="state-filter"
-                value={stateFilter}
+                value={stateFilter === "CA" || stateFilter === "all" ? stateFilter : stateFilter}
                 onChange={(e) => {
                   setStateFilter(e.target.value);
                   if (e.target.value !== "all") {
                     setSortKey("stateRank");
                     setSortDir("asc");
+                  } else {
+                    setSortKey("usRank");
+                    setSortDir("asc");
                   }
                 }}
                 className="h-9 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
               >
-                <option value="all">All states</option>
+                <option value="all">US overall</option>
                 {states.map((s) => (
                   <option key={s} value={s}>
                     {s}
@@ -626,7 +617,7 @@ export function SoccerRankingsPage() {
           </p>
         )}
 
-        <div className="mt-5 flex-1 lg:grid lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-start lg:gap-5">
+        <div className="relative z-10 mt-5 flex-1">
           {status === "loading" && (
             <Card className="p-5">
               <div className="space-y-3">
@@ -650,7 +641,28 @@ export function SoccerRankingsPage() {
             </Card>
           )}
 
-          {status === "ready" && filtered.length === 0 && (
+          {status === "ready" && selected && (
+            <div id="team-page" className="scroll-mt-4 space-y-3">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => setSelectedId(null)}
+              >
+                <ChevronLeft className="size-3.5" />
+                Back to rankings
+              </Button>
+              <Card id="team-detail" className="p-4">
+                <TeamDetail
+                  team={selected}
+                  yearTeams={teams}
+                  onOpenTeam={openTeam}
+                />
+              </Card>
+            </div>
+          )}
+
+          {status === "ready" && !selected && filtered.length === 0 && (
             <Card className="flex flex-col items-center justify-center gap-2 p-12 text-center">
               <Shield className="size-6 text-muted-foreground" />
               <p className="font-medium">No teams match</p>
@@ -660,21 +672,8 @@ export function SoccerRankingsPage() {
             </Card>
           )}
 
-          {status === "ready" && selected && (
-            <Card
-              id="team-detail"
-              className="mb-5 scroll-mt-4 p-4 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:sticky lg:top-4"
-            >
-              <TeamDetail
-                team={selected}
-                yearTeams={teams}
-                onOpenTeam={(id) => setSelectedId(id)}
-              />
-            </Card>
-          )}
-
-          {status === "ready" && filtered.length > 0 && (
-            <div className="lg:col-start-1 lg:row-start-1">
+          {status === "ready" && !selected && filtered.length > 0 && (
+            <div id="rankings-results">
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                 <p>
                   Rows {(pageSafe - 1) * PAGE_SIZE + 1}–
@@ -752,12 +751,15 @@ export function SoccerRankingsPage() {
                     {pageRows.map((t) => (
                       <tr
                         key={`${t.id}-${t.birthYear}`}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Open ${t.name}`}
                         className={cn(
-                          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30",
-                          t.id === selectedId && "bg-primary/8",
-                          t.id === HOME_TEAM_ID && "bg-success/8",
+                          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                          isHomeTeam(t.id) && "bg-success/5",
                         )}
-                        onClick={() => setSelectedId(t.id)}
+                        onClick={() => openTeam(t.id)}
+                        onKeyDown={(e) => onRowKeyDown(e, t.id)}
                       >
                         <td className="px-3 py-3 font-mono-num text-base font-semibold text-primary">
                           {t.usRank}
@@ -772,8 +774,8 @@ export function SoccerRankingsPage() {
                             {t.club !== t.name ? ` · ${t.club}` : ""}
                           </p>
                           <div className="mt-1.5 flex flex-wrap gap-1">
-                            {t.id === HOME_TEAM_ID && (
-                              <Badge variant="success">Home</Badge>
+                            {isHomeTeam(t.id) && (
+                              <Badge variant="success">{HOME_LABEL}</Badge>
                             )}
                             {alignmentLabel(t.ageAlignment) && (
                               <Badge variant="secondary">
@@ -824,14 +826,16 @@ export function SoccerRankingsPage() {
 
               <div className="grid gap-3 md:hidden">
                 {pageRows.map((t) => (
-                  <Card
+                  <button
                     key={`${t.id}-${t.birthYear}`}
+                    type="button"
+                    aria-label={`Open ${t.name}`}
                     className={cn(
-                      "cursor-pointer p-4",
-                      t.id === selectedId && "border-primary/40",
-                      t.id === HOME_TEAM_ID && "border-success/40",
+                      "w-full rounded-2xl border border-border bg-card p-4 text-left shadow-sm hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                      isHomeTeam(t.id) && "border-success/35 bg-success/5",
                     )}
-                    onClick={() => setSelectedId(t.id)}
+                    onClick={() => openTeam(t.id)}
+                    onKeyDown={(e) => onRowKeyDown(e, t.id)}
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
@@ -867,8 +871,8 @@ export function SoccerRankingsPage() {
                       <MetaChip label="Score" value={formatScore(t.score)} />
                     </div>
                     <div className="mt-3 flex flex-wrap gap-1">
-                      {t.id === HOME_TEAM_ID && (
-                        <Badge variant="success">Home</Badge>
+                      {isHomeTeam(t.id) && (
+                        <Badge variant="success">{HOME_LABEL}</Badge>
                       )}
                       {alignmentLabel(t.ageAlignment) && (
                         <Badge variant="secondary">
@@ -881,7 +885,7 @@ export function SoccerRankingsPage() {
                         </Badge>
                       ))}
                     </div>
-                  </Card>
+                  </button>
                 ))}
               </div>
 
@@ -914,12 +918,14 @@ export function SoccerRankingsPage() {
           {showMethod && (
             <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                <strong className="text-foreground">Home:</strong>{" "}
-                This year: Marin FC 2013/14 ECNL · Last year: Marin FC Blue
-                2014. Same GotSport listing <code className="font-mono text-xs">56506</code>{" "}
-                (B14Blue → ECNL B2013/14). Marin FC Blue 2014/15 (
+                <strong className="text-foreground">Highlighted side:</strong>{" "}
+                {HOME_CONTINUITY_COPY}. Same GotSport listing{" "}
+                <code className="font-mono text-xs">56506</code> (B14Blue →
+                ECNL B2013/14). Marin FC Blue 2014/15 (
                 <code className="font-mono text-xs">252973</code>) is a
-                separate line — not Home and not last-year continuity.
+                separate line — not last-year continuity. The app does not lock
+                onto this side; it is only badged when it appears in the
+                current list.
               </p>
               <p>
                 <strong className="text-foreground">Age-band truth (2025–26):</strong>{" "}
