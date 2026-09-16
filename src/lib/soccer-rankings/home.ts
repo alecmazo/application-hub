@@ -33,7 +33,7 @@ export const HOME_EXCLUDED_TEAM_IDS = new Set([
 
 /** Birth-year / name tokens that cannot appear on the home continuity path. */
 const HOME_CONTINUITY_EXCLUDE_TOKEN =
-  /2015|b2015|\bb15\b|\/\s*15|2014\s*\/\s*15|14\s*\/\s*15|b2014\/15/i;
+  /2015|b2015|b15(?!\d)|\/\s*15|2014\s*\/\s*15|14\s*\/\s*15|b2014\/15/i;
 
 export function isHomeTeam(id: string): boolean {
   return id === HOME_TEAM_ID;
