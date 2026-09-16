@@ -244,7 +244,7 @@ export async function loadTeamMatches(teamId: string): Promise<MatchLoadResult> 
       source: matches.length ? "cache" : "none",
       partial: true,
       since: MATCH_CACHE_META.since,
-      gotsportTeamId: null,
+      gotsportTeamId: overlay.orgId,
       error: matches.length
         ? undefined
         : "No completed MLS NEXT League 26/27 games published yet.",
