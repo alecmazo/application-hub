@@ -6,6 +6,7 @@ import {
   ArrowUpDown,
   BookOpen,
   ChevronLeft,
+  ChevronRight,
   Filter,
   MapPin,
   Search,
@@ -27,48 +28,102 @@ import {
   COMPILED_AS_OF,
   LEAGUE_FILTERS,
   SEASON_LABEL,
+  formatPoints,
   formatRecord,
   formatScore,
+  winPct,
 } from "@/lib/soccer-rankings/compute";
-import { loadRankedYear } from "@/lib/soccer-rankings/load";
+import { alignmentLabel, COVERAGE, loadRankedYear } from "@/lib/soccer-rankings/load";
+import {
+  HOME_LABEL,
+  HOME_RELATED_ID,
+  HOME_RELATED_LABEL,
+  HOME_TEAM_ID,
+} from "@/lib/soccer-rankings/home";
+import {
+  MATCH_CACHE_META,
+  cachedMatchCount,
+  sosByTeamId,
+} from "@/lib/soccer-rankings/matches";
 import type {
   BirthYear,
+  LeagueBandFilter,
   LeaguePlatform,
   RankedTeam,
+  SosSummary,
 } from "@/lib/soccer-rankings/types";
 import { cn } from "@/lib/utils";
+import { HomeTeamCard } from "./home-card";
+import { TeamDetail } from "./team-detail";
 
-type SortKey = "usRank" | "name" | "state" | "league" | "stateRank" | "score";
+type SortKey =
+  | "usRank"
+  | "name"
+  | "state"
+  | "league"
+  | "stateRank"
+  | "score"
+  | "points"
+  | "record"
+  | "sos";
 type SortDir = "asc" | "desc";
 type Status = "loading" | "ready" | "error";
 
+const PAGE_SIZE = 50;
+
 const STATE_NAMES: Record<string, string> = {
   AL: "Alabama",
+  AR: "Arkansas",
   AZ: "Arizona",
   CA: "California",
   CO: "Colorado",
   CT: "Connecticut",
   DC: "District of Columbia",
+  DE: "Delaware",
   FL: "Florida",
   GA: "Georgia",
+  HI: "Hawaii",
+  IA: "Iowa",
+  ID: "Idaho",
   IL: "Illinois",
+  IN: "Indiana",
+  KS: "Kansas",
+  KY: "Kentucky",
   LA: "Louisiana",
   MA: "Massachusetts",
   MD: "Maryland",
+  ME: "Maine",
   MI: "Michigan",
+  MN: "Minnesota",
   MO: "Missouri",
+  MS: "Mississippi",
   NC: "North Carolina",
+  NE: "Nebraska",
+  NH: "New Hampshire",
   NJ: "New Jersey",
+  NM: "New Mexico",
   NV: "Nevada",
   NY: "New York",
   OH: "Ohio",
   OK: "Oklahoma",
+  OR: "Oregon",
   PA: "Pennsylvania",
+  RI: "Rhode Island",
+  SC: "South Carolina",
   TN: "Tennessee",
   TX: "Texas",
+  UT: "Utah",
   VA: "Virginia",
   WA: "Washington",
+  WI: "Wisconsin",
 };
+
+const BAND_FILTERS: { key: LeagueBandFilter; label: string }[] = [
+  { key: "all", label: "All age bands" },
+  { key: "mls-next-u13", label: "MLS NEXT U13 (2014 BY)" },
+  { key: "ecnl-u13", label: "ECNL U13 (2013/14)" },
+  { key: "other", label: "Other / GotSport" },
+];
 
 function hubHomeHref(): string {
   const base = import.meta.env.BASE_URL || "/";
@@ -84,7 +139,31 @@ function leagueBadgeVariant(
   return "secondary";
 }
 
-function compareRows(a: RankedTeam, b: RankedTeam, key: SortKey, dir: SortDir) {
+function matchesBand(t: RankedTeam, band: LeagueBandFilter): boolean {
+  if (band === "all") return true;
+  if (band === "mls-next-u13") {
+    return (
+      t.ageAlignment === "mls-next-u13-2014-by" ||
+      ((t.league === "mls-next" || t.league === "mls-next-hg") &&
+        t.gotsportAge === 13)
+    );
+  }
+  if (band === "ecnl-u13") {
+    return (
+      t.ageAlignment === "ecnl-u13-2013-14" ||
+      (t.league === "ecnl" && t.gotsportAge === 13)
+    );
+  }
+  return t.league === "other" || t.league === "ecnl-rl";
+}
+
+function compareRows(
+  a: RankedTeam,
+  b: RankedTeam,
+  key: SortKey,
+  dir: SortDir,
+  sosMap: Map<string, SosSummary>,
+) {
   const mul = dir === "asc" ? 1 : -1;
   switch (key) {
     case "name":
@@ -99,9 +178,55 @@ function compareRows(a: RankedTeam, b: RankedTeam, key: SortKey, dir: SortDir) {
       return mul * (a.score - b.score) || a.usRank - b.usRank;
     case "stateRank":
       return mul * (a.stateRank - b.stateRank) || a.usRank - b.usRank;
+    case "points":
+      return (
+        mul * ((a.gotsport?.points ?? -1) - (b.gotsport?.points ?? -1)) ||
+        a.usRank - b.usRank
+      );
+    case "record": {
+      const pa = winPct(a.record) ?? -1;
+      const pb = winPct(b.record) ?? -1;
+      return mul * (pa - pb) || a.usRank - b.usRank;
+    }
+    case "sos": {
+      const sa = sosMap.get(a.id)?.medianOpponentUsRank ?? 99_999;
+      const sb = sosMap.get(b.id)?.medianOpponentUsRank ?? 99_999;
+      return mul * (sa - sb) || a.usRank - b.usRank;
+    }
     default:
       return mul * (a.usRank - b.usRank);
   }
+}
+
+function dualRank(t: RankedTeam): string {
+  return `US #${t.usRank} · ${t.state} #${t.stateRank}`;
+}
+
+function sosMedianLabel(sos?: SosSummary): string {
+  return sos?.medianOpponentUsRank != null
+    ? `#${sos.medianOpponentUsRank}`
+    : "—";
+}
+
+function teamMatchesQuery(t: RankedTeam, q: string): boolean {
+  if (!q) return true;
+  const stateName = STATE_NAMES[t.state] ?? "";
+  const aliases = [
+    t.id === HOME_TEAM_ID ? "home marin fc ecnl 2013-14 2013/14" : "",
+    t.id === HOME_RELATED_ID ? "marin fc 2014 blue last year" : "",
+  ];
+  const hay = [
+    t.name,
+    t.club,
+    t.city ?? "",
+    t.state,
+    stateName,
+    t.leagueLabel,
+    ...aliases,
+  ]
+    .join(" ")
+    .toLowerCase();
+  return hay.includes(q);
 }
 
 export function SoccerRankingsPage() {
@@ -114,9 +239,15 @@ export function SoccerRankingsPage() {
   const [leagueFilter, setLeagueFilter] = useState<"all" | LeaguePlatform>(
     "all",
   );
+  const [bandFilter, setBandFilter] = useState<LeagueBandFilter>("all");
   const [sortKey, setSortKey] = useState<SortKey>("usRank");
   const [sortDir, setSortDir] = useState<SortDir>("asc");
+  const [page, setPage] = useState(1);
   const [showMethod, setShowMethod] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(HOME_TEAM_ID);
+  const [sosMap, setSosMap] = useState<Map<string, SosSummary>>(
+    () => new Map(),
+  );
 
   useEffect(() => {
     document.title = "Soccer Rankings";
@@ -136,25 +267,70 @@ export function SoccerRankingsPage() {
     }
   }, [year]);
 
-  const states = useMemo(() => {
-    const unique = [...new Set(teams.map((t) => t.state))].sort();
-    return unique;
+  useEffect(() => {
+    let cancelled = false;
+    void sosByTeamId(teams).then((map) => {
+      if (!cancelled) setSosMap(map);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [teams]);
+
+  const states = useMemo(() => {
+    return [...new Set(teams.map((t) => t.state))].sort();
+  }, [teams]);
+
+  const caInYear = useMemo(
+    () => teams.filter((t) => t.state === "CA").length,
+    [teams],
+  );
+
+  const homeTeam = useMemo(
+    () => teams.find((t) => t.id === HOME_TEAM_ID),
+    [teams],
+  );
+  const homeRelated = useMemo(
+    () => teams.find((t) => t.id === HOME_RELATED_ID),
+    [teams],
+  );
+  const selected = useMemo(
+    () => teams.find((t) => t.id === selectedId) ?? homeTeam,
+    [teams, selectedId, homeTeam],
+  );
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     const rows = teams.filter((t) => {
       if (stateFilter !== "all" && t.state !== stateFilter) return false;
       if (leagueFilter !== "all" && t.league !== leagueFilter) return false;
-      if (!q) return true;
-      const hay = [t.name, t.club, t.city ?? "", t.state, t.leagueLabel]
-        .join(" ")
-        .toLowerCase();
-      return hay.includes(q);
+      if (!matchesBand(t, bandFilter)) return false;
+      if (!teamMatchesQuery(t, q)) return false;
+      return true;
     });
-    rows.sort((a, b) => compareRows(a, b, sortKey, sortDir));
+    rows.sort((a, b) => compareRows(a, b, sortKey, sortDir, sosMap));
     return rows;
-  }, [teams, query, stateFilter, leagueFilter, sortKey, sortDir]);
+  }, [
+    teams,
+    query,
+    stateFilter,
+    leagueFilter,
+    bandFilter,
+    sortKey,
+    sortDir,
+    sosMap,
+  ]);
+
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const pageSafe = Math.min(page, pageCount);
+  const pageRows = filtered.slice(
+    (pageSafe - 1) * PAGE_SIZE,
+    pageSafe * PAGE_SIZE,
+  );
+
+  useEffect(() => {
+    setPage(1);
+  }, [year, query, stateFilter, leagueFilter, bandFilter, sortKey, sortDir]);
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) {
@@ -162,10 +338,53 @@ export function SoccerRankingsPage() {
       return;
     }
     setSortKey(key);
-    setSortDir(key === "score" ? "desc" : "asc");
+    setSortDir(
+      key === "score" || key === "points" || key === "record" ? "desc" : "asc",
+    );
   }
 
-  const ageLabel = year === 2013 ? "U13" : "U12–U13";
+  function focusHome() {
+    setYear(2013);
+    setQuery("Marin FC ECNL");
+    setStateFilter("all");
+    setLeagueFilter("all");
+    setBandFilter("all");
+    setSortKey("usRank");
+    setSortDir("asc");
+    setSelectedId(HOME_TEAM_ID);
+    requestAnimationFrame(() => {
+      document.getElementById("team-detail")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+
+  function focusRelated() {
+    setYear(2014);
+    setQuery("Marin FC B2014/15 Blue");
+    setStateFilter("all");
+    setLeagueFilter("all");
+    setBandFilter("all");
+    setSortKey("usRank");
+    setSortDir("asc");
+    setSelectedId(HOME_RELATED_ID);
+    requestAnimationFrame(() => {
+      document.getElementById("team-detail")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  }
+
+  const caPct =
+    COVERAGE.caUniverseEstimate > 0
+      ? Math.round((COVERAGE.caUnique / COVERAGE.caUniverseEstimate) * 100)
+      : 0;
+  const caCoverageNote =
+    COVERAGE.caUnique >= COVERAGE.caUniverseEstimate
+      ? `the seed lists ${COVERAGE.caUnique.toLocaleString()} unique CA GotSport U12/U13 sides (full public ranking directory — multiple teams per club and mixed U12/U13 bands, so this is not a 1:1 map of the ≈${COVERAGE.caUniverseEstimate.toLocaleString()}+ vintage figure)`
+      : `the seed currently lists ${COVERAGE.caUnique.toLocaleString()} unique CA teams (~${caPct}% of that 1,100+ universe, across both birth years)`;
 
   return (
     <div className="pitch-atmosphere min-h-dvh">
@@ -193,9 +412,11 @@ export function SoccerRankingsPage() {
               </div>
             </div>
             <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Unofficial US composite for {year}-born boys ({ageLabel}). Each
-              row shows national rank, state rank, league, and the public
-              sources behind the score.
+              Unofficial composite for {year}-born boys. MLS NEXT U13 is a{" "}
+              <strong className="text-foreground">2014 birth-year</strong>{" "}
+              category. ECNL U13 uses the{" "}
+              <strong className="text-foreground">2013/14 school year</strong> —
+              the same “U13” label is not the same slice across platforms.
             </p>
           </div>
           <div className="flex flex-col items-stretch gap-2 sm:items-end">
@@ -213,12 +434,11 @@ export function SoccerRankingsPage() {
                   onClick={() => {
                     setYear(y);
                     setStateFilter("all");
-                    setQuery("");
                     setSortKey("usRank");
                     setSortDir("asc");
                   }}
                   className={cn(
-                    "h-9 rounded-md px-4 text-sm font-medium transition-colors",
+                    "h-9 rounded-md px-3 text-sm font-medium transition-colors sm:px-4",
                     year === y
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground",
@@ -226,7 +446,7 @@ export function SoccerRankingsPage() {
                 >
                   {y}
                   <span className="ml-1.5 text-[11px] font-normal opacity-80">
-                    {y === 2013 ? "U13" : "U12–U13"}
+                    {y === 2014 ? "MLS NEXT U13 BY" : "2013 BY"}
                   </span>
                 </button>
               ))}
@@ -237,68 +457,129 @@ export function SoccerRankingsPage() {
           </div>
         </header>
 
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Badge variant="success">MLS NEXT U13 = 2014 BY</Badge>
+          <Badge variant="accent">ECNL U13 = 2013/14 school year</Badge>
+          <Badge variant="outline">GotSport U12/U13 listings mix vintages</Badge>
+        </div>
+
+        <div className="mt-4 rounded-xl border border-warn/35 bg-warn/10 px-4 py-3 text-sm leading-relaxed">
+          <p className="font-medium text-foreground">
+            Coverage incomplete vs the full US — CA GotSport U12/U13 directory
+            is in; vintage universe ≈1,100+.
+          </p>
+          <p className="mt-1 text-muted-foreground">
+            Showing {teams.length.toLocaleString()} ranked {year}-born sides in
+            this view ({caInYear.toLocaleString()} California). California’s
+            competitive vintage is about{" "}
+            {COVERAGE.caUniverseEstimate.toLocaleString()}+ teams;{" "}
+            {caCoverageNote}. US and state ranks are among seeded teams only.
+            Match cache: {MATCH_CACHE_META.teamsWithMatches.toLocaleString()}{" "}
+            teams / {MATCH_CACHE_META.matches.toLocaleString()} games. Refresh
+            rankings with{" "}
+            <code className="font-mono text-[11px] text-foreground">
+              python3 scripts/ingest-soccer-rankings.py
+            </code>
+            ; matches with{" "}
+            <code className="font-mono text-[11px] text-foreground">
+              python3 scripts/ingest-gotsport-matches.py
+            </code>
+            .
+          </p>
+        </div>
+
+        <HomeTeamCard
+          team={homeTeam}
+          related={homeRelated}
+          onOpen={() => setSelectedId(HOME_TEAM_ID)}
+          onOpenRelated={() => setSelectedId(HOME_RELATED_ID)}
+        />
+
         <section className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
           <Stat
-            label="Teams in seed"
-            value={status === "ready" ? String(teams.length) : "—"}
-            hint={`${year} boys`}
+            label="Ranked this year"
+            value={status === "ready" ? teams.length.toLocaleString() : "—"}
+            hint={`${year} birth-year view`}
           />
           <Stat
-            label="States covered"
-            value={status === "ready" ? String(states.length) : "—"}
-            hint="National sample"
+            label="CA in this view"
+            value={status === "ready" ? caInYear.toLocaleString() : "—"}
+            hint={`Universe ≈${COVERAGE.caUniverseEstimate.toLocaleString()}+`}
           />
           <Stat
             label="Showing"
-            value={status === "ready" ? String(filtered.length) : "—"}
-            hint={stateFilter === "all" ? "US table" : `${stateFilter} table`}
+            value={status === "ready" ? filtered.length.toLocaleString() : "—"}
+            hint={stateFilter === "all" ? "US table" : `${stateFilter} seeded`}
           />
           <Stat
-            label="Age band"
-            value={ageLabel}
-            hint={SEASON_LABEL}
+            label="Unique seed"
+            value={COVERAGE.uniqueTeams.toLocaleString()}
+            hint="Both birth years"
           />
         </section>
 
-        <div className="mt-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-          <div className="relative w-full lg:max-w-sm">
-            <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search club or city…"
-              className="pl-9"
-              aria-label="Search teams"
-            />
+        <div className="mt-6 flex flex-col gap-3">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="w-full lg:max-w-md">
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                <Input
+                  id="rankings-search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search team, club, city, or state…"
+                  className="pl-9"
+                  aria-label="Search teams"
+                />
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={focusHome}
+                  className="h-7 rounded-md border border-success/40 bg-success/10 px-2 text-[11px] font-medium text-success hover:bg-success/20"
+                >
+                  Home · {HOME_LABEL}
+                </button>
+                <button
+                  type="button"
+                  onClick={focusRelated}
+                  className="h-7 rounded-md border border-border bg-card px-2 text-[11px] font-medium text-muted-foreground hover:text-foreground"
+                >
+                  Last year · {HOME_RELATED_LABEL}
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                <Filter className="size-3.5" />
+                Filters
+              </span>
+              <label className="sr-only" htmlFor="state-filter">
+                State
+              </label>
+              <select
+                id="state-filter"
+                value={stateFilter}
+                onChange={(e) => {
+                  setStateFilter(e.target.value);
+                  if (e.target.value !== "all") {
+                    setSortKey("stateRank");
+                    setSortDir("asc");
+                  }
+                }}
+                className="h-9 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
+              >
+                <option value="all">All states</option>
+                {states.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                    {STATE_NAMES[s] ? ` · ${STATE_NAMES[s]}` : ""}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-              <Filter className="size-3.5" />
-              Filters
-            </span>
-            <label className="sr-only" htmlFor="state-filter">
-              State
-            </label>
-            <select
-              id="state-filter"
-              value={stateFilter}
-              onChange={(e) => {
-                setStateFilter(e.target.value);
-                if (e.target.value !== "all") {
-                  setSortKey("stateRank");
-                  setSortDir("asc");
-                }
-              }}
-              className="h-9 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
-            >
-              <option value="all">All states</option>
-              {states.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                  {STATE_NAMES[s] ? ` · ${STATE_NAMES[s]}` : ""}
-                </option>
-              ))}
-            </select>
+          <div className="flex flex-wrap gap-2">
             {LEAGUE_FILTERS.map((f) => (
               <button
                 key={f.key}
@@ -315,17 +596,37 @@ export function SoccerRankingsPage() {
               </button>
             ))}
           </div>
+          <div className="flex flex-wrap gap-2">
+            {BAND_FILTERS.map((f) => (
+              <button
+                key={f.key}
+                type="button"
+                onClick={() => setBandFilter(f.key)}
+                className={cn(
+                  "h-8 rounded-md border px-2.5 text-xs font-medium transition-colors",
+                  bandFilter === f.key
+                    ? "border-success/40 bg-success/15 text-success"
+                    : "border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {stateFilter !== "all" && (
           <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-muted-foreground">
             <MapPin className="size-3.5 text-success" />
-            {STATE_NAMES[stateFilter] ?? stateFilter} table — US rank stays
-            national; state rank is among {stateFilter} teams in this seed.
+            {STATE_NAMES[stateFilter] ?? stateFilter} — US rank is among the
+            national seed; state rank is among seeded {stateFilter} teams only
+            {stateFilter === "CA"
+              ? `, not the full ${COVERAGE.caUniverseEstimate.toLocaleString()}+ CA universe.`
+              : "."}
           </p>
         )}
 
-        <div className="mt-5 flex-1">
+        <div className="mt-5 flex-1 lg:grid lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-start lg:gap-5">
           {status === "loading" && (
             <Card className="p-5">
               <div className="space-y-3">
@@ -359,8 +660,34 @@ export function SoccerRankingsPage() {
             </Card>
           )}
 
+          {status === "ready" && selected && (
+            <Card
+              id="team-detail"
+              className="mb-5 scroll-mt-4 p-4 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:sticky lg:top-4"
+            >
+              <TeamDetail
+                team={selected}
+                yearTeams={teams}
+                onOpenTeam={(id) => setSelectedId(id)}
+              />
+            </Card>
+          )}
+
           {status === "ready" && filtered.length > 0 && (
-            <>
+            <div className="lg:col-start-1 lg:row-start-1">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+                <p>
+                  Rows {(pageSafe - 1) * PAGE_SIZE + 1}–
+                  {Math.min(pageSafe * PAGE_SIZE, filtered.length)} of{" "}
+                  {filtered.length.toLocaleString()}
+                </p>
+                <Pager
+                  page={pageSafe}
+                  pageCount={pageCount}
+                  onPage={setPage}
+                />
+              </div>
+
               <div className="hidden overflow-hidden rounded-2xl border border-border bg-card md:block">
                 <table className="w-full text-left text-sm">
                   <thead className="border-b border-border bg-bg-elevated/60 text-xs uppercase tracking-wider text-muted-foreground">
@@ -395,7 +722,24 @@ export function SoccerRankingsPage() {
                         dir={sortDir}
                         onClick={() => toggleSort("stateRank")}
                       />
-                      <th className="px-3 py-3 font-medium">Record</th>
+                      <SortTh
+                        label="Record"
+                        active={sortKey === "record"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("record")}
+                      />
+                      <SortTh
+                        label="Pts"
+                        active={sortKey === "points"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("points")}
+                      />
+                      <SortTh
+                        label="SOS"
+                        active={sortKey === "sos"}
+                        dir={sortDir}
+                        onClick={() => toggleSort("sos")}
+                      />
                       <SortTh
                         label="Score"
                         active={sortKey === "score"}
@@ -405,21 +749,37 @@ export function SoccerRankingsPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {filtered.map((t) => (
+                    {pageRows.map((t) => (
                       <tr
-                        key={t.id}
-                        className="border-b border-border/70 last:border-0 hover:bg-muted/30"
+                        key={`${t.id}-${t.birthYear}`}
+                        className={cn(
+                          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30",
+                          t.id === selectedId && "bg-primary/8",
+                          t.id === HOME_TEAM_ID && "bg-success/8",
+                        )}
+                        onClick={() => setSelectedId(t.id)}
                       >
                         <td className="px-3 py-3 font-mono-num text-base font-semibold text-primary">
                           {t.usRank}
                         </td>
                         <td className="px-3 py-3">
                           <p className="font-medium leading-snug">{t.name}</p>
+                          <p className="mt-0.5 font-mono-num text-xs font-medium text-foreground">
+                            {dualRank(t)}
+                          </p>
                           <p className="mt-0.5 text-xs text-muted-foreground">
                             {[t.city, t.state].filter(Boolean).join(", ")}
                             {t.club !== t.name ? ` · ${t.club}` : ""}
                           </p>
                           <div className="mt-1.5 flex flex-wrap gap-1">
+                            {t.id === HOME_TEAM_ID && (
+                              <Badge variant="success">Home</Badge>
+                            )}
+                            {alignmentLabel(t.ageAlignment) && (
+                              <Badge variant="secondary">
+                                {alignmentLabel(t.ageAlignment)}
+                              </Badge>
+                            )}
                             {t.sources.map((s) => (
                               <Badge key={s} variant="outline">
                                 {s}
@@ -441,6 +801,17 @@ export function SoccerRankingsPage() {
                         </td>
                         <td className="px-3 py-3 font-mono-num text-muted-foreground">
                           {formatRecord(t.record ?? t.mlsNext?.record)}
+                          {cachedMatchCount(t.id) > 0 && (
+                            <span className="ml-1 text-[10px] text-success">
+                              {cachedMatchCount(t.id)}g
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-3 py-3 font-mono-num text-muted-foreground">
+                          {formatPoints(t.gotsport?.points)}
+                        </td>
+                        <td className="px-3 py-3 font-mono-num text-muted-foreground">
+                          {sosMedianLabel(sosMap.get(t.id))}
                         </td>
                         <td className="px-3 py-3 font-mono-num font-medium">
                           {formatScore(t.score)}
@@ -452,12 +823,23 @@ export function SoccerRankingsPage() {
               </div>
 
               <div className="grid gap-3 md:hidden">
-                {filtered.map((t) => (
-                  <Card key={t.id} className="p-4">
+                {pageRows.map((t) => (
+                  <Card
+                    key={`${t.id}-${t.birthYear}`}
+                    className={cn(
+                      "cursor-pointer p-4",
+                      t.id === selectedId && "border-primary/40",
+                      t.id === HOME_TEAM_ID && "border-success/40",
+                    )}
+                    onClick={() => setSelectedId(t.id)}
+                  >
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p className="font-display text-lg font-semibold leading-tight">
                           {t.name}
+                        </p>
+                        <p className="mt-1 font-mono-num text-sm font-medium">
+                          {dualRank(t)}
                         </p>
                         <p className="mt-0.5 text-xs text-muted-foreground">
                           {[t.city, t.state].filter(Boolean).join(", ")} ·{" "}
@@ -466,23 +848,33 @@ export function SoccerRankingsPage() {
                       </div>
                       <div className="text-right">
                         <p className="font-mono-num text-xl font-semibold text-primary">
-                          #{t.usRank}
+                          US #{t.usRank}
                         </p>
-                        <p className="text-[11px] text-muted-foreground">US</p>
+                        <p className="font-mono-num text-sm font-medium">
+                          {t.state} #{t.stateRank}
+                        </p>
                       </div>
                     </div>
                     <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
                       <MetaChip
-                        label={`${t.state} rank`}
-                        value={`#${t.stateRank}`}
-                      />
-                      <MetaChip
                         label="Record"
                         value={formatRecord(t.record ?? t.mlsNext?.record)}
+                      />
+                      <MetaChip
+                        label="SOS med. US"
+                        value={sosMedianLabel(sosMap.get(t.id))}
                       />
                       <MetaChip label="Score" value={formatScore(t.score)} />
                     </div>
                     <div className="mt-3 flex flex-wrap gap-1">
+                      {t.id === HOME_TEAM_ID && (
+                        <Badge variant="success">Home</Badge>
+                      )}
+                      {alignmentLabel(t.ageAlignment) && (
+                        <Badge variant="secondary">
+                          {alignmentLabel(t.ageAlignment)}
+                        </Badge>
+                      )}
                       {t.sources.map((s) => (
                         <Badge key={s} variant="outline">
                           {s}
@@ -492,7 +884,11 @@ export function SoccerRankingsPage() {
                   </Card>
                 ))}
               </div>
-            </>
+
+              <div className="mt-3 flex justify-end">
+                <Pager page={pageSafe} pageCount={pageCount} onPage={setPage} />
+              </div>
+            </div>
           )}
         </div>
 
@@ -518,49 +914,49 @@ export function SoccerRankingsPage() {
           {showMethod && (
             <CardContent className="space-y-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                Ranks are derived in-browser from a curated seed of public
-                2025–26 pages.{" "}
+                <strong className="text-foreground">Age-band truth (2025–26):</strong>{" "}
+                MLS NEXT U13 boys is a 2014 birth-year category. ECNL U13 is the
+                2013/14 school-year alignment, not a single-year slice. A club’s
+                “U13” side can mean different vintages across platforms.
+              </p>
+              <p>
+                Ranks are computed in-browser from a public GotSport ingest plus
+                a few published TDS / MLS NEXT Cup overlays.{" "}
                 <strong className="text-foreground">usRank</strong> sorts
-                composite score descending within the birth year.{" "}
-                <strong className="text-foreground">stateRank</strong> sorts the
-                same score among teams that share that state.
+                composite score among seeded teams in this birth-year view.{" "}
+                <strong className="text-foreground">stateRank</strong> is among
+                seeded teams in that state — not every club that exists.
               </p>
               <ul className="list-disc space-y-1 pl-5">
                 <li>
-                  TopDrawerSoccer TeamRank boys U13 (latest public table, June
-                  2026 update) — not published for 2014 / U12.
+                  GotSport public rankings API (boys U12/U13, USA), including
+                  Cal South (CAS) and Cal North (CAN).
                 </li>
                 <li>
-                  MLS NEXT Cup 2026 U13 recaps (Atlanta United champion; LA
-                  Galaxy finalist; Inter Miami semifinalist) and UpNext February
-                  2026 power ranks as a secondary signal.
+                  GotSport public match lists:{" "}
+                  <code className="font-mono text-xs">
+                    GET /api/v1/teams/{"{id}"}/matches
+                  </code>{" "}
+                  (league season + tournaments). Shipped cache + live via the
+                  Vite <code className="font-mono text-xs">/gotsport-api</code>{" "}
+                  proxy. GitHub Pages cannot call GotSport directly (no CORS).
                 </li>
                 <li>
-                  GotSport national points and W–D–L only when the public table
-                  showed them.
+                  MLS NEXT Cup 2026 U13 recaps applied to the 2014 view
+                  (Atlanta United champion; LA Galaxy finalist; Inter Miami
+                  semifinalist).
                 </li>
                 <li>
-                  ECNL U13 final (XF Academy / Crossfire over SDSC Surf) and
-                  public club listings.
+                  TopDrawerSoccer TeamRank boys U13, which TDS labeled as the
+                  2013 birth year, overlaid on matching 2013-view clubs.
                 </li>
               </ul>
               <p>
-                Composite blend: TDS list position (when present; in-season peak
-                used at reduced strength), MLS NEXT Cup / UpNext, GotSport
-                points scaled inside the birth year, plus a modest league-tier
-                prior so a platform label cannot outrank a strong published
-                table. Missing fields are omitted — records are never invented.
-              </p>
-              <p>
-                Refresh later by editing{" "}
+                Refresh: run{" "}
                 <code className="font-mono text-xs text-foreground">
-                  src/data/soccer-rankings/boys-2013.json
+                  python3 scripts/ingest-soccer-rankings.py
                 </code>{" "}
-                and{" "}
-                <code className="font-mono text-xs text-foreground">
-                  boys-2014.json
-                </code>
-                . See{" "}
+                then rebuild. See{" "}
                 <code className="font-mono text-xs text-foreground">
                   src/data/soccer-rankings/METHODOLOGY.md
                 </code>
@@ -573,9 +969,49 @@ export function SoccerRankingsPage() {
         <footer className="mt-8 border-t border-border pt-5 text-xs leading-relaxed text-muted-foreground">
           Unofficial composite for personal use. Not an official ranking of MLS,
           MLS NEXT, ECNL, GotSport, or TopDrawerSoccer. Seed compiled{" "}
-          {COMPILED_AS_OF}. {year} sample: {teams.length} teams.
+          {COMPILED_AS_OF}. {year} view: {teams.length.toLocaleString()} seeded
+          teams. California vintage universe ≈
+          {COVERAGE.caUniverseEstimate.toLocaleString()}+.
         </footer>
       </div>
+    </div>
+  );
+}
+
+function Pager({
+  page,
+  pageCount,
+  onPage,
+}: {
+  page: number;
+  pageCount: number;
+  onPage: (p: number) => void;
+}) {
+  return (
+    <div className="inline-flex items-center gap-2">
+      <Button
+        variant="outline"
+        size="sm"
+        disabled={page <= 1}
+        onClick={() => onPage(page - 1)}
+        aria-label="Previous page"
+      >
+        <ChevronLeft className="size-3.5" />
+        Prev
+      </Button>
+      <span className="font-mono-num text-xs">
+        {page} / {pageCount}
+      </span>
+      <Button
+        variant="outline"
+        size="sm"
+        disabled={page >= pageCount}
+        onClick={() => onPage(page + 1)}
+        aria-label="Next page"
+      >
+        Next
+        <ChevronRight className="size-3.5" />
+      </Button>
     </div>
   );
 }

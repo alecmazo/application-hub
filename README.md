@@ -31,7 +31,7 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 | **Edyta Śliwińska** (`sliwinska`) | https://edytasliwinska.com |
 | **Stem Spark** | https://alecmazo.github.io/stem-spark/ |
 | **Turf Pad Builder** | https://alecmazo.github.io/turf-pad-builder/ |
-| **Soccer Rankings** | https://alecmazo.github.io/application-hub/soccer-rankings |
+| **Soccer Rankings** | https://alecmazo.github.io/application-hub/soccer-rankings (Home: Marin FC ECNL 2013-14; searchable US + CA/state ranks; clickable GotSport schedules; MLS NEXT U13 = 2014 BY, ECNL U13 = 2013/14; unofficial among seeded teams) |
 | **Soccer Capture** | https://alecmazo.github.io/soccer-capture/ |
 | **Soccer Activate** | https://soccer-activate.vercel.app |
 | **DGA Capital Research** | https://portfolio.dgacapital.com |
