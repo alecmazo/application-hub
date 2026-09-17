@@ -4,6 +4,8 @@ import {
   formatPoints,
   formatRecord,
   formatScore,
+  leagueDisplayLabel,
+  leagueTierChip,
   publishedRecord,
   usableRank,
   winPct,
@@ -50,7 +52,8 @@ export function hubHomeHref(): string {
 export function leagueBadgeVariant(
   league: LeaguePlatform,
 ): "success" | "accent" | "default" | "secondary" | "outline" {
-  if (league === "mls-next" || league === "mls-next-hg") return "success";
+  if (league === "mls-next-hg") return "success";
+  if (league === "mls-next") return "outline";
   if (league === "ecnl") return "accent";
   if (league === "ecnl-rl") return "default";
   return "secondary";
@@ -77,6 +80,8 @@ export function teamMatchesQuery(t: RankedTeam, q: string): boolean {
     t.state,
     stateName,
     t.leagueLabel,
+    leagueDisplayLabel(t.league, t.leagueLabel),
+    leagueTierChip(t.league) ?? "",
     ...aliases,
   ]
     .join(" ")
@@ -99,7 +104,12 @@ function compareRows(
     case "state":
       return mul * a.state.localeCompare(b.state) || us();
     case "league":
-      return mul * a.leagueLabel.localeCompare(b.leagueLabel) || us();
+      return (
+        mul *
+          leagueDisplayLabel(a.league, a.leagueLabel).localeCompare(
+            leagueDisplayLabel(b.league, b.leagueLabel),
+          ) || us()
+      );
     case "score":
       return mul * (a.score - b.score) || us();
     case "stateRank":

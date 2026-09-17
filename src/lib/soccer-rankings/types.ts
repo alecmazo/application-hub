@@ -17,7 +17,13 @@ export type AgeAlignment =
   | "gotsport"
   | string;
 
-export type LeagueBandFilter = "all" | "mls-next" | "ecnl" | "other";
+export type LeagueBandFilter =
+  | "all"
+  | "mls-next-hg"
+  | "mls-next"
+  | "ecnl"
+  | "ecnl-rl"
+  | "other";
 
 export type MlsNextCupRound =
   | "champion"

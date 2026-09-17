@@ -47,6 +47,31 @@ export function leagueDisplayLabel(
   return LEAGUE_LABEL[league] || fallback || "GotSport / other";
 }
 
+/** Short chip for dense / mobile rows. */
+export function leagueTierChip(league: LeaguePlatform): string | null {
+  switch (league) {
+    case "mls-next-hg":
+      return "Homegrown · T1";
+    case "mls-next":
+      return "Academy · T2";
+    case "ecnl":
+      return "ECNL · T1";
+    case "ecnl-rl":
+      return "ECNL-RL · T2";
+    default:
+      return null;
+  }
+}
+
+export function mlsNextDivisionLabel(
+  division?: "homegrown" | "academy" | null,
+  league?: LeaguePlatform,
+): "Homegrown" | "Academy" | null {
+  if (division === "homegrown" || league === "mls-next-hg") return "Homegrown";
+  if (division === "academy" || league === "mls-next") return "Academy";
+  return null;
+}
+
 /** League-tier prior only — slight edge, not a 90-point floor. */
 export function leagueTierScore(league: LeaguePlatform): number {
   switch (league) {

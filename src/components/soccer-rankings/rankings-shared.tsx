@@ -22,6 +22,7 @@ import {
   LEAGUE_FILTERS,
   SEASON_LABEL,
   leagueDisplayLabel,
+  leagueTierChip,
 } from "@/lib/soccer-rankings/compute";
 import { AGE_BANDS, AGE_LEGEND, ageTabHint } from "@/lib/soccer-rankings/age-map";
 import { alignmentLabel, COVERAGE } from "@/lib/soccer-rankings/load";
@@ -528,12 +529,16 @@ export function TeamSourceBadges({
 }) {
   const { pinnedId } = useRankings();
   const sources = limit ? team.sources.slice(0, limit) : team.sources;
+  const tier = leagueTierChip(team.league);
   return (
     <>
       {isPinnedHomeTeam(team.id, pinnedId) && (
         <Badge variant="success">
           {isHomeTeam(team.id) ? HOME_LABEL : "Home"}
         </Badge>
+      )}
+      {tier && (
+        <Badge variant={leagueBadgeVariant(team.league)}>{tier}</Badge>
       )}
       {alignmentLabel(team.ageAlignment) && (
         <Badge variant="secondary">{alignmentLabel(team.ageAlignment)}</Badge>
@@ -834,6 +839,13 @@ export function CompactTeamList({
               <p className="mt-0.5 font-mono-num text-xs font-medium">
                 {dualRank(t)}
               </p>
+              {leagueTierChip(t.league) && (
+                <p className="mt-1">
+                  <Badge variant={leagueBadgeVariant(t.league)}>
+                    {leagueTierChip(t.league)}
+                  </Badge>
+                </p>
+              )}
             </div>
             <div className="flex items-center gap-2">
               <PinHomeButton

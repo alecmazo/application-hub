@@ -33,14 +33,19 @@ GotSport published ranking date: **see `teams.json` `asOf`**. Seed compiled (Ame
 
 ## Pathway tiers (visible on list + detail)
 
-Two separate pathways. Do not mix MLS NEXT tiers with ECNL tiers.
+Alec’s MLS NEXT rule (do not collapse these into one anonymous “MLS NEXT” bucket):
+
+- **Allstate Homegrown Division = Tier 1** (premier)
+- **Academy Division = Tier 2** (second tier)
+
+ECNL is a separate pathway. Do not mix those tiers with MLS NEXT.
 
 | Pathway | Tier 1 (premier) | Tier 2 |
 | --- | --- | --- |
 | MLS NEXT | Homegrown / Allstate Homegrown Division | Academy Division |
 | ECNL | ECNL | ECNL Regional League (ECNL-RL) |
 
-UI labels: `MLS NEXT Homegrown · Tier 1`, `MLS NEXT Academy · Tier 2`, `ECNL · Tier 1`, `ECNL-RL · Tier 2`. Filters keep Homegrown and Academy as separate platforms.
+UI: list rows (including dense / split / mobile) show `Homegrown · T1` or `Academy · T2`. Team detail uses `MLS NEXT Homegrown · Tier 1` / `MLS NEXT Academy · Tier 2`. Platform filter keeps Homegrown (T1) and Academy (T2) as separate options. Ranking / SOS still treats both as MLS NEXT pathway clubs (Homegrown prior 72, Academy prior 70).
 
 ## Coverage (not a census)
 
@@ -119,7 +124,7 @@ Missing signals are dropped; remaining weights renormalize.
 1. TDS TeamRank (0.42) when present
 2. MLS NEXT Cup / UpNext / conference rank after games are played (0.28). Unplayed conference #1 is **not** a national 100.
 3. GotSport points (0.20) scaled to the max in that age tab
-4. League-tier prior (0.10): Homegrown 72, MLS NEXT 70, ECNL 68, ECNL-RL 55, other 42
+4. League-tier prior (0.10): Homegrown (T1) 72, Academy (T2) 70, ECNL (T1) 68, ECNL-RL (T2) 55, other 42
 
 `usRank` = sort descending within the age-tab **seed**.  
 `stateRank` = same sort within `state` + age tab **seed**.

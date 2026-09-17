@@ -15,7 +15,11 @@ import {
   leagueBadgeVariant,
   sosMedianLabel,
 } from "@/lib/soccer-rankings/use-soccer-rankings";
-import { leagueDisplayLabel, publishedRecord } from "@/lib/soccer-rankings/compute";
+import {
+  leagueDisplayLabel,
+  leagueTierChip,
+  publishedRecord,
+} from "@/lib/soccer-rankings/compute";
 import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
 import { cn } from "@/lib/utils";
@@ -302,6 +306,7 @@ function HomeHero({
           <p className="mt-2 text-sm text-muted-foreground">
             {isHomeTeam(team.id) ? HOME_LABEL : "Home"}
             {team.club !== team.name ? ` · ${team.club}` : ""} · {team.state}
+            {leagueTierChip(team.league) ? ` · ${leagueTierChip(team.league)}` : ""}
           </p>
           {showHomeContinuity(pinnedId) && (
             <p className="mt-2 text-sm font-medium text-foreground">
