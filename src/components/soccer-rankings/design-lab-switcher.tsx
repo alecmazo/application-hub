@@ -34,7 +34,7 @@ export function DesignLabSwitcher({
       </div>
       <div className="mt-2 flex flex-col gap-2 sm:flex-row sm:items-center">
         <div
-          className="inline-flex flex-wrap rounded-lg border border-border bg-card p-1"
+          className="inline-flex flex-nowrap rounded-lg border border-border bg-card p-1"
           role="radiogroup"
           aria-label="Design Lab UI shell"
         >

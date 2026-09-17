@@ -397,6 +397,46 @@ export function Pager() {
   );
 }
 
+export function PinnedHomeChip({
+  openScroll = false,
+}: {
+  openScroll?: boolean;
+}) {
+  const { pinnedId, pinnedTeam, openTeam, unpinHome } = useRankings();
+  if (!pinnedId) return null;
+  if (!pinnedTeam) {
+    return (
+      <p className="text-xs text-muted-foreground">
+        Pinned home is not in this age tab.
+      </p>
+    );
+  }
+  return (
+    <div className="flex min-w-0 flex-wrap items-center gap-2 rounded-lg border border-success/35 bg-success/10 px-2.5 py-1.5">
+      <button
+        type="button"
+        onClick={() => openTeam(pinnedTeam.id, { scroll: openScroll })}
+        className="min-w-0 text-left"
+      >
+        <p className="truncate text-xs font-medium text-foreground">
+          {isHomeTeam(pinnedTeam.id) ? HOME_LABEL : pinnedTeam.name}
+        </p>
+        <p className="font-mono-num text-[11px] text-success">
+          {dualRank(pinnedTeam)}
+        </p>
+      </button>
+      <PinHomeButton
+        teamId={pinnedTeam.id}
+        teamName={pinnedTeam.name}
+        pinned
+        onPin={() => undefined}
+        onUnpin={unpinHome}
+        compact
+      />
+    </div>
+  );
+}
+
 export function ResultCount() {
   const { pageSafe, filtered } = useRankings();
   return (
@@ -636,7 +676,8 @@ export function RankingsTable({
               aria-current={selectedId === t.id ? "true" : undefined}
               className={cn(
                 "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
-                isPinnedHomeTeam(t.id, pinnedId) && "bg-success/5",
+                isPinnedHomeTeam(t.id, pinnedId) &&
+                  "border-l-2 border-l-success bg-success/10",
                 selectedId === t.id && "bg-primary/10",
               )}
               onClick={() => openTeam(t.id, { scroll: openScroll })}

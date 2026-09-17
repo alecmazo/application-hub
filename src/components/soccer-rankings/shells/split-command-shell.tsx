@@ -15,6 +15,7 @@ import {
   FilterCluster,
   HubBackLink,
   Pager,
+  PinnedHomeChip,
   RankingsCoverageFlag,
   RankingsFooter,
   RankingsTable,
@@ -71,11 +72,14 @@ export function SplitCommandShell({
                 <AgeTabs />
                 <AsOfStamp />
               </div>
-              <FilterCluster
-                searchId="split-search"
-                scopeId="split-scope"
-                leagueId="split-league"
-              />
+              <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+                <FilterCluster
+                  searchId="split-search"
+                  scopeId="split-scope"
+                  leagueId="split-league"
+                />
+                <PinnedHomeChip />
+              </div>
               <ScopeHint />
             </div>
 

@@ -11,6 +11,7 @@ import {
   FilterCluster,
   HubBackLink,
   Pager,
+  PinnedHomeChip,
   RankingsCoverageFlag,
   RankingsFooter,
   RankingsStats,
@@ -64,11 +65,14 @@ export function ScoutDeskShell({
               <AgeTabs />
               <AsOfStamp className="text-right" />
             </div>
-            <FilterCluster
-              searchId="scout-search"
-              scopeId="scout-scope"
-              leagueId="scout-league"
-            />
+            <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
+              <FilterCluster
+                searchId="scout-search"
+                scopeId="scout-scope"
+                leagueId="scout-league"
+              />
+              <PinnedHomeChip />
+            </div>
             <div className="flex flex-wrap items-center gap-2">
               <AgeLegendBadges />
               <RankingsCoverageFlag />
