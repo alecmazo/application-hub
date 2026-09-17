@@ -86,7 +86,9 @@ export function MethodologyCard() {
               Southwest / Golden State / Southern Cal). ECNL = Tier 1; ECNL-RL
               = Tier 2. Boys U13–U16. Conference-specific division IDs; a
               mismatched age heading is dropped. HTML table; no invented
-              scores. MLS NEXT Homegrown = Tier 1; Academy = Tier 2.
+              scores. ECNL is the school-year pathway (theecnl.com → LEAGUES →
+              Boys → ECNL Standings), separate from MLS NEXT Homegrown =
+              Tier 1 and Academy = Tier 2.
             </li>
             <li>
               MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}

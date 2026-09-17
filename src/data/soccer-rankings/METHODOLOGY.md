@@ -47,6 +47,8 @@ ECNL is a separate pathway. Do not mix those tiers with MLS NEXT.
 
 UI: list rows (including dense / split / mobile) show `Homegrown · T1` or `Academy · T2`. Team detail uses `MLS NEXT Homegrown · Tier 1` / `MLS NEXT Academy · Tier 2`. Platform filter keeps Homegrown (T1) and Academy (T2) as separate options. Ranking / SOS still treats both as MLS NEXT pathway clubs (Homegrown prior 72, Academy prior 70).
 
+Taught ECNL viewer (school-year, not MLS NEXT): [theecnl.com](https://theecnl.com) → LEAGUES → Boys → ECNL Standings → conference (e.g. Northern Cal). Ingest uses the AthleteOne standings API behind that page. ECNL U13 ≈ 2013/14 school year; it is **not** Homegrown 2014 BY.
+
 ## Coverage (not a census)
 
 Alec’s vintage figure: California alone has **≈1,100+** boys teams around this age. The seed pulls the public GotSport ranking directory (CAS/CAN first, then other associations) for boys **U12–U16**, plus the public MLS NEXT League 26/27 overlay.
