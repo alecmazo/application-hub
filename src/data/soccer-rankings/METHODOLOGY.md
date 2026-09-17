@@ -71,7 +71,18 @@ Refresh path (California first, boys only):
 | MLS NEXT League Viewer JSON | Homegrown (Tier 1) + Academy (Tier 2) conference rank, completed league W–D–L / GF–GA, scored matches | All CA Homegrown / Academy clubs on those tables |
 | ECNL AthleteOne `get-conference-standings/{eventId}/{orgId}/{seasonId}/{divisionId}/{standingId}` | ECNL (org 12, season 81, Tier 1) + ECNL-RL (season 83, Tier 2) conference POS / GP / W / L / D / GF / GA | Root `0/12/81/0/0` lists every boys conference (Northern Cal eventId=4283, Far West=4273 … Texas=4288). `standingId=0`. National division IDs BU13=22184 … BU18/19=22189. On a conference event those national IDs still serve the BU13 table — ingest uses that event’s `#division-select` (NorCal 22383–22388) and rejects a mismatched `<h3>`. App tabs merge U13–U16 only. |
 
-Taught UI: [theecnl.com ECNL Boys standings](https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx) (LEAGUES → Boys → ECNL Standings → Select Conference). That Sidearm page sets `data-org-id="12"` and `data-org-season-id="81"` and loads `https://public.totalglobalsports.com/standings.min.js`, which calls AthleteOne. ECNL-RL uses season **83**. Referer+Origin `https://theecnl.com` (bare curl is 403). If AthleteOne fails, ingest re-reads those `data-org-*` attributes from the taught page and retries the API — it does **not** invent a table from the empty Sidearm shell. Northern Cal is ingested first; every other boys conference still follows. Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU16=22386). National IDs 22184–22187 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match.
+Taught UI: [theecnl.com ECNL Boys standings](https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx) (LEAGUES → Boys → ECNL Standings → Select Conference). That Sidearm page sets `data-org-id="12"` and `data-org-season-id="81"` and loads `https://public.totalglobalsports.com/standings.min.js`, which calls AthleteOne. ECNL-RL uses season **83**. Referer+Origin `https://theecnl.com` (bare curl is 403). If AthleteOne fails, ingest re-reads those `data-org-*` attributes from the taught page and retries the API — it does **not** invent a table from the empty Sidearm shell. Northern Cal is ingested first; every other boys conference still follows. Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU18/19=22388). National IDs 22184–22189 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match.
+
+AthleteOne HTML columns are **GP, WINS, LOSSES, DRAWS** (W–L–D). The app stores **W–D–L**. Marin FC ECNL Northern Cal (live `…/4283/12/81/{div}/0`, heading age-checked):
+
+| Age | AthleteOne W–L–D | App W–D–L | GP | GF–GA |
+| --- | --- | --- | --- | --- |
+| BU13 B2013/14 | 1-1-1 | 1-1-1 | 3 | 5–5 |
+| BU14 B2012/13 | 2-1-0 | 2-0-1 | 3 | 7–4 |
+| BU15 B2011/12 | 2-1-0 | 2-0-1 | 3 | 4–2 |
+| BU16 B2010/11 | 0-2-1 | 0-1-2 | 3 | 6–11 |
+| BU17 B2009/10 | 0-1-2 | 0-2-1 | 3 | 4–7 |
+| BU18/19 B2008/09 | 1-2-0 | 1-0-2 | 3 | 3–4 |
 
 AthleteOne **schedule / results** Script routes (`get-team-schedule`, `loadIndividualTeamPage`) return **401**. `get-individual-team-info` is public but the embedded RESULTS table is empty. ECNL game-by-game history therefore stays on GotSport when that API has it. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs. No scores invented.
 
