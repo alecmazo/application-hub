@@ -48,7 +48,7 @@ export function ScoutDeskShell({
   return (
     <div className="shell-scout-desk min-h-dvh">
       <div className="mx-auto flex min-h-dvh w-full max-w-[96rem] flex-col px-3 pb-16 pt-4 sm:px-5 lg:px-6">
-        <div className="sticky top-0 z-30 -mx-3 mb-4 border-b border-border/80 bg-[color-mix(in_oklab,var(--color-bg)_88%,transparent)] px-3 py-3 backdrop-blur-md sm:-mx-5 sm:px-5 lg:-mx-6 lg:px-6">
+        <div className="sticky top-0 z-50 -mx-3 mb-4 border-b border-border/80 bg-[color-mix(in_oklab,var(--color-bg)_88%,transparent)] px-3 py-3 backdrop-blur-md sm:-mx-5 sm:px-5 lg:-mx-6 lg:px-6">
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="space-y-2">

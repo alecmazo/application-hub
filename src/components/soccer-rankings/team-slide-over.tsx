@@ -30,7 +30,7 @@ export function TeamSlideOver({
         aria-label="Close team detail"
         tabIndex={open ? 0 : -1}
         className={cn(
-          "fixed inset-0 z-40 bg-black/25 transition-opacity md:bg-black/10",
+          "fixed inset-0 z-30 bg-black/25 transition-opacity md:bg-black/10",
           open ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         onClick={onClose}
@@ -42,7 +42,7 @@ export function TeamSlideOver({
         aria-label={title}
         inert={!open}
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-full max-w-xl flex-col border-l border-border bg-card shadow-2xl transition-transform duration-200 ease-out",
+          "fixed inset-y-0 right-0 z-40 flex w-full max-w-xl flex-col border-l border-border bg-card shadow-2xl transition-transform duration-200 ease-out",
           open ? "translate-x-0" : "pointer-events-none translate-x-full",
         )}
       >
