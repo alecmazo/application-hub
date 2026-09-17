@@ -193,6 +193,7 @@ export function TeamDetail({
               {team.ecnl.gf != null && team.ecnl.ga != null
                 ? ` · ${team.ecnl.gf}–${team.ecnl.ga}`
                 : ""}
+              {` · T${team.ecnl.tier === "ecnl-rl" ? 2 : 1}`}
             </Badge>
           )}
         </div>

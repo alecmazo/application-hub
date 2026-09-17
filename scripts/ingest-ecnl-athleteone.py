@@ -350,6 +350,13 @@ def main() -> None:
                 "22383–22386). National 22184–22187 on a conference event still "
                 "serve the BU13 table and are rejected when <h3> age mismatches."
             ),
+            "viewer": "https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx",
+            "loader": "https://public.totalglobalsports.com/standings.min.js",
+            "schedules": (
+                "AthleteOne get-team-schedule / get-conference-results return 401. "
+                "get-individual-team-info is public but has an empty RESULTS table. "
+                "Match lists stay on GotSport."
+            ),
         },
         "discoveredEvents": discovered,
         "divisionMaps": maps,

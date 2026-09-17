@@ -81,14 +81,15 @@ export function MethodologyCard() {
               <code className="font-mono text-xs">
                 api.athleteone.com/api/Script/get-conference-standings
               </code>
-              , Referer theecnl.com): ECNL Tier 1 + ECNL-RL Tier 2 for CA
-              conferences, CA priority Northern Cal / NorCal / Far West /
-              Southwest / Golden State / Southern Cal). ECNL = Tier 1; ECNL-RL
-              = Tier 2. Boys U13–U16. Conference-specific division IDs; a
-              mismatched age heading is dropped. HTML table; no invented
-              scores. ECNL is the school-year pathway (theecnl.com → LEAGUES →
-              Boys → ECNL Standings), separate from MLS NEXT Homegrown =
-              Tier 1 and Academy = Tier 2.
+              , Referer theecnl.com; Sidearm page loads
+              public.totalglobalsports.com/standings.min.js with
+              data-org-season-id 81 / 83): every ECNL / ECNL-RL boys
+              conference. Northern Cal is the verification priority. ECNL =
+              Tier 1; ECNL-RL = Tier 2 (separate from MLS NEXT Homegrown T1 /
+              Academy T2). Boys U13–U16 school-year. Conference-specific
+              division IDs; a mismatched age heading is dropped. Schedule
+              scripts return 401 — match lists stay on GotSport. HTML table;
+              no invented scores.
             </li>
             <li>
               MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}

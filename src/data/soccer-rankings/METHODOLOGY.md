@@ -45,7 +45,7 @@ ECNL is a separate pathway. Do not mix those tiers with MLS NEXT.
 | MLS NEXT | Homegrown / Allstate Homegrown Division | Academy Division |
 | ECNL | ECNL | ECNL Regional League (ECNL-RL) |
 
-UI: list rows (including dense / split / mobile) show `Homegrown · T1` or `Academy · T2`. Team detail uses `MLS NEXT Homegrown · Tier 1` / `MLS NEXT Academy · Tier 2`. Platform filter keeps Homegrown (T1) and Academy (T2) as separate options. Ranking / SOS still treats both as MLS NEXT pathway clubs (Homegrown prior 72, Academy prior 70).
+UI: list rows (including dense / split / mobile) show `Homegrown · T1`, `Academy · T2`, `ECNL · T1`, or `ECNL-RL · T2`. Team detail uses the long labels (`MLS NEXT Homegrown · Tier 1`, `ECNL · Tier 1`, …). Platform filter keeps those four as separate options. Ranking / SOS still treats Homegrown and Academy as MLS NEXT pathway clubs (priors 72 / 70) and ECNL / ECNL-RL as their own pathway (68 / 55).
 
 Taught ECNL viewer (school-year, not MLS NEXT): [theecnl.com](https://theecnl.com) → LEAGUES → Boys → ECNL Standings → conference (e.g. Northern Cal). Ingest uses the AthleteOne standings API behind that page. ECNL U13 ≈ 2013/14 school year; it is **not** Homegrown 2014 BY.
 
@@ -69,9 +69,11 @@ Refresh path (California first, boys only):
 | --- | --- | --- |
 | GotSport rankings + `/teams/{id}/matches` | Name, points, all-competition W–D–L, recent results | CAS + CAN boys U12–U16; Marin FC every boys side |
 | MLS NEXT League Viewer JSON | Homegrown (Tier 1) + Academy (Tier 2) conference rank, completed league W–D–L / GF–GA, scored matches | All CA Homegrown / Academy clubs on those tables |
-| ECNL AthleteOne `get-conference-standings/{eventId}/12/{seasonId}/{divisionId}/0` | ECNL (season 81, Tier 1) + ECNL-RL (season 83, Tier 2) conference POS / GP / W / L / D / GF / GA | Every boys conference from the AthleteOne root event-select (QA / Champions Cup skipped). CA priority: Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal. Boys U13–U16. HTML table parsed; no invented scores. Referer+Origin `https://theecnl.com`. Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU16=22386). National IDs 22184–22187 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match. |
+| ECNL AthleteOne `get-conference-standings/{eventId}/12/{seasonId}/{divisionId}/0` | ECNL (season 81, Tier 1) + ECNL-RL (season 83, Tier 2) conference POS / GP / W / L / D / GF / GA | Every boys conference from the AthleteOne root event-select (QA / Champions Cup skipped). Northern Cal is the verification priority (Association FC, Marin FC, El Camino, etc.). Boys U13–U16 school-year. HTML table parsed; no invented scores. |
 
-AthleteOne does **not** publish a public JSON match list (schedule/results scripts return 401). ECNL game-by-game history stays on GotSport when that API has it. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs.
+Taught UI: [theecnl.com ECNL Boys standings](https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx) (LEAGUES → Boys → ECNL Standings → Select Conference). That Sidearm page sets `data-org-id="12"` and `data-org-season-id="81"` and loads `https://public.totalglobalsports.com/standings.min.js`, which calls AthleteOne. ECNL-RL uses season **83**. Referer+Origin `https://theecnl.com` (bare curl is 403). Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU16=22386). National IDs 22184–22187 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match.
+
+AthleteOne **schedule / results** Script routes return **401**. `get-individual-team-info` is public but the embedded schedule table is empty. ECNL game-by-game history therefore stays on GotSport when that API has it. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs. No scores invented.
 
 Marin FC home listing remains `gs-56506` (2013/14 ECNL). Blue / Red / Steel **2014/15** stay in the seed with their own records and are never home continuity.
 
