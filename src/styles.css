@@ -80,6 +80,73 @@
     var(--color-bg);
 }
 
+/* Layout shells — scoped theme tokens only. */
+.shell-matchday {
+  --color-bg: #10141c;
+  --color-bg-elevated: #171d28;
+  --color-surface: #1a2230;
+  --color-card: #1a2230;
+  --color-card-foreground: #f3efe6;
+  --color-foreground: #f3efe6;
+  --color-muted: #243044;
+  --color-muted-foreground: #b3b9c7;
+  --color-primary: #f0c36a;
+  --color-primary-foreground: #1a1406;
+  --color-secondary: #243044;
+  --color-secondary-foreground: #f3efe6;
+  --color-accent: #7eb6ff;
+  --color-accent-foreground: #071018;
+  --color-ring: #f0c36a;
+  --color-success: #5ee0a0;
+  --color-border: color-mix(in oklab, #f3efe6 12%, transparent);
+  color: var(--color-foreground);
+  background:
+    radial-gradient(
+      820px 440px at 50% -18%,
+      color-mix(in oklab, #f0c36a 14%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      620px 360px at 0% 8%,
+      color-mix(in oklab, #7eb6ff 10%, transparent),
+      transparent 50%
+    ),
+    #10141c;
+}
+
+.shell-split-command {
+  --color-bg: #0c1016;
+  --color-bg-elevated: #121821;
+  --color-surface: #151c26;
+  --color-card: #151c26;
+  --color-card-foreground: #e8eef6;
+  --color-foreground: #e8eef6;
+  --color-muted: #1d2633;
+  --color-muted-foreground: #93a0b3;
+  --color-primary: #8ab4ff;
+  --color-primary-foreground: #071018;
+  --color-secondary: #1d2633;
+  --color-secondary-foreground: #e8eef6;
+  --color-accent: #8ab4ff;
+  --color-accent-foreground: #071018;
+  --color-ring: #8ab4ff;
+  --color-success: #3ecf8e;
+  --color-border: color-mix(in oklab, #e8eef6 12%, transparent);
+  color: var(--color-foreground);
+  background:
+    radial-gradient(
+      900px 480px at 8% -12%,
+      color-mix(in oklab, #8ab4ff 11%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      720px 400px at 96% 0%,
+      color-mix(in oklab, #3ecf8e 9%, transparent),
+      transparent 52%
+    ),
+    linear-gradient(180deg, #0e141c 0%, #0c1016 100%);
+}
+
 .hub-atmosphere {
   background:
     radial-gradient(

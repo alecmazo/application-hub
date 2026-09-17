@@ -41,6 +41,8 @@ export function TeamDetail({
   onPinHome,
   onUnpinHome,
   refreshNonce = 0,
+  prominentRefresh = false,
+  showRefresh = true,
 }: {
   team: RankedTeam;
   yearTeams: RankedTeam[];
@@ -49,6 +51,8 @@ export function TeamDetail({
   onPinHome: (id: string) => void;
   onUnpinHome: () => void;
   refreshNonce?: number;
+  prominentRefresh?: boolean;
+  showRefresh?: boolean;
 }) {
   const [load, setLoad] = useState<MatchLoadResult | null>(null);
   const [selected, setSelected] = useState<CompactMatch | null>(null);
@@ -193,20 +197,22 @@ export function TeamDetail({
       )}
 
       <div className="flex flex-wrap items-center gap-2">
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          onClick={() => void onRefresh()}
-          disabled={refreshing}
-        >
-          {refreshing ? (
-            <Loader2 className="size-3.5 animate-spin" />
-          ) : (
-            <RefreshCw className="size-3.5" />
-          )}
-          Refresh
-        </Button>
+        {showRefresh && (
+          <Button
+            type="button"
+            variant={prominentRefresh ? "default" : "outline"}
+            size={prominentRefresh ? "default" : "sm"}
+            onClick={() => void onRefresh()}
+            disabled={refreshing}
+          >
+            {refreshing ? (
+              <Loader2 className="size-3.5 animate-spin" />
+            ) : (
+              <RefreshCw className="size-3.5" />
+            )}
+            {prominentRefresh ? "Refresh matches" : "Refresh"}
+          </Button>
+        )}
         {load?.gotsportTeamId != null && (
           <Button variant="outline" size="sm" asChild>
             <a
