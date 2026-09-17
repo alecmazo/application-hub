@@ -13,3 +13,4 @@ dist-spa
 screenshots
 artifacts
 src/routeTree.gen.ts
+uploads/

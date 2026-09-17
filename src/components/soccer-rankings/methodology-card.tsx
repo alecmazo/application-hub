@@ -77,6 +77,35 @@ export function MethodologyCard() {
               GitHub Pages cannot call GotSport directly (no CORS).
             </li>
             <li>
+              ECNL AthleteOne conference standings (
+              <code className="font-mono text-xs">
+                api.athleteone.com/api/Script/get-conference-standings
+              </code>
+              , Referer theecnl.com; Sidearm page loads
+              public.totalglobalsports.com/standings.min.js with
+              data-org-season-id 81 / 83): every ECNL / ECNL-RL boys
+              conference. Northern Cal is the verification priority. ECNL =
+              Tier 1; ECNL-RL = Tier 2 (separate from MLS NEXT Homegrown T1 /
+              Academy T2). Boys conferences × BU13–BU18/19 from the AthleteOne
+              root (app tabs merge U13–U16). Conference-specific division IDs;
+              national 22184–22189 on a conference event still serve BU13 and
+              are dropped when the heading mismatches. Schedule /
+              loadIndividualTeamPage return 401 — match lists stay on
+              GotSport. HTML table; no invented scores. A dated CA snapshot
+              under uploads/ is seed/verify only — live AthleteOne still
+              refreshes. Snapshot GotSport ranking_data (~20 rows, 0 CA boys)
+              is not used.
+            </li>
+            <li>
+              MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}
+              <code className="font-mono text-xs">
+                mls-assist.theintelligenceplatform.com
+              </code>{" "}
+              (same files the official standings viewer loads). Homegrown U13 =
+              2014 BY. Team Refresh pulls that schedule API first; the
+              mlssoccer.com Homegrown standings page is fallback discovery only.
+            </li>
+            <li>
               MLS NEXT Cup 2026 U13 recaps applied to the 2014 view (Atlanta
               United champion; LA Galaxy finalist; Inter Miami semifinalist).
             </li>
@@ -86,11 +115,19 @@ export function MethodologyCard() {
             </li>
           </ul>
           <p>
-            Refresh: run{" "}
+            Refresh (CA three-source):{" "}
             <code className="font-mono text-xs text-foreground">
-              python3 scripts/ingest-soccer-rankings.py
-            </code>{" "}
-            then rebuild. See{" "}
+              ingest-ecnl-athleteone.py
+            </code>
+            ,{" "}
+            <code className="font-mono text-xs text-foreground">
+              ingest-soccer-rankings.py --ca-refresh
+            </code>
+            ,{" "}
+            <code className="font-mono text-xs text-foreground">
+              ingest-gotsport-matches.py
+            </code>
+            . See{" "}
             <code className="font-mono text-xs text-foreground">
               src/data/soccer-rankings/METHODOLOGY.md
             </code>

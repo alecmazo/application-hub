@@ -17,7 +17,13 @@ export type AgeAlignment =
   | "gotsport"
   | string;
 
-export type LeagueBandFilter = "all" | "mls-next" | "ecnl" | "other";
+export type LeagueBandFilter =
+  | "all"
+  | "mls-next-hg"
+  | "mls-next"
+  | "ecnl"
+  | "ecnl-rl"
+  | "other";
 
 export type MlsNextCupRound =
   | "champion"
@@ -70,6 +76,20 @@ export type TeamSeed = {
     conferenceSize?: number;
     orgId?: number;
     division?: "academy" | "homegrown";
+    season?: string;
+    asOf?: string;
+  };
+  ecnl?: {
+    tier?: "ecnl" | "ecnl-rl";
+    conference?: string;
+    conferenceRank?: number;
+    conferenceSize?: number;
+    played?: number;
+    gf?: number;
+    ga?: number;
+    record?: RecordLine;
+    athleteOneTeamId?: number;
+    eventId?: number;
     season?: string;
     asOf?: string;
   };

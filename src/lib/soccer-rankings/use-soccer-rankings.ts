@@ -4,6 +4,9 @@ import {
   formatPoints,
   formatRecord,
   formatScore,
+  leagueDisplayLabel,
+  leagueTierChip,
+  publishedRecord,
   usableRank,
   winPct,
 } from "./compute";
@@ -11,7 +14,7 @@ import { DEFAULT_AGE_BAND } from "./age-map";
 import { loadRankedAge } from "./load";
 import { homeSearchAliases } from "./home";
 import { usePinnedHomeTeam } from "./use-pinned-home";
-import { refreshTeamMatches, sosByTeamId } from "./matches";
+import { mlsOverlayFromTeam, refreshTeamMatches, sosByTeamId } from "./matches";
 import type {
   AgeBand,
   LeaguePlatform,
@@ -49,7 +52,8 @@ export function hubHomeHref(): string {
 export function leagueBadgeVariant(
   league: LeaguePlatform,
 ): "success" | "accent" | "default" | "secondary" | "outline" {
-  if (league === "mls-next" || league === "mls-next-hg") return "success";
+  if (league === "mls-next-hg") return "success";
+  if (league === "mls-next") return "outline";
   if (league === "ecnl") return "accent";
   if (league === "ecnl-rl") return "default";
   return "secondary";
@@ -76,6 +80,8 @@ export function teamMatchesQuery(t: RankedTeam, q: string): boolean {
     t.state,
     stateName,
     t.leagueLabel,
+    leagueDisplayLabel(t.league, t.leagueLabel),
+    leagueTierChip(t.league) ?? "",
     ...aliases,
   ]
     .join(" ")
@@ -98,7 +104,12 @@ function compareRows(
     case "state":
       return mul * a.state.localeCompare(b.state) || us();
     case "league":
-      return mul * a.leagueLabel.localeCompare(b.leagueLabel) || us();
+      return (
+        mul *
+          leagueDisplayLabel(a.league, a.leagueLabel).localeCompare(
+            leagueDisplayLabel(b.league, b.leagueLabel),
+          ) || us()
+      );
     case "score":
       return mul * (a.score - b.score) || us();
     case "stateRank":
@@ -263,21 +274,32 @@ export function useSoccerRankings() {
     const targets = [...new Set([selectedId, pinnedId].filter(Boolean))] as string[];
     try {
       const results = await Promise.all(
-        targets.map((id) => refreshTeamMatches(id)),
+        targets.map((id) => {
+          const team = teams.find((t) => t.id === id);
+          return refreshTeamMatches(id, {
+            gotsportTeamId: team?.gotsportTeamId ?? null,
+            mlsNext: team ? mlsOverlayFromTeam(team) : null,
+          });
+        }),
       );
       setMatchRefreshNonce((n) => n + 1);
       const live = results.filter((r) => r.source === "live").length;
+      const usedMls = results.some((r) => r.mlsNextOrgId != null);
       if (targets.length === 0) {
         setRefreshNote(
-          "Open a team (or pin one) to pull its live GotSport match list. Seeded ranks stay compiled.",
+          "Open a team (or pin one) to pull its live Homegrown / GotSport match list. Seeded ranks stay compiled.",
         );
       } else if (live > 0) {
         setRefreshNote(
-          `Pulled live GotSport matches for ${live} team${live === 1 ? "" : "s"}. Seeded ranks stay as of ${GOTSPORT_AS_OF}.`,
+          usedMls
+            ? `Pulled live Homegrown / MLS NEXT schedule for ${live} team${live === 1 ? "" : "s"}. Seeded ranks stay as of ${GOTSPORT_AS_OF}.`
+            : `Pulled live GotSport matches for ${live} team${live === 1 ? "" : "s"}. Seeded ranks stay as of ${GOTSPORT_AS_OF}.`,
         );
       } else if (results.some((r) => r.source === "cache")) {
         setRefreshNote(
-          "GotSport live API unavailable here (no CORS on GitHub Pages). Showing the shipped match cache.",
+          usedMls
+            ? "Live League Viewer pull was empty or blocked. Showing the shipped Homegrown / MLS NEXT cache."
+            : "GotSport live API unavailable here (no CORS on GitHub Pages). Showing the shipped match cache.",
         );
       } else {
         setRefreshNote(
@@ -333,6 +355,7 @@ export function useSoccerRankings() {
     formatPoints,
     formatRecord,
     formatScore,
+    publishedRecord,
   };
 }
 

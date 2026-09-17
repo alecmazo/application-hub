@@ -2,7 +2,15 @@ import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Loader2, RefreshCw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatRecord, formatScore } from "@/lib/soccer-rankings/compute";
+import {
+  formatRecord,
+  formatScore,
+  leagueDisplayLabel,
+  mlsNextDivisionLabel,
+  pathwayTier,
+  publishedRecord,
+} from "@/lib/soccer-rankings/compute";
+import { leagueBadgeVariant } from "@/lib/soccer-rankings/use-soccer-rankings";
 import { alignmentLabel } from "@/lib/soccer-rankings/load";
 import {
   HOME_CONTINUITY_COPY,
@@ -16,7 +24,9 @@ import {
   byGotsportId,
   eventHref,
   loadTeamMatches,
+  matchFocusId,
   matchesApiHref,
+  mlsNextScheduleHref,
   mlsOverlayFromTeam,
   notOnPublicFeedFor,
   opponentCue,
@@ -57,10 +67,13 @@ export function TeamDetail({
   const [load, setLoad] = useState<MatchLoadResult | null>(null);
   const [selected, setSelected] = useState<CompactMatch | null>(null);
   const [refreshing, setRefreshing] = useState(false);
-  const index = useMemo(() => byGotsportId(yearTeams), [yearTeams]);
   const overlay = useMemo(
     () => mlsOverlayFromTeam(team),
     [team.id, team.ageBand, team.mlsNext?.orgId, team.mlsNext?.division],
+  );
+  const index = useMemo(
+    () => byGotsportId(yearTeams, overlay?.division),
+    [yearTeams, overlay?.division],
   );
 
   useEffect(() => {
@@ -99,7 +112,8 @@ export function TeamDetail({
     });
   }, [selected]);
 
-  const focusId = load?.gotsportTeamId ?? load?.mlsNextOrgId ?? overlay?.orgId;
+  const focusId =
+    load != null ? matchFocusId(load, overlay) : (overlay?.orgId ?? null);
   const sos =
     load && focusId != null
       ? summarizeSos(focusId, load.matches, index)
@@ -146,22 +160,40 @@ export function TeamDetail({
           <Chip
             label="Record"
             value={formatRecord(
-              load?.record ?? team.mlsNext?.record ?? team.record,
+              publishedRecord(team) ?? load?.record,
             )}
           />
           <Chip label="Score" value={formatScore(team.score)} />
         </div>
         <div className="mt-2 flex flex-wrap gap-1.5">
-          <Badge variant="outline">{team.leagueLabel}</Badge>
+          <Badge variant={leagueBadgeVariant(team.league)}>
+            {leagueDisplayLabel(team.league, team.leagueLabel)}
+          </Badge>
           {alignmentLabel(team.ageAlignment) && (
             <Badge variant="secondary">{alignmentLabel(team.ageAlignment)}</Badge>
           )}
           {team.mlsNext?.conference && (
-            <Badge variant="success">
-              MLS NEXT {team.mlsNext.conference}
+            <Badge variant={leagueBadgeVariant(team.league)}>
+              {mlsNextDivisionLabel(team.mlsNext.division, team.league) ??
+                "MLS NEXT"}{" "}
+              {team.mlsNext.conference}
               {team.mlsNext.conferenceRank
                 ? ` #${team.mlsNext.conferenceRank}`
                 : ""}
+              {pathwayTier(team.league)
+                ? ` · T${pathwayTier(team.league)}`
+                : ""}
+            </Badge>
+          )}
+          {team.ecnl?.conference && (
+            <Badge variant="accent">
+              {team.ecnl.tier === "ecnl-rl" ? "ECNL-RL" : "ECNL"}{" "}
+              {team.ecnl.conference}
+              {team.ecnl.conferenceRank ? ` #${team.ecnl.conferenceRank}` : ""}
+              {team.ecnl.gf != null && team.ecnl.ga != null
+                ? ` · ${team.ecnl.gf}–${team.ecnl.ga}`
+                : ""}
+              {` · T${team.ecnl.tier === "ecnl-rl" ? 2 : 1}`}
             </Badge>
           )}
         </div>
@@ -211,6 +243,18 @@ export function TeamDetail({
               <RefreshCw className="size-3.5" />
             )}
             {prominentRefresh ? "Refresh matches" : "Refresh"}
+          </Button>
+        )}
+        {overlay && (
+          <Button variant="outline" size="sm" asChild>
+            <a
+              href={mlsNextScheduleHref(overlay.division)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Raw Homegrown / MLS NEXT schedule JSON
+              <ExternalLink className="size-3.5" />
+            </a>
           </Button>
         )}
         {load?.gotsportTeamId != null && (

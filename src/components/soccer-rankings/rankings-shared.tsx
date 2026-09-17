@@ -21,6 +21,8 @@ import {
   GOTSPORT_AS_OF,
   LEAGUE_FILTERS,
   SEASON_LABEL,
+  leagueDisplayLabel,
+  leagueTierChip,
 } from "@/lib/soccer-rankings/compute";
 import { AGE_BANDS, AGE_LEGEND, ageTabHint } from "@/lib/soccer-rankings/age-map";
 import { alignmentLabel, COVERAGE } from "@/lib/soccer-rankings/load";
@@ -39,7 +41,7 @@ import {
   US_RANK_EXPLAIN,
   type SortDir,
 } from "@/lib/soccer-rankings/use-soccer-rankings";
-import { cachedMatchCount } from "@/lib/soccer-rankings/matches";
+import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { LeaguePlatform, RankedTeam } from "@/lib/soccer-rankings/types";
 import { STATE_CODES, STATE_NAMES } from "@/lib/soccer-rankings/states";
 import { cn } from "@/lib/utils";
@@ -527,12 +529,16 @@ export function TeamSourceBadges({
 }) {
   const { pinnedId } = useRankings();
   const sources = limit ? team.sources.slice(0, limit) : team.sources;
+  const tier = leagueTierChip(team.league);
   return (
     <>
       {isPinnedHomeTeam(team.id, pinnedId) && (
         <Badge variant="success">
           {isHomeTeam(team.id) ? HOME_LABEL : "Home"}
         </Badge>
+      )}
+      {tier && (
+        <Badge variant={leagueBadgeVariant(team.league)}>{tier}</Badge>
       )}
       {alignmentLabel(team.ageAlignment) && (
         <Badge variant="secondary">{alignmentLabel(team.ageAlignment)}</Badge>
@@ -586,6 +592,7 @@ export function RankingsTable({
     formatRecord,
     formatPoints,
     formatScore,
+    publishedRecord,
   } = useRankings();
   const pad = density === "dense" ? "px-2 py-1.5" : "px-2 py-2.5";
 
@@ -732,7 +739,7 @@ export function RankingsTable({
               {columns === "full" && (
                 <td className={pad}>
                   <Badge variant={leagueBadgeVariant(t.league)}>
-                    {t.leagueLabel}
+                    {leagueDisplayLabel(t.league, t.leagueLabel)}
                   </Badge>
                 </td>
               )}
@@ -742,10 +749,10 @@ export function RankingsTable({
                   "text-right font-mono-num whitespace-nowrap text-muted-foreground",
                 )}
               >
-                {formatRecord(t.record ?? t.mlsNext?.record)}
-                {cachedMatchCount(t.id) > 0 && (
+                {formatRecord(publishedRecord(t))}
+                {cachedMatchCount(t.id, mlsOverlayFromTeam(t)) > 0 && (
                   <span className="ml-1 text-[10px] text-success">
-                    {cachedMatchCount(t.id)}g
+                    {cachedMatchCount(t.id, mlsOverlayFromTeam(t))}g
                   </span>
                 )}
               </td>
@@ -800,6 +807,7 @@ export function CompactTeamList({
     selectedId,
     formatRecord,
     formatScore,
+    publishedRecord,
   } = useRankings();
 
   return (
@@ -831,6 +839,13 @@ export function CompactTeamList({
               <p className="mt-0.5 font-mono-num text-xs font-medium">
                 {dualRank(t)}
               </p>
+              {leagueTierChip(t.league) && (
+                <p className="mt-1">
+                  <Badge variant={leagueBadgeVariant(t.league)}>
+                    {leagueTierChip(t.league)}
+                  </Badge>
+                </p>
+              )}
             </div>
             <div className="flex items-center gap-2">
               <PinHomeButton
@@ -849,7 +864,7 @@ export function CompactTeamList({
           <div className="mt-2 grid grid-cols-3 gap-2 text-xs">
             <MetaChip
               label="Record"
-              value={formatRecord(t.record ?? t.mlsNext?.record)}
+              value={formatRecord(publishedRecord(t))}
             />
             <MetaChip
               label="SOS"
