@@ -86,10 +86,12 @@ export function MethodologyCard() {
               data-org-season-id 81 / 83): every ECNL / ECNL-RL boys
               conference. Northern Cal is the verification priority. ECNL =
               Tier 1; ECNL-RL = Tier 2 (separate from MLS NEXT Homegrown T1 /
-              Academy T2). Boys U13–U16 school-year. Conference-specific
-              division IDs; a mismatched age heading is dropped. Schedule
-              scripts return 401 — match lists stay on GotSport. HTML table;
-              no invented scores.
+              Academy T2). Boys conferences × BU13–BU18/19 from the AthleteOne
+              root (app tabs merge U13–U16). Conference-specific division IDs;
+              national 22184–22189 on a conference event still serve BU13 and
+              are dropped when the heading mismatches. Schedule /
+              loadIndividualTeamPage return 401 — match lists stay on
+              GotSport. HTML table; no invented scores.
             </li>
             <li>
               MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}

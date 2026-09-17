@@ -55,14 +55,33 @@ PRIORITY_CONF_RE = re.compile(
     re.I,
 )
 
-# National fallbacks (root / national tables). Conference events remap these.
-ECNL_DIVISIONS = (("U13", 22184), ("U14", 22185), ("U15", 22186), ("U16", 22187))
-ECNL_RL_DIVISIONS = (("U13", 22467), ("U14", 22468), ("U15", 22469), ("U16", 22470))
+# National root IDs (recipe: BU13=22184 … BU18/19=22189). On a *conference*
+# event those IDs still serve the BU13 table — ingest remaps via #division-select
+# (Northern Cal BU13=22383 … BU16=22386, BU17=22387, BU18/19=22388).
+ECNL_DIVISIONS = (
+    ("U13", 22184),
+    ("U14", 22185),
+    ("U15", 22186),
+    ("U16", 22187),
+    ("U17", 22188),
+    ("U18/19", 22189),
+)
+ECNL_RL_DIVISIONS = (
+    ("U13", 22467),
+    ("U14", 22468),
+    ("U15", 22469),
+    ("U16", 22470),
+    ("U17", 22471),
+    ("U18/19", 22472),
+)
 AGE_FROM_LABEL = {
     "BU13": "U13",
     "BU14": "U14",
     "BU15": "U15",
     "BU16": "U16",
+    "BU17": "U17",
+    "BU18/19": "U18/19",
+    "BU1819": "U18/19",
 }
 
 # CA-relevant ECNL boys conferences (2026-27).
@@ -212,6 +231,8 @@ def parse_heading_age(html: str) -> str | None:
     if not m:
         return None
     label = re.sub(r"\s+", "", m.group(1).upper())
+    if "BU18" in label:
+        return "U18/19"
     for key, band in AGE_FROM_LABEL.items():
         if key in label:
             return band
@@ -405,10 +426,16 @@ def main() -> None:
             "tier": "ECNL seasonId=81 Tier 1; ECNL-RL seasonId=83 Tier 2. Boys only.",
             "caConferences": "Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal (priority).",
             "allConferences": "Every ECNL / ECNL-RL boys conference from the AthleteOne root event-select (skip QA + Champions Cup).",
-            "ages": "BU13–BU16 → U13–U16 (school-year). BU17/U18-19 skipped.",
+            "ages": "BU13–BU18/19 school-year. App ranking tabs merge U13–U16 only.",
+            "recipe": (
+                "GET {host}/{eventId}/12/{seasonId}/{divisionId}/0. "
+                "Root 0/12/81/0/0 (ECNL) and 0/12/83/0/0 (ECNL-RL). "
+                "standingId=0. National BU13=22184…BU18/19=22189 are root IDs; "
+                "conference events remap from #division-select."
+            ),
             "divisionIds": (
                 "Conference events use #division-select IDs (e.g. Northern Cal "
-                "22383–22386). National 22184–22187 on a conference event still "
+                "22383–22388). National 22184–22189 on a conference event still "
                 "serve the BU13 table and are rejected when <h3> age mismatches."
             ),
             "viewer": "https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx",
@@ -430,7 +457,7 @@ def main() -> None:
             "playedTeams": sum(1 for t in teams if t.get("played")),
             "byAge": {
                 age: sum(1 for t in teams if t["ageBand"] == age)
-                for age in ("U13", "U14", "U15", "U16")
+                for age in ("U13", "U14", "U15", "U16", "U17", "U18/19")
             },
         },
         "teams": teams,
