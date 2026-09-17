@@ -152,7 +152,7 @@ export function TeamDetail({
           <Chip
             label="Record"
             value={formatRecord(
-              load?.record ?? publishedRecord(team),
+              publishedRecord(team) ?? load?.record,
             )}
           />
           <Chip label="Score" value={formatScore(team.score)} />
