@@ -91,7 +91,10 @@ export function MethodologyCard() {
               national 22184–22189 on a conference event still serve BU13 and
               are dropped when the heading mismatches. Schedule /
               loadIndividualTeamPage return 401 — match lists stay on
-              GotSport. HTML table; no invented scores.
+              GotSport. HTML table; no invented scores. A dated CA snapshot
+              under uploads/ is seed/verify only — live AthleteOne still
+              refreshes. Snapshot GotSport ranking_data (~20 rows, 0 CA boys)
+              is not used.
             </li>
             <li>
               MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}

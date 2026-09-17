@@ -27,12 +27,20 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import time
 import urllib.error
 import urllib.request
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ca_boys_snapshot import (  # noqa: E402
+    ecnl_teams_from_snapshot,
+    merge_ecnl_live_over_seed,
+    snapshot_dir,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src/data/soccer-rankings/ecnl-public.json"
@@ -379,42 +387,66 @@ def ingest_group(
 
 
 def main() -> None:
-    # Discover conferences from the public root (documented; CA list is curated).
-    root_ecnl = fetch_html(0, 81, 0)
-    root_rl = fetch_html(0, 83, 0)
-    discovered = {
-        "ecnl": parse_root_events(root_ecnl),
-        "ecnl-rl": parse_root_events(root_rl),
-    }
-    ecnl_feeds = prioritize_feeds(
-        feeds_from_root(discovered["ecnl"], tier="ecnl", season_id=81)
-    )
-    rl_feeds = prioritize_feeds(
-        feeds_from_root(discovered["ecnl-rl"], tier="ecnl-rl", season_id=83)
-    )
-    # Keep curated CA events even if the root list is missing a label.
-    have_ecnl = {f["eventId"] for f in ecnl_feeds}
-    have_rl = {f["eventId"] for f in rl_feeds}
-    for feed in ECNL_CA_EVENTS:
-        if feed["eventId"] not in have_ecnl:
-            ecnl_feeds.append(dict(feed))
-    for feed in ECNL_RL_CA_EVENTS:
-        if feed["eventId"] not in have_rl:
-            rl_feeds.append(dict(feed))
-    print(
-        f"ECNL conferences {len(ecnl_feeds)} RL {len(rl_feeds)} "
-        f"(CA-priority {[f['conference'] for f in ECNL_CA_EVENTS + ECNL_RL_CA_EVENTS]})",
-        flush=True,
-    )
+    from_snapshot = "--from-snapshot" in sys.argv
+    seed = ecnl_teams_from_snapshot() if from_snapshot else []
+    if from_snapshot:
+        print(
+            f"snapshot seed {len(seed)} CA ECNL rows from {snapshot_dir()} "
+            "(live AthleteOne still runs and wins on overlap)",
+            flush=True,
+        )
 
+    # Discover conferences from the public root (documented; CA list is curated).
     teams: list[dict] = []
     maps: list[dict] = []
-    part, part_maps = ingest_group(tuple(ecnl_feeds), ECNL_DIVISIONS, "ECNL")
-    teams.extend(part)
-    maps.extend(part_maps)
-    part, part_maps = ingest_group(tuple(rl_feeds), ECNL_RL_DIVISIONS, "ECNL-RL")
-    teams.extend(part)
-    maps.extend(part_maps)
+    discovered: dict = {"ecnl": [], "ecnl-rl": []}
+    ecnl_feeds: list[dict] = []
+    rl_feeds: list[dict] = []
+    live_ok = False
+    try:
+        root_ecnl = fetch_html(0, 81, 0)
+        root_rl = fetch_html(0, 83, 0)
+        discovered = {
+            "ecnl": parse_root_events(root_ecnl),
+            "ecnl-rl": parse_root_events(root_rl),
+        }
+        ecnl_feeds = prioritize_feeds(
+            feeds_from_root(discovered["ecnl"], tier="ecnl", season_id=81)
+        )
+        rl_feeds = prioritize_feeds(
+            feeds_from_root(discovered["ecnl-rl"], tier="ecnl-rl", season_id=83)
+        )
+        have_ecnl = {f["eventId"] for f in ecnl_feeds}
+        have_rl = {f["eventId"] for f in rl_feeds}
+        for feed in ECNL_CA_EVENTS:
+            if feed["eventId"] not in have_ecnl:
+                ecnl_feeds.append(dict(feed))
+        for feed in ECNL_RL_CA_EVENTS:
+            if feed["eventId"] not in have_rl:
+                rl_feeds.append(dict(feed))
+        print(
+            f"ECNL conferences {len(ecnl_feeds)} RL {len(rl_feeds)} "
+            f"(CA-priority {[f['conference'] for f in ECNL_CA_EVENTS + ECNL_RL_CA_EVENTS]})",
+            flush=True,
+        )
+        part, part_maps = ingest_group(tuple(ecnl_feeds), ECNL_DIVISIONS, "ECNL")
+        teams.extend(part)
+        maps.extend(part_maps)
+        part, part_maps = ingest_group(tuple(rl_feeds), ECNL_RL_DIVISIONS, "ECNL-RL")
+        teams.extend(part)
+        maps.extend(part_maps)
+        live_ok = True
+    except Exception as err:
+        if not seed:
+            raise
+        print(f"live AthleteOne failed ({err}); using snapshot seed only", flush=True)
+
+    if seed:
+        teams = merge_ecnl_live_over_seed(seed, teams)
+        print(
+            f"merged snapshot seed + {'live' if live_ok else 'no live'} → {len(teams)} rows",
+            flush=True,
+        )
     payload = {
         "season": "2026-27",
         "asOf": compiled_stamp(),
@@ -444,6 +476,11 @@ def main() -> None:
                 "AthleteOne get-team-schedule / get-conference-results return 401. "
                 "get-individual-team-info is public but has an empty RESULTS table. "
                 "Match lists stay on GotSport."
+            ),
+            "snapshot": (
+                "--from-snapshot seeds CA ECNL rows from uploads/ca-boys-api-snapshot "
+                "(W–L–D → W–D–L). Live AthleteOne still runs and wins on overlap. "
+                "GotSport ranking_data in that dump is not used."
             ),
         },
         "discoveredEvents": discovered,

@@ -58,10 +58,13 @@ Alec’s vintage figure: California alone has **≈1,100+** boys teams around th
 Refresh path (California first, boys only):
 
 - Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. `--reoverlay` reapplies MLS NEXT / ECNL / TDS overlays on the current seed. `--ca-refresh` refetches Cal South + Cal North live and keeps other states.
-- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy) from the League Viewer JSON.
-- ECNL: `python3 scripts/ingest-ecnl-athleteone.py` → `ecnl-public.json` (ECNL Tier 1 + ECNL-RL Tier 2 conference tables).
+- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy) from the League Viewer JSON. `--from-snapshot` seeds CA-filtered rows from `uploads/ca-boys-api-snapshot` if live fails or a CA club is missing.
+- ECNL: `python3 scripts/ingest-ecnl-athleteone.py` → `ecnl-public.json` (ECNL Tier 1 + ECNL-RL Tier 2 conference tables). `--from-snapshot` seeds CA ECNL rows from the same dump; live AthleteOne still runs and wins on overlap.
 - Matches: `python3 scripts/ingest-gotsport-matches.py` → `matches.json` (all CA ECNL / RL / MLS NEXT sides + every Marin FC boys listing).
+- Verify: `python3 scripts/verify-ca-boys-snapshot.py` checks Marin + Northern Cal + U13 NW Homegrown against `fixtures/ca-boys-snapshot-expected.json` (and the extracted dump when present).
 - If a reported result is still missing after public endpoints, `matches-meta.json` `notOnPublicFeed` is `not_yet_on_gotsport_public_feed` and the score is **not invented**.
+
+The 2026-09-17 CA boys API snapshot (`ca-boys-api-snapshot-lean.tgz`, extract under `uploads/`) is a seed/verify dump only. Its GotSport `team_ranking_data` response was **20 mixed-gender rows / 0 CA boys** — ranked CA teams stay on the live GotSport ingest. Do not invent scores from that file.
 
 ### CA three-source refresh
 

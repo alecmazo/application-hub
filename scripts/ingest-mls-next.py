@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -27,6 +28,9 @@ from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from ca_boys_snapshot import mls_snapshot_path  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src/data/soccer-rankings/mls-next-public.json"
@@ -140,6 +144,82 @@ def parse_age(value: object) -> str | None:
         return None
     band = m.group(1).upper()
     return band if band in AGE_BANDS else None
+
+
+def ingest_feed_from_snapshot(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict], str] | None:
+    """CA-filtered snapshot seed. Only completed events with both scores count."""
+    path = mls_snapshot_path(feed["division"])
+    if path is None:
+        return None
+    payload = json.loads(path.read_text())
+    teams: dict[tuple[int, str, str], dict] = {}
+    division: str = feed["division"]
+    for row in payload.get("standings") or []:
+        age = parse_age(row.get("age_group"))
+        if age not in AGE_BANDS:
+            continue
+        org = row.get("team") or {}
+        oid = org.get("organisation_id")
+        if oid is None:
+            continue
+        cr = row.get("computed_record") or {}
+        gp = int(cr.get("gp") or 0)
+        key = (int(oid), age, division)
+        teams[key] = {
+            "orgId": int(oid),
+            "squadId": org.get("squad_id"),
+            "name": org.get("name") or "Unknown",
+            "ageBand": age,
+            "birthYear": MLS_NEXT_BAND_BIRTH_YEAR[age],
+            "division": division,
+            "divisionLabel": feed["label"],
+            "conference": row.get("conference"),
+            "conferenceRank": row.get("position"),
+            "conferenceSize": None,
+            "record": (
+                {
+                    "w": int(cr.get("wins") or 0),
+                    "d": int(cr.get("draws") or 0),
+                    "l": int(cr.get("losses") or 0),
+                    "asOf": payload.get("fetched_at") or compiled_stamp(),
+                    "note": f"{feed['label']} 26/27 snapshot seed (completed games only)",
+                }
+                if gp
+                else None
+            ),
+            "played": gp,
+            "gf": int(cr.get("gf") or 0),
+            "ga": int(cr.get("ga") or 0),
+        }
+
+    compact_matches: list[dict] = []
+    for ev in payload.get("matching_schedule_events") or []:
+        age = parse_age(ev.get("home_squad_name")) or parse_age(ev.get("away_squad_name"))
+        if age not in AGE_BANDS:
+            continue
+        ho = ev.get("home_organisation") or {}
+        ao = ev.get("away_organisation") or {}
+        hid, aid = ho.get("id"), ao.get("id")
+        hs, aws = ev.get("home_score"), ev.get("away_score")
+        if not (ev.get("completed") and hs is not None and aws is not None):
+            continue
+        compact_matches.append(
+            {
+                "id": ev.get("id"),
+                "date": (ev.get("start_time") or "")[:10] or None,
+                "ageBand": age,
+                "division": division,
+                "homeOrgId": hid,
+                "homeName": ho.get("name"),
+                "awayOrgId": aid,
+                "awayName": ao.get("name"),
+                "homeScore": hs,
+                "awayScore": aws,
+                "event": feed["label"] + " 26/27",
+                "kind": "league",
+            }
+        )
+    return teams, compact_matches, "snapshot"
 
 
 def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict], str]:
@@ -279,12 +359,42 @@ def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict
 
 
 def ingest() -> dict:
+    from_snapshot = "--from-snapshot" in sys.argv
     teams: dict[tuple[int, str, str], dict] = {}
     matches: list[dict] = []
     provenance: dict[str, str] = {}
     for feed in FEEDS:
         print("fetch", feed["division"], flush=True)
-        part, part_matches, source = ingest_feed(feed)
+        part: dict[tuple[int, str, str], dict] = {}
+        part_matches: list[dict] = []
+        source = "api"
+        try:
+            part, part_matches, source = ingest_feed(feed)
+        except Exception as err:
+            seeded = ingest_feed_from_snapshot(feed) if from_snapshot else None
+            if seeded is None:
+                raise
+            part, part_matches, source = seeded
+            print(
+                f"  live MLS NEXT failed ({err}); using snapshot seed {len(part)} teams",
+                flush=True,
+            )
+        if from_snapshot:
+            seeded = ingest_feed_from_snapshot(feed)
+            if seeded is not None:
+                seed_teams, seed_matches, _ = seeded
+                added = 0
+                for key, row in seed_teams.items():
+                    if key not in part:
+                        part[key] = row
+                        added += 1
+                have_ids = {m.get("id") for m in part_matches}
+                for match in seed_matches:
+                    if match.get("id") not in have_ids:
+                        part_matches.append(match)
+                if added:
+                    source = f"{source}+snapshot-seed"
+                    print(f"  snapshot filled {added} missing {feed['division']} teams", flush=True)
         provenance[feed["division"]] = source
         teams.update(part)
         matches.extend(part_matches)
@@ -341,7 +451,9 @@ def ingest() -> dict:
             "fallback": (
                 "Prefer the public League Viewer JSON. Official UI "
                 "mlssoccer.com/mlsnext/standings/homegrown_division/ is used only "
-                "to rediscover those JSON URLs if the API host fails."
+                "to rediscover those JSON URLs if the API host fails. "
+                "--from-snapshot seeds CA-filtered rows from uploads/ca-boys-api-snapshot "
+                "when live fails or a CA club is missing. No invented scores."
             ),
         },
         "provenance": provenance,
