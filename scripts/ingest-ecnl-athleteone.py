@@ -1,22 +1,26 @@
 #!/usr/bin/env python3
 """Pull public ECNL / ECNL-RL boys conference standings from AthleteOne.
 
-theecnl.com standings viewer calls:
+Primary (API, all boys conferences):
 
   GET https://api.athleteone.com/api/Script/get-conference-standings/{eventId}/12/{seasonId}/{divisionId}/0
 
-with Origin/Referer https://theecnl.com. The response is an HTML table (not JSON).
-We parse published POS / GP / W / L / D / GF / GA only — nothing is invented.
+Bare curl is 403. Send Origin + Referer https://theecnl.com.
+
+Taught UI fallback (discovery only, not invented tables):
+
+  https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx
+  LEAGUES → Boys → ECNL Standings → Select Conference
+  data-org-id=12  data-org-season-id=81 (ECNL) / 83 (ECNL-RL)
+  loader: https://public.totalglobalsports.com/standings.min.js
+
+Sibling Script routes: team-info is public; schedule/results return 401.
 
   ECNL (Tier 1):  seasonId=81   root 0/12/81/0/0
   ECNL-RL (Tier 2): seasonId=83  root 0/12/83/0/0
 
-National division IDs (BU13=22184 …) on a *conference* event still serve the
-BU13 table. Each conference has its own #division-select IDs (Northern Cal
-BU13=22383 … BU16=22386). Ingest discovers those IDs and rejects HTML whose
-<h3> age does not match the requested band.
-
-CA-first: Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal.
+Northern Cal is ingested first. Every other conference from the root
+event-select is pulled too (QA / Champions Cup skipped).
 """
 
 from __future__ import annotations
@@ -37,12 +41,19 @@ CACHE.mkdir(parents=True, exist_ok=True)
 
 HOST = "https://api.athleteone.com/api/Script/get-conference-standings"
 ORG_ID = 12
+VIEWER = "https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx"
 HEADERS = {
     "Accept": "text/html,application/json,*/*",
     "Origin": "https://theecnl.com",
     "Referer": "https://theecnl.com/",
     "User-Agent": "application-hub-soccer-rankings/1.0 (personal research; public ECNL)",
 }
+ORG_RE = re.compile(r'data-org-id="(\d+)"')
+SEASON_RE = re.compile(r'data-org-season-id="(\d+)"')
+PRIORITY_CONF_RE = re.compile(
+    r"northern\s*cal|norcal|golden state|southern\s*cal|far west|southwest",
+    re.I,
+)
 
 # National fallbacks (root / national tables). Conference events remap these.
 ECNL_DIVISIONS = (("U13", 22184), ("U14", 22185), ("U15", 22186), ("U16", 22187))
@@ -133,10 +144,56 @@ def fetch_html(event_id: int, season_id: int, division_id: int) -> str:
                 raw = resp.read()
             cache.write_bytes(raw)
             return raw.decode("utf-8", "ignore")
-        except (urllib.error.URLError, TimeoutError, urllib.error.HTTPError) as err:
+        except urllib.error.HTTPError as err:
+            last = err
+            if err.code == 403:
+                print(
+                    f"  AthleteOne 403 without browser headers? retrying with Referer "
+                    f"(bare curl is 403): {url}",
+                    flush=True,
+                )
+            time.sleep(0.6 * (attempt + 1))
+        except (urllib.error.URLError, TimeoutError) as err:
             last = err
             time.sleep(0.6 * (attempt + 1))
+    # Taught UI fallback: Sidearm page does not embed the table (JS injects it).
+    # Re-read org/season from the viewer, then retry AthleteOne once. Do not
+    # invent standings from the empty Sidearm shell.
+    org, season = discover_org_season_from_viewer()
+    retry = f"{HOST}/{event_id}/{org}/{season_id or season}/{division_id}/0"
+    try:
+        req = urllib.request.Request(retry, headers=HEADERS)
+        with urllib.request.urlopen(req, timeout=40) as resp:
+            raw = resp.read()
+        cache.write_bytes(raw)
+        print(f"  viewer-discovery retry ok org={org} {retry}", flush=True)
+        return raw.decode("utf-8", "ignore")
+    except (urllib.error.URLError, TimeoutError, urllib.error.HTTPError) as err:
+        last = err
     raise RuntimeError(f"failed {url}: {last}")
+
+
+def discover_org_season_from_viewer() -> tuple[int, int]:
+    req = urllib.request.Request(VIEWER, headers=HEADERS)
+    with urllib.request.urlopen(req, timeout=40) as resp:
+        html = resp.read().decode("utf-8", "ignore")
+    org = int(ORG_RE.search(html).group(1)) if ORG_RE.search(html) else ORG_ID
+    season = int(SEASON_RE.search(html).group(1)) if SEASON_RE.search(html) else 81
+    print(f"  taught UI {VIEWER} data-org-id={org} data-org-season-id={season}", flush=True)
+    return org, season
+
+
+def prioritize_feeds(feeds: list[dict]) -> list[dict]:
+    """Northern Cal / CA conferences first; every other region still follows."""
+    def key(feed: dict) -> tuple[int, str]:
+        name = feed.get("conference") or ""
+        if re.search(r"northern\s*cal|^norcal$", name, re.I):
+            return (0, name)
+        if PRIORITY_CONF_RE.search(name):
+            return (1, name)
+        return (2, name)
+
+    return sorted(feeds, key=key)
 
 
 def parse_root_events(html: str) -> list[tuple[int, str]]:
@@ -308,8 +365,12 @@ def main() -> None:
         "ecnl": parse_root_events(root_ecnl),
         "ecnl-rl": parse_root_events(root_rl),
     }
-    ecnl_feeds = feeds_from_root(discovered["ecnl"], tier="ecnl", season_id=81)
-    rl_feeds = feeds_from_root(discovered["ecnl-rl"], tier="ecnl-rl", season_id=83)
+    ecnl_feeds = prioritize_feeds(
+        feeds_from_root(discovered["ecnl"], tier="ecnl", season_id=81)
+    )
+    rl_feeds = prioritize_feeds(
+        feeds_from_root(discovered["ecnl-rl"], tier="ecnl-rl", season_id=83)
+    )
     # Keep curated CA events even if the root list is missing a label.
     have_ecnl = {f["eventId"] for f in ecnl_feeds}
     have_rl = {f["eventId"] for f in rl_feeds}
