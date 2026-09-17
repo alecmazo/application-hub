@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Loader2, RefreshCw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatRecord, formatScore } from "@/lib/soccer-rankings/compute";
+import { formatRecord, formatScore, publishedRecord } from "@/lib/soccer-rankings/compute";
 import { alignmentLabel } from "@/lib/soccer-rankings/load";
 import {
   HOME_CONTINUITY_COPY,
@@ -152,7 +152,7 @@ export function TeamDetail({
           <Chip
             label="Record"
             value={formatRecord(
-              load?.record ?? team.mlsNext?.record ?? team.record,
+              load?.record ?? publishedRecord(team),
             )}
           />
           <Chip label="Score" value={formatScore(team.score)} />
@@ -167,6 +167,16 @@ export function TeamDetail({
               MLS NEXT {team.mlsNext.conference}
               {team.mlsNext.conferenceRank
                 ? ` #${team.mlsNext.conferenceRank}`
+                : ""}
+            </Badge>
+          )}
+          {team.ecnl?.conference && (
+            <Badge variant="accent">
+              {team.ecnl.tier === "ecnl-rl" ? "ECNL-RL" : "ECNL"}{" "}
+              {team.ecnl.conference}
+              {team.ecnl.conferenceRank ? ` #${team.ecnl.conferenceRank}` : ""}
+              {team.ecnl.gf != null && team.ecnl.ga != null
+                ? ` · ${team.ecnl.gf}–${team.ecnl.ga}`
                 : ""}
             </Badge>
           )}

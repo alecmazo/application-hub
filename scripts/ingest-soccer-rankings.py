@@ -174,6 +174,7 @@ SCHOOL_YEAR_MIX_TO_BAND = {
 }
 
 MLS_NEXT_PUBLIC = ROOT / "src/data/soccer-rankings/mls-next-public.json"
+ECNL_PUBLIC = ROOT / "src/data/soccer-rankings/ecnl-public.json"
 
 
 def fetch_page(age: int, assoc: str, page: int) -> dict:
@@ -454,7 +455,12 @@ CLUB_ALIASES = {
     "thetown": ("thetownfc", "townfc"),
     "sdsurf": ("sdscsurf", "sandiegosurf"),
     "sdscsurf": ("sandiegosurf", "sdsurf"),
+    "sandiegosurf": ("sdsurf", "sdscsurf"),
     "gsa": ("gwinnettsoccer", "gsasoccer"),
+    "sanfranciscoelite": ("sfea", "sfelite"),
+    "sfea": ("sanfranciscoelite", "sfelite"),
+    "elcaminosalinas": ("elcaminofutbolsalinas", "elcaminofutbolclubsalinas"),
+    "elcaminofutbolsalinas": ("elcaminosalinas",),
 }
 
 
@@ -563,6 +569,8 @@ def apply_overlays(teams: list[dict]) -> None:
         if "TDS TeamRank" not in hit["sources"]:
             hit["sources"].append("TDS TeamRank")
 
+    merge_mls_next_public(teams)
+    # Cup / UpNext after MLS merge so Homegrown stubs (LA Galaxy) can match.
     for club, state, cup, upnext in CURATED_2014_MLSNEXT_CUP:
         hit = _pick_club(teams, club, state, 2014, prefer_mls=True) or _pick_club(
             teams, club, state, 2014
@@ -591,7 +599,7 @@ def apply_overlays(teams: list[dict]) -> None:
             if tag not in hit["sources"]:
                 hit["sources"].append(tag)
 
-    merge_mls_next_public(teams)
+    merge_ecnl_public(teams)
 
 
 def _club_tokens(name: str) -> str:
@@ -732,6 +740,101 @@ def merge_mls_next_public(teams: list[dict]) -> None:
             )
         if "MLS NEXT League 26/27" not in hit["sources"]:
             hit["sources"].append("MLS NEXT League 26/27")
+
+
+def _is_ecnl_listing(team: dict, label: str, tier: str) -> bool:
+    blob = label.lower()
+    if re.search(r"pre[\s-]*ecnl", blob):
+        return False
+    if tier == "ecnl-rl":
+        return team.get("league") == "ecnl-rl" or bool(
+            re.search(r"ecnl[\s-]*rl|regional league", blob)
+        )
+    if team.get("league") == "ecnl-rl" or re.search(r"ecnl[\s-]*rl", blob):
+        return False
+    return team.get("league") == "ecnl" or bool(re.search(r"\becnl\b", blob))
+
+
+def _ecnl_club_key(name: str) -> str:
+    """Club identity without league / birth-year tokens (age is matched separately)."""
+    s = re.sub(r"\b(ecnl[\s-]*rl|ecnl|regional\s+league|pre[\s-]*ecnl)\b", " ", name, flags=re.I)
+    s = re.sub(r"\bb?20\d{2}\s*/\s*\d{2}\b", " ", s, flags=re.I)
+    s = re.sub(r"\bb?20\d{2}\b", " ", s, flags=re.I)
+    s = re.sub(r"\bb?1[0-9](?:\s*/\s*1[0-9])?\b", " ", s, flags=re.I)
+    return _club_tokens(s)
+
+
+def merge_ecnl_public(teams: list[dict]) -> None:
+    if not ECNL_PUBLIC.exists():
+        return
+    public = json.loads(ECNL_PUBLIC.read_text())
+    by_band: dict[str, list[dict]] = {b: [] for b in AGE_BANDS}
+    for t in teams:
+        for band in t.get("ageBands") or []:
+            by_band.setdefault(band, []).append(t)
+
+    for row in public.get("teams") or []:
+        band = row.get("ageBand")
+        if band not in AGE_BANDS:
+            continue
+        tier = row.get("tier") or "ecnl"
+        target = _ecnl_club_key(row.get("name") or "")
+        if len(target) < 4:
+            continue
+        aliases = set(CLUB_ALIASES.get(target, ()))
+        scored: list[tuple[int, dict]] = []
+        for t in by_band.get(band, []):
+            listing = f"{t['name']} {t['club']}"
+            blob = _ecnl_club_key(listing)
+            if not blob:
+                continue
+            alias_hit = any(a and (a == blob or a in blob or blob in a) for a in aliases)
+            if target != blob and target not in blob and blob not in target and not alias_hit:
+                continue
+            if not _is_ecnl_listing(t, listing.lower(), tier):
+                continue
+            existing = (t.get("ecnl") or {}).get("athleteOneTeamId")
+            if existing and existing != row.get("athleteOneTeamId"):
+                continue
+            pts = 80 if t.get("league") == tier else 40
+            if target == blob:
+                pts += 40
+            if existing == row.get("athleteOneTeamId"):
+                pts += 100
+            if t.get("state") == "CA":
+                pts += 20
+            scored.append((pts, t))
+        if not scored:
+            continue
+        scored.sort(key=lambda x: x[0], reverse=True)
+        hit = scored[0][1]
+        overlay = dict(hit.get("ecnl") or {})
+        overlay.update(
+            {
+                "tier": tier,
+                "conference": row.get("conference"),
+                "conferenceRank": row.get("conferenceRank"),
+                "conferenceSize": row.get("conferenceSize"),
+                "played": row.get("played"),
+                "gf": row.get("gf"),
+                "ga": row.get("ga"),
+                "athleteOneTeamId": row.get("athleteOneTeamId"),
+                "eventId": row.get("eventId"),
+                "season": public.get("season"),
+                "asOf": public.get("asOf"),
+            }
+        )
+        if row.get("record"):
+            overlay["record"] = row["record"]
+            # Prefer published conference W–D–L on official ECNL / RL sides.
+            if not hit.get("record") or hit.get("league") in ("ecnl", "ecnl-rl"):
+                hit["record"] = row["record"]
+        hit["ecnl"] = overlay
+        if hit["league"] == "other":
+            hit["league"] = tier
+            hit["leagueLabel"] = "ECNL-RL" if tier == "ecnl-rl" else "ECNL"
+        if "ECNL AthleteOne 26/27" not in hit["sources"]:
+            hit["sources"].append("ECNL AthleteOne 26/27")
 
 
 CONFERENCE_STATE = {
@@ -877,9 +980,10 @@ def finalize_catalog(
         "ecnlU13": "2013/14 school-year alignment",
         "legend": "MLS NEXT = birth year · ECNL / US Club-style = school year where applicable.",
         "coverage": (
-            "GotSport boys U12–U16 public ranking directory plus MLS NEXT League 26/27 "
-            "public standings/schedule overlay. US/state rank are among seeded teams "
-            "in that age tab. National ingest is still a sample outside CA U12/U13."
+            "CA-first three-source refresh: GotSport boys U12–U16 rankings + matches, "
+            "MLS NEXT League Viewer 26/27 (Homegrown Tier 1 + Academy Tier 2), and "
+            "ECNL AthleteOne conference standings (ECNL Tier 1 + ECNL-RL Tier 2). "
+            "US/state rank are among seeded teams in that age tab."
         ),
         "compiledAt": compiled_at,
         "gotsportRankingDate": published,
@@ -890,7 +994,7 @@ def finalize_catalog(
         "season": "2025-26",
         "asOf": published,
         "compiledAt": compiled_at,
-        "source": "GotSport public rankings API + MLS NEXT public League Viewer 26/27",
+        "source": "GotSport + MLS NEXT League Viewer + ECNL AthleteOne (CA-first)",
         "caUniverseEstimate": 1100,
         "notes": notes,
         "counts": {
@@ -965,8 +1069,9 @@ def reoverlay_existing() -> dict:
         t["sources"] = [
             s
             for s in (t.get("sources") or [])
-            if s != "MLS NEXT League 26/27"
+            if s not in ("MLS NEXT League 26/27", "ECNL AthleteOne 26/27")
         ]
+        t.pop("ecnl", None)
         if "GotSport" in (t.get("sources") or []):
             league, label = classify_league(f"{t.get('name') or ''} {t.get('club') or ''}")
             if league == "mls-next-hg":
@@ -984,10 +1089,82 @@ def reoverlay_existing() -> dict:
     return finalize_catalog(kept, {"other": skipped}, pages, extra)
 
 
+def ca_refresh_existing() -> dict:
+    """Refetch Cal South / Cal North GotSport pages; keep other states; re-overlay."""
+    prev = json.loads(OUT.read_text()) if OUT.exists() else {"teams": []}
+    kept: dict[str, dict] = {}
+    dropped_ca = 0
+    dropped_stubs = 0
+    for t in prev.get("teams") or []:
+        tid = str(t.get("id") or "")
+        if tid.startswith("mlsnext-") or tid.startswith("overlay-") or tid.startswith("ecnl-"):
+            dropped_stubs += 1
+            continue
+        if t.get("state") == "CA" and tid.startswith("gs-"):
+            dropped_ca += 1
+            continue
+        if t.get("mlsNext"):
+            mls = {
+                k: t["mlsNext"][k]
+                for k in ("cup", "upnextRank", "upnextAsOf", "qopNote")
+                if k in t["mlsNext"]
+            }
+            if mls:
+                t["mlsNext"] = mls
+            else:
+                t.pop("mlsNext", None)
+        t.pop("ecnl", None)
+        t["sources"] = [
+            s
+            for s in (t.get("sources") or [])
+            if s not in ("MLS NEXT League 26/27", "ECNL AthleteOne 26/27")
+        ]
+        kept[tid] = t
+    print(f"ca-refresh: kept {len(kept)} dropped CA {dropped_ca} stubs {dropped_stubs}", flush=True)
+
+    skipped = {"other": 0}
+    pages_ok = 0
+    for assoc in ("CAS", "CAN"):
+        state = ASSOC_TO_STATE[assoc]
+        for age in GOTSPORT_AGES:
+            # Force a live pull for California.
+            for stale in CACHE.glob(f"a{age}_{assoc}_p*.json"):
+                stale.unlink()
+            first = fetch_page(age, assoc, 1)
+            pages_ok += 1
+            pag = first.get("pagination") or {}
+            total_pages = int(pag.get("total_pages") or 1)
+            total_count = int(pag.get("total_count") or 0)
+            print(f"{assoc} {state} U{age}: {total_count} teams / {total_pages} pages", flush=True)
+            rows = list(first.get("team_ranking_data") or [])
+            for page in range(2, total_pages + 1):
+                data = fetch_page(age, assoc, page)
+                pages_ok += 1
+                rows.extend(data.get("team_ranking_data") or [])
+                time.sleep(0.08)
+            for row in rows:
+                bands, alignment, years = classify_age_bands(row)
+                if not bands:
+                    skipped["other"] += 1
+                    continue
+                rec = compact(row, bands, alignment, state, years)
+                upsert_gotsport(kept, rec)
+            time.sleep(0.05)
+
+    extra = {
+        "caRefresh": True,
+        "compiledAt": compiled_stamp(),
+        "gotsportRankingDate": gotsport_as_of(list(kept.values())),
+    }
+    return finalize_catalog(kept, skipped, pages_ok, extra)
+
+
 def main() -> None:
     import sys
 
-    if "--reoverlay" in sys.argv:
+    if "--ca-refresh" in sys.argv:
+        data = ca_refresh_existing()
+    elif "--reoverlay" in sys.argv:
         data = reoverlay_existing()
     elif "--from-cache" in sys.argv:
         data = compile_from_cache()

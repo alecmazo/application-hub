@@ -4,6 +4,7 @@ import {
   formatPoints,
   formatRecord,
   formatScore,
+  publishedRecord,
   usableRank,
   winPct,
 } from "./compute";
@@ -344,6 +345,7 @@ export function useSoccerRankings() {
     formatPoints,
     formatRecord,
     formatScore,
+    publishedRecord,
   };
 }
 

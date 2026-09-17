@@ -77,6 +77,17 @@ export function MethodologyCard() {
               GitHub Pages cannot call GotSport directly (no CORS).
             </li>
             <li>
+              ECNL AthleteOne conference standings (
+              <code className="font-mono text-xs">
+                api.athleteone.com/api/Script/get-conference-standings
+              </code>
+              , Referer theecnl.com): ECNL Tier 1 + ECNL-RL Tier 2 for CA
+              conferences (Northern Cal / NorCal, Far West, Southwest, Golden
+              State, Southern Cal). Boys U13–U16 only. Conference-specific
+              division IDs from the page; a mismatched age heading is dropped.
+              HTML table; no invented scores.
+            </li>
+            <li>
               MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}
               <code className="font-mono text-xs">
                 mls-assist.theintelligenceplatform.com
@@ -95,11 +106,19 @@ export function MethodologyCard() {
             </li>
           </ul>
           <p>
-            Refresh: run{" "}
+            Refresh (CA three-source):{" "}
             <code className="font-mono text-xs text-foreground">
-              python3 scripts/ingest-soccer-rankings.py
-            </code>{" "}
-            then rebuild. See{" "}
+              ingest-ecnl-athleteone.py
+            </code>
+            ,{" "}
+            <code className="font-mono text-xs text-foreground">
+              ingest-soccer-rankings.py --ca-refresh
+            </code>
+            ,{" "}
+            <code className="font-mono text-xs text-foreground">
+              ingest-gotsport-matches.py
+            </code>
+            . See{" "}
             <code className="font-mono text-xs text-foreground">
               src/data/soccer-rankings/METHODOLOGY.md
             </code>

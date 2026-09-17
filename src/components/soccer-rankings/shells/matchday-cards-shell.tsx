@@ -15,6 +15,7 @@ import {
   leagueBadgeVariant,
   sosMedianLabel,
 } from "@/lib/soccer-rankings/use-soccer-rankings";
+import { publishedRecord } from "@/lib/soccer-rankings/compute";
 import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
 import { cn } from "@/lib/utils";
@@ -184,7 +185,7 @@ export function MatchdayCardsShell({
                     <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
                       <MetaChip
                         label="Record"
-                        value={formatRecord(t.record ?? t.mlsNext?.record)}
+                        value={formatRecord(publishedRecord(t))}
                       />
                       <MetaChip
                         label="SOS med. US"
@@ -315,7 +316,7 @@ function HomeHero({
             />
             <HeroStat
               label="Record"
-              value={formatRecord(team.record ?? team.mlsNext?.record)}
+              value={formatRecord(publishedRecord(team))}
             />
             <HeroStat label="Score" value={formatScore(team.score)} />
           </div>

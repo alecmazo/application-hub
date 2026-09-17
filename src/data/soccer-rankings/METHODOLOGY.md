@@ -37,12 +37,25 @@ Alec’s vintage figure: California alone has **≈1,100+** boys teams around th
 
 **US rank** and **state rank** are among seeded teams on that age tab only.
 
-Refresh path:
+Refresh path (California first, boys only):
 
-- Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. `--reoverlay` reapplies MLS NEXT / TDS overlays on the current seed.
-- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy) from the League Viewer JSON. `--reoverlay` on the rankings script merges those rows onto GotSport teams.
-- Matches: `python3 scripts/ingest-gotsport-matches.py` → `matches.json`.
+- Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. `--reoverlay` reapplies MLS NEXT / ECNL / TDS overlays on the current seed. `--ca-refresh` refetches Cal South + Cal North live and keeps other states.
+- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy) from the League Viewer JSON.
+- ECNL: `python3 scripts/ingest-ecnl-athleteone.py` → `ecnl-public.json` (ECNL Tier 1 + ECNL-RL Tier 2 conference tables).
+- Matches: `python3 scripts/ingest-gotsport-matches.py` → `matches.json` (all CA ECNL / RL / MLS NEXT sides + every Marin FC boys listing).
 - If a reported result is still missing after public endpoints, `matches-meta.json` `notOnPublicFeed` is `not_yet_on_gotsport_public_feed` and the score is **not invented**.
+
+### CA three-source refresh
+
+| Source | What it updates | CA scope |
+| --- | --- | --- |
+| GotSport rankings + `/teams/{id}/matches` | Name, points, all-competition W–D–L, recent results | CAS + CAN boys U12–U16; Marin FC every boys side |
+| MLS NEXT League Viewer JSON | Homegrown (Tier 1) + Academy (Tier 2) conference rank, completed league W–D–L / GF–GA, scored matches | All CA Homegrown / Academy clubs on those tables |
+| ECNL AthleteOne `get-conference-standings/{eventId}/12/{seasonId}/{divisionId}/0` | ECNL (season 81, Tier 1) + ECNL-RL (season 83, Tier 2) conference POS / GP / W / L / D / GF / GA | Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal. Boys U13–U16. HTML table parsed; no invented scores. Referer+Origin `https://theecnl.com`. Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU16=22386). National IDs 22184–22187 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match. |
+
+AthleteOne does **not** publish a public JSON match list (schedule/results scripts return 401). ECNL game-by-game history stays on GotSport when that API has it. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs.
+
+Marin FC home listing remains `gs-56506` (2013/14 ECNL). Blue / Red / Steel **2014/15** stay in the seed with their own records and are never home continuity.
 
 ## MLS NEXT records + SOS
 
@@ -66,6 +79,7 @@ SOS for overlay MLS NEXT sides uses opponent **conference rank** from that publi
 | Signal | Use |
 | --- | --- |
 | GotSport public rankings API, boys U12–U16, USA | Name, club, association→state, points, W–D–L when published |
+| ECNL AthleteOne conference standings (theecnl.com) | ECNL / ECNL-RL conference rank, GP, W–L–D, GF–GA |
 | MLS NEXT League 26/27 public standings + schedule | Conference rank, completed W–D–L, scored matches |
 | MLS NEXT Cup 2026 U13 recaps | Overlay on 2014-BY / U13 MLS NEXT sides (Atlanta champion; LA Galaxy finalist; Inter Miami semifinalist) |
 | TopDrawerSoccer TeamRank boys U13 (TDS labeled **2013** BY) | Overlay on matching clubs only — no ghost stubs |

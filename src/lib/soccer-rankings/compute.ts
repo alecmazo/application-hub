@@ -64,9 +64,17 @@ export function gotsportScore(
 }
 
 function playedGames(team: TeamSeed): number {
-  const rec = team.mlsNext?.record ?? team.record;
+  const rec = team.mlsNext?.record ?? team.ecnl?.record ?? team.record;
   if (!rec) return 0;
   return rec.w + rec.d + rec.l;
+}
+
+export function publishedRecord(team: {
+  record?: { w: number; d: number; l: number };
+  mlsNext?: { record?: { w: number; d: number; l: number } };
+  ecnl?: { record?: { w: number; d: number; l: number } };
+}): { w: number; d: number; l: number } | undefined {
+  return team.mlsNext?.record ?? team.ecnl?.record ?? team.record;
 }
 
 export function mlsNextScore(team: TeamSeed): number | null {

@@ -586,6 +586,7 @@ export function RankingsTable({
     formatRecord,
     formatPoints,
     formatScore,
+    publishedRecord,
   } = useRankings();
   const pad = density === "dense" ? "px-2 py-1.5" : "px-2 py-2.5";
 
@@ -742,7 +743,7 @@ export function RankingsTable({
                   "text-right font-mono-num whitespace-nowrap text-muted-foreground",
                 )}
               >
-                {formatRecord(t.record ?? t.mlsNext?.record)}
+                {formatRecord(publishedRecord(t))}
                 {cachedMatchCount(t.id, mlsOverlayFromTeam(t)) > 0 && (
                   <span className="ml-1 text-[10px] text-success">
                     {cachedMatchCount(t.id, mlsOverlayFromTeam(t))}g
@@ -800,6 +801,7 @@ export function CompactTeamList({
     selectedId,
     formatRecord,
     formatScore,
+    publishedRecord,
   } = useRankings();
 
   return (
@@ -849,7 +851,7 @@ export function CompactTeamList({
           <div className="mt-2 grid grid-cols-3 gap-2 text-xs">
             <MetaChip
               label="Record"
-              value={formatRecord(t.record ?? t.mlsNext?.record)}
+              value={formatRecord(publishedRecord(t))}
             />
             <MetaChip
               label="SOS"

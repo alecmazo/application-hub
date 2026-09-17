@@ -273,6 +273,15 @@ def not_on_public_feed_note(found: dict | None) -> dict:
     }
 
 
+def is_marin_fc(team: dict) -> bool:
+    blob = f"{team.get('name') or ''} {team.get('club') or ''}"
+    if not re.search(r"\bmarin\s*fc\b", blob, re.I):
+        return False
+    if re.search(r"north\s*marin|ac\s*marin|marin\s*city", blob, re.I):
+        return False
+    return True
+
+
 def priority_ids(catalog: dict) -> list[int]:
     teams = catalog.get("teams") or []
     ids: list[int] = [
@@ -284,8 +293,10 @@ def priority_ids(catalog: dict) -> list[int]:
     for t in ca:
         if t.get("league") in ("ecnl", "ecnl-rl", "mls-next", "mls-next-hg"):
             ids.append(gotsport_id(t))  # type: ignore[arg-type]
+        elif is_marin_fc(t):
+            ids.append(gotsport_id(t))  # type: ignore[arg-type]
     ca.sort(key=lambda t: -int((t.get("gotsport") or {}).get("points") or 0))
-    for t in ca[:80]:
+    for t in ca[:200]:
         ids.append(gotsport_id(t))  # type: ignore[arg-type]
     # unique, preserve order
     seen: set[int] = set()
@@ -310,6 +321,8 @@ def main() -> None:
             and t.get("gotsportAge") == 13
             and 2013 in (t.get("birthYears") or [])
         ):
+            extra_views.add(gid)
+        if gid and is_marin_fc(t) and t.get("league") in ("ecnl", "ecnl-rl"):
             extra_views.add(gid)
     print(f"priority teams {len(wanted)} extraViews={len(extra_views)}", flush=True)
     store: dict[str, list] = {}
@@ -354,7 +367,7 @@ def main() -> None:
         "asOf": compiled_date(),
         "compiledAt": compiled_at,
         "since": SINCE,
-        "source": "GotSport public GET /api/v1/teams/{id}/matches",
+        "source": "GotSport public GET /api/v1/teams/{id}/matches (CA-first + Marin FC)",
         "homeTeamId": HOME_ID,
         "elCaminoEcnlTeamId": EL_CAMINO_ECNL_ID,
         "notes": {
@@ -363,6 +376,10 @@ def main() -> None:
             "rankingViews": (
                 "Home, El Camino Salinas ECNL, and CA ECNL U13 2013/14 sides "
                 "also merge rankings-web past=true / upcoming=true views."
+            ),
+            "caFirst": (
+                "All CA ECNL / ECNL-RL / MLS NEXT Homegrown+Academy sides, "
+                "every Marin FC boys listing, plus the top 200 CA GotSport sides."
             ),
         },
         "notOnPublicFeed": missing,
