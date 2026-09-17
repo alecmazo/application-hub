@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useMemo, useState, type KeyboardEvent } from "react";
 import {
   GOTSPORT_AS_OF,
   formatPoints,
@@ -218,7 +218,7 @@ export function useSoccerRankings() {
     setPage(1);
   }, [sortKey, sortDir]);
 
-  function openTeam(id: string, opts?: { scroll?: boolean }) {
+  const openTeam = useCallback((id: string, opts?: { scroll?: boolean }) => {
     setSelectedId(id);
     if (opts?.scroll === false) return;
     requestAnimationFrame(() => {
@@ -227,11 +227,11 @@ export function useSoccerRankings() {
         block: "start",
       });
     });
-  }
+  }, []);
 
-  function closeTeam() {
+  const closeTeam = useCallback(() => {
     setSelectedId(null);
-  }
+  }, []);
 
   function onRowKeyDown(event: KeyboardEvent<HTMLElement>, id: string) {
     if (event.key === "Enter" || event.key === " ") {

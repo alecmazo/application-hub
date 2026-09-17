@@ -18,7 +18,7 @@ import {
 import { cachedMatchCount } from "@/lib/soccer-rankings/matches";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
 import { cn } from "@/lib/utils";
-import { DesignLabSwitcher } from "../design-lab-switcher";
+import { LayoutSwitcher } from "../layout-switcher";
 import { MethodologyCard } from "../methodology-card";
 import { PinHomeButton } from "../pin-home-button";
 import { useRankings } from "../rankings-context";
@@ -75,10 +75,10 @@ export function MatchdayCardsShell({
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="space-y-3">
               <HubBackLink />
-              <RankingsTitle kicker="Matchday Cards · airy browse" />
+              <RankingsTitle />
               <AgeAlignmentCopy />
             </div>
-            <DesignLabSwitcher shell={shell} onChange={onChangeShell} />
+            <LayoutSwitcher shell={shell} onChange={onChangeShell} />
           </div>
 
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -118,36 +118,9 @@ export function MatchdayCardsShell({
         <div className="relative z-10 mt-6 flex-1">
           <StatusBlocks />
 
-          {status === "ready" && selected && (
-            <div id="team-page" className="scroll-mt-6 space-y-3">
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={closeTeam}
-              >
-                <ChevronLeft className="size-3.5" />
-                Back to cards
-              </Button>
-              <Card className="p-5 sm:p-6">
-                <TeamDetail
-                  team={selected}
-                  yearTeams={teams}
-                  onOpenTeam={openTeam}
-                  pinnedHomeId={pinnedId}
-                  onPinHome={pinTeam}
-                  onUnpinHome={unpinHome}
-                  refreshNonce={matchRefreshNonce}
-                />
-              </Card>
-            </div>
-          )}
+          {status === "ready" && filtered.length === 0 && <EmptyMatches />}
 
-          {status === "ready" && !selected && filtered.length === 0 && (
-            <EmptyMatches />
-          )}
-
-          {status === "ready" && !selected && filtered.length > 0 && (
+          {status === "ready" && filtered.length > 0 && (
             <div id="rankings-results">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                 <ResultCount />
@@ -164,6 +137,7 @@ export function MatchdayCardsShell({
                       "cursor-pointer rounded-3xl border border-border bg-card p-5 text-left shadow-sm transition-colors hover:border-primary/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-6",
                       isPinnedHomeTeam(t.id, pinnedId) &&
                         "border-success/40 bg-success/5",
+                      selected?.id === t.id && "border-primary/50",
                     )}
                     onClick={() => openTeam(t.id)}
                     onKeyDown={(e) => {
@@ -252,6 +226,31 @@ export function MatchdayCardsShell({
               <div className="mt-5 flex justify-end">
                 <Pager />
               </div>
+            </div>
+          )}
+
+          {status === "ready" && selected && (
+            <div id="team-page" className="mt-6 scroll-mt-6 space-y-3">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={closeTeam}
+              >
+                <ChevronLeft className="size-3.5" />
+                Close team
+              </Button>
+              <Card className="p-5 sm:p-6">
+                <TeamDetail
+                  team={selected}
+                  yearTeams={teams}
+                  onOpenTeam={openTeam}
+                  pinnedHomeId={pinnedId}
+                  onPinHome={pinTeam}
+                  onUnpinHome={unpinHome}
+                  refreshNonce={matchRefreshNonce}
+                />
+              </Card>
             </div>
           )}
         </div>

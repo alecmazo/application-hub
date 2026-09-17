@@ -80,40 +80,7 @@
     var(--color-bg);
 }
 
-/* Temporary Design Lab shells — scoped theme tokens only. */
-.shell-scout-desk {
-  --color-bg: #07110d;
-  --color-bg-elevated: #0c1a14;
-  --color-surface: #12241b;
-  --color-card: #12241b;
-  --color-card-foreground: #e7f4ec;
-  --color-foreground: #e7f4ec;
-  --color-muted: #183226;
-  --color-muted-foreground: #93b3a4;
-  --color-primary: #5fd4a0;
-  --color-primary-foreground: #04120c;
-  --color-secondary: #183226;
-  --color-secondary-foreground: #e7f4ec;
-  --color-accent: #5fd4a0;
-  --color-accent-foreground: #04120c;
-  --color-ring: #5fd4a0;
-  --color-success: #4ade80;
-  --color-border: color-mix(in oklab, #d7efe4 13%, transparent);
-  color: var(--color-foreground);
-  background:
-    radial-gradient(
-      900px 500px at 8% -12%,
-      color-mix(in oklab, #3ecf8e 16%, transparent),
-      transparent 58%
-    ),
-    radial-gradient(
-      720px 400px at 96% 0%,
-      color-mix(in oklab, #1a3d2c 55%, transparent),
-      transparent 52%
-    ),
-    #07110d;
-}
-
+/* Layout shells — scoped theme tokens only. */
 .shell-matchday {
   --color-bg: #10141c;
   --color-bg-elevated: #171d28;
@@ -166,7 +133,18 @@
   --color-success: #3ecf8e;
   --color-border: color-mix(in oklab, #e8eef6 12%, transparent);
   color: var(--color-foreground);
-  background: linear-gradient(180deg, #0e141c 0%, #0c1016 100%);
+  background:
+    radial-gradient(
+      900px 480px at 8% -12%,
+      color-mix(in oklab, #8ab4ff 11%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      720px 400px at 96% 0%,
+      color-mix(in oklab, #3ecf8e 9%, transparent),
+      transparent 52%
+    ),
+    linear-gradient(180deg, #0e141c 0%, #0c1016 100%);
 }
 
 .hub-atmosphere {

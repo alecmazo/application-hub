@@ -1,6 +1,5 @@
-import { RankingsProvider } from "./rankings-context";
+import { RankingsProvider, useRankings } from "./rankings-context";
 import { MatchdayCardsShell } from "./shells/matchday-cards-shell";
-import { ScoutDeskShell } from "./shells/scout-desk-shell";
 import { SplitCommandShell } from "./shells/split-command-shell";
 import { useUiShell } from "@/lib/soccer-rankings/use-ui-shell";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
@@ -12,17 +11,17 @@ function ShellSwitch({
   shell: UiShell;
   onChange: (next: UiShell) => void;
 }) {
+  const { closeTeam } = useRankings();
+  function choose(next: UiShell) {
+    if (next === "matchday-cards") closeTeam();
+    onChange(next);
+  }
   if (shell === "matchday-cards") {
     return (
-      <MatchdayCardsShell shell={shell} onChangeShell={onChange} />
+      <MatchdayCardsShell shell={shell} onChangeShell={choose} />
     );
   }
-  if (shell === "split-command") {
-    return (
-      <SplitCommandShell shell={shell} onChangeShell={onChange} />
-    );
-  }
-  return <ScoutDeskShell shell={shell} onChangeShell={onChange} />;
+  return <SplitCommandShell shell={shell} onChangeShell={choose} />;
 }
 
 export function SoccerRankingsPage() {
@@ -30,10 +29,10 @@ export function SoccerRankingsPage() {
 
   return (
     <RankingsProvider>
-      <div data-ui-shell={shell} data-design-lab="temporary">
+      <div data-ui-shell={shell}>
         <span className="sr-only">
-          Temporary Design Lab. Switch UI shells with the Design control.
-          Choice is saved in localStorage key soccer-rankings-ui-shell.
+          Layout switcher. Default is Split Command. Choice is saved in
+          localStorage key soccer-rankings-ui-shell.
         </span>
         <ShellSwitch shell={shell} onChange={chooseShell} />
       </div>

@@ -1,30 +1,24 @@
 /**
- * Temporary Design Lab — three live UI shells over the same rankings data.
- * Do not remove until Alec picks a winner in a later follow-up.
+ * Rankings layout. Split Command is the site default.
+ * Matchday Cards stays available as an alternate. Scout Desk was retired.
  */
 export const UI_SHELL_STORAGE_KEY = "soccer-rankings-ui-shell";
 
-export const UI_SHELLS = [
-  "scout-desk",
-  "matchday-cards",
-  "split-command",
-] as const;
+export const UI_SHELLS = ["split-command", "matchday-cards"] as const;
 
 export type UiShell = (typeof UI_SHELLS)[number];
 
-/** Closest to the current dense table until Alec chooses. */
-export const DEFAULT_UI_SHELL: UiShell = "scout-desk";
+/** New visitors land on Split Command. */
+export const DEFAULT_UI_SHELL: UiShell = "split-command";
 
 export const UI_SHELL_LABELS: Record<UiShell, string> = {
-  "scout-desk": "Scout Desk",
-  "matchday-cards": "Matchday Cards",
-  "split-command": "Split Command",
+  "split-command": "Split",
+  "matchday-cards": "Cards",
 };
 
 export const UI_SHELL_BLURBS: Record<UiShell, string> = {
-  "scout-desk": "Dense analytics table with a sticky filter rail",
-  "matchday-cards": "Airy cards plus a pinned-home hero",
-  "split-command": "Always-on list + team detail split",
+  "split-command": "List + team detail",
+  "matchday-cards": "Pinned-home hero and cards",
 };
 
 export function isUiShell(value: string | null | undefined): value is UiShell {
@@ -35,6 +29,11 @@ export function readUiShell(): UiShell {
   if (typeof window === "undefined") return DEFAULT_UI_SHELL;
   try {
     const raw = window.localStorage.getItem(UI_SHELL_STORAGE_KEY);
+    if (raw === "matchday-cards") return "matchday-cards";
+    if (raw === "scout-desk") {
+      writeUiShell(DEFAULT_UI_SHELL);
+      return DEFAULT_UI_SHELL;
+    }
     return isUiShell(raw) ? raw : DEFAULT_UI_SHELL;
   } catch {
     return DEFAULT_UI_SHELL;
