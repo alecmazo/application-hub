@@ -20,6 +20,8 @@ from __future__ import annotations
 
 import json
 import re
+import time
+import urllib.error
 import urllib.request
 from collections import defaultdict
 from datetime import datetime
@@ -78,17 +80,55 @@ MLS_NEXT_BAND_BIRTH_YEAR = {
 }
 
 
+JSON_URL_RE = re.compile(
+    r"https://mls-assist\.theintelligenceplatform\.com/data/"
+    r"(?:standings|schedule)/[A-Za-z0-9._-]+\.json"
+)
+
+
 def compiled_stamp() -> str:
     return datetime.now(ZoneInfo("America/Los_Angeles")).isoformat(timespec="minutes")
 
 
-def fetch_json(url: str, cache_name: str) -> dict:
+def fetch_bytes(url: str) -> tuple[bytes, str]:
+    last: Exception | None = None
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                if getattr(resp, "status", 200) != 200:
+                    raise urllib.error.HTTPError(
+                        url, resp.status, resp.reason, resp.headers, None
+                    )
+                return resp.read(), "api"
+        except (urllib.error.URLError, TimeoutError, urllib.error.HTTPError) as err:
+            last = err
+            time.sleep(0.8 * (attempt + 1))
+    raise RuntimeError(f"failed {url}: {last}")
+
+
+def fetch_json(url: str, cache_name: str, fallback_page: str | None = None) -> tuple[dict, str]:
+    """Prefer the public League Viewer JSON. Official UI page is discovery-only."""
     path = CACHE / cache_name
-    req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        raw = resp.read()
+    try:
+        raw, source = fetch_bytes(url)
+    except RuntimeError as api_err:
+        if not fallback_page:
+            raise
+        print(f"  API failed ({api_err}); discovering JSON from UI {fallback_page}", flush=True)
+        html, _ = fetch_bytes(fallback_page)
+        found = JSON_URL_RE.findall(html.decode("utf-8", "ignore"))
+        kind = "standings" if "standings" in cache_name else "schedule"
+        alt = next((u for u in found if kind in u and "26-27" in u), None)
+        if not alt:
+            raise RuntimeError(
+                f"Homegrown/Academy JSON unavailable and UI page had no {kind} URL"
+            ) from api_err
+        raw, _ = fetch_bytes(alt)
+        source = "ui-fallback"
+        print(f"  UI fallback hit {alt}", flush=True)
     path.write_bytes(raw)
-    return json.loads(raw.decode())
+    return json.loads(raw.decode()), source
 
 
 def parse_age(value: object) -> str | None:
@@ -102,13 +142,22 @@ def parse_age(value: object) -> str | None:
     return band if band in AGE_BANDS else None
 
 
-def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict]]:
+def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict], str]:
     division: str = feed["division"]
-    standings = fetch_json(
-        feed["standingsUrl"], f"standings-{division}-26-27.json"
+    standings, standings_src = fetch_json(
+        feed["standingsUrl"],
+        f"standings-{division}-26-27.json",
+        fallback_page=feed.get("page"),
     )
-    schedule = fetch_json(
-        feed["scheduleUrl"], f"schedule-{division}-26-27.json"
+    schedule, schedule_src = fetch_json(
+        feed["scheduleUrl"],
+        f"schedule-{division}-26-27.json",
+        fallback_page=feed.get("page"),
+    )
+    source = (
+        "ui-fallback"
+        if "ui-fallback" in (standings_src, schedule_src)
+        else "api"
     )
     brackets = standings["competition_season"]["competition_brackets"]
     events = schedule.get("events") or []
@@ -226,15 +275,17 @@ def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict
                 "note": f"{feed['label']} 26/27 public schedule (completed games only)",
             }
 
-    return teams, compact_matches
+    return teams, compact_matches, source
 
 
 def ingest() -> dict:
     teams: dict[tuple[int, str, str], dict] = {}
     matches: list[dict] = []
+    provenance: dict[str, str] = {}
     for feed in FEEDS:
         print("fetch", feed["division"], flush=True)
-        part, part_matches = ingest_feed(feed)
+        part, part_matches, source = ingest_feed(feed)
+        provenance[feed["division"]] = source
         teams.update(part)
         matches.extend(part_matches)
 
@@ -254,6 +305,20 @@ def ingest() -> dict:
         by_div_age[t["division"]][t["ageBand"]] = (
             by_div_age[t["division"]].get(t["ageBand"], 0) + 1
         )
+    nw_u13 = {
+        t["orgId"]
+        for t in items
+        if t["division"] == "homegrown"
+        and t["ageBand"] == "U13"
+        and (t.get("conference") or "") == "Northwest"
+    }
+    u13_nw_events = sum(
+        1
+        for m in matches
+        if m.get("ageBand") == "U13"
+        and m.get("division") == "homegrown"
+        and (m.get("homeOrgId") in nw_u13 or m.get("awayOrgId") in nw_u13)
+    )
     return {
         "season": "2026-27",
         "asOf": compiled_stamp(),
@@ -273,7 +338,13 @@ def ingest() -> dict:
             "ageMap": "Official 2026-27 Homegrown: U13=2014 BY, U14=2013, U15=2012, U16=2011. No Homegrown U12.",
             "scores": "Only completed public schedule rows with both scores. Nothing invented.",
             "divisions": "Homegrown = mls-next-league-26-27; Academy = mls-next-2-academy-division-26-27.",
+            "fallback": (
+                "Prefer the public League Viewer JSON. Official UI "
+                "mlssoccer.com/mlsnext/standings/homegrown_division/ is used only "
+                "to rediscover those JSON URLs if the API host fails."
+            ),
         },
+        "provenance": provenance,
         "counts": {
             "teams": len(items),
             "completedMatches": len(matches),
@@ -286,6 +357,9 @@ def ingest() -> dict:
             },
             "byDivisionAge": by_div_age,
             "playedTeams": sum(1 for t in items if t.get("played")),
+            "homegrownTeams": sum(1 for t in items if t["division"] == "homegrown"),
+            "u13NorthwestHomegrownTeams": len(nw_u13),
+            "u13NorthwestHomegrownEvents": u13_nw_events,
         },
         "teams": items,
         "matches": matches,
@@ -296,8 +370,9 @@ def main() -> None:
     data = ingest()
     OUT.write_text(json.dumps(data, separators=(",", ":")))
     print("wrote", OUT, "bytes", OUT.stat().st_size)
+    print("provenance", data.get("provenance"))
     print("counts", data["counts"])
-    for needle in ("glen", "bay area", "marin"):
+    for needle in ("glen", "bay area", "merced", "surf"):
         hits = [t for t in data["teams"] if needle in t["name"].lower()]
         for t in hits:
             print(

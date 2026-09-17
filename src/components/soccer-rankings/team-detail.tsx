@@ -16,7 +16,9 @@ import {
   byGotsportId,
   eventHref,
   loadTeamMatches,
+  matchFocusId,
   matchesApiHref,
+  mlsNextScheduleHref,
   mlsOverlayFromTeam,
   notOnPublicFeedFor,
   opponentCue,
@@ -57,10 +59,13 @@ export function TeamDetail({
   const [load, setLoad] = useState<MatchLoadResult | null>(null);
   const [selected, setSelected] = useState<CompactMatch | null>(null);
   const [refreshing, setRefreshing] = useState(false);
-  const index = useMemo(() => byGotsportId(yearTeams), [yearTeams]);
   const overlay = useMemo(
     () => mlsOverlayFromTeam(team),
     [team.id, team.ageBand, team.mlsNext?.orgId, team.mlsNext?.division],
+  );
+  const index = useMemo(
+    () => byGotsportId(yearTeams, overlay?.division),
+    [yearTeams, overlay?.division],
   );
 
   useEffect(() => {
@@ -99,7 +104,8 @@ export function TeamDetail({
     });
   }, [selected]);
 
-  const focusId = load?.gotsportTeamId ?? load?.mlsNextOrgId ?? overlay?.orgId;
+  const focusId =
+    load != null ? matchFocusId(load, overlay) : (overlay?.orgId ?? null);
   const sos =
     load && focusId != null
       ? summarizeSos(focusId, load.matches, index)
@@ -211,6 +217,18 @@ export function TeamDetail({
               <RefreshCw className="size-3.5" />
             )}
             {prominentRefresh ? "Refresh matches" : "Refresh"}
+          </Button>
+        )}
+        {overlay && (
+          <Button variant="outline" size="sm" asChild>
+            <a
+              href={mlsNextScheduleHref(overlay.division)}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Raw Homegrown / MLS NEXT schedule JSON
+              <ExternalLink className="size-3.5" />
+            </a>
           </Button>
         )}
         {load?.gotsportTeamId != null && (

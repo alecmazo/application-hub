@@ -39,7 +39,7 @@ import {
   US_RANK_EXPLAIN,
   type SortDir,
 } from "@/lib/soccer-rankings/use-soccer-rankings";
-import { cachedMatchCount } from "@/lib/soccer-rankings/matches";
+import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { LeaguePlatform, RankedTeam } from "@/lib/soccer-rankings/types";
 import { STATE_CODES, STATE_NAMES } from "@/lib/soccer-rankings/states";
 import { cn } from "@/lib/utils";
@@ -743,9 +743,9 @@ export function RankingsTable({
                 )}
               >
                 {formatRecord(t.record ?? t.mlsNext?.record)}
-                {cachedMatchCount(t.id) > 0 && (
+                {cachedMatchCount(t.id, mlsOverlayFromTeam(t)) > 0 && (
                   <span className="ml-1 text-[10px] text-success">
-                    {cachedMatchCount(t.id)}g
+                    {cachedMatchCount(t.id, mlsOverlayFromTeam(t))}g
                   </span>
                 )}
               </td>

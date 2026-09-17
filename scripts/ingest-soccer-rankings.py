@@ -203,8 +203,20 @@ def fetch_page(age: int, assoc: str, page: int) -> dict:
     raise RuntimeError(f"failed {assoc} U{age} page {page}: {last}")
 
 
+HG_LISTING_RE = re.compile(
+    r"homegrown|\bmls\s*(next\s*)?(hg|hd)\b|\b(hg|hd)\b",
+    re.I,
+)
+ACADEMY_LISTING_RE = re.compile(
+    r"mls\s*next|mlsnext|\bmls\s*ad\b|mls\s*academy",
+    re.I,
+)
+
+
 def classify_league(blob: str) -> tuple[str, str]:
     n = blob.lower()
+    if HG_LISTING_RE.search(n):
+        return "mls-next-hg", "MLS NEXT Homegrown"
     if any(
         x in n
         for x in (
@@ -434,6 +446,12 @@ def _norm(s: str) -> str:
 # Published-list names that do not match GotSport / League Viewer tokens 1:1.
 CLUB_ALIASES = {
     "fcbayarea": ("bayareasurf", "fcbayareasurf", "bayarea"),
+    "fcbayareasurf": ("bayareasurf", "fcbayarea"),
+    "bayareasurf": ("fcbayareasurf", "fcbayarea"),
+    "sanfranciscoglenssc": ("sanfranciscoglens", "sfglens", "sfglenssc"),
+    "sanfranciscoglens": ("sfglens", "sfglenssc", "sanfranciscoglenssc"),
+    "woodsidecrush": ("woodside",),
+    "thetown": ("thetownfc", "townfc"),
     "sdsurf": ("sdscsurf", "sandiegosurf"),
     "sdscsurf": ("sandiegosurf", "sdsurf"),
     "gsa": ("gwinnettsoccer", "gsasoccer"),
@@ -586,20 +604,27 @@ def _division_league(division: str | None) -> tuple[str, str]:
     return "mls-next", "MLS NEXT"
 
 
+def _is_homegrown_listing(team: dict, label: str) -> bool:
+    if team.get("league") == "mls-next-hg":
+        return True
+    return bool(HG_LISTING_RE.search(label))
+
+
 def _is_official_mls_listing(team: dict, label: str, division: str | None) -> bool:
     if re.search(r"pre[\s-]*mls", label):
         return False
+    # Homegrown-named sides must not receive the Academy overlay (and vice versa).
+    if _is_homegrown_listing(team, label):
+        return division == "homegrown"
     league = team.get("league")
     if division == "homegrown":
-        if league == "mls-next-hg":
-            return True
-        return bool(re.search(r"homegrown|\bmls\s*(next\s*)?(hg|hd)\b", label))
+        return False
     if division == "academy":
         if league == "mls-next":
             return True
-        return bool(re.search(r"mls\s*next|mlsnext|mls\s*ad|academy", label))
+        return bool(ACADEMY_LISTING_RE.search(label))
     return league in ("mls-next", "mls-next-hg") or bool(
-        re.search(r"mls\s*next|mlsnext|mls\s*ad|homegrown|\bhd\b", label)
+        ACADEMY_LISTING_RE.search(label) or HG_LISTING_RE.search(label)
     )
 
 
@@ -612,7 +637,12 @@ def merge_mls_next_public(teams: list[dict]) -> None:
         for band in t.get("ageBands") or []:
             by_band.setdefault(band, []).append(t)
 
-    for row in public.get("teams") or []:
+    # Homegrown first so HG-named GotSport rows are claimed before Academy.
+    public_rows = sorted(
+        public.get("teams") or [],
+        key=lambda r: (0 if r.get("division") == "homegrown" else 1, r.get("name") or ""),
+    )
+    for row in public_rows:
         band = row.get("ageBand")
         if band not in AGE_BANDS:
             continue
@@ -621,12 +651,14 @@ def merge_mls_next_public(teams: list[dict]) -> None:
         target = _club_tokens(row.get("name") or "")
         if len(target) < 5:
             continue
+        aliases = set(CLUB_ALIASES.get(target, ()))
         hit = None
         scored: list[tuple[int, dict]] = []
         for t in by_band.get(band, []):
             listing = f"{t['name']} {t['club']}".lower()
             blob = _club_tokens(listing)
-            if target not in blob and blob not in target:
+            alias_hit = any(a and (a in blob or blob in a) for a in aliases)
+            if target not in blob and blob not in target and not alias_hit:
                 continue
             if not _is_official_mls_listing(t, listing, division):
                 continue
@@ -640,6 +672,8 @@ def merge_mls_next_public(teams: list[dict]) -> None:
             pts = 80 if t["league"] == league else 40
             if existing_org == row.get("orgId"):
                 pts += 100
+            if division == "homegrown" and _is_homegrown_listing(t, listing):
+                pts += 60
             scored.append((pts, t))
         if scored:
             scored.sort(key=lambda x: x[0], reverse=True)
@@ -675,8 +709,12 @@ def merge_mls_next_public(teams: list[dict]) -> None:
         )
         if row.get("record"):
             mls["record"] = row["record"]
-            # Prefer published MLS NEXT W–D–L on official overlay sides.
-            if not hit.get("record") or str(hit.get("id") or "").startswith("mlsnext-"):
+            # Prefer published MLS NEXT W–D–L on official overlay / Homegrown sides.
+            if (
+                not hit.get("record")
+                or str(hit.get("id") or "").startswith("mlsnext-")
+                or division == "homegrown"
+            ):
                 hit["record"] = row["record"]
         hit["mlsNext"] = mls
         if hit["league"] == "other":
@@ -929,6 +967,11 @@ def reoverlay_existing() -> dict:
             for s in (t.get("sources") or [])
             if s != "MLS NEXT League 26/27"
         ]
+        if "GotSport" in (t.get("sources") or []):
+            league, label = classify_league(f"{t.get('name') or ''} {t.get('club') or ''}")
+            if league == "mls-next-hg":
+                t["league"] = league
+                t["leagueLabel"] = label
         kept[tid] = t
     print(f"reoverlay: kept {len(kept)} dropped stubs {dropped}", flush=True)
     skipped = (prev.get("counts") or {}).get("skipped") or 0

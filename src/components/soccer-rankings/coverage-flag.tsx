@@ -48,8 +48,8 @@ export function CoverageFlag({
         >
           <p className="font-medium text-foreground">Coverage</p>
           <p className="mt-2 leading-relaxed text-muted-foreground">
-            Incomplete vs the full US. GotSport U12–U16 plus MLS NEXT League
-            26/27 public standings/schedule. Vintage universe ≈
+            Incomplete vs the full US. GotSport U12–U16 plus MLS NEXT
+            Homegrown / Academy League Viewer JSON (26/27). Vintage universe ≈
             {COVERAGE.caUniverseEstimate.toLocaleString()}+. This {year} view
             has {rankedCount.toLocaleString()} ranked sides (
             {caInYear.toLocaleString()} California). US and state ranks are
@@ -82,7 +82,7 @@ export function CoverageFlag({
               ) : (
                 <RefreshCw className="size-3.5" />
               )}
-              Refresh from GotSport
+              Refresh matches
             </Button>
             {refreshNote && (
               <p className="text-xs leading-relaxed text-muted-foreground">

@@ -77,6 +77,15 @@ export function MethodologyCard() {
               GitHub Pages cannot call GotSport directly (no CORS).
             </li>
             <li>
+              MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}
+              <code className="font-mono text-xs">
+                mls-assist.theintelligenceplatform.com
+              </code>{" "}
+              (same files the official standings viewer loads). Homegrown U13 =
+              2014 BY. Team Refresh pulls that schedule API first; the
+              mlssoccer.com Homegrown standings page is fallback discovery only.
+            </li>
+            <li>
               MLS NEXT Cup 2026 U13 recaps applied to the 2014 view (Atlanta
               United champion; LA Galaxy finalist; Inter Miami semifinalist).
             </li>

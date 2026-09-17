@@ -15,7 +15,7 @@ import {
   leagueBadgeVariant,
   sosMedianLabel,
 } from "@/lib/soccer-rankings/use-soccer-rankings";
-import { cachedMatchCount } from "@/lib/soccer-rankings/matches";
+import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
 import { cn } from "@/lib/utils";
 import { LayoutSwitcher } from "../layout-switcher";
@@ -194,8 +194,8 @@ export function MatchdayCardsShell({
                       <MetaChip
                         label="Matches"
                         value={
-                          cachedMatchCount(t.id) > 0
-                            ? `${cachedMatchCount(t.id)}g`
+                          cachedMatchCount(t.id, mlsOverlayFromTeam(t)) > 0
+                            ? `${cachedMatchCount(t.id, mlsOverlayFromTeam(t))}g`
                             : "—"
                         }
                       />

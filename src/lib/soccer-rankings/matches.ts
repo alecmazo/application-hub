@@ -75,7 +75,19 @@ export function gotsportNumericId(
   return m ? Number(m[1]) : null;
 }
 
-export function cachedMatchCount(teamId: string): number {
+export function cachedMatchCount(
+  teamId: string,
+  mlsNext?: MlsNextOverlay | null,
+): number {
+  const overlay = mlsNext ?? overlayOrg(teamId);
+  if (overlay) {
+    const n = mlsNextMatchesFor(
+      overlay.orgId,
+      overlay.ageBand,
+      overlay.division,
+    ).length;
+    if (n) return n;
+  }
   const id = gotsportNumericId(teamId);
   if (id == null) return 0;
   return META_COUNTS[String(id)] ?? 0;
@@ -88,6 +100,30 @@ export function eventHref(eventId?: number | null): string | null {
 
 export function matchesApiHref(gotsportId: number): string {
   return `https://system.gotsport.com/api/v1/teams/${gotsportId}/matches`;
+}
+
+export function mlsNextScheduleHref(
+  division?: "academy" | "homegrown" | string | null,
+): string {
+  const feed =
+    MLS_NEXT_SCHEDULE_URLS.find((f) => f.division === division) ??
+    MLS_NEXT_SCHEDULE_URLS[0];
+  return feed.url;
+}
+
+/** Prefer the MLS NEXT org id when the match list is League Viewer rows. */
+export function matchFocusId(
+  load: Pick<MatchLoadResult, "gotsportTeamId" | "mlsNextOrgId" | "matches">,
+  overlay?: MlsNextOverlay | null,
+): number | null {
+  const orgId = overlay?.orgId ?? load.mlsNextOrgId ?? null;
+  if (
+    orgId != null &&
+    load.matches.some((m) => m.homeId === orgId || m.awayId === orgId)
+  ) {
+    return orgId;
+  }
+  return load.gotsportTeamId ?? orgId;
 }
 
 export function resultFor(
@@ -518,11 +554,18 @@ async function fetchLiveMlsNext(
   const feeds = MLS_NEXT_SCHEDULE_URLS.filter(
     (f) => !division || f.division === division,
   );
-  const urls: string[] = [];
+  const urls: Array<{ url: string; division: "homegrown" | "academy" }> = [];
   for (const f of feeds) {
-    urls.push(`/mls-next-api/data/schedule/${f.url.split("/").pop()}`, f.url, ...corsProxied(f.url));
+    urls.push(
+      {
+        url: `/mls-next-api/data/schedule/${f.url.split("/").pop()}`,
+        division: f.division,
+      },
+      { url: f.url, division: f.division },
+      ...corsProxied(f.url).map((url) => ({ url, division: f.division })),
+    );
   }
-  for (const url of urls) {
+  for (const { url, division: feedDivision } of urls) {
     tried.push(url);
     try {
       const resp = await fetch(url, { headers: { Accept: "application/json" } });
@@ -533,6 +576,10 @@ async function fetchLiveMlsNext(
           ? ((data as { events: Record<string, unknown>[] }).events)
           : [];
       const rows: CompactMatch[] = [];
+      const label =
+        feedDivision === "homegrown"
+          ? "MLS NEXT Homegrown 26/27"
+          : "MLS NEXT Academy 26/27";
       for (const ev of events) {
         const ho = (ev.home_organisation as { id?: number; name?: string }) || {};
         const ao = (ev.away_organisation as { id?: number; name?: string }) || {};
@@ -547,9 +594,9 @@ async function fetchLiveMlsNext(
         rows.push({
           id: Number(ev.id) || 0,
           date: typeof ev.start_time === "string" ? ev.start_time.slice(0, 10) : null,
-          event: "MLS NEXT League 26/27",
+          event: label,
           eventId: null,
-          competition: "MLS NEXT League 26/27",
+          competition: label,
           kind: "league",
           homeId: ho.id ?? null,
           homeName: String(ho.name ?? "Unknown"),
@@ -571,11 +618,25 @@ async function fetchLiveMlsNext(
   return null;
 }
 
-export function byGotsportId(teams: RankedTeam[]): Map<number, RankedTeam> {
+export function byGotsportId(
+  teams: RankedTeam[],
+  preferDivision?: string,
+): Map<number, RankedTeam> {
   const map = new Map<number, RankedTeam>();
   for (const t of teams) {
     const id = gotsportNumericId(t.id);
     if (id != null) map.set(id, t);
+  }
+  for (const t of teams) {
+    const orgId = t.mlsNext?.orgId;
+    if (orgId == null) continue;
+    const existing = map.get(orgId);
+    if (
+      !existing ||
+      (preferDivision && t.mlsNext?.division === preferDivision)
+    ) {
+      map.set(orgId, t);
+    }
   }
   return map;
 }
@@ -605,7 +666,7 @@ export async function sosByTeamId(
     if (row.conferenceRank != null) mlsRank.set(row.orgId, row.conferenceRank);
   }
   for (const t of yearTeams) {
-    const overlay = overlayOrg(t.id);
+    const overlay = mlsOverlayFromTeam(t);
     if (overlay) {
       const rows = mlsNextMatchesFor(
         overlay.orgId,

@@ -40,20 +40,24 @@ Alec’s vintage figure: California alone has **≈1,100+** boys teams around th
 Refresh path:
 
 - Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. `--reoverlay` reapplies MLS NEXT / TDS overlays on the current seed.
-- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy).
+- MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy) from the League Viewer JSON. `--reoverlay` on the rankings script merges those rows onto GotSport teams.
 - Matches: `python3 scripts/ingest-gotsport-matches.py` → `matches.json`.
 - If a reported result is still missing after public endpoints, `matches-meta.json` `notOnPublicFeed` is `not_yet_on_gotsport_public_feed` and the score is **not invented**.
 
 ## MLS NEXT records + SOS
 
-Public endpoints used (same JSON as the official standings viewer linked from [mlssoccer.com/mlsnext](https://www.mlssoccer.com/mlsnext/)):
+Public **League Viewer JSON** (same files the official standings viewer loads). Prefer these APIs over HTML scrape. Ingest: `python3 scripts/ingest-mls-next.py`. Team **Refresh** hits the schedule JSON via `/mls-next-api` (dev/preview) or the host / CORS proxies (GitHub Pages).
 
-| Division | Standings | Schedule |
-| --- | --- | --- |
-| Homegrown | `…/standings/mls-next-league-26-27.json` | `…/schedule/mls-next-league-26-27.json` |
-| Academy | `…/standings/mls-next-2-academy-division-26-27.json` | `…/schedule/mls-next-2-academy-division-26-27.json` |
+| Division | Standings | Schedule | Official UI (fallback discovery only) |
+| --- | --- | --- | --- |
+| Homegrown | [mls-next-league-26-27.json](https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-league-26-27.json) | [schedule/mls-next-league-26-27.json](https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json) | [mlssoccer.com/mlsnext/standings/homegrown_division/](https://www.mlssoccer.com/mlsnext/standings/homegrown_division/) |
+| Academy | [mls-next-2-academy-division-26-27.json](https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-2-academy-division-26-27.json) | [schedule/mls-next-2-academy-division-26-27.json](https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json) | [mlssoccer.com/mlsnext/standings/academy_division/](https://www.mlssoccer.com/mlsnext/standings/academy_division/) |
 
-Host: `mls-assist.theintelligenceplatform.com`. Only **completed** games with both scores are kept. No invented W–D–L.
+Viewer: [mls-assist.theintelligenceplatform.com/#/standings/mls-next-league-26-27](https://mls-assist.theintelligenceplatform.com/#/standings/mls-next-league-26-27).
+
+Host: `mls-assist.theintelligenceplatform.com`. Only **completed** games with both scores are kept. No invented W–D–L. Homegrown U13 maps to the app **U13** tab with **2014 birth-year** labeling.
+
+If those JSON endpoints fail, ingest may open the official UI page only to rediscover the same JSON URLs. It does **not** scrape or invent table scores from HTML.
 
 SOS for overlay MLS NEXT sides uses opponent **conference rank** from that public table (same spirit as GotSport opponent US/state ranks). GotSport match SOS still applies to GotSport-listed clubs.
 
