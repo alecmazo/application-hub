@@ -16,22 +16,36 @@ export const COMPILED_AS_OF =
 export const CA_UNIVERSE_ESTIMATE = 1100;
 
 export const LEAGUE_LABEL: Record<LeaguePlatform, string> = {
-  "mls-next": "MLS NEXT",
-  "mls-next-hg": "MLS NEXT Homegrown",
-  ecnl: "ECNL",
-  "ecnl-rl": "ECNL-RL",
+  "mls-next": "MLS NEXT Academy · Tier 2",
+  "mls-next-hg": "MLS NEXT Homegrown · Tier 1",
+  ecnl: "ECNL · Tier 1",
+  "ecnl-rl": "ECNL-RL · Tier 2",
   other: "GotSport / other",
 };
 
 export const LEAGUE_FILTERS: { key: "all" | LeaguePlatform; label: string }[] =
   [
     { key: "all", label: "All platforms" },
-    { key: "mls-next", label: "MLS NEXT" },
-    { key: "mls-next-hg", label: "MLS NEXT Homegrown" },
-    { key: "ecnl", label: "ECNL" },
-    { key: "ecnl-rl", label: "ECNL-RL" },
+    { key: "mls-next-hg", label: "Homegrown · T1" },
+    { key: "mls-next", label: "Academy · T2" },
+    { key: "ecnl", label: "ECNL · T1" },
+    { key: "ecnl-rl", label: "ECNL-RL · T2" },
     { key: "other", label: "Other / GotSport" },
   ];
+
+/** Pathway tier: Homegrown + ECNL = 1; Academy + ECNL-RL = 2. */
+export function pathwayTier(league: LeaguePlatform): 1 | 2 | null {
+  if (league === "mls-next-hg" || league === "ecnl") return 1;
+  if (league === "mls-next" || league === "ecnl-rl") return 2;
+  return null;
+}
+
+export function leagueDisplayLabel(
+  league: LeaguePlatform,
+  fallback?: string,
+): string {
+  return LEAGUE_LABEL[league] || fallback || "GotSport / other";
+}
 
 /** League-tier prior only — slight edge, not a 90-point floor. */
 export function leagueTierScore(league: LeaguePlatform): number {

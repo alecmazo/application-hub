@@ -217,7 +217,7 @@ ACADEMY_LISTING_RE = re.compile(
 def classify_league(blob: str) -> tuple[str, str]:
     n = blob.lower()
     if HG_LISTING_RE.search(n):
-        return "mls-next-hg", "MLS NEXT Homegrown"
+        return "mls-next-hg", "MLS NEXT Homegrown · Tier 1"
     if any(
         x in n
         for x in (
@@ -229,16 +229,16 @@ def classify_league(blob: str) -> tuple[str, str]:
             "mls hd",
         )
     ):
-        return "mls-next-hg", "MLS NEXT Homegrown"
+        return "mls-next-hg", "MLS NEXT Homegrown · Tier 1"
     if any(
         x in n
         for x in ("mls next", "mls-next", "mlsnext", "mls ad", "mls academy")
     ):
-        return "mls-next", "MLS NEXT"
+        return "mls-next", "MLS NEXT Academy · Tier 2"
     if "ecnl-rl" in n or "ecnl rl" in n or "pre-ecnl" in n or "pre ecnl" in n:
-        return "ecnl-rl", "ECNL-RL"
+        return "ecnl-rl", "ECNL-RL · Tier 2"
     if "ecnl" in n:
-        return "ecnl", "ECNL"
+        return "ecnl", "ECNL · Tier 1"
     return "other", "GotSport / other"
 
 
@@ -591,7 +591,7 @@ def apply_overlays(teams: list[dict]) -> None:
         hit["mlsNext"] = mls
         if hit["league"] == "other":
             hit["league"] = "mls-next"
-            hit["leagueLabel"] = "MLS NEXT"
+            hit["leagueLabel"] = "MLS NEXT Academy · Tier 2"
             hit["ageAlignment"] = "mls-next-u13-2014-by"
         if "U13" not in hit.get("ageBands", []):
             hit["ageBands"] = sorted(set(hit.get("ageBands") or []) | {"U13"})
@@ -608,8 +608,8 @@ def _club_tokens(name: str) -> str:
 
 def _division_league(division: str | None) -> tuple[str, str]:
     if division == "homegrown":
-        return "mls-next-hg", "MLS NEXT Homegrown"
-    return "mls-next", "MLS NEXT"
+        return "mls-next-hg", "MLS NEXT Homegrown · Tier 1"
+    return "mls-next", "MLS NEXT Academy · Tier 2"
 
 
 def _is_homegrown_listing(team: dict, label: str) -> bool:
@@ -832,7 +832,7 @@ def merge_ecnl_public(teams: list[dict]) -> None:
         hit["ecnl"] = overlay
         if hit["league"] == "other":
             hit["league"] = tier
-            hit["leagueLabel"] = "ECNL-RL" if tier == "ecnl-rl" else "ECNL"
+            hit["leagueLabel"] = "ECNL-RL · Tier 2" if tier == "ecnl-rl" else "ECNL · Tier 1"
         if "ECNL AthleteOne 26/27" not in hit["sources"]:
             hit["sources"].append("ECNL AthleteOne 26/27")
 
@@ -965,6 +965,15 @@ def finalize_catalog(
 ) -> dict:
     items = list(teams.values())
     apply_overlays(items)
+    labels = {
+        "mls-next-hg": "MLS NEXT Homegrown · Tier 1",
+        "mls-next": "MLS NEXT Academy · Tier 2",
+        "ecnl": "ECNL · Tier 1",
+        "ecnl-rl": "ECNL-RL · Tier 2",
+    }
+    for t in items:
+        if t.get("league") in labels:
+            t["leagueLabel"] = labels[t["league"]]
     items.sort(
         key=lambda t: (-int((t.get("gotsport") or {}).get("points") or 0), t["name"]),
     )

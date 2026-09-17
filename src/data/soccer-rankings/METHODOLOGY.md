@@ -31,6 +31,17 @@ The app uses the **2026–27 / Alec** map (U13 = 2014 BY) so current Homegrown U
 
 GotSport published ranking date: **see `teams.json` `asOf`**. Seed compiled (America/Los_Angeles): **see `compiledAt`**.
 
+## Pathway tiers (visible on list + detail)
+
+Two separate pathways. Do not mix MLS NEXT tiers with ECNL tiers.
+
+| Pathway | Tier 1 (premier) | Tier 2 |
+| --- | --- | --- |
+| MLS NEXT | Homegrown / Allstate Homegrown Division | Academy Division |
+| ECNL | ECNL | ECNL Regional League (ECNL-RL) |
+
+UI labels: `MLS NEXT Homegrown · Tier 1`, `MLS NEXT Academy · Tier 2`, `ECNL · Tier 1`, `ECNL-RL · Tier 2`. Filters keep Homegrown and Academy as separate platforms.
+
 ## Coverage (not a census)
 
 Alec’s vintage figure: California alone has **≈1,100+** boys teams around this age. The seed pulls the public GotSport ranking directory (CAS/CAN first, then other associations) for boys **U12–U16**, plus the public MLS NEXT League 26/27 overlay.
@@ -51,7 +62,7 @@ Refresh path (California first, boys only):
 | --- | --- | --- |
 | GotSport rankings + `/teams/{id}/matches` | Name, points, all-competition W–D–L, recent results | CAS + CAN boys U12–U16; Marin FC every boys side |
 | MLS NEXT League Viewer JSON | Homegrown (Tier 1) + Academy (Tier 2) conference rank, completed league W–D–L / GF–GA, scored matches | All CA Homegrown / Academy clubs on those tables |
-| ECNL AthleteOne `get-conference-standings/{eventId}/12/{seasonId}/{divisionId}/0` | ECNL (season 81, Tier 1) + ECNL-RL (season 83, Tier 2) conference POS / GP / W / L / D / GF / GA | Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal. Boys U13–U16. HTML table parsed; no invented scores. Referer+Origin `https://theecnl.com`. Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU16=22386). National IDs 22184–22187 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match. |
+| ECNL AthleteOne `get-conference-standings/{eventId}/12/{seasonId}/{divisionId}/0` | ECNL (season 81, Tier 1) + ECNL-RL (season 83, Tier 2) conference POS / GP / W / L / D / GF / GA | Every boys conference from the AthleteOne root event-select (QA / Champions Cup skipped). CA priority: Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal. Boys U13–U16. HTML table parsed; no invented scores. Referer+Origin `https://theecnl.com`. Conference events use their own `#division-select` IDs (Northern Cal BU13=22383 … BU16=22386). National IDs 22184–22187 on a conference event still serve the BU13 table and are rejected when the `<h3>` age does not match. |
 
 AthleteOne does **not** publish a public JSON match list (schedule/results scripts return 401). ECNL game-by-game history stays on GotSport when that API has it. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs.
 

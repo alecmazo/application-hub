@@ -88,10 +88,38 @@ CA_CONF_RE = re.compile(
     r"northern\s*cal|norcal|far west|southwest|golden state|southern\s*cal",
     re.I,
 )
+SKIP_EVENT_RE = re.compile(r"\bqa\b|champions cup", re.I)
+CONF_PREFIX_RE = re.compile(r"^ECNL(\s+RL)?\s+Boys\s+", re.I)
 
 
 def compiled_stamp() -> str:
     return datetime.now(ZoneInfo("America/Los_Angeles")).isoformat(timespec="minutes")
+
+
+def conference_name(label: str) -> str:
+    s = CONF_PREFIX_RE.sub("", label)
+    s = re.sub(r"\s+2026-27.*$", "", s, flags=re.I)
+    return s.strip() or label
+
+
+def feeds_from_root(
+    events: list[tuple[int, str]], *, tier: str, season_id: int
+) -> list[dict]:
+    feeds: list[dict] = []
+    seen: set[int] = set()
+    for eid, label in events:
+        if eid in seen or SKIP_EVENT_RE.search(label):
+            continue
+        seen.add(eid)
+        feeds.append(
+            {
+                "eventId": eid,
+                "conference": conference_name(label),
+                "tier": tier,
+                "seasonId": season_id,
+            }
+        )
+    return feeds
 
 
 def fetch_html(event_id: int, season_id: int, division_id: int) -> str:
@@ -280,33 +308,29 @@ def main() -> None:
         "ecnl": parse_root_events(root_ecnl),
         "ecnl-rl": parse_root_events(root_rl),
     }
-    extra_ecnl = [
-        {"eventId": eid, "conference": label, "tier": "ecnl", "seasonId": 81}
-        for eid, label in discovered["ecnl"]
-        if CA_CONF_RE.search(label)
-        and eid not in {f["eventId"] for f in ECNL_CA_EVENTS}
-    ]
-    extra_rl = [
-        {"eventId": eid, "conference": label, "tier": "ecnl-rl", "seasonId": 83}
-        for eid, label in discovered["ecnl-rl"]
-        if CA_CONF_RE.search(label)
-        and eid not in {f["eventId"] for f in ECNL_RL_CA_EVENTS}
-    ]
-    if extra_ecnl:
-        print("extra CA-named ECNL events", extra_ecnl, flush=True)
-    if extra_rl:
-        print("extra CA-named ECNL-RL events", extra_rl, flush=True)
+    ecnl_feeds = feeds_from_root(discovered["ecnl"], tier="ecnl", season_id=81)
+    rl_feeds = feeds_from_root(discovered["ecnl-rl"], tier="ecnl-rl", season_id=83)
+    # Keep curated CA events even if the root list is missing a label.
+    have_ecnl = {f["eventId"] for f in ecnl_feeds}
+    have_rl = {f["eventId"] for f in rl_feeds}
+    for feed in ECNL_CA_EVENTS:
+        if feed["eventId"] not in have_ecnl:
+            ecnl_feeds.append(dict(feed))
+    for feed in ECNL_RL_CA_EVENTS:
+        if feed["eventId"] not in have_rl:
+            rl_feeds.append(dict(feed))
+    print(
+        f"ECNL conferences {len(ecnl_feeds)} RL {len(rl_feeds)} "
+        f"(CA-priority {[f['conference'] for f in ECNL_CA_EVENTS + ECNL_RL_CA_EVENTS]})",
+        flush=True,
+    )
 
     teams: list[dict] = []
     maps: list[dict] = []
-    part, part_maps = ingest_group(
-        tuple(list(ECNL_CA_EVENTS) + extra_ecnl), ECNL_DIVISIONS, "ECNL"
-    )
+    part, part_maps = ingest_group(tuple(ecnl_feeds), ECNL_DIVISIONS, "ECNL")
     teams.extend(part)
     maps.extend(part_maps)
-    part, part_maps = ingest_group(
-        tuple(list(ECNL_RL_CA_EVENTS) + extra_rl), ECNL_RL_DIVISIONS, "ECNL-RL"
-    )
+    part, part_maps = ingest_group(tuple(rl_feeds), ECNL_RL_DIVISIONS, "ECNL-RL")
     teams.extend(part)
     maps.extend(part_maps)
     payload = {
@@ -318,7 +342,8 @@ def main() -> None:
             "format": "AthleteOne returns an HTML table. Parsed POS/GP/W/L/D/GF/GA only.",
             "scores": "Nothing invented. Empty GP stays without a W–D–L.",
             "tier": "ECNL seasonId=81 Tier 1; ECNL-RL seasonId=83 Tier 2. Boys only.",
-            "caConferences": "Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal.",
+            "caConferences": "Northern Cal / NorCal, Far West, Southwest, Golden State, Southern Cal (priority).",
+            "allConferences": "Every ECNL / ECNL-RL boys conference from the AthleteOne root event-select (skip QA + Champions Cup).",
             "ages": "BU13–BU16 → U13–U16 (school-year). BU17/U18-19 skipped.",
             "divisionIds": (
                 "Conference events use #division-select IDs (e.g. Northern Cal "
@@ -328,8 +353,8 @@ def main() -> None:
         },
         "discoveredEvents": discovered,
         "divisionMaps": maps,
-        "feeds": [{**f, "label": "ECNL"} for f in ECNL_CA_EVENTS]
-        + [{**f, "label": "ECNL-RL"} for f in ECNL_RL_CA_EVENTS],
+        "feeds": [{**f, "label": "ECNL"} for f in ecnl_feeds]
+        + [{**f, "label": "ECNL-RL"} for f in rl_feeds],
         "counts": {
             "teams": len(teams),
             "ecnl": sum(1 for t in teams if t["tier"] == "ecnl"),

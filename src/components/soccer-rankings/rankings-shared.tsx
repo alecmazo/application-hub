@@ -21,6 +21,7 @@ import {
   GOTSPORT_AS_OF,
   LEAGUE_FILTERS,
   SEASON_LABEL,
+  leagueDisplayLabel,
 } from "@/lib/soccer-rankings/compute";
 import { AGE_BANDS, AGE_LEGEND, ageTabHint } from "@/lib/soccer-rankings/age-map";
 import { alignmentLabel, COVERAGE } from "@/lib/soccer-rankings/load";
@@ -733,7 +734,7 @@ export function RankingsTable({
               {columns === "full" && (
                 <td className={pad}>
                   <Badge variant={leagueBadgeVariant(t.league)}>
-                    {t.leagueLabel}
+                    {leagueDisplayLabel(t.league, t.leagueLabel)}
                   </Badge>
                 </td>
               )}

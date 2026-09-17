@@ -15,7 +15,7 @@ import {
   leagueBadgeVariant,
   sosMedianLabel,
 } from "@/lib/soccer-rankings/use-soccer-rankings";
-import { publishedRecord } from "@/lib/soccer-rankings/compute";
+import { leagueDisplayLabel, publishedRecord } from "@/lib/soccer-rankings/compute";
 import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
 import { cn } from "@/lib/utils";
@@ -203,7 +203,7 @@ export function MatchdayCardsShell({
                     </div>
                     <div className="mt-4 flex flex-wrap gap-1.5">
                       <Badge variant={leagueBadgeVariant(t.league)}>
-                        {t.leagueLabel}
+                        {leagueDisplayLabel(t.league, t.leagueLabel)}
                       </Badge>
                       {isPinnedHomeTeam(t.id, pinnedId) && (
                         <Badge variant="success">

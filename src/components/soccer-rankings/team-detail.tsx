@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Loader2, RefreshCw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { formatRecord, formatScore, publishedRecord } from "@/lib/soccer-rankings/compute";
+import { formatRecord, formatScore, leagueDisplayLabel, publishedRecord } from "@/lib/soccer-rankings/compute";
 import { alignmentLabel } from "@/lib/soccer-rankings/load";
 import {
   HOME_CONTINUITY_COPY,
@@ -158,7 +158,7 @@ export function TeamDetail({
           <Chip label="Score" value={formatScore(team.score)} />
         </div>
         <div className="mt-2 flex flex-wrap gap-1.5">
-          <Badge variant="outline">{team.leagueLabel}</Badge>
+          <Badge variant="outline">{leagueDisplayLabel(team.league, team.leagueLabel)}</Badge>
           {alignmentLabel(team.ageAlignment) && (
             <Badge variant="secondary">{alignmentLabel(team.ageAlignment)}</Badge>
           )}
