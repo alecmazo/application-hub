@@ -55,12 +55,25 @@ export function MethodologyCard() {
             school-year labels.
           </p>
           <p>
+            Default layout is <strong className="text-foreground">Matchday Cards</strong>.
+            Split is an alternate on the Layout control.
+          </p>
+          <p>
             Ranks are computed in-browser from a public GotSport ingest plus a
             few published TDS / MLS NEXT Cup overlays.{" "}
             <strong className="text-foreground">usRank</strong> sorts composite
             score among seeded teams in this age tab.{" "}
             <strong className="text-foreground">stateRank</strong> is among
             seeded teams in that state — not every club that exists.
+          </p>
+          <p>
+            <strong className="text-foreground">CA Tables</strong> are official
+            conference standings from the ingested MLS NEXT League Viewer and
+            ECNL AthleteOne JSON (Northern Cal first; Far West / Southwest as
+            CA). Columns are Pos, GP, W–D–L, GF, GA, GD, Pts (3×W+D) and PPG.
+            Official Pos is not recomputed. Unmatched AthleteOne sides stay off
+            the composite list but still appear on the CA table. Marin FC is
+            highlighted; Blue 2014/15 is not home.
           </p>
           <ul className="list-disc space-y-1 pl-5">
             <li>

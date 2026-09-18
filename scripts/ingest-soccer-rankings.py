@@ -715,6 +715,12 @@ def merge_mls_next_public(teams: list[dict]) -> None:
                 "asOf": public.get("asOf"),
             }
         )
+        if row.get("played") is not None:
+            mls["played"] = row["played"]
+        if row.get("gf") is not None:
+            mls["gf"] = row["gf"]
+        if row.get("ga") is not None:
+            mls["ga"] = row["ga"]
         if row.get("record"):
             mls["record"] = row["record"]
             # Prefer published MLS NEXT W–D–L on official overlay / Homegrown sides.

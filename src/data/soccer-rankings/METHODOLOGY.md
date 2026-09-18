@@ -47,11 +47,35 @@ ECNL is a separate pathway. Do not mix those tiers with MLS NEXT.
 
 UI: list rows (including dense / split / mobile) show `Homegrown · T1`, `Academy · T2`, `ECNL · T1`, or `ECNL-RL · T2`. Team detail uses the long labels (`MLS NEXT Homegrown · Tier 1`, `ECNL · Tier 1`, …). Platform filter keeps those four as separate options. Ranking / SOS still treats Homegrown and Academy as MLS NEXT pathway clubs (priors 72 / 70) and ECNL / ECNL-RL as their own pathway (68 / 55).
 
+Default **layout** is **Matchday Cards** (view B). Split Command stays on the Layout control as an alternate — it is not the default.
+
+### California-only league tables (CA Tables)
+
+The composite ranking list is **not** a conference table. Official standings live in `mls-next-public.json` and `ecnl-public.json`. The app **must** read those files for CA Tables (and to hydrate GF–GA / conference W–D–L onto matching ranked sides). Leaving them unused is how a live SPA can look like it “ignored” the PR #8 ingest.
+
+**CA Tables** view (age tabs + pathway + conference):
+
+| Pathway | Tier 1 | Tier 2 | CA-relevant conferences |
+| --- | --- | --- | --- |
+| MLS NEXT | Homegrown | Academy | Homegrown: Northwest, Southwest, West (Pro Player Pathway). Academy: Northern California Coast, Northern California Redwood, Southern California. Pacific Northwest (WA/OR) is **not** a CA table. |
+| ECNL | ECNL | ECNL-RL | ECNL: **Northern Cal** (priority), Far West, Southwest. ECNL-RL: NorCal, Golden State, Southern Cal, Far West, Southwest. |
+
+Columns: **Pos, Team, GP, W, D, L, GF, GA, GD, Pts** (+ PPG).
+
+- **Pos** = source conference place (AthleteOne `position` / League Viewer `position`). Not recomputed here — official tie-breakers stay with the source.
+- **Pts** = **3×W + D** (standard). AthleteOne also publishes PPG = Pts/GP; the snapshot Marin U13 line is 4 pts / 3 GP = 1.33 PPG.
+- **W–D–L** is the app order. AthleteOne HTML is **W–L–D**; ingest converts (Marin BU14 2-1-0 → 2-0-1).
+- MLS NEXT W–D–L / GF–GA are **completed League Viewer schedule games only**. Unplayed sides stay 0 GP — not invented.
+- Marin FC (not Blue 2014/15) is highlighted. Home listing remains Marin FC 2013/14 ECNL (`gs-56506`).
+- Age U12 has no Homegrown / ECNL CA table in this app (tabs still exist for GotSport rankings).
+
+AthleteOne rows that do not match a GotSport listing stay **off the composite ranking** (no ghost stubs) but **do appear** on the official CA table. Example: San Francisco Elite Academy ECNL B2013/14 is Northern Cal #2 on the ECNL table even when GotSport has no matching ECNL U13 listing.
+
 Taught ECNL viewer (school-year, not MLS NEXT): [theecnl.com](https://theecnl.com) → LEAGUES → Boys → ECNL Standings → conference (e.g. Northern Cal). Ingest uses the AthleteOne standings API behind that page. ECNL U13 ≈ 2013/14 school year; it is **not** Homegrown 2014 BY.
 
 ## Coverage (not a census)
 
-Alec’s vintage figure: California alone has **≈1,100+** boys teams around this age. The seed pulls the public GotSport ranking directory (CAS/CAN first, then other associations) for boys **U12–U16**, plus the public MLS NEXT League 26/27 overlay.
+Alec’s vintage figure: California alone has **≈1,100+** boys teams around this age. The seed pulls the public GotSport ranking directory (CAS/CAN first, then other associations) for boys **U12–U16**, plus the public MLS NEXT League 26/27 overlay. Official CA conference tables are a separate view sourced from those overlay JSON files, not from GotSport points.
 
 **US rank** and **state rank** are among seeded teams on that age tab only.
 

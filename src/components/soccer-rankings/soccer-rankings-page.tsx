@@ -31,8 +31,9 @@ export function SoccerRankingsPage() {
     <RankingsProvider>
       <div data-ui-shell={shell}>
         <span className="sr-only">
-          Layout switcher. Default is Split Command. Choice is saved in
-          localStorage key soccer-rankings-ui-shell.
+          Layout switcher. Default is Matchday Cards. Split Command is an
+          alternate. Choice is saved in localStorage key
+          soccer-rankings-ui-shell.
         </span>
         <ShellSwitch shell={shell} onChange={chooseShell} />
       </div>

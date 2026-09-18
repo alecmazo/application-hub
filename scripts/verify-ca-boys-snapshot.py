@@ -135,6 +135,34 @@ def verify_teams_json(teams: dict, expected: dict, errors: list[str]) -> None:
             print(f"OK  teams.json {hit.get('id')} {exp['name']} {exp['w']}-{exp['d']}-{exp['l']}")
 
 
+def verify_ca_tables_present(ecnl: dict, mls: dict, errors: list[str]) -> None:
+    """CA Tables read these files — empty ingest means the live SPA ignores standings."""
+    norcal = [
+        t
+        for t in ecnl.get("teams") or []
+        if t.get("tier") == "ecnl"
+        and t.get("conference") == "Northern Cal"
+        and t.get("ageBand") == "U13"
+    ]
+    if len(norcal) < 10:
+        _fail(errors, f"CA table Northern Cal U13 too small ({len(norcal)})")
+    names = { (t.get("name") or "").lower() for t in norcal }
+    if "marin fc ecnl b2013/14" not in names:
+        _fail(errors, "CA table missing Marin FC ECNL B2013/14 on Northern Cal U13")
+    if "san francisco elite academy ecnl b2013/14" not in names:
+        _fail(errors, "CA table missing SF Elite Academy ECNL B2013/14 (unmatched GotSport listing still belongs on the official table)")
+    nw = [
+        t
+        for t in mls.get("teams") or []
+        if t.get("division") == "homegrown"
+        and t.get("ageBand") == "U13"
+        and t.get("conference") == "Northwest"
+    ]
+    if len(nw) < 8:
+        _fail(errors, f"CA table MLS NEXT Homegrown Northwest U13 too small ({len(nw)})")
+    print(f"OK  CA tables NorCal U13 ECNL {len(norcal)} · MLS HG NW U13 {len(nw)}")
+
+
 def verify_mls_u13_nw(mls: dict, expected: dict, errors: list[str]) -> None:
     live = [
         t
@@ -186,6 +214,7 @@ def main() -> int:
 
     verify_marin(ecnl, expected, errors)
     verify_norcal(ecnl, expected, errors)
+    verify_ca_tables_present(ecnl, mls, errors)
     verify_teams_json(teams, expected, errors)
     verify_mls_u13_nw(mls, expected, errors)
 

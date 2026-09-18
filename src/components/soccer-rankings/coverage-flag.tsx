@@ -49,7 +49,9 @@ export function CoverageFlag({
           <p className="font-medium text-foreground">Coverage</p>
           <p className="mt-2 leading-relaxed text-muted-foreground">
             Incomplete vs the full US. GotSport U12–U16 plus MLS NEXT
-            Homegrown / Academy League Viewer JSON (26/27). Vintage universe ≈
+            Homegrown / Academy League Viewer JSON (26/27) and ECNL AthleteOne
+            conference tables. CA Tables reads those ingest files directly.
+            Vintage universe ≈
             {COVERAGE.caUniverseEstimate.toLocaleString()}+. This {year} view
             has {rankedCount.toLocaleString()} ranked sides (
             {caInYear.toLocaleString()} California). US and state ranks are

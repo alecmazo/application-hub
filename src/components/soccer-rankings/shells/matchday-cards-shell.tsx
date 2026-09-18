@@ -23,8 +23,10 @@ import {
 import { cachedMatchCount, mlsOverlayFromTeam } from "@/lib/soccer-rankings/matches";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
 import { cn } from "@/lib/utils";
+import { CaLeagueTables } from "../ca-league-table";
 import { LayoutSwitcher } from "../layout-switcher";
 import { MethodologyCard } from "../methodology-card";
+import { PageViewSwitcher } from "../page-view-switcher";
 import { PinHomeButton } from "../pin-home-button";
 import { useRankings } from "../rankings-context";
 import {
@@ -71,6 +73,8 @@ export function MatchdayCardsShell({
     sosMap,
     formatRecord,
     formatScore,
+    pageView,
+    setPageView,
   } = useRankings();
 
   return (
@@ -88,7 +92,10 @@ export function MatchdayCardsShell({
 
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <AgeTabs variant="pills" />
-            <AsOfStamp />
+            <div className="flex flex-wrap items-center gap-2">
+              <PageViewSwitcher view={pageView} onChange={setPageView} />
+              <AsOfStamp />
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
@@ -96,17 +103,21 @@ export function MatchdayCardsShell({
             <RankingsCoverageFlag />
           </div>
 
-          <div className="flex flex-col gap-3 rounded-3xl border border-border bg-card/70 p-4 sm:flex-row sm:items-center">
-            <SearchField id="matchday-search" className="flex-1" />
-            <div className="flex flex-wrap items-center gap-2">
-              <ScopeSelect id="matchday-scope" />
-              <LeagueSelect id="matchday-league" />
-            </div>
-          </div>
-          <ScopeHint />
+          {pageView === "rankings" && (
+            <>
+              <div className="flex flex-col gap-3 rounded-3xl border border-border bg-card/70 p-4 sm:flex-row sm:items-center">
+                <SearchField id="matchday-search" className="flex-1" />
+                <div className="flex flex-wrap items-center gap-2">
+                  <ScopeSelect id="matchday-scope" />
+                  <LeagueSelect id="matchday-league" />
+                </div>
+              </div>
+              <ScopeHint />
+            </>
+          )}
         </header>
 
-        {pinnedId && (
+        {pageView === "rankings" && pinnedId && (
           <HomeHero
             team={pinnedTeam}
             pinnedId={pinnedId}
@@ -121,11 +132,13 @@ export function MatchdayCardsShell({
         )}
 
         <div className="relative z-10 mt-6 flex-1">
-          <StatusBlocks />
+          {pageView === "ca-tables" && <CaLeagueTables />}
 
-          {status === "ready" && filtered.length === 0 && <EmptyMatches />}
+          {pageView === "rankings" && <StatusBlocks />}
 
-          {status === "ready" && filtered.length > 0 && (
+          {pageView === "rankings" && status === "ready" && filtered.length === 0 && <EmptyMatches />}
+
+          {pageView === "rankings" && status === "ready" && filtered.length > 0 && (
             <div id="rankings-results">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                 <ResultCount />
