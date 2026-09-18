@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { HOME_LABEL, isHomeTeam } from "@/lib/soccer-rankings/home";
 import type { UiShell } from "@/lib/soccer-rankings/ui-shell";
+import { CaLeagueTables } from "../ca-league-table";
 import { LayoutSwitcher } from "../layout-switcher";
 import { MethodologyCard } from "../methodology-card";
+import { PageViewSwitcher } from "../page-view-switcher";
 import { useRankings } from "../rankings-context";
 import {
   AgeAlignmentCopy,
@@ -50,6 +52,8 @@ export function SplitCommandShell({
     refreshFromGotsport,
     refreshingMatches,
     refreshNote,
+    pageView,
+    setPageView,
   } = useRankings();
 
   useEffect(() => {
@@ -156,22 +160,30 @@ export function SplitCommandShell({
             <div className="sticky top-0 z-20 -mx-1 mb-3 space-y-3 rounded-2xl border border-border bg-[color-mix(in_oklab,var(--color-bg)_92%,transparent)] px-3 py-3 backdrop-blur-md">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <AgeTabs />
-                <AsOfStamp />
+                <div className="flex flex-wrap items-center gap-2">
+                  <PageViewSwitcher view={pageView} onChange={setPageView} />
+                  <AsOfStamp />
+                </div>
               </div>
-              <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
-                <FilterCluster
-                  searchId="split-search"
-                  scopeId="split-scope"
-                  leagueId="split-league"
-                />
-                <PinnedHomeChip />
-              </div>
-              <ScopeHint />
+              {pageView === "rankings" && (
+                <>
+                  <div className="flex flex-col gap-2 xl:flex-row xl:items-center xl:justify-between">
+                    <FilterCluster
+                      searchId="split-search"
+                      scopeId="split-scope"
+                      leagueId="split-league"
+                    />
+                    <PinnedHomeChip />
+                  </div>
+                  <ScopeHint />
+                </>
+              )}
             </div>
 
-            <StatusBlocks />
-            {status === "ready" && filtered.length === 0 && <EmptyMatches />}
-            {status === "ready" && filtered.length > 0 && (
+            {pageView === "ca-tables" && <CaLeagueTables />}
+            {pageView === "rankings" && <StatusBlocks />}
+            {pageView === "rankings" && status === "ready" && filtered.length === 0 && <EmptyMatches />}
+            {pageView === "rankings" && status === "ready" && filtered.length > 0 && (
               <div id="rankings-results">
                 <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
                   <ResultCount />

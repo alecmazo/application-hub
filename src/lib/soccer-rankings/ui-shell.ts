@@ -1,24 +1,24 @@
 /**
- * Rankings layout. Split Command is the site default.
- * Matchday Cards stays available as an alternate. Scout Desk was retired.
+ * Rankings layout. Matchday Cards (view B) is the site default.
+ * Split Command stays available as an alternate. Scout Desk was retired.
  */
 export const UI_SHELL_STORAGE_KEY = "soccer-rankings-ui-shell";
 
-export const UI_SHELLS = ["split-command", "matchday-cards"] as const;
+export const UI_SHELLS = ["matchday-cards", "split-command"] as const;
 
 export type UiShell = (typeof UI_SHELLS)[number];
 
-/** New visitors land on Split Command. */
-export const DEFAULT_UI_SHELL: UiShell = "split-command";
+/** New visitors land on Matchday Cards. */
+export const DEFAULT_UI_SHELL: UiShell = "matchday-cards";
 
 export const UI_SHELL_LABELS: Record<UiShell, string> = {
-  "split-command": "Split",
   "matchday-cards": "Cards",
+  "split-command": "Split",
 };
 
 export const UI_SHELL_BLURBS: Record<UiShell, string> = {
-  "split-command": "List + team detail",
   "matchday-cards": "Pinned-home hero and cards",
+  "split-command": "List + team detail",
 };
 
 export function isUiShell(value: string | null | undefined): value is UiShell {

@@ -1,6 +1,7 @@
 import catalog from "@/data/soccer-rankings/teams.json";
 import { AGE_BANDS, MLS_NEXT_BAND_BIRTH_YEAR } from "./age-map";
 import { CA_UNIVERSE_ESTIMATE, COMPILED_AS_OF, rankTeams } from "./compute";
+import { lookupEcnlPublic, lookupMlsPublic } from "./league-tables";
 import type {
   AgeAlignment,
   AgeBand,
@@ -42,14 +43,80 @@ export const COVERAGE: CoverageMeta = {
   byAge: FILE.counts?.byAge ?? {},
 };
 
+/**
+ * Overlay official MLS NEXT / ECNL conference stats from the public ingest
+ * files. teams.json matching can drop GF–GA (MLS) or miss a listing; the
+ * League Viewer + AthleteOne JSON is the standings source of truth.
+ */
+export function hydrateOfficialStandings(
+  seed: TeamSeed,
+  ageBand: AgeBand,
+): TeamSeed {
+  const next: TeamSeed = { ...seed, ageBand };
+  const mlsRow = lookupMlsPublic(
+    seed.mlsNext?.orgId,
+    ageBand,
+    seed.mlsNext?.division,
+  );
+  if (mlsRow) {
+    const mls = { ...(seed.mlsNext ?? {}) };
+    mls.conference = mlsRow.conference ?? mls.conference;
+    mls.conferenceRank = mlsRow.conferenceRank ?? mls.conferenceRank;
+    mls.conferenceSize = mlsRow.conferenceSize ?? mls.conferenceSize;
+    mls.played = mlsRow.played ?? mls.played;
+    mls.gf = mlsRow.gf ?? mls.gf;
+    mls.ga = mlsRow.ga ?? mls.ga;
+    if (mlsRow.record) {
+      mls.record = mlsRow.record;
+      if (seed.league === "mls-next" || seed.league === "mls-next-hg") {
+        next.record = mlsRow.record;
+      }
+    }
+    next.mlsNext = mls;
+  }
+  const ecnlRow = lookupEcnlPublic({
+    athleteOneTeamId: seed.ecnl?.athleteOneTeamId,
+    name: seed.name,
+    ageBand,
+    tier: seed.ecnl?.tier ?? (seed.league === "ecnl-rl" ? "ecnl-rl" : undefined),
+  });
+  if (ecnlRow) {
+    const ecnl = { ...(seed.ecnl ?? {}) };
+    ecnl.tier = (ecnlRow.tier as "ecnl" | "ecnl-rl" | undefined) ?? ecnl.tier;
+    ecnl.conference = ecnlRow.conference ?? ecnl.conference;
+    ecnl.conferenceRank = ecnlRow.conferenceRank ?? ecnl.conferenceRank;
+    ecnl.conferenceSize = ecnlRow.conferenceSize ?? ecnl.conferenceSize;
+    ecnl.played = ecnlRow.played ?? ecnl.played;
+    ecnl.gf = ecnlRow.gf ?? ecnl.gf;
+    ecnl.ga = ecnlRow.ga ?? ecnl.ga;
+    if (ecnlRow.athleteOneTeamId != null) {
+      ecnl.athleteOneTeamId = ecnlRow.athleteOneTeamId;
+    }
+    if (ecnlRow.eventId != null) ecnl.eventId = ecnlRow.eventId;
+    if (ecnlRow.record) {
+      ecnl.record = ecnlRow.record;
+      if (seed.league === "ecnl" || seed.league === "ecnl-rl") {
+        next.record = ecnlRow.record;
+      }
+    }
+    next.ecnl = ecnl;
+  }
+  return next;
+}
+
 export function loadRankedAge(ageBand: AgeBand): RankedDataset {
   const seeds: TeamSeed[] = FILE.teams
     .filter((t) => (t.ageBands ?? []).includes(ageBand))
-    .map((t) => ({
-      ...t,
-      ageBand,
-      birthYear: t.birthYears?.[0] ?? MLS_NEXT_BAND_BIRTH_YEAR[ageBand],
-    }));
+    .map((t) =>
+      hydrateOfficialStandings(
+        {
+          ...t,
+          ageBand,
+          birthYear: t.birthYears?.[0] ?? MLS_NEXT_BAND_BIRTH_YEAR[ageBand],
+        },
+        ageBand,
+      ),
+    );
   const ranked = rankTeams(seeds, ageBand);
   return { ...ranked, coverage: COVERAGE };
 }

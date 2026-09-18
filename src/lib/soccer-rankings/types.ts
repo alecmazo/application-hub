@@ -78,6 +78,9 @@ export type TeamSeed = {
     division?: "academy" | "homegrown";
     season?: string;
     asOf?: string;
+    played?: number;
+    gf?: number;
+    ga?: number;
   };
   ecnl?: {
     tier?: "ecnl" | "ecnl-rl";

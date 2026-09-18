@@ -11,6 +11,12 @@ import {
   winPct,
 } from "./compute";
 import { DEFAULT_AGE_BAND } from "./age-map";
+import {
+  DEFAULT_PAGE_VIEW,
+  readPageView,
+  writePageView,
+  type PageView,
+} from "./league-tables";
 import { loadRankedAge } from "./load";
 import { homeSearchAliases } from "./home";
 import { usePinnedHomeTeam } from "./use-pinned-home";
@@ -157,9 +163,19 @@ export function useSoccerRankings() {
   const [matchRefreshNonce, setMatchRefreshNonce] = useState(0);
   const [refreshingMatches, setRefreshingMatches] = useState(false);
   const [refreshNote, setRefreshNote] = useState<string | null>(null);
+  const [pageView, setPageViewState] = useState<PageView>(DEFAULT_PAGE_VIEW);
 
   useEffect(() => {
     document.title = "Soccer Rankings";
+  }, []);
+
+  useEffect(() => {
+    setPageViewState(readPageView());
+  }, []);
+
+  const setPageView = useCallback((next: PageView) => {
+    setPageViewState(next);
+    writePageView(next);
   }, []);
 
   useEffect(() => {
@@ -352,6 +368,8 @@ export function useSoccerRankings() {
     caInYear,
     showMethod,
     setShowMethod,
+    pageView,
+    setPageView,
     formatPoints,
     formatRecord,
     formatScore,

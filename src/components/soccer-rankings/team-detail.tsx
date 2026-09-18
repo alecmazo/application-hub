@@ -165,6 +165,36 @@ export function TeamDetail({
           />
           <Chip label="Score" value={formatScore(team.score)} />
         </div>
+        {(team.mlsNext?.gf != null || team.ecnl?.gf != null) && (
+          <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-3">
+            <Chip
+              label="GP"
+              value={String(
+                team.mlsNext?.played ??
+                  team.ecnl?.played ??
+                  (publishedRecord(team)
+                    ? publishedRecord(team)!.w +
+                      publishedRecord(team)!.d +
+                      publishedRecord(team)!.l
+                    : "—"),
+              )}
+            />
+            <Chip
+              label="GF–GA"
+              value={`${team.mlsNext?.gf ?? team.ecnl?.gf ?? "—"}–${team.mlsNext?.ga ?? team.ecnl?.ga ?? "—"}`}
+            />
+            <Chip
+              label="GD"
+              value={(() => {
+                const gf = team.mlsNext?.gf ?? team.ecnl?.gf;
+                const ga = team.mlsNext?.ga ?? team.ecnl?.ga;
+                if (gf == null || ga == null) return "—";
+                const gd = gf - ga;
+                return gd > 0 ? `+${gd}` : String(gd);
+              })()}
+            />
+          </div>
+        )}
         <div className="mt-2 flex flex-wrap gap-1.5">
           <Badge variant={leagueBadgeVariant(team.league)}>
             {leagueDisplayLabel(team.league, team.leagueLabel)}
