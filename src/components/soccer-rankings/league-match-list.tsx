@@ -67,8 +67,8 @@ export function LeagueMatchList({
       </div>
       <p className="text-xs leading-relaxed text-muted-foreground">
         Conference games only — not cups or other platforms. Scores appear only
-        when AthleteOne box score / MLS NEXT League Viewer published both.
-        Nothing invented.
+        when AthleteOne team-info RESULTS / MLS NEXT League Viewer published
+        both. Unpublished stays N/A. Nothing invented.
       </p>
       {load.error && (
         <p className="text-xs leading-relaxed text-muted-foreground">
