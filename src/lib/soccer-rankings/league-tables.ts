@@ -5,8 +5,9 @@
  * MLS NEXT League Viewer and ECNL AthleteOne conference standings that PR #8
  * collected — they must be read here or the live SPA ignores them.
  *
- * Pts = 3W + D. Official Pos is the source conference position (tie-breakers
- * stay with AthleteOne / League Viewer). PPG = Pts / GP when GP > 0.
+ * Display Pos is recomputed from W/D/L/GF/GA: Pts (3×W + D) desc, then GD
+ * (GF − GA) desc, then GF desc, then name. Source conference place is kept
+ * as sourcePos but is not used for table order. PPG = Pts / GP when GP > 0.
  * Nothing is invented: W–D–L / GF–GA come from completed public rows only.
  */
 import ecnlPublic from "@/data/soccer-rankings/ecnl-public.json";
