@@ -70,7 +70,7 @@ Live rows replace matching shipped rows. If a feed is blocked, the shipped cache
 Columns: **Pos, Team, GP, W, D, L, GF, GA, GD, Pts** (+ PPG).
 
 - **Pos** (display) is **recomputed**: **Pts descending, then GD descending**, then GF descending, then name. Pts = 3×W + D. GD = GF − GA. Source conference place is stored as `sourcePos` but is **not** used for order if it disagrees with Pts→GD.
-- Clicking a CA table side expands that row (and the Cards right panel) into **that conference’s games only** — opponents and W/D/L, scores only when AthleteOne box score or MLS NEXT League Viewer published both. ECNL uses `get-club-schedules-by-eventID-and-clubID` (get-team-schedule is 401). Nothing invented.
+- Clicking a CA table side expands that row (and the Cards right panel) into **that conference’s games only** — opponents and W/D/L, scores only when AthleteOne box score or MLS NEXT League Viewer published both. **Played (scored) first**, then schedule rows with no published FT, then upcoming. ECNL uses `get-club-schedules-by-eventID-and-clubID` (get-team-schedule is 401). Nothing invented.
 - **Pts** = **3×W + D** (standard). AthleteOne also publishes PPG = Pts/GP; the snapshot Marin U13 line is 4 pts / 3 GP = 1.33 PPG.
 - **W–D–L** is the app order. AthleteOne HTML is **W–L–D**; ingest converts (Marin BU14 2-1-0 → 2-0-1).
 - MLS NEXT W–D–L / GF–GA are **completed League Viewer schedule games only**. Unplayed sides stay 0 GP — not invented.
