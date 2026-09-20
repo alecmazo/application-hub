@@ -135,8 +135,22 @@ export function parseAthleteOneClubSchedule(
       winnerId: null,
     });
   }
-  rows.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
-  return rows;
+  return sortLeagueMatches(rows);
+}
+
+/** Played (scored) first, then other past, then upcoming. Dates: recent first / soonest first. */
+export function sortLeagueMatches(matches: CompactMatch[]): CompactMatch[] {
+  const today = todayIso();
+  return [...matches].sort((a, b) => {
+    const aScored = a.homeScore != null && a.awayScore != null;
+    const bScored = b.homeScore != null && b.awayScore != null;
+    if (aScored !== bScored) return aScored ? -1 : 1;
+    const aFuture = Boolean(a.date && a.date > today);
+    const bFuture = Boolean(b.date && b.date > today);
+    if (aFuture !== bFuture) return aFuture ? 1 : -1;
+    if (aFuture) return (a.date ?? "").localeCompare(b.date ?? "");
+    return (b.date ?? "").localeCompare(a.date ?? "");
+  });
 }
 
 export function parseAthleteOneBoxScore(html: string): {
@@ -238,11 +252,12 @@ async function loadEcnlLeagueMatches(
     };
   }
   await hydrateBoxScores(eventId, matches, teamId, tried);
-  const scored = matches.filter(
+  const ordered = sortLeagueMatches(matches);
+  const scored = ordered.filter(
     (m) => m.homeScore != null && m.awayScore != null,
   ).length;
   return {
-    matches,
+    matches: ordered,
     focusId: teamId,
     source: "live",
     competition,
@@ -272,10 +287,12 @@ function loadMlsLeagueMatches(row: LeagueTableRow): LeagueMatchLoad {
     ageBand: row.ageBand,
     division: row.tier === "homegrown" ? "homegrown" : "academy",
   };
-  const matches = mlsNextMatchesFor(
-    overlay.orgId,
-    overlay.ageBand,
-    overlay.division,
+  const matches = sortLeagueMatches(
+    mlsNextMatchesFor(
+      overlay.orgId,
+      overlay.ageBand,
+      overlay.division,
+    ),
   );
   return {
     matches,

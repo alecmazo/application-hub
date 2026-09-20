@@ -72,48 +72,89 @@ export function LeagueMatchList({
           not on the public schedule.
         </p>
       ) : (
-        <ol className="space-y-2">
-          {load.matches.map((m) => {
-            const opp = leagueOpponent(load, m);
-            const result = leagueResultFor(load, m);
-            const scored = m.homeScore != null && m.awayScore != null;
-            return (
-              <li
-                key={`${m.id}-${m.date}-${opp.name}`}
-                className="flex items-start justify-between gap-3 rounded-lg border border-border bg-card px-3 py-2.5"
-              >
-                <div className="min-w-0">
-                  <p className="text-[11px] text-muted-foreground">
-                    {m.date ?? "Date N/A"}
-                    {m.event ? ` · ${m.event}` : ""}
-                  </p>
-                  <p className="truncate text-sm font-medium">
-                    vs {opp.name}
-                  </p>
-                </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  <span className="font-mono-num text-sm font-semibold">
-                    {scored ? `${m.homeScore}–${m.awayScore}` : "N/A"}
-                  </span>
-                  {result && (
-                    <span
-                      className={cn(
-                        "inline-flex size-6 items-center justify-center rounded-full text-[11px] font-bold",
-                        result === "W" && "bg-primary text-primary-foreground",
-                        result === "D" && "bg-muted text-muted-foreground",
-                        result === "L" &&
-                          "border border-border text-muted-foreground",
-                      )}
-                    >
-                      {result}
-                    </span>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
+        <MatchGroups load={load} />
       )}
+    </div>
+  );
+}
+
+function MatchGroups({ load }: { load: LeagueMatchLoad }) {
+  const today = new Date().toISOString().slice(0, 10);
+  const played = load.matches.filter(
+    (m) => m.homeScore != null && m.awayScore != null,
+  );
+  const rest = load.matches.filter(
+    (m) => m.homeScore == null || m.awayScore == null,
+  );
+  const unpublished = rest.filter((m) => !m.date || m.date <= today);
+  const upcoming = rest.filter((m) => m.date && m.date > today);
+  return (
+    <div className="space-y-4">
+      <MatchGroup title="Played" load={load} matches={played} />
+      <MatchGroup
+        title="On the schedule — no published score"
+        load={load}
+        matches={unpublished}
+      />
+      <MatchGroup title="Upcoming" load={load} matches={upcoming} />
+    </div>
+  );
+}
+
+function MatchGroup({
+  title,
+  load,
+  matches,
+}: {
+  title: string;
+  load: LeagueMatchLoad;
+  matches: LeagueMatchLoad["matches"];
+}) {
+  if (matches.length === 0) return null;
+  return (
+    <div className="space-y-2">
+      <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+        {title}
+      </p>
+      <ol className="space-y-2">
+        {matches.map((m) => {
+          const opp = leagueOpponent(load, m);
+          const result = leagueResultFor(load, m);
+          const scored = m.homeScore != null && m.awayScore != null;
+          return (
+            <li
+              key={`${m.id}-${m.date}-${opp.name}`}
+              className="flex items-start justify-between gap-3 rounded-lg border border-border bg-card px-3 py-2.5"
+            >
+              <div className="min-w-0">
+                <p className="text-[11px] text-muted-foreground">
+                  {m.date ?? "Date N/A"}
+                  {m.event ? ` · ${m.event}` : ""}
+                </p>
+                <p className="truncate text-sm font-medium">vs {opp.name}</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-2">
+                <span className="font-mono-num text-sm font-semibold">
+                  {scored ? `${m.homeScore}–${m.awayScore}` : "N/A"}
+                </span>
+                {result && (
+                  <span
+                    className={cn(
+                      "inline-flex size-6 items-center justify-center rounded-full text-[11px] font-bold",
+                      result === "W" && "bg-primary text-primary-foreground",
+                      result === "D" && "bg-muted text-muted-foreground",
+                      result === "L" &&
+                        "border border-border text-muted-foreground",
+                    )}
+                  >
+                    {result}
+                  </span>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }
