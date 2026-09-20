@@ -20,6 +20,8 @@ import {
 } from "@/lib/soccer-rankings/league-tables";
 import { HOME_LABEL } from "@/lib/soccer-rankings/home";
 import { cn } from "@/lib/utils";
+import { LeagueMatchList } from "./league-match-list";
+import { StandingsRefreshButton } from "./standings-refresh-button";
 import { useRankings } from "./rankings-context";
 
 const MLS_TIERS: { key: MlsTableDivision; label: string }[] = [
@@ -33,7 +35,14 @@ const ECNL_TIERS: { key: EcnlTableTier; label: string }[] = [
 ];
 
 export function CaLeagueTables() {
-  const { year, teams, openTeam } = useRankings();
+  const {
+    year,
+    teams,
+    openTeam,
+    standingsNonce,
+    caTableFocus,
+    openTableRow,
+  } = useRankings();
   const [pathway, setPathway] = useState<CaTablePathway>("ecnl");
   const [tier, setTier] = useState<CaTableTier>("ecnl");
   const [conference, setConference] = useState("Northern Cal");
@@ -56,7 +65,7 @@ export function CaLeagueTables() {
         conference,
         ageBand: year,
       }),
-    [pathway, tier, conference, year],
+    [pathway, tier, conference, year, standingsNonce],
   );
 
   function choosePathway(next: CaTablePathway) {
@@ -72,8 +81,9 @@ export function CaLeagueTables() {
   }
 
   function onOpenRow(row: LeagueTableRow) {
+    openTableRow(row);
     const hit = resolveRankedTeam(row, teams);
-    if (hit) openTeam(hit.id);
+    if (hit) openTeam(hit.id, { scroll: false });
   }
 
   const asOf = caTableAsOf(pathway);
@@ -140,6 +150,11 @@ export function CaLeagueTables() {
               Table as of {asOf}
             </p>
           )}
+          <StandingsRefreshButton
+            size="default"
+            label="Refresh"
+            prioritize={{ pathway, tier, conference, ageBand: year }}
+          />
         </div>
         <p className="text-sm leading-relaxed text-muted-foreground">
           Official boys California conference table — not the unofficial
@@ -172,7 +187,7 @@ export function CaLeagueTables() {
                 ? mlsTierLabel(tier as MlsTableDivision)
                 : ecnlTierLabel(tier as EcnlTableTier)}
             </p>
-            <Badge variant="outline">Pos from source table</Badge>
+            <Badge variant="outline">Pos = Pts then GD</Badge>
           </div>
           <div className="hidden overflow-x-auto rounded-2xl border border-border bg-card md:block">
             <table className="w-full min-w-[44rem] text-left text-sm">
@@ -192,94 +207,134 @@ export function CaLeagueTables() {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row) => (
-                  <tr
-                    key={row.key}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`${row.pos}. ${row.name}`}
-                    className={cn(
-                      "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
-                      row.homeHighlight &&
-                        "border-l-2 border-l-success bg-success/15",
-                      row.marinHighlight &&
-                        !row.homeHighlight &&
-                        "border-l-2 border-l-success/70 bg-success/5",
-                    )}
-                    onClick={() => onOpenRow(row)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        onOpenRow(row);
-                      }
-                    }}
-                  >
-                    <td className="px-2 py-2.5 text-right font-mono-num text-base font-semibold text-primary">
-                      {row.pos || "—"}
-                    </td>
-                    <td className="min-w-0 px-3 py-2.5">
-                      <p className="truncate font-medium" title={row.name}>
-                        {row.name}
-                      </p>
-                      <p className="mt-0.5 text-[11px] text-muted-foreground">
-                        {row.tierLabel}
-                        {row.homeHighlight ? ` · ${HOME_LABEL}` : ""}
-                        {row.marinHighlight && !row.homeHighlight
-                          ? " · Marin FC"
-                          : ""}
-                      </p>
-                    </td>
-                    <Num>{row.gp}</Num>
-                    <Num>{row.w}</Num>
-                    <Num>{row.d}</Num>
-                    <Num>{row.l}</Num>
-                    <Num>{row.gf}</Num>
-                    <Num>{row.ga}</Num>
-                    <Num>{row.gd > 0 ? `+${row.gd}` : row.gd}</Num>
-                    <Num strong>{row.pts}</Num>
-                    <Num>{formatPpg(row.ppg)}</Num>
-                  </tr>
-                ))}
+                {rows.map((row) => {
+                  const selected = caTableFocus?.key === row.key;
+                  return (
+                    <TableRows
+                      key={row.key}
+                      row={row}
+                      selected={selected}
+                      onOpen={onOpenRow}
+                    />
+                  );
+                })}
               </tbody>
             </table>
           </div>
           <div className="grid gap-2 md:hidden">
-            {rows.map((row) => (
-              <button
-                key={row.key}
-                type="button"
-                onClick={() => onOpenRow(row)}
-                className={cn(
-                  "rounded-xl border border-border bg-card p-3 text-left shadow-sm",
-                  row.homeHighlight && "border-success/40 bg-success/10",
-                  row.marinHighlight &&
-                    !row.homeHighlight &&
-                    "border-success/30 bg-success/5",
-                )}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <p className="truncate font-medium">{row.name}</p>
-                    <p className="mt-0.5 text-[11px] text-muted-foreground">
-                      {row.tierLabel}
-                      {row.homeHighlight ? ` · ${HOME_LABEL}` : ""}
+            {rows.map((row) => {
+              const selected = caTableFocus?.key === row.key;
+              return (
+                <div key={row.key} className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => onOpenRow(row)}
+                    className={cn(
+                      "w-full rounded-xl border border-border bg-card p-3 text-left shadow-sm",
+                      row.homeHighlight && "border-success/40 bg-success/10",
+                      row.marinHighlight &&
+                        !row.homeHighlight &&
+                        "border-success/30 bg-success/5",
+                      selected && "border-primary/50 ring-1 ring-primary/30",
+                    )}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="truncate font-medium">{row.name}</p>
+                        <p className="mt-0.5 text-[11px] text-muted-foreground">
+                          {row.tierLabel}
+                          {row.homeHighlight ? ` · ${HOME_LABEL}` : ""}
+                        </p>
+                      </div>
+                      <p className="font-mono-num text-lg font-semibold text-primary">
+                        {row.pos || "—"}
+                      </p>
+                    </div>
+                    <p className="mt-2 font-mono-num text-xs text-muted-foreground">
+                      {row.gp} GP · {row.w}–{row.d}–{row.l} · GF {row.gf} GA{" "}
+                      {row.ga} GD {row.gd > 0 ? `+${row.gd}` : row.gd} ·{" "}
+                      {row.pts} pts
+                      {row.ppg != null ? ` · ${formatPpg(row.ppg)} PPG` : ""}
                     </p>
-                  </div>
-                  <p className="font-mono-num text-lg font-semibold text-primary">
-                    {row.pos || "—"}
-                  </p>
+                  </button>
+                  {selected && (
+                    <div className="rounded-xl border border-primary/25 bg-card p-3">
+                      <LeagueMatchList row={row} compact />
+                    </div>
+                  )}
                 </div>
-                <p className="mt-2 font-mono-num text-xs text-muted-foreground">
-                  {row.gp} GP · {row.w}–{row.d}–{row.l} · GF {row.gf} GA {row.ga}{" "}
-                  GD {row.gd > 0 ? `+${row.gd}` : row.gd} · {row.pts} pts
-                  {row.ppg != null ? ` · ${formatPpg(row.ppg)} PPG` : ""}
-                </p>
-              </button>
-            ))}
+              );
+            })}
           </div>
         </>
       )}
     </section>
+  );
+}
+
+function TableRows({
+  row,
+  selected,
+  onOpen,
+}: {
+  row: LeagueTableRow;
+  selected: boolean;
+  onOpen: (row: LeagueTableRow) => void;
+}) {
+  return (
+    <>
+      <tr
+        role="button"
+        tabIndex={0}
+        aria-expanded={selected}
+        aria-label={`${row.pos}. ${row.name}`}
+        className={cn(
+          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+          row.homeHighlight && "border-l-2 border-l-success bg-success/15",
+          row.marinHighlight &&
+            !row.homeHighlight &&
+            "border-l-2 border-l-success/70 bg-success/5",
+          selected && "bg-primary/10",
+        )}
+        onClick={() => onOpen(row)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onOpen(row);
+          }
+        }}
+      >
+        <td className="px-2 py-2.5 text-right font-mono-num text-base font-semibold text-primary">
+          {row.pos || "—"}
+        </td>
+        <td className="min-w-0 px-3 py-2.5">
+          <p className="truncate font-medium" title={row.name}>
+            {row.name}
+          </p>
+          <p className="mt-0.5 text-[11px] text-muted-foreground">
+            {row.tierLabel}
+            {row.homeHighlight ? ` · ${HOME_LABEL}` : ""}
+            {row.marinHighlight && !row.homeHighlight ? " · Marin FC" : ""}
+          </p>
+        </td>
+        <Num>{row.gp}</Num>
+        <Num>{row.w}</Num>
+        <Num>{row.d}</Num>
+        <Num>{row.l}</Num>
+        <Num>{row.gf}</Num>
+        <Num>{row.ga}</Num>
+        <Num>{row.gd > 0 ? `+${row.gd}` : row.gd}</Num>
+        <Num strong>{row.pts}</Num>
+        <Num>{formatPpg(row.ppg)}</Num>
+      </tr>
+      {selected && (
+        <tr className="border-b border-border bg-muted/20">
+          <td colSpan={11} className="px-4 py-4">
+            <LeagueMatchList row={row} />
+          </td>
+        </tr>
+      )}
+    </>
   );
 }
 

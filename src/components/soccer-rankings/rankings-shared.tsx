@@ -24,7 +24,12 @@ import {
   leagueDisplayLabel,
   leagueTierChip,
 } from "@/lib/soccer-rankings/compute";
-import { AGE_BANDS, AGE_LEGEND, ageTabHint } from "@/lib/soccer-rankings/age-map";
+import {
+  AGE_BANDS,
+  AGE_LEGEND,
+  ECNL_SCHOOL_YEAR,
+  ageTabHint,
+} from "@/lib/soccer-rankings/age-map";
 import { alignmentLabel, COVERAGE } from "@/lib/soccer-rankings/load";
 import {
   HOME_LABEL,
@@ -151,7 +156,17 @@ export function AgeTabs({
                 : "text-muted-foreground hover:text-foreground",
           )}
         >
-          {y}
+          <span className="leading-none">{y}</span>
+          {variant === "pills" && (
+            <span
+              className={cn(
+                "ml-1.5 text-[10px] font-medium",
+                year === y ? "text-primary-foreground/80" : "text-muted-foreground",
+              )}
+            >
+              {ECNL_SCHOOL_YEAR[y]}
+            </span>
+          )}
         </button>
       ))}
     </div>

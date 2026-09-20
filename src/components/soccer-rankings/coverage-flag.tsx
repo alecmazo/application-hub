@@ -70,7 +70,10 @@ export function CoverageFlag({
             {COMPILED_AS_OF !== GOTSPORT_AS_OF
               ? ` (compiled ${COMPILED_AS_OF})`
               : ""}
-            . Refresh reloads live match lists the same way team pages do.
+            . Team Refresh reloads live match lists. CA Tables Refresh
+            re-fetches AthleteOne + MLS NEXT League Viewer standings and
+            updates the official table and hydrated records — not invented
+            scores.
           </p>
           <div className="mt-3 flex flex-col gap-2">
             <Button

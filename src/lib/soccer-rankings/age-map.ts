@@ -15,7 +15,16 @@ export const MLS_NEXT_BAND_BIRTH_YEAR: Record<AgeBand, number> = {
   U16: 2011,
 };
 
+/** ECNL / US Club school-year label for the same Un tab. */
+export const ECNL_SCHOOL_YEAR: Record<AgeBand, string> = {
+  U12: "2014/15",
+  U13: "2013/14",
+  U14: "2012/13",
+  U15: "2011/12",
+  U16: "2010/11",
+};
+
 export function ageTabHint(band: AgeBand): string {
   if (band === "U12") return "GotSport / school year · no MLS NEXT Homegrown";
-  return `MLS NEXT ${MLS_NEXT_BAND_BIRTH_YEAR[band]} BY`;
+  return `MLS NEXT ${MLS_NEXT_BAND_BIRTH_YEAR[band]} BY · ECNL ${ECNL_SCHOOL_YEAR[band]}`;
 }

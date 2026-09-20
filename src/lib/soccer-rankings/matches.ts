@@ -1,5 +1,6 @@
 import meta from "@/data/soccer-rankings/matches-meta.json";
 import mlsNextPublic from "@/data/soccer-rankings/mls-next-public.json";
+import { listMlsPublicTeams } from "./league-tables";
 import type {
   CompactMatch,
   MatchLoadResult,
@@ -280,6 +281,39 @@ type MlsNextPublicFile = {
 
 const MLS_NEXT_FILE = mlsNextPublic as MlsNextPublicFile;
 
+export type MlsNextOverlayMatch = {
+  id?: number;
+  date?: string | null;
+  ageBand?: string;
+  division?: string;
+  homeOrgId?: number | null;
+  homeName?: string;
+  awayOrgId?: number | null;
+  awayName?: string;
+  homeScore?: number | null;
+  awayScore?: number | null;
+  event?: string;
+  kind?: string;
+};
+
+let liveMlsMatches: MlsNextOverlayMatch[] | null = null;
+
+export function applyLiveMlsMatches(matches: MlsNextOverlayMatch[]): void {
+  if (!matches.length) return;
+  const map = new Map<string, MlsNextOverlayMatch>();
+  for (const row of MLS_NEXT_FILE.matches ?? []) {
+    map.set(`${row.id}|${row.division ?? ""}|${row.ageBand ?? ""}`, row);
+  }
+  for (const row of matches) {
+    map.set(`${row.id}|${row.division ?? ""}|${row.ageBand ?? ""}`, row);
+  }
+  liveMlsMatches = [...map.values()];
+}
+
+function mlsMatchRows(): MlsNextOverlayMatch[] {
+  return liveMlsMatches ?? MLS_NEXT_FILE.matches ?? [];
+}
+
 export type MlsNextOverlay = {
   orgId: number;
   ageBand: string;
@@ -316,13 +350,12 @@ export function mlsNextMatchesFor(
   ageBand?: string,
   division?: string,
 ): CompactMatch[] {
-  return (MLS_NEXT_FILE.matches ?? [])
+  return mlsMatchRows()
     .filter(
       (m) =>
         (m.homeOrgId === orgId || m.awayOrgId === orgId) &&
         (!ageBand || m.ageBand === ageBand) &&
-        (!division || !m.ageBand || (m as { division?: string }).division == null ||
-          (m as { division?: string }).division === division),
+        (!division || !m.ageBand || m.division == null || m.division === division),
     )
     .map((m) => ({
       id: Number(m.id) || 0,
@@ -662,7 +695,7 @@ export async function sosByTeamId(
   const index = byGotsportId(yearTeams);
   const map = new Map<string, SosSummary>();
   const mlsRank = new Map<number, number>();
-  for (const row of MLS_NEXT_FILE.teams ?? []) {
+  for (const row of listMlsPublicTeams()) {
     if (row.conferenceRank != null) mlsRank.set(row.orgId, row.conferenceRank);
   }
   for (const t of yearTeams) {

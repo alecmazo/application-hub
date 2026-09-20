@@ -42,7 +42,7 @@ export const ECNL_CA_CONFERENCES: Record<EcnlTableTier, readonly string[]> = {
 };
 
 export const CA_TABLE_POINTS_NOTE =
-  "Pts = 3×W + D (standard). Official Pos is the source conference place — not recomputed here. PPG = Pts ÷ GP. AthleteOne HTML is W–L–D; the app stores W–D–L. MLS NEXT W–D–L / GF–GA are completed League Viewer schedule games only.";
+  "Display Pos is recomputed: Pts (3×W + D) descending, then GD (GF − GA) descending, then GF descending, then name. Source conference place is not used for order. PPG = Pts ÷ GP. AthleteOne HTML is W–L–D; the app stores W–D–L. MLS NEXT W–D–L / GF–GA are completed League Viewer schedule games only.";
 
 type MlsPublicTeam = {
   orgId: number;
@@ -71,6 +71,7 @@ type EcnlPublicTeam = {
   ga?: number;
   record?: { w: number; d: number; l: number; asOf?: string; note?: string } | null;
   athleteOneTeamId?: number;
+  athleteOneClubId?: number;
   eventId?: number;
 };
 
@@ -88,15 +89,80 @@ type EcnlPublicFile = {
   teams?: EcnlPublicTeam[];
 };
 
-const MLS_FILE = mlsNextPublic as MlsPublicFile;
-const ECNL_FILE = ecnlPublic as EcnlPublicFile;
+const MLS_SEED = mlsNextPublic as MlsPublicFile;
+const ECNL_SEED = ecnlPublic as EcnlPublicFile;
 
-export const MLS_TABLE_AS_OF = MLS_FILE.asOf ?? "";
-export const ECNL_TABLE_AS_OF = ECNL_FILE.asOf ?? "";
+let mlsLive: MlsPublicFile | null = null;
+let ecnlLive: EcnlPublicFile | null = null;
+let overlayNonce = 0;
+
+function mlsFile(): MlsPublicFile {
+  return mlsLive ?? MLS_SEED;
+}
+
+function ecnlFile(): EcnlPublicFile {
+  return ecnlLive ?? ECNL_SEED;
+}
+
+export const MLS_TABLE_AS_OF = MLS_SEED.asOf ?? "";
+export const ECNL_TABLE_AS_OF = ECNL_SEED.asOf ?? "";
+
+export function standingsOverlayNonce(): number {
+  return overlayNonce;
+}
+
+export function applyStandingsOverlay(partial: {
+  mls?: Partial<MlsPublicFile>;
+  ecnl?: Partial<EcnlPublicFile>;
+}): void {
+  if (partial.mls) {
+    const base: MlsPublicFile = mlsLive
+      ? { ...mlsLive, teams: [...(mlsLive.teams ?? [])] }
+      : { ...MLS_SEED, teams: [...(MLS_SEED.teams ?? [])] };
+    if (partial.mls.teams) {
+      const map = new Map<string, MlsPublicTeam>();
+      for (const row of base.teams ?? []) {
+        map.set(`${row.orgId}|${row.ageBand}|${row.division || "academy"}`, row);
+      }
+      for (const row of partial.mls.teams) {
+        map.set(`${row.orgId}|${row.ageBand}|${row.division || "academy"}`, row);
+      }
+      mlsLive = { ...base, ...partial.mls, teams: [...map.values()] };
+    } else {
+      mlsLive = { ...base, ...partial.mls };
+    }
+  }
+  if (partial.ecnl) {
+    const base: EcnlPublicFile = ecnlLive
+      ? { ...ecnlLive, teams: [...(ecnlLive.teams ?? [])] }
+      : { ...ECNL_SEED, teams: [...(ECNL_SEED.teams ?? [])] };
+    if (partial.ecnl.teams) {
+      const map = new Map<string, EcnlPublicTeam>();
+      for (const row of base.teams ?? []) {
+        map.set(
+          `${row.athleteOneTeamId ?? row.name}|${row.ageBand}|${row.tier || "ecnl"}|${row.conference ?? ""}`,
+          row,
+        );
+      }
+      for (const row of partial.ecnl.teams) {
+        map.set(
+          `${row.athleteOneTeamId ?? row.name}|${row.ageBand}|${row.tier || "ecnl"}|${row.conference ?? ""}`,
+          row,
+        );
+      }
+      ecnlLive = { ...base, ...partial.ecnl, teams: [...map.values()] };
+    } else {
+      ecnlLive = { ...base, ...partial.ecnl };
+    }
+  }
+  rebuildLookups();
+  overlayNonce += 1;
+}
 
 export type LeagueTableRow = {
   key: string;
   pos: number;
+  sourcePos: number;
   name: string;
   gp: number;
   w: number;
@@ -117,6 +183,8 @@ export type LeagueTableRow = {
   homeHighlight: boolean;
   orgId?: number;
   athleteOneTeamId?: number;
+  athleteOneClubId?: number;
+  eventId?: number;
   asOf?: string;
   note?: string;
 };
@@ -198,7 +266,7 @@ export function caConferencesFor(
   if (pathway === "mls-next") {
     const allowed = new Set(MLS_CA_CONFERENCES[tier as MlsTableDivision] ?? []);
     const found = new Set<string>();
-    for (const row of MLS_FILE.teams ?? []) {
+    for (const row of mlsFile().teams ?? []) {
       if (row.ageBand !== ageBand) continue;
       if ((row.division || "academy") !== tier) continue;
       if (row.conference && allowed.has(row.conference)) found.add(row.conference);
@@ -207,7 +275,7 @@ export function caConferencesFor(
   }
   const allowed = new Set(ECNL_CA_CONFERENCES[tier as EcnlTableTier] ?? []);
   const found = new Set<string>();
-  for (const row of ECNL_FILE.teams ?? []) {
+  for (const row of ecnlFile().teams ?? []) {
     if (row.ageBand !== ageBand) continue;
     if ((row.tier || "ecnl") !== tier) continue;
     if (row.conference && allowed.has(row.conference)) found.add(row.conference);
@@ -233,17 +301,37 @@ function toRow(args: {
   ageBand: string;
   orgId?: number;
   athleteOneTeamId?: number;
+  athleteOneClubId?: number;
+  eventId?: number;
   asOf?: string;
   note?: string;
 }): LeagueTableRow {
   return {
     ...args,
+    sourcePos: args.pos,
     gd: args.gf - args.ga,
     pts: leaguePoints(args.w, args.d, args.l),
     ppg: leaguePpg(args.w, args.d, args.l, args.gp),
     marinHighlight: isMarinFcHighlight(args.name),
     homeHighlight: isHomeListingName(args.name),
   };
+}
+
+/** Pts desc, then GD desc, then GF desc, then name. Display Pos is this order. */
+export function compareLeagueTableRows(
+  a: Pick<LeagueTableRow, "pts" | "gd" | "gf" | "name">,
+  b: Pick<LeagueTableRow, "pts" | "gd" | "gf" | "name">,
+): number {
+  if (b.pts !== a.pts) return b.pts - a.pts;
+  if (b.gd !== a.gd) return b.gd - a.gd;
+  if (b.gf !== a.gf) return b.gf - a.gf;
+  return a.name.localeCompare(b.name);
+}
+
+export function rankLeagueTable(rows: LeagueTableRow[]): LeagueTableRow[] {
+  return [...rows]
+    .sort(compareLeagueTableRows)
+    .map((row, i) => ({ ...row, pos: i + 1 }));
 }
 
 export function loadCaLeagueTable(opts: {
@@ -254,7 +342,7 @@ export function loadCaLeagueTable(opts: {
 }): LeagueTableRow[] {
   if (opts.ageBand === "U12" || !opts.conference) return [];
   if (opts.pathway === "mls-next") {
-    return (MLS_FILE.teams ?? [])
+    const mapped = (mlsFile().teams ?? [])
       .filter(
         (row) =>
           row.ageBand === opts.ageBand &&
@@ -284,13 +372,14 @@ export function loadCaLeagueTable(opts: {
           tierLabel: mlsTierLabel(opts.tier as MlsTableDivision),
           ageBand: row.ageBand,
           orgId: row.orgId,
-          asOf: rec?.asOf ?? MLS_FILE.asOf,
+          asOf: rec?.asOf ?? mlsFile().asOf,
           note: rec?.note,
         });
-      })
-      .sort((a, b) => a.pos - b.pos || a.name.localeCompare(b.name));
+      });
+    return rankLeagueTable(mapped);
   }
-  return (ECNL_FILE.teams ?? [])
+  return rankLeagueTable(
+    (ecnlFile().teams ?? [])
     .filter(
       (row) =>
         row.ageBand === opts.ageBand &&
@@ -320,15 +409,19 @@ export function loadCaLeagueTable(opts: {
         tierLabel: ecnlTierLabel(opts.tier as EcnlTableTier),
         ageBand: row.ageBand,
         athleteOneTeamId: row.athleteOneTeamId,
-        asOf: rec?.asOf ?? ECNL_FILE.asOf,
+        athleteOneClubId: row.athleteOneClubId,
+        eventId: row.eventId,
+        asOf: rec?.asOf ?? ecnlFile().asOf,
         note: rec?.note,
       });
-    })
-    .sort((a, b) => a.pos - b.pos || a.name.localeCompare(b.name));
+    }),
+  );
 }
 
 export function caTableAsOf(pathway: CaTablePathway): string {
-  return pathway === "mls-next" ? MLS_TABLE_AS_OF : ECNL_TABLE_AS_OF;
+  return pathway === "mls-next"
+    ? (mlsFile().asOf ?? MLS_TABLE_AS_OF)
+    : (ecnlFile().asOf ?? ECNL_TABLE_AS_OF);
 }
 
 export function resolveRankedTeam(
@@ -378,26 +471,34 @@ export type EcnlHydrateRow = {
   gf?: number;
   ga?: number;
   record?: { w: number; d: number; l: number; asOf?: string; note?: string } | null;
+  athleteOneClubId?: number;
   eventId?: number;
 };
 
 const MLS_BY_KEY = new Map<string, MlsHydrateRow>();
-for (const row of MLS_FILE.teams ?? []) {
-  MLS_BY_KEY.set(
-    `${row.orgId}|${row.ageBand}|${row.division || "academy"}`,
-    row,
-  );
-}
-
 const ECNL_BY_ID = new Map<number, EcnlHydrateRow>();
 const ECNL_BY_NAME = new Map<string, EcnlHydrateRow>();
-for (const row of ECNL_FILE.teams ?? []) {
-  if (row.athleteOneTeamId != null) ECNL_BY_ID.set(row.athleteOneTeamId, row);
-  ECNL_BY_NAME.set(
-    `${row.name.trim().toLowerCase()}|${row.ageBand}|${row.tier || "ecnl"}`,
-    row,
-  );
+
+function rebuildLookups(): void {
+  MLS_BY_KEY.clear();
+  ECNL_BY_ID.clear();
+  ECNL_BY_NAME.clear();
+  for (const row of mlsFile().teams ?? []) {
+    MLS_BY_KEY.set(
+      `${row.orgId}|${row.ageBand}|${row.division || "academy"}`,
+      row,
+    );
+  }
+  for (const row of ecnlFile().teams ?? []) {
+    if (row.athleteOneTeamId != null) ECNL_BY_ID.set(row.athleteOneTeamId, row);
+    ECNL_BY_NAME.set(
+      `${row.name.trim().toLowerCase()}|${row.ageBand}|${row.tier || "ecnl"}`,
+      row,
+    );
+  }
 }
+
+rebuildLookups();
 
 export function lookupMlsPublic(
   orgId: number | undefined,
@@ -427,6 +528,14 @@ export function lookupEcnlPublic(opts: {
   return ECNL_BY_NAME.get(
     `${opts.name.trim().toLowerCase()}|${opts.ageBand}|${opts.tier || "ecnl"}`,
   );
+}
+
+export function listMlsPublicTeams(): MlsPublicTeam[] {
+  return mlsFile().teams ?? [];
+}
+
+export function listEcnlPublicTeams(): EcnlPublicTeam[] {
+  return ecnlFile().teams ?? [];
 }
 
 export function formatPpg(ppg: number | null): string {

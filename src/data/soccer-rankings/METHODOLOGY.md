@@ -51,7 +51,14 @@ Default **layout** is **Matchday Cards** (view B). Split Command stays on the La
 
 ### California-only league tables (CA Tables)
 
-The composite ranking list is **not** a conference table. Official standings live in `mls-next-public.json` and `ecnl-public.json`. The app **must** read those files for CA Tables (and to hydrate GF–GA / conference W–D–L onto matching ranked sides). Leaving them unused is how a live SPA can look like it “ignored” the PR #8 ingest.
+The composite ranking list is **not** a conference table. Official standings live in `mls-next-public.json` and `ecnl-public.json`, then a live **Refresh** overlays those files in memory. The app **must** read those files (and the overlay) for CA Tables (and to hydrate GF–GA / conference W–D–L onto matching ranked sides). Leaving them unused is how a live SPA can look like it “ignored” the PR #8 ingest.
+
+In-browser **Refresh** (CA Tables and Matchday Cards) re-fetches:
+
+- MLS NEXT League Viewer standings + schedule JSON (Homegrown + Academy). W–D–L / GF–GA stay **completed schedule games only**.
+- ECNL AthleteOne `get-conference-standings` for California conferences, with Referer/Origin `https://theecnl.com` via the Vite `/athleteone-api` proxy (bare curl is 403). HTML is W–L–D; the app stores W–D–L.
+
+Live rows replace matching shipped rows. If a feed is blocked, the shipped cache stays. Nothing is invented.
 
 **CA Tables** view (age tabs + pathway + conference):
 
@@ -62,7 +69,8 @@ The composite ranking list is **not** a conference table. Official standings liv
 
 Columns: **Pos, Team, GP, W, D, L, GF, GA, GD, Pts** (+ PPG).
 
-- **Pos** = source conference place (AthleteOne `position` / League Viewer `position`). Not recomputed here — official tie-breakers stay with the source.
+- **Pos** (display) is **recomputed**: **Pts descending, then GD descending**, then GF descending, then name. Pts = 3×W + D. GD = GF − GA. Source conference place is stored as `sourcePos` but is **not** used for order if it disagrees with Pts→GD.
+- Clicking a CA table side expands that row (and the Cards right panel) into **that conference’s games only** — opponents and W/D/L, scores only when AthleteOne box score or MLS NEXT League Viewer published both. ECNL uses `get-club-schedules-by-eventID-and-clubID` (get-team-schedule is 401). Nothing invented.
 - **Pts** = **3×W + D** (standard). AthleteOne also publishes PPG = Pts/GP; the snapshot Marin U13 line is 4 pts / 3 GP = 1.33 PPG.
 - **W–D–L** is the app order. AthleteOne HTML is **W–L–D**; ingest converts (Marin BU14 2-1-0 → 2-0-1).
 - MLS NEXT W–D–L / GF–GA are **completed League Viewer schedule games only**. Unplayed sides stay 0 GP — not invented.
