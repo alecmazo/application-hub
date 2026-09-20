@@ -8,6 +8,7 @@ import { CaLeagueTables } from "../ca-league-table";
 import { LayoutSwitcher } from "../layout-switcher";
 import { MethodologyCard } from "../methodology-card";
 import { PageViewSwitcher } from "../page-view-switcher";
+import { StandingsRefreshButton } from "../standings-refresh-button";
 import { useRankings } from "../rankings-context";
 import {
   AgeAlignmentCopy,
@@ -162,6 +163,9 @@ export function SplitCommandShell({
                 <AgeTabs />
                 <div className="flex flex-wrap items-center gap-2">
                   <PageViewSwitcher view={pageView} onChange={setPageView} />
+                  {pageView === "ca-tables" && (
+                    <StandingsRefreshButton size="sm" label="Refresh" />
+                  )}
                   <AsOfStamp />
                 </div>
               </div>

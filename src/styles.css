@@ -82,36 +82,29 @@
 
 /* Layout shells — scoped theme tokens only. */
 .shell-matchday {
-  --color-bg: #10141c;
-  --color-bg-elevated: #171d28;
-  --color-surface: #1a2230;
-  --color-card: #1a2230;
-  --color-card-foreground: #f3efe6;
-  --color-foreground: #f3efe6;
-  --color-muted: #243044;
-  --color-muted-foreground: #b3b9c7;
-  --color-primary: #f0c36a;
-  --color-primary-foreground: #1a1406;
-  --color-secondary: #243044;
-  --color-secondary-foreground: #f3efe6;
-  --color-accent: #7eb6ff;
-  --color-accent-foreground: #071018;
-  --color-ring: #f0c36a;
-  --color-success: #5ee0a0;
-  --color-border: color-mix(in oklab, #f3efe6 12%, transparent);
+  --color-bg: #f4f6f5;
+  --color-bg-elevated: #ffffff;
+  --color-surface: #ffffff;
+  --color-card: #ffffff;
+  --color-card-foreground: #15201a;
+  --color-foreground: #15201a;
+  --color-muted: #eef2ef;
+  --color-muted-foreground: #5b6b62;
+  --color-primary: #1b7a3a;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #eef2ef;
+  --color-secondary-foreground: #15201a;
+  --color-accent: #1b7a3a;
+  --color-accent-foreground: #ffffff;
+  --color-ring: #1b7a3a;
+  --color-success: #1b7a3a;
+  --color-warn: #b45309;
+  --color-destructive: #b42318;
+  --color-border: #e4e8e5;
+  --font-display: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   color: var(--color-foreground);
-  background:
-    radial-gradient(
-      820px 440px at 50% -18%,
-      color-mix(in oklab, #f0c36a 14%, transparent),
-      transparent 55%
-    ),
-    radial-gradient(
-      620px 360px at 0% 8%,
-      color-mix(in oklab, #7eb6ff 10%, transparent),
-      transparent 50%
-    ),
-    #10141c;
+  color-scheme: light;
+  background: #f4f6f5;
 }
 
 .shell-split-command {

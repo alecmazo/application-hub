@@ -14,9 +14,15 @@ import { DEFAULT_AGE_BAND } from "./age-map";
 import {
   DEFAULT_PAGE_VIEW,
   readPageView,
+  standingsOverlayNonce,
   writePageView,
+  type LeagueTableRow,
   type PageView,
 } from "./league-tables";
+import {
+  refreshLiveStandings,
+  type LiveRefreshPrioritize,
+} from "./live-standings";
 import { loadRankedAge } from "./load";
 import { homeSearchAliases } from "./home";
 import { usePinnedHomeTeam } from "./use-pinned-home";
@@ -163,7 +169,12 @@ export function useSoccerRankings() {
   const [matchRefreshNonce, setMatchRefreshNonce] = useState(0);
   const [refreshingMatches, setRefreshingMatches] = useState(false);
   const [refreshNote, setRefreshNote] = useState<string | null>(null);
+  const [refreshingStandings, setRefreshingStandings] = useState(false);
+  const [standingsNote, setStandingsNote] = useState<string | null>(null);
+  const [standingsNonce, setStandingsNonce] = useState(0);
+  const [standingsAsOf, setStandingsAsOf] = useState<string | null>(null);
   const [pageView, setPageViewState] = useState<PageView>(DEFAULT_PAGE_VIEW);
+  const [caTableFocus, setCaTableFocus] = useState<LeagueTableRow | null>(null);
 
   useEffect(() => {
     document.title = "Soccer Rankings";
@@ -176,6 +187,7 @@ export function useSoccerRankings() {
   const setPageView = useCallback((next: PageView) => {
     setPageViewState(next);
     writePageView(next);
+    if (next !== "ca-tables") setCaTableFocus(null);
   }, []);
 
   useEffect(() => {
@@ -239,6 +251,7 @@ export function useSoccerRankings() {
   useEffect(() => {
     setPage(1);
     setSelectedId(null);
+    setCaTableFocus(null);
   }, [year, query, stateFilter, leagueFilter]);
 
   useEffect(() => {
@@ -258,6 +271,17 @@ export function useSoccerRankings() {
 
   const closeTeam = useCallback(() => {
     setSelectedId(null);
+    setCaTableFocus(null);
+  }, []);
+
+  const openTableRow = useCallback((row: LeagueTableRow) => {
+    setCaTableFocus(row);
+    requestAnimationFrame(() => {
+      document.getElementById("league-match-list")?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    });
   }, []);
 
   function onRowKeyDown(event: KeyboardEvent<HTMLElement>, id: string) {
@@ -282,6 +306,44 @@ export function useSoccerRankings() {
     setSortDir(
       key === "score" || key === "points" || key === "record" ? "desc" : "asc",
     );
+  }
+
+  const reloadRanked = useCallback(
+    (age: AgeBand) => {
+      try {
+        const ranked = loadRankedAge(age);
+        setTeams(ranked.teams);
+        setStatus("ready");
+        setStandingsNonce(standingsOverlayNonce());
+      } catch (e) {
+        setTeams([]);
+        setStatus("error");
+        setError(e instanceof Error ? e.message : "Could not load rankings");
+      }
+    },
+    [],
+  );
+
+  async function refreshStandings(prioritize?: LiveRefreshPrioritize) {
+    setRefreshingStandings(true);
+    setStandingsNote(null);
+    try {
+      const result = await refreshLiveStandings({
+        prioritize,
+        onPartial: () => reloadRanked(year),
+      });
+      reloadRanked(year);
+      setMatchRefreshNonce((n) => n + 1);
+      setStandingsAsOf(result.asOf);
+      setStandingsNote(result.note);
+      return result;
+    } catch (e) {
+      const message = e instanceof Error ? e.message : "Standings refresh failed";
+      setStandingsNote(message);
+      throw e;
+    } finally {
+      setRefreshingStandings(false);
+    }
   }
 
   async function refreshFromGotsport() {
@@ -365,6 +427,14 @@ export function useSoccerRankings() {
     refreshingMatches,
     refreshNote,
     refreshFromGotsport,
+    refreshingStandings,
+    standingsNote,
+    standingsNonce,
+    standingsAsOf,
+    refreshStandings,
+    caTableFocus,
+    openTableRow,
+    setCaTableFocus,
     caInYear,
     showMethod,
     setShowMethod,

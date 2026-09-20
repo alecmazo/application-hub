@@ -36,6 +36,18 @@ const gotsportProxy = {
     changeOrigin: true,
     rewrite: (p: string) => p.replace(/^\/mls-next-api/, ""),
   },
+  "/athleteone-api": {
+    target: "https://api.athleteone.com",
+    changeOrigin: true,
+    rewrite: (p: string) => p.replace(/^\/athleteone-api/, ""),
+    headers: {
+      Origin: "https://theecnl.com",
+      Referer: "https://theecnl.com/",
+      Accept: "text/html,application/json,*/*",
+      "User-Agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+    },
+  },
 };
 
 /** Static SPA build for GitHub Pages (no SSR / Nitro). */

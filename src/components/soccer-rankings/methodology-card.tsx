@@ -70,10 +70,18 @@ export function MethodologyCard() {
             <strong className="text-foreground">CA Tables</strong> are official
             conference standings from the ingested MLS NEXT League Viewer and
             ECNL AthleteOne JSON (Northern Cal first; Far West / Southwest as
-            CA). Columns are Pos, GP, W–D–L, GF, GA, GD, Pts (3×W+D) and PPG.
-            Official Pos is not recomputed. Unmatched AthleteOne sides stay off
+            CA).             Columns are Pos, GP, W–D–L, GF, GA, GD, Pts (3×W+D) and PPG.
+            Display Pos is Pts then GD (then GF, then name) — not the source
+            place if it disagrees. Click a side for that conference’s games
+            only (AthleteOne club schedule + box scores, or MLS NEXT League
+            Viewer). Unmatched AthleteOne sides stay off
             the composite list but still appear on the CA table. Marin FC is
-            highlighted; Blue 2014/15 is not home.
+            highlighted; Blue 2014/15 is not home. The CA Tables{" "}
+            <strong className="text-foreground">Refresh</strong> button
+            re-fetches AthleteOne (Referer theecnl.com) and the MLS NEXT League
+            Viewer JSON in the browser, then overlays this table and hydrated
+            team records. Seeded ranks stay compiled until those official
+            rows change. Nothing is invented.
           </p>
           <ul className="list-disc space-y-1 pl-5">
             <li>
