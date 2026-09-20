@@ -9,6 +9,7 @@ import {
 import type { LeagueTableRow } from "@/lib/soccer-rankings/league-tables";
 import { HOME_LABEL } from "@/lib/soccer-rankings/home";
 import { cn } from "@/lib/utils";
+import { useRankings } from "./rankings-context";
 
 export function LeagueMatchList({
   row,
@@ -17,6 +18,7 @@ export function LeagueMatchList({
   row: LeagueTableRow;
   compact?: boolean;
 }) {
+  const { matchRefreshNonce } = useRankings();
   const [load, setLoad] = useState<LeagueMatchLoad | null>(null);
 
   useEffect(() => {
@@ -28,7 +30,14 @@ export function LeagueMatchList({
     return () => {
       cancelled = true;
     };
-  }, [row.key, row.athleteOneTeamId, row.orgId, row.ageBand, row.pathway]);
+  }, [
+    row.key,
+    row.athleteOneTeamId,
+    row.orgId,
+    row.ageBand,
+    row.pathway,
+    matchRefreshNonce,
+  ]);
 
   if (!load) {
     return (

@@ -84,13 +84,11 @@ export function SplitCommandShell({
             id="team-page"
             className="order-1 scroll-mt-4 lg:order-2 lg:sticky lg:top-4 lg:max-h-[calc(100dvh-1.5rem)] lg:overflow-y-auto"
           >
-            <Card className="border-primary/15 p-4 shadow-lg shadow-black/20">
+            <Card className="border-border p-4 shadow-sm">
               <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                    Team
-                  </p>
-                  <p className="truncate font-display text-lg font-semibold leading-tight">
+                  <p className="rankings-kicker">Team</p>
+                  <p className="truncate text-lg font-semibold leading-tight tracking-tight">
                     {selected
                       ? selected.name
                       : pinnedTeam
@@ -158,7 +156,7 @@ export function SplitCommandShell({
           </aside>
 
           <section className="order-2 min-w-0 lg:order-1">
-            <div className="sticky top-0 z-20 -mx-1 mb-3 space-y-3 rounded-2xl border border-border bg-[color-mix(in_oklab,var(--color-bg)_92%,transparent)] px-3 py-3 backdrop-blur-md">
+            <div className="sticky top-0 z-20 -mx-1 mb-3 space-y-3 rounded-xl border border-border bg-card px-3 py-3 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <AgeTabs />
                 <div className="flex flex-wrap items-center gap-2">

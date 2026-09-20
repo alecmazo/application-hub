@@ -47,7 +47,7 @@ ECNL is a separate pathway. Do not mix those tiers with MLS NEXT.
 
 UI: list rows (including dense / split / mobile) show `Homegrown · T1`, `Academy · T2`, `ECNL · T1`, or `ECNL-RL · T2`. Team detail uses the long labels (`MLS NEXT Homegrown · Tier 1`, `ECNL · Tier 1`, …). Platform filter keeps those four as separate options. Ranking / SOS still treats Homegrown and Academy as MLS NEXT pathway clubs (priors 72 / 70) and ECNL / ECNL-RL as their own pathway (68 / 55).
 
-Default **layout** is **Matchday Cards** (view B). Split Command stays on the Layout control as an alternate — it is not the default.
+Default **layout** is **Matchday Cards** (view B). Split Command stays on the Layout control as an alternate — it is not the default. Split uses the same Cards B fonts and color tokens (DM Sans, forest green, light surfaces) so switching Layout is one product, not two themes.
 
 ### California-only league tables (CA Tables)
 
@@ -57,6 +57,7 @@ In-browser **Refresh** (CA Tables and Matchday Cards) re-fetches:
 
 - MLS NEXT League Viewer standings + schedule JSON (Homegrown + Academy). W–D–L / GF–GA stay **completed schedule games only**.
 - ECNL AthleteOne `get-conference-standings` for California conferences, with Referer/Origin `https://theecnl.com` via the Vite `/athleteone-api` proxy (bare curl is 403). HTML is W–L–D; the app stores W–D–L.
+- ECNL AthleteOne `get-individual-team-info` schedules for the visible CA table (Northern Cal U13 by default). Published RESULTS overlay the expand list; unpublished stays N/A.
 
 Live rows replace matching shipped rows. If a feed is blocked, the shipped cache stays. Nothing is invented.
 
@@ -70,7 +71,7 @@ Live rows replace matching shipped rows. If a feed is blocked, the shipped cache
 Columns: **Pos, Team, GP, W, D, L, GF, GA, GD, Pts** (+ PPG).
 
 - **Pos** (display) is **recomputed**: **Pts descending, then GD descending**, then GF descending, then name. Pts = 3×W + D. GD = GF − GA. Source conference place is stored as `sourcePos` but is **not** used for order if it disagrees with Pts→GD.
-- Clicking a CA table side expands that row (and the Cards right panel) into **that conference’s games only** — opponents and W/D/L, scores only when AthleteOne box score or MLS NEXT League Viewer published both. **Played (scored) first**, then schedule rows with no published FT, then upcoming. ECNL uses `get-club-schedules-by-eventID-and-clubID` (get-team-schedule is 401). Nothing invented.
+- Clicking a CA table side expands that row (and the Cards right panel) into **that conference’s games only** — opponents and W/D/L, scores only when AthleteOne team-info RESULTS or MLS NEXT League Viewer published both. **Played (scored) first**, then schedule rows with no published FT, then upcoming. ECNL uses `get-individual-team-info/{orgId}/{eventId}/{clubId}/{teamId}` (`displayTeamInfo(org,event,team,club)` → that path; orgId=12). Club-wide `get-club-schedules-by-eventID-and-clubID` is fallback only. Unpublished stays N/A. Nothing invented.
 - **Pts** = **3×W + D** (standard). AthleteOne also publishes PPG = Pts/GP; the snapshot Marin U13 line is 4 pts / 3 GP = 1.33 PPG.
 - **W–D–L** is the app order. AthleteOne HTML is **W–L–D**; ingest converts (Marin BU14 2-1-0 → 2-0-1).
 - MLS NEXT W–D–L / GF–GA are **completed League Viewer schedule games only**. Unplayed sides stay 0 GP — not invented.
@@ -91,7 +92,7 @@ Refresh path (California first, boys only):
 
 - Rankings: `python3 scripts/ingest-soccer-rankings.py` → `teams.json`. Cache: `/tmp/gotsport-rankings-cache`. `--from-cache` rebuilds without the network. `--reoverlay` reapplies MLS NEXT / ECNL / TDS overlays on the current seed. `--ca-refresh` refetches Cal South + Cal North live and keeps other states.
 - MLS NEXT: `python3 scripts/ingest-mls-next.py` → `mls-next-public.json` (Homegrown **and** Academy) from the League Viewer JSON. `--from-snapshot` seeds CA-filtered rows from `uploads/ca-boys-api-snapshot` if live fails or a CA club is missing.
-- ECNL: `python3 scripts/ingest-ecnl-athleteone.py` → `ecnl-public.json` (ECNL Tier 1 + ECNL-RL Tier 2 conference tables). `--from-snapshot` seeds CA ECNL rows from the same dump; live AthleteOne still runs and wins on overlap.
+- ECNL: `python3 scripts/ingest-ecnl-athleteone.py` → `ecnl-public.json` (ECNL Tier 1 + ECNL-RL Tier 2 conference tables) and `ecnl-matches.json` (CA U13–U16 team-info schedules). `--schedules` refreshes matches from the existing standings file. `--from-snapshot` seeds CA ECNL rows from the same dump; live AthleteOne still runs and wins on overlap.
 - Matches: `python3 scripts/ingest-gotsport-matches.py` → `matches.json` (all CA ECNL / RL / MLS NEXT sides + every Marin FC boys listing).
 - Verify: `python3 scripts/verify-ca-boys-snapshot.py` checks Marin + Northern Cal + U13 NW Homegrown against `fixtures/ca-boys-snapshot-expected.json` (and the extracted dump when present).
 - If a reported result is still missing after public endpoints, `matches-meta.json` `notOnPublicFeed` is `not_yet_on_gotsport_public_feed` and the score is **not invented**.
@@ -119,7 +120,7 @@ AthleteOne HTML columns are **GP, WINS, LOSSES, DRAWS** (W–L–D). The app sto
 | BU17 B2009/10 | 0-1-2 | 0-2-1 | 3 | 4–7 |
 | BU18/19 B2008/09 | 1-2-0 | 1-0-2 | 3 | 3–4 |
 
-AthleteOne **schedule / results** Script routes (`get-team-schedule`, `loadIndividualTeamPage`) return **401**. `get-individual-team-info` is public but the embedded RESULTS table is empty. ECNL game-by-game history therefore stays on GotSport when that API has it. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs. No scores invented.
+AthleteOne **get-team-schedule** / `loadIndividualTeamPage` return **401**. **`get-individual-team-info/{orgId}/{eventId}/{clubId}/{teamId}`** is the public schedule (Referer+Origin `https://theecnl.com`). `#schedules-table-content` RESULTS publishes `N - N` (selected side first) when a box score exists — Marin BU13 example `…/12/4283/1585/114289` lists Mustang 2-2, Los Gatos 2-3, El Camino 1-0. Refresh re-fetches standings **and** those team-info schedules for the visible CA table. Unpublished stays N/A. Published ECNL / RL conference W–D–L is preferred over GotSport all-competition records on official ECNL sides. AthleteOne rows that do not match a GotSport / overlay listing at that age and tier stay off the table — no ghost stubs. No scores invented.
 
 Marin FC home listing remains `gs-56506` (2013/14 ECNL). Blue / Red / Steel **2014/15** stay in the seed with their own records and are never home continuity.
 

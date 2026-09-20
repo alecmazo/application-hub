@@ -8,7 +8,6 @@ import {
   Search,
   Star,
   Table2,
-  Trophy,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,6 +22,7 @@ import {
   AgeTabs,
   EmptyMatches,
   LeagueSelect,
+  RankingsBrandMark,
   RankingsCoverageFlag,
   RankingsFooter,
   ScopeSelect,
@@ -102,9 +102,7 @@ function CardsTopNav({
     <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-border bg-card px-4 sm:px-6">
       <div className="flex min-w-0 items-center gap-6">
         <a href={hubHomeHref()} className="flex items-center gap-2.5">
-          <span className="inline-flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <Trophy className="size-4" />
-          </span>
+          <RankingsBrandMark />
           <span className="leading-tight">
             <span className="block text-sm font-semibold">Soccer Rankings</span>
             <span className="hidden text-[11px] text-muted-foreground sm:block">
@@ -262,12 +260,8 @@ function CardsRankingsMain() {
     <div className="mx-auto w-full max-w-5xl space-y-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-medium text-muted-foreground">
-            Rankings · Matchday Cards
-          </p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">
-            Matchday Cards
-          </h1>
+          <p className="rankings-kicker">Rankings · Matchday Cards</p>
+          <h1 className="rankings-title mt-1">Matchday Cards</h1>
           <p className="mt-1 max-w-xl text-sm text-muted-foreground">
             Unofficial composite among seeded boys {year} sides. Official MLS
             NEXT + ECNL California tables stay on CA Tables.
@@ -344,7 +338,7 @@ function CardsRankingsMain() {
                 />
                 <TeamMark name={t.name} />
                 <div className="min-w-0 flex-1">
-                  <p className="truncate font-medium" title={t.name}>
+                  <p className="rankings-row-name truncate" title={t.name}>
                     {t.name}
                   </p>
                   <div className="mt-1 flex flex-wrap items-center gap-1.5">
@@ -389,12 +383,8 @@ function CaTablesMain() {
     <div className="mx-auto w-full max-w-5xl space-y-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-medium text-muted-foreground">
-            Layout · CA Tables
-          </p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">
-            California league tables
-          </h1>
+          <p className="rankings-kicker">Layout · CA Tables</p>
+          <h1 className="rankings-title mt-1">California league tables</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
             Official MLS NEXT Homegrown/Academy and ECNL/ECNL-RL California
             boys tables. Refresh re-fetches AthleteOne (Referer theecnl.com)
