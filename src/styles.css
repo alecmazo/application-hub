@@ -80,8 +80,12 @@
     var(--color-bg);
 }
 
-/* Layout shells — scoped theme tokens only. */
-.shell-matchday {
+/*
+ * Soccer Rankings chrome — Matchday Cards B is the source of truth.
+ * Cards and Split share one token set so Layout is one product, not two themes.
+ */
+.shell-matchday,
+.shell-split-command {
   --color-bg: #f4f6f5;
   --color-bg-elevated: #ffffff;
   --color-surface: #ffffff;
@@ -101,43 +105,37 @@
   --color-warn: #b45309;
   --color-destructive: #b42318;
   --color-border: #e4e8e5;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --rankings-title-size: 1.875rem;
+  --rankings-title-weight: 600;
+  --rankings-kicker-size: 0.75rem;
+  --rankings-kicker-weight: 500;
+  --rankings-row-size: 1rem;
+  --rankings-row-weight: 500;
   color: var(--color-foreground);
   color-scheme: light;
-  background: #f4f6f5;
+  background: var(--color-bg);
+  font-family: var(--font-sans);
 }
 
-.shell-split-command {
-  --color-bg: #0c1016;
-  --color-bg-elevated: #121821;
-  --color-surface: #151c26;
-  --color-card: #151c26;
-  --color-card-foreground: #e8eef6;
-  --color-foreground: #e8eef6;
-  --color-muted: #1d2633;
-  --color-muted-foreground: #93a0b3;
-  --color-primary: #8ab4ff;
-  --color-primary-foreground: #071018;
-  --color-secondary: #1d2633;
-  --color-secondary-foreground: #e8eef6;
-  --color-accent: #8ab4ff;
-  --color-accent-foreground: #071018;
-  --color-ring: #8ab4ff;
-  --color-success: #3ecf8e;
-  --color-border: color-mix(in oklab, #e8eef6 12%, transparent);
-  color: var(--color-foreground);
-  background:
-    radial-gradient(
-      900px 480px at 8% -12%,
-      color-mix(in oklab, #8ab4ff 11%, transparent),
-      transparent 58%
-    ),
-    radial-gradient(
-      720px 400px at 96% 0%,
-      color-mix(in oklab, #3ecf8e 9%, transparent),
-      transparent 52%
-    ),
-    linear-gradient(180deg, #0e141c 0%, #0c1016 100%);
+.rankings-title {
+  font-family: var(--font-display);
+  font-size: var(--rankings-title-size);
+  font-weight: var(--rankings-title-weight);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.rankings-kicker {
+  font-size: var(--rankings-kicker-size);
+  font-weight: var(--rankings-kicker-weight);
+  color: var(--color-muted-foreground);
+}
+
+.rankings-row-name {
+  font-size: var(--rankings-row-size);
+  font-weight: var(--rankings-row-weight);
 }
 
 .hub-atmosphere {

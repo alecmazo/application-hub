@@ -127,7 +127,7 @@ export function TeamDetail({
           Team
         </p>
         <div className="mt-1 flex flex-wrap items-start justify-between gap-3">
-          <h2 className="font-display text-2xl font-semibold leading-tight">
+          <h2 className="text-2xl font-semibold leading-tight tracking-tight">
             {team.name}
           </h2>
           <PinHomeButton

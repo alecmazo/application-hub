@@ -1,6 +1,7 @@
 /**
- * Rankings layout. Matchday Cards (view B) is the site default.
- * Split Command stays available as an alternate. Scout Desk was retired.
+ * Rankings layout. Matchday Cards (view B) is the site default and the
+ * design-token source (DM Sans, forest green, light surfaces). Split Command
+ * stays available as an alternate and shares those tokens. Scout Desk was retired.
  */
 export const UI_SHELL_STORAGE_KEY = "soccer-rankings-ui-shell";
 

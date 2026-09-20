@@ -14,7 +14,12 @@ Taught UI fallback (discovery only, not invented tables):
   data-org-id=12  data-org-season-id=81 (ECNL) / 83 (ECNL-RL)
   loader: https://public.totalglobalsports.com/standings.min.js
 
-Sibling Script routes: team-info is public; schedule/results return 401.
+Sibling Script route for games:
+
+  GET https://api.athleteone.com/api/Script/get-individual-team-info/{orgId}/{eventId}/{clubId}/{teamId}
+
+displayTeamInfo(org,event,team,club) → that path. orgId=12. Referer+Origin
+https://theecnl.com. #schedules-table-content RESULTS is us–them when published.
 
   ECNL (Tier 1):  seasonId=81   root 0/12/81/0/0
   ECNL-RL (Tier 2): seasonId=83  root 0/12/83/0/0
@@ -44,6 +49,8 @@ from ca_boys_snapshot import (  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "src/data/soccer-rankings/ecnl-public.json"
+MATCHES_OUT = ROOT / "src/data/soccer-rankings/ecnl-matches.json"
+TEAM_INFO = "https://api.athleteone.com/api/Script/get-individual-team-info"
 CACHE = Path("/tmp/ecnl-athleteone-cache")
 CACHE.mkdir(parents=True, exist_ok=True)
 
@@ -325,6 +332,188 @@ def parse_standings(html: str, *, age_band: str, conference: str, tier: str) -> 
     return rows
 
 
+HA_MARK_RE = re.compile(r"min-height:\s*63px[^>]*>\s*([AH])\s*</div>", re.I)
+TEAM_INFO_DATE_RE = re.compile(r"<div>([A-Za-z]{3}\s+\d{1,2},\s+\d{4})</div>")
+TEAM_INFO_GAME_RE = re.compile(r"#(\d{5,})")
+TEAM_INFO_OPP_RE = re.compile(
+    r'class="individual-team-item"[^>]*data-team-id="(\d+)"[^>]*>([^<]+)<'
+    r'|data-team-id="(\d+)"[^>]*class="individual-team-item"[^>]*>([^<]+)<'
+)
+TEAM_INFO_SCORE_RE = re.compile(r"<span>\s*(\d+)\s*-\s*(\d+)\s*</span>")
+MATCH_ID_RE_INFO = re.compile(r'data-match-id="(\d+)"')
+CA_SCHEDULE_AGES = ("U13", "U14", "U15", "U16")
+CA_SCHEDULE_CONFS = {
+    "Northern Cal",
+    "Far West",
+    "Southwest",
+    "NorCal",
+    "Golden State",
+    "Southern Cal",
+}
+
+
+def _parse_month_date(raw: str) -> str | None:
+    raw = (raw or "").strip()
+    if not raw:
+        return None
+    try:
+        return datetime.strptime(raw, "%b %d, %Y").date().isoformat()
+    except ValueError:
+        return None
+
+
+def parse_team_info(html: str, *, team_id: int, team_name: str, event: str) -> list[dict]:
+    start = html.find('id="schedules-table-content"')
+    if start < 0:
+        return []
+    end = html.find('id="events-table-content"', start)
+    block = html[start:end] if end > start else html[start:]
+    marks = [(m.group(1), m.start()) for m in HA_MARK_RE.finditer(block)]
+    rows: list[dict] = []
+    for i, (ha, idx) in enumerate(marks):
+        chunk = block[idx : marks[i + 1][1] if i + 1 < len(marks) else len(block)]
+        date_m = TEAM_INFO_DATE_RE.search(chunk)
+        game_m = TEAM_INFO_GAME_RE.search(chunk) or MATCH_ID_RE_INFO.search(chunk)
+        opp_m = TEAM_INFO_OPP_RE.search(chunk)
+        if not opp_m:
+            continue
+        opp_id = int(opp_m.group(1) or opp_m.group(3))
+        opp_name = (opp_m.group(2) or opp_m.group(4) or "").strip()
+        if not opp_name or opp_id == team_id:
+            continue
+        score_m = TEAM_INFO_SCORE_RE.search(chunk)
+        us = int(score_m.group(1)) if score_m else None
+        them = int(score_m.group(2)) if score_m else None
+        focus_home = ha == "H"
+        home_score = None if us is None or them is None else (us if focus_home else them)
+        away_score = None if us is None or them is None else (them if focus_home else us)
+        home_id = team_id if focus_home else opp_id
+        away_id = opp_id if focus_home else team_id
+        winner = None
+        if home_score is not None and away_score is not None and home_score != away_score:
+            winner = home_id if home_score > away_score else away_id
+        rows.append(
+            {
+                "id": int(game_m.group(1)) if game_m else 0,
+                "date": _parse_month_date(date_m.group(1) if date_m else ""),
+                "event": event,
+                "eventId": None,
+                "competition": event,
+                "kind": "league",
+                "homeId": home_id,
+                "homeName": team_name if focus_home else opp_name,
+                "awayId": away_id,
+                "awayName": opp_name if focus_home else team_name,
+                "homeScore": home_score,
+                "awayScore": away_score,
+                "winnerId": winner,
+            }
+        )
+    return rows
+
+
+def fetch_team_info(event_id: int, club_id: int, team_id: int) -> str:
+    url = f"{TEAM_INFO}/{ORG_ID}/{event_id}/{club_id}/{team_id}"
+    cache = CACHE / f"team-{event_id}-{club_id}-{team_id}.html"
+    last: Exception | None = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=40) as resp:
+                raw = resp.read()
+            cache.write_bytes(raw)
+            return raw.decode("utf-8", "ignore")
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as err:
+            last = err
+            time.sleep(0.4 * (attempt + 1))
+    raise RuntimeError(f"failed {url}: {last}")
+
+
+def ingest_ca_schedules(teams: list[dict]) -> dict:
+    payload_teams: dict[str, list[dict]] = {}
+    targets = [
+        t
+        for t in teams
+        if t.get("conference") in CA_SCHEDULE_CONFS
+        and t.get("ageBand") in CA_SCHEDULE_AGES
+        and t.get("athleteOneTeamId")
+        and t.get("athleteOneClubId")
+        and t.get("eventId")
+    ]
+    targets.sort(
+        key=lambda t: (
+            0 if t.get("conference") == "Northern Cal" else 1,
+            t.get("ageBand") or "",
+            t.get("name") or "",
+        )
+    )
+    print(f"team-info schedules {len(targets)} CA U13–U16 sides", flush=True)
+    scored = 0
+    matches_n = 0
+    for i, row in enumerate(targets, 1):
+        event = f"ECNL {row.get('conference')} {row.get('ageBand')}"
+        try:
+            html = fetch_team_info(
+                int(row["eventId"]),
+                int(row["athleteOneClubId"]),
+                int(row["athleteOneTeamId"]),
+            )
+            parsed = parse_team_info(
+                html,
+                team_id=int(row["athleteOneTeamId"]),
+                team_name=row["name"],
+                event=event,
+            )
+        except Exception as err:
+            print(f"  fail {row['name']}: {err}", flush=True)
+            time.sleep(0.08)
+            continue
+        if parsed:
+            payload_teams[str(row["athleteOneTeamId"])] = parsed
+            matches_n += len(parsed)
+            scored += sum(
+                1
+                for m in parsed
+                if m.get("homeScore") is not None and m.get("awayScore") is not None
+            )
+        if i == 1 or i % 25 == 0 or "marin fc ecnl b2013/14" in row["name"].lower():
+            print(
+                f"  {i}/{len(targets)} {row['conference']} {row['ageBand']} "
+                f"{row['name']} games={len(parsed)}",
+                flush=True,
+            )
+        time.sleep(0.06)
+    payload = {
+        "asOf": compiled_stamp(),
+        "source": "ECNL AthleteOne get-individual-team-info (theecnl.com)",
+        "endpoint": f"{TEAM_INFO}/{{orgId}}/{{eventId}}/{{clubId}}/{{teamId}}",
+        "notes": {
+            "recipe": (
+                "displayTeamInfo(org,event,team,club) → GET org/event/club/team. "
+                "orgId=12. Scores in #schedules-table-content RESULTS are us–them "
+                "when published. Unpublished stays N/A. Nothing invented."
+            ),
+            "prefer": (
+                "Team-info for the selected side. Club-wide "
+                "get-club-schedules-by-eventID-and-clubID is fallback only."
+            ),
+        },
+        "counts": {
+            "teams": len(payload_teams),
+            "matches": matches_n,
+            "scored": scored,
+        },
+        "teams": payload_teams,
+    }
+    MATCHES_OUT.write_text(json.dumps(payload, separators=(",", ":")))
+    print("wrote", MATCHES_OUT, "bytes", MATCHES_OUT.stat().st_size, payload["counts"])
+    marin = payload_teams.get("114289") or []
+    print("Marin BU13 cached games", len(marin), "scored", sum(
+        1 for m in marin if m.get("homeScore") is not None
+    ))
+    return payload
+
+
 def ingest_group(
     feeds: tuple[dict, ...],
     divisions: tuple[tuple[str, int], ...],
@@ -388,6 +577,11 @@ def ingest_group(
 
 def main() -> None:
     from_snapshot = "--from-snapshot" in sys.argv
+    schedules_only = "--schedules" in sys.argv
+    if schedules_only and OUT.exists():
+        existing = json.loads(OUT.read_text())
+        ingest_ca_schedules(existing.get("teams") or [])
+        return
     seed = ecnl_teams_from_snapshot() if from_snapshot else []
     if from_snapshot:
         print(
@@ -473,9 +667,10 @@ def main() -> None:
             "viewer": "https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx",
             "loader": "https://public.totalglobalsports.com/standings.min.js",
             "schedules": (
-                "AthleteOne get-team-schedule / get-conference-results return 401. "
-                "get-individual-team-info is public but has an empty RESULTS table. "
-                "Match lists stay on GotSport."
+                "get-individual-team-info/{orgId}/{eventId}/{clubId}/{teamId} "
+                "is the public schedule (Referer theecnl.com). RESULTS publishes "
+                "us–them when a box score exists. Unpublished stays N/A. "
+                "Written to ecnl-matches.json for CA U13–U16."
             ),
             "snapshot": (
                 "--from-snapshot seeds CA ECNL rows from uploads/ca-boys-api-snapshot "
@@ -501,6 +696,7 @@ def main() -> None:
     }
     OUT.write_text(json.dumps(payload, separators=(",", ":")))
     print("wrote", OUT, "bytes", OUT.stat().st_size, "counts", payload["counts"])
+    ingest_ca_schedules(teams)
     for needle in ("marin fc", "el camino", "mvla"):
         hits = [t for t in teams if needle in t["name"].lower()]
         for t in hits:

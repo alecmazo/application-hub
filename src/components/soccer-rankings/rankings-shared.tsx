@@ -67,24 +67,38 @@ export function HubBackLink() {
   );
 }
 
+export function RankingsBrandMark({
+  className,
+  iconClassName,
+}: {
+  className?: string;
+  iconClassName?: string;
+}) {
+  return (
+    <span
+      className={cn(
+        "inline-flex size-8 items-center justify-center rounded-full bg-primary text-primary-foreground",
+        className,
+      )}
+    >
+      <Trophy className={cn("size-4", iconClassName)} />
+    </span>
+  );
+}
+
 export function RankingsTitle({
   kicker,
 }: {
   kicker?: string;
 }) {
-  const { year } = useRankings();
   return (
     <div className="flex items-center gap-3">
-      <span className="flex size-11 items-center justify-center rounded-xl border border-border bg-card text-success">
-        <Trophy className="size-5" />
-      </span>
+      <RankingsBrandMark />
       <div>
-        <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
+        <p className="rankings-kicker">
           {kicker ?? `Boys club · ${SEASON_LABEL}`}
         </p>
-        <h1 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-          Soccer Rankings
-        </h1>
+        <h1 className="rankings-title">Soccer Rankings</h1>
       </div>
     </div>
   );
@@ -728,7 +742,7 @@ export function RankingsTable({
               </td>
               <td className={cn(pad, "min-w-0 px-3")}>
                 <div className="flex min-w-0 items-start justify-between gap-2">
-                  <p className="min-w-0 truncate font-medium" title={t.name}>
+                  <p className="rankings-row-name min-w-0 truncate" title={t.name}>
                     {t.name}
                   </p>
                   <PinHomeButton
@@ -848,7 +862,7 @@ export function CompactTeamList({
         >
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
-              <p className="truncate font-medium" title={t.name}>
+              <p className="rankings-row-name truncate" title={t.name}>
                 {t.name}
               </p>
               <p className="mt-0.5 font-mono-num text-xs font-medium">

@@ -12,11 +12,13 @@
 import {
   applyStandingsOverlay,
   ECNL_CA_CONFERENCES,
+  listEcnlPublicTeams,
   type CaTablePathway,
   type CaTableTier,
   type EcnlHydrateRow,
   type MlsHydrateRow,
 } from "./league-tables";
+import { refreshEcnlSchedules } from "./league-matches";
 import { applyLiveMlsMatches, type MlsNextOverlayMatch } from "./matches";
 import type { AgeBand } from "./types";
 
@@ -120,6 +122,8 @@ export type LiveRefreshResult = {
   mlsTeams: number;
   mlsMatches: number;
   ecnlTeams: number;
+  ecnlScheduleTeams: number;
+  ecnlScheduleMatches: number;
   mlsSource: "live" | "cache" | "partial";
   ecnlSource: "live" | "cache" | "partial";
   endpointsTried: string[];
@@ -617,6 +621,11 @@ function summarizeNote(result: Omit<LiveRefreshResult, "note">): string {
   } else {
     bits.push("AthleteOne stayed on the shipped cache — live pull was blocked or empty");
   }
+  if (result.ecnlScheduleTeams) {
+    bits.push(
+      `ECNL team-info schedules ${result.ecnlScheduleTeams} sides / ${result.ecnlScheduleMatches} games`,
+    );
+  }
   bits.push("Nothing invented. Official Pos stays with the source.");
   if (result.errors.length) bits.push(result.errors[0]);
   return bits.join(". ") + ".";
@@ -663,11 +672,31 @@ export async function refreshLiveStandings(opts?: {
     applyEcnl(ecnlRows);
   }
 
+  const schedulePool = (ecnlRows.length
+    ? ecnlRows
+    : listEcnlPublicTeams()) as EcnlHydrateRow[];
+  const prioritize = opts?.prioritize;
+  const conference =
+    prioritize?.pathway === "ecnl" ? prioritize.conference : "Northern Cal";
+  const ageBand =
+    prioritize?.pathway === "ecnl" && prioritize.ageBand !== "U12"
+      ? prioritize.ageBand
+      : "U13";
+  const scheduleRows = schedulePool.filter(
+    (row) => row.conference === conference && row.ageBand === ageBand,
+  );
+  const schedules = scheduleRows.length
+    ? await refreshEcnlSchedules(scheduleRows, tried, errors)
+    : { teams: 0, matches: 0, scored: 0 };
+  if (schedules.teams) opts?.onPartial?.();
+
   const result: LiveRefreshResult = {
     asOf,
     mlsTeams: mls.teams.length,
     mlsMatches: mls.matches.length,
     ecnlTeams: ecnlRows.length,
+    ecnlScheduleTeams: schedules.teams,
+    ecnlScheduleMatches: schedules.matches,
     mlsSource: mls.source,
     ecnlSource: ecnlRows.length ? "live" : "cache",
     endpointsTried: tried,
