@@ -31,7 +31,7 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 | **Edyta Śliwińska** (`sliwinska`) | https://edytasliwinska.com |
 | **Stem Spark** | https://alecmazo.github.io/stem-spark/ |
 | **Turf Pad Builder** | https://alecmazo.github.io/turf-pad-builder/ |
-| **Soccer Rankings** | https://alecmazo.github.io/application-hub/soccer-rankings (Matchday Cards default; CA Tables for MLS NEXT Homegrown/Academy + ECNL/ECNL-RL California conferences; display Pos = Pts then GD then GF then name — source place is not used for order; Refresh re-fetches AthleteOne + League Viewer and updates standings; click a side for that conference’s games only; Marin FC 2013/14 ECNL highlighted only — not Blue 2014/15; unofficial composite among seeded teams) |
+| **Soccer Rankings** | https://alecmazo.github.io/application-hub/soccer-rankings (Matchday Cards default; CA Tables for MLS NEXT Homegrown/Academy + ECNL/ECNL-RL California conferences; display Pos = Pts then GD then GF then name — source place is not used for order; Refresh re-fetches only the open table from AthleteOne or League Viewer and updates that standings list; click a side for that conference’s games only; Marin FC 2013/14 ECNL highlighted only — not Blue 2014/15; unofficial composite among seeded teams) |
 | **Soccer Capture** | https://alecmazo.github.io/soccer-capture/ |
 | **Soccer Activate** | https://soccer-activate.vercel.app |
 | **DGA Capital Research** | https://portfolio.dgacapital.com |

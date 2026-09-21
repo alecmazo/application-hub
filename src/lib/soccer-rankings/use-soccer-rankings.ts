@@ -171,6 +171,8 @@ export function useSoccerRankings() {
   const [refreshNote, setRefreshNote] = useState<string | null>(null);
   const [refreshingStandings, setRefreshingStandings] = useState(false);
   const [standingsNote, setStandingsNote] = useState<string | null>(null);
+  const [standingsFailed, setStandingsFailed] = useState(false);
+  const [standingsScopeLabel, setStandingsScopeLabel] = useState<string | null>(null);
   const [standingsNonce, setStandingsNonce] = useState(0);
   const [standingsAsOf, setStandingsAsOf] = useState<string | null>(null);
   const [pageView, setPageViewState] = useState<PageView>(DEFAULT_PAGE_VIEW);
@@ -327,6 +329,7 @@ export function useSoccerRankings() {
   async function refreshStandings(prioritize?: LiveRefreshPrioritize) {
     setRefreshingStandings(true);
     setStandingsNote(null);
+    setStandingsFailed(false);
     try {
       const result = await refreshLiveStandings({
         prioritize,
@@ -334,11 +337,14 @@ export function useSoccerRankings() {
       });
       reloadRanked(year);
       setMatchRefreshNonce((n) => n + 1);
-      setStandingsAsOf(result.asOf);
+      if (result.ok) setStandingsAsOf(result.asOf);
+      setStandingsScopeLabel(result.scopeLabel);
+      setStandingsFailed(!result.ok);
       setStandingsNote(result.note);
       return result;
     } catch (e) {
       const message = e instanceof Error ? e.message : "Standings refresh failed";
+      setStandingsFailed(true);
       setStandingsNote(message);
       throw e;
     } finally {
@@ -429,8 +435,10 @@ export function useSoccerRankings() {
     refreshFromGotsport,
     refreshingStandings,
     standingsNote,
+    standingsFailed,
     standingsNonce,
     standingsAsOf,
+    standingsScopeLabel,
     refreshStandings,
     caTableFocus,
     openTableRow,

@@ -1,18 +1,22 @@
 /**
- * Browser live refresh for official CA boys standings.
+ * Browser live refresh for the CA table currently on screen.
  *
- * MLS NEXT: public League Viewer JSON (same files as ingest-mls-next.py).
- * ECNL: AthleteOne HTML tables with Referer/Origin https://theecnl.com
- * (same recipe as ingest-ecnl-athleteone.py). Bare requests are 403.
+ * Scope is one pathway + tier + conference + age (for example ECNL Northern
+ * Cal BU13, or MLS NEXT Homegrown Northwest U13). Other conferences and ages
+ * stay on the shipped rows.
  *
- * Never invents scores. Completed public rows only. AthleteOne HTML is
- * W–L–D; we store W–D–L. MLS NEXT W–D–L / GF–GA come from completed
- * schedule events, not invented 0–0s.
+ * MLS NEXT: that division's League Viewer standings + schedule JSON. W–D–L /
+ * GF–GA are completed schedule games for teams on this table only.
+ * ECNL: one AthleteOne get-conference-standings call for this conference and
+ * age, then get-individual-team-info for teams on that table.
+ *
+ * GitHub Pages cannot call those hosts directly (no CORS; AthleteOne wants
+ * Referer https://theecnl.com). See public-fetch.ts. Never invents scores.
  */
 import {
   applyStandingsOverlay,
+  caTableFingerprint,
   ECNL_CA_CONFERENCES,
-  listEcnlPublicTeams,
   type CaTablePathway,
   type CaTableTier,
   type EcnlHydrateRow,
@@ -20,6 +24,11 @@ import {
 } from "./league-tables";
 import { refreshEcnlSchedules } from "./league-matches";
 import { applyLiveMlsMatches, type MlsNextOverlayMatch } from "./matches";
+import {
+  athleteOneAttempts,
+  fetchFirstText,
+  mlsJsonAttempts,
+} from "./public-fetch";
 import type { AgeBand } from "./types";
 
 export const ATHLETEONE_HOST =
@@ -57,7 +66,6 @@ const MLS_NEXT_BAND_BIRTH_YEAR: Record<string, number> = {
   U16: 2011,
 };
 
-const APP_AGES: AgeBand[] = ["U13", "U14", "U15", "U16"];
 const AGE_RE = /\b(U1[2-6])\b/i;
 
 const ECNL_DIVISIONS: Array<[AgeBand, number]> = [
@@ -107,9 +115,6 @@ const AGE_FROM_LABEL: Record<string, AgeBand | "U17" | "U18/19"> = {
   BU1819: "U18/19",
 };
 
-const BROWSER_UA =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
-
 export type LiveRefreshPrioritize = {
   pathway: CaTablePathway;
   conference: string;
@@ -119,6 +124,9 @@ export type LiveRefreshPrioritize = {
 
 export type LiveRefreshResult = {
   asOf: string;
+  scopeLabel: string;
+  ok: boolean;
+  unchanged: boolean;
   mlsTeams: number;
   mlsMatches: number;
   ecnlTeams: number;
@@ -130,6 +138,16 @@ export type LiveRefreshResult = {
   errors: string[];
   note: string;
 };
+
+export function tableScopeLabel(scope: LiveRefreshPrioritize): string {
+  if (scope.pathway === "mls-next") {
+    const tier = scope.tier === "academy" ? "Academy" : "Homegrown";
+    return `MLS NEXT ${tier} · ${scope.conference} · ${scope.ageBand}`;
+  }
+  const tier = scope.tier === "ecnl-rl" ? "ECNL-RL" : "ECNL";
+  const age = scope.ageBand.replace(/^U/i, "BU");
+  return `${tier} · ${scope.conference} · ${age}`;
+}
 
 export function compiledStamp(): string {
   try {
@@ -150,71 +168,7 @@ export function compiledStamp(): string {
   }
 }
 
-function corsProxied(url: string): string[] {
-  return [
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-    `https://corsproxy.org/?${encodeURIComponent(url)}`,
-  ];
-}
-
-function mlsUrls(canonical: string, file: string): string[] {
-  return [
-    `/mls-next-api/data/${canonical.includes("/standings/") ? "standings" : "schedule"}/${file}`,
-    canonical,
-    ...corsProxied(canonical),
-  ];
-}
-
-function athleteOneUrls(eventId: number, seasonId: number, divisionId: number): string[] {
-  const path = `/api/Script/get-conference-standings/${eventId}/${ATHLETEONE_ORG_ID}/${seasonId}/${divisionId}/0`;
-  const canonical = `${ATHLETEONE_HOST}/${eventId}/${ATHLETEONE_ORG_ID}/${seasonId}/${divisionId}/0`;
-  return [`/athleteone-api${path}`, canonical, ...corsProxied(canonical)];
-}
-
-async function fetchText(
-  urls: string[],
-  tried: string[],
-  kind: "json" | "html",
-): Promise<string | null> {
-  const headers: Record<string, string> = {
-    Accept: kind === "json" ? "application/json" : "text/html,application/json,*/*",
-    "User-Agent": BROWSER_UA,
-  };
-  for (const url of urls) {
-    tried.push(url);
-    try {
-      const resp = await fetch(url, { headers });
-      if (!resp.ok) continue;
-      const text = await resp.text();
-      if (!text || text.length < 20) continue;
-      if (kind === "json") {
-        const trimmed = text.trim();
-        if (!(trimmed.startsWith("{") || trimmed.startsWith("["))) continue;
-      }
-      if (kind === "html" && /"status"\s*:\s*99|"title"\s*:\s*"Forbidden"/.test(text)) {
-        continue;
-      }
-      return text;
-    } catch {
-      /* next URL — CORS, proxy, or 403 without Referer */
-    }
-  }
-  return null;
-}
-
-async function fetchJson(
-  urls: string[],
-  tried: string[],
-): Promise<Record<string, unknown> | null> {
-  const text = await fetchText(urls, tried, "json");
-  if (!text) return null;
-  try {
-    const data: unknown = JSON.parse(text);
-    return data && typeof data === "object" ? (data as Record<string, unknown>) : null;
-  } catch {
-    return null;
-  }
-}
+const divisionIdCache = new Map<number, Partial<Record<AgeBand, number>>>();
 
 export function parseAge(value: unknown): AgeBand | null {
   let raw: unknown = value;
@@ -380,6 +334,7 @@ export function applyMlsScheduleRecords(
   division: "homegrown" | "academy",
   label: string,
   asOf: string,
+  opts?: { onlyOrgIds?: Set<number> },
 ): MlsNextOverlayMatch[] {
   const records = new Map<
     string,
@@ -396,6 +351,14 @@ export function applyMlsScheduleRecords(
     const aws = ev.away_score;
     if (!ev.completed || typeof hs !== "number" || typeof aws !== "number") {
       continue;
+    }
+    if (opts?.onlyOrgIds) {
+      const homeIn = ho.id != null && opts.onlyOrgIds.has(Number(ho.id));
+      const awayIn = ao.id != null && opts.onlyOrgIds.has(Number(ao.id));
+      if (!homeIn && !awayIn) continue;
+      const homeKey = `${ho.id}|${age}|${division}`;
+      const awayKey = `${ao.id}|${age}|${division}`;
+      if (!teams.has(homeKey) && !teams.has(awayKey)) continue;
     }
     matches.push({
       id: Number(ev.id) || 0,
@@ -430,6 +393,7 @@ export function applyMlsScheduleRecords(
   for (const [key, rec] of records) {
     let row = teams.get(key);
     if (!row) {
+      if (opts?.onlyOrgIds) continue;
       const [oid, age] = key.split("|");
       row = {
         orgId: Number(oid),
@@ -464,20 +428,16 @@ export function applyMlsScheduleRecords(
   return matches;
 }
 
-function prioritizeEcnlFeeds(
-  prioritize?: LiveRefreshPrioritize,
-): typeof ECNL_CA_EVENTS | typeof ECNL_RL_CA_EVENTS | Array<(typeof ECNL_CA_EVENTS)[number] | (typeof ECNL_RL_CA_EVENTS)[number]> {
-  const ecnl = [...ECNL_CA_EVENTS];
-  const rl = [...ECNL_RL_CA_EVENTS];
-  if (!prioritize || prioritize.pathway !== "ecnl") return [...ecnl, ...rl];
-  const pool = prioritize.tier === "ecnl-rl" ? rl : ecnl;
-  const rest = prioritize.tier === "ecnl-rl" ? ecnl : rl;
-  pool.sort((a, b) => {
-    if (a.conference === prioritize.conference) return -1;
-    if (b.conference === prioritize.conference) return 1;
-    return 0;
-  });
-  return [...pool, ...rest];
+
+type EcnlFeed = (typeof ECNL_CA_EVENTS)[number] | (typeof ECNL_RL_CA_EVENTS)[number];
+
+function ecnlDivisions(tier: string): Array<[AgeBand, number]> {
+  return tier === "ecnl-rl" ? ECNL_RL_DIVISIONS : ECNL_DIVISIONS;
+}
+
+function ecnlFeedFor(scope: LiveRefreshPrioritize): EcnlFeed | null {
+  const pool = scope.tier === "ecnl-rl" ? ECNL_RL_CA_EVENTS : ECNL_CA_EVENTS;
+  return pool.find((feed) => feed.conference === scope.conference) ?? null;
 }
 
 async function fetchAthleteOneTable(
@@ -486,149 +446,195 @@ async function fetchAthleteOneTable(
   divisionId: number,
   tried: string[],
 ): Promise<string | null> {
-  return fetchText(athleteOneUrls(eventId, seasonId, divisionId), tried, "html");
+  const path = `/api/Script/get-conference-standings/${eventId}/${ATHLETEONE_ORG_ID}/${seasonId}/${divisionId}/0`;
+  return fetchFirstText(athleteOneAttempts(path, "standings"), tried);
 }
 
-async function ingestEcnlLive(
-  asOf: string,
+async function fetchEcnlAgeHtml(
+  feed: EcnlFeed,
+  age: AgeBand,
   tried: string[],
   errors: string[],
-  prioritize?: LiveRefreshPrioritize,
-  onPartial?: (rows: EcnlHydrateRow[]) => void,
-): Promise<EcnlHydrateRow[]> {
-  const items: EcnlHydrateRow[] = [];
-  const feeds = prioritizeEcnlFeeds(prioritize);
-  let firstApplied = false;
-  for (const feed of feeds) {
-    const divisions = feed.tier === "ecnl-rl" ? ECNL_RL_DIVISIONS : ECNL_DIVISIONS;
-    const [bootstrapAge, bootstrapNational] = divisions[0];
-    const html0 = await fetchAthleteOneTable(
+): Promise<string | null> {
+  const divisions = ecnlDivisions(feed.tier);
+  const cachedId = divisionIdCache.get(feed.eventId)?.[age];
+  if (cachedId) {
+    const cachedHtml = await fetchAthleteOneTable(
       feed.eventId,
       feed.seasonId,
-      bootstrapNational,
+      cachedId,
       tried,
     );
-    if (!html0) {
-      errors.push(
-        `AthleteOne ${feed.conference} bootstrap failed (Referer theecnl.com required).`,
-      );
-      continue;
-    }
-    const divMap = parseDivisionMap(html0);
-    const cached: Record<number, string> = { [bootstrapNational]: html0 };
-    for (const [age, nationalId] of divisions) {
-      const divId = divMap[age] ?? nationalId;
-      if (age !== bootstrapAge && !Object.keys(divMap).length) continue;
-      if (!cached[divId]) {
-        const html = await fetchAthleteOneTable(
-          feed.eventId,
-          feed.seasonId,
-          divId,
-          tried,
-        );
-        if (!html) {
-          errors.push(`AthleteOne ${feed.conference} ${age} failed.`);
-          continue;
-        }
-        cached[divId] = html;
-      }
-      const html = cached[divId];
-      const heading = parseHeadingAge(html);
-      if (heading !== age) continue;
-      const part = parseAthleteOneStandings(html, {
-        ageBand: age,
-        conference: feed.conference,
-        tier: feed.tier,
-        asOf,
-      });
-      items.push(...part);
-      if (
-        !firstApplied &&
-        onPartial &&
-        part.length &&
-        (!prioritize ||
-          (feed.conference === prioritize.conference &&
-            (prioritize.ageBand === age || prioritize.ageBand === "U12")))
-      ) {
-        firstApplied = true;
-        onPartial(items.slice());
-      }
-    }
+    if (cachedHtml && parseHeadingAge(cachedHtml) === age) return cachedHtml;
   }
-  return items;
+  const [bootstrapAge, bootstrapId] = divisions[0];
+  const html0 = await fetchAthleteOneTable(
+    feed.eventId,
+    feed.seasonId,
+    bootstrapId,
+    tried,
+  );
+  if (!html0) {
+    errors.push(
+      `AthleteOne ${feed.conference} standings were blocked. A Referer of https://theecnl.com is required, and GitHub Pages cannot set that header itself.`,
+    );
+    return null;
+  }
+  const divMap = parseDivisionMap(html0);
+  if (Object.keys(divMap).length) divisionIdCache.set(feed.eventId, divMap);
+  if (age === bootstrapAge && parseHeadingAge(html0) === age) return html0;
+  const divId = divMap[age];
+  if (!divId) {
+    errors.push(
+      `AthleteOne ${feed.conference} has no ${age} division in the conference select. Nothing was invented.`,
+    );
+    return null;
+  }
+  const html = await fetchAthleteOneTable(feed.eventId, feed.seasonId, divId, tried);
+  if (!html) {
+    errors.push(
+      `AthleteOne ${feed.conference} ${age} standings were blocked or empty.`,
+    );
+    return null;
+  }
+  const heading = parseHeadingAge(html);
+  if (heading !== age) {
+    errors.push(
+      `AthleteOne ${feed.conference} returned ${heading ?? "an unexpected age"} instead of ${age}. This table was not replaced.`,
+    );
+    return null;
+  }
+  return html;
 }
 
-async function ingestMlsLive(
+async function ingestEcnlTable(
+  scope: LiveRefreshPrioritize,
   asOf: string,
   tried: string[],
   errors: string[],
-): Promise<{ teams: MlsTeamLive[]; matches: MlsNextOverlayMatch[]; source: "live" | "partial" | "cache" }> {
-  const teams = new Map<string, MlsTeamLive>();
-  const matches: MlsNextOverlayMatch[] = [];
-  let liveFeeds = 0;
-  for (const feed of MLS_NEXT_FEEDS) {
-    const standings = await fetchJson(
-      mlsUrls(feed.standingsUrl, feed.file),
-      tried,
-    );
-    if (!standings) {
-      errors.push(`MLS NEXT ${feed.label} standings JSON unavailable.`);
-      continue;
-    }
-    const parsed = parseMlsStandingsFeed(standings, feed.division, feed.label);
-    for (const [key, row] of parsed) teams.set(key, row);
-    liveFeeds += 1;
-    const schedule = await fetchJson(
-      mlsUrls(feed.scheduleUrl, feed.file),
-      tried,
-    );
-    const events = Array.isArray(schedule?.events)
-      ? (schedule.events as Array<Record<string, unknown>>)
-      : [];
-    if (!schedule) {
-      errors.push(
-        `MLS NEXT ${feed.label} schedule JSON unavailable — positions updated, W–D–L kept only where completed games were already known.`,
-      );
-      continue;
-    }
-    matches.push(
-      ...applyMlsScheduleRecords(parsed, events, feed.division, feed.label, asOf),
-    );
-    for (const [key, row] of parsed) teams.set(key, row);
+): Promise<EcnlHydrateRow[]> {
+  const feed = ecnlFeedFor(scope);
+  if (!feed) {
+    errors.push(`No ECNL conference feed for ${scope.conference}.`);
+    return [];
   }
-  const source =
-    liveFeeds === MLS_NEXT_FEEDS.length
-      ? "live"
-      : liveFeeds > 0
-        ? "partial"
-        : "cache";
-  return { teams: [...teams.values()], matches, source };
+  const html = await fetchEcnlAgeHtml(feed, scope.ageBand, tried, errors);
+  if (!html) return [];
+  const tier = feed.tier === "ecnl-rl" ? "ecnl-rl" : "ecnl";
+  return parseAthleteOneStandings(html, {
+    ageBand: scope.ageBand,
+    conference: feed.conference,
+    tier,
+    asOf,
+  });
 }
 
-function summarizeNote(result: Omit<LiveRefreshResult, "note">): string {
-  const bits: string[] = [];
-  if (result.mlsSource !== "cache") {
-    bits.push(
-      `MLS NEXT League Viewer ${result.mlsTeams} sides / ${result.mlsMatches} completed games (${result.mlsSource})`,
-    );
-  } else {
-    bits.push("MLS NEXT stayed on the shipped League Viewer cache");
+async function ingestMlsTable(
+  scope: LiveRefreshPrioritize,
+  asOf: string,
+  tried: string[],
+  errors: string[],
+): Promise<{ teams: MlsTeamLive[]; matches: MlsNextOverlayMatch[] } | null> {
+  const division = scope.tier === "academy" ? "academy" : "homegrown";
+  const feed = MLS_NEXT_FEEDS.find((item) => item.division === division);
+  if (!feed) {
+    errors.push(`No MLS NEXT feed for ${scope.tier}.`);
+    return null;
   }
-  if (result.ecnlSource !== "cache") {
-    bits.push(
-      `AthleteOne CA tables ${result.ecnlTeams} sides (Referer theecnl.com, ${result.ecnlSource})`,
-    );
-  } else {
-    bits.push("AthleteOne stayed on the shipped cache — live pull was blocked or empty");
+  const [standingsText, scheduleText] = await Promise.all([
+    fetchFirstText(mlsJsonAttempts(feed.standingsUrl, feed.file, "standings"), tried),
+    fetchFirstText(mlsJsonAttempts(feed.scheduleUrl, feed.file, "schedule"), tried),
+  ]);
+  if (!standingsText) {
+    errors.push(`MLS NEXT ${feed.label} standings JSON was blocked or empty.`);
   }
-  if (result.ecnlScheduleTeams) {
-    bits.push(
-      `ECNL team-info schedules ${result.ecnlScheduleTeams} sides / ${result.ecnlScheduleMatches} games`,
+  if (!scheduleText) {
+    errors.push(
+      `MLS NEXT ${feed.label} schedule JSON was blocked or empty. W–D–L were not changed.`,
     );
   }
-  bits.push("Nothing invented. Official Pos stays with the source.");
-  if (result.errors.length) bits.push(result.errors[0]);
-  return bits.join(". ") + ".";
+  if (!standingsText || !scheduleText) return null;
+  let standings: Record<string, unknown>;
+  let schedule: Record<string, unknown>;
+  try {
+    standings = JSON.parse(standingsText) as Record<string, unknown>;
+    schedule = JSON.parse(scheduleText) as Record<string, unknown>;
+  } catch {
+    errors.push(`MLS NEXT ${feed.label} returned data that was not JSON.`);
+    return null;
+  }
+  const parsed = parseMlsStandingsFeed(standings, feed.division, feed.label);
+  const teams = new Map<string, MlsTeamLive>();
+  for (const [key, row] of parsed) {
+    if (row.ageBand === scope.ageBand && row.conference === scope.conference) {
+      teams.set(key, row);
+    }
+  }
+  if (!teams.size) {
+    errors.push(
+      `MLS NEXT has no ${scope.conference} ${scope.ageBand} rows in the ${feed.label} standings. Nothing was invented.`,
+    );
+    return null;
+  }
+  if (!Array.isArray(schedule.events)) {
+    errors.push(
+      `MLS NEXT ${feed.label} schedule had no events array. W–D–L were not changed.`,
+    );
+    return null;
+  }
+  const orgIds = new Set<number>([...teams.values()].map((row) => row.orgId));
+  const matches = applyMlsScheduleRecords(
+    teams,
+    schedule.events as Array<Record<string, unknown>>,
+    feed.division,
+    feed.label,
+    asOf,
+    { onlyOrgIds: orgIds },
+  );
+  return { teams: [...teams.values()], matches };
+}
+
+function emptyResult(
+  scopeLabel: string,
+  asOf: string,
+  tried: string[],
+  errors: string[],
+  note: string,
+): LiveRefreshResult {
+  return {
+    asOf,
+    scopeLabel,
+    ok: false,
+    unchanged: false,
+    mlsTeams: 0,
+    mlsMatches: 0,
+    ecnlTeams: 0,
+    ecnlScheduleTeams: 0,
+    ecnlScheduleMatches: 0,
+    mlsSource: "cache",
+    ecnlSource: "cache",
+    endpointsTried: tried,
+    errors,
+    note,
+  };
+}
+
+function resultNote(opts: {
+  scopeLabel: string;
+  asOf: string;
+  unchanged: boolean;
+  teams: number;
+  gamesNote?: string;
+  errors: string[];
+}): string {
+  const head = opts.unchanged
+    ? `Already current — ${opts.scopeLabel}. Data updated ${opts.asOf}.`
+    : `Updated ${opts.scopeLabel}. Data updated ${opts.asOf}.`;
+  const bits = [head, `${opts.teams} sides.`];
+  if (opts.gamesNote) bits.push(opts.gamesNote);
+  if (opts.errors.length) bits.push(opts.errors[0]);
+  bits.push("Nothing invented.");
+  return bits.join(" ");
 }
 
 export async function refreshLiveStandings(opts?: {
@@ -638,73 +644,156 @@ export async function refreshLiveStandings(opts?: {
   const asOf = compiledStamp();
   const tried: string[] = [];
   const errors: string[] = [];
+  const scope = opts?.prioritize;
+  const scopeLabel = scope ? tableScopeLabel(scope) : "this table";
+  if (!scope) {
+    return emptyResult(
+      scopeLabel,
+      asOf,
+      tried,
+      errors,
+      "Refresh applies to the table you are viewing. Open a CA table first. Nothing was invented.",
+    );
+  }
+  if (scope.ageBand === "U12" || !scope.conference) {
+    return emptyResult(
+      scopeLabel,
+      asOf,
+      tried,
+      errors,
+      `${scopeLabel} is not a published California table. Tables start at U13 / BU13. Nothing was invented.`,
+    );
+  }
 
-  const applyEcnl = (rows: EcnlHydrateRow[]) => {
-    if (!rows.length) return;
+  const fingerprintOpts = {
+    pathway: scope.pathway,
+    tier: scope.tier,
+    conference: scope.conference,
+    ageBand: scope.ageBand,
+  };
+  const before = caTableFingerprint(fingerprintOpts);
+
+  if (scope.pathway === "ecnl") {
+    const rows = await ingestEcnlTable(scope, asOf, tried, errors);
+    if (!rows.length) {
+      const why =
+        errors[0] ??
+        `Could not refresh ${scopeLabel}. Live AthleteOne standings were blocked or empty.`;
+      return emptyResult(
+        scopeLabel,
+        asOf,
+        tried,
+        errors,
+        `${why} This table was not changed. Nothing was invented.`,
+      );
+    }
+    const tier = scope.tier === "ecnl-rl" ? "ecnl-rl" : "ecnl";
     applyStandingsOverlay({
       ecnl: {
         asOf,
-        source: "ECNL AthleteOne get-conference-standings (live, theecnl.com)",
+        source: `ECNL AthleteOne get-conference-standings (live, ${scopeLabel})`,
         teams: rows,
+        replaceScope: {
+          conference: scope.conference,
+          ageBand: scope.ageBand,
+          tier,
+        },
       },
     });
     opts?.onPartial?.();
-  };
-
-  const [mls, ecnlRows] = await Promise.all([
-    ingestMlsLive(asOf, tried, errors),
-    ingestEcnlLive(asOf, tried, errors, opts?.prioritize, applyEcnl),
-  ]);
-
-  if (mls.teams.length) {
-    applyStandingsOverlay({
-      mls: {
+    const schedulable = rows.filter(
+      (row) =>
+        row.athleteOneTeamId != null &&
+        row.athleteOneClubId != null &&
+        row.eventId != null,
+    );
+    const schedules = schedulable.length
+      ? await refreshEcnlSchedules(schedulable, tried, errors)
+      : { teams: 0, matches: 0, scored: 0 };
+    if (schedules.teams) opts?.onPartial?.();
+    const unchanged = before === caTableFingerprint(fingerprintOpts);
+    const gamesNote = schedulable.length
+      ? schedules.teams
+        ? `Game lists updated for ${schedules.teams}/${schedulable.length} sides (${schedules.matches} games, ${schedules.scored} with a published score).`
+        : "Standings updated. Game lists for this table were blocked or empty."
+      : "This table has no AthleteOne team ids, so game lists were not queried.";
+    return {
+      asOf,
+      scopeLabel,
+      ok: true,
+      unchanged,
+      mlsTeams: 0,
+      mlsMatches: 0,
+      ecnlTeams: rows.length,
+      ecnlScheduleTeams: schedules.teams,
+      ecnlScheduleMatches: schedules.matches,
+      mlsSource: "cache",
+      ecnlSource: schedules.teams === schedulable.length ? "live" : "partial",
+      endpointsTried: tried,
+      errors,
+      note: resultNote({
+        scopeLabel,
         asOf,
-        source: "MLS NEXT public League Viewer (live)",
-        teams: mls.teams,
+        unchanged,
+        teams: rows.length,
+        gamesNote,
+        errors,
+      }),
+    };
+  }
+
+  const mls = await ingestMlsTable(scope, asOf, tried, errors);
+  if (!mls) {
+    const why =
+      errors[0] ??
+      `Could not refresh ${scopeLabel}. Live League Viewer data was blocked or empty.`;
+    return emptyResult(
+      scopeLabel,
+      asOf,
+      tried,
+      errors,
+      `${why} This table was not changed. Nothing was invented.`,
+    );
+  }
+  const division = scope.tier === "academy" ? "academy" : "homegrown";
+  applyStandingsOverlay({
+    mls: {
+      asOf,
+      source: `MLS NEXT public League Viewer (live, ${scopeLabel})`,
+      teams: mls.teams,
+      replaceScope: {
+        conference: scope.conference,
+        ageBand: scope.ageBand,
+        tier: division,
       },
-    });
-    if (mls.matches.length) applyLiveMlsMatches(mls.matches);
-    opts?.onPartial?.();
-  }
-
-  if (ecnlRows.length) {
-    applyEcnl(ecnlRows);
-  }
-
-  const schedulePool = (ecnlRows.length
-    ? ecnlRows
-    : listEcnlPublicTeams()) as EcnlHydrateRow[];
-  const prioritize = opts?.prioritize;
-  const conference =
-    prioritize?.pathway === "ecnl" ? prioritize.conference : "Northern Cal";
-  const ageBand =
-    prioritize?.pathway === "ecnl" && prioritize.ageBand !== "U12"
-      ? prioritize.ageBand
-      : "U13";
-  const scheduleRows = schedulePool.filter(
-    (row) => row.conference === conference && row.ageBand === ageBand,
-  );
-  const schedules = scheduleRows.length
-    ? await refreshEcnlSchedules(scheduleRows, tried, errors)
-    : { teams: 0, matches: 0, scored: 0 };
-  if (schedules.teams) opts?.onPartial?.();
-
-  const result: LiveRefreshResult = {
+    },
+  });
+  if (mls.matches.length) applyLiveMlsMatches(mls.matches);
+  opts?.onPartial?.();
+  const unchanged = before === caTableFingerprint(fingerprintOpts);
+  return {
     asOf,
+    scopeLabel,
+    ok: true,
+    unchanged,
     mlsTeams: mls.teams.length,
     mlsMatches: mls.matches.length,
-    ecnlTeams: ecnlRows.length,
-    ecnlScheduleTeams: schedules.teams,
-    ecnlScheduleMatches: schedules.matches,
-    mlsSource: mls.source,
-    ecnlSource: ecnlRows.length ? "live" : "cache",
+    ecnlTeams: 0,
+    ecnlScheduleTeams: 0,
+    ecnlScheduleMatches: 0,
+    mlsSource: "live",
+    ecnlSource: "cache",
     endpointsTried: tried,
     errors,
-    note: "",
+    note: resultNote({
+      scopeLabel,
+      asOf,
+      unchanged,
+      teams: mls.teams.length,
+      gamesNote: `${mls.matches.length} completed League Viewer games on this table.`,
+      errors,
+    }),
   };
-  result.note = summarizeNote(result);
-  return result;
 }
 
 export function caConferenceNames(pathway: CaTablePathway, tier: CaTableTier): readonly string[] {

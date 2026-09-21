@@ -77,13 +77,14 @@ export function MethodologyCard() {
             League Viewer). Unmatched AthleteOne sides stay off
             the composite list but still appear on the CA table. Marin FC is
             highlighted; Blue 2014/15 is not home. The CA Tables{" "}
-            <strong className="text-foreground">Refresh</strong> button
-            re-fetches AthleteOne standings (Referer theecnl.com), ECNL
-            get-individual-team-info schedules for the visible table, and the
-            MLS NEXT League Viewer JSON in the browser, then overlays this
-            table, those conference games, and hydrated team records. Seeded
-            ranks stay compiled until those official rows change. Nothing is
-            invented.
+            <strong className="text-foreground">Refresh</strong> updates only
+            the table on screen (one pathway, age, and conference — for example
+            ECNL · Northern Cal · BU13). It re-fetches that AthleteOne
+            standings page, get-individual-team-info for teams on that table,
+            or that MLS NEXT division’s League Viewer JSON. Local dev uses the
+            Vite proxy. GitHub Pages uses the Jina reader, which can send
+            Referer https://theecnl.com — the browser cannot. Other conferences
+            stay on the shipped rows. Nothing is invented.
           </p>
           <ul className="list-disc space-y-1 pl-5">
             <li>
@@ -106,18 +107,15 @@ export function MethodologyCard() {
               </code>
               , Referer theecnl.com; Sidearm page loads
               public.totalglobalsports.com/standings.min.js with
-              data-org-season-id 81 / 83): every ECNL / ECNL-RL boys
-              conference. Northern Cal is the verification priority. ECNL =
-              Tier 1; ECNL-RL = Tier 2 (separate from MLS NEXT Homegrown T1 /
-              Academy T2). Boys conferences × BU13–BU18/19 from the AthleteOne
-              root (app tabs merge U13–U16). Conference-specific division IDs;
+              data-org-season-id 81 / 83). Refresh loads the open
+              conference and age only. Northern Cal is the verification
+              priority. ECNL = Tier 1; ECNL-RL = Tier 2 (separate from MLS NEXT
+              Homegrown T1 / Academy T2). Conference-specific division IDs;
               national 22184–22189 on a conference event still serve BU13 and
-              are dropped when the heading mismatches. Schedule /
-              loadIndividualTeamPage return 401 — match lists stay on
-              GotSport. HTML table; no invented scores. A dated CA snapshot
-              under uploads/ is seed/verify only — live AthleteOne still
-              refreshes. Snapshot GotSport ranking_data (~20 rows, 0 CA boys)
-              is not used.
+              are dropped when the heading mismatches. HTML table; no invented
+              scores. A dated CA snapshot under uploads/ is seed/verify only —
+              live AthleteOne still refreshes. Snapshot GotSport ranking_data
+              (~20 rows, 0 CA boys) is not used.
             </li>
             <li>
               MLS NEXT Homegrown / Academy public League Viewer JSON on{" "}

@@ -97,6 +97,27 @@ let mlsLive: MlsPublicFile | null = null;
 let ecnlLive: EcnlPublicFile | null = null;
 let overlayNonce = 0;
 
+export type TableReplaceScope = {
+  conference: string;
+  ageBand: string;
+  tier: string;
+};
+
+const tableUpdatedAt = new Map<string, string>();
+
+export function tableScopeKey(opts: {
+  pathway: CaTablePathway;
+  tier: string;
+  conference: string;
+  ageBand: string;
+}): string {
+  return `${opts.pathway}|${opts.tier}|${opts.conference}|${opts.ageBand}`;
+}
+
+export function markTableUpdated(key: string, asOf: string): void {
+  tableUpdatedAt.set(key, asOf);
+}
+
 function mlsFile(): MlsPublicFile {
   return mlsLive ?? MLS_SEED;
 }
@@ -113,31 +134,70 @@ export function standingsOverlayNonce(): number {
 }
 
 export function applyStandingsOverlay(partial: {
-  mls?: Partial<MlsPublicFile>;
-  ecnl?: Partial<EcnlPublicFile>;
+  mls?: Partial<MlsPublicFile> & { replaceScope?: TableReplaceScope };
+  ecnl?: Partial<EcnlPublicFile> & { replaceScope?: TableReplaceScope };
 }): void {
   if (partial.mls) {
+    const { replaceScope, teams, asOf: nextAsOf, ...rest } = partial.mls;
+    const filePatch = replaceScope
+      ? rest
+      : { ...rest, ...(nextAsOf ? { asOf: nextAsOf } : {}) };
     const base: MlsPublicFile = mlsLive
       ? { ...mlsLive, teams: [...(mlsLive.teams ?? [])] }
       : { ...MLS_SEED, teams: [...(MLS_SEED.teams ?? [])] };
-    if (partial.mls.teams) {
+    if (replaceScope) {
+      base.teams = (base.teams ?? []).filter(
+        (row) =>
+          !(
+            row.ageBand === replaceScope.ageBand &&
+            (row.division || "academy") === replaceScope.tier &&
+            row.conference === replaceScope.conference
+          ),
+      );
+    }
+    if (teams) {
       const map = new Map<string, MlsPublicTeam>();
       for (const row of base.teams ?? []) {
         map.set(`${row.orgId}|${row.ageBand}|${row.division || "academy"}`, row);
       }
-      for (const row of partial.mls.teams) {
+      for (const row of teams) {
         map.set(`${row.orgId}|${row.ageBand}|${row.division || "academy"}`, row);
       }
-      mlsLive = { ...base, ...partial.mls, teams: [...map.values()] };
+      mlsLive = { ...base, ...filePatch, teams: [...map.values()] };
     } else {
-      mlsLive = { ...base, ...partial.mls };
+      mlsLive = { ...base, ...filePatch };
+    }
+    if (replaceScope && nextAsOf) {
+      markTableUpdated(
+        tableScopeKey({
+          pathway: "mls-next",
+          tier: replaceScope.tier,
+          conference: replaceScope.conference,
+          ageBand: replaceScope.ageBand,
+        }),
+        nextAsOf,
+      );
     }
   }
   if (partial.ecnl) {
+    const { replaceScope, teams, asOf: nextAsOf, ...rest } = partial.ecnl;
+    const filePatch = replaceScope
+      ? rest
+      : { ...rest, ...(nextAsOf ? { asOf: nextAsOf } : {}) };
     const base: EcnlPublicFile = ecnlLive
       ? { ...ecnlLive, teams: [...(ecnlLive.teams ?? [])] }
       : { ...ECNL_SEED, teams: [...(ECNL_SEED.teams ?? [])] };
-    if (partial.ecnl.teams) {
+    if (replaceScope) {
+      base.teams = (base.teams ?? []).filter(
+        (row) =>
+          !(
+            row.ageBand === replaceScope.ageBand &&
+            (row.tier || "ecnl") === replaceScope.tier &&
+            (row.conference ?? "") === replaceScope.conference
+          ),
+      );
+    }
+    if (teams) {
       const map = new Map<string, EcnlPublicTeam>();
       for (const row of base.teams ?? []) {
         map.set(
@@ -145,15 +205,26 @@ export function applyStandingsOverlay(partial: {
           row,
         );
       }
-      for (const row of partial.ecnl.teams) {
+      for (const row of teams) {
         map.set(
           `${row.athleteOneTeamId ?? row.name}|${row.ageBand}|${row.tier || "ecnl"}|${row.conference ?? ""}`,
           row,
         );
       }
-      ecnlLive = { ...base, ...partial.ecnl, teams: [...map.values()] };
+      ecnlLive = { ...base, ...filePatch, teams: [...map.values()] };
     } else {
-      ecnlLive = { ...base, ...partial.ecnl };
+      ecnlLive = { ...base, ...filePatch };
+    }
+    if (replaceScope && nextAsOf) {
+      markTableUpdated(
+        tableScopeKey({
+          pathway: "ecnl",
+          tier: replaceScope.tier,
+          conference: replaceScope.conference,
+          ageBand: replaceScope.ageBand,
+        }),
+        nextAsOf,
+      );
     }
   }
   rebuildLookups();
@@ -419,10 +490,38 @@ export function loadCaLeagueTable(opts: {
   );
 }
 
-export function caTableAsOf(pathway: CaTablePathway): string {
+export function caTableAsOf(
+  pathway: CaTablePathway,
+  scope?: { tier: string; conference: string; ageBand: string },
+): string {
+  if (scope?.conference) {
+    const stamped = tableUpdatedAt.get(
+      tableScopeKey({
+        pathway,
+        tier: scope.tier,
+        conference: scope.conference,
+        ageBand: scope.ageBand,
+      }),
+    );
+    if (stamped) return stamped;
+  }
   return pathway === "mls-next"
     ? (mlsFile().asOf ?? MLS_TABLE_AS_OF)
     : (ecnlFile().asOf ?? ECNL_TABLE_AS_OF);
+}
+
+/** Stats signature for the visible table. Ignores timestamps so a no-change pull can say so. */
+export function caTableFingerprint(opts: {
+  pathway: CaTablePathway;
+  tier: CaTableTier;
+  conference: string;
+  ageBand: AgeBand;
+}): string {
+  return loadCaLeagueTable(opts)
+    .map((row) =>
+      [row.name, row.gp, row.w, row.d, row.l, row.gf, row.ga, row.pts].join(":"),
+    )
+    .join("|");
 }
 
 export function resolveRankedTeam(

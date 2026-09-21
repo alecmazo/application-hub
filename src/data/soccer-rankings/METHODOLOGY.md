@@ -53,13 +53,12 @@ Default **layout** is **Matchday Cards** (view B). Split Command stays on the La
 
 The composite ranking list is **not** a conference table. Official standings live in `mls-next-public.json` and `ecnl-public.json`, then a live **Refresh** overlays those files in memory. The app **must** read those files (and the overlay) for CA Tables (and to hydrate GF–GA / conference W–D–L onto matching ranked sides). Leaving them unused is how a live SPA can look like it “ignored” the PR #8 ingest.
 
-In-browser **Refresh** (CA Tables and Matchday Cards) re-fetches:
+In-browser **Refresh** re-fetches **only the table on screen** (one pathway + tier + conference + age, such as ECNL Northern Cal BU13 or MLS NEXT Homegrown Northwest U13). It does not walk every California conference or age.
 
-- MLS NEXT League Viewer standings + schedule JSON (Homegrown + Academy). W–D–L / GF–GA stay **completed schedule games only**.
-- ECNL AthleteOne `get-conference-standings` for California conferences, with Referer/Origin `https://theecnl.com` via the Vite `/athleteone-api` proxy (bare curl is 403). HTML is W–L–D; the app stores W–D–L.
-- ECNL AthleteOne `get-individual-team-info` schedules for the visible CA table (Northern Cal U13 by default). Published RESULTS overlay the expand list; unpublished stays N/A.
+- MLS NEXT: that division’s League Viewer standings JSON plus the schedule JSON, filtered to teams in the open conference and age. W–D–L / GF–GA stay **completed schedule games only**.
+- ECNL: one AthleteOne `get-conference-standings` call for that conference and age (Referer/Origin `https://theecnl.com`). HTML is W–L–D; the app stores W–D–L. Then `get-individual-team-info` for teams on that table only. Published RESULTS overlay the expand list; unpublished stays N/A.
 
-Live rows replace matching shipped rows. If a feed is blocked, the shipped cache stays. Nothing is invented.
+Local dev and `vite preview` use the `/athleteone-api` and `/mls-next-api` proxies. GitHub Pages is static: the browser cannot set Referer, and those APIs do not allow `github.io`. Refresh there goes through the Jina reader (`https://r.jina.ai/…`) with `X-Referer: https://theecnl.com` and `X-No-Cache: true`. A blocked pull leaves the shipped rows and shows an error. Nothing is invented.
 
 **CA Tables** view (age tabs + pathway + conference):
 
