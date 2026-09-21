@@ -172,7 +172,7 @@ function CardsSidebar({
   pageView: "rankings" | "ca-tables";
   onPageView: (next: "rankings" | "ca-tables") => void;
 }) {
-  const { standingsAsOf, setShowMethod, showMethod } = useRankings();
+  const { standingsAsOf, standingsScopeLabel, setShowMethod, showMethod } = useRankings();
   const nav: Array<
     | { kind: "link"; href: string; label: string; icon: typeof Home }
     | { kind: "page"; key: "rankings" | "ca-tables"; label: string; icon: typeof Home }
@@ -233,6 +233,7 @@ function CardsSidebar({
       <div className="border-t border-border px-4 py-3">
         <p className="text-[11px] text-muted-foreground">
           Data updated {standingsAsOf ?? "from shipped tables"}
+          {standingsScopeLabel ? ` · ${standingsScopeLabel}` : ""}
         </p>
       </div>
     </aside>

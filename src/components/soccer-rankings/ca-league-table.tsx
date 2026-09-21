@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
@@ -19,6 +20,7 @@ import {
   type MlsTableDivision,
 } from "@/lib/soccer-rankings/league-tables";
 import { HOME_LABEL } from "@/lib/soccer-rankings/home";
+import { tableScopeLabel } from "@/lib/soccer-rankings/live-standings";
 import { cn } from "@/lib/utils";
 import { LeagueMatchList } from "./league-match-list";
 import { StandingsRefreshButton } from "./standings-refresh-button";
@@ -40,6 +42,7 @@ export function CaLeagueTables() {
     teams,
     openTeam,
     standingsNonce,
+    refreshingStandings,
     caTableFocus,
     openTableRow,
   } = useRankings();
@@ -86,7 +89,13 @@ export function CaLeagueTables() {
     if (hit) openTeam(hit.id, { scroll: false });
   }
 
-  const asOf = caTableAsOf(pathway);
+  const asOf = caTableAsOf(pathway, { tier, conference, ageBand: year });
+  const scopeLabel = tableScopeLabel({
+    pathway,
+    tier,
+    conference: conference || "this conference",
+    ageBand: year,
+  });
   const tiers = pathway === "mls-next" ? MLS_TIERS : ECNL_TIERS;
 
   return (
@@ -147,7 +156,7 @@ export function CaLeagueTables() {
           </select>
           {asOf && (
             <p className="font-mono text-[11px] text-muted-foreground">
-              Table as of {asOf}
+              Data updated {asOf}
             </p>
           )}
           <StandingsRefreshButton
@@ -178,9 +187,22 @@ export function CaLeagueTables() {
         </Card>
       )}
 
+      {refreshingStandings && (
+        <p
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground"
+          role="status"
+        >
+          <Loader2 className="size-4 animate-spin" />
+          Refreshing {scopeLabel}…
+        </p>
+      )}
+
       {rows.length > 0 && (
-        <>
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+        <div
+          className={cn(refreshingStandings && "opacity-60")}
+          aria-busy={refreshingStandings}
+        >
+          <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
             <p>
               {rows.length} sides · {conference} ·{" "}
               {pathway === "mls-next"
@@ -266,7 +288,7 @@ export function CaLeagueTables() {
               );
             })}
           </div>
-        </>
+        </div>
       )}
     </section>
   );

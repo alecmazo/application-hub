@@ -17,12 +17,10 @@ import {
   resultFor,
   type MlsNextOverlay,
 } from "./matches";
+import { athleteOneAttempts, fetchFirstText } from "./public-fetch";
 import type { CompactMatch } from "./types";
 
 export const ATHLETEONE_ORG_ID = 12;
-
-const BROWSER_UA =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
 
 const AGE_HEADING: Record<string, string> = {
   U13: "BU13",
@@ -67,42 +65,14 @@ const ECNL_MATCHES_SEED = ecnlMatchesSeed as EcnlMatchesFile;
 const teamInfoCache = new Map<string, CompactMatch[]>();
 let liveEcnlMatches: Record<string, CompactMatch[]> | null = null;
 
-function corsProxied(url: string): string[] {
-  return [
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
-    `https://corsproxy.org/?${encodeURIComponent(url)}`,
-  ];
-}
-
-function athleteOneUrls(script: string, parts: Array<string | number>): string[] {
+async function fetchHtml(
+  script: string,
+  parts: Array<string | number>,
+  tried: string[],
+  kind: "standings" | "team-info" | "markup",
+): Promise<string | null> {
   const path = `/api/Script/${script}/${parts.join("/")}`;
-  const canonical = `https://api.athleteone.com${path}`;
-  return [`/athleteone-api${path}`, canonical, ...corsProxied(canonical)];
-}
-
-async function fetchHtml(urls: string[], tried: string[]): Promise<string | null> {
-  for (const url of urls) {
-    tried.push(url);
-    try {
-      const headers: Record<string, string> = {
-        Accept: "text/html,application/json,*/*",
-        "User-Agent": BROWSER_UA,
-      };
-      if (!url.startsWith("/")) {
-        headers.Origin = "https://theecnl.com";
-        headers.Referer = "https://theecnl.com/";
-      }
-      const resp = await fetch(url, { headers, cache: "no-store" });
-      if (!resp.ok) continue;
-      const text = await resp.text();
-      if (!text || text.length < 40) continue;
-      if (/"status"\s*:\s*99|"title"\s*:\s*"Forbidden"/.test(text)) continue;
-      return text;
-    } catch {
-      /* next */
-    }
-  }
-  return null;
+  return fetchFirstText(athleteOneAttempts(path, kind), tried);
 }
 
 function parseMonthDate(raw: string): string | null {
@@ -314,13 +284,10 @@ async function fetchTeamInfoMatches(
   const eventId = row.eventId;
   if (teamId == null || clubId == null || eventId == null) return [];
   const html = await fetchHtml(
-    athleteOneUrls("get-individual-team-info", [
-      ATHLETEONE_ORG_ID,
-      eventId,
-      clubId,
-      teamId,
-    ]),
+    "get-individual-team-info",
+    [ATHLETEONE_ORG_ID, eventId, clubId, teamId],
     tried,
+    "team-info",
   );
   if (!html) return [];
   return parseAthleteOneTeamInfo(html, {
@@ -424,11 +391,10 @@ async function loadEcnlLeagueMatches(
   }
 
   const clubHtml = await fetchHtml(
-    athleteOneUrls("get-club-schedules-by-eventID-and-clubID", [
-      eventId,
-      clubId,
-    ]),
+    "get-club-schedules-by-eventID-and-clubID",
+    [eventId, clubId],
     tried,
+    "markup",
   );
   const clubMatches = clubHtml
     ? parseAthleteOneClubSchedule(clubHtml, {
