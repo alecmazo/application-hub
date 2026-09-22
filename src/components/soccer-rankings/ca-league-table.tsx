@@ -45,6 +45,7 @@ export function CaLeagueTables() {
     refreshingStandings,
     caTableFocus,
     openTableRow,
+    setCaTableFocus,
   } = useRankings();
   const [pathway, setPathway] = useState<CaTablePathway>("ecnl");
   const [tier, setTier] = useState<CaTableTier>("ecnl");
@@ -84,6 +85,10 @@ export function CaLeagueTables() {
   }
 
   function onOpenRow(row: LeagueTableRow) {
+    if (caTableFocus?.key === row.key) {
+      setCaTableFocus(null);
+      return;
+    }
     openTableRow(row);
     const hit = resolveRankedTeam(row, teams);
     if (hit) openTeam(hit.id, { scroll: false });
@@ -99,7 +104,7 @@ export function CaLeagueTables() {
   const tiers = pathway === "mls-next" ? MLS_TIERS : ECNL_TIERS;
 
   return (
-    <section className="space-y-4" aria-label="California league tables">
+    <section className="min-w-0 max-w-full space-y-4" aria-label="California league tables">
       <div className="flex flex-col gap-3 rounded-3xl border border-border bg-card/70 p-4">
         <div
           className="inline-flex flex-wrap rounded-lg border border-border bg-card p-0.5"
@@ -119,7 +124,7 @@ export function CaLeagueTables() {
             hint="ECNL T1 · ECNL-RL T2"
           />
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
           <label className="sr-only" htmlFor="ca-table-tier">
             Division / tier
           </label>
@@ -142,7 +147,7 @@ export function CaLeagueTables() {
             id="ca-table-conference"
             value={conference}
             onChange={(e) => setConference(e.target.value)}
-            className="h-9 min-w-[12rem] rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
+            className="h-9 w-full min-w-0 max-w-full rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground sm:w-auto sm:min-w-[12rem]"
           >
             {conferences.length === 0 ? (
               <option value="">No CA table at this age</option>
@@ -199,10 +204,10 @@ export function CaLeagueTables() {
 
       {rows.length > 0 && (
         <div
-          className={cn(refreshingStandings && "opacity-60")}
+          className={cn("min-w-0 max-w-full", refreshingStandings && "opacity-60")}
           aria-busy={refreshingStandings}
         >
-          <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+          <div className="mb-2 flex min-w-0 flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
             <p>
               {rows.length} sides · {conference} ·{" "}
               {pathway === "mls-next"
@@ -211,9 +216,22 @@ export function CaLeagueTables() {
             </p>
             <Badge variant="outline">Pos = Pts then GD</Badge>
           </div>
-          <div className="hidden overflow-x-auto rounded-2xl border border-border bg-card md:block">
-            <table className="w-full min-w-[44rem] text-left text-sm">
-              <thead className="border-b border-border bg-bg-elevated/90 text-xs uppercase tracking-wider text-muted-foreground">
+          <div className="min-w-0 max-w-full overflow-x-auto overscroll-x-contain rounded-2xl border border-border bg-card">
+            <table className="w-full table-fixed border-collapse text-left text-[11px] sm:text-sm">
+              <colgroup>
+                <col className="w-[7.5%]" />
+                <col />
+                <col className="w-[6.5%]" />
+                <col className="w-[5.5%]" />
+                <col className="w-[5.5%]" />
+                <col className="w-[5.5%]" />
+                <col className="w-[7%]" />
+                <col className="w-[7%]" />
+                <col className="w-[8%]" />
+                <col className="w-[10.5%]" />
+                <col className="w-[10.5%]" />
+              </colgroup>
+              <thead className="border-b border-border bg-bg-elevated/90 text-[10px] uppercase text-muted-foreground sm:text-xs sm:tracking-wider">
                 <tr>
                   <Th align="right">Pos</Th>
                   <Th>Team</Th>
@@ -224,7 +242,9 @@ export function CaLeagueTables() {
                   <Th align="right">GF</Th>
                   <Th align="right">GA</Th>
                   <Th align="right">GD</Th>
-                  <Th align="right">Pts</Th>
+                  <Th align="right" emphasize>
+                    Pts
+                  </Th>
                   <Th align="right">PPG</Th>
                 </tr>
               </thead>
@@ -242,51 +262,6 @@ export function CaLeagueTables() {
                 })}
               </tbody>
             </table>
-          </div>
-          <div className="grid gap-2 md:hidden">
-            {rows.map((row) => {
-              const selected = caTableFocus?.key === row.key;
-              return (
-                <div key={row.key} className="space-y-2">
-                  <button
-                    type="button"
-                    onClick={() => onOpenRow(row)}
-                    className={cn(
-                      "w-full rounded-xl border border-border bg-card p-3 text-left shadow-sm",
-                      row.homeHighlight && "border-success/40 bg-success/10",
-                      row.marinHighlight &&
-                        !row.homeHighlight &&
-                        "border-success/30 bg-success/5",
-                      selected && "border-primary/50 ring-1 ring-primary/30",
-                    )}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="min-w-0">
-                        <p className="truncate font-medium">{row.name}</p>
-                        <p className="mt-0.5 text-[11px] text-muted-foreground">
-                          {row.tierLabel}
-                          {row.homeHighlight ? ` · ${HOME_LABEL}` : ""}
-                        </p>
-                      </div>
-                      <p className="font-mono-num text-lg font-semibold text-primary">
-                        {row.pos || "—"}
-                      </p>
-                    </div>
-                    <p className="mt-2 font-mono-num text-xs text-muted-foreground">
-                      {row.gp} GP · {row.w}–{row.d}–{row.l} · GF {row.gf} GA{" "}
-                      {row.ga} GD {row.gd > 0 ? `+${row.gd}` : row.gd} ·{" "}
-                      {row.pts} pts
-                      {row.ppg != null ? ` · ${formatPpg(row.ppg)} PPG` : ""}
-                    </p>
-                  </button>
-                  {selected && (
-                    <div className="rounded-xl border border-primary/25 bg-card p-3">
-                      <LeagueMatchList row={row} compact />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
           </div>
         </div>
       )}
@@ -326,14 +301,14 @@ function TableRows({
           }
         }}
       >
-        <td className="px-2 py-2.5 text-right font-mono-num text-base font-semibold text-primary">
+        <td className="overflow-hidden px-0.5 py-2 text-right font-mono-num text-xs font-semibold text-primary sm:px-2 sm:py-2.5 sm:text-base">
           {row.pos || "—"}
         </td>
-        <td className="min-w-0 px-3 py-2.5">
+        <td className="min-w-0 overflow-hidden px-1.5 py-2 sm:px-3 sm:py-2.5">
           <p className="truncate font-medium" title={row.name}>
             {row.name}
           </p>
-          <p className="mt-0.5 text-[11px] text-muted-foreground">
+          <p className="mt-0.5 truncate text-[10px] text-muted-foreground sm:text-[11px]">
             {row.tierLabel}
             {row.homeHighlight ? ` · ${HOME_LABEL}` : ""}
             {row.marinHighlight && !row.homeHighlight ? " · Marin FC" : ""}
@@ -351,8 +326,10 @@ function TableRows({
       </tr>
       {selected && (
         <tr className="border-b border-border bg-muted/20">
-          <td colSpan={11} className="px-4 py-4">
-            <LeagueMatchList row={row} />
+          <td colSpan={11} className="px-2 py-3 sm:px-4 sm:py-4">
+            <div className="min-w-0 max-w-full">
+              <LeagueMatchList row={row} compact />
+            </div>
           </td>
         </tr>
       )}
@@ -393,15 +370,18 @@ function PathButton({
 function Th({
   children,
   align = "left",
+  emphasize = false,
 }: {
   children: ReactNode;
   align?: "left" | "right";
+  emphasize?: boolean;
 }) {
   return (
     <th
       className={cn(
-        "px-2 py-3 font-medium",
+        "overflow-hidden px-px py-2 font-medium whitespace-nowrap sm:px-2 sm:py-3",
         align === "right" && "text-right",
+        emphasize && "text-[11px] font-bold text-foreground sm:text-sm",
       )}
     >
       {children}
@@ -419,8 +399,10 @@ function Num({
   return (
     <td
       className={cn(
-        "px-2 py-2.5 text-right font-mono-num whitespace-nowrap",
-        strong ? "font-semibold" : "text-muted-foreground",
+        "overflow-hidden px-px py-2 text-right font-mono-num whitespace-nowrap sm:px-2 sm:py-2.5",
+        strong
+          ? "text-sm font-bold leading-none text-foreground sm:text-lg"
+          : "text-[11px] font-medium text-muted-foreground sm:text-sm",
       )}
     >
       {children}
