@@ -278,12 +278,6 @@ export function useSoccerRankings() {
 
   const openTableRow = useCallback((row: LeagueTableRow) => {
     setCaTableFocus(row);
-    requestAnimationFrame(() => {
-      document.getElementById("league-match-list")?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-    });
   }, []);
 
   function onRowKeyDown(event: KeyboardEvent<HTMLElement>, id: string) {
