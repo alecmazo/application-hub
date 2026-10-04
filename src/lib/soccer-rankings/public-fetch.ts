@@ -35,7 +35,14 @@ function blockedPayload(text: string): boolean {
 
 export function isAthleteOneStandings(text: string): boolean {
   if (!text || text.length < 80 || blockedPayload(text)) return false;
-  return text.includes("data-team-id") && /<h3\b/i.test(text);
+  if (!/<h3\b/i.test(text)) return false;
+  // A published conference can have zero rows (Pre-ECNL Northern Cal). That
+  // shell still has the age heading and the event/division selects.
+  return (
+    text.includes("data-team-id") ||
+    /id="division-select"/i.test(text) ||
+    /id="event-select"/i.test(text)
+  );
 }
 
 export function isAthleteOneTeamInfo(text: string): boolean {
