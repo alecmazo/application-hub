@@ -23,6 +23,7 @@ import type { CompactMatch } from "./types";
 export const ATHLETEONE_ORG_ID = 12;
 
 const AGE_HEADING: Record<string, string> = {
+  U12: "BU12",
   U13: "BU13",
   U14: "BU14",
   U15: "BU15",
@@ -33,7 +34,7 @@ const TR_RE = /<tr\b[^>]*>([\s\S]*?)<\/tr>/gi;
 const TEAM_SPAN_RE = /data-team-id="(\d+)"[^>]*>([^<]+)<\/span>/gi;
 const DATE_RE =
   /font-weight:\s*bold[^>]*>\s*([A-Za-z]{3}\s+\d{1,2},\s+\d{4})\s*</i;
-const DIV_RE = />(BU1[3-6])\s*-\s*([^<]+)</i;
+const DIV_RE = />(BU1[1-6])\s*-\s*([^<]+)</i;
 const MATCH_ID_RE = /data-match-id="(\d+)"/;
 const GAME_NUM_RE = /<div>(\d{5,})<\/div>/;
 const HA_MARK_RE =
@@ -271,10 +272,25 @@ export function scoredMatchCount(matches: CompactMatch[]): number {
     .length;
 }
 
+function ecnlCompetitionLabel(row: {
+  conference?: string;
+  ageBand: string;
+  athleteOneOrgId?: number;
+}): string {
+  const league =
+    row.ageBand === "U12" || row.athleteOneOrgId === 22 ? "Pre-ECNL" : "ECNL";
+  return `${league} ${row.conference ?? ""} ${row.ageBand}`.trim();
+}
+
 async function fetchTeamInfoMatches(
   row: Pick<
     LeagueTableRow,
-    "athleteOneTeamId" | "athleteOneClubId" | "eventId" | "name" | "ageBand"
+    | "athleteOneTeamId"
+    | "athleteOneClubId"
+    | "athleteOneOrgId"
+    | "eventId"
+    | "name"
+    | "ageBand"
   >,
   competition: string,
   tried: string[],
@@ -283,9 +299,10 @@ async function fetchTeamInfoMatches(
   const clubId = row.athleteOneClubId;
   const eventId = row.eventId;
   if (teamId == null || clubId == null || eventId == null) return [];
+  const orgId = row.athleteOneOrgId ?? ATHLETEONE_ORG_ID;
   const html = await fetchHtml(
     "get-individual-team-info",
-    [ATHLETEONE_ORG_ID, eventId, clubId, teamId],
+    [orgId, eventId, clubId, teamId],
     tried,
     "team-info",
   );
@@ -301,6 +318,7 @@ export async function refreshEcnlSchedules(
   rows: Array<{
     athleteOneTeamId?: number;
     athleteOneClubId?: number;
+    athleteOneOrgId?: number;
     eventId?: number;
     name: string;
     ageBand: string;
@@ -322,7 +340,7 @@ export async function refreshEcnlSchedules(
     while (cursor < queue.length) {
       const row = queue[cursor];
       cursor += 1;
-      const competition = `ECNL ${row.conference ?? ""} ${row.ageBand}`.trim();
+      const competition = ecnlCompetitionLabel(row);
       try {
         const matches = await fetchTeamInfoMatches(row, competition, tried);
         if (matches.length && row.athleteOneTeamId != null) {
@@ -353,7 +371,7 @@ async function loadEcnlLeagueMatches(
   const teamId = row.athleteOneTeamId;
   const clubId = row.athleteOneClubId;
   const eventId = row.eventId;
-  const competition = `ECNL ${row.conference} ${row.ageBand}`;
+  const competition = ecnlCompetitionLabel(row);
   if (teamId == null || clubId == null || eventId == null) {
     return {
       matches: [],

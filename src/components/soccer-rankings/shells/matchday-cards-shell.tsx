@@ -386,23 +386,19 @@ function CaTablesMain() {
         <div>
           <p className="rankings-kicker">Layout · CA Tables</p>
           <h1 className="rankings-title mt-1">California league tables</h1>
-          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-            Official MLS NEXT Homegrown/Academy and ECNL/ECNL-RL California
-            boys tables. Refresh re-fetches AthleteOne (Referer theecnl.com)
-            and the MLS NEXT League Viewer JSON, then updates this table and
-            hydrated team records. Nothing is invented.
-          </p>
         </div>
       </div>
       <AgeTabs variant="pills" />
       <div className="flex flex-wrap items-center gap-2">
-        <AgeLegendBadges />
+        <AgeLegendBadges showAlignment={false} />
         <RankingsCoverageFlag />
       </div>
       <p className="text-xs text-muted-foreground">
         Age {year}
-        {year !== "U12" ? ` · ECNL ${ECNL_SCHOOL_YEAR[year]}` : ""} · home is{" "}
-        {HOME_LABEL}
+        {year === "U12"
+          ? " · Pre-ECNL / Pre-MLS NEXT"
+          : ` · ECNL ${ECNL_SCHOOL_YEAR[year]}`}{" "}
+        · home is {HOME_LABEL}
       </p>
       <CaLeagueTables />
     </div>

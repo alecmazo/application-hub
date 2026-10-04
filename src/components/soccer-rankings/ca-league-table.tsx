@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
   CA_TABLE_POINTS_NOTE,
+  caTierLabel,
   defaultCaConference,
   defaultCaTier,
   ecnlTierLabel,
@@ -20,7 +21,7 @@ import {
   type MlsTableDivision,
 } from "@/lib/soccer-rankings/league-tables";
 import { HOME_LABEL } from "@/lib/soccer-rankings/home";
-import { tableScopeLabel } from "@/lib/soccer-rankings/live-standings";
+import { PRE_MLS_EMPTY_NOTE, tableScopeLabel } from "@/lib/soccer-rankings/live-standings";
 import { cn } from "@/lib/utils";
 import { LeagueMatchList } from "./league-match-list";
 import { StandingsRefreshButton } from "./standings-refresh-button";
@@ -43,6 +44,8 @@ export function CaLeagueTables() {
     openTeam,
     standingsNonce,
     refreshingStandings,
+    standingsNote,
+    standingsFailed,
     caTableFocus,
     openTableRow,
     setCaTableFocus,
@@ -50,6 +53,7 @@ export function CaLeagueTables() {
   const [pathway, setPathway] = useState<CaTablePathway>("ecnl");
   const [tier, setTier] = useState<CaTableTier>("ecnl");
   const [conference, setConference] = useState("Northern Cal");
+  const [detailsOpen, setDetailsOpen] = useState(false);
 
   const conferences = useMemo(
     () => caConferencesFor(pathway, tier, year),
@@ -60,6 +64,26 @@ export function CaLeagueTables() {
     if (conferences.includes(conference)) return;
     setConference(conferences[0] ?? defaultCaConference(pathway, tier));
   }, [conferences, conference, pathway, tier]);
+
+  useEffect(() => {
+    if (year === "U12") {
+      const nextTier = defaultCaTier(pathway, year);
+      if (tier !== nextTier) {
+        setTier(nextTier);
+        setConference(defaultCaConference(pathway, nextTier));
+      }
+      return;
+    }
+    if (tier === "pre-mls" || tier === "pre-ecnl") {
+      const nextTier = defaultCaTier(pathway, year);
+      setTier(nextTier);
+      setConference(defaultCaConference(pathway, nextTier));
+    }
+  }, [year, pathway, tier]);
+
+  useEffect(() => {
+    if (refreshingStandings) setDetailsOpen(false);
+  }, [refreshingStandings]);
 
   const rows = useMemo(
     () =>
@@ -73,7 +97,7 @@ export function CaLeagueTables() {
   );
 
   function choosePathway(next: CaTablePathway) {
-    const nextTier = defaultCaTier(next);
+    const nextTier = defaultCaTier(next, year);
     setPathway(next);
     setTier(nextTier);
     setConference(defaultCaConference(next, nextTier));
@@ -101,7 +125,14 @@ export function CaLeagueTables() {
     conference: conference || "this conference",
     ageBand: year,
   });
-  const tiers = pathway === "mls-next" ? MLS_TIERS : ECNL_TIERS;
+  const tiers =
+    year === "U12"
+      ? pathway === "mls-next"
+        ? [{ key: "pre-mls" as const, label: "Pre-MLS NEXT" }]
+        : [{ key: "pre-ecnl" as const, label: "Pre-ECNL" }]
+      : pathway === "mls-next"
+        ? MLS_TIERS
+        : ECNL_TIERS;
 
   return (
     <section className="min-w-0 max-w-full space-y-4" aria-label="California league tables">
@@ -115,13 +146,13 @@ export function CaLeagueTables() {
             active={pathway === "mls-next"}
             onClick={() => choosePathway("mls-next")}
             label="MLS NEXT"
-            hint="Homegrown T1 · Academy T2"
+            hint={year === "U12" ? "Pre-MLS NEXT" : "Homegrown T1 · Academy T2"}
           />
           <PathButton
             active={pathway === "ecnl"}
             onClick={() => choosePathway("ecnl")}
             label="ECNL"
-            hint="ECNL T1 · ECNL-RL T2"
+            hint={year === "U12" ? "Pre-ECNL" : "ECNL T1 · ECNL-RL T2"}
           />
         </div>
         <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2">
@@ -169,37 +200,69 @@ export function CaLeagueTables() {
             label="Refresh"
             prioritize={{ pathway, tier, conference, ageBand: year }}
           />
+          <button
+            type="button"
+            aria-expanded={detailsOpen}
+            aria-controls="ca-table-details"
+            aria-label={detailsOpen ? "Hide table notes" : "Show table notes"}
+            title={detailsOpen ? "Hide table notes" : "Show table notes"}
+            onClick={() => setDetailsOpen((open) => !open)}
+            className={cn(
+              "inline-flex size-7 shrink-0 items-center justify-center rounded-full text-base font-semibold leading-none",
+              standingsFailed && !refreshingStandings
+                ? "text-destructive"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+            )}
+          >
+            *
+          </button>
         </div>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          Official boys California conference table — not the unofficial
-          composite. Age follows the tabs above. Marin FC is highlighted where
-          present; home listing is {HOME_LABEL}. {CA_TABLE_POINTS_NOTE}
-        </p>
+        {refreshingStandings && (
+          <p
+            className="inline-flex items-center gap-2 text-xs text-muted-foreground"
+            role="status"
+          >
+            <Loader2 className="size-3.5 animate-spin" />
+            Refreshing {scopeLabel}…
+          </p>
+        )}
+        {detailsOpen && (
+          <div
+            id="ca-table-details"
+            className="space-y-2 text-xs leading-relaxed text-muted-foreground"
+          >
+            {standingsNote && (
+              <p className={cn(standingsFailed && "text-destructive")}>{standingsNote}</p>
+            )}
+            <p>
+              Official boys California conference table — not the unofficial
+              composite. Age follows the tabs above. Marin FC is highlighted where
+              present; home listing is {HOME_LABEL}. {CA_TABLE_POINTS_NOTE}
+            </p>
+          </div>
+        )}
       </div>
 
-      {year === "U12" && (
+      {rows.length === 0 && tier === "pre-mls" && (
+        <Card className="p-6 text-sm text-muted-foreground">{PRE_MLS_EMPTY_NOTE}</Card>
+      )}
+
+      {rows.length === 0 && tier === "pre-ecnl" && (
         <Card className="p-6 text-sm text-muted-foreground">
-          California MLS NEXT / ECNL league tables start at U13. Homegrown has
-          no U12. Switch the age tab to see conference standings.
+          {standingsFailed
+            ? `Could not load Pre-ECNL · ${conference || "this conference"}. The table was not changed.`
+            : standingsNote?.includes("No published rows")
+              ? `AthleteOne checked ${conference}. No published rows yet. Nothing was invented.`
+              : `No Pre-ECNL rows loaded for ${conference || "this conference"} yet. Refresh pulls the AthleteOne table. An empty table is not a failed download.`}
         </Card>
       )}
 
-      {year !== "U12" && rows.length === 0 && (
+      {rows.length === 0 && year !== "U12" && (
         <Card className="p-6 text-sm text-muted-foreground">
           No published {pathway === "mls-next" ? "MLS NEXT" : "ECNL"} rows for{" "}
           {year} {conference || "this conference"}. Live ingest writes
           completed games only — empty is not an invented 0–0.
         </Card>
-      )}
-
-      {refreshingStandings && (
-        <p
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground"
-          role="status"
-        >
-          <Loader2 className="size-4 animate-spin" />
-          Refreshing {scopeLabel}…
-        </p>
       )}
 
       {rows.length > 0 && (
@@ -209,10 +272,7 @@ export function CaLeagueTables() {
         >
           <div className="mb-2 flex min-w-0 flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
             <p>
-              {rows.length} sides · {conference} ·{" "}
-              {pathway === "mls-next"
-                ? mlsTierLabel(tier as MlsTableDivision)
-                : ecnlTierLabel(tier as EcnlTableTier)}
+              {rows.length} sides · {conference} · {caTierLabel(tier)}
             </p>
             <Badge variant="outline">Pos = Pts then GD</Badge>
           </div>

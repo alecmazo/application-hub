@@ -18,41 +18,24 @@ export function StandingsRefreshButton({
   className?: string;
   label?: string;
 }) {
-  const { refreshStandings, refreshingStandings, standingsNote, standingsFailed } =
-    useRankings();
+  const { refreshStandings, refreshingStandings } = useRankings();
   const scope = prioritize ? tableScopeLabel(prioritize) : "this table";
-  const status = refreshingStandings
-    ? `Refreshing ${scope}…`
-    : (standingsNote ?? `Refresh updates ${scope} only.`);
   return (
-    <div className={cn("flex flex-col gap-1.5", className)}>
-      <Button
-        type="button"
-        size={size}
-        onClick={() => void refreshStandings(prioritize)}
-        disabled={refreshingStandings}
-        aria-busy={refreshingStandings}
-        aria-label={refreshingStandings ? `Refreshing ${scope}` : `${label} ${scope}`}
-        className="h-auto min-h-9 whitespace-normal px-3 py-2 text-left"
-      >
-        {refreshingStandings ? (
-          <Loader2 className="size-3.5 animate-spin" />
-        ) : (
-          <RefreshCw className="size-3.5" />
-        )}
-        {refreshingStandings ? `Refreshing ${scope}…` : label}
-      </Button>
-      <p
-        className={cn(
-          "max-w-xl text-xs leading-relaxed",
-          standingsFailed && !refreshingStandings
-            ? "text-destructive"
-            : "text-muted-foreground",
-        )}
-        aria-live="polite"
-      >
-        {status}
-      </p>
-    </div>
+    <Button
+      type="button"
+      size={size}
+      onClick={() => void refreshStandings(prioritize)}
+      disabled={refreshingStandings}
+      aria-busy={refreshingStandings}
+      aria-label={refreshingStandings ? `Refreshing ${scope}` : `${label} ${scope}`}
+      className={cn("h-9 shrink-0 whitespace-nowrap px-3", className)}
+    >
+      {refreshingStandings ? (
+        <Loader2 className="size-3.5 animate-spin" />
+      ) : (
+        <RefreshCw className="size-3.5" />
+      )}
+      {label}
+    </Button>
   );
 }

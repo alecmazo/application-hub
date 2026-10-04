@@ -75,7 +75,7 @@ export function SplitCommandShell({
         </header>
 
         <div className="flex flex-wrap items-center gap-2">
-          <AgeLegendBadges />
+          <AgeLegendBadges showAlignment={pageView !== "ca-tables"} />
           <RankingsCoverageFlag />
         </div>
 
