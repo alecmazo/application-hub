@@ -7,7 +7,13 @@
  * League Viewer sends no CORS header, and AthleteOne only allows
  * https://theecnl.com. The Jina reader (`https://r.jina.ai/<url>`) is the
  * browser-capable path: it reflects the page Origin and forwards `X-Referer`
- * so AthleteOne returns the real table. Nothing here invents scores.
+ * so AthleteOne returns the real table.
+ *
+ * Academy's schedule JSON is ~13 MB. A single Jina GET of that URL resets
+ * (503) while Homegrown's ~7 MB schedule succeeds. Jina POST `customHeader`
+ * forwards `Range`, so the Academy schedule is stitched from ~3.5 MB pieces
+ * and cached for a few minutes so the next age/conference does not download
+ * it again. Nothing here invents scores.
  */
 const JINA_READER_PREFIX = "https://r.jina.ai/";
 const PROXY_TIMEOUT_MS = 12_000;
@@ -29,7 +35,14 @@ function blockedPayload(text: string): boolean {
 
 export function isAthleteOneStandings(text: string): boolean {
   if (!text || text.length < 80 || blockedPayload(text)) return false;
-  return text.includes("data-team-id") && /<h3\b/i.test(text);
+  if (!/<h3\b/i.test(text)) return false;
+  // A published conference can have zero rows (Pre-ECNL Northern Cal). That
+  // shell still has the age heading and the event/division selects.
+  return (
+    text.includes("data-team-id") ||
+    /id="division-select"/i.test(text) ||
+    /id="event-select"/i.test(text)
+  );
 }
 
 export function isAthleteOneTeamInfo(text: string): boolean {
@@ -153,4 +166,173 @@ export async function fetchFirstText(
     if (text) return text;
   }
   return null;
+}
+
+/** Academy schedule is past the size a single Jina GET will return. */
+const RANGED_SCHEDULE_FILES = new Set(["mls-next-2-academy-division-26-27.json"]);
+const RANGE_CHUNK_BYTES = 3_500_000;
+const RANGE_TIMEOUT_MS = 55_000;
+const MLS_DOC_CACHE_MS = 4 * 60 * 1000;
+
+const mlsDocCache = new Map<string, { text: string; at: number }>();
+const mlsDocInflight = new Map<string, Promise<string | null>>();
+
+function isRangeError(bytes: Uint8Array): boolean {
+  if (bytes.length > 500) return false;
+  const text = new TextDecoder().decode(bytes);
+  return /upstream connect error|ParamValidationError|No URL provided|Forbidden/i.test(text);
+}
+
+async function fetchJinaRange(
+  canonical: string,
+  start: number,
+  end: number,
+): Promise<Uint8Array | null> {
+  const body = JSON.stringify({
+    url: canonical,
+    customHeader: { Range: `bytes=${start}-${end}` },
+  });
+  try {
+    const resp = await fetch(JINA_READER_PREFIX, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "text/plain, application/json, */*",
+        "X-Return-Format": "text",
+        "X-No-Cache": "true",
+      },
+      body,
+      cache: "no-store",
+      signal: AbortSignal.timeout(RANGE_TIMEOUT_MS),
+    });
+    if (resp.status === 429) {
+      await delay(1600);
+      const retry = await fetch(JINA_READER_PREFIX, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "text/plain, application/json, */*",
+          "X-Return-Format": "text",
+          "X-No-Cache": "true",
+        },
+        body,
+        cache: "no-store",
+        signal: AbortSignal.timeout(RANGE_TIMEOUT_MS),
+      });
+      if (!retry.ok) return null;
+      return new Uint8Array(await retry.arrayBuffer());
+    }
+    if (!resp.ok) return null;
+    return new Uint8Array(await resp.arrayBuffer());
+  } catch {
+    return null;
+  }
+}
+
+async function fetchJinaRangeRetry(
+  canonical: string,
+  start: number,
+  end: number,
+): Promise<Uint8Array | null> {
+  const first = await fetchJinaRange(canonical, start, end);
+  if (first && !isRangeError(first)) return first;
+  return fetchJinaRange(canonical, start, end);
+}
+
+/** Stitch a League Viewer JSON file that is too large for one Jina GET. */
+async function fetchMlsByRanges(canonical: string, tried: string[]): Promise<string | null> {
+  tried.push(`${JINA_READER_PREFIX} (ranged) ${canonical}`);
+  const parts: Uint8Array[] = [];
+  let start = 0;
+  for (let wave = 0; wave < 6; wave += 1) {
+    const spans = [0, 1, 2, 3].map((i) => start + i * RANGE_CHUNK_BYTES);
+    const batches = await Promise.all(
+      spans.map((offset) =>
+        fetchJinaRangeRetry(canonical, offset, offset + RANGE_CHUNK_BYTES - 1),
+      ),
+    );
+    let finished = false;
+    for (const part of batches) {
+      if (!part || part.length === 0 || isRangeError(part)) {
+        finished = true;
+        break;
+      }
+      parts.push(part);
+      if (part.length !== RANGE_CHUNK_BYTES) {
+        finished = true;
+        break;
+      }
+    }
+    if (finished) break;
+    start += 4 * RANGE_CHUNK_BYTES;
+  }
+  if (!parts.length) return null;
+  const total = parts.reduce((sum, part) => sum + part.length, 0);
+  const all = new Uint8Array(total);
+  let offset = 0;
+  for (const part of parts) {
+    all.set(part, offset);
+    offset += part.length;
+  }
+  const text = new TextDecoder().decode(all);
+  if (!isMlsJson(text)) return null;
+  try {
+    JSON.parse(text);
+  } catch {
+    return null;
+  }
+  return text;
+}
+
+/**
+ * League Viewer JSON that works on GitHub Pages.
+ * Dev proxy first, then one Jina GET, then ranged POST for the Academy schedule.
+ * A successful body is reused for a few minutes (the origin cache is ~4 min).
+ */
+export async function fetchMlsDocument(
+  canonical: string,
+  file: string,
+  kind: "standings" | "schedule",
+  tried: string[],
+): Promise<string | null> {
+  const cached = mlsDocCache.get(canonical);
+  if (cached && Date.now() - cached.at < MLS_DOC_CACHE_MS) {
+    tried.push(`${canonical} (session cache)`);
+    return cached.text;
+  }
+  const pending = mlsDocInflight.get(canonical);
+  if (pending) return pending;
+
+  const job = (async () => {
+    const attempts = mlsJsonAttempts(canonical, file, kind);
+    const proxy = attempts[0];
+    const useRanges = kind === "schedule" && RANGED_SCHEDULE_FILES.has(file);
+    if (useRanges && proxy) {
+      proxy.timeoutMs = 4_000;
+    }
+    const proxied = proxy ? await fetchFirstText([proxy], tried) : null;
+    if (proxied) return proxied;
+    if (useRanges) {
+      const ranged = await fetchMlsByRanges(canonical, tried);
+      if (ranged) return ranged;
+    }
+    const reader = attempts[1];
+    if (reader) {
+      const text = await fetchFirstText([reader], tried);
+      if (text) return text;
+    }
+    if (kind === "schedule" && !useRanges) {
+      return fetchMlsByRanges(canonical, tried);
+    }
+    return null;
+  })();
+
+  mlsDocInflight.set(canonical, job);
+  try {
+    const text = await job;
+    if (text) mlsDocCache.set(canonical, { text, at: Date.now() });
+    return text;
+  } finally {
+    mlsDocInflight.delete(canonical);
+  }
 }

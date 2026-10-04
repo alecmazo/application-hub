@@ -187,10 +187,14 @@ export function AgeTabs({
   );
 }
 
-export function AgeLegendBadges() {
+export function AgeLegendBadges({
+  showAlignment = true,
+}: {
+  showAlignment?: boolean;
+}) {
   return (
     <>
-      <Badge variant="outline">{AGE_LEGEND}</Badge>
+      {showAlignment && <Badge variant="outline">{AGE_LEGEND}</Badge>}
       <Badge variant="success">MLS NEXT U13 = 2014 BY</Badge>
       <Badge variant="accent">ECNL U13 = 2013/14 school year</Badge>
     </>

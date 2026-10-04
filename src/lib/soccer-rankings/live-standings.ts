@@ -27,7 +27,7 @@ import { applyLiveMlsMatches, type MlsNextOverlayMatch } from "./matches";
 import {
   athleteOneAttempts,
   fetchFirstText,
-  mlsJsonAttempts,
+  fetchMlsDocument,
 } from "./public-fetch";
 import type { AgeBand } from "./types";
 
@@ -106,6 +106,7 @@ const EVENT_ID_RE = /data-event-id="(\d+)"/;
 const NAME_RE = /data-team-id="\d+"[^>]*>\s*([^<]+?)\s*</i;
 
 const AGE_FROM_LABEL: Record<string, AgeBand | "U17" | "U18/19"> = {
+  BU12: "U12",
   BU13: "U13",
   BU14: "U14",
   BU15: "U15",
@@ -114,6 +115,36 @@ const AGE_FROM_LABEL: Record<string, AgeBand | "U17" | "U18/19"> = {
   "BU18/19": "U18/19",
   BU1819: "U18/19",
 };
+
+/**
+ * Pre-ECNL boys 2026-27. The standings page
+ * https://theecnl.com/sports/2023/8/8/Pre-ECNLB_0808231942.aspx
+ * sets data-org-id="22" and data-org-season-id="87" (not ECNL org 12 / season 81).
+ * Event ids come from that page's AthleteOne event-select. Division ids differ
+ * per event and are read from #division-select. Southern Cal publishes several
+ * flights in one response; Northern Cal's BU12 table is published and currently empty.
+ */
+export const PRE_ECNL_ORG_ID = 22;
+export const PRE_ECNL_SEASON_ID = 87;
+export const PRE_ECNL_CA_EVENTS = [
+  {
+    eventId: 4368,
+    conference: "Northern Cal",
+    tier: "pre-ecnl" as const,
+    seasonId: PRE_ECNL_SEASON_ID,
+    orgId: PRE_ECNL_ORG_ID,
+  },
+  {
+    eventId: 4370,
+    conference: "Southern Cal",
+    tier: "pre-ecnl" as const,
+    seasonId: PRE_ECNL_SEASON_ID,
+    orgId: PRE_ECNL_ORG_ID,
+  },
+];
+
+export const PRE_MLS_EMPTY_NOTE =
+  "Pre-MLS NEXT has no public standings feed. mlssoccer.com only embeds the League Viewer for Homegrown (mls-next-league-26-27) and Academy (mls-next-2-academy-division-26-27), and those seasons start at U13. Nothing was invented.";
 
 export type LiveRefreshPrioritize = {
   pathway: CaTablePathway;
@@ -140,6 +171,10 @@ export type LiveRefreshResult = {
 };
 
 export function tableScopeLabel(scope: LiveRefreshPrioritize): string {
+  if (scope.tier === "pre-mls") return "Pre-MLS NEXT · U12";
+  if (scope.tier === "pre-ecnl") {
+    return `Pre-ECNL · ${scope.conference} · U12`;
+  }
   if (scope.pathway === "mls-next") {
     const tier = scope.tier === "academy" ? "Academy" : "Homegrown";
     return `MLS NEXT ${tier} · ${scope.conference} · ${scope.ageBand}`;
@@ -205,7 +240,13 @@ export function parseDivisionMap(html: string): Partial<Record<AgeBand, number>>
     if (!/^\d+$/.test(match[1])) continue;
     const key = match[2].toUpperCase().replace(/\s+/g, "");
     const band = AGE_FROM_LABEL[key];
-    if (band === "U13" || band === "U14" || band === "U15" || band === "U16") {
+    if (
+      band === "U12" ||
+      band === "U13" ||
+      band === "U14" ||
+      band === "U15" ||
+      band === "U16"
+    ) {
       out[band] = Number(match[1]);
     }
   }
@@ -222,7 +263,13 @@ function cells(trHtml: string): string[] {
 
 export function parseAthleteOneStandings(
   html: string,
-  opts: { ageBand: string; conference: string; tier: "ecnl" | "ecnl-rl"; asOf: string },
+  opts: {
+    ageBand: string;
+    conference: string;
+    tier: "ecnl" | "ecnl-rl" | "pre-ecnl";
+    asOf: string;
+    orgId?: number;
+  },
 ): EcnlHydrateRow[] {
   const rows: EcnlHydrateRow[] = [];
   const trRe = new RegExp(TR_RE.source, "gi");
@@ -250,6 +297,12 @@ export function parseAthleteOneStandings(
     const teamId = TEAM_ID_RE.exec(chunk);
     const clubId = CLUB_ID_RE.exec(chunk);
     const eventId = EVENT_ID_RE.exec(chunk);
+    const leagueNote =
+      opts.tier === "pre-ecnl"
+        ? "Pre-ECNL"
+        : opts.tier === "ecnl-rl"
+          ? "ECNL Regional League"
+          : "ECNL";
     const record =
       gp > 0
         ? {
@@ -257,7 +310,7 @@ export function parseAthleteOneStandings(
             d: draws,
             l: losses,
             asOf: opts.asOf,
-            note: `ECNL ${opts.tier === "ecnl-rl" ? "Regional League " : ""}${opts.conference} 26/27 conference table (completed games only)`,
+            note: `${leagueNote} ${opts.conference} 26/27 conference table (completed games only)`,
           }
         : null;
     rows.push({
@@ -274,6 +327,7 @@ export function parseAthleteOneStandings(
       athleteOneTeamId: teamId ? Number(teamId[1]) : undefined,
       eventId: eventId ? Number(eventId[1]) : undefined,
       ...(clubId ? { athleteOneClubId: Number(clubId[1]) } : {}),
+      ...(opts.orgId != null ? { athleteOneOrgId: opts.orgId } : {}),
     } as EcnlHydrateRow);
   }
   for (const row of rows) row.conferenceSize = rows.length;
@@ -289,10 +343,69 @@ type MlsTeamLive = MlsHydrateRow & {
   birthYear?: number;
 };
 
+type TiebreakerEntry = { value?: string; description?: string };
+
+/** "17 goals / 4 matches" → 17. Per-match floats are not used. */
+function describedCount(entry: TiebreakerEntry | undefined): number | null {
+  const description = entry?.description ?? "";
+  const match = description.match(
+    /^(-?\d+)\s+(goals|gd|wins|losses|ties|matches|points)\b/i,
+  );
+  if (match) return Number(match[1]);
+  if (entry?.value != null && /^-?\d+$/.test(entry.value)) return Number(entry.value);
+  return null;
+}
+
+function recordsFromTiebreakers(
+  raw: unknown,
+  asOf: string,
+  label: string,
+): {
+  played: number;
+  gf: number;
+  ga: number;
+  w: number;
+  d: number;
+  l: number;
+  asOf: string;
+  note: string;
+} | null {
+  if (!raw || typeof raw !== "object") return null;
+  const tb = raw as Record<string, TiebreakerEntry>;
+  const played = describedCount(tb.matches_played);
+  const w = describedCount(tb.won_penalty_shootout);
+  const l = describedCount(tb.loss_penalty_shootout);
+  const d = describedCount(tb.tie_penalty_shootout);
+  const gf = describedCount(tb.goals_for_per_match);
+  const ga = describedCount(tb.goals_against_per_match);
+  if (
+    played == null ||
+    w == null ||
+    l == null ||
+    d == null ||
+    gf == null ||
+    ga == null ||
+    played <= 0
+  ) {
+    return null;
+  }
+  return {
+    played,
+    gf,
+    ga,
+    w,
+    d,
+    l,
+    asOf,
+    note: `${label} 26/27 standings (completed games only)`,
+  };
+}
+
 export function parseMlsStandingsFeed(
   data: Record<string, unknown>,
   division: "homegrown" | "academy",
   label: string,
+  asOf = "",
 ): Map<string, MlsTeamLive> {
   const teams = new Map<string, MlsTeamLive>();
   const season = data.competition_season as
@@ -308,6 +421,7 @@ export function parseMlsStandingsFeed(
       const org = (row.team as { organisation_id?: number; name?: string }) || {};
       if (org.organisation_id == null) continue;
       const key = `${org.organisation_id}|${age}|${division}`;
+      const fromTable = recordsFromTiebreakers(row.tiebreaker_values, asOf, label);
       teams.set(key, {
         orgId: Number(org.organisation_id),
         name: org.name || "Unknown",
@@ -318,10 +432,18 @@ export function parseMlsStandingsFeed(
         conference,
         conferenceRank: typeof row.position === "number" ? row.position : null,
         conferenceSize: rows.length,
-        record: null,
-        played: 0,
-        gf: 0,
-        ga: 0,
+        record: fromTable
+          ? {
+              w: fromTable.w,
+              d: fromTable.d,
+              l: fromTable.l,
+              asOf: fromTable.asOf,
+              note: fromTable.note,
+            }
+          : null,
+        played: fromTable?.played ?? 0,
+        gf: fromTable?.gf ?? 0,
+        ga: fromTable?.ga ?? 0,
       });
     }
   }
@@ -349,9 +471,9 @@ export function applyMlsScheduleRecords(
     const ao = (ev.away_organisation as { id?: number; name?: string }) || {};
     const hs = ev.home_score;
     const aws = ev.away_score;
-    if (!ev.completed || typeof hs !== "number" || typeof aws !== "number") {
-      continue;
-    }
+    const homeScore = typeof hs === "number" ? hs : null;
+    const awayScore = typeof aws === "number" ? aws : null;
+    const scored = Boolean(ev.completed) && homeScore != null && awayScore != null;
     if (opts?.onlyOrgIds) {
       const homeIn = ho.id != null && opts.onlyOrgIds.has(Number(ho.id));
       const awayIn = ao.id != null && opts.onlyOrgIds.has(Number(ao.id));
@@ -369,14 +491,15 @@ export function applyMlsScheduleRecords(
       homeName: ho.name ?? "Unknown",
       awayOrgId: ao.id ?? null,
       awayName: ao.name ?? "Unknown",
-      homeScore: hs,
-      awayScore: aws,
+      homeScore: scored ? homeScore : null,
+      awayScore: scored ? awayScore : null,
       event: `${label} 26/27`,
       kind: "league",
     });
+    if (!scored || homeScore == null || awayScore == null) continue;
     for (const [oid, gf, ga] of [
-      [ho.id, hs, aws],
-      [ao.id, aws, hs],
+      [ho.id, homeScore, awayScore],
+      [ao.id, awayScore, homeScore],
     ] as const) {
       if (oid == null) continue;
       const key = `${oid}|${age}|${division}`;
@@ -429,15 +552,26 @@ export function applyMlsScheduleRecords(
 }
 
 
-type EcnlFeed = (typeof ECNL_CA_EVENTS)[number] | (typeof ECNL_RL_CA_EVENTS)[number];
+type EcnlFeed =
+  | ((typeof ECNL_CA_EVENTS)[number] & { orgId?: number })
+  | ((typeof ECNL_RL_CA_EVENTS)[number] & { orgId?: number })
+  | (typeof PRE_ECNL_CA_EVENTS)[number];
 
 function ecnlDivisions(tier: string): Array<[AgeBand, number]> {
   return tier === "ecnl-rl" ? ECNL_RL_DIVISIONS : ECNL_DIVISIONS;
 }
 
 function ecnlFeedFor(scope: LiveRefreshPrioritize): EcnlFeed | null {
+  if (scope.tier === "pre-ecnl") {
+    const base = scope.conference.split(" · ")[0];
+    return PRE_ECNL_CA_EVENTS.find((feed) => feed.conference === base) ?? null;
+  }
   const pool = scope.tier === "ecnl-rl" ? ECNL_RL_CA_EVENTS : ECNL_CA_EVENTS;
   return pool.find((feed) => feed.conference === scope.conference) ?? null;
+}
+
+function feedOrgId(feed: EcnlFeed): number {
+  return "orgId" in feed && feed.orgId != null ? feed.orgId : ATHLETEONE_ORG_ID;
 }
 
 async function fetchAthleteOneTable(
@@ -445,8 +579,9 @@ async function fetchAthleteOneTable(
   seasonId: number,
   divisionId: number,
   tried: string[],
+  orgId = ATHLETEONE_ORG_ID,
 ): Promise<string | null> {
-  const path = `/api/Script/get-conference-standings/${eventId}/${ATHLETEONE_ORG_ID}/${seasonId}/${divisionId}/0`;
+  const path = `/api/Script/get-conference-standings/${eventId}/${orgId}/${seasonId}/${divisionId}/0`;
   return fetchFirstText(athleteOneAttempts(path, "standings"), tried);
 }
 
@@ -456,7 +591,9 @@ async function fetchEcnlAgeHtml(
   tried: string[],
   errors: string[],
 ): Promise<string | null> {
-  const divisions = ecnlDivisions(feed.tier);
+  const orgId = feedOrgId(feed);
+  const divisions =
+    feed.tier === "pre-ecnl" ? ([["U12", 0]] as Array<[AgeBand, number]>) : ecnlDivisions(feed.tier);
   const cachedId = divisionIdCache.get(feed.eventId)?.[age];
   if (cachedId) {
     const cachedHtml = await fetchAthleteOneTable(
@@ -464,6 +601,7 @@ async function fetchEcnlAgeHtml(
       feed.seasonId,
       cachedId,
       tried,
+      orgId,
     );
     if (cachedHtml && parseHeadingAge(cachedHtml) === age) return cachedHtml;
   }
@@ -473,6 +611,7 @@ async function fetchEcnlAgeHtml(
     feed.seasonId,
     bootstrapId,
     tried,
+    orgId,
   );
   if (!html0) {
     errors.push(
@@ -490,7 +629,13 @@ async function fetchEcnlAgeHtml(
     );
     return null;
   }
-  const html = await fetchAthleteOneTable(feed.eventId, feed.seasonId, divId, tried);
+  const html = await fetchAthleteOneTable(
+    feed.eventId,
+    feed.seasonId,
+    divId,
+    tried,
+    orgId,
+  );
   if (!html) {
     errors.push(
       `AthleteOne ${feed.conference} ${age} standings were blocked or empty.`,
@@ -520,13 +665,71 @@ async function ingestEcnlTable(
   }
   const html = await fetchEcnlAgeHtml(feed, scope.ageBand, tried, errors);
   if (!html) return [];
-  const tier = feed.tier === "ecnl-rl" ? "ecnl-rl" : "ecnl";
+  const tier =
+    feed.tier === "ecnl-rl" ? "ecnl-rl" : feed.tier === "pre-ecnl" ? "pre-ecnl" : "ecnl";
+  const orgId = feedOrgId(feed);
+  if (feed.tier === "pre-ecnl") {
+    return preEcnlRowsForConference(html, {
+      ageBand: scope.ageBand,
+      conference: scope.conference,
+      baseConference: feed.conference,
+      tier: "pre-ecnl",
+      asOf,
+      orgId,
+    });
+  }
   return parseAthleteOneStandings(html, {
     ageBand: scope.ageBand,
     conference: feed.conference,
     tier,
     asOf,
+    orgId,
   });
+}
+
+const FLIGHT_SPAN_RE =
+  /<span style="font-size:\s*48px;[^"]*">([^<]*)<\/span>/gi;
+
+function preEcnlRowsForConference(
+  html: string,
+  opts: {
+    ageBand: string;
+    conference: string;
+    baseConference: string;
+    tier: "pre-ecnl";
+    asOf: string;
+    orgId: number;
+  },
+): EcnlHydrateRow[] {
+  const spans = [...html.matchAll(FLIGHT_SPAN_RE)];
+  const labeled = spans.filter((span) => span[1].trim().length > 0);
+  if (!labeled.length) {
+    return parseAthleteOneStandings(html, {
+      ageBand: opts.ageBand,
+      conference: opts.baseConference,
+      tier: opts.tier,
+      asOf: opts.asOf,
+      orgId: opts.orgId,
+    }).filter((row) => row.conference === opts.conference);
+  }
+  const rows: EcnlHydrateRow[] = [];
+  for (let i = 0; i < labeled.length; i += 1) {
+    const label = labeled[i][1].trim();
+    const conference = `${opts.baseConference} · ${label}`;
+    if (conference !== opts.conference) continue;
+    const start = labeled[i].index ?? 0;
+    const end = labeled[i + 1]?.index ?? html.length;
+    rows.push(
+      ...parseAthleteOneStandings(html.slice(start, end), {
+        ageBand: opts.ageBand,
+        conference,
+        tier: opts.tier,
+        asOf: opts.asOf,
+        orgId: opts.orgId,
+      }),
+    );
+  }
+  return rows;
 }
 
 async function ingestMlsTable(
@@ -542,18 +745,47 @@ async function ingestMlsTable(
     return null;
   }
   const [standingsText, scheduleText] = await Promise.all([
-    fetchFirstText(mlsJsonAttempts(feed.standingsUrl, feed.file, "standings"), tried),
-    fetchFirstText(mlsJsonAttempts(feed.scheduleUrl, feed.file, "schedule"), tried),
+    fetchMlsDocument(feed.standingsUrl, feed.file, "standings", tried),
+    fetchMlsDocument(feed.scheduleUrl, feed.file, "schedule", tried),
   ]);
   if (!standingsText) {
     errors.push(`MLS NEXT ${feed.label} standings JSON was blocked or empty.`);
+    return null;
   }
   if (!scheduleText) {
-    errors.push(
-      `MLS NEXT ${feed.label} schedule JSON was blocked or empty. W–D–L were not changed.`,
+    const parsedOnly = (() => {
+      try {
+        return JSON.parse(standingsText) as Record<string, unknown>;
+      } catch {
+        return null;
+      }
+    })();
+    if (!parsedOnly) {
+      errors.push(`MLS NEXT ${feed.label} returned data that was not JSON.`);
+      return null;
+    }
+    const partial = parseMlsStandingsFeed(parsedOnly, feed.division, feed.label, asOf);
+    const teams = [...partial.values()].filter(
+      (row) => row.ageBand === scope.ageBand && row.conference === scope.conference,
     );
+    const withRecords = teams.filter((row) => (row.played ?? 0) > 0);
+    if (!teams.length) {
+      errors.push(
+        `MLS NEXT has no ${scope.conference} ${scope.ageBand} rows in the ${feed.label} standings. Nothing was invented.`,
+      );
+      return null;
+    }
+    if (!withRecords.length) {
+      errors.push(
+        `MLS NEXT ${feed.label} schedule JSON was blocked or empty, and this age has no published W–D–L on the standings feed. This table was not changed.`,
+      );
+      return null;
+    }
+    errors.push(
+      `Schedule JSON was blocked. W–D–L below are from the standings feed only, for sides that have published them.`,
+    );
+    return { teams, matches: [] };
   }
-  if (!standingsText || !scheduleText) return null;
   let standings: Record<string, unknown>;
   let schedule: Record<string, unknown>;
   try {
@@ -563,7 +795,7 @@ async function ingestMlsTable(
     errors.push(`MLS NEXT ${feed.label} returned data that was not JSON.`);
     return null;
   }
-  const parsed = parseMlsStandingsFeed(standings, feed.division, feed.label);
+  const parsed = parseMlsStandingsFeed(standings, feed.division, feed.label, asOf);
   const teams = new Map<string, MlsTeamLive>();
   for (const [key, row] of parsed) {
     if (row.ageBand === scope.ageBand && row.conference === scope.conference) {
@@ -655,7 +887,23 @@ export async function refreshLiveStandings(opts?: {
       "Refresh applies to the table you are viewing. Open a CA table first. Nothing was invented.",
     );
   }
-  if (scope.ageBand === "U12" || !scope.conference) {
+  if (scope.tier === "pre-mls" || (scope.pathway === "mls-next" && scope.ageBand === "U12")) {
+    return {
+      ...emptyResult(scopeLabel, asOf, tried, errors, PRE_MLS_EMPTY_NOTE),
+      ok: true,
+      unchanged: true,
+    };
+  }
+  if (scope.ageBand === "U12" && scope.tier !== "pre-ecnl") {
+    return emptyResult(
+      scopeLabel,
+      asOf,
+      tried,
+      errors,
+      `${scopeLabel} is not a published California table. Nothing was invented.`,
+    );
+  }
+  if (!scope.conference) {
     return emptyResult(
       scopeLabel,
       asOf,
@@ -675,7 +923,40 @@ export async function refreshLiveStandings(opts?: {
 
   if (scope.pathway === "ecnl") {
     const rows = await ingestEcnlTable(scope, asOf, tried, errors);
+    const tier =
+      scope.tier === "ecnl-rl" ? "ecnl-rl" : scope.tier === "pre-ecnl" ? "pre-ecnl" : "ecnl";
     if (!rows.length) {
+      if (scope.tier === "pre-ecnl" && errors.length === 0) {
+        applyStandingsOverlay({
+          ecnl: {
+            asOf,
+            source: `Pre-ECNL AthleteOne get-conference-standings (live, ${scopeLabel})`,
+            teams: [],
+            replaceScope: {
+              conference: scope.conference,
+              ageBand: scope.ageBand,
+              tier,
+            },
+          },
+        });
+        opts?.onPartial?.();
+        return {
+          asOf,
+          scopeLabel,
+          ok: true,
+          unchanged: before === caTableFingerprint(fingerprintOpts),
+          mlsTeams: 0,
+          mlsMatches: 0,
+          ecnlTeams: 0,
+          ecnlScheduleTeams: 0,
+          ecnlScheduleMatches: 0,
+          mlsSource: "cache",
+          ecnlSource: "live",
+          endpointsTried: tried,
+          errors,
+          note: `Updated ${scopeLabel}. Data updated ${asOf}. No published rows in this conference yet. Nothing invented.`,
+        };
+      }
       const why =
         errors[0] ??
         `Could not refresh ${scopeLabel}. Live AthleteOne standings were blocked or empty.`;
@@ -687,11 +968,10 @@ export async function refreshLiveStandings(opts?: {
         `${why} This table was not changed. Nothing was invented.`,
       );
     }
-    const tier = scope.tier === "ecnl-rl" ? "ecnl-rl" : "ecnl";
     applyStandingsOverlay({
       ecnl: {
         asOf,
-        source: `ECNL AthleteOne get-conference-standings (live, ${scopeLabel})`,
+        source: `${tier === "pre-ecnl" ? "Pre-ECNL" : "ECNL"} AthleteOne get-conference-standings (live, ${scopeLabel})`,
         teams: rows,
         replaceScope: {
           conference: scope.conference,

@@ -25,6 +25,6 @@ export const ECNL_SCHOOL_YEAR: Record<AgeBand, string> = {
 };
 
 export function ageTabHint(band: AgeBand): string {
-  if (band === "U12") return "GotSport / school year · no MLS NEXT Homegrown";
+  if (band === "U12") return "Pre-MLS NEXT · Pre-ECNL BU12";
   return `MLS NEXT ${MLS_NEXT_BAND_BIRTH_YEAR[band]} BY · ECNL ${ECNL_SCHOOL_YEAR[band]}`;
 }

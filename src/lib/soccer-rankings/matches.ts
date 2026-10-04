@@ -1,6 +1,7 @@
 import meta from "@/data/soccer-rankings/matches-meta.json";
 import mlsNextPublic from "@/data/soccer-rankings/mls-next-public.json";
 import { listMlsPublicTeams } from "./league-tables";
+import { fetchMlsDocument } from "./public-fetch";
 import type {
   CompactMatch,
   MatchLoadResult,
@@ -587,65 +588,55 @@ async function fetchLiveMlsNext(
   const feeds = MLS_NEXT_SCHEDULE_URLS.filter(
     (f) => !division || f.division === division,
   );
-  const urls: Array<{ url: string; division: "homegrown" | "academy" }> = [];
-  for (const f of feeds) {
-    urls.push(
-      {
-        url: `/mls-next-api/data/schedule/${f.url.split("/").pop()}`,
-        division: f.division,
-      },
-      { url: f.url, division: f.division },
-      ...corsProxied(f.url).map((url) => ({ url, division: f.division })),
-    );
-  }
-  for (const { url, division: feedDivision } of urls) {
-    tried.push(url);
+  for (const feed of feeds) {
+    const file = feed.url.split("/").pop() ?? "";
+    const text = await fetchMlsDocument(feed.url, file, "schedule", tried);
+    if (!text) continue;
+    let data: unknown;
     try {
-      const resp = await fetch(url, { headers: { Accept: "application/json" } });
-      if (!resp.ok) continue;
-      const data: unknown = await resp.json();
-      const events =
-        data && typeof data === "object" && Array.isArray((data as { events?: unknown[] }).events)
-          ? ((data as { events: Record<string, unknown>[] }).events)
-          : [];
-      const rows: CompactMatch[] = [];
-      const label =
-        feedDivision === "homegrown"
-          ? "MLS NEXT Homegrown 26/27"
-          : "MLS NEXT Academy 26/27";
-      for (const ev of events) {
-        const ho = (ev.home_organisation as { id?: number; name?: string }) || {};
-        const ao = (ev.away_organisation as { id?: number; name?: string }) || {};
-        if (ho.id !== orgId && ao.id !== orgId) continue;
-        const age = String(ev.home_squad_name ?? ev.away_squad_name ?? "");
-        if (!age.toUpperCase().includes(ageBand)) continue;
-        const hs = ev.home_score;
-        const aws = ev.away_score;
-        if (!ev.completed || typeof hs !== "number" || typeof aws !== "number") {
-          continue;
-        }
-        rows.push({
-          id: Number(ev.id) || 0,
-          date: typeof ev.start_time === "string" ? ev.start_time.slice(0, 10) : null,
-          event: label,
-          eventId: null,
-          competition: label,
-          kind: "league",
-          homeId: ho.id ?? null,
-          homeName: String(ho.name ?? "Unknown"),
-          awayId: ao.id ?? null,
-          awayName: String(ao.name ?? "Unknown"),
-          homeScore: hs,
-          awayScore: aws,
-          winnerId: null,
-        });
-      }
-      if (rows.length) {
-        rows.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
-        return rows;
-      }
+      data = JSON.parse(text);
     } catch {
-      /* next URL */
+      continue;
+    }
+    const events =
+      data && typeof data === "object" && Array.isArray((data as { events?: unknown[] }).events)
+        ? (data as { events: Record<string, unknown>[] }).events
+        : [];
+    const rows: CompactMatch[] = [];
+    const label =
+      feed.division === "homegrown"
+        ? "MLS NEXT Homegrown 26/27"
+        : "MLS NEXT Academy 26/27";
+    for (const ev of events) {
+      const ho = (ev.home_organisation as { id?: number; name?: string }) || {};
+      const ao = (ev.away_organisation as { id?: number; name?: string }) || {};
+      if (ho.id !== orgId && ao.id !== orgId) continue;
+      const age = String(ev.home_squad_name ?? ev.away_squad_name ?? "");
+      if (!age.toUpperCase().includes(ageBand)) continue;
+      const hs = ev.home_score;
+      const aws = ev.away_score;
+      const homeScore = typeof hs === "number" ? hs : null;
+      const awayScore = typeof aws === "number" ? aws : null;
+      const scored = Boolean(ev.completed) && homeScore != null && awayScore != null;
+      rows.push({
+        id: Number(ev.id) || 0,
+        date: typeof ev.start_time === "string" ? ev.start_time.slice(0, 10) : null,
+        event: label,
+        eventId: null,
+        competition: label,
+        kind: "league",
+        homeId: ho.id ?? null,
+        homeName: String(ho.name ?? "Unknown"),
+        awayId: ao.id ?? null,
+        awayName: String(ao.name ?? "Unknown"),
+        homeScore: scored ? homeScore : null,
+        awayScore: scored ? awayScore : null,
+        winnerId: null,
+      });
+    }
+    if (rows.length) {
+      rows.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+      return rows;
     }
   }
   return null;

@@ -25,7 +25,7 @@ export type CaTablePathway = (typeof CA_TABLE_PATHWAYS)[number];
 
 export type MlsTableDivision = "homegrown" | "academy";
 export type EcnlTableTier = "ecnl" | "ecnl-rl";
-export type CaTableTier = MlsTableDivision | EcnlTableTier;
+export type CaTableTier = MlsTableDivision | EcnlTableTier | "pre-mls" | "pre-ecnl";
 
 export const MLS_CA_CONFERENCES: Record<MlsTableDivision, readonly string[]> = {
   homegrown: ["Northwest", "Southwest", "West (Pro Player Pathway)"],
@@ -35,6 +35,19 @@ export const MLS_CA_CONFERENCES: Record<MlsTableDivision, readonly string[]> = {
     "Southern California",
   ],
 };
+
+/**
+ * Pre-ECNL boys U12. Northern Cal is one (currently empty) AthleteOne table.
+ * Southern Cal publishes four flights in the same response; each flight is its
+ * own table so Pts/GD are not mixed across flights.
+ */
+export const PRE_ECNL_CA_CONFERENCES = [
+  "Northern Cal",
+  "Southern Cal · Tier I Blue",
+  "Southern Cal · Tier I Gold",
+  "Southern Cal · Tier II Gold",
+  "Southern Cal · Tier II Blue",
+] as const;
 
 /** Northern Cal first; Far West / Southwest treated as CA-relevant. */
 export const ECNL_CA_CONFERENCES: Record<EcnlTableTier, readonly string[]> = {
@@ -73,6 +86,7 @@ type EcnlPublicTeam = {
   record?: { w: number; d: number; l: number; asOf?: string; note?: string } | null;
   athleteOneTeamId?: number;
   athleteOneClubId?: number;
+  athleteOneOrgId?: number;
   eventId?: number;
 };
 
@@ -256,6 +270,7 @@ export type LeagueTableRow = {
   orgId?: number;
   athleteOneTeamId?: number;
   athleteOneClubId?: number;
+  athleteOneOrgId?: number;
   eventId?: number;
   asOf?: string;
   note?: string;
@@ -313,7 +328,16 @@ export function ecnlTierLabel(tier: EcnlTableTier): string {
   return tier === "ecnl-rl" ? "ECNL-RL · Tier 2" : "ECNL · Tier 1";
 }
 
-export function defaultCaTier(pathway: CaTablePathway): CaTableTier {
+export function caTierLabel(tier: CaTableTier): string {
+  if (tier === "homegrown") return mlsTierLabel("homegrown");
+  if (tier === "academy") return mlsTierLabel("academy");
+  if (tier === "pre-mls") return "Pre-MLS NEXT";
+  if (tier === "pre-ecnl") return "Pre-ECNL";
+  return ecnlTierLabel(tier);
+}
+
+export function defaultCaTier(pathway: CaTablePathway, ageBand?: AgeBand): CaTableTier {
+  if (ageBand === "U12") return pathway === "mls-next" ? "pre-mls" : "pre-ecnl";
   return pathway === "mls-next" ? "homegrown" : "ecnl";
 }
 
@@ -321,6 +345,8 @@ export function defaultCaConference(
   pathway: CaTablePathway,
   tier: CaTableTier,
 ): string {
+  if (tier === "pre-mls") return "";
+  if (tier === "pre-ecnl") return PRE_ECNL_CA_CONFERENCES[0] ?? "";
   if (pathway === "mls-next") {
     const list = MLS_CA_CONFERENCES[tier as MlsTableDivision] ?? [];
     return list[0] ?? "";
@@ -334,7 +360,10 @@ export function caConferencesFor(
   tier: CaTableTier,
   ageBand: AgeBand,
 ): string[] {
-  if (ageBand === "U12") return [];
+  if (ageBand === "U12") {
+    if (pathway === "ecnl" && tier === "pre-ecnl") return [...PRE_ECNL_CA_CONFERENCES];
+    return [];
+  }
   if (pathway === "mls-next") {
     const allowed = new Set(MLS_CA_CONFERENCES[tier as MlsTableDivision] ?? []);
     const found = new Set<string>();
@@ -374,6 +403,7 @@ function toRow(args: {
   orgId?: number;
   athleteOneTeamId?: number;
   athleteOneClubId?: number;
+  athleteOneOrgId?: number;
   eventId?: number;
   asOf?: string;
   note?: string;
@@ -412,7 +442,8 @@ export function loadCaLeagueTable(opts: {
   conference: string;
   ageBand: AgeBand;
 }): LeagueTableRow[] {
-  if (opts.ageBand === "U12" || !opts.conference) return [];
+  if (!opts.conference) return [];
+  if (opts.ageBand === "U12" && opts.tier !== "pre-ecnl") return [];
   if (opts.pathway === "mls-next") {
     const mapped = (mlsFile().teams ?? [])
       .filter(
@@ -478,11 +509,12 @@ export function loadCaLeagueTable(opts: {
         conferenceSize: row.conferenceSize ?? 0,
         pathway: "ecnl",
         tier: opts.tier,
-        tierLabel: ecnlTierLabel(opts.tier as EcnlTableTier),
-        ageBand: row.ageBand,
-        athleteOneTeamId: row.athleteOneTeamId,
-        athleteOneClubId: row.athleteOneClubId,
-        eventId: row.eventId,
+          tierLabel: caTierLabel(opts.tier),
+          ageBand: row.ageBand,
+          athleteOneTeamId: row.athleteOneTeamId,
+          athleteOneClubId: row.athleteOneClubId,
+          athleteOneOrgId: row.athleteOneOrgId,
+          eventId: row.eventId,
         asOf: rec?.asOf ?? ecnlFile().asOf,
         note: rec?.note,
       });
@@ -572,6 +604,7 @@ export type EcnlHydrateRow = {
   ga?: number;
   record?: { w: number; d: number; l: number; asOf?: string; note?: string } | null;
   athleteOneClubId?: number;
+  athleteOneOrgId?: number;
   eventId?: number;
 };
 
