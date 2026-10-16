@@ -143,7 +143,12 @@ function MatchGroup({
                 <p className="truncate text-sm font-medium">vs {opp.name}</p>
               </div>
               <div className="flex shrink-0 items-center gap-2">
-                <span className="font-mono-num text-sm font-semibold">
+                <span
+                  className={cn(
+                    "rounded-md px-1.5 py-0.5 font-mono-num text-sm font-semibold",
+                    scored ? "bg-muted text-foreground" : "text-muted-foreground",
+                  )}
+                >
                   {scored ? `${m.homeScore}–${m.awayScore}` : "N/A"}
                 </span>
                 {result && (

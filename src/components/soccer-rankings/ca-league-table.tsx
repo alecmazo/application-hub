@@ -136,7 +136,7 @@ export function CaLeagueTables() {
 
   return (
     <section className="min-w-0 max-w-full space-y-4" aria-label="California league tables">
-      <div className="flex flex-col gap-3 rounded-3xl border border-border bg-card/70 p-4">
+      <div className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-3 shadow-sm sm:p-4">
         <div
           className="inline-flex flex-wrap rounded-lg border border-border bg-card p-0.5"
           role="radiogroup"
@@ -163,7 +163,7 @@ export function CaLeagueTables() {
             id="ca-table-tier"
             value={tier}
             onChange={(e) => chooseTier(e.target.value as CaTableTier)}
-            className="h-9 rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground"
+            className="h-9 rounded-lg border border-border bg-card px-2.5 text-xs font-medium text-foreground shadow-sm"
           >
             {tiers.map((item) => (
               <option key={item.key} value={item.key}>
@@ -178,7 +178,7 @@ export function CaLeagueTables() {
             id="ca-table-conference"
             value={conference}
             onChange={(e) => setConference(e.target.value)}
-            className="h-9 w-full min-w-0 max-w-full rounded-md border border-border bg-card px-2.5 text-xs font-medium text-foreground sm:w-auto sm:min-w-[12rem]"
+            className="h-9 w-full min-w-0 max-w-full rounded-lg border border-border bg-card px-2.5 text-xs font-medium text-foreground shadow-sm sm:w-auto sm:min-w-[12rem]"
           >
             {conferences.length === 0 ? (
               <option value="">No CA table at this age</option>
@@ -191,7 +191,7 @@ export function CaLeagueTables() {
             )}
           </select>
           {asOf && (
-            <p className="font-mono text-[11px] text-muted-foreground">
+            <p className="rounded-full bg-muted px-2.5 py-1 font-mono text-[10px] leading-none text-muted-foreground">
               Data updated {asOf}
             </p>
           )}
@@ -208,10 +208,12 @@ export function CaLeagueTables() {
             title={detailsOpen ? "Hide table notes" : "Show table notes"}
             onClick={() => setDetailsOpen((open) => !open)}
             className={cn(
-              "inline-flex size-7 shrink-0 items-center justify-center rounded-full text-base font-semibold leading-none",
+              "inline-flex size-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold leading-none shadow-sm",
               standingsFailed && !refreshingStandings
-                ? "text-destructive"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                ? "border-destructive/40 bg-destructive/10 text-destructive"
+                : detailsOpen
+                  ? "border-primary/40 bg-primary/10 text-primary"
+                  : "border-border bg-muted text-foreground hover:border-primary/30",
             )}
           >
             *
@@ -276,7 +278,7 @@ export function CaLeagueTables() {
             </p>
             <Badge variant="outline">Pos = Pts then GD</Badge>
           </div>
-          <div className="min-w-0 max-w-full overflow-x-auto overscroll-x-contain rounded-2xl border border-border bg-card">
+          <div className="min-w-0 max-w-full overflow-x-auto overscroll-x-contain rounded-2xl border border-border bg-card shadow-sm">
             <table className="w-full table-fixed border-collapse text-left text-[11px] sm:text-sm">
               <colgroup>
                 <col className="w-[7.5%]" />
@@ -291,7 +293,7 @@ export function CaLeagueTables() {
                 <col className="w-[10.5%]" />
                 <col className="w-[10.5%]" />
               </colgroup>
-              <thead className="border-b border-border bg-bg-elevated/90 text-[10px] uppercase text-muted-foreground sm:text-xs sm:tracking-wider">
+              <thead className="border-b border-border bg-primary/5 text-[10px] uppercase text-muted-foreground sm:text-xs sm:tracking-wider">
                 <tr>
                   <Th align="right">Pos</Th>
                   <Th>Team</Th>
@@ -309,13 +311,14 @@ export function CaLeagueTables() {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row) => {
+                {rows.map((row, index) => {
                   const selected = caTableFocus?.key === row.key;
                   return (
                     <TableRows
                       key={row.key}
                       row={row}
                       selected={selected}
+                      striped={index % 2 === 1}
                       onOpen={onOpenRow}
                     />
                   );
@@ -332,10 +335,12 @@ export function CaLeagueTables() {
 function TableRows({
   row,
   selected,
+  striped,
   onOpen,
 }: {
   row: LeagueTableRow;
   selected: boolean;
+  striped: boolean;
   onOpen: (row: LeagueTableRow) => void;
 }) {
   return (
@@ -346,7 +351,12 @@ function TableRows({
         aria-expanded={selected}
         aria-label={`${row.pos}. ${row.name}`}
         className={cn(
-          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-muted/30 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+          "cursor-pointer border-b border-border/70 last:border-0 hover:bg-primary/5 focus-visible:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+          striped &&
+            !selected &&
+            !row.homeHighlight &&
+            !row.marinHighlight &&
+            "bg-muted/50",
           row.homeHighlight && "border-l-2 border-l-success bg-success/15",
           row.marinHighlight &&
             !row.homeHighlight &&
@@ -380,7 +390,9 @@ function TableRows({
         <Num>{row.l}</Num>
         <Num>{row.gf}</Num>
         <Num>{row.ga}</Num>
-        <Num>{row.gd > 0 ? `+${row.gd}` : row.gd}</Num>
+        <Num tone={row.gd > 0 ? "up" : row.gd < 0 ? "down" : undefined}>
+          {row.gd > 0 ? `+${row.gd}` : row.gd}
+        </Num>
         <Num strong>{row.pts}</Num>
         <Num>{formatPpg(row.ppg)}</Num>
       </tr>
@@ -452,17 +464,21 @@ function Th({
 function Num({
   children,
   strong,
+  tone,
 }: {
   children: ReactNode;
   strong?: boolean;
+  tone?: "up" | "down";
 }) {
   return (
     <td
       className={cn(
         "overflow-hidden px-px py-2 text-right font-mono-num whitespace-nowrap sm:px-2 sm:py-2.5",
         strong
-          ? "text-sm font-bold leading-none text-foreground sm:text-lg"
+          ? "bg-primary/8 text-sm font-bold leading-none text-primary sm:text-lg"
           : "text-[11px] font-medium text-muted-foreground sm:text-sm",
+        tone === "up" && "font-semibold text-primary",
+        tone === "down" && "font-semibold text-destructive",
       )}
     >
       {children}

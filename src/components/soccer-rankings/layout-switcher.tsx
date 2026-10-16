@@ -16,7 +16,7 @@ export function LayoutSwitcher({
 }) {
   return (
     <div className="inline-flex items-center gap-2">
-      <span className="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+      <span className="hidden items-center gap-1 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground sm:inline-flex">
         <LayoutTemplate className="size-3.5" />
         Layout
       </span>
