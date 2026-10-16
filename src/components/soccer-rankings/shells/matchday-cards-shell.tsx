@@ -99,8 +99,8 @@ function CardsTopNav({
   onChangeShell: (next: UiShell) => void;
 }) {
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-border bg-card px-4 sm:px-6">
-      <div className="flex min-w-0 items-center gap-6">
+    <header className="flex min-h-14 shrink-0 flex-wrap items-center justify-between gap-x-3 gap-y-1 border-b border-border bg-card/95 px-3 py-1.5 shadow-sm sm:h-14 sm:flex-nowrap sm:px-6 sm:py-0">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-6">
         <a href={hubHomeHref()} className="flex items-center gap-2.5">
           <RankingsBrandMark />
           <span className="leading-tight">
@@ -153,7 +153,7 @@ function TopLink({
       type="button"
       onClick={onClick}
       className={cn(
-        "relative h-14 px-3 text-sm font-medium",
+        "relative h-10 px-2.5 text-sm font-medium sm:h-14 sm:px-3",
         active ? "text-primary" : "text-muted-foreground hover:text-foreground",
       )}
     >
@@ -317,7 +317,7 @@ function CardsRankingsMain() {
                 tabIndex={0}
                 aria-label={`Open ${t.name}`}
                 className={cn(
-                  "flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-card px-3 py-3 text-left shadow-sm transition-colors hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4",
+                  "flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-card px-3 py-3 text-left shadow-sm transition-[border-color,box-shadow,transform] hover:border-primary/30 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:hover:-translate-y-px sm:px-4",
                   isPinnedHomeTeam(t.id, pinnedId) && "border-primary/35 bg-primary/5",
                   selected?.id === t.id && "border-primary/50",
                 )}

@@ -115,7 +115,18 @@
   --rankings-row-weight: 500;
   color: var(--color-foreground);
   color-scheme: light;
-  background: var(--color-bg);
+  background-color: #f3f6f4;
+  background-image:
+    radial-gradient(
+      720px 280px at 0% -8%,
+      color-mix(in oklab, #1b7a3a 9%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      560px 240px at 100% 0%,
+      color-mix(in oklab, #1b7a3a 6%, transparent),
+      transparent 58%
+    );
   font-family: var(--font-sans);
 }
 
@@ -128,8 +139,10 @@
 }
 
 .rankings-kicker {
-  font-size: var(--rankings-kicker-size);
-  font-weight: var(--rankings-kicker-weight);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-muted-foreground);
 }
 
