@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T13:46-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 1:46 PM PT",
+  "lastUpdated": "2026-11-03T13:52-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 1:52 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -16729,12 +16729,53 @@
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
         },
         {
+          "time_pt": "10:00 AM",
+          "ed_turnout": 62172,
+          "by_party": null,
+          "scope": "Dallas County only",
+          "source": "Dallas County live ED reporting via Andrew Miller (@AndrewMillerSSC), noon CT",
+          "source_url": "https://x.com/AndrewMillerSSC/status/2117691942834417958"
+        },
+        {
           "time_pt": "11:00 AM",
           "ed_turnout": 50878,
           "by_party": null,
           "scope": "Travis County only",
           "source": "Travis County Elections unofficial check-ins per hour, cumulative through 1:00 PM CT",
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "11:02 AM",
+          "ed_turnout": 30840,
+          "by_party": null,
+          "scope": "Montgomery County only",
+          "source": "Montgomery County ED check-ins via @Freespeech212, 1:02 PM CT",
+          "source_url": "https://x.com/Freespeech212/status/2117694469050978437"
+        },
+        {
+          "time_pt": "11:23 AM",
+          "ed_turnout": 32256,
+          "by_party": null,
+          "scope": "Montgomery County only",
+          "source": "Montgomery County ED check-ins via @Freespeech212, 1:23 PM CT",
+          "source_url": "https://x.com/Freespeech212/status/2117700679133495382"
+        },
+        {
+          "time_pt": "11:30 AM",
+          "ed_turnout": 80238,
+          "by_party": null,
+          "scope": "Dallas County only",
+          "source": "Dallas County live ED reporting via Andrew Miller (@AndrewMillerSSC), 1:30 PM CT",
+          "source_url": "https://x.com/AndrewMillerSSC/status/2117722158759915889"
+        },
+        {
+          "time_pt": "11:46 AM",
+          "ed_turnout": 20000,
+          "by_party": null,
+          "scope": "El Paso County only",
+          "source": "El Paso County: 'more than 20,000' ED voters, via @Elhiu (posted 1:46 PM MT)",
+          "source_url": "https://x.com/Elhiu/status/2117705074554364115",
+          "approx": true
         },
         {
           "time_pt": "12:00 PM",
@@ -16745,19 +16786,36 @@
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
         },
         {
+          "time_pt": "12:15 PM",
+          "ed_turnout": 90737,
+          "by_party": null,
+          "scope": "Dallas County only",
+          "source": "Dallas County live ED reporting via Andrew Miller (@AndrewMillerSSC), 2:15 PM CT",
+          "source_url": "https://x.com/AndrewMillerSSC/status/2117726138105782278"
+        },
+        {
+          "time_pt": "12:36 PM",
+          "ed_turnout": 37609,
+          "by_party": null,
+          "scope": "Montgomery County only",
+          "source": "Montgomery County ED check-ins via @Freespeech212, 2:36 PM CT",
+          "source_url": "https://x.com/Freespeech212/status/2117718732021584181"
+        },
+        {
+          "time_pt": "12:39 PM",
+          "ed_turnout": 25000,
+          "by_party": null,
+          "scope": "El Paso County only",
+          "source": "El Paso County: 'more than 25,000' ED voters, via @Elhiu (posted 2:39 PM MT)",
+          "source_url": "https://x.com/Elhiu/status/2117718234694619511",
+          "approx": true
+        },
+        {
           "time_pt": "12:50 PM",
           "ed_turnout": 65236,
           "by_party": null,
           "scope": "Travis County only",
           "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 2:50 PM CT",
-          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html"
-        },
-        {
-          "time_pt": "1:12 PM",
-          "ed_turnout": 68161,
-          "by_party": null,
-          "scope": "Travis County only",
-          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 3:12 PM CT",
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html"
         },
         {
@@ -16768,6 +16826,31 @@
           "scope": "Harris County only",
           "source": "Harris County Elections (@HarrisVotes): 184K+ in-person Election Day votes as of 3 PM CT",
           "source_url": "https://x.com/HarrisVotes/status/2117725621103005938"
+        },
+        {
+          "time_pt": "1:12 PM",
+          "ed_turnout": 68161,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 3:12 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html"
+        },
+        {
+          "time_pt": "1:12 PM",
+          "ed_turnout": 40472,
+          "by_party": null,
+          "scope": "Montgomery County only",
+          "source": "Montgomery County ED check-ins via @Freespeech212, 3:12 PM CT",
+          "source_url": "https://x.com/Freespeech212/status/2117727561417412729"
+        },
+        {
+          "time_pt": "1:27 PM",
+          "ed_turnout": 30000,
+          "by_party": null,
+          "scope": "El Paso County only",
+          "source": "El Paso County: 'more than 30,000' ED voters, via @Elhiu (posted 3:27 PM MT)",
+          "source_url": "https://x.com/Elhiu/status/2117730422566404413",
+          "approx": true
         },
         {
           "time_pt": "1:38 PM",
