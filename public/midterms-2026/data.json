@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T13:42-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 1:42 PM PT",
+  "lastUpdated": "2026-11-03T13:46-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 1:46 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -7161,7 +7161,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 71880,
+      "election_day_turnout": 78502,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7683,11 +7683,23 @@
           "scope": "statewide",
           "source": "NVSOS VIVID via Data Point Research (as of 1:00 PM PST)",
           "source_url": "https://data-point-research.com/"
+        },
+        {
+          "time_pt": "1:30 PM",
+          "ed_turnout": 78502,
+          "by_party": {
+            "R": 31565,
+            "D": 22013,
+            "O": 24924
+          },
+          "scope": "statewide",
+          "source": "NVSOS VIVID via Data Point Research (as of 1:30 PM PST)",
+          "source_url": "https://data-point-research.com/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "1:00 PM",
-      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 1:00 PM PST)",
+      "election_day_turnout_as_of": "1:30 PM PT",
+      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 1:30 PM PST)",
       "election_day_turnout_url": "https://data-point-research.com/"
     },
     {
@@ -16765,6 +16777,14 @@
           "scope": "Bexar County only",
           "source": "Bexar County officials via KSAT: more than 82K in-person Election Day votes (posted 3:38 PM CT)",
           "source_url": "https://x.com/ksatnews/status/2117733209295265890"
+        },
+        {
+          "time_pt": "1:39 PM",
+          "ed_turnout": 72016,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 3:39 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html"
         }
       ],
       "election_day_turnout_scope": "Harris County only",
@@ -16806,23 +16826,23 @@
       "county_turnout_2026": {
         "as_of": "mixed (see note)",
         "label": "Election Day in-person ballots (selected large counties)",
-        "source": "Bexar County Elections via Express-News; Harris County Elections via ABC13; Travis County Elections BallotTypeTurnout",
-        "url": "https://abc13.com/live-updates/texas-midterm-elections-2026-election-day-arrives-record-breaking-turnout-during-early-voting-period/19981970/entry/20012216/",
-        "note": "Bexar 29,959 by ~10 AM CT (Express-News). Harris more than 100,000 as of 11 a.m. CT (ABC13). No statewide ED figure published. Travis Election Day ballots 68,161 as of 3:12 PM CT (BallotTypeTurnout).",
+        "source": "Bexar County Elections via KSAT; Harris County Elections via @HarrisVotes; Travis County Elections BallotTypeTurnout",
+        "url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html",
+        "note": "Bexar more than 82K in-person Election Day votes (KSAT, posted 3:38 PM CT). Harris 184K+ in-person Election Day votes as of 3 PM CT (@HarrisVotes). No statewide ED figure published. Travis Election Day ballots 72,016 as of 3:39 PM CT (BallotTypeTurnout).",
         "counties": {
           "Bexar": {
-            "total": 29959,
-            "ed": 29959,
+            "total": 82000,
+            "ed": 82000,
             "partial": true
           },
           "Harris": {
-            "total": 100000,
-            "ed": 100000,
+            "total": 184000,
+            "ed": 184000,
             "partial": true
           },
           "Travis": {
-            "total": 68161,
-            "ed": 68161,
+            "total": 72016,
+            "ed": 72016,
             "partial": true
           }
         }
