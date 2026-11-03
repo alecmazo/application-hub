@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T12:47-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:47 PM PT",
+  "lastUpdated": "2026-11-03T12:52-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:52 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -16600,12 +16600,45 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
+          "time_pt": "6:00 AM",
+          "ed_turnout": 9719,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 8:00 AM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "7:00 AM",
+          "ed_turnout": 18048,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 9:00 AM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
           "time_pt": "8:00 AM",
           "ed_turnout": 29959,
           "by_party": null,
           "scope": "Bexar County only",
           "source": "Bexar County Elections Administrator Michele Carew, by 10 AM CT, via San Antonio Express-News",
           "source_url": "https://www.expressnews.com/politics/"
+        },
+        {
+          "time_pt": "8:00 AM",
+          "ed_turnout": 26276,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 10:00 AM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "8:30 AM",
+          "ed_turnout": 88000,
+          "approx": "more than 88,000",
+          "by_party": null,
+          "scope": "Harris County only",
+          "source": "Harris County Clerk Teneshia Hudspeth, 10:30 AM CT press conference, via ABC13",
+          "source_url": "https://abc13.com/live-updates/texas-midterm-elections-2026-election-day-arrives-record-breaking-turnout-during-early-voting-period/19981970/entry/20012110/"
         },
         {
           "time_pt": "9:00 AM",
@@ -16615,6 +16648,46 @@
           "scope": "Harris County only",
           "source": "Harris County Elections Department via ABC13 (as of 11 a.m. CT)",
           "source_url": "https://abc13.com/live-updates/texas-midterm-elections-2026-election-day-arrives-record-breaking-turnout-during-early-voting-period/19981970/entry/20012216/"
+        },
+        {
+          "time_pt": "9:00 AM",
+          "ed_turnout": 34843,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 11:00 AM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "10:00 AM",
+          "ed_turnout": 43258,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 12:00 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "11:00 AM",
+          "ed_turnout": 50878,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 1:00 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "12:00 PM",
+          "ed_turnout": 58612,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial check-ins per hour, cumulative through 2:00 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/CheckinsPerHourGraph.html"
+        },
+        {
+          "time_pt": "12:50 PM",
+          "ed_turnout": 65236,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 2:50 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/BallotTypeTurnout.html"
         }
       ],
       "election_day_turnout_scope": "Harris County only",
