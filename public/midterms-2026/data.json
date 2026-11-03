@@ -10400,7 +10400,7 @@
       "early_data_as_of": "11/2",
       "registered": 4374827,
       "registered_note": "final GE 2026 report (AZ SOS)",
-      "election_day_turnout": 115004,
+      "election_day_turnout": 133800,
       "polls_close_pt": "6 PM PT",
       "y2022": {
         "early_in_person": null,
@@ -10756,6 +10756,14 @@
           },
           "party_source": "Party shares from Stealth Analytics' 1 PM MST Maricopa check-in update (114,189 check-ins: R 50,157 / D 26,960 / Ind-Other 37,072), applied to the county's total; counts are estimates (~)",
           "party_source_url": "https://x.com/StealthPolling/status/2117709429789663418"
+        },
+        {
+          "time_pt": "1:00 PM",
+          "ed_turnout": 133800,
+          "by_party": null,
+          "scope": "Maricopa only",
+          "source": "Maricopa County Elections Fast Facts (approx., as of 2 PM MST)",
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
         }
       ],
       "county_baselines_2022": [
@@ -10929,8 +10937,8 @@
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "election_day_turnout_scope": "Maricopa only",
-      "election_day_turnout_as_of": "12:00 PM PT (1 PM MST)",
-      "election_day_turnout_source": "Maricopa County Elections Fast Facts",
+      "election_day_turnout_as_of": "1:00 PM",
+      "election_day_turnout_source": "Maricopa County Elections Fast Facts (approx., as of 2 PM MST)",
       "election_day_turnout_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
       "precinct_feeds": [
         {
