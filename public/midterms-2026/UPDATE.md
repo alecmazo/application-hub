@@ -128,3 +128,8 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 - The Net gap (candidate share minus their party's share of ED voters) is computed on the page only when the latest result row and a `by_party` row have the same `scope`.
 - Election Day turnout: set `election_day_turnout` in the state's top-level block. The Totals card adds it to the grand total.
 - AK `polls_close_pt` stays as it is once set.
+
+## v6: precinct drill-down (AZ, TX, FL)
+- 2022 baselines: `precincts/{AZ,TX,FL}.json` (MEDSL; `counties[County] = [[precinct, gov_d, gov_r, gov_o, sen_d, sen_r, sen_o], ...]`). These are lazy-loaded and are not in data.json.
+- 2026 counts: the 10-minute routine writes `precincts/{ST}_2026.json` as `counties[County][Precinct] = {race, d, r, o, total, time_pt, source, source_url}`, using county names in Title Case and precinct names exactly as the county file gives them. The page shows "pending" for precincts that have no entry.
+- Feed URLs: `precinctFeeds[ST]` in the election2026 file, which merge.py copies to `states[].precinct_feeds`.

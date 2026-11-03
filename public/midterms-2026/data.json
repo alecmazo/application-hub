@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T11:32-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:32 AM PT",
+  "lastUpdated": "2026-11-03T11:33-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:33 AM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -10827,7 +10827,24 @@
       "election_day_turnout_scope": "Maricopa only",
       "election_day_turnout_as_of": "11:00 AM PT",
       "election_day_turnout_source": "Maricopa County Elections Fast Facts (~)",
-      "election_day_turnout_url": "https://www.maricopa.gov/5539/Elections"
+      "election_day_turnout_url": "https://www.maricopa.gov/5539/Elections",
+      "precinct_feeds": [
+        {
+          "county": "Statewide",
+          "url": "https://results.arizona.vote/",
+          "note": "AZ SOS results (statewide/county; precinct detail via counties)"
+        },
+        {
+          "county": "Maricopa",
+          "url": "https://elections.maricopa.gov/results-and-data/election-results.html",
+          "note": "Maricopa results incl. precinct-level canvass/detail files"
+        },
+        {
+          "county": "Pima",
+          "url": "https://www.pima.gov/2346/Election-Results",
+          "note": "Pima results incl. precinct reports"
+        }
+      ]
     },
     {
       "code": "FL",
@@ -12293,7 +12310,49 @@
       "election_day_turnout_scope": "statewide",
       "election_day_turnout_as_of": "11:32 AM PT",
       "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2:32 PM ET",
-      "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php"
+      "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
+      "precinct_feeds": [
+        {
+          "county": "Statewide",
+          "url": "https://results.elections.myflorida.com/",
+          "note": "FL DOS election night results (county level)"
+        },
+        {
+          "county": "Miami-Dade",
+          "url": "https://www.miamidade.gov/elections/",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Broward",
+          "url": "https://www.browardsoe.org/Election-Results",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Palm Beach",
+          "url": "https://www.votepalmbeach.gov/Election-Results",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Hillsborough",
+          "url": "https://www.votehillsborough.gov/Election-Results",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Orange",
+          "url": "https://www.ocfelections.gov/",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Duval",
+          "url": "https://www.duvalelections.com/",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Pinellas",
+          "url": "https://www.votepinellas.gov/Election-Results",
+          "note": "official results page; precinct-level file posts after polls close"
+        }
+      ]
     },
     {
       "code": "TX",
@@ -15998,7 +16057,39 @@
       "election_day_turnout_scope": "Bexar County only",
       "election_day_turnout_as_of": "8:00 AM PT",
       "election_day_turnout_source": "Bexar County Elections Administrator Michele Carew, by 10 AM CT, via San Antonio Express-News",
-      "election_day_turnout_url": "https://www.expressnews.com/politics/"
+      "election_day_turnout_url": "https://www.expressnews.com/politics/",
+      "precinct_feeds": [
+        {
+          "county": "Statewide",
+          "url": "https://results.texas-election.com/",
+          "note": "TX SOS election night results (county level)"
+        },
+        {
+          "county": "Harris",
+          "url": "https://www.harrisvotes.com/",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Bexar",
+          "url": "https://www.bexar.org/1568/Elections-Department",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Dallas",
+          "url": "https://www.dallascountyvotes.org/election-results-and-maps/",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Travis",
+          "url": "https://votetravis.gov/",
+          "note": "official results page; precinct-level file posts after polls close"
+        },
+        {
+          "county": "Tarrant",
+          "url": "https://www.tarrantcountytx.gov/en/elections.html",
+          "note": "official results page; precinct-level file posts after polls close"
+        }
+      ]
     },
     {
       "code": "CA",
