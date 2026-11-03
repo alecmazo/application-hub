@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midterms 2026 Election Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f1419;--card:#18202a;--line:#2a3542;--tx:#e6edf3;--mut:#8b98a5;--ip:#4f8cff;--mail:#f2a33a;--acc:#22c55e;--y22:#64748b}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+header{padding:24px 16px 8px;max-width:1200px;margin:auto}h1{margin:0;font-size:1.7rem}h2{font-size:1.2rem;margin:32px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+main{max-width:1200px;margin:auto;padding:0 16px 48px}.mut{color:var(--mut)}a{color:#7cb7ff}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}nav a{font-size:.85rem;background:var(--card);padding:4px 10px;border-radius:99px;text-decoration:none;border:1px solid var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.kpi b{display:block;font-size:1.4rem}
+#map svg{width:100%;max-width:720px;display:block;margin:auto}#map rect{rx:6;fill:#222c37;stroke:var(--bg);stroke-width:3}#map g.on rect{fill:#2563eb;cursor:pointer}#map g.on:hover rect{fill:#60a5fa}#map text{fill:#7d8894;font-size:13px;text-anchor:middle;pointer-events:none}#map g.on text{fill:#fff;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;scroll-margin-top:12px}.card.flash{outline:2px solid #60a5fa}
+.card h3{margin:0 0 4px;display:flex;justify-content:space-between}.turn{font-size:1.6rem;font-weight:700;color:var(--acc)}
+.bar{height:16px;background:#0b1016;border-radius:8px;overflow:hidden;display:flex;margin:8px 0}.bar i{display:block;height:100%}
+.legend span{display:inline-flex;align-items:center;gap:5px;margin-right:12px;font-size:.8rem;color:var(--mut)}.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:8px 0 0;font-size:.85rem}dt{color:var(--mut)}dd{margin:0;text-align:right}
+.pend{color:#eab308;font-style:italic}.chartbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;height:380px}
+table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600}
+.tl td:first-child{white-space:nowrap;font-weight:600}.tl tr.close td:nth-child(2){color:#f87171;font-weight:600}.tl tr.now{background:#1e293b}
+.res{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}.race{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.race .st{float:right;font-size:.75rem;padding:2px 8px;border-radius:99px;background:#3f3f46}.race .st.called{background:#166534}
+.tw{overflow-x:auto}ul.src{columns:2;font-size:.85rem}@media(max-width:640px){ul.src{columns:1}h1{font-size:1.35rem}}
+</style>
+</head>
+<body>
+<header>
+<a href="../" class="mut" style="font-size:.85rem">← App Hub</a>
+<h1>Midterms 2026 Election Dashboard</h1>
+<div class="mut">Pre-Election Day ballots in 11 states vs registered voters and 2022. Last updated: <b id="upd">loading…</b></div>
+<nav><a href="#map-s">Map</a><a href="#states">States</a><a href="#compare">2026 vs 2022</a><a href="#timeline">Timeline</a><a href="#results">Results</a><a href="#sources">Sources</a></nav>
+</header>
+<main>
+<div class="kpis" id="kpis"></div>
+<h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to jump to its card.</p>
+<h2 id="states">State cards</h2>
+<div class="legend"><span><i style="background:var(--ip)"></i>Early in-person</span><span><i style="background:var(--mail)"></i>Mail returned</span><span>Bar = share of registered voters</span></div>
+<div class="cards" id="cards"></div>
+<h2 id="compare">2026 vs 2022</h2>
+<p class="mut">Ballots cast before Election Day (millions). 2022 = final UF Election Lab early-vote count.</p>
+<div class="chartbox"><canvas id="c1"></canvas></div>
+<p class="mut" style="margin-top:18px">2026 pre-Election Day ballots as % of full 2022 turnout.</p>
+<div class="chartbox"><canvas id="c2"></canvas></div>
+<h2 id="timeline">Election Day timeline (PT)</h2><div class="tw"><table class="tl"><thead><tr><th>Hour (PT)</th><th>Polls close</th><th>Reported turnout / results</th></tr></thead><tbody id="tl"></tbody></table></div>
+<h2 id="results">Results</h2><div class="res" id="res"></div>
+<h2>Notes</h2><ul id="notes" class="mut"></ul>
+<h2 id="sources">Sources</h2><ul class="src" id="src"></ul>
+</main>
+<script>
+const TILES={AK:[0,0],ME:[11,0],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],IL:[6,2],WI:[7,2],MI:[8,2],NY:[9,2],RI:[10,2],MA:[11,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IN:[6,3],OH:[7,3],PA:[8,3],NJ:[9,3],CT:[10,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],DC:[9,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[9,7]};
+const P='<span class="pend">pending</span>';
+const f=x=>x==null?P:x.toLocaleString('en-US');
+const pc=(a,b)=>a==null||!b?null:100*a/b;
+const fp=x=>x==null?P:x.toFixed(1)+'%';
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let charts=[];
+async function load(){
+ const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();
+ document.getElementById('upd').textContent=d.lastUpdatedLabel||d.lastUpdated||'pending';
+ const S=d.states;const on=new Set(S.map(s=>s.code));
+ const sum=k=>S.reduce((a,s)=>a+(s[k]||0),0),sum22=S.reduce((a,s)=>a+(s.y2022.early_total||0),0),now=sum('total_cast');
+ document.getElementById('kpis').innerHTML=[['Ballots cast (11 states)',f(now)],['2022 early total',f(sum22)],['Change vs 2022',sum22?((now/sum22-1)*100).toFixed(0)+'%':P],['Registered (11 states)',f(sum('registered'))],['Races called',S.flatMap(s=>s.races).filter(x=>x.status==='called').length+' / '+S.flatMap(s=>s.races).length]].map(([a,b])=>`<div class="kpi"><span class="mut">${a}</span><b>${b}</b></div>`).join('');
+ // map
+ let svg='<svg viewBox="0 0 720 480" role="img" aria-label="US tile map">';
+ for(const[k,[x,y]]of Object.entries(TILES)){const o=on.has(k);svg+=`<g class="${o?'on':''}" ${o?`data-s="${k}" tabindex="0"`:''}><title>${k}</title><rect x="${x*60+2}" y="${y*60+2}" width="56" height="56"/><text x="${x*60+30}" y="${y*60+35}">${k}</text></g>`}
+ document.getElementById('map').innerHTML=svg+'</svg>';
+ document.querySelectorAll('#map g.on').forEach(g=>{const go=()=>{const c=document.getElementById('st-'+g.dataset.s);c.scrollIntoView({behavior:'smooth'});c.classList.add('flash');setTimeout(()=>c.classList.remove('flash'),1500)};g.onclick=go;g.onkeydown=e=>{if(e.key==='Enter')go()}});
+ // cards
+ document.getElementById('cards').innerHTML=S.map(s=>{const ip=pc(s.early_in_person,s.registered),ml=pc(s.mail_returned,s.registered),t=pc(s.total_cast,s.registered);
+  return `<div class="card" id="st-${s.code}"><h3>${esc(s.name)} <span class="mut">${s.code}</span></h3>
+  <div><span class="turn">${fp(t)}</span> <span class="mut">turnout so far (of registered)</span></div>
+  <div class="bar"><i style="width:${ip||0}%;background:var(--ip)"></i><i style="width:${ml||0}%;background:var(--mail)"></i></div>
+  <dl><dt>Early in-person</dt><dd>${s.early_in_person==null?'<span class="pend">'+esc(s.early_in_person_note||'pending')+'</span>':f(s.early_in_person)+(s.early_in_person_note?` <span class="mut">(${esc(s.early_in_person_note)})</span>`:'')}</dd>
+  <dt>Mail returned</dt><dd>${f(s.mail_returned)}</dd><dt>Total cast</dt><dd>${f(s.total_cast)} <span class="mut">(as of ${esc(s.early_data_as_of)})</span></dd>
+  <dt>Registered</dt><dd>${f(s.registered)}<br><span class="mut">${esc(s.registered_note)}</span></dd>
+  <dt>Election Day turnout</dt><dd>${f(s.election_day_turnout)}</dd><dt>Polls close</dt><dd>${esc(s.polls_close_pt)}</dd>
+  <dt>2022 early in-person</dt><dd>${s.y2022.early_in_person==null?'<span class="mut">not separately reported</span>':f(s.y2022.early_in_person)}</dd>
+  <dt>2022 mail</dt><dd>${f(s.y2022.mail_returned)}</dd><dt>2022 total turnout</dt><dd>${f(s.y2022.total_turnout)} <span class="mut">(${esc(s.y2022.vep_turnout_pct)} VEP)</span></dd>
+  <dt>% of 2022 total</dt><dd>${fp(pc(s.total_cast,s.y2022.total_turnout))}</dd></dl>
+  <p class="mut" style="font-size:.8rem;margin:8px 0 0">2022: ${esc(s.y2022.headline_results)}</p></div>`}).join('');
+ // charts
+ charts.forEach(c=>c.destroy());Chart.defaults.color='#8b98a5';Chart.defaults.borderColor='#2a3542';
+ const L=S.map(s=>s.code),m=x=>x==null?null:+(x/1e6).toFixed(2);
+ charts=[new Chart(c1,{type:'bar',data:{labels:L,datasets:[{label:'2026 early in-person',data:S.map(s=>m(s.early_in_person)),backgroundColor:'#4f8cff',stack:'a'},{label:'2026 mail',data:S.map(s=>m(s.mail_returned)),backgroundColor:'#f2a33a',stack:'a'},{label:'2022 early total',data:S.map(s=>m(s.y2022.early_total)),backgroundColor:'#64748b',stack:'b'}]},options:{maintainAspectRatio:false,scales:{y:{title:{display:true,text:'Millions'}}}}}),
+ new Chart(c2,{type:'bar',data:{labels:L,datasets:[{label:'2026 pre-ED ballots as % of 2022 total turnout',data:S.map(s=>{const v=pc(s.total_cast,s.y2022.total_turnout);return v==null?null:+v.toFixed(1)}),backgroundColor:'#22c55e'}]},options:{maintainAspectRatio:false,scales:{y:{max:100,ticks:{callback:v=>v+'%'}}}}})];
+ // timeline
+ const hr=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Los_Angeles'})).getHours();
+ const h24=h=>{let[n,ap]=h.split(' ');n=+n;return ap==='PM'&&n!==12?n+12:ap==='AM'&&n===12?0:n};
+ document.getElementById('tl').innerHTML=d.timeline.map(t=>`<tr class="${t.polls_close?'close':''} ${h24(t.hour_pt)===hr?'now':''}"><td>${esc(t.hour_pt)}</td><td>${esc(t.polls_close)}</td><td>${t.update?esc(t.update):'<span class="mut">—</span>'}</td></tr>`).join('');
+ // results
+ document.getElementById('res').innerHTML=S.flatMap(s=>s.races.map(r=>`<div class="race"><span class="st ${r.status==='called'?'called':''}">${esc(r.status)}</span><b>${esc(s.name)}</b> · ${esc(r.race)}<dl><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd>${r.source?`<dt>Source</dt><dd>${esc(r.source)}</dd>`:''}</dl></div>`)).join('');
+ document.getElementById('notes').innerHTML=(d.notes||[]).map(n=>`<li>${esc(n)}</li>`).join('');
+ document.getElementById('src').innerHTML=d.sources.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join('');
+}
+load().catch(e=>{document.getElementById('upd').textContent='failed to load data.json: '+e});
+setInterval(()=>load().catch(()=>{}),5*60*1000);
+</script>
+</body>
+</html>

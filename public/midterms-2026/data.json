@@ -1,0 +1,659 @@
+{
+  "lastUpdated": "2026-11-03T10:45:00-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 10:45 AM PT",
+  "notes": [
+    "Early-vote counts from UF Election Lab tracker; KS, OH, MN, AZ, TX, CA as of 11/2, others 11/3.",
+    "Turnout so far = pre-Election Day ballots / registered voters.",
+    "2022 turnout % is of voting-eligible population (UF Election Lab); 2022 registration not pulled for every state.",
+    "Any null value displays as 'pending'."
+  ],
+  "states": [
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "early_in_person": 392184,
+      "early_in_person_note": null,
+      "mail_returned": 77986,
+      "total_cast": 470170,
+      "early_data_as_of": "11/2",
+      "registered": 2027520,
+      "registered_note": "as of Oct 1 (KS SOS via Kansas City Star)",
+      "election_day_turnout": null,
+      "polls_close_pt": "5 PM PT (6 PM PT in MT-time counties)",
+      "y2022": {
+        "early_in_person": 251115,
+        "mail_returned": 114923,
+        "early_total": 366038,
+        "total_turnout": 1008998,
+        "vep": 2118511,
+        "vep_turnout_pct": "47.6%",
+        "headline_results": "Gov: Kelly (D) 49.5% def. Schmidt (R) 47.3%; Sen: Moran (R) 60.0% def. Holland (D) 37.0%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "early_in_person": 344986,
+      "early_in_person_note": null,
+      "mail_returned": 153727,
+      "total_cast": 498713,
+      "early_data_as_of": "11/3",
+      "registered": 2157728,
+      "registered_note": "as of Sep 1 (Iowa SOS report)",
+      "election_day_turnout": null,
+      "polls_close_pt": "6 PM PT",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 341237,
+        "early_total": 341237,
+        "total_turnout": 1230417,
+        "vep": 2358719,
+        "vep_turnout_pct": "52.2%",
+        "headline_results": "Sen: Grassley (R) 56.0% def. Franken (D) 43.8%; Gov: Reynolds (R) 58.0% def. DeJear (D) 39.5%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "early_in_person": 1103252,
+      "early_in_person_note": "UF approximation",
+      "mail_returned": 625647,
+      "total_cast": 1728899,
+      "early_data_as_of": "11/2",
+      "registered": 7970000,
+      "registered_note": "7.97M, rounded (NBC News via Quartz)",
+      "election_day_turnout": null,
+      "polls_close_pt": "4:30 PM PT",
+      "y2022": {
+        "early_in_person": 549771,
+        "mail_returned": 842996,
+        "early_total": 1392767,
+        "total_turnout": 4201368,
+        "vep": 8919713,
+        "vep_turnout_pct": "47.1%",
+        "headline_results": "Sen: Vance (R) 53.0% def. Ryan (D) 46.9%; Gov: DeWine (R) 62.4% def. Whaley (D) 37.4%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate (special)",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "early_in_person": 619847,
+      "early_in_person_note": null,
+      "mail_returned": 266580,
+      "total_cast": 886427,
+      "early_data_as_of": "11/2",
+      "registered": 3914816,
+      "registered_note": "as of Oct 1 (MN SOS); excludes 94,376 pre-registered",
+      "election_day_turnout": null,
+      "polls_close_pt": "6 PM PT",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 586883,
+        "early_total": 586883,
+        "total_turnout": 2526646,
+        "vep": 4247997,
+        "vep_turnout_pct": "59.5%",
+        "headline_results": "Gov: Walz (DFL) 52.3% def. Jensen (R) 44.6%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "early_in_person": 322681,
+      "early_in_person_note": null,
+      "mail_returned": 445205,
+      "total_cast": 767886,
+      "early_data_as_of": "11/3",
+      "registered": 2103151,
+      "registered_note": "active registered (NV SOS via Clark County Tribune)",
+      "election_day_turnout": null,
+      "polls_close_pt": "7 PM PT",
+      "y2022": {
+        "early_in_person": 309434,
+        "mail_returned": 411375,
+        "early_total": 693177,
+        "total_turnout": 1023617,
+        "vep": 2230482,
+        "vep_turnout_pct": "45.9%",
+        "headline_results": "Sen: Cortez Masto (D) 48.8% def. Laxalt (R) 48.0%; Gov: Lombardo (R) 48.8% def. Sisolak (D) 47.3%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "early_in_person": 698546,
+      "early_in_person_note": "UF estimate; CBS Detroit cites 750,469",
+      "mail_returned": 1745903,
+      "total_cast": 2444449,
+      "early_data_as_of": "11/3",
+      "registered": 7339283,
+      "registered_note": "active, Nov 2025 count (latest official MI SOS file found)",
+      "election_day_turnout": null,
+      "polls_close_pt": "5 PM PT (6 PM PT in CT-time UP counties)",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 1525312,
+        "early_total": 1525312,
+        "total_turnout": 4500400,
+        "vep": 7634701,
+        "vep_turnout_pct": "59.0%",
+        "headline_results": "Gov: Whitmer (D) 54.5% def. Dixon (R) 43.9%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "early_in_person": null,
+      "early_in_person_note": "no early in-person voting in PA",
+      "mail_returned": 1115994,
+      "total_cast": 1115994,
+      "early_data_as_of": "11/3",
+      "registered": 9052367,
+      "registered_note": "total incl. inactive (PA DOS via CNHI)",
+      "election_day_turnout": null,
+      "polls_close_pt": "5 PM PT",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 1184731,
+        "early_total": 1184731,
+        "total_turnout": 5410022,
+        "vep": 9949249,
+        "vep_turnout_pct": "54.4%",
+        "headline_results": "Sen: Fetterman (D) 51.2% def. Oz (R) 46.3%; Gov: Shapiro (D) 56.5% def. Mastriano (R) 41.7%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "early_in_person": null,
+      "early_in_person_note": "not separately reported; included in early ballots",
+      "mail_returned": 1648197,
+      "total_cast": 1648197,
+      "early_data_as_of": "11/2",
+      "registered": 4374827,
+      "registered_note": "final GE 2026 report (AZ SOS)",
+      "election_day_turnout": null,
+      "polls_close_pt": "6 PM PT",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 1508399,
+        "early_total": 1508399,
+        "total_turnout": 2592313,
+        "vep": 5271407,
+        "vep_turnout_pct": "49.2%",
+        "headline_results": "Sen: Kelly (D) 51.4% def. Masters (R) 46.5%; Gov: Hobbs (D) 50.3% def. Lake (R) 49.6%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "early_in_person": 3467812,
+      "early_in_person_note": null,
+      "mail_returned": 2007192,
+      "total_cast": 5475004,
+      "early_data_as_of": "11/3",
+      "registered": 13672122,
+      "registered_note": "active, as of Sep 30 (FL DOS)",
+      "election_day_turnout": null,
+      "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
+      "y2022": {
+        "early_in_person": 2285465,
+        "mail_returned": 2633467,
+        "early_total": 4918932,
+        "total_turnout": 7796916,
+        "vep": 16080925,
+        "vep_turnout_pct": "48.5%",
+        "headline_results": "Gov: DeSantis (R) 59.4% def. Crist (D) 40.0%; Sen: Rubio (R) 57.7% def. Demings (D) 41.3%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate (special)",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "early_in_person": 7466245,
+      "early_in_person_note": null,
+      "mail_returned": 270349,
+      "total_cast": 7736594,
+      "early_data_as_of": "11/2",
+      "registered": 19041684,
+      "registered_note": "record total (TX SOS, Oct 16)",
+      "election_day_turnout": null,
+      "polls_close_pt": "5 PM PT (6 PM PT in El Paso area)",
+      "y2022": {
+        "early_in_person": 5172460,
+        "mail_returned": 319816,
+        "early_total": 5492276,
+        "total_turnout": 8151590,
+        "vep": 19631655,
+        "vep_turnout_pct": "41.5%",
+        "headline_results": "Gov: Abbott (R) 54.8% def. O'Rourke (D) 43.9%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "early_in_person": 298511,
+      "early_in_person_note": null,
+      "mail_returned": 6364403,
+      "total_cast": 6662914,
+      "early_data_as_of": "11/2",
+      "registered": 23273590,
+      "registered_note": "as of Oct 19 (CA SOS Report of Registration)",
+      "election_day_turnout": null,
+      "polls_close_pt": "8 PM PT",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 5115505,
+        "early_total": 5115505,
+        "total_turnout": 11146610,
+        "vep": 26008091,
+        "vep_turnout_pct": "42.9%",
+        "headline_results": "Gov: Newsom (D) 59.2% def. Dahle (R) 40.8%; Sen: Padilla (D) 61.1% def. Meuser (R) 38.9%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null
+        }
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "hour_pt": "4 AM",
+      "polls_close": "",
+      "update": "MI: 32.9% of active registered voters had voted by 7 AM ET (MI SOS via CBS Detroit, 6:24 AM PT update)"
+    },
+    {
+      "hour_pt": "5 AM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "6 AM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "7 AM",
+      "polls_close": "",
+      "update": "AZ: Maricopa County served about 25,263 Election Day voters in first two hours, as of 8 AM MST (KTAR)"
+    },
+    {
+      "hour_pt": "8 AM",
+      "polls_close": "",
+      "update": "AZ: Maricopa County about 40,745 Election Day voters served as of 9 AM MST (KTAR)"
+    },
+    {
+      "hour_pt": "9 AM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "10 AM",
+      "polls_close": "",
+      "update": "No statewide Election Day results; polls open everywhere"
+    },
+    {
+      "hour_pt": "11 AM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "12 PM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "1 PM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "2 PM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "3 PM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "4 PM",
+      "polls_close": "FL (most), OH 4:30",
+      "update": ""
+    },
+    {
+      "hour_pt": "5 PM",
+      "polls_close": "KS, MI, PA, TX, FL panhandle",
+      "update": ""
+    },
+    {
+      "hour_pt": "6 PM",
+      "polls_close": "IA, MN, AZ, MI UP, TX El Paso, KS west",
+      "update": ""
+    },
+    {
+      "hour_pt": "7 PM",
+      "polls_close": "NV",
+      "update": ""
+    },
+    {
+      "hour_pt": "8 PM",
+      "polls_close": "CA",
+      "update": ""
+    },
+    {
+      "hour_pt": "9 PM",
+      "polls_close": "",
+      "update": ""
+    },
+    {
+      "hour_pt": "10 PM",
+      "polls_close": "",
+      "update": ""
+    }
+  ],
+  "sources": [
+    {
+      "title": "UF Election Lab 2026 early vote tracker",
+      "url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+    },
+    {
+      "title": "UF Election Lab 2022 early vote (state pages)",
+      "url": "https://rpubs.com/ElectProject/early_vote_2022"
+    },
+    {
+      "title": "UF Election Lab 2022 turnout",
+      "url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_2022G_v1.1.csv"
+    },
+    {
+      "title": "Arizona registration, GE 2026",
+      "url": "https://www.fox10phoenix.com/news/arizona-voter-registration-numbers-released-2026-election"
+    },
+    {
+      "title": "Nevada active voters",
+      "url": "https://clarkcountytribune.com/article/nevada-voter-rolls-hit-2-1-million/"
+    },
+    {
+      "title": "Pennsylvania registration",
+      "url": "https://www.cnhinews.com/cnhi/article_c0f940f5-1775-435b-bca6-da0f9242346f.html"
+    },
+    {
+      "title": "Michigan registered voter count",
+      "url": "https://www.michigan.gov/sos/-/media/Project/Websites/sos/Election-Results-and-Statistics/Registered-Voter-Count/2025-Registered-Voter-Count.pdf"
+    },
+    {
+      "title": "Florida registration by party",
+      "url": "https://dos.fl.gov/elections/data-statistics/voter-registration-statistics/voter-registration-reports/voter-registration-by-party-affiliation/"
+    },
+    {
+      "title": "Texas 19M registered",
+      "url": "https://www.sos.state.tx.us/about/newsreleases/2026/101626.shtml"
+    },
+    {
+      "title": "California Report of Registration",
+      "url": "https://www.sos.ca.gov/administration/news-releases-and-advisories/2026-news-releases-and-advisories/office-california-secretary-state-releases-report-registration"
+    },
+    {
+      "title": "Minnesota registration counts",
+      "url": "https://www.sos.mn.gov/election-administration-campaigns/data-maps/voter-registration-counts/"
+    },
+    {
+      "title": "Iowa registration report",
+      "url": "https://sos.iowa.gov/elections/pdf/VRStatsArchive/2026/SHSep26.pdf"
+    },
+    {
+      "title": "Kansas registration",
+      "url": "https://www.kansascity.com/news/local/article317737563.html"
+    },
+    {
+      "title": "Ohio early vote and registration",
+      "url": "https://qz.com/ohio-early-voting-ballots-cast-registered-voters-110326"
+    },
+    {
+      "title": "Michigan Election Day turnout",
+      "url": "https://www.cbsnews.com/detroit/news/michigan-election-day-voter-turnout-early-voting-2026/"
+    },
+    {
+      "title": "Arizona Election Day live blog",
+      "url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open"
+    },
+    {
+      "title": "2022 Kansas gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Kansas_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate election in Kansas",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Kansas"
+    },
+    {
+      "title": "2022 US Senate election in Iowa",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Iowa"
+    },
+    {
+      "title": "2022 Iowa gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Iowa_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate election in Ohio",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Ohio"
+    },
+    {
+      "title": "2022 Ohio gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Ohio_gubernatorial_election"
+    },
+    {
+      "title": "2022 Minnesota gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Minnesota_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate election in Nevada",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Nevada"
+    },
+    {
+      "title": "2022 Nevada gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Nevada_gubernatorial_election"
+    },
+    {
+      "title": "2022 Michigan gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Michigan_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate election in Pennsylvania",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Pennsylvania"
+    },
+    {
+      "title": "2022 Pennsylvania gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Pennsylvania_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate election in Arizona",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Arizona"
+    },
+    {
+      "title": "2022 Arizona gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Arizona_gubernatorial_election"
+    },
+    {
+      "title": "2022 Florida gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Florida_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate election in Florida",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_election_in_Florida"
+    },
+    {
+      "title": "2022 Texas gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_Texas_gubernatorial_election"
+    },
+    {
+      "title": "2022 California gubernatorial election",
+      "url": "https://en.wikipedia.org/wiki/2022_California_gubernatorial_election"
+    },
+    {
+      "title": "2022 US Senate elections in California",
+      "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_elections_in_California"
+    }
+  ]
+}

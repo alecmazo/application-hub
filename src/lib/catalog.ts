@@ -107,6 +107,24 @@ export const CATALOG: CatalogEntry[] = [
     tags: ["education", "STEM", "kids", "math", "GitHub Pages", "React"],
   },
   {
+    id: "midterms-2026",
+    repo: "application-hub",
+    title: "Midterms 2026 Dashboard",
+    tagline:
+      "Election-night dashboard for 11 states: early in-person and mail ballots vs registered voters, 2026 vs 2022 charts, poll-close timeline (PT), and race calls.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://alecmazo.github.io/application-hub/midterms-2026/",
+    alwaysShow: true,
+    preferTagline: true,
+    surfaces: [
+      { label: "Live dashboard", url: "https://alecmazo.github.io/application-hub/midterms-2026/" },
+      { label: "Data (JSON)", url: "https://github.com/alecmazo/application-hub/blob/main/public/midterms-2026/data.json" },
+    ],
+    languageHint: "HTML",
+    tags: ["elections", "midterms", "2026", "GitHub Pages"],
+  },
+  {
     id: "turf-pad-builder",
     repo: "turf-pad-builder",
     title: "Turf Pad Builder",
