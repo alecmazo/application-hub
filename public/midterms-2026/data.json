@@ -1,12 +1,13 @@
 {
-  "lastUpdated": "2026-11-03T11:29-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:29 AM PT",
+  "lastUpdated": "2026-11-03T11:32-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:32 AM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
     "2022 turnout % is of voting-eligible population (UF Election Lab); 2022 registration not pulled for every state.",
     "Any null value displays as 'pending'.",
-    "No statewide results yet as of this hourly refresh; polls still open in all tracked states."
+    "No statewide results yet as of this hourly refresh; polls still open in all tracked states.",
+    "Florida Election Day series switched to FreshTake.Vote directly (single source) at 11:32 AM PT; earlier Strength In Numbers-derived rows removed."
   ],
   "states": [
     {
@@ -7620,6 +7621,18 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
+          "time_pt": "10:00 AM",
+          "ed_turnout": 29557,
+          "by_party": {
+            "R": 11513,
+            "D": 8845,
+            "O": 9199
+          },
+          "scope": "statewide",
+          "source": "NV SOS VIVID, 10:00 AM PST (via Data Point Research)",
+          "source_url": "https://vivid.nv.gov/"
+        },
+        {
           "time_pt": "11:04 AM",
           "ed_turnout": 46380,
           "by_party": null,
@@ -10826,7 +10839,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 1567803,
+      "election_day_turnout": 1571889,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -12253,238 +12266,34 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
-          "time_pt": "4:23 AM",
-          "ed_turnout": 62788,
+          "time_pt": "11:27 AM",
+          "ed_turnout": 1533973,
           "by_party": {
-            "R": 32466,
-            "D": 16073,
-            "O": 14249
+            "R": 770477,
+            "D": 396512,
+            "O": 366984
           },
           "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2:27 PM ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         },
         {
-          "time_pt": "4:53 AM",
-          "ed_turnout": 160964,
+          "time_pt": "11:32 AM",
+          "ed_turnout": 1571889,
           "by_party": {
-            "R": 78960,
-            "D": 43905,
-            "O": 38099
+            "R": 788319,
+            "D": 406787,
+            "O": 376783
           },
           "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "5:20 AM",
-          "ed_turnout": 249150,
-          "by_party": {
-            "R": 122850,
-            "D": 67455,
-            "O": 58845
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "5:53 AM",
-          "ed_turnout": 358455,
-          "by_party": {
-            "R": 177663,
-            "D": 96144,
-            "O": 84648
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "6:23 AM",
-          "ed_turnout": 462326,
-          "by_party": {
-            "R": 231859,
-            "D": 122213,
-            "O": 108254
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "7:04 AM",
-          "ed_turnout": 605034,
-          "by_party": {
-            "R": 307304,
-            "D": 156905,
-            "O": 140825
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "7:21 AM",
-          "ed_turnout": 691314,
-          "by_party": {
-            "R": 348542,
-            "D": 180825,
-            "O": 161947
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "7:51 AM",
-          "ed_turnout": 805452,
-          "by_party": {
-            "R": 408583,
-            "D": 208736,
-            "O": 188133
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "8:25 AM",
-          "ed_turnout": 937529,
-          "by_party": {
-            "R": 476936,
-            "D": 241595,
-            "O": 218998
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "8:48 AM",
-          "ed_turnout": 1013706,
-          "by_party": {
-            "R": 515880,
-            "D": 260773,
-            "O": 237053
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "9:03 AM",
-          "ed_turnout": 1082559,
-          "by_party": {
-            "R": 550850,
-            "D": 278446,
-            "O": 253263
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "9:23 AM",
-          "ed_turnout": 1151042,
-          "by_party": {
-            "R": 585193,
-            "D": 296100,
-            "O": 269749
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "9:53 AM",
-          "ed_turnout": 1249411,
-          "by_party": {
-            "R": 633268,
-            "D": 322001,
-            "O": 294142
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "10:03 AM",
-          "ed_turnout": 1291867,
-          "by_party": {
-            "R": 655342,
-            "D": 332116,
-            "O": 304409
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "10:23 AM",
-          "ed_turnout": 1351640,
-          "by_party": {
-            "R": 684982,
-            "D": 347331,
-            "O": 319327
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "10:39 AM",
-          "ed_turnout": 1399100,
-          "by_party": {
-            "R": 705433,
-            "D": 361294,
-            "O": 332373
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "10:54 AM",
-          "ed_turnout": 1462974,
-          "by_party": {
-            "R": 737004,
-            "D": 377303,
-            "O": 348667
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "11:04 AM",
-          "ed_turnout": 1498551,
-          "by_party": {
-            "R": 753841,
-            "D": 386908,
-            "O": 357802
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
-        },
-        {
-          "time_pt": "11:25 AM",
-          "ed_turnout": 1567803,
-          "by_party": {
-            "R": 787122,
-            "D": 405205,
-            "O": 375476
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2:32 PM ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "11:25 AM PT",
-      "election_day_turnout_source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
-      "election_day_turnout_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+      "election_day_turnout_as_of": "11:32 AM PT",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2:32 PM ET",
+      "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php"
     },
     {
       "code": "TX",
@@ -18000,7 +17809,7 @@
       "early_data_as_of": "11/3",
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
-      "election_day_turnout": 300000,
+      "election_day_turnout": 650000,
       "expected_vote_counted_pct": null,
       "polls_close_pt": "4 PM PT",
       "y2022": {
@@ -19865,13 +19674,31 @@
           "scope": "statewide",
           "source": "GA SOS Raffensperger 10 AM ET briefing (WTOC/Atlanta News First)",
           "source_url": "https://www.wtoc.com/2026/11/03/watch-live-state-officials-give-update-election-day-voting-continues/"
+        },
+        {
+          "time_pt": "9:00 AM",
+          "ed_turnout": 500000,
+          "approx": "more than 500,000",
+          "by_party": null,
+          "scope": "statewide",
+          "source": "GA SOS office, 12 PM ET (Atlanta News First)",
+          "source_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/"
+        },
+        {
+          "time_pt": "10:30 AM",
+          "ed_turnout": 650000,
+          "approx": "around 650,000",
+          "by_party": null,
+          "scope": "statewide",
+          "source": "GA SOS office, 1:30 PM ET (Atlanta News First)",
+          "source_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "7:00 AM PT",
-      "election_day_turnout_source": "GA SOS Raffensperger 10 AM ET briefing (WTOC/Atlanta News First)",
-      "election_day_turnout_url": "https://www.wtoc.com/2026/11/03/watch-live-state-officials-give-update-election-day-voting-continues/",
-      "election_day_turnout_note": "more than 300,000"
+      "election_day_turnout_as_of": "10:30 AM PT",
+      "election_day_turnout_source": "GA SOS office, 1:30 PM ET (Atlanta News First)",
+      "election_day_turnout_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/",
+      "election_day_turnout_note": "around 650,000"
     }
   ],
   "timeline": [
