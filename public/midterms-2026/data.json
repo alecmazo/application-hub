@@ -1,21 +1,22 @@
 {
-  "lastUpdated": "2026-11-03T11:03-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:03 AM PT",
+  "lastUpdated": "2026-11-03T11:09-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:09 AM PT",
   "notes": [
-    "Early-vote counts from UF Election Lab tracker; KS, OH, MN, AZ, TX, CA as of 11/2, others 11/3.",
-    "Turnout so far = pre-Election Day ballots / registered voters.",
+    "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
+    "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
     "2022 turnout % is of voting-eligible population (UF Election Lab); 2022 registration not pulled for every state.",
-    "Any null value displays as 'pending'."
+    "Any null value displays as 'pending'.",
+    "No statewide results yet as of this hourly refresh; polls still open in all tracked states."
   ],
   "states": [
     {
       "code": "KS",
       "name": "Kansas",
-      "early_in_person": 392184,
+      "early_in_person": 419839,
       "early_in_person_note": null,
-      "mail_returned": 77986,
-      "total_cast": 470170,
-      "early_data_as_of": "11/2",
+      "mail_returned": 85802,
+      "total_cast": 505641,
+      "early_data_as_of": "11/3",
       "registered": 2027520,
       "registered_note": "as of Oct 1 (KS SOS via Kansas City Star)",
       "election_day_turnout": null,
@@ -117,13 +118,27 @@
       ],
       "party_turnout": {
         "status": "reported",
-        "registration_by_party": "not yet pulled",
+        "registration_by_party": {
+          "dem": 521669,
+          "rep": 901822,
+          "other": 604029,
+          "src": "KS SOS Oct 1 2026 via Wichita Eagle/Shiftline"
+        },
         "series": [
           {
             "as_of": "11/2/2026 (UF Election Lab, pre-Election Day)",
             "dem": 192007,
             "rep": 203502,
             "other": 74661
+          },
+          {
+            "as_of": "11/3/2026 (UF Election Lab)",
+            "dem": 202784,
+            "rep": 221086,
+            "other": 81771,
+            "dem_pct_of_reg": 38.9,
+            "rep_pct_of_reg": 24.5,
+            "other_pct_of_reg": 13.5
           }
         ]
       },
@@ -894,26 +909,26 @@
           "total": 366038
         },
         "ballots2026_so_far": {
-          "rep": 203502,
-          "dem": 192007,
-          "other": 74661,
-          "total": 470170
+          "rep": 221086,
+          "dem": 202784,
+          "other": 81771,
+          "total": 505641
         },
-        "ballots2026_as_of": "11/2/2026",
+        "ballots2026_as_of": "11/3/2026",
         "rep": {
           "turnout2022_pct": 20.2,
-          "turnout2026_pct": 22.6,
-          "change_pts": 2.4
+          "turnout2026_pct": 24.5,
+          "change_pts": 4.3
         },
         "dem": {
           "turnout2022_pct": 26.9,
-          "turnout2026_pct": 36.8,
-          "change_pts": 9.9
+          "turnout2026_pct": 38.9,
+          "change_pts": 12.0
         },
         "other": {
           "turnout2022_pct": 8.3,
-          "turnout2026_pct": 12.4,
-          "change_pts": 4.1
+          "turnout2026_pct": 13.5,
+          "change_pts": 5.2
         },
         "note": "2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched"
       }
@@ -1789,11 +1804,11 @@
     {
       "code": "OH",
       "name": "Ohio",
-      "early_in_person": 1103252,
+      "early_in_person": 1106420,
       "early_in_person_note": "UF approximation",
-      "mail_returned": 625647,
-      "total_cast": 1728899,
-      "early_data_as_of": "11/2",
+      "mail_returned": 647089,
+      "total_cast": 1753509,
+      "early_data_as_of": "11/3",
       "registered": 7970000,
       "registered_note": "7.97M, rounded (NBC News via Quartz)",
       "election_day_turnout": null,
@@ -7801,11 +7816,11 @@
     {
       "code": "CA",
       "name": "California",
-      "early_in_person": 298511,
+      "early_in_person": 479207,
       "early_in_person_note": null,
-      "mail_returned": 6364403,
-      "total_cast": 6662914,
-      "early_data_as_of": "11/2",
+      "mail_returned": 6653172,
+      "total_cast": 7132379,
+      "early_data_as_of": "11/3",
       "registered": 23273590,
       "registered_note": "as of Oct 19 (CA SOS Report of Registration)",
       "election_day_turnout": null,
@@ -8353,24 +8368,24 @@
     {
       "code": "AK",
       "name": "Alaska",
-      "early_in_person": null,
+      "early_in_person": 64332,
       "early_in_person_note": null,
-      "mail_returned": null,
-      "total_cast": null,
-      "early_data_as_of": null,
-      "registered": null,
-      "registered_note": null,
+      "mail_returned": 35092,
+      "total_cast": 99424,
+      "early_data_as_of": "11/2",
+      "registered": 604771,
+      "registered_note": "as of Oct 3 (AK Division of Elections via Shiftline)",
       "election_day_turnout": null,
       "expected_vote_counted_pct": null,
       "polls_close_pt": "9 PM PT (10 PM PT Aleutians)",
       "y2022": {
-        "early_in_person": null,
-        "mail_returned": null,
-        "early_total": null,
-        "total_turnout": null,
+        "early_in_person": 3515,
+        "mail_returned": 30082,
+        "early_total": 33597,
+        "total_turnout": 267047,
         "vep": null,
-        "vep_turnout_pct": null,
-        "headline_results": null
+        "vep_turnout_pct": "50.3%",
+        "headline_results": "AK uses ranked-choice voting; 2022 statewide House/Senate via RCV"
       },
       "races": [
         {
@@ -8491,29 +8506,34 @@
       "candidate_source": "AK Division of Elections 2026 General Election Candidate List as transcribed by voteclock.org (official file not fetched directly)",
       "candidate_source_url": null,
       "candidate_verification": "secondhand transcription of official list",
-      "no_senate_race": false
+      "no_senate_race": false,
+      "party_turnout": {
+        "status": "not reported",
+        "series": [],
+        "note": "AK registers by party but publishes no ballots-by-party"
+      }
     },
     {
       "code": "GA",
       "name": "Georgia",
-      "early_in_person": null,
+      "early_in_person": 2705120,
       "early_in_person_note": null,
-      "mail_returned": null,
-      "total_cast": null,
-      "early_data_as_of": null,
+      "mail_returned": 129773,
+      "total_cast": 2834893,
+      "early_data_as_of": "11/3",
       "registered": null,
-      "registered_note": null,
+      "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
       "election_day_turnout": null,
       "expected_vote_counted_pct": null,
-      "polls_close_pt": null,
+      "polls_close_pt": "4 PM PT",
       "y2022": {
-        "early_in_person": null,
-        "mail_returned": null,
-        "early_total": null,
-        "total_turnout": null,
+        "early_in_person": 2289860,
+        "mail_returned": 234488,
+        "early_total": 2524348,
+        "total_turnout": 3964926,
         "vep": null,
-        "vep_turnout_pct": null,
-        "headline_results": null
+        "vep_turnout_pct": "51.9%",
+        "headline_results": "Gov: Kemp (R) def. Abrams (D); Sen: Warnock (D) def. Walker (R) in runoff"
       },
       "races": [
         {
@@ -8600,7 +8620,11 @@
       "candidate_source": "GA SOS results page names Ossoff and Bottoms; Jackson/Collins from Ballotpedia and news; full official list (incl. minor parties) not fetched",
       "candidate_source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
       "candidate_verification": "partly official",
-      "no_senate_race": false
+      "no_senate_race": false,
+      "party_turnout": {
+        "status": "no party registration; not reported",
+        "series": []
+      }
     }
   ],
   "timeline": [
@@ -8642,7 +8666,7 @@
     {
       "hour_pt": "11 AM",
       "polls_close": "",
-      "update": ""
+      "update": "UF: KS 505,641 (+35k), OH 1,753,509, CA 7,132,379; Maricopa ~76,680 Election Day voters served by 11 AM (county Fast Facts). No statewide results."
     },
     {
       "hour_pt": "12 PM",
@@ -8666,7 +8690,7 @@
     },
     {
       "hour_pt": "4 PM",
-      "polls_close": "FL (most), OH 4:30",
+      "polls_close": "FL (most), GA, OH 4:30",
       "update": ""
     },
     {
@@ -8691,12 +8715,12 @@
     },
     {
       "hour_pt": "9 PM",
-      "polls_close": "",
+      "polls_close": "AK (most)",
       "update": ""
     },
     {
       "hour_pt": "10 PM",
-      "polls_close": "",
+      "polls_close": "AK far-western Aleutians",
       "update": ""
     }
   ],
@@ -8864,18 +8888,18 @@
       "total": 56322272
     },
     "ballots2026": {
-      "rep": 5524261,
-      "dem": 7416384,
-      "other": 3698233,
-      "total": 16638878
+      "rep": 5541845,
+      "dem": 7427161,
+      "other": 3705343,
+      "total": 16674349
     },
     "rep_turnout": {
       "2022": 27.9,
-      "2026": 29.4
+      "2026": 29.5
     },
     "dem_turnout": {
       "2022": 28.6,
-      "2026": 34.7
+      "2026": 34.8
     },
     "other_turnout": {
       "2022": 18.4,
