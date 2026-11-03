@@ -43,8 +43,8 @@ if not es and "candidates" in e:  # election2026 format: top-level dicts keyed b
         if meta:
             x["county_baselines_2022_note"] = meta.get("note"); x["county_baselines_2022_source"] = meta.get("source")
             x["county_baselines_2022_url"] = meta.get("url")
-        for hk in ("hourly", "hourly_results", "county_2026", "precinctFeeds"):
-            if code in (e.get(hk) or {}): x["precinct_feeds" if hk == "precinctFeeds" else hk] = e[hk][code]
+        for hk in ("hourly", "hourly_results", "county_2026", "precinctFeeds", "countyTurnout2026"):
+            if code in (e.get(hk) or {}): x[{"precinctFeeds": "precinct_feeds", "countyTurnout2026": "county_turnout_2026"}.get(hk, hk)] = e[hk][code]
         if code in e.get("party_turnout", {}): x["party_turnout"] = e["party_turnout"][code]
         if code in e["candidates"]: x["no_senate_race"] = not c.get("senate")
         if isinstance(e.get(code), dict):  # optional top-level block, e.g. e["AK"] = {turnout fields, y2022, ...}
@@ -77,7 +77,7 @@ for code, x in es.items():
         if x.get(hk):
             s[hk] = x[hk]  # source file holds the full cumulative list for the day
     if isinstance(x.get("county_2026"), dict): s.setdefault("county_2026", {}).update(x["county_2026"])
-    for k in ("feeds", "precinct_feeds", "county_baselines_2022", "county_baselines_2022_note", "county_baselines_2022_source", "county_baselines_2022_url", "county_baselines_2024", "county_baselines_2024_note", "party_turnout", "party_registration_2022", "party_turnout_2022", "candidate_source", "candidate_source_url", "candidate_verification", "no_senate_race"):
+    for k in ("feeds", "precinct_feeds", "county_turnout_2026", "county_baselines_2022", "county_baselines_2022_note", "county_baselines_2022_source", "county_baselines_2022_url", "county_baselines_2024", "county_baselines_2024_note", "party_turnout", "party_registration_2022", "party_turnout_2022", "candidate_source", "candidate_source_url", "candidate_verification", "no_senate_race"):
         if k in x: s[k] = x[k]
     for r in x.get("races", []):
         t = next((q for q in s["races"] if q["race"].lower().startswith(str(r.get("race","")).lower())), None)

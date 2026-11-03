@@ -133,3 +133,8 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 - 2022 baselines: `precincts/{AZ,TX,FL}.json` (MEDSL; `counties[County] = [[precinct, gov_d, gov_r, gov_o, sen_d, sen_r, sen_o], ...]`). These are lazy-loaded and are not in data.json.
 - 2026 counts: the 10-minute routine writes `precincts/{ST}_2026.json` as `counties[County][Precinct] = {race, d, r, o, total, time_pt, source, source_url}`, using county names in Title Case and precinct names exactly as the county file gives them. The page shows "pending" for precincts that have no entry.
 - Feed URLs: `precinctFeeds[ST]` in the election2026 file, which merge.py copies to `states[].precinct_feeds`.
+
+## v7: county turnout before results (county_turnout_2026)
+- Source key `countyTurnout2026[ST] = {as_of, label, source, url, note?, counties:{County:{total, R?, D?, O?, mail?, early?, ed?, partial?}}}`. merge.py copies it to `states[].county_turnout_2026`.
+- Until `county_2026` (results) has entries, the county bars and table show this as "2026 ballots cast so far (turnout)". Counties with no figure show "not published". Once results exist, the column switches to "2026 results".
+- Refresh it every 30 min. FL: all 67 counties from https://www.freshtake.vote/2026G/countydata.php (the table pairs a count row with a %-of-reg row). TX: TransparencyUSA county pages (SOS early vote) plus county ED updates. AZ: Maricopa Fast Facts. Add GA/NV/others only when the source publishes figures. Never estimate.
