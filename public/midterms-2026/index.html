@@ -152,7 +152,7 @@ async function load(){
  document.getElementById('upd').textContent=d.lastUpdatedLabel||d.lastUpdated||'pending';
  const S=d.states;
  for(const[c,n]of[['AK','Alaska'],['GA','Georgia']])if(!S.find(s=>s.code===c))S.push({code:c,name:n,placeholder:true,early_in_person:null,mail_returned:null,total_cast:null,registered:null,registered_note:'pending',early_data_as_of:'pending',election_day_turnout:null,expected_vote_counted_pct:null,polls_close_pt:'pending',y2022:{early_in_person:null,mail_returned:null,early_total:null,total_turnout:null,vep_turnout_pct:null,headline_results:'pending'},races:['Governor','U.S. Senate'].map(r=>({race:r,status:'pending',winner:null,party:null,margin:null,source:null,candidates:[],win_probability:{status:'results pending',values:null,source:null}})),feeds:[]});
- S.forEach(s=>{s.y2022=s.y2022||{};s.races=s.races||[]});const on=new Set(S.map(s=>s.code));
+ S.sort((a,b)=>a.name.localeCompare(b.name));S.forEach(s=>{s.y2022=s.y2022||{};s.races=s.races||[]});const on=new Set(S.map(s=>s.code));
  const sum=k=>S.reduce((a,s)=>a+(s[k]||0),0),sum22=S.reduce((a,s)=>a+(s.y2022.early_total||0),0),now=sum('total_cast');
  document.getElementById('kpis').innerHTML=[['Ballots cast (13 states; reported only)',f(now)],['2022 early total',f(sum22)],['Change vs 2022',sum22?((now/sum22-1)*100).toFixed(0)+'%':P],['Registered (13 states; reported only)',f(sum('registered'))],['Races called',S.flatMap(s=>s.races).filter(x=>x.status==='called').length+' / '+S.flatMap(s=>s.races).length]].map(([a,b])=>`<div class="kpi"><span class="mut">${a}</span><b>${b}</b></div>`).join('');
  // map
