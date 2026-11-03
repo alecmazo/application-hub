@@ -25,8 +25,10 @@ states[]:
   polls_close_pt         string
   y2022: { early_in_person|null, mail_returned, early_total, total_turnout, vep, vep_turnout_pct, headline_results }
   feeds[]: { label, url, type: "statewide"|"county"|"precinct" }      (official result feed links)
-  county_baselines[]: free-form rows, e.g. { county, registered, votes_2022, dem_2022, rep_2022 }
-                      (columns are rendered from the first row's keys)
+  county_baselines_2022[]: rows like { fips, county, gop_2022, dem_2022, total_2022 } (n/a if absent)
+  county_baselines_2024[]: 2024 rows, shown ONLY on the '2024 reference' tab (legacy key `county_baselines` is read there too)
+  party_turnout_2022: { dem, rep, other }   2022 pre-Election Day ballots by party (n/a if absent)
+  party_registration_2022: { dem, rep, other }
   races[]: { race: "Governor"|"U.S. Senate"|"U.S. Senate (special)",
              status: "pending"|"called", winner|null, party|null, margin|null (e.g. "+4.2 pts"), source|null,
              reporting_pct: number|null,
@@ -88,3 +90,16 @@ untouched. If the file uses different key names, rename them to the ones above f
 - merge.py mapping for the election2026 format: `candidates[ST].governor|senate` ([name, party] pairs) →
   `races[].candidates`; `feeds[ST].state|counties` → `feeds`; `county_baseline.counties[ST]` → `county_baselines`;
   `party_turnout[ST]` → `party_turnout`; `probability.by_state[ST].governor|senate` → `win_probability.values`.
+
+## v3 (Nov 3): 2026 vs 2022 only; party bars; aggregate; 2024 reference tab
+- Top "All 11 states at a glance" block: sums of total_cast/registered across states; party bars sum the latest
+  `party_turnout.series` for the 7 party states (KS, IA, NV, PA, AZ, FL, CA). Optional top-level `aggregate` overrides:
+  `{ total_ballots, registered, total_turnout_2022, party2026:{dem,rep,other}, party2022:{dem,rep,other} }`.
+  2022 aggregate party bars sum `party_turnout_2022` only if all 7 states have it; otherwise n/a.
+- Party bars: Republican, Democrat, Independent/Other; count + share of the three groups; 2026 vs '2022'.
+- Every baseline in main views and state tabs is 2022. 2024 data appears only in the '2024 reference' tab,
+  from top-level `baselines2024` if present, else each state's `county_baselines_2024` (or legacy `county_baselines`).
+- merge.py mapping (election2026 file): `partyRegistration2022[ST]` -> `party_registration_2022`;
+  `partyTurnout2022[ST]` -> `party_turnout_2022`; `countyBaselines2022[ST]` -> `county_baselines_2022`;
+  `county_baseline.counties[ST]` -> `county_baselines_2022` if rows use *_2022 keys (or year==2022), else
+  `county_baselines_2024`; top-level `aggregate` and `baselines2024` copied as-is.

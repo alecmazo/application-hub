@@ -25,18 +25,32 @@ if not es and "candidates" in e:  # election2026 format: top-level dicts keyed b
         if f:
             x["feeds"] = ([{"label": "Statewide results", "url": f["state"], "type": "statewide"}] if f.get("state") else []) + \
                          [{"label": k + " County", "url": u, "type": "county"} for k, u in (f.get("counties") or {}).items()]
-        if code in cb:
-            x["county_baselines"] = cb[code]
-            x["county_baselines_note"] = (e.get("county_baseline") or {}).get("description")
+        cbd = e.get("county_baseline") or {}
+        rows = cb.get(code)
+        if rows:
+            is22 = cbd.get("year") == 2022 or any(k.endswith("_2022") for k in rows[0])
+            is24 = cbd.get("year") == 2024 or any(k.endswith("_2024") for k in rows[0])
+            if is22 and not is24:
+                x["county_baselines_2022"] = rows; x["county_baselines_2022_note"] = cbd.get("description")
+            elif is24:  # legacy 2024 data -> 2024 reference tab only
+                x["county_baselines_2024"] = rows; x["county_baselines_2024_note"] = cbd.get("description")
+        for src_k, dst_k in (("countyBaselines2022", "county_baselines_2022"), ("partyRegistration2022", "party_registration_2022"),
+                             ("partyTurnout2022", "party_turnout_2022")):
+            if code in (e.get(src_k) or {}): x[dst_k] = e[src_k][code]
         if code in e.get("party_turnout", {}): x["party_turnout"] = e["party_turnout"][code]
         x["no_senate_race"] = not c.get("senate")
         es[code] = x
 if isinstance(es, list): es = {x.get("code"): x for x in es}
 by = {s["code"]: s for s in d["states"]}
+for s in d["states"]:  # old unlabeled key held 2024 data; superseded by county_baselines_2024
+    if "county_baselines" in s:
+        s.setdefault("county_baselines_2024", s.pop("county_baselines")); s.setdefault("county_baselines_2024_note", s.pop("county_baselines_note", None))
+for k in ("aggregate", "baselines2024"):
+    if e.get(k) is not None: d[k] = e[k]
 for code, x in es.items():
     s = by.get(code)
     if not s: print("skip unknown state", code); continue
-    for k in ("feeds", "county_baselines", "county_baselines_note", "party_turnout", "candidate_source", "candidate_source_url", "candidate_verification", "no_senate_race"):
+    for k in ("feeds", "county_baselines_2022", "county_baselines_2022_note", "county_baselines_2024", "county_baselines_2024_note", "party_turnout", "party_registration_2022", "party_turnout_2022", "candidate_source", "candidate_source_url", "candidate_verification", "no_senate_race"):
         if k in x: s[k] = x[k]
     for r in x.get("races", []):
         t = next((q for q in s["races"] if q["race"].lower().startswith(str(r.get("race","")).lower())), None)

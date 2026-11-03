@@ -29,6 +29,8 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 .unof{font-size:.7rem;font-weight:600;color:#fbbf24;border:1px solid #fbbf24;border-radius:4px;padding:0 5px;margin-left:4px;vertical-align:middle}
 .cmpbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:14px}.cmpbox h3{margin:0 0 2px;font-size:1rem}.cmpbox p{margin:0 0 8px;font-size:.8rem}.cmpc{position:relative;height:360px}.cmpc.sm{height:260px}
 @media(max-width:700px){.cmpc{height:620px}.cmpc.sm{height:320px}}
+.pb{margin:6px 0 14px}.pb .row{display:grid;grid-template-columns:92px 1fr;gap:6px;align-items:center;margin:4px 0;font-size:.82rem}.pb .tr{background:#0b1016;border-radius:6px;height:22px;position:relative;overflow:hidden}.pb .fill{height:100%;border-radius:6px}.pb .lab{position:absolute;left:8px;top:2px;white-space:nowrap;font-weight:600;color:#fff;text-shadow:0 1px 2px #000}.pb .yr{color:var(--mut);font-size:.72rem}
+.pb h4{margin:10px 0 2px;font-size:.85rem}.agg{background:linear-gradient(135deg,#17233a,#18202a);border:1px solid #2b3d5c;border-radius:16px;padding:16px;margin:14px 0}.agg h2{margin-top:0;border:0}
 </style>
 </head>
 <body>
@@ -39,6 +41,7 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 
 </header>
 <main>
+<section class="agg" id="agg"></section>
 <div class="tabs" id="tabs"></div>
 <section class="pane" id="p-overview">
 <div class="kpis" id="kpis"></div>
@@ -53,6 +56,7 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <h2 id="sources">Sources</h2><ul class="src" id="src"></ul>
 </section>
 <div id="statepanes"></div>
+<section class="pane" id="p-ref2024"></section>
 </main>
 <script>
 const TILES={AK:[0,0],ME:[11,0],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],IL:[6,2],WI:[7,2],MI:[8,2],NY:[9,2],RI:[10,2],MA:[11,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IN:[6,3],OH:[7,3],PA:[8,3],NJ:[9,3],CT:[10,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],DC:[9,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[9,7]};
@@ -61,6 +65,16 @@ const f=x=>x==null?P:x.toLocaleString('en-US');
 const pc=(a,b)=>a==null||!b?null:100*a/b;
 const fp=x=>x==null?P:x.toFixed(1)+'%';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const PCOL={rep:'#ef4444',dem:'#3b82f6',other:'#a3a3a3'},PN={rep:'Republican',dem:'Democrat',other:'Independent/Other'};
+const latest=pt=>pt&&(pt.series||[]).length?pt.series[pt.series.length-1]:null;
+function partyBars(cur,base,curLabel){ // cur/base: {dem,rep,other} or null; shares are of the three-party sum
+ const tot=o=>o&&['dem','rep','other'].every(k=>typeof o[k]==='number')?o.dem+o.rep+o.other:null;
+ const tc=tot(cur),tb=tot(base);
+ const bar=(o,t,k,yr)=>{const v=o&&typeof o[k]==='number'?o[k]:null,p=v!=null&&t?100*v/t:null;
+  return `<div class="row"><span class="yr">${yr}</span><div class="tr">${p!=null?`<div class="fill" style="width:${p.toFixed(1)}%;background:${PCOL[k]}${yr==='2022'?'88':''}"></div>`:''}<span class="lab">${v==null?'n/a':v.toLocaleString('en-US')+(p!=null?' · '+p.toFixed(1)+'%':'')}</span></div></div>`};
+ return '<div class="pb">'+['rep','dem','other'].map(k=>`<h4 style="color:${PCOL[k]}">${PN[k]}</h4>${bar(cur,tc,k,curLabel||'2026 so far')}${bar(base,tb,k,'2022')}`).join('')+'</div>';}
+function sumParty(list){if(!list.length||list.some(o=>!o||['dem','rep','other'].some(k=>typeof o[k]!=='number')))return null;return list.reduce((a,o)=>({dem:a.dem+o.dem,rep:a.rep+o.rep,other:a.other+o.other}),{dem:0,rep:0,other:0});}
 let charts=[],cur='overview';const L0=S=>S.map(s=>s.code);const PARTY=["KS","IA","NV","PA","AZ","FL","CA"];
 function show(t,quiet){if(!document.getElementById('p-'+t))t='overview';cur=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('act',p.id==='p-'+t));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('act',b.dataset.t===t));if(location.hash.slice(1)!==t)history.replaceState(null,'','#'+t);if(!quiet)scrollTo({top:0});}
 addEventListener('hashchange',()=>show(location.hash.slice(1)));
@@ -75,7 +89,15 @@ async function load(){
  for(const[k,[x,y]]of Object.entries(TILES)){const o=on.has(k);svg+=`<g class="${o?'on':''}" ${o?`data-s="${k}" tabindex="0"`:''}><title>${k}</title><rect x="${x*60+2}" y="${y*60+2}" width="56" height="56"/><text x="${x*60+30}" y="${y*60+35}">${k}</text></g>`}
  document.getElementById('map').innerHTML=svg+'</svg>';
  document.querySelectorAll('#map g.on').forEach(g=>{const go=()=>show(g.dataset.s);g.onclick=go;g.onkeydown=e=>{if(e.key==='Enter')go()}});
- document.getElementById('tabs').innerHTML='<button data-t="overview">Overview</button>'+S.map(s=>`<button data-t="${s.code}">${esc(s.name)}</button>`).join('');
+ document.getElementById('tabs').innerHTML='<button data-t="overview">Overview</button>'+S.map(s=>`<button data-t="${s.code}">${esc(s.name)}</button>`).join('')+'<button data-t="ref2024">2024 reference</button>';
+ {const A=d.aggregate||{},PS=S.filter(s=>PARTY.includes(s.code));
+  const tb=A.total_ballots??now,rg=A.registered??sum('registered');
+  const p26=A.party2026??sumParty(PS.map(s=>latest(s.party_turnout))),p22=A.party2022??sumParty(PS.map(s=>s.party_turnout_2022||null));
+  const t22=A.total_turnout_2022??S.reduce((a,s)=>a+(s.y2022.total_turnout||0),0);
+  document.getElementById('agg').innerHTML=`<h2>All 11 states at a glance <span class="unof">Unofficial</span></h2>
+  <div class="kpis"><div class="kpi"><span class="mut">Ballots cast so far (2026)</span><b>${f(tb)}</b></div><div class="kpi"><span class="mut">Registered voters (2026)</span><b>${f(rg)}</b></div><div class="kpi"><span class="mut">Turnout vs registered (2026 so far)</span><b>${fp(pc(tb,rg))}</b></div><div class="kpi"><span class="mut">2022 pre-Election Day ballots</span><b>${f(sum22)}</b></div><div class="kpi"><span class="mut">2022 total turnout (final)</span><b>${f(t22)}</b></div></div>
+  <h3 style="margin:16px 0 0">Early ballots by party, 2026 so far vs 2022</h3><p class="mut" style="font-size:.8rem;margin:2px 0">Party data covers 7 states (KS, IA, NV, PA, AZ, FL, CA). % = share of the three groups' ballots. 2022 shows n/a until 2022 party data is added.</p>${partyBars(p26,p22)}`;}
+
  document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>show(b.dataset.t));
  document.getElementById('sum').innerHTML=S.map(s=>`<tr><td><a href="#${s.code}">${esc(s.name)}</a></td><td>${s.early_in_person==null?'<span class="mut">n/r</span>':f(s.early_in_person)}</td><td>${f(s.mail_returned)}</td><td>${f(s.total_cast)}</td><td>${f(s.registered)}</td><td>${fp(pc(s.total_cast,s.registered))}</td><td>${fp(pc(s.total_cast,s.y2022.total_turnout))}</td><td>${esc(s.polls_close_pt)}</td></tr>`).join('');
  document.getElementById('statepanes').innerHTML=S.map(s=>{const ip=pc(s.early_in_person,s.registered),ml=pc(s.mail_returned,s.registered),t=pc(s.total_cast,s.registered);
@@ -98,12 +120,18 @@ async function load(){
    <dl><dt>Share of expected vote counted</dt><dd>${s.expected_vote_counted_pct==null?P:esc(s.expected_vote_counted_pct)+'%'}</dd><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd>${r.source?`<dt>Source</dt><dd>${esc(r.source)}</dd>`:''}</dl>
    <div class="wp"><b>Win probability:</b> ${wpHtml}</div></div>`}).join('');
   const feeds=(s.feeds||[]).length?'<ul>'+s.feeds.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label||x.url)}</a>${x.type?` <span class="mut">(${esc(x.type)})</span>`:''}</li>`).join('')+'</ul>':'<p class="pend">official feed links pending</p>';
-  const cb=(s.county_baselines||[]);const cbHtml=cb.length?(()=>{const cols=Object.keys(cb[0]);return `<div class="tw"><table><thead><tr>${cols.map(k=>`<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${cb.map(r=>`<tr>${cols.map(k=>`<td>${r[k]==null?'—':esc(typeof r[k]==='number'?r[k].toLocaleString('en-US'):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`})():'<p class="pend">county baselines pending</p>';
+  const cb=(s.county_baselines_2022||[]);const cbHtml=cb.length?(()=>{const cols=Object.keys(cb[0]);return `<div class="tw"><table><thead><tr>${cols.map(k=>`<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${cb.map(r=>`<tr>${cols.map(k=>`<td>${r[k]==null?'—':esc(typeof r[k]==='number'?r[k].toLocaleString('en-US'):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`})():'<p class="mut">n/a — 2022 county baselines not yet in data</p>';
   return `<section class="pane" id="p-${s.code}"><h2>${esc(s.name)}</h2><div class="two">${card}<div><div class="res" style="grid-template-columns:1fr">${races}${s.no_senate_race?'<div class="race"><b>U.S. Senate</b><p class="mut" style="margin:6px 0 0">No Senate race in 2026</p></div>':''}</div></div></div>
   ${s.candidate_source?`<p class="mut" style="font-size:.8rem">Candidates: ${s.candidate_source_url?`<a href="${esc(s.candidate_source_url)}" target="_blank" rel="noopener">${esc(s.candidate_source)}</a>`:esc(s.candidate_source)} — verification: ${esc(s.candidate_verification||'n/a')}</p>`:''}
   <h2>2026 vs 2022 <span class="unof">Unofficial</span></h2><div class="two"><div class="cmpbox"><h3>Ballots before Election Day</h3><p class="mut">2026 so far vs 2022 final pre-Election Day counts (UF Election Lab). n/a = not in source.</p><div class="cmpc sm"><canvas id="sc-${s.code}"></canvas></div></div><div class="cmpbox"><h3>Turnout %</h3><p class="mut">2026: ballots so far ÷ registered. 2022: final turnout ÷ voting-eligible population. Not like-for-like.</p><div class="cmpc sm"><canvas id="sp-${s.code}"></canvas></div></div></div>
-  <h2>Early ballots by party registration <span class="unof">Unofficial</span></h2>${PARTY.includes(s.code)?((s.party_turnout&&(s.party_turnout.series||[]).length)?`<div class="tw"><table><thead><tr><th>As of</th><th>Dem</th><th>Rep</th><th>Other</th></tr></thead><tbody>${s.party_turnout.series.map(x=>`<tr><td>${esc(x.as_of)}</td><td>${f(x.dem)}${x.dem_pct_of_reg!=null?` <span class="mut">(${x.dem_pct_of_reg}% of Dem reg.)</span>`:''}</td><td>${f(x.rep)}${x.rep_pct_of_reg!=null?` <span class="mut">(${x.rep_pct_of_reg}% of Rep reg.)</span>`:''}</td><td>${f(x.other)}${x.other_pct_of_reg!=null?` <span class="mut">(${x.other_pct_of_reg}% of other reg.)</span>`:''}</td></tr>`).join('')}</tbody></table></div>${s.party_turnout.registration_by_party&&typeof s.party_turnout.registration_by_party==='object'?`<p class="mut" style="font-size:.8rem">Registration: Dem ${f(s.party_turnout.registration_by_party.dem)}, Rep ${f(s.party_turnout.registration_by_party.rep)}, Other ${f(s.party_turnout.registration_by_party.other)} (${esc(s.party_turnout.registration_by_party.src)})</p>`:''}`:'<p class="pend">pending</p>'):'<p class="mut">No party registration</p>'}
-  <h2>County / precinct result feeds</h2>${feeds}<h2>County baselines</h2>${s.county_baselines_note?`<p class="mut" style="font-size:.8rem">${esc(s.county_baselines_note)}</p>`:''}<details><summary class="mut">Show ${cb.length} counties</summary>${cbHtml}</details></section>`}).join('');
+  <h2>Early ballots by party <span class="unof">Unofficial</span></h2>${PARTY.includes(s.code)?`<p class="mut" style="font-size:.8rem">${esc((latest(s.party_turnout)||{}).as_of||'')} · 2022 = 2022 pre-Election Day ballots by party (n/a if not yet added). % = share of the three groups.</p>${partyBars(latest(s.party_turnout),s.party_turnout_2022||null)}
+  <h4 style="margin:6px 0 0">Registration by party</h4>${partyBars(s.party_turnout&&typeof s.party_turnout.registration_by_party==='object'?s.party_turnout.registration_by_party:null,s.party_registration_2022||null,'2026')}`:'<p class="mut">No party registration</p>'}
+  <h2>County / precinct result feeds</h2>${feeds}<h2>County baselines (2022)</h2>${s.county_baselines_2022_note?`<p class="mut" style="font-size:.8rem">${esc(s.county_baselines_2022_note)}</p>`:''}${cb.length?`<details><summary class="mut">Show ${cb.length} counties</summary>${cbHtml}</details>`:cbHtml}</section>`}).join('');
+ {const B=d.baselines2024;let body='';
+  if(B){body=`<pre style="white-space:pre-wrap;font-size:.8rem">${esc(JSON.stringify(B,null,1))}</pre>`}
+  else{body=S.map(s=>{const r=s.county_baselines_2024||s.county_baselines||[];if(!r.length)return `<h3>${esc(s.name)}</h3><p class="mut">n/a</p>`;const cols=Object.keys(r[0]);return `<details><summary><b>${esc(s.name)}</b> <span class="mut">(${r.length} counties)</span></summary><div class="tw"><table><thead><tr>${cols.map(k=>`<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${r.map(x=>`<tr>${cols.map(k=>`<td>${x[k]==null?'n/a':esc(typeof x[k]==='number'?x[k].toLocaleString('en-US'):x[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>`}).join('');
+   const ns=S.find(s=>s.county_baselines_2024_note||s.county_baselines_note)||{},note=ns.county_baselines_2024_note||ns.county_baselines_note;if(note)body=`<p class="mut" style="font-size:.8rem">${esc(note)}</p>`+body;}
+  document.getElementById('p-ref2024').innerHTML=`<h2>2024 reference</h2><p class="mut">Reference only. Not used in any 2026 vs 2022 comparison on this page.</p>`+body;}
  show(location.hash.slice(1)||cur,true);
  // charts
  charts.forEach(c=>c.destroy());charts=[];Chart.defaults.color='#8b98a5';Chart.defaults.borderColor='#2a3542';
