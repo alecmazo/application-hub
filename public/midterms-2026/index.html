@@ -47,8 +47,8 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <div class="kpis" id="kpis"></div>
 <h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to open its tab.</p>
 <h2>Summary</h2><div class="tw"><table><thead><tr><th>State</th><th>Early in-person</th><th>Mail</th><th>Total cast</th><th>Registered</th><th>Turnout so far</th><th>% of 2022 total</th><th>Polls close (PT)</th></tr></thead><tbody id="sum"></tbody></table></div>
-<h2 id="compare">2026 vs 2022, side by side</h2>
-<div class="legend" style="margin-bottom:8px"><span><i style="background:#3b82f6"></i>2026</span><span><i style="background:#9ca3af"></i>2022</span><span>n/a = not in source data</span></div>
+<h2 id="compare">2022 vs 2024 vs 2026, side by side</h2>
+<div class="legend" style="margin-bottom:8px"><span><i style="background:#9ca3af"></i>2022 (midterm)</span><span><i style="background:#a78bfa99"></i>2024 (presidential)</span><span><i style="background:#3b82f6"></i>2026</span><span>n/a = not in source data. 2024 data here is only the total presidential vote, so 2024 shows n/a on the early, mail and turnout % charts.</span></div>
 <div id="cmp"></div>
 <h2 id="timeline">Election Day timeline (PT)</h2><div class="tw"><table class="tl"><thead><tr><th>Hour (PT)</th><th>Polls close</th><th>Reported turnout / results</th></tr></thead><tbody id="tl"></tbody></table></div>
 <h2 id="results">Results (all races) <span class="unof">Unofficial</span></h2><div class="res" id="res"></div>
@@ -209,19 +209,21 @@ async function load(){
   {k:'ip',t:'Early in-person ballots',u:'n',d:'2026: early in-person ballots cast so far (UF Election Lab). 2022: final early in-person count. n/a where the state does not report it separately.',a:s=>s.early_in_person,b:s=>s.y2022.early_in_person},
   {k:'mail',t:'Mail / absentee ballots returned',u:'n',d:'2026: mail ballots returned so far. 2022: final mail ballots returned before Election Day (UF Election Lab).',a:s=>s.mail_returned,b:s=>s.y2022.mail_returned},
   {k:'tot',t:'Total ballots cast before Election Day',u:'n',d:'2026: early in-person + mail so far. 2022: final pre-Election Day total (UF Election Lab).',a:s=>s.total_cast,b:s=>s.y2022.early_total},
+  {k:'all',t:'Total votes cast',u:'n',d:'2026: ballots cast so far (early + mail; Election Day not included). 2022: final total turnout (UF Election Lab). 2024: total presidential votes, summed from county returns (tonmcg / county official results; baselines2024.source_url). AK and GA have no 2024 county data here, so they show n/a.',a:s=>s.total_cast,b:s=>s.y2022.total_turnout,c:s=>v24(s)},
   {k:'pct',t:'Turnout %',u:'%',d:'2026: pre-Election Day ballots ÷ registered voters (turnout so far). 2022: FINAL turnout ÷ voting-eligible population (UF Election Lab) — different denominator and full count, so not like-for-like.',a:s=>{const v=pc(s.total_cast,s.registered);return v==null?null:+v.toFixed(1)},b:s=>{const v=parseFloat(s.y2022.vep_turnout_pct);return isNaN(v)?null:v}}];
  const narrow=matchMedia('(max-width:700px)').matches;
  const fmtV=(v,u)=>v==null?'n/a':u==='%'?v+'%':v>=1e6?(v/1e6).toFixed(2)+'M':v>=1e3?Math.round(v/1e3)+'K':String(v);
  const naPlugin={id:'na',afterDatasetsDraw(c){const ctx=c.ctx,hz=c.options.indexAxis==='y',cs=hz?c.scales.y:c.scales.x,vs=hz?c.scales.x:c.scales.y,n=c.data.datasets.length;
   c.data.datasets.forEach((ds,di)=>ds.data.forEach((v,i)=>{if(v!=null)return;const w=(cs.getPixelForValue(1)-cs.getPixelForValue(0))||cs.width||cs.height;const off=((di+.5)/n-.5)*Math.abs(w)*.8;const p=cs.getPixelForValue(i)+off,b=vs.getPixelForValue(0);
    ctx.save();ctx.fillStyle='#fbbf24';ctx.font='600 11px system-ui';ctx.textAlign=hz?'left':'center';ctx.textBaseline=hz?'middle':'bottom';hz?ctx.fillText('n/a',b+4,p):ctx.fillText('n/a',p,b-3);ctx.restore()}))}};
- const mk=(el,labels,m,A,B,small)=>new Chart(el,{type:'bar',plugins:[ChartDataLabels,naPlugin],data:{labels,datasets:[{label:'2026',data:A,backgroundColor:'#3b82f6'},{label:'2022',data:B,backgroundColor:'#9ca3af'}]},
+ const mk=(el,labels,m,A,B,small,C)=>new Chart(el,{type:'bar',plugins:[ChartDataLabels,naPlugin],data:{labels,datasets:C?[{label:'2022',data:B,backgroundColor:'#9ca3af'},{label:'2024 (presidential)',data:C,backgroundColor:'#a78bfa99'},{label:'2026',data:A,backgroundColor:'#3b82f6'}]:[{label:'2026',data:A,backgroundColor:'#3b82f6'},{label:'2022',data:B,backgroundColor:'#9ca3af'}]},
   options:{indexAxis:narrow?'y':'x',maintainAspectRatio:false,layout:{padding:{top:18,right:narrow?44:8}},plugins:{legend:{display:true,position:'top'},
   tooltip:{callbacks:{label:x=>x.dataset.label+': '+(x.raw==null?'n/a':m.u==='%'?x.raw+'%':x.raw.toLocaleString('en-US'))}},
   datalabels:{anchor:'end',align:'end',color:'#e6edf3',font:{size:small?11:10,weight:600},formatter:v=>fmtV(v,m.u),display:x=>x.dataset.data[x.dataIndex]!=null}},
   scales:{[narrow?'x':'y']:{beginAtZero:true,grace:'12%',ticks:{callback:v=>fmtV(v,m.u)}}}}});
  document.getElementById('cmp').innerHTML=M.map(m=>`<div class="cmpbox"><h3>${m.t}</h3><p class="mut">${m.d}</p><div class="cmpc"><canvas id="cmp-${m.k}"></canvas></div></div>`).join('');
- M.forEach(m=>charts.push(mk(document.getElementById('cmp-'+m.k),L0(S),m,S.map(m.a),S.map(m.b))));
+ const B24=(d.baselines2024||{}).counties||{},v24=s=>{const r=B24[s.code];if(!r||!r.length||r.some(x=>num(x.total_2024)==null))return null;return r.reduce((a,x)=>a+num(x.total_2024),0)};
+ M.forEach(m=>charts.push(mk(document.getElementById('cmp-'+m.k),L0(S),m,S.map(m.a),S.map(m.b),false,S.map(s=>m.c?m.c(s):null))));
  S.forEach(s=>{const el=document.getElementById('sc-'+s.code);if(!el)return;
   // per-state: two charts (counts, turnout %) so scales stay readable
   charts.push(mk(el,['Early in-person','Mail','Total pre-ED'],{u:'n'},[M[0].a(s),M[1].a(s),M[2].a(s)],[M[0].b(s),M[1].b(s),M[2].b(s)],true));
