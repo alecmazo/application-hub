@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T11:17-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:17 AM PT",
+  "lastUpdated": "2026-11-03T11:20-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:20 AM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -7151,7 +7151,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": null,
+      "election_day_turnout": 29557,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7609,7 +7609,20 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "hourly": [
+        {
+          "time_pt": "10 AM",
+          "ed_turnout": 29557,
+          "by_party": {
+            "R": 11513,
+            "D": 8845,
+            "O": 9199
+          },
+          "scope": "statewide",
+          "source": "NV SOS VIVID, updated 10:00 AM PT, as relayed by data-point-research.com (VIVID not fetched directly)"
+        }
+      ]
     },
     {
       "code": "MI",
@@ -10775,7 +10788,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": null,
+      "election_day_turnout": 1559480,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -12199,7 +12212,23 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "hourly": [
+        {
+          "time_pt": "11 AM",
+          "ed_turnout": 1559480,
+          "by_party": null,
+          "scope": "statewide",
+          "source": "FL DOS Florida Election Watch Election Day Turnout (most counties as of 2:10 PM ET / 1:10 PM CT = 11:10 AM PT), floridaelectionwatch.gov/ElectionDayTurnout"
+        },
+        {
+          "time_pt": "10 AM",
+          "ed_turnout": 1508322,
+          "by_party": null,
+          "scope": "statewide",
+          "source": "FL DOS Florida Election Watch (most counties as of 1:50 PM ET = 10:50 AM PT)"
+        }
+      ]
     },
     {
       "code": "TX",
@@ -15890,7 +15919,16 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins. Governor only (no Senate race in 2022).",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "hourly": [
+        {
+          "time_pt": "8 AM",
+          "ed_turnout": 29959,
+          "by_party": null,
+          "scope": "Bexar County only",
+          "source": "Bexar County Elections Administrator Michele Carew, by 10 AM CT, via San Antonio Express-News"
+        }
+      ]
     },
     {
       "code": "CA",
@@ -17697,7 +17735,7 @@
       "early_data_as_of": "11/3",
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
-      "election_day_turnout": null,
+      "election_day_turnout": 650000,
       "expected_vote_counted_pct": null,
       "polls_close_pt": "4 PM PT",
       "y2022": {
@@ -19552,7 +19590,30 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins. Senate = Nov 8 general, not Dec runoff. 25 statewide floating write-ins excluded.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "hourly": [
+        {
+          "time_pt": "7 AM",
+          "ed_turnout": 300000,
+          "by_party": null,
+          "scope": "statewide",
+          "source": "GA SOS Raffensperger briefing shortly before 10 AM ET: 'more than 300,000' (floor, rounded by SOS) via CBS Atlanta/Atlanta News First"
+        },
+        {
+          "time_pt": "9 AM",
+          "ed_turnout": 500000,
+          "by_party": null,
+          "scope": "statewide",
+          "source": "GA SOS office at 12 PM ET: 'more than 500,000' (floor, rounded by SOS) via Atlanta News First"
+        },
+        {
+          "time_pt": "10:30 AM",
+          "ed_turnout": 650000,
+          "by_party": null,
+          "scope": "statewide",
+          "source": "'around 650,000' at 1:30 PM ET, attributed to officials, via Atlanta News First (rounded)"
+        }
+      ]
     }
   ],
   "timeline": [
