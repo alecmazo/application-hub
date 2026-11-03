@@ -1,13 +1,14 @@
 {
-  "lastUpdated": "2026-11-03T11:45-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:45 AM PT",
+  "lastUpdated": "2026-11-03T12:11-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:11 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
     "2022 turnout % is of voting-eligible population (UF Election Lab); 2022 registration not pulled for every state.",
     "Any null value displays as 'pending'.",
     "No statewide results yet as of this hourly refresh; polls still open in all tracked states.",
-    "Florida Election Day series switched to FreshTake.Vote directly (single source) at 11:32 AM PT; earlier Strength In Numbers-derived rows removed."
+    "Florida Election Day series switched to FreshTake.Vote directly (single source) at 11:32 AM PT; earlier Strength In Numbers-derived rows removed.",
+    "Noon PT refresh: FL/NV/AZ/GA Election Day turnout updated; CA early+party from UF. No results yet."
   ],
   "states": [
     {
@@ -7160,7 +7161,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 50880,
+      "election_day_turnout": 63047,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7657,11 +7658,24 @@
           "scope": "statewide",
           "source": "Nevada SOS VIVID turnout via Strength In Numbers",
           "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "12:03 PM",
+          "ed_turnout": 63047,
+          "by_party": null,
+          "by_party_pct": {
+            "R": 40,
+            "D": 28,
+            "O": 32
+          },
+          "scope": "statewide",
+          "source": "Nevada SOS VIVID turnout via Strength In Numbers (as of 3:03 PM ET)",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "11:23 AM PT",
-      "election_day_turnout_source": "Nevada SOS VIVID turnout via Strength In Numbers",
+      "election_day_turnout_as_of": "12:03 PM PT",
+      "election_day_turnout_source": "Nevada SOS VIVID turnout via Strength In Numbers (as of 3:03 PM ET)",
       "election_day_turnout_url": "https://projects.gelliottmorris.com/2026-early-vote/"
     },
     {
@@ -10374,7 +10388,7 @@
       "early_data_as_of": "11/2",
       "registered": 4374827,
       "registered_note": "final GE 2026 report (AZ SOS)",
-      "election_day_turnout": 96287,
+      "election_day_turnout": 115004,
       "polls_close_pt": "6 PM PT",
       "y2022": {
         "early_in_person": null,
@@ -10668,6 +10682,14 @@
           "scope": "Maricopa only",
           "source": "Maricopa County Elections Fast Facts (approx., as of 12 PM MST)",
           "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+        },
+        {
+          "time_pt": "12:00 PM",
+          "ed_turnout": 115004,
+          "by_party": null,
+          "scope": "Maricopa only",
+          "source": "Maricopa County Elections Fast Facts (approx., as of 1 PM MST)",
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
         }
       ],
       "county_baselines_2022": [
@@ -10841,8 +10863,8 @@
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "election_day_turnout_scope": "Maricopa only",
-      "election_day_turnout_as_of": "11:00 AM PT (12 PM MST)",
-      "election_day_turnout_source": "Maricopa County Elections Fast Facts",
+      "election_day_turnout_as_of": "12:00 PM PT",
+      "election_day_turnout_source": "Maricopa County Elections Fast Facts (approx., as of 1 PM MST)",
       "election_day_turnout_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
       "precinct_feeds": [
         {
@@ -10885,7 +10907,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 1571889,
+      "election_day_turnout": 1713302,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -12334,11 +12356,23 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2:32 PM ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
+        },
+        {
+          "time_pt": "12:06 PM",
+          "ed_turnout": 1713302,
+          "by_party": {
+            "R": 855828,
+            "D": 444471,
+            "O": 413003
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote via Strength In Numbers, as of 3:06 PM ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "11:32 AM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2:32 PM ET",
+      "election_day_turnout_as_of": "12:06 PM PT",
+      "election_day_turnout_source": "FreshTake.Vote via Strength In Numbers, as of 3:06 PM ET",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -16617,8 +16651,8 @@
       "name": "California",
       "early_in_person": 479207,
       "early_in_person_note": null,
-      "mail_returned": 6653172,
-      "total_cast": 7132379,
+      "mail_returned": 6836017,
+      "total_cast": 7315224,
       "early_data_as_of": "11/3",
       "registered": 23273590,
       "registered_note": "as of Oct 19 (CA SOS Report of Registration)",
@@ -16699,6 +16733,15 @@
             "dem_pct_of_reg": 31.5,
             "rep_pct_of_reg": 31.1,
             "other_pct_of_reg": 19.8
+          },
+          {
+            "as_of": "11/3/2026 (UF Election Lab)",
+            "dem": 3664939,
+            "rep": 1971449,
+            "other": 1563782,
+            "dem_pct_of_reg": 35.0,
+            "rep_pct_of_reg": 34.3,
+            "other_pct_of_reg": 22.1
           }
         ]
       },
@@ -17806,7 +17849,7 @@
       "county_baselines_2022_note": "Top-two general: only D and R on ballot.",
       "county_baselines_2022_source": "CA SOS Statement of Vote 2022: Governor by county; US Senate (full term) by county",
       "county_baselines_2022_url": "https://elections.cdn.sos.ca.gov/sov/2022-general/sov/19-governor.pdf",
-      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 12:10 PM PT",
       "election_day_status": "Not yet published by state"
     },
     {
@@ -18421,7 +18464,7 @@
       "early_data_as_of": "11/3",
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
-      "election_day_turnout": 650000,
+      "election_day_turnout": 775000,
       "expected_vote_counted_pct": null,
       "polls_close_pt": "4 PM PT",
       "y2022": {
@@ -20304,13 +20347,22 @@
           "scope": "statewide",
           "source": "GA SOS office, 1:30 PM ET (Atlanta News First)",
           "source_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/"
+        },
+        {
+          "time_pt": "11:45 AM",
+          "ed_turnout": 775000,
+          "approx": "more than 775,000",
+          "by_party": null,
+          "scope": "statewide",
+          "source": "GA SOS Raffensperger 2:45 PM ET briefing (Atlanta News First)",
+          "source_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "10:30 AM PT",
-      "election_day_turnout_source": "GA SOS office, 1:30 PM ET (Atlanta News First)",
+      "election_day_turnout_as_of": "11:45 AM PT",
+      "election_day_turnout_source": "GA SOS Raffensperger 2:45 PM ET briefing (Atlanta News First)",
       "election_day_turnout_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/",
-      "election_day_turnout_note": "around 650,000"
+      "election_day_turnout_note": "more than 775,000 (SOS approx.)"
     }
   ],
   "timeline": [
@@ -20357,7 +20409,7 @@
     {
       "hour_pt": "12 PM",
       "polls_close": "",
-      "update": ""
+      "update": "FL ED 1.71M (R855k/D444k/O413k FreshTake); NV ED 63,047 (R40/D28/O32 VIVID); Maricopa ~115k Vote Center; GA SOS >775k ED; UF CA early 7.32M. No statewide results."
     },
     {
       "hour_pt": "1 PM",
@@ -20574,22 +20626,22 @@
       "total": 56322272
     },
     "ballots2026": {
-      "rep": 5541845,
-      "dem": 7427161,
-      "other": 3705343,
-      "total": 16674349
+      "dem": 7794718,
+      "rep": 5726850,
+      "other": 3690037,
+      "total": 17211605
     },
     "rep_turnout": {
       "2022": 27.9,
-      "2026": 29.5
+      "2026": 30.5
     },
     "dem_turnout": {
       "2022": 28.6,
-      "2026": 34.8
+      "2026": 36.5
     },
     "other_turnout": {
       "2022": 18.4,
-      "2026": 22.9
+      "2026": 22.8
     }
   },
   "baselines2024": {
