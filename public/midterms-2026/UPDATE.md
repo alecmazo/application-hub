@@ -111,3 +111,20 @@ untouched. If the file uses different key names, rename them to the ones above f
 - AK: ranked-choice note; deep dive labeled "House district" (`county_baselines_2022` rows hold districts).
 - GA: "No party registration". Party aggregate still covers 7 states (KS, IA, NV, PA, AZ, FL, CA).
 - Totals sum only states with reported numbers.
+
+## v5 (Nov 3 2026): 2022 county baselines, Totals card, Election Day Votes card
+
+In `/workspace/election2026/data.json` (top-level, keyed by state code), then run `python3 merge.py /workspace/election2026/data.json data.json`:
+
+- `countyBaselines2022[ST]`: a list of `{county, gov_d_2022, gov_r_2022, gov_o_2022, gov_total_2022, sen_*_2022}`. Already filled in for all 13 states; AK is by House district. Don't edit these.
+- `countyBaselines2022Meta[ST]`: `{source, url, note}`.
+- `county_2026[ST]`: `{"<county name exactly as in baselines>": votes_2026}`. This fills the 2026 county bars.
+- `hourly[ST]`: rows are appended. A row with the same `time_pt` and `scope` replaces the existing one.
+  `{"time_pt":"9 AM","ed_turnout":12345,"by_party":{"R":..,"D":..,"O":..}|null,"scope":"statewide"|"Maricopa County only","source":"..."}`
+  This counts ELECTION DAY votes only (not mail or early). Use `by_party` only for KS, IA, NV, PA, AZ, FL, CA, and only when a source gives the split.
+- `hourly_results[ST]`: rows are appended.
+  `{"time_pt":"7 PM","expected_vote_counted_pct":12,"candidates":{"Name":votes},"scope":"...","source":"..."}`
+  Use Election Day votes by candidate. Names must match the race candidates so the Net gap can find each candidate's party.
+- The Net gap (candidate share minus their party's share of ED voters) is computed on the page only when the latest result row and a `by_party` row have the same `scope`.
+- Election Day turnout: set `election_day_turnout` in the state's top-level block. The Totals card adds it to the grand total.
+- AK `polls_close_pt` stays as it is once set.
