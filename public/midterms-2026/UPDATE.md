@@ -24,7 +24,14 @@ states[]:
   election_day_turnout   number | null
   polls_close_pt         string
   y2022: { early_in_person|null, mail_returned, early_total, total_turnout, vep, vep_turnout_pct, headline_results }
-  races[]: { race, status: "pending"|"called", winner|null, party|null, margin|null (e.g. "+4.2 pts"), source|null }
+  feeds[]: { label, url, type: "statewide"|"county"|"precinct" }      (official result feed links)
+  county_baselines[]: free-form rows, e.g. { county, registered, votes_2022, dem_2022, rep_2022 }
+                      (columns are rendered from the first row's keys)
+  races[]: { race: "Governor"|"U.S. Senate"|"U.S. Senate (special)",
+             status: "pending"|"called", winner|null, party|null, margin|null (e.g. "+4.2 pts"), source|null,
+             reporting_pct: number|null,
+             candidates[]: { name, party, incumbent: bool, votes: number|null, pct: number|null },
+             win_probability: { status: "results pending", values: {"Name": "87%"}|null, source: string|null } }
 timeline[]: { hour_pt: "5 PM", polls_close: string, update: string }   (fill `update` hourly)
 sources[]: { title, url }
 ```
@@ -49,3 +56,24 @@ git add public/midterms-2026/data.json
 git commit -m "Midterms: update $(date +%H:%M) PT"
 git push origin main
 ```
+
+## Page layout
+Tabs: Overview (map, summary table, 2026-vs-2022 charts, timeline, all-race results, sources) and one tab
+per state (`#KS`, `#IA`, … deep-linkable): turnout card, Governor/Senate candidates with votes, win-probability
+panel, county/precinct feed links, county baselines. No polling data is shown anywhere.
+
+Win probability shows **"results pending"** unless the race has at least one candidate with votes > 0 AND
+`win_probability.values` AND `win_probability.source` are set from a published results-based model.
+It is never computed from polls or by the page.
+
+## Dropping in /workspace/election2026/data.json (candidates, baselines, feeds)
+That file was not present at build time. When it exists, merge it (do not replace data.json):
+```bash
+cd application-hub/public/midterms-2026
+python3 merge.py /workspace/election2026/data.json data.json
+git add data.json && git commit -m "Midterms: merge candidates/feeds" && git push origin main
+```
+`merge.py` accepts `{"states": {"KS": {...}}}` or `{"states": [{"code": "KS", ...}]}`. Per state it copies
+`feeds`, `county_baselines`, and `races` (matched to existing races by `race` name, case-insensitive;
+unknown races are appended). Candidate fields copied: name, party, incumbent, votes, pct. Turnout fields are
+untouched. If the file uses different key names, rename them to the ones above first (or extend merge.py).

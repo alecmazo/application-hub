@@ -22,6 +22,9 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 .tl td:first-child{white-space:nowrap;font-weight:600}.tl tr.close td:nth-child(2){color:#f87171;font-weight:600}.tl tr.now{background:#1e293b}
 .res{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}.race{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}.race .st{float:right;font-size:.75rem;padding:2px 8px;border-radius:99px;background:#3f3f46}.race .st.called{background:#166534}
 .tw{overflow-x:auto}ul.src{columns:2;font-size:.85rem}@media(max-width:640px){ul.src{columns:1}h1{font-size:1.35rem}}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}.tabs button{flex:0 0 auto;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font:inherit;font-size:.85rem;cursor:pointer}.tabs button.act{background:#2563eb;border-color:#2563eb}
+.pane{display:none}.pane.act{display:block}.cand{display:grid;grid-template-columns:1fr auto auto;gap:4px 12px;font-size:.9rem;margin-top:8px}.cand .v{text-align:right}.wp{margin-top:10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:.85rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
 </style>
 </head>
 <body>
@@ -29,23 +32,25 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <a href="../" class="mut" style="font-size:.85rem">← App Hub</a>
 <h1>Midterms 2026 Election Dashboard</h1>
 <div class="mut">Pre-Election Day ballots in 11 states vs registered voters and 2022. Last updated: <b id="upd">loading…</b></div>
-<nav><a href="#map-s">Map</a><a href="#states">States</a><a href="#compare">2026 vs 2022</a><a href="#timeline">Timeline</a><a href="#results">Results</a><a href="#sources">Sources</a></nav>
+
 </header>
 <main>
+<div class="tabs" id="tabs"></div>
+<section class="pane" id="p-overview">
 <div class="kpis" id="kpis"></div>
-<h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to jump to its card.</p>
-<h2 id="states">State cards</h2>
-<div class="legend"><span><i style="background:var(--ip)"></i>Early in-person</span><span><i style="background:var(--mail)"></i>Mail returned</span><span>Bar = share of registered voters</span></div>
-<div class="cards" id="cards"></div>
+<h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to open its tab.</p>
+<h2>Summary</h2><div class="tw"><table><thead><tr><th>State</th><th>Early in-person</th><th>Mail</th><th>Total cast</th><th>Registered</th><th>Turnout so far</th><th>% of 2022 total</th><th>Polls close (PT)</th></tr></thead><tbody id="sum"></tbody></table></div>
 <h2 id="compare">2026 vs 2022</h2>
 <p class="mut">Ballots cast before Election Day (millions). 2022 = final UF Election Lab early-vote count.</p>
 <div class="chartbox"><canvas id="c1"></canvas></div>
 <p class="mut" style="margin-top:18px">2026 pre-Election Day ballots as % of full 2022 turnout.</p>
 <div class="chartbox"><canvas id="c2"></canvas></div>
 <h2 id="timeline">Election Day timeline (PT)</h2><div class="tw"><table class="tl"><thead><tr><th>Hour (PT)</th><th>Polls close</th><th>Reported turnout / results</th></tr></thead><tbody id="tl"></tbody></table></div>
-<h2 id="results">Results</h2><div class="res" id="res"></div>
+<h2 id="results">Results (all races)</h2><div class="res" id="res"></div>
 <h2>Notes</h2><ul id="notes" class="mut"></ul>
 <h2 id="sources">Sources</h2><ul class="src" id="src"></ul>
+</section>
+<div id="statepanes"></div>
 </main>
 <script>
 const TILES={AK:[0,0],ME:[11,0],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],IL:[6,2],WI:[7,2],MI:[8,2],NY:[9,2],RI:[10,2],MA:[11,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IN:[6,3],OH:[7,3],PA:[8,3],NJ:[9,3],CT:[10,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],DC:[9,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[9,7]};
@@ -54,7 +59,9 @@ const f=x=>x==null?P:x.toLocaleString('en-US');
 const pc=(a,b)=>a==null||!b?null:100*a/b;
 const fp=x=>x==null?P:x.toFixed(1)+'%';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let charts=[];
+let charts=[],cur='overview';
+function show(t,quiet){if(!document.getElementById('p-'+t))t='overview';cur=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('act',p.id==='p-'+t));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('act',b.dataset.t===t));if(location.hash.slice(1)!==t)history.replaceState(null,'','#'+t);if(!quiet)scrollTo({top:0});}
+addEventListener('hashchange',()=>show(location.hash.slice(1)));
 async function load(){
  const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();
  document.getElementById('upd').textContent=d.lastUpdatedLabel||d.lastUpdated||'pending';
@@ -65,12 +72,15 @@ async function load(){
  let svg='<svg viewBox="0 0 720 480" role="img" aria-label="US tile map">';
  for(const[k,[x,y]]of Object.entries(TILES)){const o=on.has(k);svg+=`<g class="${o?'on':''}" ${o?`data-s="${k}" tabindex="0"`:''}><title>${k}</title><rect x="${x*60+2}" y="${y*60+2}" width="56" height="56"/><text x="${x*60+30}" y="${y*60+35}">${k}</text></g>`}
  document.getElementById('map').innerHTML=svg+'</svg>';
- document.querySelectorAll('#map g.on').forEach(g=>{const go=()=>{const c=document.getElementById('st-'+g.dataset.s);c.scrollIntoView({behavior:'smooth'});c.classList.add('flash');setTimeout(()=>c.classList.remove('flash'),1500)};g.onclick=go;g.onkeydown=e=>{if(e.key==='Enter')go()}});
- // cards
- document.getElementById('cards').innerHTML=S.map(s=>{const ip=pc(s.early_in_person,s.registered),ml=pc(s.mail_returned,s.registered),t=pc(s.total_cast,s.registered);
-  return `<div class="card" id="st-${s.code}"><h3>${esc(s.name)} <span class="mut">${s.code}</span></h3>
+ document.querySelectorAll('#map g.on').forEach(g=>{const go=()=>show(g.dataset.s);g.onclick=go;g.onkeydown=e=>{if(e.key==='Enter')go()}});
+ document.getElementById('tabs').innerHTML='<button data-t="overview">Overview</button>'+S.map(s=>`<button data-t="${s.code}">${esc(s.name)}</button>`).join('');
+ document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+ document.getElementById('sum').innerHTML=S.map(s=>`<tr><td><a href="#${s.code}">${esc(s.name)}</a></td><td>${s.early_in_person==null?'<span class="mut">n/r</span>':f(s.early_in_person)}</td><td>${f(s.mail_returned)}</td><td>${f(s.total_cast)}</td><td>${f(s.registered)}</td><td>${fp(pc(s.total_cast,s.registered))}</td><td>${fp(pc(s.total_cast,s.y2022.total_turnout))}</td><td>${esc(s.polls_close_pt)}</td></tr>`).join('');
+ document.getElementById('statepanes').innerHTML=S.map(s=>{const ip=pc(s.early_in_person,s.registered),ml=pc(s.mail_returned,s.registered),t=pc(s.total_cast,s.registered);
+  const card=`<div class="card"><h3>Turnout <span class="mut">${s.code}</span></h3>
   <div><span class="turn">${fp(t)}</span> <span class="mut">turnout so far (of registered)</span></div>
   <div class="bar"><i style="width:${ip||0}%;background:var(--ip)"></i><i style="width:${ml||0}%;background:var(--mail)"></i></div>
+  <div class="legend"><span><i style="background:var(--ip)"></i>Early in-person</span><span><i style="background:var(--mail)"></i>Mail</span></div>
   <dl><dt>Early in-person</dt><dd>${s.early_in_person==null?'<span class="pend">'+esc(s.early_in_person_note||'pending')+'</span>':f(s.early_in_person)+(s.early_in_person_note?` <span class="mut">(${esc(s.early_in_person_note)})</span>`:'')}</dd>
   <dt>Mail returned</dt><dd>${f(s.mail_returned)}</dd><dt>Total cast</dt><dd>${f(s.total_cast)} <span class="mut">(as of ${esc(s.early_data_as_of)})</span></dd>
   <dt>Registered</dt><dd>${f(s.registered)}<br><span class="mut">${esc(s.registered_note)}</span></dd>
@@ -78,7 +88,18 @@ async function load(){
   <dt>2022 early in-person</dt><dd>${s.y2022.early_in_person==null?'<span class="mut">not separately reported</span>':f(s.y2022.early_in_person)}</dd>
   <dt>2022 mail</dt><dd>${f(s.y2022.mail_returned)}</dd><dt>2022 total turnout</dt><dd>${f(s.y2022.total_turnout)} <span class="mut">(${esc(s.y2022.vep_turnout_pct)} VEP)</span></dd>
   <dt>% of 2022 total</dt><dd>${fp(pc(s.total_cast,s.y2022.total_turnout))}</dd></dl>
-  <p class="mut" style="font-size:.8rem;margin:8px 0 0">2022: ${esc(s.y2022.headline_results)}</p></div>`}).join('');
+  <p class="mut" style="font-size:.8rem;margin:8px 0 0">2022: ${esc(s.y2022.headline_results)}</p></div>`;
+  const races=s.races.map(r=>{const c=r.candidates||[],has=c.some(x=>x.votes>0),wp=r.win_probability||{};
+   const wpHtml=(has&&wp.values&&wp.source)?Object.entries(wp.values).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(' · ')+` <span class="mut">(${esc(wp.source)})</span>`:'<span class="pend">results pending</span>';
+   return `<div class="race"><span class="st ${r.status==='called'?'called':''}">${esc(r.status)}</span><b>${esc(r.race)}</b>
+   ${c.length?`<div class="cand"><span class="mut">Candidate</span><span class="mut v">Votes</span><span class="mut v">%</span>${c.map(x=>`<span>${esc(x.name)}${x.party?' ('+esc(x.party)+')':''}${x.incumbent?' <span class="mut">inc.</span>':''}</span><span class="v">${f(x.votes)}</span><span class="v">${x.pct==null?'—':esc(x.pct)+'%'}</span>`).join('')}</div>`:'<div class="pend" style="margin-top:8px">candidates pending</div>'}
+   <dl><dt>Reporting</dt><dd>${r.reporting_pct==null?P:esc(r.reporting_pct)+'%'}</dd><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd>${r.source?`<dt>Source</dt><dd>${esc(r.source)}</dd>`:''}</dl>
+   <div class="wp"><b>Win probability:</b> ${wpHtml}</div></div>`}).join('');
+  const feeds=(s.feeds||[]).length?'<ul>'+s.feeds.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label||x.url)}</a>${x.type?` <span class="mut">(${esc(x.type)})</span>`:''}</li>`).join('')+'</ul>':'<p class="pend">official feed links pending</p>';
+  const cb=(s.county_baselines||[]);const cbHtml=cb.length?(()=>{const cols=Object.keys(cb[0]);return `<div class="tw"><table><thead><tr>${cols.map(k=>`<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${cb.map(r=>`<tr>${cols.map(k=>`<td>${r[k]==null?'—':esc(typeof r[k]==='number'?r[k].toLocaleString('en-US'):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`})():'<p class="pend">county baselines pending</p>';
+  return `<section class="pane" id="p-${s.code}"><h2>${esc(s.name)}</h2><div class="two">${card}<div><div class="res" style="grid-template-columns:1fr">${races}</div></div></div>
+  <h2>County / precinct result feeds</h2>${feeds}<h2>County baselines</h2>${cbHtml}</section>`}).join('');
+ show(location.hash.slice(1)||cur,true);
  // charts
  charts.forEach(c=>c.destroy());Chart.defaults.color='#8b98a5';Chart.defaults.borderColor='#2a3542';
  const L=S.map(s=>s.code),m=x=>x==null?null:+(x/1e6).toFixed(2);
@@ -88,8 +109,7 @@ async function load(){
  const hr=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Los_Angeles'})).getHours();
  const h24=h=>{let[n,ap]=h.split(' ');n=+n;return ap==='PM'&&n!==12?n+12:ap==='AM'&&n===12?0:n};
  document.getElementById('tl').innerHTML=d.timeline.map(t=>`<tr class="${t.polls_close?'close':''} ${h24(t.hour_pt)===hr?'now':''}"><td>${esc(t.hour_pt)}</td><td>${esc(t.polls_close)}</td><td>${t.update?esc(t.update):'<span class="mut">—</span>'}</td></tr>`).join('');
- // results
- document.getElementById('res').innerHTML=S.flatMap(s=>s.races.map(r=>`<div class="race"><span class="st ${r.status==='called'?'called':''}">${esc(r.status)}</span><b>${esc(s.name)}</b> · ${esc(r.race)}<dl><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd>${r.source?`<dt>Source</dt><dd>${esc(r.source)}</dd>`:''}</dl></div>`)).join('');
+ document.getElementById('res').innerHTML=S.flatMap(s=>s.races.map(r=>`<div class="race"><span class="st ${r.status==='called'?'called':''}">${esc(r.status)}</span><b><a href="#${s.code}">${esc(s.name)}</a></b> · ${esc(r.race)}<dl><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd></dl></div>`)).join('');
  document.getElementById('notes').innerHTML=(d.notes||[]).map(n=>`<li>${esc(n)}</li>`).join('');
  document.getElementById('src').innerHTML=d.sources.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join('');
 }

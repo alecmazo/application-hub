@@ -36,7 +36,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate",
@@ -44,9 +51,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "IA",
@@ -76,7 +92,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate",
@@ -84,9 +107,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "OH",
@@ -116,7 +148,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate (special)",
@@ -124,9 +163,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "MN",
@@ -156,7 +204,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate",
@@ -164,9 +219,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "NV",
@@ -196,9 +260,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "MI",
@@ -228,7 +301,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate",
@@ -236,9 +316,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "PA",
@@ -268,9 +357,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "AZ",
@@ -300,9 +398,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "FL",
@@ -332,7 +439,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate (special)",
@@ -340,9 +454,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "TX",
@@ -372,7 +495,14 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         },
         {
           "race": "U.S. Senate",
@@ -380,9 +510,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     },
     {
       "code": "CA",
@@ -412,9 +551,18 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null
+          "source": null,
+          "candidates": [],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
         }
-      ]
+      ],
+      "feeds": [],
+      "county_baselines": []
     }
   ],
   "timeline": [
@@ -655,5 +803,6 @@
       "title": "2022 US Senate elections in California",
       "url": "https://en.wikipedia.org/wiki/2022_United_States_Senate_elections_in_California"
     }
-  ]
+  ],
+  "schema_version": 2
 }
