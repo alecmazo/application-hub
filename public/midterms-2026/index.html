@@ -146,6 +146,7 @@ function precDraw(st,box){const{b,c}=PC[st],cty=box.querySelector('.pc-c').value
 document.addEventListener('toggle',e=>{const el=e.target;if(el.matches&&el.matches('details[data-prec]')&&el.open)precOpen(el)},true);
 let charts=[],cur='overview';const L0=S=>S.map(s=>s.code);const PARTY=["KS","IA","NV","PA","AZ","FL","CA"];
 function show(t,quiet){if(!document.getElementById('p-'+t))t='overview';cur=t;document.getElementById('agg').style.display=t==='overview'?'':'none';document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('act',p.id==='p-'+t));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('act',b.dataset.t===t));if(location.hash.slice(1)!==t)history.replaceState(null,'','#'+t);if(!quiet)scrollTo({top:0});}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#tabs button');if(b&&b.dataset.t)show(b.dataset.t)});
 addEventListener('hashchange',()=>show(location.hash.slice(1)));
 async function load(){
  const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();
