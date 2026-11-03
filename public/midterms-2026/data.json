@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T11:20-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:20 AM PT",
+  "lastUpdated": "2026-11-03T11:29-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:29 AM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -2091,7 +2091,9 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "IA",
@@ -4053,7 +4055,9 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "OH",
@@ -5779,7 +5783,9 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "MN",
@@ -7139,7 +7145,9 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins. Governor only (no Senate race in 2022).",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "NV",
@@ -7151,7 +7159,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 29557,
+      "election_day_turnout": 50880,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7612,17 +7620,36 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
-          "time_pt": "10 AM",
-          "ed_turnout": 29557,
-          "by_party": {
-            "R": 11513,
-            "D": 8845,
-            "O": 9199
+          "time_pt": "11:04 AM",
+          "ed_turnout": 46380,
+          "by_party": null,
+          "by_party_pct": {
+            "R": 41,
+            "D": 28,
+            "O": 31
           },
           "scope": "statewide",
-          "source": "NV SOS VIVID, updated 10:00 AM PT, as relayed by data-point-research.com (VIVID not fetched directly)"
+          "source": "Nevada SOS VIVID turnout via Strength In Numbers",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "11:23 AM",
+          "ed_turnout": 50880,
+          "by_party": null,
+          "by_party_pct": {
+            "R": 41,
+            "D": 28,
+            "O": 31
+          },
+          "scope": "statewide",
+          "source": "Nevada SOS VIVID turnout via Strength In Numbers",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
         }
-      ]
+      ],
+      "election_day_turnout_scope": "statewide",
+      "election_day_turnout_as_of": "11:23 AM PT",
+      "election_day_turnout_source": "Nevada SOS VIVID turnout via Strength In Numbers",
+      "election_day_turnout_url": "https://projects.gelliottmorris.com/2026-early-vote/"
     },
     {
       "code": "MI",
@@ -8954,7 +8981,9 @@
       ],
       "county_baselines_2022_note": "Governor only (no MI Senate race in 2022). Total incl. minor parties/write-ins.",
       "county_baselines_2022_source": "Michigan Manual 2023-24 (official 2022 canvass), Governor by county",
-      "county_baselines_2022_url": "https://legislature.mi.gov/documents/2023-2024/michiganmanual/2023-MM-P0760-p0761.pdf"
+      "county_baselines_2022_url": "https://legislature.mi.gov/documents/2023-2024/michiganmanual/2023-MM-P0760-p0761.pdf",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "PA",
@@ -10318,7 +10347,9 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins.",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "AZ",
@@ -10330,7 +10361,7 @@
       "early_data_as_of": "11/2",
       "registered": 4374827,
       "registered_note": "final GE 2026 report (AZ SOS)",
-      "election_day_turnout": null,
+      "election_day_turnout": 76680,
       "polls_close_pt": "6 PM PT",
       "y2022": {
         "early_in_person": null,
@@ -10586,25 +10617,28 @@
       },
       "hourly": [
         {
-          "time_pt": "7 AM",
+          "time_pt": "7:00 AM",
           "ed_turnout": 25263,
           "by_party": null,
-          "scope": "Maricopa County only",
-          "source": "KTAR (as of 8 AM MST)"
+          "scope": "Maricopa only",
+          "source": "KTAR (as of 8 AM MST)",
+          "source_url": "https://www.maricopa.gov/5539/Elections"
         },
         {
-          "time_pt": "8 AM",
+          "time_pt": "8:00 AM",
           "ed_turnout": 40745,
           "by_party": null,
-          "scope": "Maricopa County only",
-          "source": "KTAR (as of 9 AM MST)"
+          "scope": "Maricopa only",
+          "source": "KTAR (as of 9 AM MST)",
+          "source_url": "https://www.maricopa.gov/5539/Elections"
         },
         {
-          "time_pt": "11 AM",
+          "time_pt": "11:00 AM",
           "ed_turnout": 76680,
           "by_party": null,
-          "scope": "Maricopa County only",
-          "source": "Maricopa County Fast Facts (~, as of 11 AM PT)"
+          "scope": "Maricopa only",
+          "source": "Maricopa County Elections Fast Facts (~)",
+          "source_url": "https://www.maricopa.gov/5539/Elections"
         }
       ],
       "county_baselines_2022": [
@@ -10776,7 +10810,11 @@
       ],
       "county_baselines_2022_note": "2022 general. Total = all votes cast in the race (ballots cast per county not in source). Other = third party + write-ins. AZ other includes ~7.4k Gov write-ins (~0.1 pt vs official %).",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_scope": "Maricopa only",
+      "election_day_turnout_as_of": "11:00 AM PT",
+      "election_day_turnout_source": "Maricopa County Elections Fast Facts (~)",
+      "election_day_turnout_url": "https://www.maricopa.gov/5539/Elections"
     },
     {
       "code": "FL",
@@ -10788,7 +10826,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 1559480,
+      "election_day_turnout": 1567803,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -12215,20 +12253,238 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
-          "time_pt": "11 AM",
-          "ed_turnout": 1559480,
-          "by_party": null,
+          "time_pt": "4:23 AM",
+          "ed_turnout": 62788,
+          "by_party": {
+            "R": 32466,
+            "D": 16073,
+            "O": 14249
+          },
           "scope": "statewide",
-          "source": "FL DOS Florida Election Watch Election Day Turnout (most counties as of 2:10 PM ET / 1:10 PM CT = 11:10 AM PT), floridaelectionwatch.gov/ElectionDayTurnout"
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
         },
         {
-          "time_pt": "10 AM",
-          "ed_turnout": 1508322,
-          "by_party": null,
+          "time_pt": "4:53 AM",
+          "ed_turnout": 160964,
+          "by_party": {
+            "R": 78960,
+            "D": 43905,
+            "O": 38099
+          },
           "scope": "statewide",
-          "source": "FL DOS Florida Election Watch (most counties as of 1:50 PM ET = 10:50 AM PT)"
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "5:20 AM",
+          "ed_turnout": 249150,
+          "by_party": {
+            "R": 122850,
+            "D": 67455,
+            "O": 58845
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "5:53 AM",
+          "ed_turnout": 358455,
+          "by_party": {
+            "R": 177663,
+            "D": 96144,
+            "O": 84648
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "6:23 AM",
+          "ed_turnout": 462326,
+          "by_party": {
+            "R": 231859,
+            "D": 122213,
+            "O": 108254
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "7:04 AM",
+          "ed_turnout": 605034,
+          "by_party": {
+            "R": 307304,
+            "D": 156905,
+            "O": 140825
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "7:21 AM",
+          "ed_turnout": 691314,
+          "by_party": {
+            "R": 348542,
+            "D": 180825,
+            "O": 161947
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "7:51 AM",
+          "ed_turnout": 805452,
+          "by_party": {
+            "R": 408583,
+            "D": 208736,
+            "O": 188133
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "8:25 AM",
+          "ed_turnout": 937529,
+          "by_party": {
+            "R": 476936,
+            "D": 241595,
+            "O": 218998
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "8:48 AM",
+          "ed_turnout": 1013706,
+          "by_party": {
+            "R": 515880,
+            "D": 260773,
+            "O": 237053
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "9:03 AM",
+          "ed_turnout": 1082559,
+          "by_party": {
+            "R": 550850,
+            "D": 278446,
+            "O": 253263
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "9:23 AM",
+          "ed_turnout": 1151042,
+          "by_party": {
+            "R": 585193,
+            "D": 296100,
+            "O": 269749
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "9:53 AM",
+          "ed_turnout": 1249411,
+          "by_party": {
+            "R": 633268,
+            "D": 322001,
+            "O": 294142
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "10:03 AM",
+          "ed_turnout": 1291867,
+          "by_party": {
+            "R": 655342,
+            "D": 332116,
+            "O": 304409
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "10:23 AM",
+          "ed_turnout": 1351640,
+          "by_party": {
+            "R": 684982,
+            "D": 347331,
+            "O": 319327
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "10:39 AM",
+          "ed_turnout": 1399100,
+          "by_party": {
+            "R": 705433,
+            "D": 361294,
+            "O": 332373
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "10:54 AM",
+          "ed_turnout": 1462974,
+          "by_party": {
+            "R": 737004,
+            "D": 377303,
+            "O": 348667
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "11:04 AM",
+          "ed_turnout": 1498551,
+          "by_party": {
+            "R": 753841,
+            "D": 386908,
+            "O": 357802
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "11:25 AM",
+          "ed_turnout": 1567803,
+          "by_party": {
+            "R": 787122,
+            "D": 405205,
+            "O": 375476
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+          "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
         }
-      ]
+      ],
+      "election_day_turnout_scope": "statewide",
+      "election_day_turnout_as_of": "11:25 AM PT",
+      "election_day_turnout_source": "FreshTake.Vote county supervisors' counts via Strength In Numbers live table",
+      "election_day_turnout_url": "https://projects.gelliottmorris.com/2026-early-vote/"
     },
     {
       "code": "TX",
@@ -12240,7 +12496,7 @@
       "early_data_as_of": "11/2",
       "registered": 19041684,
       "registered_note": "record total (TX SOS, Oct 16)",
-      "election_day_turnout": null,
+      "election_day_turnout": 29959,
       "polls_close_pt": "5 PM PT (6 PM PT in El Paso area)",
       "y2022": {
         "early_in_person": 5172460,
@@ -15922,13 +16178,18 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
-          "time_pt": "8 AM",
+          "time_pt": "8:00 AM",
           "ed_turnout": 29959,
           "by_party": null,
           "scope": "Bexar County only",
-          "source": "Bexar County Elections Administrator Michele Carew, by 10 AM CT, via San Antonio Express-News"
+          "source": "Bexar County Elections Administrator Michele Carew, by 10 AM CT, via San Antonio Express-News",
+          "source_url": "https://www.expressnews.com/politics/"
         }
-      ]
+      ],
+      "election_day_turnout_scope": "Bexar County only",
+      "election_day_turnout_as_of": "8:00 AM PT",
+      "election_day_turnout_source": "Bexar County Elections Administrator Michele Carew, by 10 AM CT, via San Antonio Express-News",
+      "election_day_turnout_url": "https://www.expressnews.com/politics/"
     },
     {
       "code": "CA",
@@ -17123,7 +17384,9 @@
       ],
       "county_baselines_2022_note": "Top-two general: only D and R on ballot.",
       "county_baselines_2022_source": "CA SOS Statement of Vote 2022: Governor by county; US Senate (full term) by county",
-      "county_baselines_2022_url": "https://elections.cdn.sos.ca.gov/sov/2022-general/sov/19-governor.pdf"
+      "county_baselines_2022_url": "https://elections.cdn.sos.ca.gov/sov/2022-general/sov/19-governor.pdf",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "AK",
@@ -17723,7 +17986,9 @@
       ],
       "county_baselines_2022_note": "By state House district. 2022 RCV first-choice counts; R = Dunleavy+Pierce (Gov), Tshibaka+Murkowski (Sen).",
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
-      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states"
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
+      "election_day_status": "Not yet published by state"
     },
     {
       "code": "GA",
@@ -17735,7 +18000,7 @@
       "early_data_as_of": "11/3",
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
-      "election_day_turnout": 650000,
+      "election_day_turnout": 300000,
       "expected_vote_counted_pct": null,
       "polls_close_pt": "4 PM PT",
       "y2022": {
@@ -19593,27 +19858,20 @@
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "hourly": [
         {
-          "time_pt": "7 AM",
+          "time_pt": "7:00 AM",
           "ed_turnout": 300000,
+          "approx": "more than 300,000",
           "by_party": null,
           "scope": "statewide",
-          "source": "GA SOS Raffensperger briefing shortly before 10 AM ET: 'more than 300,000' (floor, rounded by SOS) via CBS Atlanta/Atlanta News First"
-        },
-        {
-          "time_pt": "9 AM",
-          "ed_turnout": 500000,
-          "by_party": null,
-          "scope": "statewide",
-          "source": "GA SOS office at 12 PM ET: 'more than 500,000' (floor, rounded by SOS) via Atlanta News First"
-        },
-        {
-          "time_pt": "10:30 AM",
-          "ed_turnout": 650000,
-          "by_party": null,
-          "scope": "statewide",
-          "source": "'around 650,000' at 1:30 PM ET, attributed to officials, via Atlanta News First (rounded)"
+          "source": "GA SOS Raffensperger 10 AM ET briefing (WTOC/Atlanta News First)",
+          "source_url": "https://www.wtoc.com/2026/11/03/watch-live-state-officials-give-update-election-day-voting-continues/"
         }
-      ]
+      ],
+      "election_day_turnout_scope": "statewide",
+      "election_day_turnout_as_of": "7:00 AM PT",
+      "election_day_turnout_source": "GA SOS Raffensperger 10 AM ET briefing (WTOC/Atlanta News First)",
+      "election_day_turnout_url": "https://www.wtoc.com/2026/11/03/watch-live-state-officials-give-update-election-day-voting-continues/",
+      "election_day_turnout_note": "more than 300,000"
     }
   ],
   "timeline": [

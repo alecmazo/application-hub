@@ -12,7 +12,7 @@ if not es and "candidates" in e:  # election2026 format: top-level dicts keyed b
     es = {}
     cb = (e.get("county_baseline") or {}).get("counties", {})
     pr = (e.get("probability") or {}).get("by_state", {})
-    codes = set(e["candidates"]) | set(e.get("feeds", {})) | set(e.get("party_turnout", {})) | {k for k in ("AK", "GA") if k in e}
+    codes = set(e["candidates"]) | set(e.get("feeds", {})) | set(e.get("party_turnout", {})) | {k for k, v in e.items() if len(k) == 2 and k.isupper() and isinstance(v, dict)} | set(e.get("hourly") or {})
     for code in codes:
         c = e["candidates"].get(code, {})
         x = {"races": [], "candidate_source": c.get("source"), "candidate_source_url": c.get("source_url"),
@@ -69,14 +69,13 @@ for code, x in es.items():
              "races": [], "feeds": []}
         d["states"].append(s); by[code] = s
     for k in ("name", "early_in_person", "early_in_person_note", "mail_returned", "total_cast", "early_data_as_of",
-              "registered", "registered_note", "election_day_turnout", "expected_vote_counted_pct", "polls_close_pt"):
+              "registered", "registered_note", "election_day_turnout", "election_day_turnout_scope", "election_day_turnout_as_of",
+              "election_day_turnout_source", "election_day_turnout_url", "election_day_turnout_note", "election_day_status", "expected_vote_counted_pct", "polls_close_pt"):
         if x.get(k) is not None and not (k == "polls_close_pt" and code == "AK" and s.get(k)): s[k] = x[k]
     if isinstance(x.get("y2022"), dict): s["y2022"].update({k: v for k, v in x["y2022"].items() if v is not None})
     for hk in ("hourly", "hourly_results"):  # append rows; same time_pt+scope replaces
         if x.get(hk):
-            rows = {(r.get("time_pt"), r.get("scope")): r for r in s.get(hk, [])}
-            for r in x[hk]: rows[(r.get("time_pt"), r.get("scope"))] = r
-            s[hk] = list(rows.values())
+            s[hk] = x[hk]  # source file holds the full cumulative list for the day
     if isinstance(x.get("county_2026"), dict): s.setdefault("county_2026", {}).update(x["county_2026"])
     for k in ("feeds", "county_baselines_2022", "county_baselines_2022_note", "county_baselines_2022_source", "county_baselines_2022_url", "county_baselines_2024", "county_baselines_2024_note", "party_turnout", "party_registration_2022", "party_turnout_2022", "candidate_source", "candidate_source_url", "candidate_verification", "no_senate_race"):
         if k in x: s[k] = x[k]

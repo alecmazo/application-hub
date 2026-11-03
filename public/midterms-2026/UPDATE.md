@@ -119,7 +119,7 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 - `countyBaselines2022[ST]`: a list of `{county, gov_d_2022, gov_r_2022, gov_o_2022, gov_total_2022, sen_*_2022}`. Already filled in for all 13 states; AK is by House district. Don't edit these.
 - `countyBaselines2022Meta[ST]`: `{source, url, note}`.
 - `county_2026[ST]`: `{"<county name exactly as in baselines>": votes_2026}`. This fills the 2026 county bars.
-- `hourly[ST]`: rows are appended. A row with the same `time_pt` and `scope` replaces the existing one.
+- `hourly[ST]`: the FULL list for the day (merge replaces the state list). Optional `by_party_pct` {R,D,O} when only shares are published; `source_url` per row. Also set top-level `ST.election_day_turnout` (+ `_scope`, `_as_of`, `_source`, `_url`) to the latest value, or `ST.election_day_status = "Not yet published by state"`.
   `{"time_pt":"9 AM","ed_turnout":12345,"by_party":{"R":..,"D":..,"O":..}|null,"scope":"statewide"|"Maricopa County only","source":"..."}`
   This counts ELECTION DAY votes only (not mail or early). Use `by_party` only for KS, IA, NV, PA, AZ, FL, CA, and only when a source gives the split.
 - `hourly_results[ST]`: rows are appended.
