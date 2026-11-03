@@ -103,3 +103,11 @@ untouched. If the file uses different key names, rename them to the ones above f
   `partyTurnout2022[ST]` -> `party_turnout_2022`; `countyBaselines2022[ST]` -> `county_baselines_2022`;
   `county_baseline.counties[ST]` -> `county_baselines_2022` if rows use *_2022 keys (or year==2022), else
   `county_baselines_2024`; top-level `aggregate` and `baselines2024` copied as-is.
+
+## v4: 13 states (adds AK, GA)
+- The page adds placeholder AK and GA tabs (all values pending/n/a) until data.json has them. merge.py creates
+  skeleton entries for new state codes found in the election2026 file (candidates/feeds/party_turnout, or a
+  top-level `AK`/`GA` block whose turnout fields, y2022, etc. are copied as-is).
+- AK: ranked-choice note; deep dive labeled "House district" (`county_baselines_2022` rows hold districts).
+- GA: "No party registration". Party aggregate still covers 7 states (KS, IA, NV, PA, AZ, FL, CA).
+- Totals sum only states with reported numbers.

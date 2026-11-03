@@ -12,7 +12,9 @@ if not es and "candidates" in e:  # election2026 format: top-level dicts keyed b
     es = {}
     cb = (e.get("county_baseline") or {}).get("counties", {})
     pr = (e.get("probability") or {}).get("by_state", {})
-    for code, c in e["candidates"].items():
+    codes = set(e["candidates"]) | set(e.get("feeds", {})) | set(e.get("party_turnout", {})) | {k for k in ("AK", "GA") if k in e}
+    for code in codes:
+        c = e["candidates"].get(code, {})
         x = {"races": [], "candidate_source": c.get("source"), "candidate_source_url": c.get("source_url"),
              "candidate_verification": c.get("verification")}
         for key, name in (("governor", "Governor"), ("senate", "U.S. Senate")):
@@ -38,7 +40,9 @@ if not es and "candidates" in e:  # election2026 format: top-level dicts keyed b
                              ("partyTurnout2022", "party_turnout_2022")):
             if code in (e.get(src_k) or {}): x[dst_k] = e[src_k][code]
         if code in e.get("party_turnout", {}): x["party_turnout"] = e["party_turnout"][code]
-        x["no_senate_race"] = not c.get("senate")
+        if code in e["candidates"]: x["no_senate_race"] = not c.get("senate")
+        if isinstance(e.get(code), dict):  # optional top-level block, e.g. e["AK"] = {turnout fields, y2022, ...}
+            x.update({k: v for k, v in e[code].items() if k not in x})
         es[code] = x
 if isinstance(es, list): es = {x.get("code"): x for x in es}
 by = {s["code"]: s for s in d["states"]}
@@ -49,7 +53,19 @@ for k in ("aggregate", "baselines2024"):
     if e.get(k) is not None: d[k] = e[k]
 for code, x in es.items():
     s = by.get(code)
-    if not s: print("skip unknown state", code); continue
+    if not s:  # new state (e.g. AK, GA): skeleton with nulls; nothing invented
+        s = {"code": code, "name": x.get("name") or {"AK": "Alaska", "GA": "Georgia"}.get(code, code),
+             "early_in_person": None, "early_in_person_note": None, "mail_returned": None, "total_cast": None,
+             "early_data_as_of": None, "registered": None, "registered_note": None, "election_day_turnout": None,
+             "expected_vote_counted_pct": None, "polls_close_pt": None,
+             "y2022": {"early_in_person": None, "mail_returned": None, "early_total": None, "total_turnout": None,
+                       "vep": None, "vep_turnout_pct": None, "headline_results": None},
+             "races": [], "feeds": []}
+        d["states"].append(s); by[code] = s
+    for k in ("name", "early_in_person", "early_in_person_note", "mail_returned", "total_cast", "early_data_as_of",
+              "registered", "registered_note", "election_day_turnout", "expected_vote_counted_pct", "polls_close_pt"):
+        if x.get(k) is not None: s[k] = x[k]
+    if isinstance(x.get("y2022"), dict): s["y2022"].update({k: v for k, v in x["y2022"].items() if v is not None})
     for k in ("feeds", "county_baselines_2022", "county_baselines_2022_note", "county_baselines_2024", "county_baselines_2024_note", "party_turnout", "party_registration_2022", "party_turnout_2022", "candidate_source", "candidate_source_url", "candidate_verification", "no_senate_race"):
         if k in x: s[k] = x[k]
     for r in x.get("races", []):
