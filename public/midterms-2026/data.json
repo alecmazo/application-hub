@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T13:52-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 1:52 PM PT",
+  "lastUpdated": "2026-11-03T14:09-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 2:09 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -7673,6 +7673,18 @@
           "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
         },
         {
+          "time_pt": "12:21 PM",
+          "ed_turnout": 29503,
+          "by_party": {
+            "R": 10028,
+            "D": 9785,
+            "O": 9690
+          },
+          "scope": "Clark only",
+          "source": "Clark County ED turnout via @globalelectsim (relayed, unverified account; posted 12:21 PM PT, as-of time not stated)",
+          "source_url": "https://x.com/globalelectsim/status/2117713873881170146"
+        },
+        {
           "time_pt": "1:00 PM",
           "ed_turnout": 71880,
           "by_party": {
@@ -10725,6 +10737,15 @@
           "party_source_url": "https://x.com/StealthPolling/status/2117663132990750872"
         },
         {
+          "time_pt": "9:41 AM",
+          "ed_turnout": 10000,
+          "approx": true,
+          "by_party": null,
+          "scope": "Pinal only",
+          "source": "Pinal County Elections (@PinalVotes): passed 10,000 ED check-ins",
+          "source_url": "https://x.com/PinalVotes/status/2117673426009927755"
+        },
+        {
           "time_pt": "10:00 AM",
           "ed_turnout": 76680,
           "by_party": null,
@@ -10738,6 +10759,19 @@
           },
           "party_source": "Party shares from Stealth Analytics' 11 AM MST Maricopa check-in update (59,175 check-ins: R 26,348 / D 13,403 / Ind-Other 19,424), applied to the county's total; counts are estimates (~)",
           "party_source_url": "https://x.com/StealthPolling/status/2117678291335426323"
+        },
+        {
+          "time_pt": "10:00 AM",
+          "ed_turnout": 26724,
+          "by_party_pct": {
+            "R": 42.8,
+            "D": 25.7,
+            "O": 31.5
+          },
+          "by_party": null,
+          "scope": "Pima only",
+          "source": "Stealth Analytics (@StealthPolling) Pima ED check-ins, 11 AM MST (relayed tracker; shares only, counts ~)",
+          "source_url": "https://x.com/StealthPolling/status/2117691350116380855"
         },
         {
           "time_pt": "11:00 AM",
@@ -10755,6 +10789,15 @@
           "party_source_url": "https://x.com/StealthPolling/status/2117693321686688005"
         },
         {
+          "time_pt": "11:30 AM",
+          "ed_turnout": 27000,
+          "approx": true,
+          "by_party": null,
+          "scope": "Pima only",
+          "source": "Pima County Elections (@pimavote): 'more than 27,000' in person (plus ~6,400 ID-verified mail drop-offs, not included)",
+          "source_url": "https://x.com/pimavote/status/2117700841612128284"
+        },
+        {
           "time_pt": "12:00 PM",
           "ed_turnout": 115004,
           "by_party": null,
@@ -10770,6 +10813,15 @@
           "party_source_url": "https://x.com/StealthPolling/status/2117709429789663418"
         },
         {
+          "time_pt": "12:41 PM",
+          "ed_turnout": 17000,
+          "approx": true,
+          "by_party": null,
+          "scope": "Pinal only",
+          "source": "Pinal County Elections (@PinalVotes): over 17,000 ED check-ins",
+          "source_url": "https://x.com/PinalVotes/status/2117718789441929408"
+        },
+        {
           "time_pt": "1:00 PM",
           "ed_turnout": 133800,
           "by_party": null,
@@ -10783,6 +10835,18 @@
           },
           "party_source": "Party shares from Stealth Analytics' 2 PM MST Maricopa update (131,502 ballots: R 57,222 / D 31,117 / Ind-Other 43,163), applied to the county's total; counts are estimates (~)",
           "party_source_url": "https://x.com/StealthPolling/status/2117723624081854600"
+        },
+        {
+          "time_pt": "2:00 PM",
+          "ed_turnout": 151176,
+          "by_party": {
+            "R": 65165,
+            "D": 35883,
+            "O": 50128
+          },
+          "scope": "Maricopa only",
+          "source": "Stealth Analytics (@StealthPolling) Maricopa ED check-ins by party, 3 PM MST update (relayed tracker; includes ID-verified early drop-offs)",
+          "source_url": "https://x.com/StealthPolling/status/2117738918863163636"
         }
       ],
       "county_baselines_2022": [
