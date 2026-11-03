@@ -149,3 +149,11 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 - 2022 baselines are in `precincts/{ST}.json` for AZ, TX, FL, KS, IA, OH, MN, NV, MI, PA, CA, AK and GA (MEDSL). AK is grouped by state House district. MI and MN had no 2022 U.S. Senate race. The CA file has no Senate precinct rows.
 - 2026 counts go in `precincts/{ST}_2026.json`, using the same schema as v6, and only from a public precinct-level source: county/SOS results pages or ENR exports, e.g. GA Clarity ENR (results.sos.ga.gov), PA county ENR, MI county ENR, OH county BOE, MN SOS results (electionresults.sos.mn.gov precinct downloads), NV Clark/Washoe, CA county ROVs, AK Division of Elections precinct reports, KS/IA county auditors. If a state has no such source, leave it empty; never estimate.
 - Any file over ~1.5 MB is split as `precincts/{ST}/{county-slug}.json` with an index in `{ST}.json` (none split today).
+
+## v11: 15 states (adds NH, ME)
+- Routines (hourly, 10-minute, 30-minute) now also cover **NH** and **ME**: refresh `total_cast` / `mail_returned` / `early_in_person`, `hourly.NH` / `hourly.ME`, `party_turnout.ME` (NH publishes no early ballots by party, so leave its series empty), `county_turnout_2026`, and `precincts/NH_2026.json` / `precincts/ME_2026.json` (town names as in the 2022 file, e.g. "MANCHESTER WARD 1", county in Title Case).
+- Sources: NH SOS results https://www.sos.nh.gov/elections/elections/election-results and party registration history; Maine SOS absentee voter file (https://www.maine.gov/sos/elections-voting/voter-data) and results https://www.maine.gov/sos/elections-voting/election-results-data.
+- NH has no early in-person voting (absentee only); 2026 absentee count is 42,492 as of Oct 31 (SignalData compiling NH SOS). ME early = in-person absentee + other absentee returns.
+- Polls close: ME 8 PM ET = 5 PM PT. NH towns close 7–8 PM ET (4–5 PM PT).
+- ME U.S. Senate uses ranked-choice voting; first-choice counts first, RCV rounds only after the SOS tabulation. ME Governor is plurality. No ME Senate race in 2022, so the precinct file has Governor only.
+- Overview party aggregate stays the original 7 states (`PARTY_AGG`); ME party data shows on its own tab.

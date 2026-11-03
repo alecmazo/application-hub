@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T12:14-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:14 PM PT",
+  "lastUpdated": "2026-11-03T12:28-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:28 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -20379,6 +20379,737 @@
       "election_day_turnout_source": "GA SOS Raffensperger 2:45 PM ET briefing (Atlanta News First)",
       "election_day_turnout_url": "https://www.atlantanewsfirst.com/2026/11/03/georgia-election-day-voters-head-precincts-high-stakes-midterm-battle/",
       "election_day_turnout_note": "more than 775,000 (SOS approx.)"
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "early_in_person": 161648,
+      "early_in_person_note": "in-person absentee at town clerk",
+      "mail_returned": 140688,
+      "total_cast": 302336,
+      "early_data_as_of": "11/2",
+      "registered": 897677,
+      "registered_note": "active registered voters as of Mar 7, 2026 (latest Maine SOS Registered & Enrolled file)",
+      "election_day_turnout": null,
+      "expected_vote_counted_pct": null,
+      "polls_close_pt": "5 PM PT (8 PM ET; some towns open later but all close 8 PM ET)",
+      "y2022": {
+        "early_in_person": 68569,
+        "mail_returned": 169544,
+        "early_total": 238113,
+        "total_turnout": 680909,
+        "vep": null,
+        "vep_turnout_pct": null,
+        "headline_results": "Gov: Mills (D) 55.6% def. LePage (R) 42.5%; no U.S. Senate race in 2022"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null,
+          "candidates": [
+            {
+              "name": "Hannah Pingree",
+              "party": "D",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            },
+            {
+              "name": "Bobby Charles",
+              "party": "R",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            },
+            {
+              "name": "Rick Bennett",
+              "party": "I",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            }
+          ],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null,
+          "candidates": [
+            {
+              "name": "Susan Collins",
+              "party": "R",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            },
+            {
+              "name": "Troy Jackson",
+              "party": "D",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            }
+          ],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
+        }
+      ],
+      "feeds": [
+        {
+          "label": "Statewide results",
+          "url": "https://www.maine.gov/sos/elections-voting/election-results-data",
+          "type": "statewide"
+        }
+      ],
+      "election_day_status": "Not yet published by state",
+      "county_baselines_2022": [
+        {
+          "county": "Cumberland",
+          "gov_d_2022": 112188,
+          "gov_r_2022": 47201,
+          "gov_o_2022": 2462,
+          "gov_total_2022": 161851
+        },
+        {
+          "county": "York",
+          "gov_d_2022": 60772,
+          "gov_r_2022": 41662,
+          "gov_o_2022": 1994,
+          "gov_total_2022": 104428
+        },
+        {
+          "county": "Penobscot",
+          "gov_d_2022": 31845,
+          "gov_r_2022": 35499,
+          "gov_o_2022": 1303,
+          "gov_total_2022": 68647
+        },
+        {
+          "county": "Kennebec",
+          "gov_d_2022": 30838,
+          "gov_r_2022": 28368,
+          "gov_o_2022": 1140,
+          "gov_total_2022": 60346
+        },
+        {
+          "county": "Androscoggin",
+          "gov_d_2022": 22915,
+          "gov_r_2022": 23220,
+          "gov_o_2022": 884,
+          "gov_total_2022": 47019
+        },
+        {
+          "county": "Hancock",
+          "gov_d_2022": 17445,
+          "gov_r_2022": 12524,
+          "gov_o_2022": 566,
+          "gov_total_2022": 30535
+        },
+        {
+          "county": "Aroostook",
+          "gov_d_2022": 11587,
+          "gov_r_2022": 16530,
+          "gov_o_2022": 515,
+          "gov_total_2022": 28632
+        },
+        {
+          "county": "Oxford",
+          "gov_d_2022": 12875,
+          "gov_r_2022": 14229,
+          "gov_o_2022": 631,
+          "gov_total_2022": 27735
+        },
+        {
+          "county": "Somerset",
+          "gov_d_2022": 9083,
+          "gov_r_2022": 13233,
+          "gov_o_2022": 500,
+          "gov_total_2022": 22816
+        },
+        {
+          "county": "Knox",
+          "gov_d_2022": 13441,
+          "gov_r_2022": 8430,
+          "gov_o_2022": 385,
+          "gov_total_2022": 22256
+        },
+        {
+          "county": "Waldo",
+          "gov_d_2022": 11508,
+          "gov_r_2022": 9099,
+          "gov_o_2022": 400,
+          "gov_total_2022": 21007
+        },
+        {
+          "county": "Lincoln",
+          "gov_d_2022": 11853,
+          "gov_r_2022": 8744,
+          "gov_o_2022": 349,
+          "gov_total_2022": 20946
+        },
+        {
+          "county": "Sagadahoc",
+          "gov_d_2022": 12414,
+          "gov_r_2022": 8049,
+          "gov_o_2022": 379,
+          "gov_total_2022": 20842
+        },
+        {
+          "county": "Franklin",
+          "gov_d_2022": 7406,
+          "gov_r_2022": 7179,
+          "gov_o_2022": 343,
+          "gov_total_2022": 14928
+        },
+        {
+          "county": "Washington",
+          "gov_d_2022": 6064,
+          "gov_r_2022": 8160,
+          "gov_o_2022": 553,
+          "gov_total_2022": 14777
+        },
+        {
+          "county": "Piscataquis",
+          "gov_d_2022": 3098,
+          "gov_r_2022": 4960,
+          "gov_o_2022": 158,
+          "gov_total_2022": 8216
+        }
+      ],
+      "county_baselines_2022_note": "2022 county totals aggregated from MEDSL town-level returns",
+      "county_baselines_2022_source": "MEDSL 2022-elections-official",
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "party_turnout": {
+        "status": "reported",
+        "registration_by_party": {
+          "dem": 305364,
+          "rep": 273632,
+          "other": 318681,
+          "src": "Maine SOS Mar 7, 2026"
+        },
+        "series": [
+          {
+            "as_of": "11/2/2026 (Maine SOS absentee file)",
+            "dem": 141212,
+            "rep": 69204,
+            "other": 91920,
+            "dem_pct_of_reg": 46.2,
+            "rep_pct_of_reg": 25.3,
+            "other_pct_of_reg": 28.8
+          }
+        ]
+      },
+      "party_registration_2022": {
+        "2022": {
+          "rep": 280150,
+          "dem": 345422,
+          "other": 303445,
+          "total": 929017,
+          "source": "Maine SOS Nov 8, 2022 (active; other = unenrolled + Green + Libertarian)"
+        },
+        "2026": {
+          "rep": 273632,
+          "dem": 305364,
+          "other": 318681,
+          "total": 897677,
+          "source": "Maine SOS Mar 7, 2026 (active; latest published)"
+        }
+      },
+      "party_turnout_2022": {
+        "ballots2022_early_total": {
+          "rep": 57277,
+          "dem": 117645,
+          "other": 63191,
+          "total": 238113
+        },
+        "ballots2026_so_far": {
+          "rep": 69204,
+          "dem": 141212,
+          "other": 91920,
+          "total": 302336
+        },
+        "ballots2026_as_of": "11/2/2026",
+        "note": "2022 = absentee ballots returned by enrollment (Maine SOS file); 2026 = Maine SOS absentee file 11/2",
+        "rep": {
+          "turnout2022_pct": 20.4,
+          "turnout2026_pct": 25.3,
+          "change_pts": 4.9
+        },
+        "dem": {
+          "turnout2022_pct": 34.1,
+          "turnout2026_pct": 46.2,
+          "change_pts": 12.1
+        },
+        "other": {
+          "turnout2022_pct": 20.8,
+          "turnout2026_pct": 28.8,
+          "change_pts": 8.0
+        }
+      },
+      "candidate_source": "Ballotpedia / Maine Monitor / Portland Chamber (Governor open, Mills term-limited; Governor decided by plurality, U.S. Senate uses ranked-choice voting)",
+      "candidate_source_url": "https://ballotpedia.org/Maine_elections,_2026",
+      "candidate_verification": "secondary sources",
+      "no_senate_race": false,
+      "county_baselines_2024": [
+        {
+          "fips": "23001",
+          "county": "Androscoggin County",
+          "gop_2024": 30605,
+          "dem_2024": 27019,
+          "total_2024": 58847
+        },
+        {
+          "fips": "23003",
+          "county": "Aroostook County",
+          "gop_2024": 22246,
+          "dem_2024": 12900,
+          "total_2024": 35653
+        },
+        {
+          "fips": "23005",
+          "county": "Cumberland County",
+          "gop_2024": 60950,
+          "dem_2024": 133281,
+          "total_2024": 199225
+        },
+        {
+          "fips": "23007",
+          "county": "Franklin County",
+          "gop_2024": 9459,
+          "dem_2024": 7990,
+          "total_2024": 17836
+        },
+        {
+          "fips": "23009",
+          "county": "Hancock County",
+          "gop_2024": 15549,
+          "dem_2024": 19817,
+          "total_2024": 36251
+        },
+        {
+          "fips": "23011",
+          "county": "Kennebec County",
+          "gop_2024": 36589,
+          "dem_2024": 34585,
+          "total_2024": 72886
+        },
+        {
+          "fips": "23013",
+          "county": "Knox County",
+          "gop_2024": 10262,
+          "dem_2024": 15076,
+          "total_2024": 25893
+        },
+        {
+          "fips": "23015",
+          "county": "Lincoln County",
+          "gop_2024": 10409,
+          "dem_2024": 13110,
+          "total_2024": 24003
+        },
+        {
+          "fips": "23017",
+          "county": "Oxford County",
+          "gop_2024": 19228,
+          "dem_2024": 14765,
+          "total_2024": 34590
+        },
+        {
+          "fips": "23019",
+          "county": "Penobscot County",
+          "gop_2024": 47438,
+          "dem_2024": 37945,
+          "total_2024": 87073
+        },
+        {
+          "fips": "23021",
+          "county": "Piscataquis County",
+          "gop_2024": 6487,
+          "dem_2024": 3510,
+          "total_2024": 10205
+        },
+        {
+          "fips": "23023",
+          "county": "Sagadahoc County",
+          "gop_2024": 9917,
+          "dem_2024": 13982,
+          "total_2024": 24456
+        },
+        {
+          "fips": "23025",
+          "county": "Somerset County",
+          "gop_2024": 17826,
+          "dem_2024": 10134,
+          "total_2024": 28441
+        },
+        {
+          "fips": "23027",
+          "county": "Waldo County",
+          "gop_2024": 11815,
+          "dem_2024": 12661,
+          "total_2024": 25130
+        },
+        {
+          "fips": "23029",
+          "county": "Washington County",
+          "gop_2024": 11003,
+          "dem_2024": 6763,
+          "total_2024": 18048
+        },
+        {
+          "fips": "23031",
+          "county": "York County",
+          "gop_2024": 58194,
+          "dem_2024": 72114,
+          "total_2024": 132838
+        }
+      ],
+      "county_baselines_2024_note": "2024 presidential county results (GOP, DEM, total), compiled from official county/state canvasses by tonmcg/US_County_Level_Election_Results_08-24."
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "early_in_person": null,
+      "early_in_person_note": "NH has no early in-person voting; absentee (excuse-required) only",
+      "mail_returned": 42492,
+      "total_cast": 42492,
+      "early_data_as_of": "10/31",
+      "registered": 866949,
+      "registered_note": "names on checklist as of Nov 2, 2026 (NH SOS party registration history)",
+      "election_day_turnout": null,
+      "expected_vote_counted_pct": null,
+      "polls_close_pt": "4–5 PM PT (most towns 7 PM ET, larger towns/cities 8 PM ET; a few close earlier)",
+      "y2022": {
+        "early_in_person": null,
+        "mail_returned": 58655,
+        "early_total": 58655,
+        "total_turnout": 626931,
+        "vep": null,
+        "vep_turnout_pct": null,
+        "headline_results": "Gov: Sununu (R) 57.0% def. Sherman (D) 41.5%; Sen: Hassan (D) 53.5% def. Bolduc (R) 44.4%"
+      },
+      "races": [
+        {
+          "race": "Governor",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null,
+          "candidates": [
+            {
+              "name": "Kelly Ayotte",
+              "party": "R",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            },
+            {
+              "name": "Cinde Warmington",
+              "party": "D",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            }
+          ],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
+        },
+        {
+          "race": "U.S. Senate",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": null,
+          "candidates": [
+            {
+              "name": "Chris Pappas",
+              "party": "D",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            },
+            {
+              "name": "John E. Sununu",
+              "party": "R",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            },
+            {
+              "name": "Edmond Laplante",
+              "party": "Constitution",
+              "incumbent": null,
+              "votes": null,
+              "pct": null
+            }
+          ],
+          "reporting_pct": null,
+          "win_probability": {
+            "status": "results pending",
+            "values": null,
+            "source": null
+          }
+        }
+      ],
+      "feeds": [
+        {
+          "label": "Statewide results",
+          "url": "https://www.sos.nh.gov/elections/elections/election-results",
+          "type": "statewide"
+        }
+      ],
+      "election_day_status": "Not yet published by state",
+      "county_baselines_2022": [
+        {
+          "county": "Hillsborough",
+          "gov_d_2022": 69673,
+          "gov_r_2022": 99608,
+          "gov_o_2022": 2585,
+          "gov_total_2022": 171866,
+          "sen_d_2022": 91776,
+          "sen_r_2022": 76862,
+          "sen_o_2022": 3738,
+          "sen_total_2022": 172376,
+          "ballots_cast_2022": 173774
+        },
+        {
+          "county": "Rockingham",
+          "gov_d_2022": 59759,
+          "gov_r_2022": 92043,
+          "gov_o_2022": 2216,
+          "gov_total_2022": 154018,
+          "sen_d_2022": 78047,
+          "sen_r_2022": 73244,
+          "sen_o_2022": 3096,
+          "sen_total_2022": 154387,
+          "ballots_cast_2022": 155403
+        },
+        {
+          "county": "Merrimack",
+          "gov_d_2022": 30835,
+          "gov_r_2022": 38669,
+          "gov_o_2022": 1248,
+          "gov_total_2022": 70752,
+          "sen_d_2022": 39367,
+          "sen_r_2022": 29965,
+          "sen_o_2022": 1526,
+          "sen_total_2022": 70858,
+          "ballots_cast_2022": 71327
+        },
+        {
+          "county": "Strafford",
+          "gov_d_2022": 26495,
+          "gov_r_2022": 29100,
+          "gov_o_2022": 929,
+          "gov_total_2022": 56524,
+          "sen_d_2022": 33240,
+          "sen_r_2022": 22217,
+          "sen_o_2022": 1161,
+          "sen_total_2022": 56618,
+          "ballots_cast_2022": 56976
+        },
+        {
+          "county": "Grafton",
+          "gov_d_2022": 21483,
+          "gov_r_2022": 20427,
+          "gov_o_2022": 676,
+          "gov_total_2022": 42586,
+          "sen_d_2022": 26337,
+          "sen_r_2022": 15544,
+          "sen_o_2022": 891,
+          "sen_total_2022": 42772,
+          "ballots_cast_2022": 43291
+        },
+        {
+          "county": "Cheshire",
+          "gov_d_2022": 16890,
+          "gov_r_2022": 16503,
+          "gov_o_2022": 516,
+          "gov_total_2022": 33909,
+          "sen_d_2022": 20083,
+          "sen_r_2022": 13241,
+          "sen_o_2022": 684,
+          "sen_total_2022": 34008,
+          "ballots_cast_2022": 34632
+        },
+        {
+          "county": "Belknap",
+          "gov_d_2022": 9429,
+          "gov_r_2022": 20499,
+          "gov_o_2022": 425,
+          "gov_total_2022": 30353,
+          "sen_d_2022": 13669,
+          "sen_r_2022": 16591,
+          "sen_o_2022": 537,
+          "sen_total_2022": 30797,
+          "ballots_cast_2022": 31228
+        },
+        {
+          "county": "Carroll",
+          "gov_d_2022": 10306,
+          "gov_r_2022": 16554,
+          "gov_o_2022": 342,
+          "gov_total_2022": 27202,
+          "sen_d_2022": 13708,
+          "sen_r_2022": 13014,
+          "sen_o_2022": 415,
+          "sen_total_2022": 27137,
+          "ballots_cast_2022": 27805
+        },
+        {
+          "county": "Sullivan",
+          "gov_d_2022": 7702,
+          "gov_r_2022": 11159,
+          "gov_o_2022": 259,
+          "gov_total_2022": 19120,
+          "sen_d_2022": 9907,
+          "sen_r_2022": 8759,
+          "sen_o_2022": 453,
+          "sen_total_2022": 19119,
+          "ballots_cast_2022": 19328
+        },
+        {
+          "county": "Coos",
+          "gov_d_2022": 4194,
+          "gov_r_2022": 8251,
+          "gov_o_2022": 360,
+          "gov_total_2022": 12805,
+          "sen_d_2022": 6059,
+          "sen_r_2022": 6491,
+          "sen_o_2022": 353,
+          "sen_total_2022": 12903,
+          "ballots_cast_2022": 13167
+        }
+      ],
+      "county_baselines_2022_note": "2022 county totals aggregated from MEDSL town-level returns",
+      "county_baselines_2022_source": "MEDSL 2022-elections-official",
+      "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
+      "party_turnout": {
+        "status": "not published",
+        "registration_by_party": {
+          "dem": 247859,
+          "rep": 292991,
+          "other": 326099,
+          "src": "NH SOS Nov 2, 2026"
+        },
+        "series": []
+      },
+      "party_registration_2022": {
+        "2022": {
+          "rep": 263934,
+          "dem": 273921,
+          "other": 332008,
+          "total": 869863,
+          "source": "NH SOS Aug 30, 2022 (latest pre-election 2022 count)"
+        },
+        "2026": {
+          "rep": 292991,
+          "dem": 247859,
+          "other": 326099,
+          "total": 866949,
+          "source": "NH SOS Nov 2, 2026"
+        }
+      },
+      "candidate_source": "Ballotpedia / WMUR / NH Bulletin general-election candidate lists (Ayotte is the incumbent; Senate seat open, Shaheen retiring)",
+      "candidate_source_url": "https://ballotpedia.org/New_Hampshire_elections,_2026",
+      "candidate_verification": "secondary sources",
+      "no_senate_race": false,
+      "county_baselines_2024": [
+        {
+          "fips": "33001",
+          "county": "Belknap County",
+          "gop_2024": 22765,
+          "dem_2024": 17469,
+          "total_2024": 40550
+        },
+        {
+          "fips": "33003",
+          "county": "Carroll County",
+          "gop_2024": 17407,
+          "dem_2024": 16827,
+          "total_2024": 34498
+        },
+        {
+          "fips": "33005",
+          "county": "Cheshire County",
+          "gop_2024": 20142,
+          "dem_2024": 24579,
+          "total_2024": 45200
+        },
+        {
+          "fips": "33007",
+          "county": "Coos County",
+          "gop_2024": 9731,
+          "dem_2024": 7355,
+          "total_2024": 17230
+        },
+        {
+          "fips": "33009",
+          "county": "Grafton County",
+          "gop_2024": 21911,
+          "dem_2024": 32998,
+          "total_2024": 55603
+        },
+        {
+          "fips": "33011",
+          "county": "Hillsborough County",
+          "gop_2024": 112068,
+          "dem_2024": 118780,
+          "total_2024": 233234
+        },
+        {
+          "fips": "33013",
+          "county": "Merrimack County",
+          "gop_2024": 43365,
+          "dem_2024": 48181,
+          "total_2024": 92475
+        },
+        {
+          "fips": "33015",
+          "county": "Rockingham County",
+          "gop_2024": 102542,
+          "dem_2024": 97616,
+          "total_2024": 201949
+        },
+        {
+          "fips": "33017",
+          "county": "Strafford County",
+          "gop_2024": 33163,
+          "dem_2024": 42374,
+          "total_2024": 76323
+        },
+        {
+          "fips": "33019",
+          "county": "Sullivan County",
+          "gop_2024": 12484,
+          "dem_2024": 12317,
+          "total_2024": 25091
+        }
+      ],
+      "county_baselines_2024_note": "2024 presidential county results (GOP, DEM, total), compiled from official county/state canvasses by tonmcg/US_County_Level_Election_Results_08-24."
     }
   ],
   "timeline": [
@@ -27264,6 +27995,192 @@
           "gop_2024": 18491,
           "dem_2024": 10725,
           "total_2024": 30070
+        }
+      ],
+      "ME": [
+        {
+          "fips": "23001",
+          "county": "Androscoggin County",
+          "gop_2024": 30605,
+          "dem_2024": 27019,
+          "total_2024": 58847
+        },
+        {
+          "fips": "23003",
+          "county": "Aroostook County",
+          "gop_2024": 22246,
+          "dem_2024": 12900,
+          "total_2024": 35653
+        },
+        {
+          "fips": "23005",
+          "county": "Cumberland County",
+          "gop_2024": 60950,
+          "dem_2024": 133281,
+          "total_2024": 199225
+        },
+        {
+          "fips": "23007",
+          "county": "Franklin County",
+          "gop_2024": 9459,
+          "dem_2024": 7990,
+          "total_2024": 17836
+        },
+        {
+          "fips": "23009",
+          "county": "Hancock County",
+          "gop_2024": 15549,
+          "dem_2024": 19817,
+          "total_2024": 36251
+        },
+        {
+          "fips": "23011",
+          "county": "Kennebec County",
+          "gop_2024": 36589,
+          "dem_2024": 34585,
+          "total_2024": 72886
+        },
+        {
+          "fips": "23013",
+          "county": "Knox County",
+          "gop_2024": 10262,
+          "dem_2024": 15076,
+          "total_2024": 25893
+        },
+        {
+          "fips": "23015",
+          "county": "Lincoln County",
+          "gop_2024": 10409,
+          "dem_2024": 13110,
+          "total_2024": 24003
+        },
+        {
+          "fips": "23017",
+          "county": "Oxford County",
+          "gop_2024": 19228,
+          "dem_2024": 14765,
+          "total_2024": 34590
+        },
+        {
+          "fips": "23019",
+          "county": "Penobscot County",
+          "gop_2024": 47438,
+          "dem_2024": 37945,
+          "total_2024": 87073
+        },
+        {
+          "fips": "23021",
+          "county": "Piscataquis County",
+          "gop_2024": 6487,
+          "dem_2024": 3510,
+          "total_2024": 10205
+        },
+        {
+          "fips": "23023",
+          "county": "Sagadahoc County",
+          "gop_2024": 9917,
+          "dem_2024": 13982,
+          "total_2024": 24456
+        },
+        {
+          "fips": "23025",
+          "county": "Somerset County",
+          "gop_2024": 17826,
+          "dem_2024": 10134,
+          "total_2024": 28441
+        },
+        {
+          "fips": "23027",
+          "county": "Waldo County",
+          "gop_2024": 11815,
+          "dem_2024": 12661,
+          "total_2024": 25130
+        },
+        {
+          "fips": "23029",
+          "county": "Washington County",
+          "gop_2024": 11003,
+          "dem_2024": 6763,
+          "total_2024": 18048
+        },
+        {
+          "fips": "23031",
+          "county": "York County",
+          "gop_2024": 58194,
+          "dem_2024": 72114,
+          "total_2024": 132838
+        }
+      ],
+      "NH": [
+        {
+          "fips": "33001",
+          "county": "Belknap County",
+          "gop_2024": 22765,
+          "dem_2024": 17469,
+          "total_2024": 40550
+        },
+        {
+          "fips": "33003",
+          "county": "Carroll County",
+          "gop_2024": 17407,
+          "dem_2024": 16827,
+          "total_2024": 34498
+        },
+        {
+          "fips": "33005",
+          "county": "Cheshire County",
+          "gop_2024": 20142,
+          "dem_2024": 24579,
+          "total_2024": 45200
+        },
+        {
+          "fips": "33007",
+          "county": "Coos County",
+          "gop_2024": 9731,
+          "dem_2024": 7355,
+          "total_2024": 17230
+        },
+        {
+          "fips": "33009",
+          "county": "Grafton County",
+          "gop_2024": 21911,
+          "dem_2024": 32998,
+          "total_2024": 55603
+        },
+        {
+          "fips": "33011",
+          "county": "Hillsborough County",
+          "gop_2024": 112068,
+          "dem_2024": 118780,
+          "total_2024": 233234
+        },
+        {
+          "fips": "33013",
+          "county": "Merrimack County",
+          "gop_2024": 43365,
+          "dem_2024": 48181,
+          "total_2024": 92475
+        },
+        {
+          "fips": "33015",
+          "county": "Rockingham County",
+          "gop_2024": 102542,
+          "dem_2024": 97616,
+          "total_2024": 201949
+        },
+        {
+          "fips": "33017",
+          "county": "Strafford County",
+          "gop_2024": 33163,
+          "dem_2024": 42374,
+          "total_2024": 76323
+        },
+        {
+          "fips": "33019",
+          "county": "Sullivan County",
+          "gop_2024": 12484,
+          "dem_2024": 12317,
+          "total_2024": 25091
         }
       ]
     }
