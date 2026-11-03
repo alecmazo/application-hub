@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T12:52-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:52 PM PT",
+  "lastUpdated": "2026-11-03T12:59-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:59 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -10644,12 +10644,31 @@
       },
       "hourly": [
         {
+          "time_pt": "6:00 AM",
+          "ed_turnout": 9448,
+          "by_party": {
+            "R": 4310,
+            "D": 2235,
+            "O": 2903
+          },
+          "scope": "Maricopa only",
+          "source": "Stealth Analytics Maricopa Election Day check-ins, 7 AM MST update (tracker; no county total published at this hour)",
+          "source_url": "https://x.com/StealthPolling/status/2117618106545971200"
+        },
+        {
           "time_pt": "7:00 AM",
           "ed_turnout": 25263,
           "by_party": null,
           "scope": "Maricopa only",
           "source": "KTAR / Maricopa Elections (as of 8 AM MST)",
-          "source_url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open"
+          "source_url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open",
+          "by_party_pct": {
+            "R": 44.57,
+            "D": 23.68,
+            "O": 31.75
+          },
+          "party_source": "Party shares from Stealth Analytics' 8 AM MST Maricopa check-in update (18,862 check-ins: R 8,407 / D 4,467 / Ind-Other 5,988), applied to the county's total; counts are estimates (~)",
+          "party_source_url": "https://x.com/StealthPolling/status/2117632994240532776"
         },
         {
           "time_pt": "8:00 AM",
@@ -10657,7 +10676,14 @@
           "by_party": null,
           "scope": "Maricopa only",
           "source": "KTAR / Maricopa Elections (as of 9 AM MST)",
-          "source_url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open"
+          "source_url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open",
+          "by_party_pct": {
+            "R": 44.17,
+            "D": 23.65,
+            "O": 32.18
+          },
+          "party_source": "Party shares from Stealth Analytics' 9 AM MST Maricopa check-in update (31,313 check-ins: R 13,831 / D 7,407 / Ind-Other 10,075), applied to the county's total; counts are estimates (~)",
+          "party_source_url": "https://x.com/StealthPolling/status/2117648262060720196"
         },
         {
           "time_pt": "9:00 AM",
@@ -10665,7 +10691,14 @@
           "by_party": null,
           "scope": "Maricopa only",
           "source": "Maricopa County Elections Fast Facts (approx., as of 10 AM MST)",
-          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
+          "by_party_pct": {
+            "R": 44.49,
+            "D": 22.91,
+            "O": 32.59
+          },
+          "party_source": "Party shares from Stealth Analytics' 10 AM MST Maricopa check-in update (44,637 check-ins: R 19,861 / D 10,227 / Ind-Other 14,549), applied to the county's total; counts are estimates (~)",
+          "party_source_url": "https://x.com/StealthPolling/status/2117663132990750872"
         },
         {
           "time_pt": "10:00 AM",
@@ -10673,7 +10706,14 @@
           "by_party": null,
           "scope": "Maricopa only",
           "source": "Maricopa County Elections Fast Facts (approx., as of 11 AM MST)",
-          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
+          "by_party_pct": {
+            "R": 44.53,
+            "D": 22.65,
+            "O": 32.82
+          },
+          "party_source": "Party shares from Stealth Analytics' 11 AM MST Maricopa check-in update (59,175 check-ins: R 26,348 / D 13,403 / Ind-Other 19,424), applied to the county's total; counts are estimates (~)",
+          "party_source_url": "https://x.com/StealthPolling/status/2117678291335426323"
         },
         {
           "time_pt": "11:00 AM",
@@ -10681,7 +10721,14 @@
           "by_party": null,
           "scope": "Maricopa only",
           "source": "Maricopa County Elections Fast Facts (approx., as of 12 PM MST)",
-          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
+          "by_party_pct": {
+            "R": 44.54,
+            "D": 23.35,
+            "O": 32.11
+          },
+          "party_source": "Party shares from Stealth Analytics' 12 PM MST Maricopa check-in update (94,327 check-ins: R 42,016 / D 22,021 / Ind-Other 30,290), applied to the county's total; counts are estimates (~)",
+          "party_source_url": "https://x.com/StealthPolling/status/2117693321686688005"
         },
         {
           "time_pt": "12:00 PM",
@@ -10689,7 +10736,14 @@
           "by_party": null,
           "scope": "Maricopa only",
           "source": "Maricopa County Elections Fast Facts (approx., as of 1 PM MST)",
-          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
+          "by_party_pct": {
+            "R": 43.92,
+            "D": 23.61,
+            "O": 32.47
+          },
+          "party_source": "Party shares from Stealth Analytics' 1 PM MST Maricopa check-in update (114,189 check-ins: R 50,157 / D 26,960 / Ind-Other 37,072), applied to the county's total; counts are estimates (~)",
+          "party_source_url": "https://x.com/StealthPolling/status/2117709429789663418"
         }
       ],
       "county_baselines_2022": [
