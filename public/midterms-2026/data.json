@@ -20786,7 +20786,7 @@
     {
       "code": "NH",
       "name": "New Hampshire",
-      "early_in_person": null,
+      "early_in_person": 0,
       "early_in_person_note": "NH has no early in-person voting; absentee (excuse-required) only",
       "mail_returned": 42492,
       "total_cast": 42492,
@@ -20797,7 +20797,7 @@
       "expected_vote_counted_pct": null,
       "polls_close_pt": "4–5 PM PT (most towns 7 PM ET, larger towns/cities 8 PM ET; a few close earlier)",
       "y2022": {
-        "early_in_person": null,
+        "early_in_person": 0,
         "mail_returned": 58655,
         "early_total": 58655,
         "total_turnout": 626931,
