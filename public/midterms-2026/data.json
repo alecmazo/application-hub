@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T12:59-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 12:59 PM PT",
+  "lastUpdated": "2026-11-03T13:05-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 1:05 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -7161,7 +7161,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 63047,
+      "election_day_turnout": 71880,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7671,12 +7671,24 @@
           "scope": "statewide",
           "source": "Nevada SOS VIVID turnout via Strength In Numbers (as of 3:03 PM ET)",
           "source_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+        },
+        {
+          "time_pt": "1:00 PM",
+          "ed_turnout": 71880,
+          "by_party": {
+            "R": 29035,
+            "D": 20097,
+            "O": 22748
+          },
+          "scope": "statewide",
+          "source": "NVSOS VIVID via Data Point Research (as of 1:00 PM PST)",
+          "source_url": "https://data-point-research.com/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "12:03 PM PT",
-      "election_day_turnout_source": "Nevada SOS VIVID turnout via Strength In Numbers",
-      "election_day_turnout_url": "https://projects.gelliottmorris.com/2026-early-vote/"
+      "election_day_turnout_as_of": "1:00 PM",
+      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 1:00 PM PST)",
+      "election_day_turnout_url": "https://data-point-research.com/"
     },
     {
       "code": "MI",
@@ -10963,7 +10975,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 1859992,
+      "election_day_turnout": 1900314,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -12436,11 +12448,23 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 15:42:08 ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
+        },
+        {
+          "time_pt": "1:00 PM",
+          "ed_turnout": 1900314,
+          "by_party": {
+            "R": 944232,
+            "D": 494860,
+            "O": 461222
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 16:00:14 ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "12:42 PM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 15:42:08 ET",
+      "election_day_turnout_as_of": "1:00 PM",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 16:00:14 ET",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -12485,479 +12509,412 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "12:42 PM PT",
-        "label": "early + mail + Election Day, by party registration",
-        "source": "FreshTake.Vote countydata.php (updated 2026-11-03 15:42:08 ET)",
+        "as_of": "1:00 PM PT",
+        "label": "Ballots cast so far (mail+early+ED)",
+        "source": "FreshTake.Vote County Turnout by Party, updated 2026-11-03 16:00:14 ET",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
         "counties": {
           "Alachua": {
-            "total": 93168,
-            "R": 25720,
-            "D": 48268,
-            "O": 19180,
-            "pct_of_reg": 55.74
+            "R": 26069,
+            "D": 48701,
+            "O": 19439,
+            "total": 94209
           },
           "Baker": {
-            "total": 8115,
-            "R": 6120,
-            "D": 1342,
-            "O": 653,
-            "pct_of_reg": 45.34
+            "R": 6239,
+            "D": 1366,
+            "O": 668,
+            "total": 8273
           },
           "Bay": {
-            "total": 59963,
-            "R": 37663,
-            "D": 12703,
-            "O": 9597,
-            "pct_of_reg": 46.6
+            "R": 37863,
+            "D": 12753,
+            "O": 9662,
+            "total": 60278
           },
           "Bradford": {
-            "total": 7932,
-            "R": 5307,
-            "D": 1871,
-            "O": 754,
-            "pct_of_reg": 46.91
+            "R": 5358,
+            "D": 1880,
+            "O": 759,
+            "total": 7997
           },
           "Brevard": {
-            "total": 244257,
-            "R": 118086,
-            "D": 71359,
-            "O": 54812,
-            "pct_of_reg": 54.61
+            "R": 118738,
+            "D": 71600,
+            "O": 55133,
+            "total": 245471
           },
           "Broward": {
-            "total": 595493,
-            "R": 141933,
-            "D": 298301,
-            "O": 155259,
-            "pct_of_reg": 53.96
+            "R": 143191,
+            "D": 300086,
+            "O": 156704,
+            "total": 599981
           },
           "Calhoun": {
-            "total": 3388,
-            "R": 2389,
-            "D": 786,
-            "O": 213,
-            "pct_of_reg": 44.57
+            "R": 2417,
+            "D": 800,
+            "O": 215,
+            "total": 3432
           },
           "Charlotte": {
-            "total": 92687,
-            "R": 52611,
-            "D": 19972,
-            "O": 20104,
-            "pct_of_reg": 59.47
+            "R": 52855,
+            "D": 20026,
+            "O": 20195,
+            "total": 93076
           },
           "Citrus": {
-            "total": 67320,
-            "R": 41787,
-            "D": 13024,
-            "O": 12509,
-            "pct_of_reg": 55.46
+            "R": 42296,
+            "D": 13154,
+            "O": 12651,
+            "total": 68101
           },
           "Clay": {
-            "total": 80821,
-            "R": 48275,
-            "D": 18802,
-            "O": 13744,
-            "pct_of_reg": 51.73
+            "R": 48661,
+            "D": 18892,
+            "O": 13863,
+            "total": 81416
           },
           "Collier": {
-            "total": 158203,
-            "R": 91259,
-            "D": 33937,
-            "O": 33007,
-            "pct_of_reg": 59.55
+            "R": 92035,
+            "D": 34171,
+            "O": 33335,
+            "total": 159541
           },
           "Columbia": {
-            "total": 20061,
-            "R": 12527,
-            "D": 5104,
-            "O": 2430,
-            "pct_of_reg": 48.21
+            "R": 12680,
+            "D": 5186,
+            "O": 2462,
+            "total": 20328
           },
           "DeSoto": {
-            "total": 7964,
-            "R": 4344,
-            "D": 2306,
-            "O": 1314,
-            "pct_of_reg": 49.53
+            "R": 4405,
+            "D": 2340,
+            "O": 1328,
+            "total": 8073
           },
           "Dixie": {
-            "total": 4856,
-            "R": 3582,
-            "D": 720,
-            "O": 554,
-            "pct_of_reg": 48.29
+            "R": 3615,
+            "D": 726,
+            "O": 557,
+            "total": 4898
           },
           "Duval": {
-            "total": 307686,
-            "R": 119035,
-            "D": 133223,
-            "O": 55428,
-            "pct_of_reg": 46.96
+            "R": 120475,
+            "D": 134233,
+            "O": 56098,
+            "total": 310806
           },
           "Escambia": {
-            "total": 95483,
-            "R": 48293,
-            "D": 31811,
-            "O": 15379,
-            "pct_of_reg": 46.03
+            "R": 48684,
+            "D": 32088,
+            "O": 15522,
+            "total": 96294
           },
           "Flagler": {
-            "total": 59185,
-            "R": 31437,
-            "D": 15874,
-            "O": 11874,
-            "pct_of_reg": 58.86
+            "R": 31586,
+            "D": 15934,
+            "O": 11938,
+            "total": 59458
           },
           "Franklin": {
-            "total": 4443,
-            "R": 2437,
-            "D": 1295,
-            "O": 711,
-            "pct_of_reg": 58.4
+            "R": 2478,
+            "D": 1310,
+            "O": 722,
+            "total": 4510
           },
           "Gadsden": {
-            "total": 14977,
-            "R": 3326,
-            "D": 10385,
-            "O": 1266,
-            "pct_of_reg": 55.74
+            "R": 3382,
+            "D": 10548,
+            "O": 1292,
+            "total": 15222
           },
           "Gilchrist": {
-            "total": 6425,
-            "R": 4756,
-            "D": 956,
-            "O": 713,
-            "pct_of_reg": 49.43
+            "R": 4815,
+            "D": 962,
+            "O": 721,
+            "total": 6498
           },
           "Glades": {
-            "total": 3172,
-            "R": 2005,
-            "D": 738,
-            "O": 429,
-            "pct_of_reg": 46.12
+            "R": 2045,
+            "D": 751,
+            "O": 437,
+            "total": 3233
           },
           "Gulf": {
-            "total": 5960,
-            "R": 4165,
-            "D": 1184,
-            "O": 611,
-            "pct_of_reg": 53.24
+            "R": 4216,
+            "D": 1199,
+            "O": 622,
+            "total": 6037
           },
           "Hamilton": {
-            "total": 3386,
-            "R": 1918,
-            "D": 1163,
-            "O": 305,
-            "pct_of_reg": 47.24
+            "R": 1956,
+            "D": 1195,
+            "O": 308,
+            "total": 3459
           },
           "Hardee": {
-            "total": 5069,
-            "R": 3231,
-            "D": 1206,
-            "O": 632,
-            "pct_of_reg": 43.96
+            "R": 3282,
+            "D": 1230,
+            "O": 652,
+            "total": 5164
           },
           "Hendry": {
-            "total": 8624,
-            "R": 4416,
-            "D": 2962,
-            "O": 1246,
-            "pct_of_reg": 44.37
+            "R": 4449,
+            "D": 2988,
+            "O": 1254,
+            "total": 8691
           },
           "Hernando": {
-            "total": 69788,
-            "R": 37643,
-            "D": 18128,
-            "O": 14017,
-            "pct_of_reg": 50.54
+            "R": 38229,
+            "D": 18308,
+            "O": 14225,
+            "total": 70762
           },
           "Highlands": {
-            "total": 35833,
-            "R": 20992,
-            "D": 8447,
-            "O": 6394,
-            "pct_of_reg": 56.54
+            "R": 21238,
+            "D": 8540,
+            "O": 6487,
+            "total": 36265
           },
           "Hillsborough": {
-            "total": 461336,
-            "R": 169475,
-            "D": 179389,
-            "O": 112472,
-            "pct_of_reg": 56.01
+            "R": 171258,
+            "D": 180719,
+            "O": 113801,
+            "total": 465778
           },
           "Holmes": {
-            "total": 4488,
-            "R": 3564,
-            "D": 588,
-            "O": 336,
-            "pct_of_reg": 39.19
+            "R": 3638,
+            "D": 600,
+            "O": 351,
+            "total": 4589
           },
           "Indian River": {
-            "total": 71874,
-            "R": 39265,
-            "D": 17936,
-            "O": 14673,
-            "pct_of_reg": 60.03
+            "R": 39641,
+            "D": 18057,
+            "O": 14813,
+            "total": 72511
           },
           "Jackson": {
-            "total": 12724,
-            "R": 7859,
-            "D": 3979,
-            "O": 886,
-            "pct_of_reg": 46.24
+            "R": 7924,
+            "D": 4002,
+            "O": 889,
+            "total": 12815
           },
           "Jefferson": {
-            "total": 5868,
-            "R": 2900,
-            "D": 2327,
-            "O": 641,
-            "pct_of_reg": 58.51
+            "R": 2937,
+            "D": 2367,
+            "O": 650,
+            "total": 5954
           },
           "Lafayette": {
-            "total": 2123,
-            "R": 1737,
-            "D": 276,
-            "O": 110,
-            "pct_of_reg": 49.71
+            "R": 1786,
+            "D": 282,
+            "O": 112,
+            "total": 2180
           },
           "Lake": {
-            "total": 152550,
             "R": 75395,
             "D": 43520,
-            "O": 33635,
-            "pct_of_reg": 53.76
+            "O": 33634,
+            "total": 152549
           },
           "Lee": {
-            "total": 282371,
-            "R": 146960,
-            "D": 69378,
-            "O": 66033,
-            "pct_of_reg": 55.96
+            "R": 147388,
+            "D": 69523,
+            "O": 66241,
+            "total": 283152
           },
           "Leon": {
-            "total": 109497,
-            "R": 31317,
-            "D": 58477,
-            "O": 19703,
-            "pct_of_reg": 59.34
+            "R": 31720,
+            "D": 59143,
+            "O": 19999,
+            "total": 110862
           },
           "Levy": {
-            "total": 15502,
-            "R": 10069,
-            "D": 3487,
-            "O": 1946,
-            "pct_of_reg": 50.91
+            "R": 10238,
+            "D": 3531,
+            "O": 1984,
+            "total": 15753
           },
           "Liberty": {
-            "total": 2158,
             "R": 1536,
             "D": 507,
             "O": 115,
-            "pct_of_reg": 46.74
+            "total": 2158
           },
           "Madison": {
-            "total": 5998,
-            "R": 3147,
-            "D": 2321,
-            "O": 530,
-            "pct_of_reg": 56.87
+            "R": 3189,
+            "D": 2374,
+            "O": 538,
+            "total": 6101
           },
           "Manatee": {
-            "total": 164195,
-            "R": 84834,
-            "D": 44356,
-            "O": 35005,
-            "pct_of_reg": 57.04
+            "R": 85733,
+            "D": 44705,
+            "O": 35362,
+            "total": 165800
           },
           "Marion": {
-            "total": 144496,
-            "R": 78481,
-            "D": 40514,
-            "O": 25501,
-            "pct_of_reg": 53.27
+            "R": 79644,
+            "D": 40912,
+            "O": 25882,
+            "total": 146438
           },
           "Martin": {
-            "total": 70240,
-            "R": 39793,
-            "D": 16475,
-            "O": 13972,
-            "pct_of_reg": 59.92
+            "R": 39961,
+            "D": 16528,
+            "O": 14056,
+            "total": 70545
           },
           "Miami-Dade": {
-            "total": 709987,
-            "R": 249202,
-            "D": 259791,
-            "O": 200994,
-            "pct_of_reg": 54.06
+            "R": 251483,
+            "D": 261932,
+            "O": 203223,
+            "total": 716638
           },
           "Monroe": {
-            "total": 29130,
-            "R": 13865,
-            "D": 9344,
-            "O": 5921,
-            "pct_of_reg": 53.25
+            "R": 14016,
+            "D": 9432,
+            "O": 5999,
+            "total": 29447
           },
           "Nassau": {
-            "total": 45276,
-            "R": 28315,
-            "D": 8829,
-            "O": 8132,
-            "pct_of_reg": 55.18
+            "R": 28491,
+            "D": 8853,
+            "O": 8184,
+            "total": 45528
           },
           "Okaloosa": {
-            "total": 63928,
-            "R": 40454,
-            "D": 12573,
-            "O": 10901,
-            "pct_of_reg": 43.09
+            "R": 40993,
+            "D": 12702,
+            "O": 11056,
+            "total": 64751
           },
           "Okeechobee": {
-            "total": 9514,
-            "R": 6040,
-            "D": 2236,
-            "O": 1238,
-            "pct_of_reg": 45.58
+            "R": 6140,
+            "D": 2262,
+            "O": 1262,
+            "total": 9664
           },
           "Orange": {
-            "total": 418266,
-            "R": 119056,
-            "D": 191107,
-            "O": 108103,
-            "pct_of_reg": 50.98
+            "R": 120335,
+            "D": 192662,
+            "O": 109394,
+            "total": 422391
           },
           "Osceola": {
-            "total": 117408,
-            "R": 35513,
-            "D": 49048,
-            "O": 32847,
-            "pct_of_reg": 49.32
+            "R": 35904,
+            "D": 49459,
+            "O": 33244,
+            "total": 118607
           },
           "Palm Beach": {
-            "total": 514798,
-            "R": 173161,
-            "D": 211197,
-            "O": 130440,
-            "pct_of_reg": 57.87
+            "R": 175163,
+            "D": 212946,
+            "O": 131986,
+            "total": 520095
           },
           "Pasco": {
-            "total": 209057,
-            "R": 97660,
-            "D": 61386,
-            "O": 50011,
-            "pct_of_reg": 51.28
+            "R": 99037,
+            "D": 61960,
+            "O": 50777,
+            "total": 211774
           },
           "Pinellas": {
-            "total": 362683,
-            "R": 145586,
-            "D": 130558,
-            "O": 86539,
-            "pct_of_reg": 59.09
+            "R": 147301,
+            "D": 131598,
+            "O": 87548,
+            "total": 366447
           },
           "Polk": {
-            "total": 219978,
-            "R": 98276,
-            "D": 75616,
-            "O": 46086,
-            "pct_of_reg": 47.83
+            "R": 99999,
+            "D": 76481,
+            "O": 46955,
+            "total": 223435
           },
           "Putnam": {
-            "total": 22385,
-            "R": 13746,
-            "D": 5798,
-            "O": 2841,
-            "pct_of_reg": 49.34
+            "R": 13988,
+            "D": 5872,
+            "O": 2886,
+            "total": 22746
           },
           "Santa Rosa": {
-            "total": 60866,
-            "R": 40867,
-            "D": 10767,
-            "O": 9232,
-            "pct_of_reg": 42.2
+            "R": 41526,
+            "D": 10892,
+            "O": 9411,
+            "total": 61829
           },
           "Sarasota": {
-            "total": 203448,
-            "R": 101244,
-            "D": 58138,
-            "O": 44066,
-            "pct_of_reg": 60.87
+            "R": 102301,
+            "D": 58440,
+            "O": 44489,
+            "total": 205230
           },
           "Seminole": {
-            "total": 173933,
-            "R": 67226,
-            "D": 62608,
-            "O": 44099,
-            "pct_of_reg": 50.66
+            "R": 67579,
+            "D": 62837,
+            "O": 44358,
+            "total": 174774
           },
           "St. Johns": {
-            "total": 138947,
-            "R": 79076,
-            "D": 32861,
-            "O": 27010,
-            "pct_of_reg": 56.97
+            "R": 80126,
+            "D": 33152,
+            "O": 27382,
+            "total": 140660
           },
           "St. Lucie": {
-            "total": 126716,
-            "R": 51203,
-            "D": 47977,
-            "O": 27536,
-            "pct_of_reg": 51.47
+            "R": 51683,
+            "D": 48313,
+            "O": 27856,
+            "total": 127852
           },
           "Sumter": {
-            "total": 90400,
-            "R": 56894,
-            "D": 17247,
-            "O": 16259,
-            "pct_of_reg": 69.5
+            "R": 57305,
+            "D": 17333,
+            "O": 16382,
+            "total": 91020
           },
           "Suwannee": {
-            "total": 13569,
-            "R": 9218,
-            "D": 2839,
-            "O": 1512,
-            "pct_of_reg": 50.26
+            "R": 9383,
+            "D": 2865,
+            "O": 1543,
+            "total": 13791
           },
           "Taylor": {
-            "total": 5920,
-            "R": 4063,
-            "D": 1473,
-            "O": 384,
-            "pct_of_reg": 50.39
+            "R": 4117,
+            "D": 1494,
+            "O": 391,
+            "total": 6002
           },
           "Union": {
-            "total": 3399,
-            "R": 2440,
-            "D": 716,
-            "O": 243,
-            "pct_of_reg": 46.46
+            "R": 2489,
+            "D": 733,
+            "O": 251,
+            "total": 3473
           },
           "Volusia": {
-            "total": 211626,
-            "R": 98361,
-            "D": 64415,
-            "O": 48850,
-            "pct_of_reg": 52.68
+            "R": 99482,
+            "D": 64944,
+            "O": 49470,
+            "total": 213896
           },
           "Wakulla": {
-            "total": 12840,
-            "R": 7430,
-            "D": 3642,
-            "O": 1768,
-            "pct_of_reg": 49.52
+            "R": 7560,
+            "D": 3702,
+            "O": 1804,
+            "total": 13066
           },
           "Walton": {
-            "total": 29167,
-            "R": 20960,
-            "D": 4170,
-            "O": 4037,
-            "pct_of_reg": 45.61
+            "R": 21321,
+            "D": 4221,
+            "O": 4121,
+            "total": 29663
           },
           "Washington": {
-            "total": 6849,
-            "R": 4922,
-            "D": 1318,
-            "O": 609,
-            "pct_of_reg": 45.78
+            "R": 5002,
+            "D": 1339,
+            "O": 624,
+            "total": 6965
           }
         }
       }
@@ -20522,11 +20479,11 @@
     {
       "code": "ME",
       "name": "Maine",
-      "early_in_person": 161648,
+      "early_in_person": 0,
       "early_in_person_note": "in-person absentee at town clerk",
-      "mail_returned": 140688,
-      "total_cast": 302336,
-      "early_data_as_of": "11/2",
+      "mail_returned": 309351,
+      "total_cast": 309351,
+      "early_data_as_of": "11/3",
       "registered": 897677,
       "registered_note": "active registered voters as of Mar 7, 2026 (latest Maine SOS Registered & Enrolled file)",
       "election_day_turnout": null,
