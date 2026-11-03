@@ -77,3 +77,14 @@ git add data.json && git commit -m "Midterms: merge candidates/feeds" && git pus
 `feeds`, `county_baselines`, and `races` (matched to existing races by `race` name, case-insensitive;
 unknown races are appended). Candidate fields copied: name, party, incumbent, votes, pct. Turnout fields are
 untouched. If the file uses different key names, rename them to the ones above first (or extend merge.py).
+
+## Election-night fields (v2, merged from /workspace/election2026/data.json on Nov 3)
+- `states[].expected_vote_counted_pct` (number|null): "share of expected vote counted". Win probability stays
+  **results pending** until this is ≥ 20 AND the race's `win_probability.values` + `.source` are filled.
+- `states[].party_turnout`: early ballots by party registration; shown only for KS, IA, NV, PA, AZ, FL, CA.
+  OH, MI, MN, TX show "No party registration".
+- `states[].no_senate_race`: true for NV, PA, AZ, CA ("No Senate race in 2026").
+- Candidate `votes`/`pct` start null; fill from official feeds. Everything is labeled Unofficial.
+- merge.py mapping for the election2026 format: `candidates[ST].governor|senate` ([name, party] pairs) →
+  `races[].candidates`; `feeds[ST].state|counties` → `feeds`; `county_baseline.counties[ST]` → `county_baselines`;
+  `party_turnout[ST]` → `party_turnout`; `probability.by_state[ST].governor|senate` → `win_probability.values`.

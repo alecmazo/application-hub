@@ -25,13 +25,14 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 .tabs{display:flex;gap:6px;overflow-x:auto;padding:8px 0;position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}.tabs button{flex:0 0 auto;background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:99px;padding:6px 14px;font:inherit;font-size:.85rem;cursor:pointer}.tabs button.act{background:#2563eb;border-color:#2563eb}
 .pane{display:none}.pane.act{display:block}.cand{display:grid;grid-template-columns:1fr auto auto;gap:4px 12px;font-size:.9rem;margin-top:8px}.cand .v{text-align:right}.wp{margin-top:10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:.85rem}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.unof{font-size:.7rem;font-weight:600;color:#fbbf24;border:1px solid #fbbf24;border-radius:4px;padding:0 5px;margin-left:4px;vertical-align:middle}
 </style>
 </head>
 <body>
 <header>
 <a href="../" class="mut" style="font-size:.85rem">← App Hub</a>
 <h1>Midterms 2026 Election Dashboard</h1>
-<div class="mut">Pre-Election Day ballots in 11 states vs registered voters and 2022. Last updated: <b id="upd">loading…</b></div>
+<div class="mut">Pre-Election Day ballots in 11 states vs registered voters and 2022. Last updated: <b id="upd">loading…</b> <span class="unof">Unofficial</span></div><div class="mut" style="font-size:.8rem">All figures unofficial until certified. No polls are used anywhere on this page.</div>
 
 </header>
 <main>
@@ -46,7 +47,7 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <p class="mut" style="margin-top:18px">2026 pre-Election Day ballots as % of full 2022 turnout.</p>
 <div class="chartbox"><canvas id="c2"></canvas></div>
 <h2 id="timeline">Election Day timeline (PT)</h2><div class="tw"><table class="tl"><thead><tr><th>Hour (PT)</th><th>Polls close</th><th>Reported turnout / results</th></tr></thead><tbody id="tl"></tbody></table></div>
-<h2 id="results">Results (all races)</h2><div class="res" id="res"></div>
+<h2 id="results">Results (all races) <span class="unof">Unofficial</span></h2><div class="res" id="res"></div>
 <h2>Notes</h2><ul id="notes" class="mut"></ul>
 <h2 id="sources">Sources</h2><ul class="src" id="src"></ul>
 </section>
@@ -59,7 +60,7 @@ const f=x=>x==null?P:x.toLocaleString('en-US');
 const pc=(a,b)=>a==null||!b?null:100*a/b;
 const fp=x=>x==null?P:x.toFixed(1)+'%';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let charts=[],cur='overview';
+let charts=[],cur='overview';const PARTY=["KS","IA","NV","PA","AZ","FL","CA"];
 function show(t,quiet){if(!document.getElementById('p-'+t))t='overview';cur=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('act',p.id==='p-'+t));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('act',b.dataset.t===t));if(location.hash.slice(1)!==t)history.replaceState(null,'','#'+t);if(!quiet)scrollTo({top:0});}
 addEventListener('hashchange',()=>show(location.hash.slice(1)));
 async function load(){
@@ -90,15 +91,17 @@ async function load(){
   <dt>% of 2022 total</dt><dd>${fp(pc(s.total_cast,s.y2022.total_turnout))}</dd></dl>
   <p class="mut" style="font-size:.8rem;margin:8px 0 0">2022: ${esc(s.y2022.headline_results)}</p></div>`;
   const races=s.races.map(r=>{const c=r.candidates||[],has=c.some(x=>x.votes>0),wp=r.win_probability||{};
-   const wpHtml=(has&&wp.values&&wp.source)?Object.entries(wp.values).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(' · ')+` <span class="mut">(${esc(wp.source)})</span>`:'<span class="pend">results pending</span>';
-   return `<div class="race"><span class="st ${r.status==='called'?'called':''}">${esc(r.status)}</span><b>${esc(r.race)}</b>
+   const wpHtml=(s.expected_vote_counted_pct!=null&&s.expected_vote_counted_pct>=20&&wp.values&&wp.source)?Object.entries(wp.values).map(([k,v])=>`${esc(k)}: ${esc(v)}`).join(' · ')+` <span class="mut">(${esc(wp.source)})</span>`:'<span class="pend">results pending</span>';
+   return `<div class="race"><span class="st ${r.status==='called'?'called':''}">${esc(r.status)}</span><b>${esc(r.race)}</b> <span class="unof">Unofficial</span>
    ${c.length?`<div class="cand"><span class="mut">Candidate</span><span class="mut v">Votes</span><span class="mut v">%</span>${c.map(x=>`<span>${esc(x.name)}${x.party?' ('+esc(x.party)+')':''}${x.incumbent?' <span class="mut">inc.</span>':''}</span><span class="v">${f(x.votes)}</span><span class="v">${x.pct==null?'—':esc(x.pct)+'%'}</span>`).join('')}</div>`:'<div class="pend" style="margin-top:8px">candidates pending</div>'}
-   <dl><dt>Reporting</dt><dd>${r.reporting_pct==null?P:esc(r.reporting_pct)+'%'}</dd><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd>${r.source?`<dt>Source</dt><dd>${esc(r.source)}</dd>`:''}</dl>
+   <dl><dt>Share of expected vote counted</dt><dd>${s.expected_vote_counted_pct==null?P:esc(s.expected_vote_counted_pct)+'%'}</dd><dt>Winner</dt><dd>${r.winner?esc(r.winner)+(r.party?' ('+esc(r.party)+')':''):P}</dd><dt>Margin</dt><dd>${r.margin?esc(r.margin):P}</dd>${r.source?`<dt>Source</dt><dd>${esc(r.source)}</dd>`:''}</dl>
    <div class="wp"><b>Win probability:</b> ${wpHtml}</div></div>`}).join('');
   const feeds=(s.feeds||[]).length?'<ul>'+s.feeds.map(x=>`<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label||x.url)}</a>${x.type?` <span class="mut">(${esc(x.type)})</span>`:''}</li>`).join('')+'</ul>':'<p class="pend">official feed links pending</p>';
   const cb=(s.county_baselines||[]);const cbHtml=cb.length?(()=>{const cols=Object.keys(cb[0]);return `<div class="tw"><table><thead><tr>${cols.map(k=>`<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${cb.map(r=>`<tr>${cols.map(k=>`<td>${r[k]==null?'—':esc(typeof r[k]==='number'?r[k].toLocaleString('en-US'):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`})():'<p class="pend">county baselines pending</p>';
-  return `<section class="pane" id="p-${s.code}"><h2>${esc(s.name)}</h2><div class="two">${card}<div><div class="res" style="grid-template-columns:1fr">${races}</div></div></div>
-  <h2>County / precinct result feeds</h2>${feeds}<h2>County baselines</h2>${cbHtml}</section>`}).join('');
+  return `<section class="pane" id="p-${s.code}"><h2>${esc(s.name)}</h2><div class="two">${card}<div><div class="res" style="grid-template-columns:1fr">${races}${s.no_senate_race?'<div class="race"><b>U.S. Senate</b><p class="mut" style="margin:6px 0 0">No Senate race in 2026</p></div>':''}</div></div></div>
+  ${s.candidate_source?`<p class="mut" style="font-size:.8rem">Candidates: ${s.candidate_source_url?`<a href="${esc(s.candidate_source_url)}" target="_blank" rel="noopener">${esc(s.candidate_source)}</a>`:esc(s.candidate_source)} — verification: ${esc(s.candidate_verification||'n/a')}</p>`:''}
+  <h2>Early ballots by party registration <span class="unof">Unofficial</span></h2>${PARTY.includes(s.code)?((s.party_turnout&&(s.party_turnout.series||[]).length)?`<div class="tw"><table><thead><tr><th>As of</th><th>Dem</th><th>Rep</th><th>Other</th></tr></thead><tbody>${s.party_turnout.series.map(x=>`<tr><td>${esc(x.as_of)}</td><td>${f(x.dem)}${x.dem_pct_of_reg!=null?` <span class="mut">(${x.dem_pct_of_reg}% of Dem reg.)</span>`:''}</td><td>${f(x.rep)}${x.rep_pct_of_reg!=null?` <span class="mut">(${x.rep_pct_of_reg}% of Rep reg.)</span>`:''}</td><td>${f(x.other)}${x.other_pct_of_reg!=null?` <span class="mut">(${x.other_pct_of_reg}% of other reg.)</span>`:''}</td></tr>`).join('')}</tbody></table></div>${s.party_turnout.registration_by_party&&typeof s.party_turnout.registration_by_party==='object'?`<p class="mut" style="font-size:.8rem">Registration: Dem ${f(s.party_turnout.registration_by_party.dem)}, Rep ${f(s.party_turnout.registration_by_party.rep)}, Other ${f(s.party_turnout.registration_by_party.other)} (${esc(s.party_turnout.registration_by_party.src)})</p>`:''}`:'<p class="pend">pending</p>'):'<p class="mut">No party registration</p>'}
+  <h2>County / precinct result feeds</h2>${feeds}<h2>County baselines</h2>${s.county_baselines_note?`<p class="mut" style="font-size:.8rem">${esc(s.county_baselines_note)}</p>`:''}<details><summary class="mut">Show ${cb.length} counties</summary>${cbHtml}</details></section>`}).join('');
  show(location.hash.slice(1)||cur,true);
  // charts
  charts.forEach(c=>c.destroy());Chart.defaults.color='#8b98a5';Chart.defaults.borderColor='#2a3542';
