@@ -144,3 +144,8 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 
 ## v9: net lead headline
 - "Net lead, all ballots cast" is calculated in the browser from data.json by `netAll()`: the latest early+mail party counts in `party_turnout` plus the latest statewide hourly row that has a party split (its `by_party`, or its `by_party_pct` × `ed_turnout`, shown with "~"). The change shown is against the previous statewide split row. Routines only need to keep `party_turnout` and `hourly` up to date; no separate field is needed.
+
+## v10: precinct drill-down for all 13 states
+- 2022 baselines are in `precincts/{ST}.json` for AZ, TX, FL, KS, IA, OH, MN, NV, MI, PA, CA, AK and GA (MEDSL). AK is grouped by state House district. MI and MN had no 2022 U.S. Senate race. The CA file has no Senate precinct rows.
+- 2026 counts go in `precincts/{ST}_2026.json`, using the same schema as v6, and only from a public precinct-level source: county/SOS results pages or ENR exports, e.g. GA Clarity ENR (results.sos.ga.gov), PA county ENR, MI county ENR, OH county BOE, MN SOS results (electionresults.sos.mn.gov precinct downloads), NV Clark/Washoe, CA county ROVs, AK Division of Elections precinct reports, KS/IA county auditors. If a state has no such source, leave it empty; never estimate.
+- Any file over ~1.5 MB is split as `precincts/{ST}/{county-slug}.json` with an index in `{ST}.json` (none split today).

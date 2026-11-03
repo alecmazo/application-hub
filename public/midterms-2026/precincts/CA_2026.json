@@ -1,0 +1,5 @@
+{
+ "schema": "counties[County][Precinct] = {race:\"Governor\"|\"U.S. Senate\", d, r, o, total, time_pt, source, source_url}",
+ "updated": null,
+ "counties": {}
+}
