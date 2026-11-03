@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T11:43-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:43 AM PT",
+  "lastUpdated": "2026-11-03T11:45-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:45 AM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -10374,7 +10374,7 @@
       "early_data_as_of": "11/2",
       "registered": 4374827,
       "registered_note": "final GE 2026 report (AZ SOS)",
-      "election_day_turnout": 76680,
+      "election_day_turnout": 96287,
       "polls_close_pt": "6 PM PT",
       "y2022": {
         "early_in_person": null,
@@ -10634,24 +10634,40 @@
           "ed_turnout": 25263,
           "by_party": null,
           "scope": "Maricopa only",
-          "source": "KTAR (as of 8 AM MST)",
-          "source_url": "https://www.maricopa.gov/5539/Elections"
+          "source": "KTAR / Maricopa Elections (as of 8 AM MST)",
+          "source_url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open"
         },
         {
           "time_pt": "8:00 AM",
           "ed_turnout": 40745,
           "by_party": null,
           "scope": "Maricopa only",
-          "source": "KTAR (as of 9 AM MST)",
-          "source_url": "https://www.maricopa.gov/5539/Elections"
+          "source": "KTAR / Maricopa Elections (as of 9 AM MST)",
+          "source_url": "https://ktar.com/arizona-politics-news/election/arizona-election-day-live-blog-updates-polls-open"
         },
         {
-          "time_pt": "11:00 AM",
+          "time_pt": "9:00 AM",
+          "ed_turnout": 59100,
+          "by_party": null,
+          "scope": "Maricopa only",
+          "source": "Maricopa County Elections Fast Facts (approx., as of 10 AM MST)",
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+        },
+        {
+          "time_pt": "10:00 AM",
           "ed_turnout": 76680,
           "by_party": null,
           "scope": "Maricopa only",
-          "source": "Maricopa County Elections Fast Facts (~)",
-          "source_url": "https://www.maricopa.gov/5539/Elections"
+          "source": "Maricopa County Elections Fast Facts (approx., as of 11 AM MST)",
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
+        },
+        {
+          "time_pt": "11:00 AM",
+          "ed_turnout": 96287,
+          "by_party": null,
+          "scope": "Maricopa only",
+          "source": "Maricopa County Elections Fast Facts (approx., as of 12 PM MST)",
+          "source_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html"
         }
       ],
       "county_baselines_2022": [
@@ -10825,9 +10841,9 @@
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "election_day_turnout_scope": "Maricopa only",
-      "election_day_turnout_as_of": "11:00 AM PT",
-      "election_day_turnout_source": "Maricopa County Elections Fast Facts (~)",
-      "election_day_turnout_url": "https://www.maricopa.gov/5539/Elections",
+      "election_day_turnout_as_of": "11:00 AM PT (12 PM MST)",
+      "election_day_turnout_source": "Maricopa County Elections Fast Facts",
+      "election_day_turnout_url": "https://elections.maricopa.gov/voting/just-the-facts/fast-facts.html",
       "precinct_feeds": [
         {
           "county": "Statewide",

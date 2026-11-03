@@ -138,3 +138,6 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 - Source key `countyTurnout2026[ST] = {as_of, label, source, url, note?, counties:{County:{total, R?, D?, O?, mail?, early?, ed?, partial?}}}`. merge.py copies it to `states[].county_turnout_2026`.
 - Until `county_2026` (results) has entries, the county bars and table show this as "2026 ballots cast so far (turnout)". Counties with no figure show "not published". Once results exist, the column switches to "2026 results".
 - Refresh it every 30 min. FL: all 67 counties from https://www.freshtake.vote/2026G/countydata.php (the table pairs a count row with a %-of-reg row). TX: TransparencyUSA county pages (SOS early vote) plus county ED updates. AZ: Maricopa Fast Facts. Add GA/NV/others only when the source publishes figures. Never estimate.
+
+## v8: time zones
+- Arizona (MST, no DST) is 1 hour ahead of PT on Nov 3: "noon" in Arizona is 11:00 AM PT. Always convert source times to PT before writing `time_pt`, and keep the original time in `source` (e.g. "as of 12 PM MST"). Do the same for ET (-3h), CT (-2h) and MT (-1h).
