@@ -141,3 +141,6 @@ In `/workspace/election2026/data.json` (top-level, keyed by state code), then ru
 
 ## v8: time zones
 - Arizona (MST, no DST) is 1 hour ahead of PT on Nov 3: "noon" in Arizona is 11:00 AM PT. Always convert source times to PT before writing `time_pt`, and keep the original time in `source` (e.g. "as of 12 PM MST"). Do the same for ET (-3h), CT (-2h) and MT (-1h).
+
+## v9: net lead headline
+- "Net lead, all ballots cast" is calculated in the browser from data.json by `netAll()`: the latest early+mail party counts in `party_turnout` plus the latest statewide hourly row that has a party split (its `by_party`, or its `by_party_pct` × `ed_turnout`, shown with "~"). The change shown is against the previous statewide split row. Routines only need to keep `party_turnout` and `hourly` up to date; no separate field is needed.
