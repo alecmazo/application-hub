@@ -4,6 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Midterms 2026 Election Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <style>
 :root{--bg:#0f1419;--card:#18202a;--line:#2a3542;--tx:#e6edf3;--mut:#8b98a5;--ip:#4f8cff;--mail:#f2a33a;--acc:#22c55e;--y22:#64748b}
 *{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx)}
@@ -26,6 +27,8 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 .pane{display:none}.pane.act{display:block}.cand{display:grid;grid-template-columns:1fr auto auto;gap:4px 12px;font-size:.9rem;margin-top:8px}.cand .v{text-align:right}.wp{margin-top:10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px;font-size:.85rem}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
 .unof{font-size:.7rem;font-weight:600;color:#fbbf24;border:1px solid #fbbf24;border-radius:4px;padding:0 5px;margin-left:4px;vertical-align:middle}
+.cmpbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:14px}.cmpbox h3{margin:0 0 2px;font-size:1rem}.cmpbox p{margin:0 0 8px;font-size:.8rem}.cmpc{position:relative;height:360px}.cmpc.sm{height:260px}
+@media(max-width:700px){.cmpc{height:620px}.cmpc.sm{height:320px}}
 </style>
 </head>
 <body>
@@ -41,11 +44,9 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <div class="kpis" id="kpis"></div>
 <h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to open its tab.</p>
 <h2>Summary</h2><div class="tw"><table><thead><tr><th>State</th><th>Early in-person</th><th>Mail</th><th>Total cast</th><th>Registered</th><th>Turnout so far</th><th>% of 2022 total</th><th>Polls close (PT)</th></tr></thead><tbody id="sum"></tbody></table></div>
-<h2 id="compare">2026 vs 2022</h2>
-<p class="mut">Ballots cast before Election Day (millions). 2022 = final UF Election Lab early-vote count.</p>
-<div class="chartbox"><canvas id="c1"></canvas></div>
-<p class="mut" style="margin-top:18px">2026 pre-Election Day ballots as % of full 2022 turnout.</p>
-<div class="chartbox"><canvas id="c2"></canvas></div>
+<h2 id="compare">2026 vs 2022, side by side</h2>
+<div class="legend" style="margin-bottom:8px"><span><i style="background:#3b82f6"></i>2026</span><span><i style="background:#9ca3af"></i>2022</span><span>n/a = not in source data</span></div>
+<div id="cmp"></div>
 <h2 id="timeline">Election Day timeline (PT)</h2><div class="tw"><table class="tl"><thead><tr><th>Hour (PT)</th><th>Polls close</th><th>Reported turnout / results</th></tr></thead><tbody id="tl"></tbody></table></div>
 <h2 id="results">Results (all races) <span class="unof">Unofficial</span></h2><div class="res" id="res"></div>
 <h2>Notes</h2><ul id="notes" class="mut"></ul>
@@ -60,7 +61,7 @@ const f=x=>x==null?P:x.toLocaleString('en-US');
 const pc=(a,b)=>a==null||!b?null:100*a/b;
 const fp=x=>x==null?P:x.toFixed(1)+'%';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let charts=[],cur='overview';const PARTY=["KS","IA","NV","PA","AZ","FL","CA"];
+let charts=[],cur='overview';const L0=S=>S.map(s=>s.code);const PARTY=["KS","IA","NV","PA","AZ","FL","CA"];
 function show(t,quiet){if(!document.getElementById('p-'+t))t='overview';cur=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('act',p.id==='p-'+t));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('act',b.dataset.t===t));if(location.hash.slice(1)!==t)history.replaceState(null,'','#'+t);if(!quiet)scrollTo({top:0});}
 addEventListener('hashchange',()=>show(location.hash.slice(1)));
 async function load(){
@@ -100,14 +101,33 @@ async function load(){
   const cb=(s.county_baselines||[]);const cbHtml=cb.length?(()=>{const cols=Object.keys(cb[0]);return `<div class="tw"><table><thead><tr>${cols.map(k=>`<th>${esc(k)}</th>`).join('')}</tr></thead><tbody>${cb.map(r=>`<tr>${cols.map(k=>`<td>${r[k]==null?'—':esc(typeof r[k]==='number'?r[k].toLocaleString('en-US'):r[k])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`})():'<p class="pend">county baselines pending</p>';
   return `<section class="pane" id="p-${s.code}"><h2>${esc(s.name)}</h2><div class="two">${card}<div><div class="res" style="grid-template-columns:1fr">${races}${s.no_senate_race?'<div class="race"><b>U.S. Senate</b><p class="mut" style="margin:6px 0 0">No Senate race in 2026</p></div>':''}</div></div></div>
   ${s.candidate_source?`<p class="mut" style="font-size:.8rem">Candidates: ${s.candidate_source_url?`<a href="${esc(s.candidate_source_url)}" target="_blank" rel="noopener">${esc(s.candidate_source)}</a>`:esc(s.candidate_source)} — verification: ${esc(s.candidate_verification||'n/a')}</p>`:''}
+  <h2>2026 vs 2022 <span class="unof">Unofficial</span></h2><div class="two"><div class="cmpbox"><h3>Ballots before Election Day</h3><p class="mut">2026 so far vs 2022 final pre-Election Day counts (UF Election Lab). n/a = not in source.</p><div class="cmpc sm"><canvas id="sc-${s.code}"></canvas></div></div><div class="cmpbox"><h3>Turnout %</h3><p class="mut">2026: ballots so far ÷ registered. 2022: final turnout ÷ voting-eligible population. Not like-for-like.</p><div class="cmpc sm"><canvas id="sp-${s.code}"></canvas></div></div></div>
   <h2>Early ballots by party registration <span class="unof">Unofficial</span></h2>${PARTY.includes(s.code)?((s.party_turnout&&(s.party_turnout.series||[]).length)?`<div class="tw"><table><thead><tr><th>As of</th><th>Dem</th><th>Rep</th><th>Other</th></tr></thead><tbody>${s.party_turnout.series.map(x=>`<tr><td>${esc(x.as_of)}</td><td>${f(x.dem)}${x.dem_pct_of_reg!=null?` <span class="mut">(${x.dem_pct_of_reg}% of Dem reg.)</span>`:''}</td><td>${f(x.rep)}${x.rep_pct_of_reg!=null?` <span class="mut">(${x.rep_pct_of_reg}% of Rep reg.)</span>`:''}</td><td>${f(x.other)}${x.other_pct_of_reg!=null?` <span class="mut">(${x.other_pct_of_reg}% of other reg.)</span>`:''}</td></tr>`).join('')}</tbody></table></div>${s.party_turnout.registration_by_party&&typeof s.party_turnout.registration_by_party==='object'?`<p class="mut" style="font-size:.8rem">Registration: Dem ${f(s.party_turnout.registration_by_party.dem)}, Rep ${f(s.party_turnout.registration_by_party.rep)}, Other ${f(s.party_turnout.registration_by_party.other)} (${esc(s.party_turnout.registration_by_party.src)})</p>`:''}`:'<p class="pend">pending</p>'):'<p class="mut">No party registration</p>'}
   <h2>County / precinct result feeds</h2>${feeds}<h2>County baselines</h2>${s.county_baselines_note?`<p class="mut" style="font-size:.8rem">${esc(s.county_baselines_note)}</p>`:''}<details><summary class="mut">Show ${cb.length} counties</summary>${cbHtml}</details></section>`}).join('');
  show(location.hash.slice(1)||cur,true);
  // charts
- charts.forEach(c=>c.destroy());Chart.defaults.color='#8b98a5';Chart.defaults.borderColor='#2a3542';
- const L=S.map(s=>s.code),m=x=>x==null?null:+(x/1e6).toFixed(2);
- charts=[new Chart(c1,{type:'bar',data:{labels:L,datasets:[{label:'2026 early in-person',data:S.map(s=>m(s.early_in_person)),backgroundColor:'#4f8cff',stack:'a'},{label:'2026 mail',data:S.map(s=>m(s.mail_returned)),backgroundColor:'#f2a33a',stack:'a'},{label:'2022 early total',data:S.map(s=>m(s.y2022.early_total)),backgroundColor:'#64748b',stack:'b'}]},options:{maintainAspectRatio:false,scales:{y:{title:{display:true,text:'Millions'}}}}}),
- new Chart(c2,{type:'bar',data:{labels:L,datasets:[{label:'2026 pre-ED ballots as % of 2022 total turnout',data:S.map(s=>{const v=pc(s.total_cast,s.y2022.total_turnout);return v==null?null:+v.toFixed(1)}),backgroundColor:'#22c55e'}]},options:{maintainAspectRatio:false,scales:{y:{max:100,ticks:{callback:v=>v+'%'}}}}})];
+ charts.forEach(c=>c.destroy());charts=[];Chart.defaults.color='#8b98a5';Chart.defaults.borderColor='#2a3542';
+ const M=[
+  {k:'ip',t:'Early in-person ballots',u:'n',d:'2026: early in-person ballots cast so far (UF Election Lab). 2022: final early in-person count. n/a where the state does not report it separately.',a:s=>s.early_in_person,b:s=>s.y2022.early_in_person},
+  {k:'mail',t:'Mail / absentee ballots returned',u:'n',d:'2026: mail ballots returned so far. 2022: final mail ballots returned before Election Day (UF Election Lab).',a:s=>s.mail_returned,b:s=>s.y2022.mail_returned},
+  {k:'tot',t:'Total ballots cast before Election Day',u:'n',d:'2026: early in-person + mail so far. 2022: final pre-Election Day total (UF Election Lab).',a:s=>s.total_cast,b:s=>s.y2022.early_total},
+  {k:'pct',t:'Turnout %',u:'%',d:'2026: pre-Election Day ballots ÷ registered voters (turnout so far). 2022: FINAL turnout ÷ voting-eligible population (UF Election Lab) — different denominator and full count, so not like-for-like.',a:s=>{const v=pc(s.total_cast,s.registered);return v==null?null:+v.toFixed(1)},b:s=>{const v=parseFloat(s.y2022.vep_turnout_pct);return isNaN(v)?null:v}}];
+ const narrow=matchMedia('(max-width:700px)').matches;
+ const fmtV=(v,u)=>v==null?'n/a':u==='%'?v+'%':v>=1e6?(v/1e6).toFixed(2)+'M':v>=1e3?Math.round(v/1e3)+'K':String(v);
+ const naPlugin={id:'na',afterDatasetsDraw(c){const ctx=c.ctx,hz=c.options.indexAxis==='y',cs=hz?c.scales.y:c.scales.x,vs=hz?c.scales.x:c.scales.y,n=c.data.datasets.length;
+  c.data.datasets.forEach((ds,di)=>ds.data.forEach((v,i)=>{if(v!=null)return;const w=(cs.getPixelForValue(1)-cs.getPixelForValue(0))||cs.width||cs.height;const off=((di+.5)/n-.5)*Math.abs(w)*.8;const p=cs.getPixelForValue(i)+off,b=vs.getPixelForValue(0);
+   ctx.save();ctx.fillStyle='#fbbf24';ctx.font='600 11px system-ui';ctx.textAlign=hz?'left':'center';ctx.textBaseline=hz?'middle':'bottom';hz?ctx.fillText('n/a',b+4,p):ctx.fillText('n/a',p,b-3);ctx.restore()}))}};
+ const mk=(el,labels,m,A,B,small)=>new Chart(el,{type:'bar',plugins:[ChartDataLabels,naPlugin],data:{labels,datasets:[{label:'2026',data:A,backgroundColor:'#3b82f6'},{label:'2022',data:B,backgroundColor:'#9ca3af'}]},
+  options:{indexAxis:narrow?'y':'x',maintainAspectRatio:false,layout:{padding:{top:18,right:narrow?44:8}},plugins:{legend:{display:true,position:'top'},
+  tooltip:{callbacks:{label:x=>x.dataset.label+': '+(x.raw==null?'n/a':m.u==='%'?x.raw+'%':x.raw.toLocaleString('en-US'))}},
+  datalabels:{anchor:'end',align:'end',color:'#e6edf3',font:{size:small?11:10,weight:600},formatter:v=>fmtV(v,m.u),display:x=>x.dataset.data[x.dataIndex]!=null}},
+  scales:{[narrow?'x':'y']:{beginAtZero:true,grace:'12%',ticks:{callback:v=>fmtV(v,m.u)}}}}});
+ document.getElementById('cmp').innerHTML=M.map(m=>`<div class="cmpbox"><h3>${m.t}</h3><p class="mut">${m.d}</p><div class="cmpc"><canvas id="cmp-${m.k}"></canvas></div></div>`).join('');
+ M.forEach(m=>charts.push(mk(document.getElementById('cmp-'+m.k),L0(S),m,S.map(m.a),S.map(m.b))));
+ S.forEach(s=>{const el=document.getElementById('sc-'+s.code);if(!el)return;
+  // per-state: two charts (counts, turnout %) so scales stay readable
+  charts.push(mk(el,['Early in-person','Mail','Total pre-ED'],{u:'n'},[M[0].a(s),M[1].a(s),M[2].a(s)],[M[0].b(s),M[1].b(s),M[2].b(s)],true));
+  charts.push(mk(document.getElementById('sp-'+s.code),['Turnout %'],{u:'%'},[M[3].a(s)],[M[3].b(s)],true));});
  // timeline
  const hr=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Los_Angeles'})).getHours();
  const h24=h=>{let[n,ap]=h.split(' ');n=+n;return ap==='PM'&&n!==12?n+12:ap==='AM'&&n===12?0:n};
