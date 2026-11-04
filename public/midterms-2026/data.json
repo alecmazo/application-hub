@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T17:07-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 5:07 PM PT",
+  "lastUpdated": "2026-11-03T17:10-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 5:10 PM PT",
   "notes": [
     "Election-night vote counts (unofficial): GA from GA SOS ENR (/data API); FL/OH/NH from AP via NBC News firecracker (third-party tallies summed from county mapData). Updated Tue Nov 3, 2026, 5:07 PM PT.",
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
@@ -35,24 +35,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null,
+          "source": "AP via NBC News; est. 7.9% vote in; as of ~5:10 PM PT",
           "candidates": [
             {
               "name": "Cindy Holscher",
               "party": "D",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 55514,
+              "pct": 56.8
             },
             {
               "name": "Ty Masterson",
               "party": "R",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 42204,
+              "pct": 43.2
             }
           ],
-          "reporting_pct": null,
+          "reporting_pct": 7.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -65,31 +65,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": null,
+          "source": "AP via NBC News; est. 7.9% vote in; as of ~5:10 PM PT",
           "candidates": [
             {
               "name": "Roger Marshall",
               "party": "R",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 40432,
+              "pct": 41.1
             },
             {
               "name": "Adam Hamilton",
               "party": "D",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 56121,
+              "pct": 57.1
             },
             {
               "name": "David Graham",
               "party": "L",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 1726,
+              "pct": 1.8
             }
           ],
-          "reporting_pct": null,
+          "reporting_pct": 7.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -143,7 +143,7 @@
       "candidate_source": "KS SOS official 2026 primary vote totals (D/R nominees); Libertarian from Ballotpedia",
       "candidate_source_url": "https://sos.ks.gov/elections/26elec/2026-Primary-Election-Official-Vote-Totals.pdf",
       "candidate_verification": "partly official",
-      "expected_vote_counted_pct": null,
+      "expected_vote_counted_pct": 7.9,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -2091,7 +2091,34 @@
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "election_day_turnout_note": "statewide Election Day turnout not reported by SOS as of 11:20 AM PT",
-      "election_day_status": "Not yet published by state"
+      "election_day_status": "Not yet published by state",
+      "hourly_results": [
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 7.9,
+          "candidates": {
+            "Roger Marshall": 40432,
+            "Adam Hamilton": 56121,
+            "David Graham": 1726
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News; est. 7.9% vote in; as of ~5:10 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/kansas-results",
+          "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 7.9,
+          "candidates": {
+            "Cindy Holscher": 55514,
+            "Ty Masterson": 42204
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News; est. 7.9% vote in; as of ~5:10 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/kansas-results",
+          "race": "Governor"
+        }
+      ]
     },
     {
       "code": "IA",
@@ -4085,31 +4112,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News; est. 24.9% vote in; Too early to call; as of ~5:00 PM PT",
+          "source": "AP via NBC News; est. 28.7% vote in; Too early to call; as of ~5:10 PM PT",
           "candidates": [
             {
               "name": "Amy Acton",
               "party": "D",
               "incumbent": null,
-              "votes": 769074,
-              "pct": 63.4
+              "votes": 862442,
+              "pct": 61.7
             },
             {
               "name": "Vivek Ramaswamy",
               "party": "R",
               "incumbent": null,
-              "votes": 417665,
-              "pct": 34.4
+              "votes": 503367,
+              "pct": 36.0
             },
             {
               "name": "Don Kissick",
               "party": "L",
               "incumbent": null,
-              "votes": 27007,
-              "pct": 2.2
+              "votes": 31532,
+              "pct": 2.3
             }
           ],
-          "reporting_pct": 24.9,
+          "reporting_pct": 28.7,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -4122,38 +4149,38 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News; est. 25.0% vote in; Too early to call; as of ~5:00 PM PT",
+          "source": "AP via NBC News; est. 28.7% vote in; Too early to call; as of ~5:10 PM PT",
           "candidates": [
             {
               "name": "Sherrod Brown",
               "party": "D",
               "incumbent": null,
-              "votes": 750385,
-              "pct": 61.7
+              "votes": 841055,
+              "pct": 60.1
             },
             {
               "name": "Jon Husted",
               "party": "R",
               "incumbent": null,
-              "votes": 427159,
-              "pct": 35.1
+              "votes": 514691,
+              "pct": 36.8
             },
             {
               "name": "William B. Redpath",
               "party": "L",
               "incumbent": null,
-              "votes": 19878,
-              "pct": 1.6
+              "votes": 23400,
+              "pct": 1.7
             },
             {
               "name": "Greg Levy",
               "party": "Other",
               "incumbent": null,
-              "votes": 18710,
+              "votes": 21185,
               "pct": 1.5
             }
           ],
-          "reporting_pct": 25.0,
+          "reporting_pct": 28.7,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -4185,7 +4212,7 @@
       "candidate_source": "Stark County Board of Elections candidate list",
       "candidate_source_url": "https://www.starkcountyohio.gov/Board%20of%20Elections/Candidates%20List%20General.pdf",
       "candidate_verification": "official",
-      "expected_vote_counted_pct": 24.9,
+      "expected_vote_counted_pct": 28.7,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -5863,6 +5890,33 @@
           "source": "AP via NBC News; est. 25.0% vote in; Too early to call; as of ~5:00 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/ohio-results",
           "race": "U.S. Senate (special)"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 28.7,
+          "candidates": {
+            "Sherrod Brown": 841055,
+            "Jon Husted": 514691,
+            "William B. Redpath": 23400,
+            "Greg Levy": 21185
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News; est. 28.7% vote in; Too early to call; as of ~5:10 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/ohio-results",
+          "race": "U.S. Senate (special)"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 28.7,
+          "candidates": {
+            "Amy Acton": 862442,
+            "Vivek Ramaswamy": 503367,
+            "Don Kissick": 31532
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News; est. 28.7% vote in; Too early to call; as of ~5:10 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/ohio-results",
+          "race": "Governor"
         }
       ]
     },
@@ -7238,7 +7292,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 140103,
+      "election_day_turnout": 148963,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7844,11 +7898,23 @@
           "scope": "statewide",
           "source": "NVSOS VIVID via Data Point Research (as of 4:30 PM PST); +11,878 since last update",
           "source_url": "https://data-point-research.com/"
+        },
+        {
+          "time_pt": "5:00 PM",
+          "ed_turnout": 148963,
+          "by_party": {
+            "R": 56210,
+            "D": 42810,
+            "O": 49943
+          },
+          "scope": "statewide",
+          "source": "NVSOS VIVID via Data Point Research (as of 5:00 PM PST); +8,860 since last update",
+          "source_url": "https://data-point-research.com/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "4:30 PM PT",
-      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 4:30 PM PST); +11,878 since last update",
+      "election_day_turnout_as_of": "5:00 PM PT",
+      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 5:00 PM PST); +8,860 since last update",
       "election_day_turnout_url": "https://data-point-research.com/",
       "county_turnout_2026": {
         "as_of": "3:00 PM PT",
@@ -10577,7 +10643,7 @@
       "early_data_as_of": "11/2",
       "registered": 4374827,
       "registered_note": "final GE 2026 report (AZ SOS)",
-      "election_day_turnout": 199705,
+      "election_day_turnout": 229128,
       "polls_close_pt": "6 PM PT",
       "y2022": {
         "early_in_person": null,
@@ -11039,6 +11105,18 @@
           "scope": "Maricopa only",
           "source": "Stealth Analytics Maricopa ED ballots 5 PM MST update (199,705: R 83,764 / D 48,525 / Ind-Other 67,416); includes early ballots dropped at vote centers",
           "source_url": "https://x.com/StealthPolling/status/2117768981767720987"
+        },
+        {
+          "time_pt": "5:00 PM",
+          "ed_turnout": 229128,
+          "by_party": {
+            "R": 94030,
+            "D": 56604,
+            "O": 78494
+          },
+          "scope": "Maricopa only",
+          "source": "Stealth Analytics Maricopa ED ballots 6 PM MST update (229,128: R 94,030 / D 56,604 / Ind-Other 78,494); includes early ballots dropped at vote centers",
+          "source_url": "https://x.com/StealthPolling"
         }
       ],
       "county_baselines_2022": [
@@ -11212,9 +11290,9 @@
       "county_baselines_2022_source": "MIT Election Data + Science Lab, 2022-elections-official (official state precinct returns), aggregated to county",
       "county_baselines_2022_url": "https://github.com/MEDSL/2022-elections-official/tree/main/individual_states",
       "election_day_turnout_scope": "Maricopa only",
-      "election_day_turnout_as_of": "4:00 PM",
-      "election_day_turnout_source": "Stealth Analytics Maricopa ED ballots 5 PM MST update (199,705: R 83,764 / D 48,525 / Ind-Other 67,416); includes early ballots dropped at vote centers",
-      "election_day_turnout_url": "https://x.com/StealthPolling/status/2117768981767720987",
+      "election_day_turnout_as_of": "5:00 PM PT",
+      "election_day_turnout_source": "Stealth Analytics Maricopa ED ballots 6 PM MST update (229,128: R 94,030 / D 56,604 / Ind-Other 78,494); includes early ballots dropped at vote centers",
+      "election_day_turnout_url": "https://x.com/StealthPolling",
       "precinct_feeds": [
         {
           "county": "Statewide",
@@ -11265,7 +11343,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 2777287,
+      "election_day_turnout": 2779714,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -11283,66 +11361,66 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News; est. 69.4% vote in; Too close to call; as of ~5:00 PM PT",
+          "source": "AP via NBC News; est. 89.6% vote in; Too close to call; as of ~5:10 PM PT (LEAD FLIP: Jolly ahead)",
           "candidates": [
             {
               "name": "Byron Donalds",
               "party": "R",
               "incumbent": null,
-              "votes": 2903625,
-              "pct": 50.2
+              "votes": 3671136,
+              "pct": 49.1
             },
             {
               "name": "David Jolly",
               "party": "D",
               "incumbent": null,
-              "votes": 2814302,
-              "pct": 48.6
+              "votes": 3712498,
+              "pct": 49.7
             },
             {
               "name": "Scott Eckhard Jewett",
               "party": "LPF",
               "incumbent": null,
-              "votes": 25550,
+              "votes": 32994,
               "pct": 0.4
             },
             {
               "name": "Charles Burkett",
               "party": "NPA",
               "incumbent": null,
-              "votes": 10640,
+              "votes": 13420,
               "pct": 0.2
             },
             {
               "name": "Frank J. Russo",
               "party": "NPA",
               "incumbent": null,
-              "votes": 15735,
+              "votes": 20546,
               "pct": 0.3
             },
             {
               "name": "Moliere Dimanche",
               "party": "NPA",
               "incumbent": null,
-              "votes": 4897,
+              "votes": 6661,
               "pct": 0.1
             },
             {
               "name": "Dean Ocean Abrams",
               "party": "NPA",
               "incumbent": null,
-              "votes": 8203,
+              "votes": 10838,
               "pct": 0.1
             },
             {
               "name": "Jeffrey Peter Datto",
               "party": "NPA",
               "incumbent": null,
-              "votes": 5654,
+              "votes": 7393,
               "pct": 0.1
             }
           ],
-          "reporting_pct": 69.4,
+          "reporting_pct": 89.6,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -11355,31 +11433,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News; est. 83.8% vote in; Too close to call; as of ~5:00 PM PT",
+          "source": "AP via NBC News; est. 89.8% vote in; Too close to call; as of ~5:10 PM PT",
           "candidates": [
             {
               "name": "Ashley Moody",
               "party": "R",
               "incumbent": null,
-              "votes": 3471842,
-              "pct": 49.7
+              "votes": 3744958,
+              "pct": 50.0
             },
             {
               "name": "Angie Nixon",
               "party": "D",
               "incumbent": null,
-              "votes": 3440971,
-              "pct": 49.2
+              "votes": 3656962,
+              "pct": 48.9
             },
             {
               "name": "Neil J. Gillespie",
               "party": "NPA",
               "incumbent": null,
-              "votes": 77682,
+              "votes": 83803,
               "pct": 1.1
             }
           ],
-          "reporting_pct": 83.8,
+          "reporting_pct": 89.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -11427,7 +11505,7 @@
       "candidate_source": "Broward Supervisor of Elections list; Pinellas SOE",
       "candidate_source_url": "https://browardvotes.gov/sites/default/files/list-of-candidates-for-november-elections.pdf",
       "candidate_verification": "official",
-      "expected_vote_counted_pct": 69.4,
+      "expected_vote_counted_pct": 89.6,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -12882,11 +12960,23 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 19:47:03 ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
+        },
+        {
+          "time_pt": "5:07 PM",
+          "ed_turnout": 2779714,
+          "by_party": {
+            "R": 1338697,
+            "D": 739019,
+            "O": 701998
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 20:07:03 ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "4:47 PM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 19:47:03 ET",
+      "election_day_turnout_as_of": "5:07 PM PT",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 20:07:03 ET",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -12931,425 +13021,425 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "4:47 PM PT",
+        "as_of": "5:07 PM PT",
         "label": "Cumulative ballots cast (early + mail + Election Day) by party registration",
-        "source": "FreshTake.Vote County Supervisors of Elections, updated 2026-11-03 19:47:03 ET",
+        "source": "FreshTake.Vote County Supervisors of Elections, updated 2026-11-03 20:07:03 ET",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
         "note": "Cumulative ballots (mail + early + Election Day) by voter registration party; not candidate choice. All 67 counties refreshed. ED-only statewide today is separate in hourly.FL.",
         "statewide_cum": {
-          "R": 3556248,
-          "D": 2828779,
-          "O": 1925572,
-          "total": 8310599
+          "R": 3559007,
+          "D": 2830862,
+          "O": 1927549,
+          "total": 8317418
         },
         "statewide_ed_today": {
-          "R": 1337583,
-          "D": 738371,
-          "O": 701333,
-          "total": 2777287
+          "R": 1338697,
+          "D": 739019,
+          "O": 701998,
+          "total": 2779714
         },
         "counties": {
           "Alachua": {
-            "total": 105608,
-            "R": 29759,
-            "D": 53317,
-            "O": 22532
+            "R": 29783,
+            "D": 53364,
+            "O": 22571,
+            "total": 105718
           },
           "Baker": {
-            "total": 9860,
             "R": 7429,
             "D": 1606,
-            "O": 825
+            "O": 825,
+            "total": 9860
           },
           "Bay": {
-            "total": 70279,
-            "R": 44120,
-            "D": 14482,
-            "O": 11677
+            "R": 44319,
+            "D": 14545,
+            "O": 11751,
+            "total": 70615
           },
           "Bradford": {
-            "total": 9773,
             "R": 6635,
             "D": 2163,
-            "O": 975
+            "O": 975,
+            "total": 9773
           },
           "Brevard": {
-            "total": 271416,
-            "R": 131965,
-            "D": 77158,
-            "O": 62293
+            "R": 132017,
+            "D": 77171,
+            "O": 62323,
+            "total": 271511
           },
           "Broward": {
-            "total": 664963,
-            "R": 160390,
-            "D": 325885,
-            "O": 178688
+            "R": 160424,
+            "D": 325953,
+            "O": 178738,
+            "total": 665115
           },
           "Calhoun": {
-            "total": 4319,
-            "R": 3020,
-            "D": 1014,
-            "O": 285
+            "R": 3023,
+            "D": 1022,
+            "O": 285,
+            "total": 4330
           },
           "Charlotte": {
-            "total": 101166,
-            "R": 57784,
-            "D": 21171,
-            "O": 22211
+            "R": 57795,
+            "D": 21173,
+            "O": 22214,
+            "total": 101182
           },
           "Citrus": {
-            "total": 75538,
             "R": 47178,
             "D": 14154,
-            "O": 14206
+            "O": 14206,
+            "total": 75538
           },
           "Clay": {
-            "total": 93707,
             "R": 56283,
             "D": 21065,
-            "O": 16359
+            "O": 16359,
+            "total": 93707
           },
           "Collier": {
-            "total": 173003,
-            "R": 99453,
-            "D": 36773,
-            "O": 36777
+            "R": 99454,
+            "D": 36774,
+            "O": 36777,
+            "total": 173005
           },
           "Columbia": {
-            "total": 23114,
             "R": 14419,
             "D": 5815,
-            "O": 2880
+            "O": 2880,
+            "total": 23114
           },
           "DeSoto": {
-            "total": 9175,
             "R": 5001,
             "D": 2605,
-            "O": 1569
+            "O": 1569,
+            "total": 9175
           },
           "Dixie": {
-            "total": 5643,
             "R": 4163,
             "D": 838,
-            "O": 642
+            "O": 642,
+            "total": 5643
           },
           "Duval": {
-            "total": 359942,
-            "R": 141126,
-            "D": 151270,
-            "O": 67546
+            "R": 141135,
+            "D": 151283,
+            "O": 67555,
+            "total": 359973
           },
           "Escambia": {
-            "total": 115392,
-            "R": 58361,
-            "D": 37667,
-            "O": 19364
+            "R": 58611,
+            "D": 37869,
+            "O": 19491,
+            "total": 115971
           },
           "Flagler": {
-            "total": 64552,
             "R": 34295,
             "D": 16998,
-            "O": 13259
+            "O": 13259,
+            "total": 64552
           },
           "Franklin": {
-            "total": 5075,
             "R": 2811,
             "D": 1465,
-            "O": 799
+            "O": 799,
+            "total": 5075
           },
           "Gadsden": {
-            "total": 17887,
             "R": 3913,
             "D": 12371,
-            "O": 1603
+            "O": 1603,
+            "total": 17887
           },
           "Gilchrist": {
-            "total": 7860,
             "R": 5896,
             "D": 1086,
-            "O": 878
+            "O": 878,
+            "total": 7860
           },
           "Glades": {
-            "total": 3842,
             "R": 2426,
             "D": 890,
-            "O": 526
+            "O": 526,
+            "total": 3842
           },
           "Gulf": {
-            "total": 6701,
             "R": 4688,
             "D": 1317,
-            "O": 696
+            "O": 696,
+            "total": 6701
           },
           "Hamilton": {
-            "total": 4175,
             "R": 2346,
             "D": 1458,
-            "O": 371
+            "O": 371,
+            "total": 4175
           },
           "Hardee": {
-            "total": 6056,
             "R": 3832,
             "D": 1427,
-            "O": 797
+            "O": 797,
+            "total": 6056
           },
           "Hendry": {
-            "total": 10174,
             "R": 5164,
             "D": 3443,
-            "O": 1567
+            "O": 1567,
+            "total": 10174
           },
           "Hernando": {
-            "total": 80462,
-            "R": 43850,
-            "D": 20131,
-            "O": 16481
+            "R": 43915,
+            "D": 20173,
+            "O": 16515,
+            "total": 80603
           },
           "Highlands": {
-            "total": 39955,
             "R": 23423,
             "D": 9247,
-            "O": 7285
+            "O": 7285,
+            "total": 39955
           },
           "Hillsborough": {
-            "total": 516949,
-            "R": 190100,
-            "D": 197111,
-            "O": 129738
+            "R": 190131,
+            "D": 197183,
+            "O": 129789,
+            "total": 517103
           },
           "Holmes": {
-            "total": 6208,
-            "R": 4957,
-            "D": 775,
-            "O": 476
+            "R": 4986,
+            "D": 779,
+            "O": 478,
+            "total": 6243
           },
           "Indian River": {
-            "total": 77976,
             "R": 42840,
             "D": 19102,
-            "O": 16034
+            "O": 16034,
+            "total": 77976
           },
           "Jackson": {
-            "total": 15606,
-            "R": 9769,
-            "D": 4718,
-            "O": 1119
+            "R": 9809,
+            "D": 4729,
+            "O": 1128,
+            "total": 15666
           },
           "Jefferson": {
-            "total": 6993,
             "R": 3484,
             "D": 2756,
-            "O": 753
+            "O": 753,
+            "total": 6993
           },
           "Lafayette": {
-            "total": 2639,
             "R": 2154,
             "D": 346,
-            "O": 139
+            "O": 139,
+            "total": 2639
           },
           "Lake": {
-            "total": 171262,
-            "R": 85489,
-            "D": 47397,
-            "O": 38376
+            "R": 85510,
+            "D": 47419,
+            "O": 38399,
+            "total": 171328
           },
           "Lee": {
-            "total": 305584,
-            "R": 158731,
-            "D": 74280,
-            "O": 72573
+            "R": 158940,
+            "D": 74413,
+            "O": 72735,
+            "total": 306088
           },
           "Leon": {
-            "total": 125678,
-            "R": 36155,
-            "D": 66126,
-            "O": 23397
+            "R": 36186,
+            "D": 66207,
+            "O": 23445,
+            "total": 125838
           },
           "Levy": {
-            "total": 18221,
             "R": 11904,
             "D": 4008,
-            "O": 2309
+            "O": 2309,
+            "total": 18221
           },
           "Liberty": {
-            "total": 2698,
             "R": 1870,
             "D": 670,
-            "O": 158
+            "O": 158,
+            "total": 2698
           },
           "Madison": {
-            "total": 6968,
             "R": 3630,
             "D": 2714,
-            "O": 624
+            "O": 624,
+            "total": 6968
           },
           "Manatee": {
-            "total": 182927,
-            "R": 94799,
-            "D": 48470,
-            "O": 39658
+            "R": 94855,
+            "D": 48506,
+            "O": 39692,
+            "total": 183053
           },
           "Marion": {
-            "total": 164990,
-            "R": 90168,
-            "D": 45003,
-            "O": 29819
+            "R": 90178,
+            "D": 45008,
+            "O": 29828,
+            "total": 165014
           },
           "Martin": {
-            "total": 76869,
             "R": 43591,
             "D": 17645,
-            "O": 15633
+            "O": 15633,
+            "total": 76869
           },
           "Miami-Dade": {
-            "total": 793202,
-            "R": 276917,
-            "D": 286080,
-            "O": 230205
+            "R": 277199,
+            "D": 286370,
+            "O": 230575,
+            "total": 794144
           },
           "Monroe": {
-            "total": 32538,
-            "R": 15456,
-            "D": 10247,
-            "O": 6835
+            "R": 15462,
+            "D": 10250,
+            "O": 6835,
+            "total": 32547
           },
           "Nassau": {
-            "total": 50765,
-            "R": 32148,
+            "R": 32155,
             "D": 9472,
-            "O": 9145
+            "O": 9148,
+            "total": 50775
           },
           "Okaloosa": {
-            "total": 77520,
-            "R": 49085,
-            "D": 14654,
-            "O": 13781
+            "R": 49298,
+            "D": 14728,
+            "O": 13879,
+            "total": 77905
           },
           "Okeechobee": {
-            "total": 11200,
             "R": 7075,
             "D": 2598,
-            "O": 1527
+            "O": 1527,
+            "total": 11200
           },
           "Orange": {
-            "total": 472254,
-            "R": 134634,
-            "D": 211592,
-            "O": 126028
+            "R": 134696,
+            "D": 211694,
+            "O": 126111,
+            "total": 472501
           },
           "Osceola": {
-            "total": 132682,
-            "R": 40247,
-            "D": 54372,
-            "O": 38063
+            "R": 40248,
+            "D": 54375,
+            "O": 38064,
+            "total": 132687
           },
           "Palm Beach": {
-            "total": 574566,
-            "R": 195078,
-            "D": 230157,
-            "O": 149331
+            "R": 195254,
+            "D": 230402,
+            "O": 149509,
+            "total": 575165
           },
           "Pasco": {
-            "total": 241185,
-            "R": 113390,
-            "D": 68592,
-            "O": 59203
+            "R": 113393,
+            "D": 68600,
+            "O": 59207,
+            "total": 241200
           },
           "Pinellas": {
-            "total": 406282,
-            "R": 163691,
-            "D": 143615,
-            "O": 98976
+            "R": 163699,
+            "D": 143619,
+            "O": 98980,
+            "total": 406298
           },
           "Polk": {
-            "total": 259946,
-            "R": 116656,
-            "D": 86429,
-            "O": 56861
+            "R": 116702,
+            "D": 86501,
+            "O": 56927,
+            "total": 260130
           },
           "Putnam": {
-            "total": 26635,
             "R": 16414,
             "D": 6780,
-            "O": 3441
+            "O": 3441,
+            "total": 26635
           },
           "Santa Rosa": {
-            "total": 73805,
-            "R": 49906,
-            "D": 12375,
-            "O": 11524
+            "R": 50362,
+            "D": 12458,
+            "O": 11672,
+            "total": 74492
           },
           "Sarasota": {
-            "total": 224662,
             "R": 113300,
             "D": 61993,
-            "O": 49369
+            "O": 49369,
+            "total": 224662
           },
           "Seminole": {
-            "total": 195511,
-            "R": 75744,
-            "D": 68899,
-            "O": 50868
+            "R": 75790,
+            "D": 68971,
+            "O": 50942,
+            "total": 195703
           },
           "St. Johns": {
-            "total": 156802,
-            "R": 90012,
-            "D": 35784,
-            "O": 31006
+            "R": 90050,
+            "D": 35793,
+            "O": 31029,
+            "total": 156872
           },
           "St. Lucie": {
-            "total": 139137,
-            "R": 56414,
-            "D": 51770,
-            "O": 30953
+            "R": 56573,
+            "D": 51997,
+            "O": 31102,
+            "total": 139672
           },
           "Sumter": {
-            "total": 95680,
-            "R": 60349,
+            "R": 60348,
             "D": 18024,
-            "O": 17307
+            "O": 17307,
+            "total": 95679
           },
           "Suwannee": {
-            "total": 15915,
             "R": 10922,
             "D": 3186,
-            "O": 1807
+            "O": 1807,
+            "total": 15915
           },
           "Taylor": {
-            "total": 6995,
             "R": 4781,
             "D": 1741,
-            "O": 473
+            "O": 473,
+            "total": 6995
           },
           "Union": {
-            "total": 4302,
             "R": 3108,
             "D": 874,
-            "O": 320
+            "O": 320,
+            "total": 4302
           },
           "Volusia": {
-            "total": 238281,
-            "R": 110750,
-            "D": 70883,
-            "O": 56648
+            "R": 110799,
+            "D": 70927,
+            "O": 56694,
+            "total": 238420
           },
           "Wakulla": {
-            "total": 15191,
             "R": 8808,
             "D": 4215,
-            "O": 2168
+            "O": 2168,
+            "total": 15191
           },
           "Walton": {
-            "total": 35300,
-            "R": 25479,
-            "D": 4826,
-            "O": 4995
+            "R": 25583,
+            "D": 4841,
+            "O": 5016,
+            "total": 35440
           },
           "Washington": {
-            "total": 9038,
-            "R": 6513,
-            "D": 1684,
-            "O": 841
+            "R": 6542,
+            "D": 1693,
+            "O": 846,
+            "total": 9081
           }
         }
       },
@@ -13439,6 +13529,37 @@
           "source": "AP via NBC News; est. 83.8% vote in; Too close to call; as of ~5:00 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/florida-results",
           "race": "U.S. Senate (special)"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 89.8,
+          "candidates": {
+            "Ashley Moody": 3744958,
+            "Angie Nixon": 3656962,
+            "Neil J. Gillespie": 83803
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News; est. 89.8% vote in; Too close to call; as of ~5:10 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/florida-results",
+          "race": "U.S. Senate (special)"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 89.6,
+          "candidates": {
+            "Byron Donalds": 3671136,
+            "David Jolly": 3712498,
+            "Scott Eckhard Jewett": 32994,
+            "Charles Burkett": 13420,
+            "Frank J. Russo": 20546,
+            "Moliere Dimanche": 6661,
+            "Dean Ocean Abrams": 10838,
+            "Jeffrey Peter Datto": 7393
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News; est. 89.6% vote in; Too close to call; as of ~5:10 PM PT (LEAD FLIP: Jolly ahead)",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/florida-results",
+          "race": "Governor"
         }
       ]
     },
@@ -13452,7 +13573,7 @@
       "early_data_as_of": "11/2",
       "registered": 19041684,
       "registered_note": "record total (TX SOS, Oct 16)",
-      "election_day_turnout": 98435,
+      "election_day_turnout": 99804,
       "polls_close_pt": "5 PM PT (6 PM PT in El Paso area)",
       "y2022": {
         "early_in_person": 5172460,
@@ -17428,11 +17549,19 @@
           "scope": "Travis County only",
           "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 06:47 PM CT",
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
+        },
+        {
+          "time_pt": "5:04 PM",
+          "ed_turnout": 99804,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 07:04 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
         }
       ],
       "election_day_turnout_scope": "Travis County only",
-      "election_day_turnout_as_of": "4:47 PM PT",
-      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 06:47 PM CT",
+      "election_day_turnout_as_of": "5:04 PM PT",
+      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 07:04 PM CT",
       "election_day_turnout_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
       "precinct_feeds": [
         {
@@ -19311,7 +19440,7 @@
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
       "election_day_turnout": 1300000,
-      "expected_vote_counted_pct": 56.6,
+      "expected_vote_counted_pct": 63.5,
       "polls_close_pt": "4 PM PT",
       "y2022": {
         "early_in_person": 2289860,
@@ -19329,24 +19458,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "GA SOS ENR; 90/159 localities reporting; as of ~5:00 PM PT (SOS asOf 2026-11-04T01:00:05Z)",
+          "source": "GA SOS ENR; 101/159 localities reporting; as of ~5:10 PM PT (SOS asOf 2026-11-04T01:04:53Z)",
           "candidates": [
             {
               "name": "Keisha Lance Bottoms",
               "party": "D",
               "incumbent": null,
-              "votes": 1045895,
-              "pct": 57.6
+              "votes": 1219290,
+              "pct": 57.5
             },
             {
               "name": "Rick Jackson",
               "party": "R",
               "incumbent": null,
-              "votes": 770033,
-              "pct": 42.4
+              "votes": 899439,
+              "pct": 42.5
             }
           ],
-          "reporting_pct": 56.6,
+          "reporting_pct": 63.5,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -19359,24 +19488,24 @@
           "winner": "Jon Ossoff",
           "party": "D",
           "margin": "+23.6 pts",
-          "source": "AP projected winner ~4:40 PM PT; vote counts GA SOS ENR 90/159 as of ~5:00 PM PT",
+          "source": "GA SOS ENR 101/159; AP call Ossoff unchanged; as of ~5:10 PM PT (SOS asOf 2026-11-04T01:04:53Z)",
           "candidates": [
             {
               "name": "Jon Ossoff",
               "party": "D, inc.",
               "incumbent": null,
-              "votes": 1121624,
-              "pct": 61.78
+              "votes": 1309246,
+              "pct": 61.8
             },
             {
               "name": "Mike Collins",
               "party": "R",
               "incumbent": null,
-              "votes": 693917,
-              "pct": 38.22
+              "votes": 808813,
+              "pct": 38.2
             }
           ],
-          "reporting_pct": 56.6,
+          "reporting_pct": 63.5,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -21380,6 +21509,30 @@
           "source": "GA SOS ENR 90/159; AP call Ossoff unchanged",
           "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 63.5,
+          "candidates": {
+            "Jon Ossoff": 1309246,
+            "Mike Collins": 808813
+          },
+          "scope": "statewide",
+          "source": "GA SOS ENR 101/159; AP call Ossoff unchanged; as of ~5:10 PM PT (SOS asOf 2026-11-04T01:04:53Z)",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "5:10 PM",
+          "expected_vote_counted_pct": 63.5,
+          "candidates": {
+            "Keisha Lance Bottoms": 1219290,
+            "Rick Jackson": 899439
+          },
+          "scope": "statewide",
+          "source": "GA SOS ENR; 101/159 localities reporting; as of ~5:10 PM PT (SOS asOf 2026-11-04T01:04:53Z)",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "Governor"
         }
       ],
       "county_2026": {
