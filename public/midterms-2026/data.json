@@ -2,6 +2,7 @@
   "lastUpdated": "2026-11-03T18:13:00-08:00",
   "lastUpdatedLabel": "Tue Nov 3, 2026, 6:13 PM PT",
   "notes": [
+    "6:15 PM PT call check: FL Governor AP call for Byron Donalds (R) verified (apnews.com race-call article). GA Governor: projected for Keisha Lance Bottoms (D) by NBC News Decision Desk only; no AP call found, kept uncalled.",
     "Results snapshot 6:10 PM: AP via NBC. GA Governor: NBC News projects Bottoms (D); AP call not verified, kept uncalled. FL Gov still too close (Donalds 50.0 / Jolly 48.7 at ~97.6%). ED turnout: FL 2,782,445; NV 167,201; AZ Maricopa 256,700; TX Travis 101,096.",
     "Results snapshot 5:38 PM PT: AP/NBC + GA SOS. New calls: FL U.S. Senate (special): Ashley Moody (R), NH U.S. Senate: Chris Pappas (D).",
     "Election-night vote counts (unofficial): GA from GA SOS ENR (/data API); FL/OH/NH/KS/MI/TX/PA from AP via NBC News firecracker (third parties from county mapData when needed). Updated Tue Nov 3, 2026, 5:23 PM PT. NEW AP call: PA Governor \u2192 Josh Shapiro.",
@@ -12016,7 +12017,7 @@
           "winner": "Byron Donalds",
           "party": "R",
           "margin": "+1.3 pts",
-          "source": "AP, ~6:13 PM PT",
+          "source": "AP race call (apnews.com), ~6:13 PM PT",
           "candidates": [
             {
               "name": "Byron Donalds",
@@ -20521,11 +20522,11 @@
       "races": [
         {
           "race": "Governor",
-          "status": "called",
-          "winner": "Keisha Lance Bottoms",
-          "party": "D",
-          "margin": "+11.2 pts",
-          "source": "AP, ~6:13 PM PT; votes GA SOS ENR",
+          "status": "pending",
+          "winner": null,
+          "party": null,
+          "margin": null,
+          "source": "votes GA SOS ENR | Projected by NBC News Decision Desk (not an AP call); AP has not called - uncalled",
           "candidates": [
             {
               "name": "Keisha Lance Bottoms",
