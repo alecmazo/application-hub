@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T16:05:00-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 4:05 PM PT",
+  "lastUpdated": "2026-11-03T16:12:00-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 4:12 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -7162,7 +7162,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 108530,
+      "election_day_turnout": 128225,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7744,11 +7744,23 @@
           "scope": "statewide",
           "source": "NVSOS VIVID via Data Point Research (as of 3:00 PM PST)",
           "source_url": "https://data-point-research.com/"
+        },
+        {
+          "time_pt": "4:00 PM",
+          "ed_turnout": 128225,
+          "by_party": {
+            "R": 49010,
+            "D": 36816,
+            "O": 42399
+          },
+          "scope": "statewide",
+          "source": "NVSOS VIVID via Data Point Research (as of 4:00 PM PST); +11,104 since last update",
+          "source_url": "https://data-point-research.com/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "3:00 PM PT",
-      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 3:00 PM PST)",
+      "election_day_turnout_as_of": "4:00 PM",
+      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 4:00 PM PST); +11,104 since last update",
       "election_day_turnout_url": "https://data-point-research.com/",
       "county_turnout_2026": {
         "as_of": "3:00 PM PT",
@@ -21784,7 +21796,7 @@
     {
       "hour_pt": "4 PM",
       "polls_close": "FL (most), GA, OH 4:30",
-      "update": "FL ED 2,721,228 (R1,314,073/D722,779/O684,376 FreshTake 19:02 ET); AZ Maricopa 199,705 (R83,764/D48,525/O67,416 Stealth 5 PM MST); TX Travis ED 92,676 (6:03 PM CT); GA ~1.3M (AJC). NV unchanged 108,530 @ 3 PM. FL/GA polls closing; no races called."
+      "update": "FL ED 2,721,228 (R1,314,073/D722,779/O684,376 FreshTake 19:02 ET); NV ED 128,225 (R49,010/D36,816/O42,399 VIVID via DPR 4:00 PM PST); AZ Maricopa 199,705 (R83,764/D48,525/O67,416 Stealth 5 PM MST); TX Travis ED 92,676 (6:03 PM CT); GA ~1.3M (AJC). FL/GA polls closing; no races called."
     },
     {
       "hour_pt": "5 PM",
