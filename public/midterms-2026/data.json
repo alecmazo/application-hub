@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T19:41-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 7:41 PM PT",
+  "lastUpdated": "2026-11-03T19:50-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 7:50 PM PT",
   "notes": [
     "Results refresh ~7:25 PM PT Nov 3: AP via NBC counts updated (monotonic). No NEW AP race-call articles this run for OH/KS/IA/MI/TX/ME/NH Gov/AZ/MN. Retained AP calls: PA Shapiro, FL Donalds, FL Moody, GA Bottoms, GA Ossoff, NH Pappas. NBC lean G codes are not AP calls.",
     "6:15 PM PT call check: FL Governor AP call for Byron Donalds (R) verified (apnews.com race-call article). GA Governor: projected for Keisha Lance Bottoms (D) by NBC News Decision Desk only; no AP call found, kept uncalled.",
@@ -14903,11 +14903,11 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "7:10 PM PT",
+        "as_of": "7:45 PM PT",
         "label": "Cumulative ballots cast (early + mail + Election Day) by party registration",
-        "source": "FreshTake.Vote countydata.php updated 2026-11-03 22:12:04 ET",
+        "source": "FreshTake.Vote countydata.php updated 2026-11-03 22:42:04 ET",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
-        "note": "All 67 counties; count rows (not % of reg). statewide_cum = early+mail+ED cumulative; statewide_ed_today = Election Day only from dailydata.",
+        "note": "All 67 counties; count rows (not % of reg). statewide_cum=8326119; statewide_ed_today=2782562 (ED hourly unchanged \u2014 do not use overall-day).",
         "statewide_cum": {
           "R": 3561559,
           "D": 2834210,
@@ -14946,16 +14946,16 @@
             "total": 9772
           },
           "Brevard": {
-            "R": 132165,
+            "R": 132166,
             "D": 77303,
             "O": 62458,
-            "total": 271926
+            "total": 271927
           },
           "Broward": {
             "R": 160625,
             "D": 326507,
-            "O": 179141,
-            "total": 666273
+            "O": 179142,
+            "total": 666274
           },
           "Calhoun": {
             "R": 3023,
@@ -15006,16 +15006,16 @@
             "total": 5643
           },
           "Duval": {
-            "R": 141317,
-            "D": 151554,
-            "O": 67705,
-            "total": 360576
+            "R": 141319,
+            "D": 151560,
+            "O": 67716,
+            "total": 360595
           },
           "Escambia": {
-            "R": 58727,
-            "D": 37967,
-            "O": 19564,
-            "total": 116258
+            "R": 58745,
+            "D": 37985,
+            "O": 19572,
+            "total": 116302
           },
           "Flagler": {
             "R": 34295,
@@ -15174,10 +15174,10 @@
             "total": 76869
           },
           "Miami-Dade": {
-            "R": 277331,
-            "D": 286606,
-            "O": 230804,
-            "total": 794741
+            "R": 277332,
+            "D": 286611,
+            "O": 230806,
+            "total": 794749
           },
           "Monroe": {
             "R": 15467,
@@ -15216,10 +15216,10 @@
             "total": 132687
           },
           "Palm Beach": {
-            "R": 195619,
-            "D": 231054,
-            "O": 149958,
-            "total": 576631
+            "R": 195620,
+            "D": 231057,
+            "O": 149961,
+            "total": 576638
           },
           "Pasco": {
             "R": 113498,
@@ -15839,7 +15839,7 @@
       "early_data_as_of": "11/2",
       "registered": 19041684,
       "registered_note": "record total (TX SOS, Oct 16)",
-      "election_day_turnout": 101231,
+      "election_day_turnout": 101238,
       "polls_close_pt": "5 PM PT (6 PM PT in El Paso area)",
       "y2022": {
         "early_in_person": 5172460,
@@ -19879,11 +19879,19 @@
           "scope": "Travis County only",
           "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 9:11 PM CT",
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
+        },
+        {
+          "time_pt": "7:44 PM",
+          "ed_turnout": 101238,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 9:44 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
         }
       ],
       "election_day_turnout_scope": "Travis County only",
-      "election_day_turnout_as_of": "7:11 PM PT",
-      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 9:11 PM CT",
+      "election_day_turnout_as_of": "7:44 PM PT",
+      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 9:44 PM CT",
       "election_day_turnout_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
       "precinct_feeds": [
         {
@@ -19918,15 +19926,15 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "Travis 9:11 PM CT ED 101231; Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
+        "as_of": "Travis 9:44 PM CT ED 101238; Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
         "label": "Election Day in-person ballots (selected large counties)",
         "source": "Travis EarlyVotingTable; Bexar County Elections via News4SanAntonio; prior Harris news citation",
         "url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
         "note": "Travis refreshed to 101,231 (9:11 PM CT). Bexar ED as of 7 p.m.: 136,124 (Bexar County Elections via News4SanAntonio). Harris still 236K+ floor @ 5 PM CT (no newer exact figure).",
         "counties": {
           "Travis": {
-            "total": 101231,
-            "ed": 101231
+            "total": 101238,
+            "ed": 101238
           },
           "Harris": {
             "total": 236000,
