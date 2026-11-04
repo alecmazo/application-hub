@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-03T20:45-08:00",
+  "lastUpdated": "2026-11-03T20:45:00-08:00",
   "lastUpdatedLabel": "Tue Nov 3, 2026, 8:45 PM PT",
   "notes": [
     "Results refresh 8:45 PM PT Nov 3: AP via NBC Firecracker; monotonic. NEW AP calls: KS Senate Adam Hamilton; TX Governor Gina Hinojosa; IA Senate Josh Turek (AP live blog). GA Governor AP article verified (keep called). ME Gov BDN/DDHQ-only left pending.",
@@ -10028,11 +10028,11 @@
       "election_day_turnout_source": "NVSOS VIVID Election Day Turnout dashboard via r.jina.ai (page Last updated ~2m earlier at fetch ~8:08 PM PT); +12273 since 7:10 PM",
       "election_day_turnout_url": "https://www.nvsos.gov/vivid/",
       "county_turnout_2026": {
-        "as_of": "8:18 PM PT",
+        "as_of": "8:45 PM PT",
         "label": "Election Day in-person ballots by county (NVSOS VIVID)",
         "source": "NVSOS VIVID Election Day Turnout (county table) via r.jina.ai",
         "url": "https://www.nvsos.gov/vivid/",
-        "note": "All 17 counties from statewide VIVID ED table; O = Other as published. Statewide ED total unchanged at 199655 since 8:08 PM PT (page Last updated ~2m at fetch).",
+        "note": "All 17 counties from statewide VIVID ED table; O = Other as published. Statewide ED total unchanged at 199655 since 8:08 PM PT (page Last updated 2m ago at fetch).",
         "counties": {
           "Carson City": {
             "total": 4003,
@@ -16435,12 +16435,12 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "8:18 PM PT",
+        "as_of": "8:45 PM PT",
         "label": "Cumulative ballots cast (early + mail + Election Day) by party registration",
-        "source": "FreshTake.Vote countydata.php updated 2026-11-03 23:12:03",
+        "source": "FreshTake.Vote countydata.php updated 2026-11-03 23:42:04",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
-        "note": "All 67 counties; count rows (not % of reg). statewide_cum=8326317; statewide_ed_today=2782564 (ED hourly unchanged vs 8:08 PM — identical FreshTake index.php eday sum R1339879/D739814/O702871).",
-        "statewide_cum": 8326317,
+        "note": "All 67 counties; count rows (not % of reg). statewide_cum=8326632; statewide_ed_today=2782564 (ED hourly unchanged vs 8:08 PM — identical FreshTake index.php eday sum R1339879/D739814/O702871).",
+        "statewide_cum": 8326632,
         "statewide_ed_today": 2782564,
         "counties": {
           "Alachua": {
@@ -16534,10 +16534,10 @@
             "total": 360615
           },
           "Escambia": {
-            "R": 58784,
-            "D": 38042,
-            "O": 19595,
-            "total": 116421
+            "R": 58811,
+            "D": 38064,
+            "O": 19608,
+            "total": 116483
           },
           "Flagler": {
             "R": 34295,
@@ -16738,10 +16738,10 @@
             "total": 132687
           },
           "Palm Beach": {
-            "R": 195630,
-            "D": 231078,
-            "O": 149982,
-            "total": 576690
+            "R": 195644,
+            "D": 231109,
+            "O": 149999,
+            "total": 576752
           },
           "Pasco": {
             "R": 113498,
@@ -16792,10 +16792,10 @@
             "total": 156872
           },
           "St. Lucie": {
-            "R": 56608,
-            "D": 52044,
-            "O": 31135,
-            "total": 139787
+            "R": 56652,
+            "D": 52124,
+            "O": 31202,
+            "total": 139978
           },
           "Sumter": {
             "R": 60348,
@@ -21703,11 +21703,11 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "Travis 10:12 PM CT ED 101238 (unchanged); Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
+        "as_of": "Travis 10:40 PM CT ED 101238 (unchanged); Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
         "label": "Election Day in-person ballots (selected large counties)",
         "source": "Travis EarlyVotingTable; Bexar County Elections via News4SanAntonio; prior Harris news citation",
         "url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
-        "note": "Travis EarlyVotingTable re-fetched; Election Day still 101,238 (Last Refreshed Tue Nov 3 10:12 PM CT). No new Bexar/Harris exact official figure this hour (KENS5 fetch empty).",
+        "note": "Travis EarlyVotingTable re-fetched; Election Day still 101,238 (Last Refreshed Tue Nov 3 10:40 PM CT). No new Bexar/Harris exact official figure this hour.",
         "counties": {
           "Travis": {
             "total": 101238,
