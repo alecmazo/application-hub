@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-03T23:46:00-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 11:46 PM PT",
+  "lastUpdated": "2026-11-04T07:11:00-08:00",
+  "lastUpdatedLabel": "Wed Nov 4, 2026, 7:11 AM PT",
   "notes": [
+    "Results refresh ~7:11 AM PT Nov 4: NEW AP calls: AZ Governor Katie Hobbs (AP call ~12:25 AM PT per KJZZ); NV Governor Aaron Ford (AP story ~1:54 AM PT). Still pending AP: KS Gov (Holscher +0.5, ~97.9% in), AK Gov (RCV, ~73.9%), AK Sen (Peltola +0.3, RCV, ~74.3%). Counts monotonic from NBC Firecracker.",
     "Results refresh ~11:46 PM PT: AP called MI U.S. Senate (El-Sayed); vote counts advanced from NBC Firecracker where monotonic; AZ/KS Gov/AK/NV still pending AP.",
     "Election-night vote counts (unofficial): AP via NBC News firecracker ~10:15–10:20 PM PT. NEW AP calls: ME Senate → Troy Jackson (AP article); NH Governor → Kelly Ayotte (AP call per WMUR). Still pending: KS Gov (Holscher +0.8), AZ Gov (Hobbs), MI Gov/Sen, NV Gov (0 votes), AK Gov/Sen (~21.5%). ED turnout floors unchanged: FL_eday 2,782,565; NV_eday 207,435; TX_travis 101,238. NBC Projected ≠ AP call.",
     "Election-night vote counts (unofficial): AP via NBC News firecracker ~9:45 PM PT. NEW AP calls: MN Governor → Amy Klobuchar; MN Senate → Peggy Flanagan. ME Senate: Collins conceded but AP has not called. FL E-Day 2,782,565. AK first counts in (~21.5%). NV ED turnout floor held at 207,435 (no higher verified figure).",
@@ -44,7 +45,7 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~11:46 PM PT; too close; KWCH/KC Star/KPR: uncalled; AP not called",
+          "source": "AP via NBC News, ~7:11 AM PT Nov 4; too close to call; AP not called",
           "candidates": [
             {
               "name": "Cindy Holscher",
@@ -61,7 +62,7 @@
               "pct": 49.7
             }
           ],
-          "reporting_pct": 95,
+          "reporting_pct": 97.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -152,7 +153,7 @@
       "candidate_source": "KS SOS official 2026 primary vote totals (D/R nominees); Libertarian from Ballotpedia",
       "candidate_source_url": "https://sos.ks.gov/elections/26elec/2026-Primary-Election-Official-Vote-Totals.pdf",
       "candidate_verification": "partly official",
-      "expected_vote_counted_pct": 95.7,
+      "expected_vote_counted_pct": 97.9,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -9680,35 +9681,35 @@
       "races": [
         {
           "race": "Governor",
-          "status": "pending",
-          "winner": null,
-          "party": null,
-          "margin": null,
-          "source": "AP via NBC News, ~11:46 PM PT; still 0 votes on NBC feed",
+          "status": "called",
+          "winner": "Aaron Ford",
+          "party": "D",
+          "margin": "+7.6 pts",
+          "source": "AP, AP race-call story ~1:54 AM PT Nov 4 (https://www.washingtonpost.com/politics/2026/11/04/race-call-ford-wins-nevada-governor/acc93508-d835-11f1-930a-e08f8086f5ac_story.html) | votes AP via NBC News, ~7:11 AM PT Nov 4; pct excl. None of These Candidates 13,997 in denominator",
           "candidates": [
             {
               "name": "Joe Lombardo",
               "party": "R",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 432732,
+              "pct": 44.2
             },
             {
               "name": "Aaron Ford",
               "party": "D",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 506653,
+              "pct": 51.7
             },
             {
               "name": "Danielle Ford",
               "party": "No party",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 26666,
+              "pct": 2.7
             }
           ],
-          "reporting_pct": null,
+          "reporting_pct": 87.2,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -9756,7 +9757,7 @@
       "candidate_source": null,
       "candidate_source_url": null,
       "candidate_verification": null,
-      "expected_vote_counted_pct": null,
+      "expected_vote_counted_pct": 87.2,
       "no_senate_race": true,
       "county_baselines_2024": [
         {
@@ -14300,42 +14301,42 @@
       "races": [
         {
           "race": "Governor",
-          "status": "pending",
-          "winner": null,
-          "party": null,
-          "margin": null,
-          "source": "AP via NBC News, ~11:46 PM PT; NBC projected Hobbs (P); NOT an AP call — stay pending; NBC P/Projected winner ≠ AP call",
+          "status": "called",
+          "winner": "Katie Hobbs",
+          "party": "D",
+          "margin": "+12.9 pts",
+          "source": "AP, AP race call ~12:25 AM PT Nov 4 (per KJZZ https://www.kjzz.org/elections/2026-11-03/arizona-governor-election-results-elex) | votes AP via NBC News, ~7:11 AM PT Nov 4",
           "candidates": [
             {
               "name": "Katie Hobbs",
               "party": "D",
               "incumbent": null,
-              "votes": 1018581,
-              "pct": 57.4
+              "votes": 1193939,
+              "pct": 55.6
             },
             {
               "name": "Andy Biggs",
               "party": "R",
               "incumbent": null,
-              "votes": 728454,
-              "pct": 41
+              "votes": 916236,
+              "pct": 42.7
             },
             {
               "name": "Risa Lombardo",
               "party": "Green",
               "incumbent": null,
-              "votes": 14150,
-              "pct": 0.8
+              "votes": 19122,
+              "pct": 0.9
             },
             {
               "name": "Teri Ann Hourihan",
               "party": "No Labels",
               "incumbent": null,
-              "votes": 13900,
+              "votes": 17505,
               "pct": 0.8
             }
           ],
-          "reporting_pct": 70.9,
+          "reporting_pct": 82.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -14383,7 +14384,7 @@
       "candidate_source": "The Ballot Brief; Ballotpedia",
       "candidate_source_url": "https://ballotpedia.org/State_executive_official_elections,_2026",
       "candidate_verification": "unofficial (official list not fetched; Ballotpedia/news)",
-      "expected_vote_counted_pct": 70.9,
+      "expected_vote_counted_pct": 82.9,
       "no_senate_race": true,
       "county_baselines_2024": [
         {
@@ -24481,7 +24482,7 @@
       "registered": 604771,
       "registered_note": "as of Oct 3 (AK Division of Elections via Shiftline)",
       "election_day_turnout": null,
-      "expected_vote_counted_pct": 66.1,
+      "expected_vote_counted_pct": 73.9,
       "polls_close_pt": "9 PM PT (10 PM PT Aleutians)",
       "y2022": {
         "early_in_person": 3515,
@@ -24499,38 +24500,38 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~11:46 PM PT; RCV first-choice counts; NBC E/Too early; no AP call",
+          "source": "AP via NBC News, ~7:11 AM PT Nov 4; RCV first-choice counts; NBC too early to call; no AP call",
           "candidates": [
             {
               "name": "Dave Bronson",
               "party": "R",
               "incumbent": null,
-              "votes": 27885,
-              "pct": 14.1
+              "votes": 29900,
+              "pct": 14.2
             },
             {
               "name": "Jonathan Kreiss-Tomkins",
               "party": "D",
               "incumbent": null,
-              "votes": 96922,
-              "pct": 49
+              "votes": 103610,
+              "pct": 49.2
             },
             {
               "name": "Treg Taylor",
               "party": "R",
               "incumbent": null,
-              "votes": 14548,
-              "pct": 7.4
+              "votes": 15713,
+              "pct": 7.5
             },
             {
               "name": "Bernadette Wilson",
               "party": "R",
               "incumbent": null,
-              "votes": 58434,
-              "pct": 29.5
+              "votes": 61566,
+              "pct": 29.2
             }
           ],
-          "reporting_pct": 65.4,
+          "reporting_pct": 73.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -24543,38 +24544,38 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~11:46 PM PT; RCV first-choice counts; NBC E/Too early; no AP call",
+          "source": "AP via NBC News, ~7:11 AM PT Nov 4; RCV first-choice counts; NBC too early to call; no AP call",
           "candidates": [
             {
               "name": "Dan S. Sullivan",
               "party": "R, inc.",
               "incumbent": null,
-              "votes": 97411,
-              "pct": 48.7
+              "votes": 102075,
+              "pct": 47.9
             },
             {
               "name": "Mary Peltola",
               "party": "D",
               "incumbent": null,
-              "votes": 94941,
-              "pct": 47.5
+              "votes": 102701,
+              "pct": 48.2
             },
             {
               "name": "Gerald Heikes",
               "party": "R",
               "incumbent": null,
-              "votes": 4177,
-              "pct": 2.1
+              "votes": 4821,
+              "pct": 2.3
             },
             {
               "name": "Daniel J. Sullivan Jr.",
               "party": "R on list; no party on ballot per Ballotpedia",
               "incumbent": null,
-              "votes": 3303,
+              "votes": 3583,
               "pct": 1.7
             }
           ],
-          "reporting_pct": 66.1,
+          "reporting_pct": 74.3,
           "win_probability": {
             "status": "results pending",
             "values": null,
