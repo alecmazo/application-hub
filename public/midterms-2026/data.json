@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T19:15-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 7:15 PM PT",
+  "lastUpdated": "2026-11-03T19:16-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 7:16 PM PT",
   "notes": [
     "Results refresh 7:15 PM PT: AP via NBC News firecracker race pages for tracked states with counts. Updated 21 races. No NEW AP race calls this run among tracked pending races (AP live blog still lists AK/IA/KS/ME/MI/OH/TX Senate as outstanding). Monotonic/other skips: FL Governor: monotonic skip (Jeffrey Peter Datto: 8270<8403). AK/CA/NV still no countable statewide NBC tallies. Precincts: GA Clarity API paths 404 this run — left precincts unchanged; other states still empty/no usable public precinct feeds.",
     "Results refresh 7:10 PM PT: AP via NBC News race pages. TX Travis ED hourly append 101,225. FL/NV/AZ/GA ED unchanged. GA reporting_pct kept at max with prior SOS (93.7%) where NBC lower. No NEW AP race calls this run among tracked states. Win probabilities still results pending (county-baseline model not published). AK polls_close_pt unchanged.",
@@ -12856,7 +12856,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 2860085,
+      "election_day_turnout": 2782562,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -14533,23 +14533,11 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:52:08 ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
-        },
-        {
-          "time_pt": "7:10 PM",
-          "ed_turnout": 2860085,
-          "by_party": {
-            "R": 1366685,
-            "D": 768370,
-            "O": 725030
-          },
-          "scope": "statewide",
-          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 22:12:04 ET",
-          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "7:10 PM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 22:12:04 ET",
+      "election_day_turnout_as_of": "6:52 PM PT",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:52:08 ET",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -14606,10 +14594,10 @@
           "total": 8326039
         },
         "statewide_ed_today": {
-          "R": 1366685,
-          "D": 768370,
-          "O": 725030,
-          "total": 2860085
+          "R": 1339879,
+          "D": 739814,
+          "O": 702869,
+          "total": 2782562
         },
         "counties": {
           "Alachua": {
