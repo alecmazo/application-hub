@@ -1,0 +1,4931 @@
+{
+ "generated": "2026-11-04 ~8:40 AM PT",
+ "method": "Exit-poll groups, Governor race, all 15 states. Primary 2022 = AP VoteCast (all 50 states, same voter-file-based design the 2026 AP Voter Poll grew out of); 2022 CNN/Edison exit poll shown as a second 2022 source where it exists (9 states). Primary 2026 = CNN Voter Poll (SSRS); the AP/Fox feed of the same SSRS survey is shown as a cross-check (not independent). Swing = change in the group's D-minus-R margin (+ toward D). \u0394 share = change in the group's share of voters. Methods differ by year, so all swings are ~estimates. Registration = party of pre-Election Day ballots (UF Election Lab / state SOS). Early-vote age/race = voter-file counts (UF Election Lab).",
+ "gaps": {
+  "TargetSmart/Catalist/L2": "No public 2026 state turnout-by-age/race release found as of ~8:40 AM PT Nov 4; not used.",
+  "party_ballots": "GA, MI, MN, OH, TX have no party registration. AK registers by party but publishes no ballots by party. NH publishes registration but not ballots by party for both years."
+ },
+ "states": {
+  "KS": {
+   "race": "Governor",
+   "cnn22": null,
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/KS/KS-G-175590.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 1746,
+    "dem": "Laura Kelly",
+    "rep": "Derek Schmidt",
+    "updated": "2025-02-11T00:32:53",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 14,
+       "d": 51,
+       "r": 43
+      },
+      {
+       "group": "30-44",
+       "share": 23,
+       "d": 53,
+       "r": 42
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 49,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 30,
+       "d": 47,
+       "r": 52
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 85,
+       "d": 47,
+       "r": 50
+      },
+      {
+       "group": "Black",
+       "share": 5,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 5,
+       "d": 58,
+       "r": 38
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 46,
+       "r": 46
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 35,
+       "d": 97,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 58,
+       "d": 19,
+       "r": 78
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 6,
+       "d": 62,
+       "r": 18
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/kansas/governor",
+    "n": 1016,
+    "dem": "Holscher",
+    "rep": "Masterson",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 8,
+       "d": 80,
+       "r": 20
+      },
+      {
+       "group": "30-44",
+       "share": 18,
+       "d": 51,
+       "r": 49
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 46,
+       "r": 54
+      },
+      {
+       "group": "65+",
+       "share": 40,
+       "d": 47,
+       "r": 53
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 86,
+       "d": 48,
+       "r": 52
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 6,
+       "d": 58,
+       "r": 42
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 38,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 54,
+       "d": 13,
+       "r": 87
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": null,
+       "r": null
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/KS/KS-G-175590.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 1014,
+    "dem": "Cindy Holscher",
+    "rep": "Ty Masterson",
+    "updated": "2026-11-03T23:43:24",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 8,
+       "d": 80,
+       "r": 20
+      },
+      {
+       "group": "30-44",
+       "share": 18,
+       "d": 51,
+       "r": 49
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 46,
+       "r": 54
+      },
+      {
+       "group": "65+",
+       "share": 40,
+       "d": 47,
+       "r": 53
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 86,
+       "d": 48,
+       "r": 52
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 6,
+       "d": 58,
+       "r": 42
+      },
+      {
+       "group": "Other",
+       "share": 7,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 38,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 54,
+       "d": 13,
+       "r": 87
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": null,
+       "r": null
+      }
+     ]
+    }
+   },
+   "early": {
+    "age": {
+     "2022": {
+      "18-25": 13599,
+      "26-40": 32241,
+      "41-65": 151391,
+      "65+": 168807
+     },
+     "2026": {
+      "18-25": 30072,
+      "26-40": 65329,
+      "41-65": 191768,
+      "65+": 218472
+     }
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab: 2022 state early-vote page (pre-Election Day ballots, final) vs 2026 tracker (11/3/2026; Kansas Secretary of State)",
+    "src22": "https://rpubs.com/ElectProject/KS_early_vote_2022",
+    "src26": "https://election.lab.ufl.edu/early-vote/2026-early-voting/",
+    "note": "Voter-file ages (UF buckets 18-25/26-40/41-65/65+), counts of ballots cast before Election Day only; not comparable to exit-poll age bands."
+   },
+   "registration": {
+    "2022": {
+     "rep": 178447,
+     "dem": 140704,
+     "other": 46887,
+     "total": 366038
+    },
+    "2026": {
+     "rep": 221086,
+     "dem": 202784,
+     "other": 81771,
+     "total": 505641
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/3/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "IA": {
+   "race": "Governor",
+   "cnn22": null,
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/IA/IA-G-170760.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 2037,
+    "dem": "Deidre DeJear",
+    "rep": "Kim Reynolds",
+    "updated": "2025-02-11T00:32:24",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 46,
+       "r": 47
+      },
+      {
+       "group": "30-44",
+       "share": 23,
+       "d": 38,
+       "r": 56
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 39,
+       "r": 59
+      },
+      {
+       "group": "65+",
+       "share": 31,
+       "d": 37,
+       "r": 62
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 91,
+       "d": 38,
+       "r": 59
+      },
+      {
+       "group": "Black",
+       "share": 3,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 40,
+       "d": 89,
+       "r": 8
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 54,
+       "d": 3,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 6,
+       "d": 37,
+       "r": 46
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/iowa/governor",
+    "n": 4638,
+    "dem": "Sand",
+    "rep": "Lahn",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 71,
+       "r": 29
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 59,
+       "r": 40
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 50,
+       "r": 50
+      },
+      {
+       "group": "65+",
+       "share": 36,
+       "d": 52,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 91,
+       "d": 54,
+       "r": 46
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 65,
+       "r": 35
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": 54,
+       "r": 46
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 41,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 50,
+       "d": 15,
+       "r": 85
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": 75,
+       "r": 22
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/IA/IA-G-170760.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4610,
+    "dem": "Rob Sand",
+    "rep": "Zach Lahn",
+    "updated": "2026-11-03T23:12:32",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 71,
+       "r": 29
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 59,
+       "r": 40
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 50,
+       "r": 50
+      },
+      {
+       "group": "65+",
+       "share": 36,
+       "d": 52,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 91,
+       "d": 54,
+       "r": 46
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 65,
+       "r": 35
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 59,
+       "r": 41
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 41,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 50,
+       "d": 15,
+       "r": 85
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": 75,
+       "r": 22
+      }
+     ]
+    }
+   },
+   "early": {
+    "age": {
+     "2022": null,
+     "2026": {
+      "18-25": 29169,
+      "26-40": 54176,
+      "41-65": 170429,
+      "65+": 244920
+     }
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab: 2022 state early-vote page (pre-Election Day ballots, final) vs 2026 tracker (11/3/2026; Iowa Secretary of State)",
+    "src22": "https://rpubs.com/ElectProject/IA_early_vote_2022",
+    "src26": "https://election.lab.ufl.edu/early-vote/2026-early-voting/",
+    "note": "Voter-file ages (UF buckets 18-25/26-40/41-65/65+), counts of ballots cast before Election Day only; not comparable to exit-poll age bands."
+   },
+   "registration": {
+    "2022": {
+     "rep": 111584,
+     "dem": 175337,
+     "other": 54316,
+     "total": 341237
+    },
+    "2026": {
+     "rep": 171130,
+     "dem": 224625,
+     "other": 102958,
+     "total": 498713
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/3/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched; IA/NV turnout % vs active registrants",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "OH": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/ohio/governor/0",
+    "n": 3772,
+    "dem": "Whaley",
+    "rep": "DeWine",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 58,
+       "r": 42
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 42,
+       "r": 56
+      },
+      {
+       "group": "45-64",
+       "share": 39,
+       "d": 33,
+       "r": 66
+      },
+      {
+       "group": "65+",
+       "share": 31,
+       "d": 32,
+       "r": 68
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 84,
+       "d": 32,
+       "r": 67
+      },
+      {
+       "group": "Black",
+       "share": 12,
+       "d": 67,
+       "r": 32
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": 52,
+       "r": 48
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 1,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 30,
+       "d": 84,
+       "r": 16
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 41,
+       "d": 3,
+       "r": 96
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 29,
+       "d": 37,
+       "r": 62
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/OH/OH-G-360050.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3115,
+    "dem": "Nan Whaley",
+    "rep": "Mike DeWine",
+    "updated": "2025-02-11T00:35:39",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 42,
+       "r": 58
+      },
+      {
+       "group": "30-44",
+       "share": 24,
+       "d": 50,
+       "r": 49
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 31,
+       "r": 69
+      },
+      {
+       "group": "65+",
+       "share": 31,
+       "d": 31,
+       "r": 69
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 85,
+       "d": 32,
+       "r": 67
+      },
+      {
+       "group": "Black",
+       "share": 10,
+       "d": 73,
+       "r": 27
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": 33,
+       "r": 63
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": 36,
+       "r": 60
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 40,
+       "d": 80,
+       "r": 19
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 54,
+       "d": 4,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 37,
+       "r": 60
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/ohio/governor",
+    "n": 4750,
+    "dem": "Acton",
+    "rep": "Ramaswamy",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 72,
+       "r": 23
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 65,
+       "r": 31
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 50,
+       "r": 47
+      },
+      {
+       "group": "65+",
+       "share": 36,
+       "d": 43,
+       "r": 54
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 85,
+       "d": 49,
+       "r": 48
+      },
+      {
+       "group": "Black",
+       "share": 8,
+       "d": 88,
+       "r": 9
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": 60,
+       "r": 38
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 58,
+       "r": 37
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 45,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 47,
+       "d": 10,
+       "r": 86
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 60,
+       "r": 27
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/OH/OH-G-360050.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4733,
+    "dem": "Amy Acton",
+    "rep": "Vivek Ramaswamy",
+    "updated": "2026-11-03T22:57:34",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 72,
+       "r": 23
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 65,
+       "r": 31
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 50,
+       "r": 47
+      },
+      {
+       "group": "65+",
+       "share": 36,
+       "d": 43,
+       "r": 54
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 85,
+       "d": 49,
+       "r": 48
+      },
+      {
+       "group": "Black",
+       "share": 8,
+       "d": 88,
+       "r": 9
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": 60,
+       "r": 38
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 61,
+       "r": 34
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 45,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 47,
+       "d": 10,
+       "r": 86
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 60,
+       "r": 27
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": null,
+   "registration_gap": "OH has no party registration"
+  },
+  "MN": {
+   "race": "Governor",
+   "cnn22": null,
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/MN/MN-G-247040.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 2870,
+    "dem": "Tim Walz",
+    "rep": "Scott Jensen",
+    "updated": "2025-02-11T00:33:56",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 56,
+       "r": 37
+      },
+      {
+       "group": "30-44",
+       "share": 24,
+       "d": 54,
+       "r": 41
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 51,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 29,
+       "d": 51,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 87,
+       "d": 50,
+       "r": 47
+      },
+      {
+       "group": "Black",
+       "share": 5,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": 52,
+       "r": 43
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 97,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 47,
+       "d": 8,
+       "r": 89
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 6,
+       "d": 44,
+       "r": 36
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/minnesota/governor",
+    "n": 3890,
+    "dem": "Klobuchar",
+    "rep": "Demuth",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 73,
+       "r": 23
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 55,
+       "r": 42
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 50,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 54,
+       "r": 46
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 88,
+       "d": 54,
+       "r": 45
+      },
+      {
+       "group": "Black",
+       "share": 4,
+       "d": 86,
+       "r": 6
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 53,
+       "r": 41
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 58,
+       "r": 37
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 50,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 42,
+       "d": 5,
+       "r": 93
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": 52,
+       "r": 38
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/MN/MN-G-247040.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 3877,
+    "dem": "Amy Klobuchar",
+    "rep": "Lisa Demuth",
+    "updated": "2026-11-04T00:26:30",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 73,
+       "r": 23
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 55,
+       "r": 42
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 50,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 54,
+       "r": 46
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 88,
+       "d": 54,
+       "r": 45
+      },
+      {
+       "group": "Black",
+       "share": 4,
+       "d": 86,
+       "r": 6
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 53,
+       "r": 41
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": 60,
+       "r": 35
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 50,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 42,
+       "d": 5,
+       "r": 93
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": 52,
+       "r": 38
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": null,
+   "registration_gap": "MN has no party registration"
+  },
+  "NV": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/nevada/governor/0",
+    "n": 2922,
+    "dem": "Sisolak",
+    "rep": "Lombardo",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 64,
+       "r": 34
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 60,
+       "r": 37
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 39,
+       "r": 58
+      },
+      {
+       "group": "65+",
+       "share": 32,
+       "d": 42,
+       "r": 56
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 67,
+       "d": 39,
+       "r": 58
+      },
+      {
+       "group": "Black",
+       "share": 11,
+       "d": 83,
+       "r": 15
+      },
+      {
+       "group": "Latino",
+       "share": 13,
+       "d": 62,
+       "r": 37
+      },
+      {
+       "group": "Asian",
+       "share": 4,
+       "d": 54,
+       "r": 46
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 47,
+       "r": 43
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 34,
+       "d": 96,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 36,
+       "d": 5,
+       "r": 93
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 30,
+       "d": 46,
+       "r": 49
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/NV/NV-G-298610.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 2166,
+    "dem": "Steve Sisolak",
+    "rep": "Joe Lombardo",
+    "updated": "2025-02-11T00:35:14",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 53,
+       "r": 38
+      },
+      {
+       "group": "30-44",
+       "share": 25,
+       "d": 54,
+       "r": 41
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 43,
+       "r": 54
+      },
+      {
+       "group": "65+",
+       "share": 28,
+       "d": 43,
+       "r": 55
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 62,
+       "d": 40,
+       "r": 57
+      },
+      {
+       "group": "Black",
+       "share": 9,
+       "d": 77,
+       "r": 17
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 56,
+       "r": 39
+      },
+      {
+       "group": "Other",
+       "share": 12,
+       "d": 49,
+       "r": 47
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 42,
+       "d": 95,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 50,
+       "d": 7,
+       "r": 90
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 53,
+       "r": 36
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/nevada/governor",
+    "n": 3977,
+    "dem": "Ford",
+    "rep": "Lombardo",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 81,
+       "r": 15
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 61,
+       "r": 31
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 47,
+       "r": 49
+      },
+      {
+       "group": "65+",
+       "share": 35,
+       "d": 42,
+       "r": 57
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 63,
+       "d": 46,
+       "r": 50
+      },
+      {
+       "group": "Black",
+       "share": 7,
+       "d": 82,
+       "r": 14
+      },
+      {
+       "group": "Latino",
+       "share": 15,
+       "d": 61,
+       "r": 34
+      },
+      {
+       "group": "Asian",
+       "share": 8,
+       "d": 52,
+       "r": 47
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": 52,
+       "r": 45
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 94,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 43,
+       "d": 5,
+       "r": 92
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 48,
+       "r": 37
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/NV/NV-G-298610.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 3969,
+    "dem": "Aaron Ford",
+    "rep": "Joe Lombardo",
+    "updated": "2026-11-04T03:10:32",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 81,
+       "r": 15
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 61,
+       "r": 31
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 47,
+       "r": 49
+      },
+      {
+       "group": "65+",
+       "share": 35,
+       "d": 42,
+       "r": 57
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 63,
+       "d": 46,
+       "r": 50
+      },
+      {
+       "group": "Black",
+       "share": 7,
+       "d": 82,
+       "r": 14
+      },
+      {
+       "group": "Latino",
+       "share": 15,
+       "d": 61,
+       "r": 34
+      },
+      {
+       "group": "Other",
+       "share": 14,
+       "d": 52,
+       "r": 46
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 94,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 43,
+       "d": 5,
+       "r": 92
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 48,
+       "r": 37
+      }
+     ]
+    }
+   },
+   "early": {
+    "age": {
+     "2022": null,
+     "2026": {
+      "18-25": 45340,
+      "26-40": 100280,
+      "41-65": 289110,
+      "65+": 297189
+     }
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab: 2022 state early-vote page (pre-Election Day ballots, final) vs 2026 tracker (11/3/2026; https://www.nvsos.gov/elections/election-information/vivid-project)",
+    "src22": "https://rpubs.com/ElectProject/NV_early_vote_2022",
+    "src26": "https://election.lab.ufl.edu/early-vote/2026-early-voting/",
+    "note": "Voter-file ages (UF buckets 18-25/26-40/41-65/65+), counts of ballots cast before Election Day only; not comparable to exit-poll age bands."
+   },
+   "registration": {
+    "2022": {
+     "rep": 266694,
+     "dem": 264428,
+     "other": 162055,
+     "total": 693177
+    },
+    "2026": {
+     "rep": 259548,
+     "dem": 300466,
+     "other": 207872,
+     "total": 767886
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/3/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched; IA/NV turnout % vs active registrants",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "MI": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/michigan/governor/0",
+    "n": 2366,
+    "dem": "Whitmer",
+    "rep": "Dixon",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 65,
+       "r": 33
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 62,
+       "r": 36
+      },
+      {
+       "group": "45-64",
+       "share": 39,
+       "d": 50,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 30,
+       "d": 52,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 80,
+       "d": 49,
+       "r": 50
+      },
+      {
+       "group": "Black",
+       "share": 12,
+       "d": 94,
+       "r": 6
+      },
+      {
+       "group": "Latino",
+       "share": 4,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 35,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 32,
+       "d": 7,
+       "r": 92
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 33,
+       "d": 55,
+       "r": 42
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/MI/MI-G-240740.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3211,
+    "dem": "Gretchen Whitmer",
+    "rep": "Tudor Dixon",
+    "updated": "2025-02-11T00:34:01",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 62,
+       "r": 34
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 60,
+       "r": 38
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 53,
+       "r": 46
+      },
+      {
+       "group": "65+",
+       "share": 30,
+       "d": 49,
+       "r": 50
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 81,
+       "d": 49,
+       "r": 50
+      },
+      {
+       "group": "Black",
+       "share": 12,
+       "d": 91,
+       "r": 7
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 69,
+       "r": 27
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 52,
+       "r": 44
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 45,
+       "d": 99,
+       "r": 0
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 47,
+       "d": 11,
+       "r": 88
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": 62,
+       "r": 31
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/michigan/governor",
+    "n": 4576,
+    "dem": "Benson",
+    "rep": "James",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 68,
+       "r": 30
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 59,
+       "r": 38
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 47,
+       "r": 51
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 52,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 82,
+       "d": 49,
+       "r": 49
+      },
+      {
+       "group": "Black",
+       "share": 9,
+       "d": 88,
+       "r": 10
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 59,
+       "r": 39
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 56,
+       "r": 42
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 97,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 44,
+       "d": 8,
+       "r": 91
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 56,
+       "r": 35
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/MI/MI-G-240740.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4544,
+    "dem": "Jocelyn Benson",
+    "rep": "John James",
+    "updated": "2026-11-03T23:36:34",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 68,
+       "r": 30
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 59,
+       "r": 38
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 47,
+       "r": 51
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 52,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 82,
+       "d": 49,
+       "r": 49
+      },
+      {
+       "group": "Black",
+       "share": 9,
+       "d": 88,
+       "r": 10
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 59,
+       "r": 39
+      },
+      {
+       "group": "Other",
+       "share": 7,
+       "d": 62,
+       "r": 36
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 97,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 44,
+       "d": 8,
+       "r": 91
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 56,
+       "r": 35
+      }
+     ]
+    }
+   },
+   "early": {
+    "age": {
+     "2022": {
+      "18-25": 60142,
+      "26-40": 114680,
+      "41-65": 509135,
+      "65+": 831906
+     },
+     "2026": {
+      "18-25": 149493,
+      "26-40": 296154,
+      "41-65": 863238,
+      "65+": 1135564
+     }
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab: 2022 state early-vote page (pre-Election Day ballots, final) vs 2026 tracker (11/3/2026; Data provided by Michigan Secretary of State)",
+    "src22": "https://rpubs.com/ElectProject/MI_early_vote_2022",
+    "src26": "https://election.lab.ufl.edu/early-vote/2026-early-voting/",
+    "note": "Voter-file ages (UF buckets 18-25/26-40/41-65/65+), counts of ballots cast before Election Day only; not comparable to exit-poll age bands."
+   },
+   "registration": null,
+   "registration_gap": "MI has no party registration"
+  },
+  "PA": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/pennsylvania/governor/0",
+    "n": 2657,
+    "dem": "Shapiro",
+    "rep": "Mastriano",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 71,
+       "r": 27
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 61,
+       "r": 37
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 52,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 34,
+       "d": 51,
+       "r": 47
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 81,
+       "d": 50,
+       "r": 48
+      },
+      {
+       "group": "Black",
+       "share": 8,
+       "d": 92,
+       "r": 8
+      },
+      {
+       "group": "Latino",
+       "share": 8,
+       "d": 72,
+       "r": 25
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 2,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 37,
+       "d": 96,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 40,
+       "d": 16,
+       "r": 83
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 24,
+       "d": 64,
+       "r": 33
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/PA/PA-G-392920.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3147,
+    "dem": "Josh Shapiro",
+    "rep": "Douglas Mastriano",
+    "updated": "2025-02-11T00:36:23",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 62,
+       "r": 34
+      },
+      {
+       "group": "30-44",
+       "share": 23,
+       "d": 65,
+       "r": 34
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 51,
+       "r": 47
+      },
+      {
+       "group": "65+",
+       "share": 30,
+       "d": 55,
+       "r": 44
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 83,
+       "d": 54,
+       "r": 45
+      },
+      {
+       "group": "Black",
+       "share": 9,
+       "d": 89,
+       "r": 9
+      },
+      {
+       "group": "Latino",
+       "share": 5,
+       "d": 53,
+       "r": 41
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 55,
+       "r": 44
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 45,
+       "d": 97,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 48,
+       "d": 18,
+       "r": 80
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 60,
+       "r": 28
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/pennsylvania/governor",
+    "n": 4360,
+    "dem": "Shapiro",
+    "rep": "Garrity",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 75,
+       "r": 22
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 67,
+       "r": 32
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 57,
+       "r": 42
+      },
+      {
+       "group": "65+",
+       "share": 35,
+       "d": 58,
+       "r": 42
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 84,
+       "d": 57,
+       "r": 42
+      },
+      {
+       "group": "Black",
+       "share": 6,
+       "d": 92,
+       "r": 6
+      },
+      {
+       "group": "Latino",
+       "share": 4,
+       "d": 69,
+       "r": 28
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": 70,
+       "r": 28
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 49,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 44,
+       "d": 19,
+       "r": 79
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 68,
+       "r": 27
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/PA/PA-G-392920.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4336,
+    "dem": "Josh Shapiro",
+    "rep": "Stacy Garrity",
+    "updated": "2026-11-03T21:45:32",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 75,
+       "r": 22
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 67,
+       "r": 32
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 57,
+       "r": 42
+      },
+      {
+       "group": "65+",
+       "share": 35,
+       "d": 58,
+       "r": 42
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 84,
+       "d": 57,
+       "r": 42
+      },
+      {
+       "group": "Black",
+       "share": 6,
+       "d": 92,
+       "r": 6
+      },
+      {
+       "group": "Latino",
+       "share": 4,
+       "d": 69,
+       "r": 28
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 74,
+       "r": 24
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 49,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 44,
+       "d": 19,
+       "r": 79
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 68,
+       "r": 27
+      }
+     ]
+    }
+   },
+   "early": {
+    "age": {
+     "2022": {
+      "18-25": 73576,
+      "26-40": 139098,
+      "41-65": 401827,
+      "65+": 570178
+     },
+     "2026": {
+      "18-25": 58314,
+      "26-40": 121190,
+      "41-65": 324293,
+      "65+": 612197
+     }
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab: 2022 state early-vote page (pre-Election Day ballots, final) vs 2026 tracker (11/3/2026; https://data.pa.gov/Government-Efficiency-Citizen-Engagement/2026-General-Election-Mail-Ballot-Requests-Departm/nbwd-pfn4/about_data)",
+    "src22": "https://rpubs.com/ElectProject/PA_early_vote_2022",
+    "src26": "https://election.lab.ufl.edu/early-vote/2026-early-voting/",
+    "note": "Voter-file ages (UF buckets 18-25/26-40/41-65/65+), counts of ballots cast before Election Day only; not comparable to exit-poll age bands."
+   },
+   "registration": {
+    "2022": {
+     "rep": 252076,
+     "dem": 819423,
+     "other": 112890,
+     "total": 1184389
+    },
+    "2026": {
+     "rep": 280632,
+     "dem": 719554,
+     "other": 115808,
+     "total": 1115994
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/3/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "AZ": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/arizona/governor/0",
+    "n": 1322,
+    "dem": "Hobbs",
+    "rep": "Lake",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 71,
+       "r": 29
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 53,
+       "r": 45
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 43,
+       "r": 55
+      },
+      {
+       "group": "65+",
+       "share": 34,
+       "d": 46,
+       "r": 52
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 70,
+       "d": 49,
+       "r": 50
+      },
+      {
+       "group": "Black",
+       "share": 4,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 51,
+       "r": 47
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 7,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 27,
+       "d": 95,
+       "r": 4
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 33,
+       "d": 9,
+       "r": 91
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 40,
+       "d": 52,
+       "r": 45
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/AZ/AZ-G-30140.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3185,
+    "dem": "Katie Hobbs",
+    "rep": "Kari Lake",
+    "updated": "2025-02-11T00:31:43",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 59,
+       "r": 39
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 58,
+       "r": 41
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 46,
+       "r": 54
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 46,
+       "r": 54
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 70,
+       "d": 47,
+       "r": 53
+      },
+      {
+       "group": "Black",
+       "share": 5,
+       "d": 75,
+       "r": 24
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 57,
+       "r": 42
+      },
+      {
+       "group": "Other",
+       "share": 8,
+       "d": 50,
+       "r": 49
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 38,
+       "d": 96,
+       "r": 4
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 49,
+       "d": 11,
+       "r": 88
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 13,
+       "d": 63,
+       "r": 35
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/arizona/governor",
+    "n": 4965,
+    "dem": "Hobbs",
+    "rep": "Biggs",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 9,
+       "d": 71,
+       "r": 25
+      },
+      {
+       "group": "30-44",
+       "share": 18,
+       "d": 52,
+       "r": 45
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 57,
+       "r": 41
+      },
+      {
+       "group": "65+",
+       "share": 41,
+       "d": 51,
+       "r": 48
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 72,
+       "d": 52,
+       "r": 46
+      },
+      {
+       "group": "Black",
+       "share": 3,
+       "d": 90,
+       "r": 9
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 59,
+       "r": 36
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": 50,
+       "r": 47
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 44,
+       "d": 98,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 46,
+       "d": 11,
+       "r": 87
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 70,
+       "r": 24
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/AZ/AZ-G-30140.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4957,
+    "dem": "Katie Hobbs",
+    "rep": "Andy Biggs",
+    "updated": "2026-11-04T02:42:36",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 9,
+       "d": 71,
+       "r": 25
+      },
+      {
+       "group": "30-44",
+       "share": 18,
+       "d": 52,
+       "r": 45
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 57,
+       "r": 41
+      },
+      {
+       "group": "65+",
+       "share": 41,
+       "d": 51,
+       "r": 48
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 72,
+       "d": 52,
+       "r": 46
+      },
+      {
+       "group": "Black",
+       "share": 3,
+       "d": 90,
+       "r": 9
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 59,
+       "r": 36
+      },
+      {
+       "group": "Other",
+       "share": 9,
+       "d": 56,
+       "r": 41
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 44,
+       "d": 98,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 46,
+       "d": 11,
+       "r": 87
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 70,
+       "r": 24
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": {
+    "2022": {
+     "rep": 559518,
+     "dem": 578692,
+     "other": 370189,
+     "total": 1508399
+    },
+    "2026": {
+     "rep": 625143,
+     "dem": 613185,
+     "other": 409869,
+     "total": 1648197
+    },
+    "as_of_2026": "11/2/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/2/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "FL": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/florida/governor/0",
+    "n": 3877,
+    "dem": "Crist",
+    "rep": "DeSantis",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 55,
+       "r": 43
+      },
+      {
+       "group": "30-44",
+       "share": 18,
+       "d": 48,
+       "r": 51
+      },
+      {
+       "group": "45-64",
+       "share": 38,
+       "d": 37,
+       "r": 63
+      },
+      {
+       "group": "65+",
+       "share": 32,
+       "d": 36,
+       "r": 64
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 64,
+       "d": 34,
+       "r": 65
+      },
+      {
+       "group": "Black",
+       "share": 11,
+       "d": 86,
+       "r": 13
+      },
+      {
+       "group": "Latino",
+       "share": 21,
+       "d": 40,
+       "r": 58
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 28,
+       "d": 95,
+       "r": 5
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 42,
+       "d": 2,
+       "r": 97
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 30,
+       "d": 45,
+       "r": 53
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/FL/FL-G-100450.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3346,
+    "dem": "Charlie Crist",
+    "rep": "Ron DeSantis",
+    "updated": "2025-02-11T00:32:42",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 43,
+       "r": 53
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 43,
+       "r": 56
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 38,
+       "r": 61
+      },
+      {
+       "group": "65+",
+       "share": 34,
+       "d": 39,
+       "r": 61
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 65,
+       "d": 32,
+       "r": 67
+      },
+      {
+       "group": "Black",
+       "share": 12,
+       "d": 76,
+       "r": 18
+      },
+      {
+       "group": "Latino",
+       "share": 18,
+       "d": 43,
+       "r": 56
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 37,
+       "r": 61
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 38,
+       "d": 92,
+       "r": 7
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 55,
+       "d": 3,
+       "r": 96
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 44,
+       "r": 45
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/florida/governor",
+    "n": 4542,
+    "dem": "Jolly",
+    "rep": "Donalds",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 8,
+       "d": 75,
+       "r": 24
+      },
+      {
+       "group": "30-44",
+       "share": 16,
+       "d": 62,
+       "r": 37
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 44,
+       "r": 55
+      },
+      {
+       "group": "65+",
+       "share": 41,
+       "d": 43,
+       "r": 56
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 67,
+       "d": 41,
+       "r": 58
+      },
+      {
+       "group": "Black",
+       "share": 10,
+       "d": 86,
+       "r": 13
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 56,
+       "r": 43
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": 57,
+       "r": 39
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 42,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 52,
+       "d": 7,
+       "r": 92
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 66,
+       "r": 28
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/FL/FL-G-100450.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4494,
+    "dem": "David Jolly",
+    "rep": "Byron Donalds",
+    "updated": "2026-11-03T21:23:32",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 8,
+       "d": 75,
+       "r": 24
+      },
+      {
+       "group": "30-44",
+       "share": 16,
+       "d": 62,
+       "r": 37
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 44,
+       "r": 55
+      },
+      {
+       "group": "65+",
+       "share": 41,
+       "d": 43,
+       "r": 56
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 67,
+       "d": 41,
+       "r": 58
+      },
+      {
+       "group": "Black",
+       "share": 10,
+       "d": 86,
+       "r": 13
+      },
+      {
+       "group": "Latino",
+       "share": 17,
+       "d": 56,
+       "r": 43
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 61,
+       "r": 37
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 42,
+       "d": 98,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 52,
+       "d": 7,
+       "r": 92
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 66,
+       "r": 28
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": {
+    "2022": {
+     "rep": 2125330,
+     "dem": 1809482,
+     "other": 984120,
+     "total": 4918932
+    },
+    "2026": {
+     "rep": 2197862,
+     "dem": 2069165,
+     "other": 1207977,
+     "total": 5475004
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/3/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "TX": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/texas/governor/0",
+    "n": 4327,
+    "dem": "O'Rourke",
+    "rep": "Abbott",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 15,
+       "d": 64,
+       "r": 35
+      },
+      {
+       "group": "30-44",
+       "share": 24,
+       "d": 48,
+       "r": 50
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 40,
+       "r": 60
+      },
+      {
+       "group": "65+",
+       "share": 27,
+       "d": 37,
+       "r": 62
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 62,
+       "d": 33,
+       "r": 66
+      },
+      {
+       "group": "Black",
+       "share": 12,
+       "d": 84,
+       "r": 15
+      },
+      {
+       "group": "Latino",
+       "share": 21,
+       "d": 57,
+       "r": 40
+      },
+      {
+       "group": "Asian",
+       "share": 3,
+       "d": 52,
+       "r": 48
+      },
+      {
+       "group": "Other",
+       "share": 2,
+       "d": 31,
+       "r": 67
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 30,
+       "d": 97,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 41,
+       "d": 5,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 29,
+       "d": 49,
+       "r": 47
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/TX/TX-G-459010.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3387,
+    "dem": "Beto O'Rourke",
+    "rep": "Greg Abbott",
+    "updated": "2025-02-11T00:36:50",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 15,
+       "d": 57,
+       "r": 41
+      },
+      {
+       "group": "30-44",
+       "share": 24,
+       "d": 52,
+       "r": 45
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 41,
+       "r": 57
+      },
+      {
+       "group": "65+",
+       "share": 25,
+       "d": 32,
+       "r": 67
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 57,
+       "d": 30,
+       "r": 68
+      },
+      {
+       "group": "Black",
+       "share": 13,
+       "d": 81,
+       "r": 18
+      },
+      {
+       "group": "Latino",
+       "share": 24,
+       "d": 56,
+       "r": 42
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": 42,
+       "r": 53
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 37,
+       "d": 96,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 56,
+       "d": 7,
+       "r": 91
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 55,
+       "r": 37
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/texas/governor",
+    "n": 5178,
+    "dem": "Hinojosa",
+    "rep": "Abbott",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 76,
+       "r": 22
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 61,
+       "r": 37
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 47,
+       "r": 52
+      },
+      {
+       "group": "65+",
+       "share": 29,
+       "d": 42,
+       "r": 58
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 55,
+       "d": 40,
+       "r": 59
+      },
+      {
+       "group": "Black",
+       "share": 11,
+       "d": 88,
+       "r": 10
+      },
+      {
+       "group": "Latino",
+       "share": 25,
+       "d": 64,
+       "r": 35
+      },
+      {
+       "group": "Asian",
+       "share": 4,
+       "d": 65,
+       "r": 35
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 41,
+       "r": 57
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 45,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 49,
+       "d": 9,
+       "r": 90
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 66,
+       "r": 26
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/TX/TX-G-459010.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 5161,
+    "dem": "Gina Hinojosa",
+    "rep": "Greg Abbott",
+    "updated": "2026-11-03T23:33:39",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 76,
+       "r": 22
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 61,
+       "r": 37
+      },
+      {
+       "group": "45-64",
+       "share": 35,
+       "d": 47,
+       "r": 52
+      },
+      {
+       "group": "65+",
+       "share": 29,
+       "d": 42,
+       "r": 58
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 55,
+       "d": 40,
+       "r": 59
+      },
+      {
+       "group": "Black",
+       "share": 11,
+       "d": 88,
+       "r": 10
+      },
+      {
+       "group": "Latino",
+       "share": 25,
+       "d": 64,
+       "r": 35
+      },
+      {
+       "group": "Other",
+       "share": 8,
+       "d": 53,
+       "r": 46
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 45,
+       "d": 97,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 49,
+       "d": 9,
+       "r": 90
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 66,
+       "r": 26
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": null,
+   "registration_gap": "TX has no party registration"
+  },
+  "CA": {
+   "race": "Governor",
+   "cnn22": null,
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/CA/CA-G-61230.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3317,
+    "dem": "Gavin Newsom",
+    "rep": "Brian Dahle",
+    "updated": "2025-02-11T00:31:55",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 15,
+       "d": 70,
+       "r": 30
+      },
+      {
+       "group": "30-44",
+       "share": 24,
+       "d": 61,
+       "r": 39
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 53,
+       "r": 47
+      },
+      {
+       "group": "65+",
+       "share": 26,
+       "d": 59,
+       "r": 41
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 52,
+       "d": 52,
+       "r": 48
+      },
+      {
+       "group": "Black",
+       "share": 6,
+       "d": 83,
+       "r": 17
+      },
+      {
+       "group": "Latino",
+       "share": 25,
+       "d": 61,
+       "r": 39
+      },
+      {
+       "group": "Other",
+       "share": 17,
+       "d": 67,
+       "r": 33
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 55,
+       "d": 95,
+       "r": 5
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 37,
+       "d": 9,
+       "r": 91
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 40,
+       "r": 60
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/california/governor",
+    "n": 4386,
+    "dem": "Becerra",
+    "rep": "Hilton",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 78,
+       "r": 22
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 68,
+       "r": 32
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 65,
+       "r": 35
+      },
+      {
+       "group": "65+",
+       "share": 37,
+       "d": 58,
+       "r": 42
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 54,
+       "d": 59,
+       "r": 41
+      },
+      {
+       "group": "Black",
+       "share": 5,
+       "d": 92,
+       "r": 8
+      },
+      {
+       "group": "Latino",
+       "share": 22,
+       "d": 67,
+       "r": 33
+      },
+      {
+       "group": "Asian",
+       "share": 13,
+       "d": 67,
+       "r": 33
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 72,
+       "r": 28
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 61,
+       "d": 96,
+       "r": 4
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 32,
+       "d": 5,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 56,
+       "r": 44
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/CA/CA-G-61230.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4378,
+    "dem": "Xavier Becerra",
+    "rep": "Steve Hilton",
+    "updated": "2026-11-04T02:51:33",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 78,
+       "r": 22
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 68,
+       "r": 32
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 65,
+       "r": 35
+      },
+      {
+       "group": "65+",
+       "share": 37,
+       "d": 58,
+       "r": 42
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 54,
+       "d": 59,
+       "r": 41
+      },
+      {
+       "group": "Black",
+       "share": 5,
+       "d": 92,
+       "r": 8
+      },
+      {
+       "group": "Latino",
+       "share": 22,
+       "d": 67,
+       "r": 33
+      },
+      {
+       "group": "Other",
+       "share": 18,
+       "d": 68,
+       "r": 32
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 61,
+       "d": 96,
+       "r": 4
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 32,
+       "d": 5,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 7,
+       "d": 56,
+       "r": 44
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": {
+    "2022": {
+     "rep": 1428982,
+     "dem": 2590247,
+     "other": 1096276,
+     "total": 5115505
+    },
+    "2026": {
+     "rep": 1786444,
+     "dem": 3297382,
+     "other": 1579088,
+     "total": 6662914
+    },
+    "as_of_2026": "11/2/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/2/2026); 2022 = final UF pre-Election Day ballots by party (early+mail); 2022 full-turnout-by-party not available from official sources fetched",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "AK": {
+   "race": "Governor",
+   "cnn22": null,
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/AK/AK-G-20100.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 1030,
+    "dem": "Les Gara",
+    "rep": "Mike Dunleavy, Charlie Pierce",
+    "updated": "2025-02-11T00:30:40",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "30-44",
+       "share": 28,
+       "d": 25,
+       "r": 55
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 21,
+       "r": 53
+      },
+      {
+       "group": "65+",
+       "share": 24,
+       "d": 24,
+       "r": 48
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 70,
+       "d": 23,
+       "r": 52
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 25,
+       "d": 15,
+       "r": 52
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 34,
+       "d": 56,
+       "r": 8
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 51,
+       "d": 0,
+       "r": 88
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 15,
+       "d": 26,
+       "r": 26
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/alaska/governor",
+    "n": 2888,
+    "dem": "Kreiss-Tomkins",
+    "rep": "Bronson, Taylor, Wilson",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 9,
+       "d": 64,
+       "r": 15
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 56,
+       "r": 22
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 42,
+       "r": 34
+      },
+      {
+       "group": "65+",
+       "share": 32,
+       "d": 44,
+       "r": 33
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 75,
+       "d": 47,
+       "r": 29
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 5,
+       "d": 41,
+       "r": 35
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 15,
+       "d": 47,
+       "r": 32
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 36,
+       "d": 97,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 51,
+       "d": 7,
+       "r": 54
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 13,
+       "d": 71,
+       "r": 13
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/AK/AK-G-20100.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 2874,
+    "dem": "Jonathan Kreiss-Tomkins",
+    "rep": "Bernadette Wilson, Dave Bronson, Treg Taylor",
+    "updated": "2026-11-04T00:00:29",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 9,
+       "d": 64,
+       "r": 15
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 56,
+       "r": 22
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 42,
+       "r": 34
+      },
+      {
+       "group": "65+",
+       "share": 32,
+       "d": 44,
+       "r": 33
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 75,
+       "d": 47,
+       "r": 29
+      },
+      {
+       "group": "Black",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 5,
+       "d": 41,
+       "r": 35
+      },
+      {
+       "group": "Other",
+       "share": 17,
+       "d": 48,
+       "r": 31
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 36,
+       "d": 97,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 51,
+       "d": 7,
+       "r": 54
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 13,
+       "d": 71,
+       "r": 13
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": null,
+   "registration_gap": "AK publishes no ballots-by-party counts",
+   "note": "Caution: 2022 Governor was a multi-candidate RCV race (Dunleavy R, Gara D, Walker I); D\u2212R margins in 2022 exclude Walker voters, so 2022\u21922026 swings are inflated. AK 2026 is also RCV."
+  },
+  "GA": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/georgia/governor/0",
+    "n": 4923,
+    "dem": "Abrams",
+    "rep": "Kemp",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 13,
+       "d": 61,
+       "r": 38
+      },
+      {
+       "group": "30-44",
+       "share": 22,
+       "d": 53,
+       "r": 45
+      },
+      {
+       "group": "45-64",
+       "share": 40,
+       "d": 43,
+       "r": 56
+      },
+      {
+       "group": "65+",
+       "share": 25,
+       "d": 37,
+       "r": 62
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 62,
+       "d": 25,
+       "r": 74
+      },
+      {
+       "group": "Black",
+       "share": 28,
+       "d": 90,
+       "r": 9
+      },
+      {
+       "group": "Latino",
+       "share": 6,
+       "d": 55,
+       "r": 43
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": 54,
+       "r": 46
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": 47,
+       "r": 47
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 35,
+       "d": 96,
+       "r": 4
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 41,
+       "d": 1,
+       "r": 98
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 24,
+       "d": 48,
+       "r": 49
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/GA/GA-G-120290.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 3198,
+    "dem": "Stacey Abrams",
+    "rep": "Brian Kemp",
+    "updated": "2025-02-11T00:32:27",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 14,
+       "d": 55,
+       "r": 42
+      },
+      {
+       "group": "30-44",
+       "share": 25,
+       "d": 54,
+       "r": 45
+      },
+      {
+       "group": "45-64",
+       "share": 36,
+       "d": 40,
+       "r": 59
+      },
+      {
+       "group": "65+",
+       "share": 25,
+       "d": 39,
+       "r": 60
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 60,
+       "d": 25,
+       "r": 74
+      },
+      {
+       "group": "Black",
+       "share": 30,
+       "d": 87,
+       "r": 12
+      },
+      {
+       "group": "Latino",
+       "share": 4,
+       "d": 53,
+       "r": 46
+      },
+      {
+       "group": "Other",
+       "share": 6,
+       "d": 37,
+       "r": 61
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 43,
+       "d": 95,
+       "r": 4
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 51,
+       "d": 4,
+       "r": 96
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 6,
+       "d": 48,
+       "r": 45
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/georgia/governor",
+    "n": 4126,
+    "dem": "Bottoms",
+    "rep": "Jackson",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 78,
+       "r": 21
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 60,
+       "r": 39
+      },
+      {
+       "group": "45-64",
+       "share": 37,
+       "d": 51,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 29,
+       "d": 42,
+       "r": 57
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 60,
+       "d": 34,
+       "r": 65
+      },
+      {
+       "group": "Black",
+       "share": 29,
+       "d": 91,
+       "r": 8
+      },
+      {
+       "group": "Latino",
+       "share": 5,
+       "d": 62,
+       "r": 36
+      },
+      {
+       "group": "Asian",
+       "share": 3,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 56,
+       "r": 42
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 49,
+       "d": 97,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 43,
+       "d": 4,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 57,
+       "r": 37
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/GA/GA-G-120290.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4110,
+    "dem": "Keisha Lance Bottoms",
+    "rep": "Rick Jackson",
+    "updated": "2026-11-04T02:43:32",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 12,
+       "d": 78,
+       "r": 21
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 60,
+       "r": 39
+      },
+      {
+       "group": "45-64",
+       "share": 37,
+       "d": 51,
+       "r": 48
+      },
+      {
+       "group": "65+",
+       "share": 29,
+       "d": 42,
+       "r": 57
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 60,
+       "d": 34,
+       "r": 65
+      },
+      {
+       "group": "Black",
+       "share": 29,
+       "d": 91,
+       "r": 8
+      },
+      {
+       "group": "Latino",
+       "share": 5,
+       "d": 62,
+       "r": 36
+      },
+      {
+       "group": "Other",
+       "share": 7,
+       "d": 61,
+       "r": 38
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 49,
+       "d": 97,
+       "r": 3
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 43,
+       "d": 4,
+       "r": 95
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 57,
+       "r": 37
+      }
+     ]
+    }
+   },
+   "early": {
+    "age": {
+     "2022": {
+      "18-25": 139629,
+      "26-40": 306581,
+      "41-65": 1245323,
+      "65+": 822170
+     },
+     "2026": {
+      "18-25": 206617,
+      "26-40": 441483,
+      "41-65": 1216774,
+      "65+": 963384
+     }
+    },
+    "race": {
+     "2022": {
+      "White": 1444186,
+      "Black": 733580,
+      "Latino": 47271,
+      "Asian": 47938,
+      "Other/unknown": 251373
+     },
+     "2026": {
+      "White": 1484089,
+      "Black": 918040,
+      "Latino": 105320,
+      "Asian": 82751,
+      "Other/unknown": 244693
+     }
+    },
+    "as_of_2026": "11/3/2026",
+    "src": "UF Election Lab: 2022 state early-vote page (pre-Election Day ballots, final) vs 2026 tracker (11/3/2026; https://mvp.sos.ga.gov/s/voter-absentee-files)",
+    "src22": "https://rpubs.com/ElectProject/GA_early_vote_2022",
+    "src26": "https://election.lab.ufl.edu/early-vote/2026-early-voting/",
+    "note": "Voter-file ages (UF buckets 18-25/26-40/41-65/65+), counts of ballots cast before Election Day only; not comparable to exit-poll age bands."
+   },
+   "registration": null,
+   "registration_gap": "GA has no party registration"
+  },
+  "ME": {
+   "race": "Governor",
+   "cnn22": null,
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/ME/ME-G-206460.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 1256,
+    "dem": "Janet Mills",
+    "rep": "Paul LePage",
+    "updated": "2025-02-11T00:33:32",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 51,
+       "r": 45
+      },
+      {
+       "group": "30-44",
+       "share": 21,
+       "d": 57,
+       "r": 39
+      },
+      {
+       "group": "45-64",
+       "share": 34,
+       "d": 52,
+       "r": 46
+      },
+      {
+       "group": "65+",
+       "share": 35,
+       "d": 60,
+       "r": 39
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 95,
+       "d": 56,
+       "r": 42
+      },
+      {
+       "group": "Black",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 98,
+       "r": 1
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 44,
+       "d": 9,
+       "r": 89
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 8,
+       "d": 62,
+       "r": 26
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/maine/governor",
+    "n": 4232,
+    "dem": "Pingree",
+    "rep": "Charles",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 9,
+       "d": 75,
+       "r": 18
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 59,
+       "r": 34
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 48,
+       "r": 45
+      },
+      {
+       "group": "65+",
+       "share": 39,
+       "d": 54,
+       "r": 37
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 94,
+       "d": 55,
+       "r": 37
+      },
+      {
+       "group": "Black",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Asian",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 43,
+       "r": 52
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 50,
+       "d": 94,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 40,
+       "d": 7,
+       "r": 84
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 48,
+       "r": 28
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/ME/ME-G-206460.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4215,
+    "dem": "Hannah Pingree",
+    "rep": "Robert Charles",
+    "updated": "2026-11-04T01:59:33",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 9,
+       "d": 75,
+       "r": 18
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 59,
+       "r": 34
+      },
+      {
+       "group": "45-64",
+       "share": 33,
+       "d": 48,
+       "r": 45
+      },
+      {
+       "group": "65+",
+       "share": 39,
+       "d": 54,
+       "r": 37
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 94,
+       "d": 55,
+       "r": 37
+      },
+      {
+       "group": "Black",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": 44,
+       "r": 51
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 50,
+       "d": 94,
+       "r": 2
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 40,
+       "d": 7,
+       "r": 84
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 48,
+       "r": 28
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": {
+    "2022": {
+     "rep": 57277,
+     "dem": 117645,
+     "other": 63191,
+     "total": 238113
+    },
+    "2026": {
+     "rep": 69204,
+     "dem": 141212,
+     "other": 91920,
+     "total": 302336
+    },
+    "as_of_2026": "11/2/2026",
+    "src": "UF Election Lab early-vote party stats (2022 final pre-ED; 2026 as of 11/2/2026); 2022 = absentee ballots returned by enrollment (Maine SOS file); 2026 = Maine SOS absentee file 11/2",
+    "src_url": "https://election.lab.ufl.edu/early-vote/2026-early-voting/"
+   }
+  },
+  "NH": {
+   "race": "Governor",
+   "cnn22": {
+    "label": "CNN exit poll 2022 (Edison Research)",
+    "src": "https://www.cnn.com/election/2022/exit-polls/new-hampshire/governor/0",
+    "n": 1993,
+    "dem": "Sherman",
+    "rep": "Sununu",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 11,
+       "d": 64,
+       "r": 36
+      },
+      {
+       "group": "30-44",
+       "share": 17,
+       "d": 47,
+       "r": 51
+      },
+      {
+       "group": "45-64",
+       "share": 38,
+       "d": 36,
+       "r": 62
+      },
+      {
+       "group": "65+",
+       "share": 34,
+       "d": 39,
+       "r": 59
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 91,
+       "d": 41,
+       "r": 57
+      },
+      {
+       "group": "Black",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Asian",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 2,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 28,
+       "d": 88,
+       "r": 12
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 29,
+       "d": 4,
+       "r": 96
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 43,
+       "d": 38,
+       "r": 59
+      }
+     ]
+    }
+   },
+   "vc22": {
+    "label": "AP VoteCast 2022 (via Fox News Voter Analysis feed)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2022_Generals/NH/NH-G-300050.json",
+    "page": "https://www.foxnews.com/elections/2022/midterm-results/voter-analysis",
+    "n": 1236,
+    "dem": "Tom Sherman",
+    "rep": "Chris Sununu",
+    "updated": "2025-02-11T00:34:42",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 14,
+       "d": 48,
+       "r": 50
+      },
+      {
+       "group": "30-44",
+       "share": 20,
+       "d": 40,
+       "r": 56
+      },
+      {
+       "group": "45-64",
+       "share": 38,
+       "d": 36,
+       "r": 63
+      },
+      {
+       "group": "65+",
+       "share": 28,
+       "d": 45,
+       "r": 54
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 93,
+       "d": 42,
+       "r": 57
+      },
+      {
+       "group": "Black",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 2,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 5,
+       "d": null,
+       "r": null
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 46,
+       "d": 81,
+       "r": 18
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 45,
+       "d": 2,
+       "r": 97
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 9,
+       "d": 25,
+       "r": 70
+      }
+     ]
+    }
+   },
+   "cnn26": {
+    "label": "CNN Voter Poll 2026 (SSRS)",
+    "src": "https://www.cnn.com/elections/2026/voter-polls/new-hampshire/governor",
+    "n": 4305,
+    "dem": "Warmington",
+    "rep": "Ayotte",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 61,
+       "r": 38
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 56,
+       "r": 42
+      },
+      {
+       "group": "45-64",
+       "share": 38,
+       "d": 40,
+       "r": 58
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 47,
+       "r": 52
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 93,
+       "d": 47,
+       "r": 51
+      },
+      {
+       "group": "Black",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 57,
+       "r": 37
+      },
+      {
+       "group": "Asian",
+       "share": 1,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Other",
+       "share": 3,
+       "d": 38,
+       "r": 58
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 87,
+       "r": 12
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 43,
+       "d": 5,
+       "r": 93
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 38,
+       "r": 56
+      }
+     ]
+    }
+   },
+   "fox26": {
+    "label": "AP/Fox Voter Poll 2026 (SSRS; same survey family as CNN 2026)",
+    "src": "https://feeds-elections.foxnews.com/voter_analysis/2026_Generals/NH/NH-G-300050.json",
+    "page": "https://www.foxnews.com/elections/polls/voter-poll-results",
+    "n": 4293,
+    "dem": "Cinde Warmington",
+    "rep": "Kelly Ayotte",
+    "updated": "2026-11-03T22:02:33",
+    "groups": {
+     "age": [
+      {
+       "group": "18-29",
+       "share": 10,
+       "d": 61,
+       "r": 38
+      },
+      {
+       "group": "30-44",
+       "share": 19,
+       "d": 56,
+       "r": 42
+      },
+      {
+       "group": "45-64",
+       "share": 38,
+       "d": 40,
+       "r": 58
+      },
+      {
+       "group": "65+",
+       "share": 33,
+       "d": 47,
+       "r": 52
+      }
+     ],
+     "race": [
+      {
+       "group": "White",
+       "share": 93,
+       "d": 47,
+       "r": 51
+      },
+      {
+       "group": "Black",
+       "share": 0,
+       "d": null,
+       "r": null
+      },
+      {
+       "group": "Latino",
+       "share": 3,
+       "d": 57,
+       "r": 37
+      },
+      {
+       "group": "Other",
+       "share": 4,
+       "d": 43,
+       "r": 54
+      }
+     ],
+     "party": [
+      {
+       "group": "Dem/lean Dem",
+       "share": 47,
+       "d": 87,
+       "r": 12
+      },
+      {
+       "group": "Rep/lean Rep",
+       "share": 43,
+       "d": 5,
+       "r": 93
+      },
+      {
+       "group": "Independent (no lean)",
+       "share": 10,
+       "d": 38,
+       "r": 56
+      }
+     ]
+    }
+   },
+   "early": null,
+   "registration": null,
+   "registration_gap": "NH SOS publishes registration (Nov 2) but not ballots by party; no 2022 comparison"
+  }
+ }
+}

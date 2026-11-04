@@ -263,5 +263,6 @@ async function load(){
 load().catch(e=>{document.getElementById('upd').textContent='failed to load data.json: '+e});
 setInterval(()=>load().catch(()=>{}),5*60*1000);
 </script>
+<script src="demographics.js"></script>
 </body>
 </html>
