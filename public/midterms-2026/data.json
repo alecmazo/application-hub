@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T17:38:00-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 5:38 PM PT",
+  "lastUpdated": "2026-11-03T17:47:00-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 5:47 PM PT",
   "notes": [
     "Results snapshot 5:38 PM PT: AP/NBC + GA SOS. New calls: FL U.S. Senate (special): Ashley Moody (R), NH U.S. Senate: Chris Pappas (D).",
     "Election-night vote counts (unofficial): GA from GA SOS ENR (/data API); FL/OH/NH/KS/MI/TX/PA from AP via NBC News firecracker (third parties from county mapData when needed). Updated Tue Nov 3, 2026, 5:23 PM PT. NEW AP call: PA Governor → Josh Shapiro.",
@@ -11553,7 +11553,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 2781594,
+      "election_day_turnout": 2782344,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -13194,11 +13194,23 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 20:12:16 ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
+        },
+        {
+          "time_pt": "5:42 PM",
+          "ed_turnout": 2782344,
+          "by_party": {
+            "R": 1339810,
+            "D": 739747,
+            "O": 702787
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 20:42:09 ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "5:12 PM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 20:12:16 ET",
+      "election_day_turnout_as_of": "5:42 PM PT",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 20:42:09 ET",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -13243,29 +13255,29 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "5:12 PM PT",
+        "as_of": "5:47 PM PT",
         "label": "Cumulative ballots cast (early + mail + Election Day) by party registration",
-        "source": "FreshTake.Vote County Supervisors of Elections, updated 2026-11-03 20:12:16 ET",
+        "source": "FreshTake.Vote County Supervisors of Elections, updated 2026-11-03 20:47:02 ET",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
         "note": "Cumulative ballots (mail + early + Election Day) by voter registration party; not candidate choice. All 67 counties refreshed. ED-only statewide today is separate in hourly.FL.",
         "statewide_cum": {
-          "R": 3559528,
-          "D": 2831455,
-          "O": 1928087,
-          "total": 8319070
+          "R": 3561029,
+          "D": 2833248,
+          "O": 1929568,
+          "total": 8323845
         },
         "statewide_ed_today": {
-          "R": 1339549,
-          "D": 739514,
-          "O": 702531,
-          "total": 2781594
+          "R": 1339810,
+          "D": 739747,
+          "O": 702787,
+          "total": 2782344
         },
         "counties": {
           "Alachua": {
-            "R": 29791,
-            "D": 53379,
-            "O": 22596,
-            "total": 105766
+            "R": 29815,
+            "D": 53427,
+            "O": 22653,
+            "total": 105895
           },
           "Baker": {
             "R": 7429,
@@ -13282,20 +13294,20 @@
           "Bradford": {
             "R": 6635,
             "D": 2163,
-            "O": 975,
-            "total": 9773
+            "O": 974,
+            "total": 9772
           },
           "Brevard": {
-            "R": 132022,
-            "D": 77176,
-            "O": 62324,
-            "total": 271522
+            "R": 132151,
+            "D": 77292,
+            "O": 62443,
+            "total": 271886
           },
           "Broward": {
-            "R": 160424,
-            "D": 325953,
-            "O": 178738,
-            "total": 665115
+            "R": 160429,
+            "D": 325958,
+            "O": 178740,
+            "total": 665127
           },
           "Calhoun": {
             "R": 3023,
@@ -13346,16 +13358,16 @@
             "total": 5643
           },
           "Duval": {
-            "R": 141135,
-            "D": 151283,
-            "O": 67555,
-            "total": 359973
+            "R": 141255,
+            "D": 151423,
+            "O": 67648,
+            "total": 360326
           },
           "Escambia": {
-            "R": 58622,
-            "D": 37876,
-            "O": 19497,
-            "total": 115995
+            "R": 58662,
+            "D": 37919,
+            "O": 19527,
+            "total": 116108
           },
           "Flagler": {
             "R": 34295,
@@ -13412,10 +13424,10 @@
             "total": 10174
           },
           "Hernando": {
-            "R": 43950,
-            "D": 20191,
-            "O": 16534,
-            "total": 80675
+            "R": 43958,
+            "D": 20202,
+            "O": 16536,
+            "total": 80696
           },
           "Highlands": {
             "R": 23423,
@@ -13424,10 +13436,10 @@
             "total": 39955
           },
           "Hillsborough": {
-            "R": 190198,
-            "D": 197302,
-            "O": 129890,
-            "total": 517390
+            "R": 190519,
+            "D": 197660,
+            "O": 130235,
+            "total": 518414
           },
           "Holmes": {
             "R": 4986,
@@ -13442,10 +13454,10 @@
             "total": 77976
           },
           "Jackson": {
-            "R": 9813,
+            "R": 9814,
             "D": 4730,
             "O": 1128,
-            "total": 15671
+            "total": 15672
           },
           "Jefferson": {
             "R": 3484,
@@ -13466,16 +13478,16 @@
             "total": 171329
           },
           "Lee": {
-            "R": 158943,
-            "D": 74415,
-            "O": 72736,
-            "total": 306094
+            "R": 158944,
+            "D": 74417,
+            "O": 72737,
+            "total": 306098
           },
           "Leon": {
-            "R": 36191,
-            "D": 66214,
-            "O": 23456,
-            "total": 125861
+            "R": 36194,
+            "D": 66215,
+            "O": 23459,
+            "total": 125868
           },
           "Levy": {
             "R": 11904,
@@ -13496,10 +13508,10 @@
             "total": 6968
           },
           "Manatee": {
-            "R": 94877,
-            "D": 48522,
-            "O": 39708,
-            "total": 183107
+            "R": 94886,
+            "D": 48527,
+            "O": 39719,
+            "total": 183132
           },
           "Marion": {
             "R": 90179,
@@ -13514,16 +13526,16 @@
             "total": 76869
           },
           "Miami-Dade": {
-            "R": 277203,
-            "D": 286373,
-            "O": 230591,
-            "total": 794167
+            "R": 277305,
+            "D": 286573,
+            "O": 230776,
+            "total": 794654
           },
           "Monroe": {
-            "R": 15465,
-            "D": 10252,
-            "O": 6839,
-            "total": 32556
+            "R": 15467,
+            "D": 10257,
+            "O": 6840,
+            "total": 32564
           },
           "Nassau": {
             "R": 32155,
@@ -13532,10 +13544,10 @@
             "total": 50775
           },
           "Okaloosa": {
-            "R": 49306,
-            "D": 14730,
-            "O": 13883,
-            "total": 77919
+            "R": 49309,
+            "D": 14732,
+            "O": 13885,
+            "total": 77926
           },
           "Okeechobee": {
             "R": 7075,
@@ -13544,10 +13556,10 @@
             "total": 11200
           },
           "Orange": {
-            "R": 134709,
-            "D": 211714,
-            "O": 126122,
-            "total": 472545
+            "R": 134724,
+            "D": 211720,
+            "O": 126139,
+            "total": 472583
           },
           "Osceola": {
             "R": 40248,
@@ -13556,52 +13568,52 @@
             "total": 132687
           },
           "Palm Beach": {
-            "R": 195404,
-            "D": 230695,
-            "O": 149715,
-            "total": 575814
+            "R": 195579,
+            "D": 231017,
+            "O": 149936,
+            "total": 576532
           },
           "Pasco": {
-            "R": 113393,
-            "D": 68600,
-            "O": 59207,
-            "total": 241200
+            "R": 113471,
+            "D": 68680,
+            "O": 59276,
+            "total": 241427
           },
           "Pinellas": {
-            "R": 163703,
-            "D": 143627,
-            "O": 98990,
-            "total": 406320
+            "R": 163841,
+            "D": 143852,
+            "O": 99114,
+            "total": 406807
           },
           "Polk": {
             "R": 116734,
             "D": 86530,
-            "O": 56969,
-            "total": 260233
+            "O": 56970,
+            "total": 260234
           },
           "Putnam": {
-            "R": 16414,
+            "R": 16415,
             "D": 6781,
             "O": 3441,
-            "total": 26636
+            "total": 26637
           },
           "Santa Rosa": {
-            "R": 50469,
-            "D": 12475,
-            "O": 11699,
-            "total": 74643
+            "R": 50586,
+            "D": 12503,
+            "O": 11737,
+            "total": 74826
           },
           "Sarasota": {
-            "R": 113300,
-            "D": 61993,
-            "O": 49369,
-            "total": 224662
+            "R": 113472,
+            "D": 62134,
+            "O": 49488,
+            "total": 225094
           },
           "Seminole": {
-            "R": 75796,
-            "D": 68977,
-            "O": 50960,
-            "total": 195733
+            "R": 75822,
+            "D": 69015,
+            "O": 50988,
+            "total": 195825
           },
           "St. Johns": {
             "R": 90050,
@@ -13610,10 +13622,10 @@
             "total": 156872
           },
           "St. Lucie": {
-            "R": 56585,
-            "D": 52010,
-            "O": 31110,
-            "total": 139705
+            "R": 56596,
+            "D": 52026,
+            "O": 31123,
+            "total": 139745
           },
           "Sumter": {
             "R": 60348,
@@ -13641,9 +13653,9 @@
           },
           "Volusia": {
             "R": 110809,
-            "D": 70929,
-            "O": 56697,
-            "total": 238435
+            "D": 70930,
+            "O": 56698,
+            "total": 238437
           },
           "Wakulla": {
             "R": 8808,
@@ -13857,7 +13869,7 @@
       "early_data_as_of": "11/2",
       "registered": 19041684,
       "registered_note": "record total (TX SOS, Oct 16)",
-      "election_day_turnout": 100291,
+      "election_day_turnout": 100906,
       "polls_close_pt": "5 PM PT (6 PM PT in El Paso area)",
       "y2022": {
         "early_in_person": 5172460,
@@ -17849,11 +17861,19 @@
           "scope": "Travis County only",
           "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 07:15 PM CT",
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
+        },
+        {
+          "time_pt": "5:42 PM",
+          "ed_turnout": 100906,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 7:42 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
         }
       ],
       "election_day_turnout_scope": "Travis County only",
-      "election_day_turnout_as_of": "5:15 PM PT",
-      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 07:15 PM CT",
+      "election_day_turnout_as_of": "5:42 PM PT",
+      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 7:42 PM CT",
       "election_day_turnout_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
       "precinct_feeds": [
         {
@@ -17888,15 +17908,15 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "mixed (Travis 07:15 PM CT ED 100291; Harris 236K+ @ 5 PM CT; Bexar 108091 @ 5 PM CT)",
+        "as_of": "mixed (Travis 7:42 PM CT ED 100906; Harris 236K+ @ 5 PM CT; Bexar 108091 @ 5 PM CT)",
         "label": "Election Day in-person ballots (selected large counties)",
         "source": "Travis EarlyVotingTable; prior Harris/Bexar news citations unchanged this hour",
         "url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
         "note": "Travis refreshed to 100,291. Harris still 236K+ floor @ 5 PM CT (no newer). Bexar unchanged @ 108,091 / 5 PM CT.",
         "counties": {
           "Travis": {
-            "total": 100291,
-            "ed": 100291
+            "total": 100906,
+            "ed": 100906
           },
           "Harris": {
             "total": 236000,
