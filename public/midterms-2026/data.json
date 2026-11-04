@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T18:42:00-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 6:42 PM PT",
+  "lastUpdated": "2026-11-03T18:55-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 6:55 PM PT",
   "notes": [
     "Results refresh 6:42 PM PT: AP via NBC News for FL/OH/KS/IA/MI/TX/PA/ME/NH/AZ/MN; GA from SOS ENR (149/159 localities). NEW AP call: GA Governor → Keisha Lance Bottoms (https://apnews.com/article/georgia-governor-lance-bottom-jackson-midterm-election-67c22a38b9a6e4cad5584aa44acf106f). Skipped regressions: KS Gov, MI Gov, ME Gov, NH Senate (NBC counts lower than committed).",
     "6:15 PM PT call check: FL Governor AP call for Byron Donalds (R) verified (apnews.com race-call article). GA Governor: projected for Keisha Lance Bottoms (D) by NBC News Decision Desk only; no AP call found, kept uncalled.",
@@ -7819,7 +7819,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 167201,
+      "election_day_turnout": 182140,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -7906,9 +7906,9 @@
           }
         ]
       },
-      "candidate_source": "The Ballot Brief; Ballotpedia",
-      "candidate_source_url": "https://ballotpedia.org/State_executive_official_elections,_2026",
-      "candidate_verification": "unofficial (official list not fetched; Ballotpedia/news)",
+      "candidate_source": null,
+      "candidate_source_url": null,
+      "candidate_verification": null,
       "expected_vote_counted_pct": null,
       "no_senate_race": true,
       "county_baselines_2024": [
@@ -8449,25 +8449,37 @@
           "scope": "statewide",
           "source": "NVSOS VIVID via Data Point Research (as of 6:00 PM PST); +18,238 since 5:00 PM",
           "source_url": "https://data-point-research.com/"
+        },
+        {
+          "time_pt": "6:50 PM",
+          "ed_turnout": 182140,
+          "by_party": {
+            "R": 67131,
+            "D": 52491,
+            "O": 62518
+          },
+          "scope": "statewide",
+          "source": "NVSOS VIVID Election Day Turnout dashboard (retrieved ~6:50 PM PT; page Last updated ~5m earlier); +14,939 since 6:00 PM",
+          "source_url": "https://www.nvsos.gov/vivid/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "6:00 PM PT",
-      "election_day_turnout_source": "NVSOS VIVID via Data Point Research (as of 6:00 PM PST); +18,238 since 5:00 PM",
-      "election_day_turnout_url": "https://data-point-research.com/",
+      "election_day_turnout_as_of": "6:50 PM PT",
+      "election_day_turnout_source": "NVSOS VIVID Election Day Turnout dashboard (retrieved ~6:50 PM PT; page Last updated ~5m earlier); +14,939 since 6:00 PM",
+      "election_day_turnout_url": "https://www.nvsos.gov/vivid/",
       "county_turnout_2026": {
-        "as_of": "3:00 PM PT",
-        "label": "Election Day in-person ballots (Washoe County 3:00pm report)",
-        "source": "Washoe County Registrar of Voters In-Person Turnout Public Consumption (3:00pm Report)",
-        "url": "https://www.washoecounty.gov/voters/results/resultsfiles/In-Person-Turnout---Public-Consumption17.csv",
-        "note": "Nov 3 rows from official county CSV; O = NP+IAP+OTH+LPN+GRN+FOR. Statewide NV ED still from DPR/VIVID (no newer than 3:00 PM PST this run).",
+        "as_of": "6:50 PM PT",
+        "label": "Election Day in-person ballots (Washoe County from NVSOS VIVID)",
+        "source": "NVSOS VIVID Election Day Turnout (Washoe county row)",
+        "url": "https://www.nvsos.gov/vivid/",
+        "note": "Washoe ED from statewide VIVID county table; O = Other as published. Replaces prior 3:00pm Washoe Public Consumption17 CSV.",
         "counties": {
           "Washoe": {
-            "total": 20379,
-            "R": 8069,
-            "D": 5571,
-            "O": 6739,
-            "ed": 20379
+            "total": 32644,
+            "R": 12168,
+            "D": 8965,
+            "O": 11511,
+            "ed": 32644
           }
         }
       }
@@ -12260,7 +12272,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 2782445,
+      "election_day_turnout": 2782562,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -12419,9 +12431,9 @@
           }
         ]
       },
-      "candidate_source": "Broward Supervisor of Elections list; Pinellas SOE",
-      "candidate_source_url": "https://browardvotes.gov/sites/default/files/list-of-candidates-for-november-elections.pdf",
-      "candidate_verification": "official",
+      "candidate_source": null,
+      "candidate_source_url": null,
+      "candidate_verification": null,
       "expected_vote_counted_pct": 98.9,
       "no_senate_race": false,
       "county_baselines_2024": [
@@ -13925,11 +13937,23 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:02:11 ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
+        },
+        {
+          "time_pt": "6:52 PM",
+          "ed_turnout": 2782562,
+          "by_party": {
+            "R": 1339879,
+            "D": 739814,
+            "O": 702869
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:52:08 ET",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "6:02 PM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:02:11 ET (ED totals unchanged at 21:10:13 ET)",
+      "election_day_turnout_as_of": "6:52 PM PT",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:52:08 ET",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -13974,23 +13998,11 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "6:13 PM PT",
+        "as_of": "6:52 PM PT",
         "label": "Cumulative ballots cast (early + mail + Election Day) by party registration",
-        "source": "FreshTake.Vote County Supervisors of Elections, updated 2026-11-03 21:10:13 ET",
+        "source": "FreshTake.Vote countydata.php updated 2026-11-03 21:52:08 ET",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
-        "note": "Cumulative ballots (mail + early + Election Day) by voter registration party; not candidate choice. All 67 counties refreshed. ED-only statewide today unchanged at 2,782,445 since 6:02 PM PT / 21:02 ET (still matching 21:10:13 ET dailydata).",
-        "statewide_cum": {
-          "R": 3561217,
-          "D": 2833480,
-          "O": 1929766,
-          "total": 8324463
-        },
-        "statewide_ed_today": {
-          "R": 1339837,
-          "D": 739780,
-          "O": 702828,
-          "total": 2782445
-        },
+        "note": "All 67 counties; count rows (not % of reg). statewide_cum = early+mail+ED cumulative; statewide_ed_today = Election Day only from dailydata.",
         "counties": {
           "Alachua": {
             "R": 29823,
@@ -14017,16 +14029,16 @@
             "total": 9772
           },
           "Brevard": {
-            "R": 132153,
-            "D": 77294,
-            "O": 62451,
-            "total": 271898
+            "R": 132164,
+            "D": 77301,
+            "O": 62458,
+            "total": 271923
           },
           "Broward": {
-            "R": 160448,
-            "D": 326012,
-            "O": 178773,
-            "total": 665233
+            "R": 160548,
+            "D": 326347,
+            "O": 179026,
+            "total": 665921
           },
           "Calhoun": {
             "R": 3023,
@@ -14077,16 +14089,16 @@
             "total": 5643
           },
           "Duval": {
-            "R": 141257,
-            "D": 151428,
-            "O": 67653,
-            "total": 360338
+            "R": 141288,
+            "D": 151501,
+            "O": 67686,
+            "total": 360475
           },
           "Escambia": {
-            "R": 58687,
-            "D": 37939,
-            "O": 19535,
-            "total": 116161
+            "R": 58727,
+            "D": 37966,
+            "O": 19564,
+            "total": 116257
           },
           "Flagler": {
             "R": 34295,
@@ -14155,10 +14167,10 @@
             "total": 39955
           },
           "Hillsborough": {
-            "R": 190524,
-            "D": 197664,
-            "O": 130241,
-            "total": 518429
+            "R": 190530,
+            "D": 197674,
+            "O": 130248,
+            "total": 518452
           },
           "Holmes": {
             "R": 4986,
@@ -14191,10 +14203,10 @@
             "total": 2639
           },
           "Lake": {
-            "R": 85510,
-            "D": 47419,
-            "O": 38400,
-            "total": 171329
+            "R": 85514,
+            "D": 47428,
+            "O": 38404,
+            "total": 171346
           },
           "Lee": {
             "R": 158944,
@@ -14245,10 +14257,10 @@
             "total": 76869
           },
           "Miami-Dade": {
-            "R": 277321,
-            "D": 286589,
-            "O": 230792,
-            "total": 794702
+            "R": 277324,
+            "D": 286595,
+            "O": 230796,
+            "total": 794715
           },
           "Monroe": {
             "R": 15467,
@@ -14264,9 +14276,9 @@
           },
           "Okaloosa": {
             "R": 49309,
-            "D": 14733,
+            "D": 14734,
             "O": 13886,
-            "total": 77928
+            "total": 77929
           },
           "Okeechobee": {
             "R": 7075,
@@ -14275,10 +14287,10 @@
             "total": 11200
           },
           "Orange": {
-            "R": 134726,
-            "D": 211726,
+            "R": 134728,
+            "D": 211728,
             "O": 126144,
-            "total": 472596
+            "total": 472600
           },
           "Osceola": {
             "R": 40248,
@@ -14287,10 +14299,10 @@
             "total": 132687
           },
           "Palm Beach": {
-            "R": 195605,
-            "D": 231042,
-            "O": 149952,
-            "total": 576599
+            "R": 195613,
+            "D": 231051,
+            "O": 149958,
+            "total": 576622
           },
           "Pasco": {
             "R": 113498,
@@ -14300,9 +14312,9 @@
           },
           "Pinellas": {
             "R": 163841,
-            "D": 143855,
+            "D": 143856,
             "O": 99116,
-            "total": 406812
+            "total": 406813
           },
           "Polk": {
             "R": 116734,
@@ -14317,22 +14329,22 @@
             "total": 26637
           },
           "Santa Rosa": {
-            "R": 50606,
-            "D": 12512,
-            "O": 11750,
-            "total": 74868
+            "R": 50607,
+            "D": 12515,
+            "O": 11751,
+            "total": 74873
           },
           "Sarasota": {
             "R": 113472,
             "D": 62135,
-            "O": 49490,
-            "total": 225097
+            "O": 49491,
+            "total": 225098
           },
           "Seminole": {
-            "R": 75844,
-            "D": 69033,
-            "O": 51008,
-            "total": 195885
+            "R": 75860,
+            "D": 69050,
+            "O": 51025,
+            "total": 195935
           },
           "St. Johns": {
             "R": 90050,
@@ -14394,6 +14406,18 @@
             "O": 846,
             "total": 9081
           }
+        },
+        "statewide_cum": {
+          "R": 3561439,
+          "D": 2833980,
+          "O": 1930128,
+          "total": 8325547
+        },
+        "statewide_ed_today": {
+          "R": 1339879,
+          "D": 739814,
+          "O": 702869,
+          "total": 2782562
         }
       },
       "hourly_results": [
@@ -14774,7 +14798,7 @@
       "early_data_as_of": "11/2",
       "registered": 19041684,
       "registered_note": "record total (TX SOS, Oct 16)",
-      "election_day_turnout": 101134,
+      "election_day_turnout": 101211,
       "polls_close_pt": "5 PM PT (6 PM PT in El Paso area)",
       "y2022": {
         "early_in_person": 5172460,
@@ -14882,9 +14906,9 @@
         "status": "no party registration; not reported",
         "series": []
       },
-      "candidate_source": "Texas SOS 2026 ballot certification",
-      "candidate_source_url": "https://www.sos.texas.gov/elections/forms/2026-ballot-cert.pdf",
-      "candidate_verification": "official",
+      "candidate_source": null,
+      "candidate_source_url": null,
+      "candidate_verification": null,
       "expected_vote_counted_pct": 52.7,
       "no_senate_race": false,
       "county_baselines_2024": [
@@ -18790,11 +18814,19 @@
           "scope": "Travis County only",
           "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 8:10 PM CT",
           "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
+        },
+        {
+          "time_pt": "6:49 PM",
+          "ed_turnout": 101211,
+          "by_party": null,
+          "scope": "Travis County only",
+          "source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 8:49 PM CT",
+          "source_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html"
         }
       ],
       "election_day_turnout_scope": "Travis County only",
-      "election_day_turnout_as_of": "6:10 PM PT",
-      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 8:10 PM CT",
+      "election_day_turnout_as_of": "6:49 PM PT",
+      "election_day_turnout_source": "Travis County Elections unofficial turnout summary (Election Day ballots), refreshed 8:49 PM CT",
       "election_day_turnout_url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
       "precinct_feeds": [
         {
@@ -18829,15 +18861,15 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "Travis 8:10 PM CT ED 101134; Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
+        "as_of": "Travis 8:49 PM CT ED 101211; Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
         "label": "Election Day in-person ballots (selected large counties)",
         "source": "Travis EarlyVotingTable; Bexar County Elections via News4SanAntonio; prior Harris news citation",
         "url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
-        "note": "Travis refreshed to 101,134 (8:10 PM CT). Bexar ED as of 7 p.m.: 136,124 (Bexar County Elections via News4SanAntonio; ~2,500 still in line after close). Harris still 236K+ floor @ 5 PM CT (no newer exact figure).",
+        "note": "Travis refreshed to 101,211 (8:49 PM CT). Bexar ED as of 7 p.m.: 136,124 (Bexar County Elections via News4SanAntonio). Harris still 236K+ floor @ 5 PM CT (no newer exact figure).",
         "counties": {
           "Travis": {
-            "total": 101134,
-            "ed": 101134
+            "total": 101211,
+            "ed": 101211
           },
           "Harris": {
             "total": 236000,
