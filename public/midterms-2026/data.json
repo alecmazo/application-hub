@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T16:16-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 4:16 PM PT",
+  "lastUpdated": "2026-11-03T16:20-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 4:20 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
@@ -19074,7 +19074,7 @@
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
       "election_day_turnout": 1300000,
-      "expected_vote_counted_pct": 8.2,
+      "expected_vote_counted_pct": 13.8,
       "polls_close_pt": "4 PM PT",
       "y2022": {
         "early_in_person": 2289860,
@@ -19092,24 +19092,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "GA SOS (Enhanced Voting ENR), 4:08 PM PT",
+          "source": "GA SOS (Enhanced Voting ENR), 4:13 PM PT",
           "candidates": [
             {
               "name": "Keisha Lance Bottoms",
               "party": "D",
               "incumbent": null,
-              "votes": 486918,
-              "pct": 68.04
+              "votes": 527378,
+              "pct": 66.35
             },
             {
               "name": "Rick Jackson",
               "party": "R",
               "incumbent": null,
-              "votes": 228670,
-              "pct": 31.96
+              "votes": 267447,
+              "pct": 33.65
             }
           ],
-          "reporting_pct": 8.2,
+          "reporting_pct": 13.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -19122,24 +19122,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "GA SOS (Enhanced Voting ENR), 4:08 PM PT",
+          "source": "GA SOS (Enhanced Voting ENR), 4:13 PM PT",
           "candidates": [
             {
               "name": "Jon Ossoff",
               "party": "D, inc.",
               "incumbent": null,
-              "votes": 520317,
-              "pct": 72.63
+              "votes": 563565,
+              "pct": 70.85
             },
             {
               "name": "Mike Collins",
               "party": "R",
               "incumbent": null,
-              "votes": 196043,
-              "pct": 27.37
+              "votes": 231911,
+              "pct": 29.15
             }
           ],
-          "reporting_pct": 8.2,
+          "reporting_pct": 13.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -21021,6 +21021,30 @@
           },
           "scope": "statewide",
           "source": "GA SOS (Enhanced Voting ENR); 13/159 localities reporting; as of 4:08 PM PT",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "4:20 PM",
+          "expected_vote_counted_pct": 13.8,
+          "candidates": {
+            "Keisha Lance Bottoms": 527378,
+            "Rick Jackson": 267447
+          },
+          "scope": "statewide",
+          "source": "GA SOS (Enhanced Voting ENR); 22/159 localities reporting; as of 4:13 PM PT",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "4:20 PM",
+          "expected_vote_counted_pct": 13.8,
+          "candidates": {
+            "Jon Ossoff": 563565,
+            "Mike Collins": 231911
+          },
+          "scope": "statewide",
+          "source": "GA SOS (Enhanced Voting ENR); 22/159 localities reporting; as of 4:13 PM PT",
           "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
           "race": "U.S. Senate"
         }
