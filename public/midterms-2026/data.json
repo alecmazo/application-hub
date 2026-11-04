@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-03T20:13-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 8:13 PM PT",
+  "lastUpdated": "2026-11-03T20:18-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 8:18 PM PT",
   "notes": [
     "Results refresh 8:08 PM PT Nov 3: AP via NBC Firecracker; monotonic. ED: FL 2,782,564 (FreshTake 23:00:58 ET); NV 199,655 R71484/D58352/O69819 (VIVID via jina); AZ Maricopa unchanged 256,700 (closed); TX Travis unchanged 101,238. OH Governor Amy Acton AP call VERIFIED (apnews.com/article/ohio-governor-race-2026-election-ramaswamy-acton-ee7b1860b0b8905c55df27318755f7e3; AP ~10:49 PM EST / 7:49 PM PT). No other NEW AP race-call articles this run. Retained AP calls: PA Shapiro, FL Donalds, FL Moody, GA Bottoms, GA Ossoff, NH Pappas, OH Acton. NBC projections/leans (TX Sen Talarico P, OH Sen Brown G, KS Sen Hamilton G, CA Gov Becerra P w/ 0 votes) are NOT AP calls.",
     "Results refresh 7:53 PM PT Nov 3: AP via NBC Firecracker; monotonic. No NEW AP race-call articles this run. Retained AP calls: PA Shapiro, FL Donalds, FL Moody, GA Bottoms, GA Ossoff, NH Pappas. OH Governor: NBC projected Acton — kept pending (no AP race-call URL). NBC lean G / projections are not AP calls.",
@@ -9818,46 +9818,46 @@
       "election_day_turnout_source": "NVSOS VIVID Election Day Turnout dashboard via r.jina.ai (page Last updated ~2m earlier at fetch ~8:08 PM PT); +12273 since 7:10 PM",
       "election_day_turnout_url": "https://www.nvsos.gov/vivid/",
       "county_turnout_2026": {
-        "as_of": "7:10 PM PT",
+        "as_of": "8:18 PM PT",
         "label": "Election Day in-person ballots by county (NVSOS VIVID)",
-        "source": "NVSOS VIVID Election Day Turnout (county table)",
+        "source": "NVSOS VIVID Election Day Turnout (county table) via r.jina.ai",
         "url": "https://www.nvsos.gov/vivid/",
-        "note": "All 17 counties from statewide VIVID ED table; O = Other as published. Replaces prior Washoe-only snapshot.",
+        "note": "All 17 counties from statewide VIVID ED table; O = Other as published. Statewide ED total unchanged at 199655 since 8:08 PM PT (page Last updated ~2m at fetch).",
         "counties": {
           "Carson City": {
-            "total": 3904,
-            "R": 1833,
-            "D": 798,
-            "O": 1273,
-            "ed": 3904
+            "total": 4003,
+            "R": 1866,
+            "D": 822,
+            "O": 1315,
+            "ed": 4003
           },
           "Churchill": {
-            "total": 2433,
-            "R": 1583,
-            "D": 239,
+            "total": 2435,
+            "R": 1584,
+            "D": 240,
             "O": 611,
-            "ed": 2433
+            "ed": 2435
           },
           "Clark": {
-            "total": 126469,
-            "R": 39870,
-            "D": 41424,
-            "O": 45175,
-            "ed": 126469
+            "total": 137161,
+            "R": 42271,
+            "D": 45192,
+            "O": 49698,
+            "ed": 137161
           },
           "Douglas": {
-            "total": 4367,
-            "R": 2644,
-            "D": 548,
-            "O": 1175,
-            "ed": 4367
+            "total": 4371,
+            "R": 2646,
+            "D": 549,
+            "O": 1176,
+            "ed": 4371
           },
           "Elko": {
-            "total": 3794,
-            "R": 2284,
-            "D": 430,
-            "O": 1080,
-            "ed": 3794
+            "total": 3869,
+            "R": 2325,
+            "D": 442,
+            "O": 1102,
+            "ed": 3869
           },
           "Esmeralda": {
             "total": 126,
@@ -9874,32 +9874,32 @@
             "ed": 230
           },
           "Humboldt": {
-            "total": 1321,
-            "R": 852,
-            "D": 132,
-            "O": 337,
-            "ed": 1321
+            "total": 1344,
+            "R": 864,
+            "D": 137,
+            "O": 343,
+            "ed": 1344
           },
           "Lander": {
-            "total": 499,
-            "R": 345,
+            "total": 500,
+            "R": 346,
             "D": 51,
             "O": 103,
-            "ed": 499
+            "ed": 500
           },
           "Lincoln": {
-            "total": 839,
-            "R": 665,
+            "total": 842,
+            "R": 667,
             "D": 55,
-            "O": 119,
-            "ed": 839
+            "O": 120,
+            "ed": 842
           },
           "Lyon": {
-            "total": 4615,
-            "R": 2646,
-            "D": 547,
-            "O": 1422,
-            "ed": 4615
+            "total": 4660,
+            "R": 2665,
+            "D": 552,
+            "O": 1443,
+            "ed": 4660
           },
           "Mineral": {
             "total": 492,
@@ -9923,18 +9923,18 @@
             "ed": 429
           },
           "Storey": {
-            "total": 796,
-            "R": 487,
+            "total": 797,
+            "R": 488,
             "D": 104,
             "O": 205,
-            "ed": 796
+            "ed": 797
           },
           "Washoe": {
-            "total": 33537,
-            "R": 12456,
-            "D": 9202,
-            "O": 11879,
-            "ed": 33537
+            "total": 34865,
+            "R": 12818,
+            "D": 9624,
+            "O": 12423,
+            "ed": 34865
           },
           "White Pine": {
             "total": 811,
@@ -16109,23 +16109,13 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "7:45 PM PT",
+        "as_of": "8:18 PM PT",
         "label": "Cumulative ballots cast (early + mail + Election Day) by party registration",
-        "source": "FreshTake.Vote countydata.php updated 2026-11-03 22:42:04 ET",
+        "source": "FreshTake.Vote countydata.php updated 2026-11-03 23:12:03",
         "url": "https://www.freshtake.vote/2026G/countydata.php",
-        "note": "All 67 counties; count rows (not % of reg). statewide_cum=8326119; statewide_ed_today=2782562 (ED hourly unchanged — do not use overall-day).",
-        "statewide_cum": {
-          "R": 3561559,
-          "D": 2834210,
-          "O": 1930270,
-          "total": 8326039
-        },
-        "statewide_ed_today": {
-          "R": 1339879,
-          "D": 739814,
-          "O": 702869,
-          "total": 2782562
-        },
+        "note": "All 67 counties; count rows (not % of reg). statewide_cum=8326317; statewide_ed_today=2782564 (ED hourly unchanged vs 8:08 PM — identical FreshTake index.php eday sum R1339879/D739814/O702871).",
+        "statewide_cum": 8326317,
+        "statewide_ed_today": 2782564,
         "counties": {
           "Alachua": {
             "R": 29823,
@@ -16212,16 +16202,16 @@
             "total": 5643
           },
           "Duval": {
-            "R": 141319,
-            "D": 151560,
-            "O": 67716,
-            "total": 360595
+            "R": 141323,
+            "D": 151569,
+            "O": 67723,
+            "total": 360615
           },
           "Escambia": {
-            "R": 58745,
-            "D": 37985,
-            "O": 19572,
-            "total": 116302
+            "R": 58784,
+            "D": 38042,
+            "O": 19595,
+            "total": 116421
           },
           "Flagler": {
             "R": 34295,
@@ -16382,8 +16372,8 @@
           "Miami-Dade": {
             "R": 277332,
             "D": 286611,
-            "O": 230806,
-            "total": 794749
+            "O": 230804,
+            "total": 794747
           },
           "Monroe": {
             "R": 15467,
@@ -16422,10 +16412,10 @@
             "total": 132687
           },
           "Palm Beach": {
-            "R": 195620,
-            "D": 231057,
-            "O": 149961,
-            "total": 576638
+            "R": 195630,
+            "D": 231078,
+            "O": 149982,
+            "total": 576690
           },
           "Pasco": {
             "R": 113498,
@@ -16452,10 +16442,10 @@
             "total": 26637
           },
           "Santa Rosa": {
-            "R": 50607,
+            "R": 50608,
             "D": 12515,
             "O": 11751,
-            "total": 74873
+            "total": 74874
           },
           "Sarasota": {
             "R": 113472,
@@ -16476,10 +16466,10 @@
             "total": 156872
           },
           "St. Lucie": {
-            "R": 56607,
-            "D": 52040,
-            "O": 31132,
-            "total": 139779
+            "R": 56608,
+            "D": 52044,
+            "O": 31135,
+            "total": 139787
           },
           "Sumter": {
             "R": 60348,
@@ -21325,11 +21315,11 @@
         }
       ],
       "county_turnout_2026": {
-        "as_of": "Travis 9:44 PM CT ED 101238; Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
+        "as_of": "Travis 10:12 PM CT ED 101238 (unchanged); Bexar 136124 @ 7 PM CT; Harris 236K+ @ 5 PM CT unchanged",
         "label": "Election Day in-person ballots (selected large counties)",
         "source": "Travis EarlyVotingTable; Bexar County Elections via News4SanAntonio; prior Harris news citation",
         "url": "https://updates.electionlink.net/widgets/travistx/2026-11-03/EarlyVotingTable.html",
-        "note": "Travis refreshed to 101,231 (9:11 PM CT). Bexar ED as of 7 p.m.: 136,124 (Bexar County Elections via News4SanAntonio). Harris still 236K+ floor @ 5 PM CT (no newer exact figure).",
+        "note": "Travis EarlyVotingTable re-fetched; Election Day still 101,238 (Last Refreshed Tue Nov 3 10:12 PM CT). No new Bexar/Harris exact official figure this hour (KENS5 fetch empty).",
         "counties": {
           "Travis": {
             "total": 101238,
