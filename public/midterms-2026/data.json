@@ -1,15 +1,13 @@
 {
-  "lastUpdated": "2026-11-03T16:22-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 4:22 PM PT",
+  "lastUpdated": "2026-11-03T16:30-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 4:30 PM PT",
   "notes": [
     "Early-vote counts from UF Election Lab tracker; KS/OH/CA refreshed 11/3 hourly run; MN/AZ/TX/AK as of 11/2; others 11/3.",
     "Turnout so far = pre-Election Day (plus any UF-included Election Day early updates) ballots / registered voters.",
     "2022 turnout % is of voting-eligible population (UF Election Lab); 2022 registration not pulled for every state.",
     "Any null value displays as 'pending'.",
-    "No statewide results yet as of this hourly refresh; polls still open in all tracked states.",
-    "Florida Election Day series switched to FreshTake.Vote directly (single source) at 11:32 AM PT; earlier Strength In Numbers-derived rows removed.",
-    "Noon PT refresh: FL/NV/AZ/GA Election Day turnout updated; CA early+party from UF. No results yet.",
-    "Hourly refresh Tue Nov 3, 2026, 2:10 PM PT: FL ED 2,152,551 (R1061416/D563832/O527303 FreshTake 17:06:05 ET); NV ED 84,508 (R33777/D23708/O27023 VIVID via DPR 2:00 PM PST); AZ Maricopa 151,176 (Stealth 3 PM MST); TX Travis 75,845. No statewide results; polls still open."
+    "GA SOS ENR posting unofficial statewide Governor/Senate counts (33/159 localities as of 4:23 PM PT). FL Election Watch still 0; OH/NH/ME/others no usable official candidate counts this cycle.",
+    "Florida Election Day series switched to FreshTake.Vote directly (single source) at 11:32 AM PT; earlier Strength In Numbers-derived rows removed."
   ],
   "states": [
     {
@@ -19115,7 +19113,7 @@
       "registered": null,
       "registered_note": "just under 8.2M registered / ~7.5M active (GA SOS via Atlanta Jewish Times); exact figure not fetched",
       "election_day_turnout": 1300000,
-      "expected_vote_counted_pct": 8.2,
+      "expected_vote_counted_pct": 20.8,
       "polls_close_pt": "4 PM PT",
       "y2022": {
         "early_in_person": 2289860,
@@ -19133,24 +19131,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "GA SOS (Enhanced Voting ENR), 4:13 PM PT",
+          "source": "GA SOS (Enhanced Voting ENR); 33/159 localities reporting; as of 4:23 PM PT",
           "candidates": [
             {
               "name": "Keisha Lance Bottoms",
               "party": "D",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 624216,
+              "pct": 65.0
             },
             {
               "name": "Rick Jackson",
               "party": "R",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 336047,
+              "pct": 35.0
             }
           ],
-          "reporting_pct": 13.8,
+          "reporting_pct": 20.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -19163,24 +19161,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "GA SOS (Enhanced Voting ENR), 4:13 PM PT",
+          "source": "GA SOS (Enhanced Voting ENR); 33/159 localities reporting; as of 4:23 PM PT",
           "candidates": [
             {
               "name": "Jon Ossoff",
               "party": "D, inc.",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 665831,
+              "pct": 69.31
             },
             {
               "name": "Mike Collins",
               "party": "R",
               "incumbent": null,
-              "votes": null,
-              "pct": null
+              "votes": 294813,
+              "pct": 30.69
             }
           ],
-          "reporting_pct": 13.8,
+          "reporting_pct": 20.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -21064,8 +21062,89 @@
           "source": "GA SOS (Enhanced Voting ENR); 13/159 localities reporting; as of 4:08 PM PT",
           "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "4:20 PM",
+          "expected_vote_counted_pct": 13.8,
+          "candidates": {
+            "Keisha Lance Bottoms": 527378,
+            "Rick Jackson": 267447
+          },
+          "scope": "statewide",
+          "source": "GA SOS (Enhanced Voting ENR); 22/159 localities reporting; as of 4:13 PM PT",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "4:20 PM",
+          "expected_vote_counted_pct": 13.8,
+          "candidates": {
+            "Jon Ossoff": 563565,
+            "Mike Collins": 231911
+          },
+          "scope": "statewide",
+          "source": "GA SOS (Enhanced Voting ENR); 22/159 localities reporting; as of 4:13 PM PT",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "4:30 PM",
+          "expected_vote_counted_pct": 20.8,
+          "candidates": {
+            "Keisha Lance Bottoms": 624216,
+            "Rick Jackson": 336047
+          },
+          "scope": "statewide",
+          "source": "GA SOS (Enhanced Voting ENR); 33/159 localities reporting; as of 4:23 PM PT",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "4:30 PM",
+          "expected_vote_counted_pct": 20.8,
+          "candidates": {
+            "Jon Ossoff": 665831,
+            "Mike Collins": 294813
+          },
+          "scope": "statewide",
+          "source": "GA SOS (Enhanced Voting ENR); 33/159 localities reporting; as of 4:23 PM PT",
+          "source_url": "https://results.sos.ga.gov/results/public/Georgia/elections/11032026GeneralAndSpecialElection",
+          "race": "U.S. Senate"
         }
-      ]
+      ],
+      "county_2026": {
+        "Brantley": 2964,
+        "Banks": 236,
+        "Dodge": 3712,
+        "Echols": 591,
+        "Barrow": 18700,
+        "Bleckley": 147,
+        "Fulton": 336733,
+        "Gordon": 9785,
+        "Gwinnett": 237310,
+        "Clayton": 70641,
+        "Grady": 4586,
+        "Hall": 32914,
+        "Camden": 12798,
+        "Glynn": 24265,
+        "Heard": 2102,
+        "Lee": 7426,
+        "Lumpkin": 9201,
+        "Liberty": 11843,
+        "Houston": 45588,
+        "Jackson": 24792,
+        "Haralson": 5570,
+        "Floyd": 912,
+        "Treutlen": 1425,
+        "Peach": 7878,
+        "Rockdale": 28932,
+        "Turner": 2416,
+        "Ware": 5949,
+        "Monroe": 8352,
+        "Polk": 8905,
+        "Oconee": 16325,
+        "Spalding": 17265
+      }
     },
     {
       "code": "ME",
@@ -21868,7 +21947,7 @@
     {
       "hour_pt": "5 PM",
       "polls_close": "KS, MI, PA, TX, FL panhandle",
-      "update": ""
+      "update": "GA SOS: Governor Bottoms 624,216 (65.0%) / Jackson 336,047 (35.0%); Senate Ossoff 665,831 (69.31%) / Collins 294,813 (30.69%); 33/159 localities (~20.8%). FL Election Watch still 0. No race calls."
     },
     {
       "hour_pt": "6 PM",
