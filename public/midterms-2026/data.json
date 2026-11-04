@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-03T20:01-08:00",
-  "lastUpdatedLabel": "Tue Nov 3, 2026, 8:01 PM PT",
+  "lastUpdated": "2026-11-03T20:08-08:00",
+  "lastUpdatedLabel": "Tue Nov 3, 2026, 8:08 PM PT",
   "notes": [
+    "Results refresh 8:08 PM PT Nov 3: AP via NBC Firecracker; monotonic. ED: FL 2,782,564 (FreshTake 23:00:58 ET); NV 199,655 R71484/D58352/O69819 (VIVID via jina); AZ Maricopa unchanged 256,700 (closed); TX Travis unchanged 101,238. OH Governor Amy Acton AP call VERIFIED (apnews.com/article/ohio-governor-race-2026-election-ramaswamy-acton-ee7b1860b0b8905c55df27318755f7e3; AP ~10:49 PM EST / 7:49 PM PT). No other NEW AP race-call articles this run. Retained AP calls: PA Shapiro, FL Donalds, FL Moody, GA Bottoms, GA Ossoff, NH Pappas, OH Acton. NBC projections/leans (TX Sen Talarico P, OH Sen Brown G, KS Sen Hamilton G, CA Gov Becerra P w/ 0 votes) are NOT AP calls.",
     "Results refresh 7:53 PM PT Nov 3: AP via NBC Firecracker; monotonic. No NEW AP race-call articles this run. Retained AP calls: PA Shapiro, FL Donalds, FL Moody, GA Bottoms, GA Ossoff, NH Pappas. OH Governor: NBC projected Acton — kept pending (no AP race-call URL). NBC lean G / projections are not AP calls.",
     "Results refresh ~7:25 PM PT Nov 3: AP via NBC counts updated (monotonic). No NEW AP race-call articles this run for OH/KS/IA/MI/TX/ME/NH Gov/AZ/MN. Retained AP calls: PA Shapiro, FL Donalds, FL Moody, GA Bottoms, GA Ossoff, NH Pappas. NBC lean G codes are not AP calls.",
     "6:15 PM PT call check: FL Governor AP call for Byron Donalds (R) verified (apnews.com race-call article). GA Governor: projected for Keisha Lance Bottoms (D) by NBC News Decision Desk only; no AP call found, kept uncalled.",
@@ -42,24 +43,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Cindy Holscher",
               "party": "D",
               "incumbent": null,
-              "votes": 518880,
-              "pct": 51.9
+              "votes": 523226,
+              "pct": 51.8
             },
             {
               "name": "Ty Masterson",
               "party": "R",
               "incumbent": null,
-              "votes": 481292,
-              "pct": 48.1
+              "votes": 487023,
+              "pct": 48.2
             }
           ],
-          "reporting_pct": 83.9,
+          "reporting_pct": 84.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -72,31 +73,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT (NBC lean G — not an AP call)",
+          "source": "AP via NBC News, ~8:08 PM PT (NBC lean G — not an AP call)",
           "candidates": [
             {
               "name": "Roger Marshall",
               "party": "R",
               "incumbent": null,
-              "votes": 447318,
+              "votes": 452510,
               "pct": 44.5
             },
             {
               "name": "Adam Hamilton",
               "party": "D",
               "incumbent": null,
-              "votes": 529414,
-              "pct": 52.6
+              "votes": 533795,
+              "pct": 52.5
             },
             {
               "name": "David Graham",
               "party": "L",
               "incumbent": null,
-              "votes": 29213,
+              "votes": 29557,
               "pct": 2.9
             }
           ],
-          "reporting_pct": 84.4,
+          "reporting_pct": 85.1,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -150,7 +151,7 @@
       "candidate_source": "KS SOS official 2026 primary vote totals (D/R nominees); Libertarian from Ballotpedia",
       "candidate_source_url": "https://sos.ks.gov/elections/26elec/2026-Primary-Election-Official-Vote-Totals.pdf",
       "candidate_verification": "partly official",
-      "expected_vote_counted_pct": 84.4,
+      "expected_vote_counted_pct": 85.1,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -2487,6 +2488,31 @@
           "source": "AP via NBC News, ~8:01 PM PT (NBC lean G — not an AP call)",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/kansas-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 84.8,
+          "candidates": {
+            "Cindy Holscher": 523226,
+            "Ty Masterson": 487023
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/kansas-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 85.1,
+          "candidates": {
+            "Roger Marshall": 452510,
+            "Adam Hamilton": 533795,
+            "David Graham": 29557
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT (NBC lean G — not an AP call)",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/kansas-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {
@@ -2625,24 +2651,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Rob Sand",
               "party": "D",
               "incumbent": null,
-              "votes": 483483,
-              "pct": 56.6
+              "votes": 551106,
+              "pct": 58.1
             },
             {
               "name": "Zach Lahn",
               "party": "R",
               "incumbent": null,
-              "votes": 370853,
-              "pct": 43.4
+              "votes": 398009,
+              "pct": 41.9
             }
           ],
-          "reporting_pct": 61.6,
+          "reporting_pct": 68.6,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -2655,31 +2681,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Ashley Hinson",
               "party": "R",
               "incumbent": null,
-              "votes": 396585,
-              "pct": 45.6
+              "votes": 435183,
+              "pct": 44.3
             },
             {
               "name": "Josh Turek",
               "party": "D",
               "incumbent": null,
-              "votes": 441524,
-              "pct": 50.8
+              "votes": 512497,
+              "pct": 52.2
             },
             {
               "name": "Thomas Laehn",
               "party": "L",
               "incumbent": null,
-              "votes": 31491,
-              "pct": 3.6
+              "votes": 34364,
+              "pct": 3.5
             }
           ],
-          "reporting_pct": 62.8,
+          "reporting_pct": 70.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -2719,7 +2745,7 @@
       "candidate_source": "Iowa SOS candidate list",
       "candidate_source_url": "https://sos.iowa.gov/sites/default/files/2026-08/2026%20General%20-%20Candidate%20List%20Database%20-%20All%20Elections.pdf",
       "candidate_verification": "official",
-      "expected_vote_counted_pct": 62.8,
+      "expected_vote_counted_pct": 70.8,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -4822,6 +4848,31 @@
           "source": "AP via NBC News, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/iowa-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 68.6,
+          "candidates": {
+            "Rob Sand": 551106,
+            "Zach Lahn": 398009
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/iowa-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 70.8,
+          "candidates": {
+            "Ashley Hinson": 435183,
+            "Josh Turek": 512497,
+            "Thomas Laehn": 34364
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/iowa-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {
@@ -4954,31 +5005,31 @@
           "winner": "Amy Acton",
           "party": "D",
           "margin": "+4.9 pts",
-          "source": "AP, 8:01 PM PT",
+          "source": "AP (called ~7:49 PM PT / 10:49 PM EST); votes AP via NBC ~8:08 PM PT",
           "candidates": [
             {
               "name": "Amy Acton",
               "party": "D",
               "incumbent": null,
-              "votes": 2078290,
+              "votes": 2085113,
               "pct": 50.8
             },
             {
               "name": "Vivek Ramaswamy",
               "party": "R",
               "incumbent": null,
-              "votes": 1876035,
+              "votes": 1882441,
               "pct": 45.9
             },
             {
               "name": "Don Kissick",
               "party": "L",
               "incumbent": null,
-              "votes": 136987,
-              "pct": 3.3
+              "votes": 137601,
+              "pct": 3.4
             }
           ],
-          "reporting_pct": 86.2,
+          "reporting_pct": 86.5,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -4991,38 +5042,38 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT (NBC lean G — not an AP call)",
+          "source": "AP via NBC News, ~8:08 PM PT (NBC lean G — not an AP call)",
           "candidates": [
             {
               "name": "Sherrod Brown",
               "party": "D",
               "incumbent": null,
-              "votes": 1991832,
+              "votes": 1995239,
               "pct": 48.5
             },
             {
               "name": "Jon Husted",
               "party": "R",
               "incumbent": null,
-              "votes": 1912374,
+              "votes": 1915773,
               "pct": 46.6
             },
             {
               "name": "William B. Redpath",
               "party": "L",
               "incumbent": null,
-              "votes": 116591,
+              "votes": 116795,
               "pct": 2.8
             },
             {
               "name": "Greg Levy",
               "party": "Other",
               "incumbent": null,
-              "votes": 83240,
+              "votes": 83427,
               "pct": 2.0
             }
           ],
-          "reporting_pct": 86.4,
+          "reporting_pct": 86.5,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -5054,7 +5105,7 @@
       "candidate_source": "Stark County Board of Elections candidate list",
       "candidate_source_url": "https://www.starkcountyohio.gov/Board%20of%20Elections/Candidates%20List%20General.pdf",
       "candidate_verification": "official",
-      "expected_vote_counted_pct": 86.4,
+      "expected_vote_counted_pct": 86.5,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -7164,6 +7215,33 @@
           "source": "AP via NBC News, ~8:01 PM PT (NBC lean G — not an AP call)",
           "source_url": "https://www.nbcnews.com/politics/2026-special-elections/ohio-senate-results",
           "race": "U.S. Senate (special)"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 86.5,
+          "candidates": {
+            "Amy Acton": 2085113,
+            "Vivek Ramaswamy": 1882441,
+            "Don Kissick": 137601
+          },
+          "scope": "statewide",
+          "source": "AP (called ~7:49 PM PT / 10:49 PM EST); votes AP via NBC ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/ohio-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 86.5,
+          "candidates": {
+            "Sherrod Brown": 1995239,
+            "Jon Husted": 1915773,
+            "William B. Redpath": 116795,
+            "Greg Levy": 83427
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT (NBC lean G — not an AP call)",
+          "source_url": "https://www.nbcnews.com/politics/2026-special-elections/ohio-senate-results",
+          "race": "U.S. Senate (special)"
         }
       ],
       "county_2026": {
@@ -7285,31 +7363,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Amy Klobuchar",
               "party": "DFL",
               "incumbent": null,
-              "votes": 301241,
-              "pct": 48.8
+              "votes": 333268,
+              "pct": 48.0
             },
             {
               "name": "Lisa Demuth",
               "party": "R",
               "incumbent": null,
-              "votes": 305833,
-              "pct": 49.5
+              "votes": 348886,
+              "pct": 50.3
             },
             {
               "name": "Steven Young",
               "party": "Green",
               "incumbent": null,
-              "votes": 10266,
+              "votes": 11551,
               "pct": 1.7
             }
           ],
-          "reporting_pct": 20.6,
+          "reporting_pct": 23.2,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -7322,38 +7400,38 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Peggy Flanagan",
               "party": "DFL",
               "incumbent": null,
-              "votes": 313196,
-              "pct": 46.6
+              "votes": 343725,
+              "pct": 45.9
             },
             {
               "name": "Michele Tafoya",
               "party": "R",
               "incumbent": null,
-              "votes": 340892,
-              "pct": 50.7
+              "votes": 384391,
+              "pct": 51.3
             },
             {
               "name": "Rebecca Whiting",
               "party": "L",
               "incumbent": null,
-              "votes": 7676,
-              "pct": 1.1
+              "votes": 8666,
+              "pct": 1.2
             },
             {
               "name": "Marisa Simonetti",
               "party": "Unaffiliated",
               "incumbent": null,
-              "votes": 10163,
+              "votes": 11482,
               "pct": 1.5
             }
           ],
-          "reporting_pct": 22.5,
+          "reporting_pct": 25.0,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -7385,7 +7463,7 @@
       "candidate_source": "Ballotpedia; CBS Minnesota",
       "candidate_source_url": "https://ballotpedia.org/Minnesota_gubernatorial_and_lieutenant_gubernatorial_election,_2026",
       "candidate_verification": "unofficial (official list not fetched; Ballotpedia/news)",
-      "expected_vote_counted_pct": 22.5,
+      "expected_vote_counted_pct": 25.0,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -8834,6 +8912,33 @@
           "source": "AP via NBC News, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/minnesota-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 23.2,
+          "candidates": {
+            "Amy Klobuchar": 333268,
+            "Lisa Demuth": 348886,
+            "Steven Young": 11551
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/minnesota-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 25.0,
+          "candidates": {
+            "Peggy Flanagan": 343725,
+            "Michele Tafoya": 384391,
+            "Rebecca Whiting": 8666,
+            "Marisa Simonetti": 11482
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/minnesota-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {
@@ -8936,7 +9041,7 @@
       "early_data_as_of": "11/3",
       "registered": 2103151,
       "registered_note": "active registered (NV SOS via Clark County Tribune)",
-      "election_day_turnout": 187382,
+      "election_day_turnout": 199655,
       "polls_close_pt": "7 PM PT",
       "y2022": {
         "early_in_person": 309434,
@@ -9590,11 +9695,23 @@
           "scope": "statewide",
           "source": "NVSOS VIVID Election Day Turnout dashboard (retrieved ~7:10 PM PT; page Last updated ~3m earlier); +5242 since 6:50 PM",
           "source_url": "https://www.nvsos.gov/vivid/"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "ed_turnout": 199655,
+          "by_party": {
+            "R": 71484,
+            "D": 58352,
+            "O": 69819
+          },
+          "scope": "statewide",
+          "source": "NVSOS VIVID Election Day Turnout dashboard via r.jina.ai (page Last updated ~2m earlier at fetch ~8:08 PM PT); +12273 since 7:10 PM",
+          "source_url": "https://www.nvsos.gov/vivid/"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "7:10 PM PT",
-      "election_day_turnout_source": "NVSOS VIVID Election Day Turnout dashboard (retrieved ~7:10 PM PT; page Last updated ~3m earlier); +5242 since 6:50 PM",
+      "election_day_turnout_as_of": "8:08 PM PT",
+      "election_day_turnout_source": "NVSOS VIVID Election Day Turnout dashboard via r.jina.ai (page Last updated ~2m earlier at fetch ~8:08 PM PT); +12273 since 7:10 PM",
       "election_day_turnout_url": "https://www.nvsos.gov/vivid/",
       "county_turnout_2026": {
         "as_of": "7:10 PM PT",
@@ -9754,45 +9871,45 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Jocelyn Benson",
               "party": "D",
               "incumbent": null,
-              "votes": 771492,
-              "pct": 53.8
+              "votes": 787856,
+              "pct": 53.4
             },
             {
               "name": "John James",
               "party": "R",
               "incumbent": null,
-              "votes": 637535,
-              "pct": 44.5
+              "votes": 664072,
+              "pct": 45.0
             },
             {
               "name": "Anthony Hudson",
               "party": "L",
               "incumbent": null,
-              "votes": 13328,
+              "votes": 13915,
               "pct": 0.9
             },
             {
               "name": "Donna Brandenburg",
               "party": "UST",
               "incumbent": null,
-              "votes": 5399,
+              "votes": 5648,
               "pct": 0.4
             },
             {
               "name": "Douglas Campbell",
               "party": "Green",
               "incumbent": null,
-              "votes": 5039,
+              "votes": 5189,
               "pct": 0.4
             }
           ],
-          "reporting_pct": 29.1,
+          "reporting_pct": 29.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -9805,52 +9922,52 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Abdul El-Sayed",
               "party": "D",
               "incumbent": null,
-              "votes": 744734,
-              "pct": 51.8
+              "votes": 755406,
+              "pct": 51.5
             },
             {
               "name": "Mike Rogers",
               "party": "R",
               "incumbent": null,
-              "votes": 667100,
-              "pct": 46.4
+              "votes": 684597,
+              "pct": 46.6
             },
             {
               "name": "Lydia Christensen",
               "party": "L",
               "incumbent": null,
-              "votes": 14030,
+              "votes": 14395,
               "pct": 1.0
             },
             {
               "name": "Tim Long",
               "party": "UST",
               "incumbent": null,
-              "votes": 6774,
+              "votes": 7003,
               "pct": 0.5
             },
             {
               "name": "Douglas P. Marsh",
               "party": "Green",
               "incumbent": null,
-              "votes": 3480,
-              "pct": 0.2
+              "votes": 4157,
+              "pct": 0.3
             },
             {
               "name": "Walter P. Kristy",
               "party": "NLP",
               "incumbent": null,
-              "votes": 1910,
+              "votes": 1965,
               "pct": 0.1
             }
           ],
-          "reporting_pct": 29.2,
+          "reporting_pct": 29.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -9882,7 +9999,7 @@
       "candidate_source": "Kent County official candidates list",
       "candidate_source_url": "https://www.kentcountymi.gov/DocumentCenter/View/8870/November-3-2026-Candidates-and-Proposals-PDF",
       "candidate_verification": "official",
-      "expected_vote_counted_pct": 29.2,
+      "expected_vote_counted_pct": 29.9,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -11494,6 +11611,37 @@
           "source": "AP via NBC News, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/michigan-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 29.9,
+          "candidates": {
+            "Jocelyn Benson": 787856,
+            "John James": 664072,
+            "Anthony Hudson": 13915,
+            "Donna Brandenburg": 5648,
+            "Douglas Campbell": 5189
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/michigan-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 29.8,
+          "candidates": {
+            "Abdul El-Sayed": 755406,
+            "Mike Rogers": 684597,
+            "Lydia Christensen": 14395,
+            "Tim Long": 7003,
+            "Douglas P. Marsh": 4157,
+            "Walter P. Kristy": 1965
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/michigan-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {
@@ -11609,32 +11757,32 @@
           "status": "called",
           "winner": "Josh Shapiro",
           "party": "D",
-          "margin": "+21.9 pts",
-          "source": "AP, ~8:01 PM PT",
+          "margin": "+22.1 pts",
+          "source": "AP, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Josh Shapiro",
               "party": "D",
               "incumbent": null,
-              "votes": 2620963,
-              "pct": 60.2
+              "votes": 2735721,
+              "pct": 60.4
             },
             {
               "name": "Stacy Garrity",
               "party": "R",
               "incumbent": null,
-              "votes": 1675728,
-              "pct": 38.5
+              "votes": 1737537,
+              "pct": 38.3
             },
             {
               "name": "Ken Krawchuk",
               "party": "L",
               "incumbent": null,
-              "votes": 56816,
+              "votes": 58917,
               "pct": 1.3
             }
           ],
-          "reporting_pct": 82.8,
+          "reporting_pct": 86.2,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -11682,7 +11830,7 @@
       "candidate_source": "The Ballot Brief; Ballotpedia",
       "candidate_source_url": "https://ballotpedia.org/State_executive_official_elections,_2026",
       "candidate_verification": "unofficial (official list not fetched; Ballotpedia/news)",
-      "expected_vote_counted_pct": 82.8,
+      "expected_vote_counted_pct": 86.2,
       "no_senate_race": true,
       "county_baselines_2024": [
         {
@@ -13142,6 +13290,19 @@
           "source": "AP, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/pennsylvania-governor-results",
           "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 86.2,
+          "candidates": {
+            "Josh Shapiro": 2735721,
+            "Stacy Garrity": 1737537,
+            "Ken Krawchuk": 58917
+          },
+          "scope": "statewide",
+          "source": "AP, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/pennsylvania-governor-results",
+          "race": "Governor"
         }
       ],
       "county_2026": {
@@ -13242,7 +13403,7 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Katie Hobbs",
@@ -14062,7 +14223,7 @@
       "early_data_as_of": "11/3",
       "registered": 13672122,
       "registered_note": "active, as of Sep 30 (FL DOS)",
-      "election_day_turnout": 2782562,
+      "election_day_turnout": 2782564,
       "polls_close_pt": "4 PM PT (5 PM PT in CT panhandle)",
       "y2022": {
         "early_in_person": 2285465,
@@ -14080,55 +14241,55 @@
           "winner": "Byron Donalds",
           "party": "R",
           "margin": "+1.4 pts",
-          "source": "AP, ~8:01 PM PT",
+          "source": "AP, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Byron Donalds",
               "party": "R",
               "incumbent": null,
-              "votes": 4118881,
+              "votes": 4123196,
               "pct": 50.1
             },
             {
               "name": "David Jolly",
               "party": "D",
               "incumbent": null,
-              "votes": 4004776,
+              "votes": 4010450,
               "pct": 48.7
             },
             {
               "name": "Scott Eckhard Jewett",
               "party": "LPF",
               "incumbent": null,
-              "votes": 37659,
+              "votes": 37727,
               "pct": 0.5
             },
             {
               "name": "Charles Burkett",
               "party": "NPA",
               "incumbent": null,
-              "votes": 15169,
+              "votes": 15186,
               "pct": 0.2
             },
             {
               "name": "Frank J. Russo",
               "party": "NPA",
               "incumbent": null,
-              "votes": 23085,
+              "votes": 23114,
               "pct": 0.3
             },
             {
               "name": "Moliere Dimanche",
               "party": "NPA",
               "incumbent": null,
-              "votes": 7544,
+              "votes": 7556,
               "pct": 0.1
             },
             {
               "name": "Dean Ocean Abrams",
               "party": "NPA",
               "incumbent": null,
-              "votes": 12427,
+              "votes": 12451,
               "pct": 0.2
             },
             {
@@ -14151,28 +14312,28 @@
           "status": "called",
           "winner": "Ashley Moody",
           "party": "R",
-          "margin": "+3.0 pts",
-          "source": "AP, ~8:01 PM PT",
+          "margin": "+2.9 pts",
+          "source": "AP, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Ashley Moody",
               "party": "R",
               "incumbent": null,
-              "votes": 4194245,
+              "votes": 4198635,
               "pct": 50.9
             },
             {
               "name": "Angie Nixon",
               "party": "D",
               "incumbent": null,
-              "votes": 3949380,
-              "pct": 47.9
+              "votes": 3955021,
+              "pct": 48.0
             },
             {
               "name": "Neil J. Gillespie",
               "party": "NPA",
               "incumbent": null,
-              "votes": 94055,
+              "votes": 94170,
               "pct": 1.1
             }
           ],
@@ -15739,11 +15900,23 @@
           "scope": "statewide",
           "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:52:08 ET",
           "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "ed_turnout": 2782564,
+          "by_party": {
+            "R": 1339879,
+            "D": 739814,
+            "O": 702871
+          },
+          "scope": "statewide",
+          "source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 23:00:58 ET (index.php county eday sum)",
+          "source_url": "https://www.freshtake.vote/2026G/dailydata.php"
         }
       ],
       "election_day_turnout_scope": "statewide",
-      "election_day_turnout_as_of": "6:52 PM PT",
-      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 21:52:08 ET",
+      "election_day_turnout_as_of": "8:08 PM PT",
+      "election_day_turnout_source": "FreshTake.Vote (County Supervisors of Elections), updated 2026-11-03 23:00:58 ET (index.php county eday sum)",
       "election_day_turnout_url": "https://www.freshtake.vote/2026G/dailydata.php",
       "precinct_feeds": [
         {
@@ -16773,6 +16946,37 @@
           "source": "AP, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-special-elections/florida-senate-results",
           "race": "U.S. Senate (special)"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 99.0,
+          "candidates": {
+            "Byron Donalds": 4123196,
+            "David Jolly": 4010450,
+            "Scott Eckhard Jewett": 37727,
+            "Charles Burkett": 15186,
+            "Frank J. Russo": 23114,
+            "Moliere Dimanche": 7556,
+            "Dean Ocean Abrams": 12451,
+            "Jeffrey Peter Datto": 8403
+          },
+          "scope": "statewide",
+          "source": "AP, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/florida-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 99.0,
+          "candidates": {
+            "Ashley Moody": 4198635,
+            "Angie Nixon": 3955021,
+            "Neil J. Gillespie": 94170
+          },
+          "scope": "statewide",
+          "source": "AP, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-special-elections/florida-senate-results",
+          "race": "U.S. Senate (special)"
         }
       ],
       "county_2026": {
@@ -16873,31 +17077,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Greg Abbott",
               "party": "R",
               "incumbent": null,
-              "votes": 2784787,
-              "pct": 41.6
+              "votes": 2853887,
+              "pct": 41.4
             },
             {
               "name": "Gina Hinojosa",
               "party": "D",
               "incumbent": null,
-              "votes": 3825990,
-              "pct": 57.1
+              "votes": 3959786,
+              "pct": 57.4
             },
             {
               "name": "Pat Dixon",
               "party": "L",
               "incumbent": null,
-              "votes": 84277,
+              "votes": 86888,
               "pct": 1.3
             }
           ],
-          "reporting_pct": 64.2,
+          "reporting_pct": 66.2,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -16910,31 +17114,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT (NBC projected — not an AP call)",
+          "source": "AP via NBC News, ~8:08 PM PT (NBC projected — not an AP call)",
           "candidates": [
             {
               "name": "Ken Paxton",
               "party": "R",
               "incumbent": null,
-              "votes": 2655852,
-              "pct": 38.9
+              "votes": 2688522,
+              "pct": 39.0
             },
             {
               "name": "James Talarico",
               "party": "D",
               "incumbent": null,
-              "votes": 4070800,
-              "pct": 59.6
+              "votes": 4091414,
+              "pct": 59.4
             },
             {
               "name": "Ted Brown",
               "party": "L",
               "incumbent": null,
-              "votes": 106346,
+              "votes": 108280,
               "pct": 1.6
             }
           ],
-          "reporting_pct": 65.6,
+          "reporting_pct": 66.1,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -16966,7 +17170,7 @@
       "candidate_source": null,
       "candidate_source_url": null,
       "candidate_verification": null,
-      "expected_vote_counted_pct": 65.6,
+      "expected_vote_counted_pct": 66.2,
       "no_senate_race": false,
       "county_baselines_2024": [
         {
@@ -21356,6 +21560,32 @@
           "source": "AP via NBC News, ~8:01 PM PT (NBC projected — not an AP call)",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/texas-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 66.2,
+          "candidates": {
+            "Greg Abbott": 2853887,
+            "Gina Hinojosa": 3959786,
+            "Pat Dixon": 86888
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/texas-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 66.1,
+          "candidates": {
+            "Ken Paxton": 2688522,
+            "James Talarico": 4091414,
+            "Ted Brown": 108280
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT (NBC projected — not an AP call)",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/texas-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {
@@ -23453,22 +23683,22 @@
           "status": "called",
           "winner": "Keisha Lance Bottoms",
           "party": "D",
-          "margin": "+8.4 pts",
-          "source": "AP, ~8:01 PM PT",
+          "margin": "+8.8 pts",
+          "source": "AP, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Keisha Lance Bottoms",
               "party": "D",
               "incumbent": null,
-              "votes": 2108387,
-              "pct": 54.1
+              "votes": 2173417,
+              "pct": 54.4
             },
             {
               "name": "Rick Jackson",
               "party": "R",
               "incumbent": null,
-              "votes": 1790009,
-              "pct": 45.9
+              "votes": 1822679,
+              "pct": 45.6
             }
           ],
           "reporting_pct": 93.7,
@@ -23483,22 +23713,22 @@
           "status": "called",
           "winner": "Jon Ossoff",
           "party": "D",
-          "margin": "+17.6 pts",
-          "source": "AP, ~8:01 PM PT",
+          "margin": "+18.0 pts",
+          "source": "AP, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Jon Ossoff",
               "party": "D, inc.",
               "incumbent": null,
-              "votes": 2284896,
-              "pct": 58.6
+              "votes": 2356728,
+              "pct": 59.0
             },
             {
               "name": "Mike Collins",
               "party": "R",
               "incumbent": null,
-              "votes": 1611333,
-              "pct": 41.4
+              "votes": 1637242,
+              "pct": 41.0
             }
           ],
           "reporting_pct": 93.7,
@@ -25889,6 +26119,30 @@
           "source": "AP, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/georgia-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 93.7,
+          "candidates": {
+            "Keisha Lance Bottoms": 2173417,
+            "Rick Jackson": 1822679
+          },
+          "scope": "statewide",
+          "source": "AP, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/georgia-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 93.7,
+          "candidates": {
+            "Jon Ossoff": 2356728,
+            "Mike Collins": 1637242
+          },
+          "scope": "statewide",
+          "source": "AP, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/georgia-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {
@@ -26064,7 +26318,7 @@
       "registered": 897677,
       "registered_note": "active registered voters as of Mar 7, 2026 (latest Maine SOS Registered & Enrolled file)",
       "election_day_turnout": null,
-      "expected_vote_counted_pct": 34.6,
+      "expected_vote_counted_pct": 36.5,
       "polls_close_pt": "5 PM PT (8 PM ET; some towns open later but all close 8 PM ET)",
       "y2022": {
         "early_in_person": 68569,
@@ -26082,31 +26336,31 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Hannah Pingree",
               "party": "D",
               "incumbent": null,
-              "votes": 135371,
-              "pct": 51.4
+              "votes": 142643,
+              "pct": 51.1
             },
             {
               "name": "Bobby Charles",
               "party": "R",
               "incumbent": null,
-              "votes": 106444,
-              "pct": 40.4
+              "votes": 113755,
+              "pct": 40.7
             },
             {
               "name": "Rick Bennett",
               "party": "I",
               "incumbent": null,
-              "votes": 21629,
+              "votes": 22968,
               "pct": 8.2
             }
           ],
-          "reporting_pct": 33.0,
+          "reporting_pct": 35.1,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -26119,24 +26373,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Susan Collins",
               "party": "R",
               "incumbent": null,
-              "votes": 136923,
-              "pct": 49.6
+              "votes": 144980,
+              "pct": 49.9
             },
             {
               "name": "Troy Jackson",
               "party": "D",
               "incumbent": null,
-              "votes": 139220,
-              "pct": 50.4
+              "votes": 145379,
+              "pct": 50.0
             }
           ],
-          "reporting_pct": 34.6,
+          "reporting_pct": 36.5,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -26754,6 +27008,31 @@
           "source": "AP via NBC News, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/maine-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 35.1,
+          "candidates": {
+            "Hannah Pingree": 142643,
+            "Bobby Charles": 113755,
+            "Rick Bennett": 22968
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/maine-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 36.5,
+          "candidates": {
+            "Susan Collins": 144980,
+            "Troy Jackson": 145379
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/maine-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {}
@@ -26769,7 +27048,7 @@
       "registered": 866949,
       "registered_note": "names on checklist as of Nov 2, 2026 (NH SOS party registration history)",
       "election_day_turnout": null,
-      "expected_vote_counted_pct": 67.8,
+      "expected_vote_counted_pct": 70.6,
       "polls_close_pt": "4–5 PM PT (most towns 7 PM ET, larger towns/cities 8 PM ET; a few close earlier)",
       "y2022": {
         "early_in_person": 0,
@@ -26787,24 +27066,24 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~8:01 PM PT",
+          "source": "AP via NBC News, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Kelly Ayotte",
               "party": "R",
               "incumbent": null,
-              "votes": 235921,
-              "pct": 51.5
+              "votes": 241203,
+              "pct": 50.3
             },
             {
               "name": "Cinde Warmington",
               "party": "D",
               "incumbent": null,
-              "votes": 222117,
-              "pct": 48.5
+              "votes": 229971,
+              "pct": 48.0
             }
           ],
-          "reporting_pct": 67.6,
+          "reporting_pct": 70.4,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -26816,32 +27095,32 @@
           "status": "called",
           "winner": "Chris Pappas",
           "party": "D",
-          "margin": "+15.0 pts",
-          "source": "AP, ~8:01 PM PT",
+          "margin": "+15.6 pts",
+          "source": "AP, ~8:08 PM PT",
           "candidates": [
             {
               "name": "Chris Pappas",
               "party": "D",
               "incumbent": null,
-              "votes": 264905,
-              "pct": 56.6
+              "votes": 273972,
+              "pct": 56.9
             },
             {
               "name": "John E. Sununu",
               "party": "R",
               "incumbent": null,
-              "votes": 194488,
-              "pct": 41.6
+              "votes": 198614,
+              "pct": 41.3
             },
             {
               "name": "Edmond Laplante",
               "party": "Constitution",
               "incumbent": null,
-              "votes": 8460,
+              "votes": 8683,
               "pct": 1.8
             }
           ],
-          "reporting_pct": 67.8,
+          "reporting_pct": 70.6,
           "win_probability": {
             "status": "results pending",
             "values": null,
@@ -27522,6 +27801,31 @@
           "source": "AP, ~8:01 PM PT",
           "source_url": "https://www.nbcnews.com/politics/2026-elections/new-hampshire-senate-results",
           "race": "U.S. Senate"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 70.4,
+          "candidates": {
+            "Kelly Ayotte": 241203,
+            "Cinde Warmington": 229971
+          },
+          "scope": "statewide",
+          "source": "AP via NBC News, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/new-hampshire-governor-results",
+          "race": "Governor"
+        },
+        {
+          "time_pt": "8:08 PM",
+          "expected_vote_counted_pct": 70.6,
+          "candidates": {
+            "Chris Pappas": 273972,
+            "John E. Sununu": 198614,
+            "Edmond Laplante": 8683
+          },
+          "scope": "statewide",
+          "source": "AP, ~8:08 PM PT",
+          "source_url": "https://www.nbcnews.com/politics/2026-elections/new-hampshire-senate-results",
+          "race": "U.S. Senate"
         }
       ],
       "county_2026": {}
@@ -27611,7 +27915,7 @@
     {
       "hour_pt": "8 PM",
       "polls_close": "CA",
-      "update": ""
+      "update": "ED: FL 2,782,564; NV 199,655 (VIVID); AZ Maricopa still 256,700 (centers closed); TX Travis still 101,238. Results AP via NBC ~8:08 PM PT. OH Gov Acton AP-called (verified). CA polls closing; AK still open. No additional NEW AP calls among tracked states this hour beyond OH Gov already in file."
     },
     {
       "hour_pt": "9 PM",
