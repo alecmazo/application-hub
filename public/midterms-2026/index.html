@@ -40,23 +40,26 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <header>
 <a href="../" class="mut" style="font-size:.85rem">← App Hub</a>
 <h1>Midterms 2026 Election Dashboard</h1>
-<div class="mut">Official ballots where a state has published them, and contest votes for the same 15 states, against 2022. Last updated: <b id="upd">loading…</b> <span class="unof">Unofficial until certified</span></div><div class="mut" style="font-size:.8rem">Ballots cast are not the votes in one race. A contest total used in place of ballots is marked proxy. A race is marked called only when the Associated Press called it. No polls are used.</div>
+<div class="mut">All 50 states and D.C. Last updated: <b id="upd">loading…</b> <span class="unof">Latest count, not certified</span></div><div class="mut" style="font-size:.8rem">The numbers at the top are the U.S. House vote, summed from AP counts on NBC News, compared with the 2022 FEC House vote for the same 50 states. That is not ballots cast. Official ballots are shown only for states that published them. A contest used in place of ballots is labeled. A race is marked called only when the Associated Press called it.</div>
 
 </header>
 <main>
 <section class="agg" id="agg"></section>
 <div class="tabs" id="tabs"></div>
 <section class="pane" id="p-overview">
-<div class="kpis" id="kpis"></div>
-<section id="national"></section>
-<section id="why"></section>
-<h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to open its tab.</p>
-<h2>Summary</h2><p class="mut" style="font-size:.8rem">Official ballots are blank (n/a) unless that state's election office published a turnout or ballots-cast total. "Top contest" is the race with the most votes counted and is a proxy, not ballots. Governor columns are the same office in both years (2022 is the sum of county baselines). Early and mail ballots are in the historical note below, not in this table.</p><div class="tw"><table><thead><tr><th>State</th><th>Official ballots</th><th>As of</th><th>Top contest votes</th><th>2022 turnout</th><th>2026 governor votes</th><th>2022 governor votes</th><th>% expected vote</th></tr></thead><tbody id="sum"></tbody></table></div>
 <h2 id="allstates-h">All 50 states and D.C.</h2>
-<div id="all-agg"></div>
 <p class="mut" id="all-note" style="font-size:.8rem"></p>
 <div class="tw"><table id="alltbl"><thead id="allhead"></thead><tbody id="allbody"></tbody></table></div>
 <div id="houseflips"></div>
+<details>
+<summary><b>15 tracked states only</b> <span class="mut">— not the national total. Governor votes and early ballots for the states that have their own tabs.</span></summary>
+<div id="tracked15"></div>
+<div class="kpis" id="kpis"></div>
+<h2>Tracked-state summary</h2><p class="mut" style="font-size:.8rem">These 15 states only. Official ballots are filled only where that state's election office published turnout. A top-contest figure is a proxy, not ballots, and is not the national House vote.</p><div class="tw"><table><thead><tr><th>State</th><th>Official ballots</th><th>As of</th><th>Top contest votes</th><th>2022 turnout</th><th>2026 governor votes</th><th>2022 governor votes</th><th>% expected vote</th></tr></thead><tbody id="sum"></tbody></table></div>
+</details>
+<section id="national"></section>
+<section id="why"></section>
+<h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to open its tab.</p>
 <h2 id="compare">2026 vs 2022, same measure</h2>
 <div class="legend" style="margin-bottom:8px"><span><i style="background:#9ca3af"></i>2022</span><span><i style="background:#3b82f6"></i>2026</span><span>n/a = the state has not published that figure. Governor votes are contest votes both years. Ballots are official turnout only.</span></div>
 <div id="cmp"></div>
@@ -195,8 +198,8 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 addEventListener('hashchange',()=>show(location.hash.slice(1)));
 let allCtx=null,allSort={k:'name',dir:1};
 function renderAll(d,S,ALL){
- const agg=document.getElementById('all-agg'),note=document.getElementById('all-note'),body=document.getElementById('allbody'),head=document.getElementById('allhead');
- if(!agg)return;
+ const note=document.getElementById('all-note'),body=document.getElementById('allbody'),head=document.getElementById('allhead');
+ if(!body)return;
  if(!ALL||!ALL.states){note.textContent='The all-states file did not load.';return;}
  const by=Object.fromEntries(S.map(s=>[s.code,s]));
  const hflips={};
@@ -220,7 +223,8 @@ function renderAll(d,S,ALL){
  const off=rows.filter(r=>r.measure==='Official ballots');
  const bSum=off.reduce((a,r)=>a+r.v,0),b22s=off.reduce((a,r)=>a+((r.s.y2022&&r.s.y2022.total_turnout)||0),0);
  const nd= (ALL.house_flips||[]).filter(f=>f.to==='D').length,nr=(ALL.house_flips||[]).filter(f=>f.to==='R').length;
- agg.innerHTML=`<div class="kpis"><div class="kpi"><span class="mut">2026 House popular vote, 50 states</span><b>D ${f(sum('dem','h26'))}</b><span class="mut" style="font-size:.7rem">R ${f(sum('rep','h26'))} · Other ${f(sum('other','h26'))}. Total ${f(htAll)}. Latest count, not certified.</span></div><div class="kpi"><span class="mut">2022 House votes, same 50 states</span><b>D ${f(sum('dem','h22'))}</b><span class="mut" style="font-size:.7rem">R ${f(sum('rep','h22'))} · Other ${f(sum('other','h22'))}. Total ${f(h2All)}. FEC. 2026 is ${h2All?(100*htAll/h2All).toFixed(1)+'%':'n/a'} of that total.</span></div><div class="kpi"><span class="mut">Official 2026 ballots</span><b>${f(bSum)}</b><span class="mut" style="font-size:.7rem">${off.map(r=>r.st.code).join(', ')||'none'}. 2022 ballots, same states: ${f(b22s)} (${b22s?(100*bSum/b22s).toFixed(1)+'%':'n/a'}).</span></div><div class="kpi"><span class="mut">House seats CBS lists as flipped</span><b>${nd} D / ${nr} R</b><span class="mut" style="font-size:.7rem">Named in the Nov. 6 CBS article. Margins are from the NBC/AP district votes.</span></div></div>`;
+ const headline=`<h2>National House vote <span class="unof">Latest count, not certified</span></h2><div class="kpis"><div class="kpi"><span class="mut">2026 House popular vote, 50 states</span><b>D ${f(sum('dem','h26'))}</b><span class="mut" style="font-size:.7rem">R ${f(sum('rep','h26'))} · Other ${f(sum('other','h26'))}. Total ${f(htAll)}. Latest count, not certified.</span></div><div class="kpi"><span class="mut">2022 House votes, same 50 states</span><b>D ${f(sum('dem','h22'))}</b><span class="mut" style="font-size:.7rem">R ${f(sum('rep','h22'))} · Other ${f(sum('other','h22'))}. Total ${f(h2All)}. FEC. 2026 is ${h2All?(100*htAll/h2All).toFixed(1)+'%':'n/a'} of that total.</span></div><div class="kpi"><span class="mut">Official 2026 ballots</span><b>${f(bSum)}</b><span class="mut" style="font-size:.7rem">${off.map(r=>r.st.code).join(', ')||'none'}. 2022 ballots, same states: ${f(b22s)} (${b22s?(100*bSum/b22s).toFixed(1)+'%':'n/a'}).</span></div><div class="kpi"><span class="mut">House seats CBS lists as flipped</span><b>${nd} D / ${nr} R</b><span class="mut" style="font-size:.7rem">Named in the Nov. 6 CBS article. Margins are from the NBC/AP district votes.</span></div></div>`;
+ const top=document.getElementById('agg'); if(top)top.innerHTML=headline;
  note.innerHTML=`${esc(ALL.house_2026_gap||'')} <a href="${esc((ALL.house_2026_source||{}).url||'#')}" target="_blank" rel="noopener">NBC / AP House results</a>. 2010–2022 ballots: <a href="${esc(ALL.ballots_url)}" target="_blank" rel="noopener">UF Election Lab</a>. House change compares 2026 district votes with 2022 FEC House votes. A top-race change is shown only when 2022 votes for that same office are in this file.`;
  const val=r=>allSort.k==='name'?r.st.name:allSort.k==='v'?r.v:allSort.k==='chg'?r.chg:allSort.k==='hchg'?r.hchg:allSort.k==='h26d'?r.h26&&r.h26.dem:r.st.name;
  rows.sort((a,b)=>{const x=val(a),y=val(b);if(x==null&&y==null)return a.st.name.localeCompare(b.st.name);if(x==null)return 1;if(y==null)return -1;return (typeof x==='string'?x.localeCompare(y):x-y)*allSort.dir;});
@@ -258,7 +262,7 @@ async function load(){
  {const PS=S.filter(s=>PARTY_AGG.includes(s.code));
   const p26=sumParty(PS.map(s=>latest(s.party_turnout))),p22=sumParty(PS.map(s=>{const o=s.party_turnout_2022||null;return o&&o.ballots2022_early_total?o.ballots2022_early_total:o}));
   const t22=S.reduce((a,s)=>a+(s.y2022.total_turnout||0),0);
-  document.getElementById('agg').innerHTML=`<h2>All 15 states at a glance <span class="unof">Unofficial until certified</span></h2>
+  document.getElementById('tracked15').innerHTML=`<h2>15 tracked states only <span class="unof">Not the national total</span></h2>
   <div class="kpis"><div class="kpi"><span class="mut">Official ballots cast, 2026</span><b>${f(withBallots.length?bSum:null)}</b><span class="mut" style="font-size:.7rem">${withBallots.length?withBallots.map(s=>s.code).join(', ')+' only. Other states have not published a ballots total retrieved for this update.': 'n/a — no state ballots-cast total retrieved'}</span></div><div class="kpi"><span class="mut">2022 turnout, same states</span><b>${f(withBallots.length?b22:null)}</b><span class="mut" style="font-size:.7rem">${b22?(bSum/b22*100).toFixed(1)+'% of 2022 turnout':'n/a'}</span></div><div class="kpi"><span class="mut">Governor contest votes, 2026 vs 2022</span><b>${f(g26s)}</b><span class="mut" style="font-size:.7rem">2022: ${f(g22s)} (${g22s?(100*g26s/g22s).toFixed(1)+'%':'n/a'}). Same office. ${g22miss.length?'No complete 2022 county baseline: '+g22miss.join(', ')+'. ':''}${gSame.filter(s=>gov2026(s)<0.95*gov2022(s)).map(s=>s.code+' '+(100*gov2026(s)/gov2022(s)).toFixed(0)+'% of its 2022 governor vote').join('; ')}${gSame.some(s=>gov2026(s)<0.95*gov2022(s))?' — those states are still short of a finished comparison.':''}</span></div><div class="kpi"><span class="mut">Top-contest votes, 15 states (proxy)</span><b>${f(proxySum)}</b><span class="mut" style="font-size:.7rem">Not ballots cast. Not added to the ballots figure. 2022 turnout in these states was ${f(t22)}.</span></div></div>
   <details><summary class="mut">Historical note: pre-Election Day ballots, not the 2026 total</summary>
   <h3 style="margin:16px 0 0">Pre-Election Day early vote by party (mail + early in-person), 2026 vs 2022</h3><p class="mut" style="font-size:.8rem;margin:2px 0">This is early voting only, from before Election Day. It is not the Overview total. 2026: UF Election Lab, as of 11/2–11/3. 2022: final pre-Election Day ballots by party. Seven states (KS, IA, NV, PA, AZ, FL, CA). 2026 early ballots in all 15 states: ${f(now)}. 2022 pre-Election Day ballots: ${f(sum22)}.</p>${partyBars(p26,p22,'2026 early')}<h3 style="margin:16px 0 0">Net lead by voter registration, before and on Election Day</h3><p class="mut" style="font-size:.8rem;margin:2px 0">Party of voters, not votes for candidates. Kept as a record of the election-night registration split. Not a result.</p><div style="display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.9rem">${S.map(s=>{const x=netAll(s);return x?`<span><a href="#${s.code}">${s.code}</a> ${netTxt(x)} <span class="mut" style="font-size:.72rem">${x.edMissing?'early vote only ('+esc(x.time)+')':x.partial?'incl. ED thru '+esc(x.time.replace(/( PT)+$/,' PT'))+' · '+esc(x.partial)+(x.est?' ~est.':''):'incl. ED thru '+esc(x.time.replace(/( PT)+$/,' PT'))+(x.est?' ~est.':'')}</span></span>`:''}).join('')}</div></details>`;}
