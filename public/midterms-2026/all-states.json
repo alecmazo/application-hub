@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "A full 2026 House popular vote is n/a. Official district totals were retrieved for California (52 districts), Georgia (14) and Texas (38, Nov. 4 SOS snapshot). Florida's Election Watch page lists 27 districts and omits District 10, so Florida is n/a rather than a partial sum. No other state's 2026 House file was retrieved. The Polymarket-based popular-vote site is not used.",
+  "house_2026_gap": "2026 House votes are the latest AP counts on the NBC News House results page at 2:48 PM ET on Nov. 6, summed by party across every district in the state. They are not certified. Florida's 10th District is in that feed at 0 votes. D.C. has no voting House seat in the feed. Where a state-office snapshot was higher, that party total was kept. The national total below is the sum of the 50 states in this table.",
   "states": [
     {
       "code": "AL",
@@ -42,7 +42,42 @@
           "other": 82777
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 763464,
+        "rep": 914968,
+        "other": 0,
+        "districts": 7,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1679602,
+        "percent_in": 98.9,
+        "call": "P",
+        "leader": "Tommy Tuberville",
+        "party": "Rep",
+        "leader_votes": 873332,
+        "candidates": [
+          {
+            "name": "Tommy Tuberville",
+            "party": "Rep",
+            "votes": 873332
+          },
+          {
+            "name": "Doug Jones",
+            "party": "Dem",
+            "votes": 806270
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "AK",
@@ -75,7 +110,60 @@
           "other": 5678
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 15550,
+        "rep": 105647,
+        "other": 91812,
+        "districts": 1,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 213733,
+        "percent_in": 74.1,
+        "call": "E",
+        "leader": "Mary Peltola",
+        "party": "Dem",
+        "leader_votes": 102962,
+        "candidates": [
+          {
+            "name": "Mary Peltola",
+            "party": "Dem",
+            "votes": 102962
+          },
+          {
+            "name": "Dan S. Sullivan",
+            "party": "Rep",
+            "votes": 102325
+          },
+          {
+            "name": "Gerald Heikes",
+            "party": "Rep",
+            "votes": 4846
+          },
+          {
+            "name": "Daniel J. Sullivan Jr.",
+            "party": "UDC",
+            "votes": 3600
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 0
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "U.S. Senate",
+        "total": 261705
+      }
     },
     {
       "code": "AZ",
@@ -108,7 +196,65 @@
           "other": 30655
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1306908,
+        "rep": 1057229,
+        "other": 41457,
+        "districts": 9,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 2427196,
+        "percent_in": 93.6,
+        "call": "P",
+        "leader": "Katie Hobbs",
+        "party": "Dem",
+        "leader_votes": 1346118,
+        "candidates": [
+          {
+            "name": "Katie Hobbs",
+            "party": "Dem",
+            "votes": 1346118
+          },
+          {
+            "name": "Andy Biggs",
+            "party": "Rep",
+            "votes": 1037157
+          },
+          {
+            "name": "Risa Lombardo",
+            "party": "Grn",
+            "votes": 22458
+          },
+          {
+            "name": "Teri Ann Hourihan",
+            "party": "NoL",
+            "votes": 21444
+          },
+          {
+            "name": "Alice Novoa (write-in)",
+            "party": "Rep",
+            "votes": 13
+          },
+          {
+            "name": "Gertritrude Gonzalez (write-in)",
+            "party": "Rep",
+            "votes": 6
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 2566491
+      }
     },
     {
       "code": "AR",
@@ -141,7 +287,47 @@
           "other": 25331
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 348470,
+        "rep": 512986,
+        "other": 15351,
+        "districts": 4,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 885759,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Tom Cotton",
+        "party": "Rep",
+        "leader_votes": 480627,
+        "candidates": [
+          {
+            "name": "Tom Cotton",
+            "party": "Rep",
+            "votes": 480627
+          },
+          {
+            "name": "Hallie Shoffner",
+            "party": "Dem",
+            "votes": 375647
+          },
+          {
+            "name": "Jeff Wadlin",
+            "party": "Lib",
+            "votes": 29485
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "CA",
@@ -179,9 +365,39 @@
         "rep": 2649565,
         "other": 64143,
         "districts": 52,
-        "as_of": "November 6, 2026, 9:27 a.m.",
-        "source": "California Secretary of State, U.S. Representative districtwide results. Other is No Party Preference.",
-        "url": "https://media.sos.ca.gov/media/us-rep.json"
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 8889221,
+        "percent_in": 64.6,
+        "call": "P",
+        "leader": "Xavier Becerra",
+        "party": "Dem",
+        "leader_votes": 5751214,
+        "candidates": [
+          {
+            "name": "Xavier Becerra",
+            "party": "Dem",
+            "votes": 5751214
+          },
+          {
+            "name": "Steve Hilton",
+            "party": "Rep",
+            "votes": 3138007
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 10933018
       }
     },
     {
@@ -215,7 +431,62 @@
           "other": 55757
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1557172,
+        "rep": 949461,
+        "other": 94214,
+        "districts": 8,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 2616689,
+        "percent_in": 95.9,
+        "call": "P",
+        "leader": "John Hickenlooper",
+        "party": "Dem",
+        "leader_votes": 1576377,
+        "candidates": [
+          {
+            "name": "John Hickenlooper",
+            "party": "Dem",
+            "votes": 1576377
+          },
+          {
+            "name": "Mark Baisley",
+            "party": "Rep",
+            "votes": 922654
+          },
+          {
+            "name": "Bob Chew",
+            "party": "FWD",
+            "votes": 68969
+          },
+          {
+            "name": "Blake Huber",
+            "party": "Lib",
+            "votes": 31661
+          },
+          {
+            "name": "Adam Withrow",
+            "party": "Uty",
+            "votes": 12984
+          },
+          {
+            "name": "Christopher Baum",
+            "party": "AVP",
+            "votes": 4044
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "CT",
@@ -248,7 +519,42 @@
           "other": 27141
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 807098,
+        "rep": 460220,
+        "other": 16270,
+        "districts": 5,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1296727,
+        "percent_in": 98.4,
+        "call": "P",
+        "leader": "Ned Lamont",
+        "party": "Dem",
+        "leader_votes": 772263,
+        "candidates": [
+          {
+            "name": "Ned Lamont",
+            "party": "Dem",
+            "votes": 772263
+          },
+          {
+            "name": "Ryan Fazio",
+            "party": "Rep",
+            "votes": 524464
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "DE",
@@ -281,7 +587,42 @@
           "other": 5050
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 243467,
+        "rep": 134966,
+        "other": 0,
+        "districts": 1,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 378111,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Chris Coons",
+        "party": "Dem",
+        "leader_votes": 240347,
+        "candidates": [
+          {
+            "name": "Chris Coons",
+            "party": "Dem",
+            "votes": 240347
+          },
+          {
+            "name": "Mike Katz",
+            "party": "Rep",
+            "votes": 137764
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "DC",
@@ -314,7 +655,31 @@
           "other": 15391
         }
       },
-      "house_2026": null
+      "house_2026": null,
+      "top_2026": {
+        "office": "Attorney General",
+        "total": 183269,
+        "percent_in": 84.4,
+        "leader": "Brian Schwalb",
+        "party": "dem",
+        "leader_votes": 170460,
+        "candidates": [
+          {
+            "name": "Brian Schwalb",
+            "party": "dem",
+            "votes": 170460
+          },
+          {
+            "name": "Manuel Rivera",
+            "party": "gop",
+            "votes": 12809
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News, District of Columbia results.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/district-of-columbia-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "FL",
@@ -347,7 +712,52 @@
           "other": 155406
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 3866072,
+        "rep": 4041044,
+        "other": 94611,
+        "districts": 28,
+        "zero_districts": [
+          10
+        ],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 8278410,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Ashley Moody",
+        "party": "Rep",
+        "leader_votes": 4210782,
+        "candidates": [
+          {
+            "name": "Ashley Moody",
+            "party": "Rep",
+            "votes": 4210782
+          },
+          {
+            "name": "Angie Nixon",
+            "party": "Dem",
+            "votes": 3973000
+          },
+          {
+            "name": "Neil Gillespie",
+            "party": "NPA",
+            "votes": 94628
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "U.S. Senate",
+        "total": 7761093
+      }
     },
     {
       "code": "GA",
@@ -381,13 +791,48 @@
         }
       },
       "house_2026": {
-        "dem": 2339649,
-        "rep": 1824588,
+        "dem": 2342620,
+        "rep": 1825069,
         "other": 0,
         "districts": 14,
-        "as_of": "Export created 2026-11-06T14:28:36Z (6:28 AM PT)",
-        "source": "Georgia Secretary of State results export, all 14 U.S. House districts.",
-        "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json"
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 4180603,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Keisha Lance Bottoms",
+        "party": "Dem",
+        "leader_votes": 2271433,
+        "candidates": [
+          {
+            "name": "Keisha Lance Bottoms",
+            "party": "Dem",
+            "votes": 2271433
+          },
+          {
+            "name": "Rick Jackson",
+            "party": "Rep",
+            "votes": 1909170
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 0
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 3953408
       }
     },
     {
@@ -421,7 +866,42 @@
           "other": 5130
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 255550,
+        "rep": 105424,
+        "other": 9318,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 383578,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Josh Green",
+        "party": "Dem",
+        "leader_votes": 278652,
+        "candidates": [
+          {
+            "name": "Josh Green",
+            "party": "Dem",
+            "votes": 278652
+          },
+          {
+            "name": "Gary Cordery",
+            "party": "Rep",
+            "votes": 104926
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "ID",
@@ -454,7 +934,62 @@
           "other": 7280
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 242062,
+        "rep": 414371,
+        "other": 53037,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 713615,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Brad Little",
+        "party": "Rep",
+        "leader_votes": 407263,
+        "candidates": [
+          {
+            "name": "Brad Little",
+            "party": "Rep",
+            "votes": 407263
+          },
+          {
+            "name": "Terri Pickens",
+            "party": "Dem",
+            "votes": 230770
+          },
+          {
+            "name": "John Stegner",
+            "party": "Ind",
+            "votes": 54216
+          },
+          {
+            "name": "Paul Sand",
+            "party": "Lib",
+            "votes": 11543
+          },
+          {
+            "name": " Pro-Life",
+            "party": "CST",
+            "votes": 9488
+          },
+          {
+            "name": "Jacob Burnett (write-in)",
+            "party": "Ind",
+            "votes": 335
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "IL",
@@ -487,7 +1022,47 @@
           "other": 9262
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 2477640,
+        "rep": 1504533,
+        "other": 19774,
+        "districts": 17,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 4035718,
+        "percent_in": 93.9,
+        "call": "P",
+        "leader": "JB Pritzker",
+        "party": "Dem",
+        "leader_votes": 2411168,
+        "candidates": [
+          {
+            "name": "JB Pritzker",
+            "party": "Dem",
+            "votes": 2411168
+          },
+          {
+            "name": "Darren Bailey",
+            "party": "Rep",
+            "votes": 1489024
+          },
+          {
+            "name": "Collin Corbett",
+            "party": "Ind",
+            "votes": 135526
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "IN",
@@ -520,7 +1095,19 @@
           "other": 38118
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 996768,
+        "rep": 926490,
+        "other": 15890,
+        "districts": 9,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": null,
+      "top_2022": null
     },
     {
       "code": "IA",
@@ -553,7 +1140,45 @@
           "other": 7383
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 667203,
+        "rep": 650678,
+        "other": 29572,
+        "districts": 4,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1365080,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Rob Sand",
+        "party": "Dem",
+        "leader_votes": 757497,
+        "candidates": [
+          {
+            "name": "Rob Sand",
+            "party": "Dem",
+            "votes": 757497
+          },
+          {
+            "name": "Zach Lahn",
+            "party": "Rep",
+            "votes": 607583
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 1221864
+      }
     },
     {
       "code": "KS",
@@ -586,7 +1211,50 @@
           "other": 6928
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 521000,
+        "rep": 541415,
+        "other": 29106,
+        "districts": 4,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 1097948,
+        "percent_in": 98.7,
+        "call": "P",
+        "leader": "Adam Hamilton",
+        "party": "Dem",
+        "leader_votes": 559869,
+        "candidates": [
+          {
+            "name": "Adam Hamilton",
+            "party": "Dem",
+            "votes": 559869
+          },
+          {
+            "name": "Roger Marshall",
+            "party": "Rep",
+            "votes": 504960
+          },
+          {
+            "name": "David Graham",
+            "party": "Lib",
+            "votes": 33119
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "U.S. Senate",
+        "total": 1004948
+      }
     },
     {
       "code": "KY",
@@ -619,7 +1287,47 @@
           "other": 19201
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 622448,
+        "rep": 765229,
+        "other": 34692,
+        "districts": 6,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 1427118,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Andy Barr",
+        "party": "Rep",
+        "leader_votes": 784869,
+        "candidates": [
+          {
+            "name": "Andy Barr",
+            "party": "Rep",
+            "votes": 784869
+          },
+          {
+            "name": "Charles Booker",
+            "party": "Dem",
+            "votes": 612357
+          },
+          {
+            "name": "Christopher Campbell",
+            "party": "KYP",
+            "votes": 29892
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "LA",
@@ -652,7 +1360,42 @@
           "other": 40491
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 645809,
+        "rep": 789442,
+        "other": 23905,
+        "districts": 6,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 1466069,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Julia Letlow",
+        "party": "Rep",
+        "leader_votes": 745963,
+        "candidates": [
+          {
+            "name": "Julia Letlow",
+            "party": "Rep",
+            "votes": 745963
+          },
+          {
+            "name": "Jamie Davis",
+            "party": "Dem",
+            "votes": 720106
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "ME",
@@ -685,7 +1428,60 @@
           "other": 22208
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 414617,
+        "rep": 299607,
+        "other": 125,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 710929,
+        "percent_in": 93.6,
+        "call": "P",
+        "leader": "Hannah Pingree",
+        "party": "Dem",
+        "leader_votes": 387226,
+        "candidates": [
+          {
+            "name": "Hannah Pingree",
+            "party": "Dem",
+            "votes": 387226
+          },
+          {
+            "name": "Bobby Charles",
+            "party": "Rep",
+            "votes": 265982
+          },
+          {
+            "name": "Rick Bennett",
+            "party": "Ind",
+            "votes": 57478
+          },
+          {
+            "name": "Randy Wilcox (write-in)",
+            "party": "Rep",
+            "votes": 186
+          },
+          {
+            "name": "John Glowa (write-in)",
+            "party": "Ind",
+            "votes": 57
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 674981
+      }
     },
     {
       "code": "MD",
@@ -718,7 +1514,52 @@
           "other": 13819
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1332328,
+        "rep": 612901,
+        "other": 18633,
+        "districts": 8,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1970126,
+        "percent_in": 82.8,
+        "call": "P",
+        "leader": "Wes Moore",
+        "party": "Dem",
+        "leader_votes": 1248915,
+        "candidates": [
+          {
+            "name": "Wes Moore",
+            "party": "Dem",
+            "votes": 1248915
+          },
+          {
+            "name": "Dan Cox",
+            "party": "Rep",
+            "votes": 641909
+          },
+          {
+            "name": "Andy Ellis",
+            "party": "Grn",
+            "votes": 40898
+          },
+          {
+            "name": "Cathy White",
+            "party": "WCP",
+            "votes": 38404
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "MA",
@@ -751,7 +1592,47 @@
           "other": 14807
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1722855,
+        "rep": 507904,
+        "other": 110672,
+        "districts": 9,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 2623000,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Maura Healey",
+        "party": "Dem",
+        "leader_votes": 1625487,
+        "candidates": [
+          {
+            "name": "Maura Healey",
+            "party": "Dem",
+            "votes": 1625487
+          },
+          {
+            "name": "Michael Minogue",
+            "party": "Rep",
+            "votes": 911234
+          },
+          {
+            "name": "Andrea James",
+            "party": "Ind",
+            "votes": 86279
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "MI",
@@ -784,7 +1665,62 @@
           "other": 107672
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 2532672,
+        "rep": 2108425,
+        "other": 102601,
+        "districts": 13,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 4796990,
+        "percent_in": 98.1,
+        "call": "P",
+        "leader": "Abdul El-Sayed",
+        "party": "Dem",
+        "leader_votes": 2520387,
+        "candidates": [
+          {
+            "name": "Abdul El-Sayed",
+            "party": "Dem",
+            "votes": 2520387
+          },
+          {
+            "name": "Mike Rogers",
+            "party": "Rep",
+            "votes": 2180541
+          },
+          {
+            "name": "Lydia Christensen",
+            "party": "Lib",
+            "votes": 49697
+          },
+          {
+            "name": "Tim Long",
+            "party": "UST",
+            "votes": 26542
+          },
+          {
+            "name": "Douglas Marsh",
+            "party": "Grn",
+            "votes": 12562
+          },
+          {
+            "name": "Walter Kristy",
+            "party": "NLP",
+            "votes": 7261
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "MN",
@@ -817,7 +1753,57 @@
           "other": 44459
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1574253,
+        "rep": 1214756,
+        "other": 27763,
+        "districts": 8,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 2831786,
+        "percent_in": 98.9,
+        "call": "P",
+        "leader": "Peggy Flanagan",
+        "party": "Dem",
+        "leader_votes": 1520871,
+        "candidates": [
+          {
+            "name": "Peggy Flanagan",
+            "party": "Dem",
+            "votes": 1520871
+          },
+          {
+            "name": "Michele Tafoya",
+            "party": "Rep",
+            "votes": 1233467
+          },
+          {
+            "name": "Marisa Simonetti",
+            "party": "Ind",
+            "votes": 41574
+          },
+          {
+            "name": "Rebecca Whiting",
+            "party": "Lib",
+            "votes": 32493
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 3381
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "MS",
@@ -850,7 +1836,47 @@
           "other": 3569
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 441787,
+        "rep": 488632,
+        "other": 18967,
+        "districts": 4,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 952175,
+        "percent_in": 96.3,
+        "call": "C",
+        "leader": "Scott Colom",
+        "party": "Dem",
+        "leader_votes": 467086,
+        "candidates": [
+          {
+            "name": "Scott Colom",
+            "party": "Dem",
+            "votes": 467086
+          },
+          {
+            "name": "Cindy Hyde-Smith",
+            "party": "Rep",
+            "votes": 465077
+          },
+          {
+            "name": "Ty Pinkins",
+            "party": "Ind",
+            "votes": 20012
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "MO",
@@ -883,7 +1909,19 @@
           "other": 41494
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1008273,
+        "rep": 1023180,
+        "other": 59638,
+        "districts": 8,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": null,
+      "top_2022": null
     },
     {
       "code": "MT",
@@ -916,7 +1954,52 @@
           "other": 59806
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 202434,
+        "rep": 250040,
+        "other": 28604,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 482014,
+        "percent_in": 97.5,
+        "call": "P",
+        "leader": "Kurt Alme",
+        "party": "Rep",
+        "leader_votes": 232916,
+        "candidates": [
+          {
+            "name": "Kurt Alme",
+            "party": "Rep",
+            "votes": 232916
+          },
+          {
+            "name": "Seth Bodnar",
+            "party": "Ind",
+            "votes": 181674
+          },
+          {
+            "name": "Alani Bankhead",
+            "party": "Dem",
+            "votes": 58555
+          },
+          {
+            "name": "Kyle Austin",
+            "party": "Lib",
+            "votes": 8869
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "NE",
@@ -949,7 +2032,52 @@
           "other": 13016
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 307311,
+        "rep": 401730,
+        "other": 37330,
+        "districts": 3,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 749257,
+        "percent_in": 96.5,
+        "call": "P",
+        "leader": "Jim Pillen",
+        "party": "Rep",
+        "leader_votes": 378773,
+        "candidates": [
+          {
+            "name": "Jim Pillen",
+            "party": "Rep",
+            "votes": 378773
+          },
+          {
+            "name": "Lynne Walz",
+            "party": "Dem",
+            "votes": 317595
+          },
+          {
+            "name": "Brett Lindstrom",
+            "party": "AFi",
+            "votes": 33019
+          },
+          {
+            "name": "Rick Beard",
+            "party": "LMN",
+            "votes": 19870
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "NV",
@@ -982,7 +2110,55 @@
           "other": 13194
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 609218,
+        "rep": 424754,
+        "other": 35350,
+        "districts": 4,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1077526,
+        "percent_in": 94.1,
+        "call": "P",
+        "leader": "Aaron Ford",
+        "party": "Dem",
+        "leader_votes": 556876,
+        "candidates": [
+          {
+            "name": "Aaron Ford",
+            "party": "Dem",
+            "votes": 556876
+          },
+          {
+            "name": "Joe Lombardo",
+            "party": "Rep",
+            "votes": 473891
+          },
+          {
+            "name": "Danielle Ford",
+            "party": "NPA",
+            "votes": 30995
+          },
+          {
+            "name": " None of These Candidates",
+            "party": "NPD",
+            "votes": 15764
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 1018705
+      }
     },
     {
       "code": "NH",
@@ -1015,7 +2191,50 @@
           "other": 711
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 365872,
+        "rep": 258083,
+        "other": 7470,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 636122,
+        "percent_in": 98.9,
+        "call": "P",
+        "leader": "Chris Pappas",
+        "party": "Dem",
+        "leader_votes": 355720,
+        "candidates": [
+          {
+            "name": "Chris Pappas",
+            "party": "Dem",
+            "votes": 355720
+          },
+          {
+            "name": "John Sununu",
+            "party": "Rep",
+            "votes": 268340
+          },
+          {
+            "name": "Edmond Laplante",
+            "party": "CST",
+            "votes": 12062
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "U.S. Senate",
+        "total": 620975
+      }
     },
     {
       "code": "NJ",
@@ -1048,7 +2267,52 @@
           "other": 33034
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1818680,
+        "rep": 1013746,
+        "other": 43896,
+        "districts": 12,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 2915471,
+        "percent_in": 95.8,
+        "call": "P",
+        "leader": "Cory Booker",
+        "party": "Dem",
+        "leader_votes": 1817068,
+        "candidates": [
+          {
+            "name": "Cory Booker",
+            "party": "Dem",
+            "votes": 1817068
+          },
+          {
+            "name": "Justin Murphy",
+            "party": "Rep",
+            "votes": 1022889
+          },
+          {
+            "name": "Veronica Fernandez",
+            "party": "Oth",
+            "votes": 48179
+          },
+          {
+            "name": "Joanne Kuniansky",
+            "party": "Oth",
+            "votes": 27335
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "NM",
@@ -1081,7 +2345,42 @@
           "other": 109
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 444309,
+        "rep": 277379,
+        "other": 0,
+        "districts": 3,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 724902,
+        "percent_in": 98.4,
+        "call": "P",
+        "leader": "Deb Haaland",
+        "party": "Dem",
+        "leader_votes": 415662,
+        "candidates": [
+          {
+            "name": "Deb Haaland",
+            "party": "Dem",
+            "votes": 415662
+          },
+          {
+            "name": "Greggory Hull",
+            "party": "Rep",
+            "votes": 309240
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "NY",
@@ -1114,7 +2413,47 @@
           "other": 501022
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 3663251,
+        "rep": 2236392,
+        "other": 40453,
+        "districts": 26,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 6022859,
+        "percent_in": 92,
+        "call": "P",
+        "leader": "Kathy Hochul",
+        "party": "Dem",
+        "leader_votes": 3593582,
+        "candidates": [
+          {
+            "name": "Kathy Hochul",
+            "party": "Dem",
+            "votes": 3593582
+          },
+          {
+            "name": "Bruce Blakeman",
+            "party": "Rep",
+            "votes": 2416588
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 12689
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "NC",
@@ -1147,7 +2486,52 @@
           "other": 8677
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 2385603,
+        "rep": 1752606,
+        "other": 52660,
+        "districts": 14,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 4203181,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Roy Cooper",
+        "party": "Dem",
+        "leader_votes": 2467963,
+        "candidates": [
+          {
+            "name": "Roy Cooper",
+            "party": "Dem",
+            "votes": 2467963
+          },
+          {
+            "name": "Michael Whatley",
+            "party": "Rep",
+            "votes": 1643088
+          },
+          {
+            "name": "Shannon Bray",
+            "party": "Lib",
+            "votes": 55726
+          },
+          {
+            "name": "Michael Dublin",
+            "party": "Grn",
+            "votes": 36404
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "ND",
@@ -1180,7 +2564,19 @@
           "other": 90187
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 85892,
+        "rep": 134477,
+        "other": 13886,
+        "districts": 1,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": null,
+      "top_2022": null
     },
     {
       "code": "OH",
@@ -1213,7 +2609,55 @@
           "other": 104
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 2318450,
+        "rep": 2178153,
+        "other": 53402,
+        "districts": 15,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 4601571,
+        "percent_in": 97.7,
+        "call": "P",
+        "leader": "Sherrod Brown",
+        "party": "Dem",
+        "leader_votes": 2301042,
+        "candidates": [
+          {
+            "name": "Sherrod Brown",
+            "party": "Dem",
+            "votes": 2301042
+          },
+          {
+            "name": "Jon Husted",
+            "party": "Rep",
+            "votes": 2077748
+          },
+          {
+            "name": "William Redpath",
+            "party": "Lib",
+            "votes": 128272
+          },
+          {
+            "name": "Greg Levy",
+            "party": "Ind",
+            "votes": 94509
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "U.S. Senate",
+        "total": 4133342
+      }
     },
     {
       "code": "OK",
@@ -1246,7 +2690,57 @@
           "other": 28684
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 454345,
+        "rep": 643929,
+        "other": 18961,
+        "districts": 5,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1120139,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Mike Mazzei",
+        "party": "Rep",
+        "leader_votes": 581706,
+        "candidates": [
+          {
+            "name": "Mike Mazzei",
+            "party": "Rep",
+            "votes": 581706
+          },
+          {
+            "name": "Cyndi Munson",
+            "party": "Dem",
+            "votes": 514342
+          },
+          {
+            "name": "Robert Brooks",
+            "party": "Ind",
+            "votes": 11649
+          },
+          {
+            "name": "Jerry Griffin",
+            "party": "Ind",
+            "votes": 7433
+          },
+          {
+            "name": "Orlando Bush",
+            "party": "Ind",
+            "votes": 5009
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "OR",
@@ -1279,7 +2773,52 @@
           "other": 42224
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 993174,
+        "rep": 706841,
+        "other": 20046,
+        "districts": 6,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 1744894,
+        "percent_in": 82.3,
+        "call": "P",
+        "leader": "Tina Kotek",
+        "party": "Dem",
+        "leader_votes": 917268,
+        "candidates": [
+          {
+            "name": "Tina Kotek",
+            "party": "Dem",
+            "votes": 917268
+          },
+          {
+            "name": "Christine Drazan",
+            "party": "Rep",
+            "votes": 777075
+          },
+          {
+            "name": "Brett Smith",
+            "party": "PAG",
+            "votes": 48270
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 2281
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "PA",
@@ -1312,7 +2851,50 @@
           "other": 41704
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 2802061,
+        "rep": 2141714,
+        "other": 17361,
+        "districts": 17,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 4983903,
+        "percent_in": 98.8,
+        "call": "P",
+        "leader": "Josh Shapiro",
+        "party": "Dem",
+        "leader_votes": 3011121,
+        "candidates": [
+          {
+            "name": "Josh Shapiro",
+            "party": "Dem",
+            "votes": 3011121
+          },
+          {
+            "name": "Stacy Garrity",
+            "party": "Rep",
+            "votes": 1908280
+          },
+          {
+            "name": "Ken Krawchuk",
+            "party": "Lib",
+            "votes": 64502
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 5365929
+      }
     },
     {
       "code": "RI",
@@ -1345,7 +2927,52 @@
           "other": 6049
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 232225,
+        "rep": 118449,
+        "other": 6916,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 359033,
+        "percent_in": 98,
+        "call": "P",
+        "leader": "Jack Reed",
+        "party": "Dem",
+        "leader_votes": 239701,
+        "candidates": [
+          {
+            "name": "Jack Reed",
+            "party": "Dem",
+            "votes": 239701
+          },
+          {
+            "name": "Raymond McKay",
+            "party": "Rep",
+            "votes": 105139
+          },
+          {
+            "name": "Michael Bahry",
+            "party": "Ind",
+            "votes": 13499
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 694
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "SC",
@@ -1378,7 +3005,57 @@
           "other": 29134
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 977230,
+        "rep": 1030330,
+        "other": 23003,
+        "districts": 7,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 2039605,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Annie Andrews",
+        "party": "Dem",
+        "leader_votes": 1042903,
+        "candidates": [
+          {
+            "name": "Annie Andrews",
+            "party": "Dem",
+            "votes": 1042903
+          },
+          {
+            "name": "Darline Graham",
+            "party": "Rep",
+            "votes": 951436
+          },
+          {
+            "name": "Kasie Whitener",
+            "party": "Lib",
+            "votes": 23568
+          },
+          {
+            "name": "Mark Hackett",
+            "party": "CST",
+            "votes": 16803
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 4895
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "SD",
@@ -1411,7 +3088,42 @@
           "other": 74020
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 109993,
+        "rep": 195587,
+        "other": 0,
+        "districts": 1,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 305098,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Mike Rounds",
+        "party": "Rep",
+        "leader_votes": 184589,
+        "candidates": [
+          {
+            "name": "Mike Rounds",
+            "party": "Rep",
+            "votes": 184589
+          },
+          {
+            "name": "Brian Bengs",
+            "party": "Ind",
+            "votes": 120509
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "TN",
@@ -1444,7 +3156,107 @@
           "other": 29061
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 896349,
+        "rep": 1095895,
+        "other": 39360,
+        "districts": 9,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 2099975,
+        "percent_in": 98.9,
+        "call": "P",
+        "leader": "Marsha Blackburn",
+        "party": "Rep",
+        "leader_votes": 955298,
+        "candidates": [
+          {
+            "name": "Marsha Blackburn",
+            "party": "Rep",
+            "votes": 955298
+          },
+          {
+            "name": "Jerri Green",
+            "party": "Dem",
+            "votes": 902615
+          },
+          {
+            "name": "David Hatley",
+            "party": "Ind",
+            "votes": 195288
+          },
+          {
+            "name": "Lauren Pinkston",
+            "party": "Ind",
+            "votes": 26186
+          },
+          {
+            "name": "Dean Brewer",
+            "party": "Ind",
+            "votes": 4095
+          },
+          {
+            "name": "Ray Brown",
+            "party": "Ind",
+            "votes": 2869
+          },
+          {
+            "name": "Wendell Jackson",
+            "party": "Ind",
+            "votes": 2365
+          },
+          {
+            "name": "Eddie Murphy",
+            "party": "Ind",
+            "votes": 2293
+          },
+          {
+            "name": "Robert Vick",
+            "party": "Ind",
+            "votes": 2240
+          },
+          {
+            "name": "Misam Abidi",
+            "party": "Ind",
+            "votes": 2110
+          },
+          {
+            "name": "Charles Van Morgan",
+            "party": "Ind",
+            "votes": 1317
+          },
+          {
+            "name": "L. Taylor",
+            "party": "Ind",
+            "votes": 1118
+          },
+          {
+            "name": "Dave Seeman",
+            "party": "Ind",
+            "votes": 870
+          },
+          {
+            "name": "Victor Scoggin",
+            "party": "Ind",
+            "votes": 817
+          },
+          {
+            "name": "Karl Smithson",
+            "party": "Ind",
+            "votes": 494
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "TX",
@@ -1478,13 +3290,48 @@
         }
       },
       "house_2026": {
-        "dem": 5145910,
-        "rep": 4590522,
+        "dem": 5147224,
+        "rep": 4591369,
         "other": 43622,
         "districts": 38,
-        "as_of": "SOS page updated 11/04/2026 04:59 PM (timezone not stated)",
-        "source": "Texas Secretary of State results page, all 38 U.S. House districts. Same snapshot as the statewide candidate tables. Not certified.",
-        "url": "https://electionresults.sos.state.tx.us/results.html"
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts Held other at the higher state-office snapshot so the count was not lowered.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 9905493,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Gina Hinojosa",
+        "party": "Dem",
+        "leader_votes": 5231979,
+        "candidates": [
+          {
+            "name": "Gina Hinojosa",
+            "party": "Dem",
+            "votes": 5231979
+          },
+          {
+            "name": "Greg Abbott",
+            "party": "Rep",
+            "votes": 4525393
+          },
+          {
+            "name": "Pat Dixon",
+            "party": "Lib",
+            "votes": 148121
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": {
+        "office": "Governor",
+        "total": 8106768
       }
     },
     {
@@ -1518,7 +3365,19 @@
           "other": 50256
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 401809,
+        "rep": 409992,
+        "other": 56534,
+        "districts": 4,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": null,
+      "top_2022": null
     },
     {
       "code": "VT",
@@ -1551,7 +3410,62 @@
           "other": 27135
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 198754,
+        "rep": 94071,
+        "other": 11920,
+        "districts": 1,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 310236,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Phil Scott",
+        "party": "Rep",
+        "leader_votes": 163201,
+        "candidates": [
+          {
+            "name": "Phil Scott",
+            "party": "Rep",
+            "votes": 163201
+          },
+          {
+            "name": "Amanda Janoo",
+            "party": "Dem",
+            "votes": 141614
+          },
+          {
+            "name": "Brian Judd",
+            "party": "Ind",
+            "votes": 2613
+          },
+          {
+            "name": "June Goodband",
+            "party": "PJP",
+            "votes": 1226
+          },
+          {
+            "name": "Dean Roy",
+            "party": "Oth",
+            "votes": 1137
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 445
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "VA",
@@ -1584,7 +3498,47 @@
           "other": 13294
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 2092905,
+        "rep": 1419847,
+        "other": 58348,
+        "districts": 11,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 3571531,
+        "percent_in": 97.6,
+        "call": "P",
+        "leader": "Mark Warner",
+        "party": "Dem",
+        "leader_votes": 2184743,
+        "candidates": [
+          {
+            "name": "Mark Warner",
+            "party": "Dem",
+            "votes": 2184743
+          },
+          {
+            "name": "Bert Mizusawa",
+            "party": "Rep",
+            "votes": 1377348
+          },
+          {
+            "name": " Total Write-ins",
+            "party": "Oth",
+            "votes": 9440
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "WA",
@@ -1617,7 +3571,19 @@
           "other": 12630
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1594921,
+        "rep": 932555,
+        "other": 10700,
+        "districts": 10,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": null,
+      "top_2022": null
     },
     {
       "code": "WV",
@@ -1650,7 +3616,47 @@
           "other": 10372
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 180582,
+        "rep": 262491,
+        "other": 6904,
+        "districts": 2,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "U.S. Senate",
+        "total": 456128,
+        "percent_in": 99,
+        "call": "P",
+        "leader": "Shelley Moore Capito",
+        "party": "Rep",
+        "leader_votes": 266067,
+        "candidates": [
+          {
+            "name": "Shelley Moore Capito",
+            "party": "Rep",
+            "votes": 266067
+          },
+          {
+            "name": "Rachel Fetty Anderson",
+            "party": "Dem",
+            "votes": 172922
+          },
+          {
+            "name": "S. Wilson",
+            "party": "CST",
+            "votes": 17139
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
+        "as_of": "2:50 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "WI",
@@ -1683,7 +3689,42 @@
           "other": 115289
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 1454885,
+        "rep": 1106267,
+        "other": 25219,
+        "districts": 8,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 2668664,
+        "percent_in": 98.9,
+        "call": "P",
+        "leader": "David Crowley",
+        "party": "Dem",
+        "leader_votes": 1440990,
+        "candidates": [
+          {
+            "name": "David Crowley",
+            "party": "Dem",
+            "votes": 1440990
+          },
+          {
+            "name": "Tom Tiffany",
+            "party": "Rep",
+            "votes": 1227674
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     },
     {
       "code": "WY",
@@ -1716,7 +3757,595 @@
           "other": 14446
         }
       },
-      "house_2026": null
+      "house_2026": {
+        "dem": 61684,
+        "rep": 99891,
+        "other": 21625,
+        "districts": 1,
+        "zero_districts": [],
+        "label": "Latest count, not certified",
+        "source": "AP via NBC News, votes summed across U.S. House districts",
+        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+        "as_of": "2:48 PM ET, Nov. 6, 2026"
+      },
+      "top_2026": {
+        "office": "Governor",
+        "total": 187387,
+        "percent_in": 97,
+        "call": "P",
+        "leader": "Eric Barlow",
+        "party": "Rep",
+        "leader_votes": 128480,
+        "candidates": [
+          {
+            "name": "Eric Barlow",
+            "party": "Rep",
+            "votes": 128480
+          },
+          {
+            "name": "Rebecca Bextel",
+            "party": "CST",
+            "votes": 31438
+          },
+          {
+            "name": "Kenneth Casner",
+            "party": "Dem",
+            "votes": 27469
+          }
+        ],
+        "source": "Latest count, not certified. AP via NBC News.",
+        "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
+        "as_of": "2:49 PM ET, Nov. 6, 2026"
+      },
+      "top_2022": null
     }
-  ]
+  ],
+  "house_flips": [
+    {
+      "state": "NJ",
+      "district": 2,
+      "to": "D",
+      "winner": "Zack Mullock",
+      "prior": "Jeff Van Drew",
+      "margin_pts": 2.7,
+      "nbc_leader": "Zack Mullock",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "OH",
+      "district": 10,
+      "to": "D",
+      "winner": "Kristina Knickerbocker",
+      "prior": "Mike Turner",
+      "margin_pts": 1.6,
+      "nbc_leader": "Kristina Knickerbocker",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "MO",
+      "district": 2,
+      "to": "D",
+      "winner": "Fred Wellman",
+      "prior": "Ann Wagner",
+      "margin_pts": 4.9,
+      "nbc_leader": "Fred Wellman",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "IN",
+      "district": 5,
+      "to": "D",
+      "winner": "J.D. Ford",
+      "prior": "Victoria Spartz",
+      "margin_pts": 3.3,
+      "nbc_leader": "J.D. Ford",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "KY",
+      "district": 6,
+      "to": "D",
+      "winner": "Zach Dembo",
+      "prior": "Andy Barr (open)",
+      "margin_pts": 9.4,
+      "nbc_leader": "Zach Dembo",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "WI",
+      "district": 1,
+      "to": "D",
+      "winner": "Mitchell Berman",
+      "prior": "Bryan Steil",
+      "margin_pts": 3.9,
+      "nbc_leader": "Mitchell Berman",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NV",
+      "district": 2,
+      "to": "D",
+      "winner": "Teresa Benitez-Thompson",
+      "prior": "Mark Amodei (open)",
+      "margin_pts": 5.7,
+      "nbc_leader": "Teresa Benitez-Thompson",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "OH",
+      "district": 15,
+      "to": "D",
+      "winner": "Don Leonard",
+      "prior": "Mike Carey",
+      "margin_pts": 6.6,
+      "nbc_leader": "Don Leonard",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "PA",
+      "district": 10,
+      "to": "D",
+      "winner": "Janelle Stelson",
+      "prior": "Scott Perry",
+      "margin_pts": 10.1,
+      "nbc_leader": "Janelle Stelson",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "VA",
+      "district": 2,
+      "to": "D",
+      "winner": "Elaine Luria",
+      "prior": "Jen Kiggans",
+      "margin_pts": 8.4,
+      "nbc_leader": "Elaine Luria",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "WI",
+      "district": 3,
+      "to": "D",
+      "winner": "Rebecca Cooke",
+      "prior": "Derrick Van Orden",
+      "margin_pts": 6.6,
+      "nbc_leader": "Rebecca Cooke",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "IA",
+      "district": 1,
+      "to": "D",
+      "winner": "Christine Bohannon",
+      "prior": "Mariannette Miller-Meeks",
+      "margin_pts": 9.2,
+      "nbc_leader": "Christina Bohannan",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NY",
+      "district": 17,
+      "to": "D",
+      "winner": "Cait Conley",
+      "prior": "Mike Lawler",
+      "margin_pts": 5.9,
+      "nbc_leader": "Cait Conley",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NJ",
+      "district": 7,
+      "to": "D",
+      "winner": "Rebecca Bennett",
+      "prior": "Tom Kean Jr.",
+      "margin_pts": 15.8,
+      "nbc_leader": "Rebecca Bennett",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "PA",
+      "district": 1,
+      "to": "D",
+      "winner": "Bob Harvie",
+      "prior": "Brian Fitzpatrick",
+      "margin_pts": 5.5,
+      "nbc_leader": "Bob Harvie",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "PA",
+      "district": 7,
+      "to": "D",
+      "winner": "Bob Brooks",
+      "prior": "Ryan Mackenzie",
+      "margin_pts": 12.2,
+      "nbc_leader": "Bob Brooks",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "PA",
+      "district": 8,
+      "to": "D",
+      "winner": "Paige Cognetti",
+      "prior": "Rob Bresnahan",
+      "margin_pts": 8.8,
+      "nbc_leader": "Paige Cognetti",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "MI",
+      "district": 4,
+      "to": "D",
+      "winner": "Sean McCann",
+      "prior": "Bill Huizenga",
+      "margin_pts": 1.8,
+      "nbc_leader": "Sean McCann",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "MI",
+      "district": 7,
+      "to": "D",
+      "winner": "William Lawrence",
+      "prior": "Tom Barrett",
+      "margin_pts": 3.3,
+      "nbc_leader": "William Lawrence",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "MI",
+      "district": 10,
+      "to": "D",
+      "winner": "Christina Hines",
+      "prior": "John James (open)",
+      "margin_pts": 7.2,
+      "nbc_leader": "Christina Hines",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "OH",
+      "district": 7,
+      "to": "D",
+      "winner": "Brian Poindexter",
+      "prior": "Max Miller",
+      "margin_pts": 9.9,
+      "nbc_leader": "Brian Poindexter",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "IA",
+      "district": 2,
+      "to": "D",
+      "winner": "Lindsay James",
+      "prior": "Ashley Hinson (open)",
+      "margin_pts": 4.0,
+      "nbc_leader": "Lindsay James",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "IA",
+      "district": 3,
+      "to": "D",
+      "winner": "Sarah Trone Garriott",
+      "prior": "Zach Nunn",
+      "margin_pts": 7.3,
+      "nbc_leader": "Sarah Trone Garriott",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NE",
+      "district": 2,
+      "to": "D",
+      "winner": "Denise Powell",
+      "prior": "Don Bacon (open)",
+      "margin_pts": 15.9,
+      "nbc_leader": "Denise Powell",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "MT",
+      "district": 1,
+      "to": "D",
+      "winner": "Sam Forstag",
+      "prior": "Ryan Zinke",
+      "margin_pts": 3.6,
+      "nbc_leader": "Sam Forstag",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "UT",
+      "district": 1,
+      "to": "D",
+      "winner": "Ben McAdams",
+      "prior": "newly drawn district",
+      "margin_pts": 46.6,
+      "nbc_leader": "Ben McAdams",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CO",
+      "district": 5,
+      "to": "D",
+      "winner": "Jessica Killin",
+      "prior": "Jeff Crank",
+      "margin_pts": 4.7,
+      "nbc_leader": "Jessica Killin",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CO",
+      "district": 8,
+      "to": "D",
+      "winner": "Manny Rutinel",
+      "prior": "Gabe Evans",
+      "margin_pts": 14.7,
+      "nbc_leader": "Manny Rutinel",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "AZ",
+      "district": 1,
+      "to": "D",
+      "winner": "Amish Shah",
+      "prior": "David Schweikert (open)",
+      "margin_pts": 7.0,
+      "nbc_leader": "Amish Shah",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "AZ",
+      "district": 6,
+      "to": "D",
+      "winner": "JoAnna Mendoza",
+      "prior": "Juan Ciscomani",
+      "margin_pts": 7.8,
+      "nbc_leader": "JoAnna Mendoza",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "TX",
+      "district": 15,
+      "to": "D",
+      "winner": "Bobby Pulido",
+      "prior": "Monica De La Cruz",
+      "margin_pts": 24.6,
+      "nbc_leader": "Bobby Pulido",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "TX",
+      "district": 23,
+      "to": "D",
+      "winner": "Katy Padilla Stout",
+      "prior": "Tony Gonzales (open)",
+      "margin_pts": 8.2,
+      "nbc_leader": "Katy Padilla Stout",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CA",
+      "district": 1,
+      "to": "D",
+      "winner": "Mike McGuire",
+      "prior": "James Gallagher",
+      "margin_pts": 10.9,
+      "nbc_leader": "Mike McGuire",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CA",
+      "district": 6,
+      "to": "D",
+      "winner": "Richard Pan",
+      "prior": "Kevin Kiley",
+      "margin_pts": 15.0,
+      "nbc_leader": "Richard Pan",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CA",
+      "district": 22,
+      "to": "D",
+      "winner": "Randy Villegas",
+      "prior": "David Valadao",
+      "margin_pts": 33.2,
+      "nbc_leader": "Randy Villegas",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CA",
+      "district": 41,
+      "to": "D",
+      "winner": "Linda S\u00e1nchez",
+      "prior": "Mitch Clemmons",
+      "margin_pts": 33.2,
+      "nbc_leader": "Linda S\u00e1nchez",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "CA",
+      "district": 48,
+      "to": "D",
+      "winner": "Marni von Wilpert",
+      "prior": "Darrell Issa (open)",
+      "margin_pts": 18.9,
+      "nbc_leader": "Marni von Wilpert",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NC",
+      "district": 6,
+      "to": "D",
+      "winner": "Cyril Jefferson",
+      "prior": "Addison McDowell",
+      "margin_pts": 2.3,
+      "nbc_leader": "Cyril Jefferson",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NC",
+      "district": 9,
+      "to": "D",
+      "winner": "Richard Ojeda",
+      "prior": "Richard Hudson",
+      "margin_pts": 2.2,
+      "nbc_leader": "Richard Ojeda",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NC",
+      "district": 11,
+      "to": "D",
+      "winner": "Jamie Ager",
+      "prior": "Jennifer Balkcom",
+      "margin_pts": 15.8,
+      "nbc_leader": "Jamie Ager",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NC",
+      "district": 13,
+      "to": "D",
+      "winner": "Paul Barringer",
+      "prior": "Brad Knott",
+      "margin_pts": 2.4,
+      "nbc_leader": "Paul Barringer",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "NC",
+      "district": 14,
+      "to": "D",
+      "winner": "Lakesha Womack",
+      "prior": "Tim Moore",
+      "margin_pts": 2.2,
+      "nbc_leader": "Lakesha Womack",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "VA",
+      "district": 1,
+      "to": "D",
+      "winner": "Shannon Taylor",
+      "prior": "Rob Wittman",
+      "margin_pts": 2.4,
+      "nbc_leader": "Shannon Taylor",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "TX",
+      "district": 32,
+      "to": "R",
+      "winner": "Jace Yarbrough",
+      "prior": "Dan Barrios",
+      "margin_pts": 2.9,
+      "nbc_leader": "Jace Yarbrough",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    },
+    {
+      "state": "TN",
+      "district": 9,
+      "to": "R",
+      "winner": "Brent Taylor",
+      "prior": "Justin Pearson",
+      "margin_pts": 1.1,
+      "nbc_leader": "Brent Taylor",
+      "note": "",
+      "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
+      "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
+    }
+  ],
+  "house_2026_source": {
+    "label": "Latest count, not certified",
+    "source": "AP via NBC News",
+    "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
+    "as_of": "2:48 PM ET, Nov. 6, 2026"
+  }
 }
