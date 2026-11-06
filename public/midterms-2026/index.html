@@ -209,7 +209,11 @@ function renderAll(d,S,ALL){
   if(s){const c=castRecord(s);if(c.v!=null&&!c.proxy){v=c.v;measure='Official ballots';asof=c.asof||'';url=c.url||'';const b22=s.y2022&&s.y2022.total_turnout;chg=b22?100*v/b22-100:null;}}
   if(v==null&&top){v=top.total;measure=top.office;asof=top.as_of||'';url=top.url||'';chg=t22&&t22.office===top.office&&t22.total?100*v/t22.total-100:null;}
   if(v==null&&ht!=null){v=ht;measure='U.S. House votes';asof=(h26&&h26.as_of)||'';url=(h26&&h26.url)||'';chg=hchg;}
-  return {st,s,v,measure,chg,asof,url,h26,h22,ht,hchg,top,t22,hf:hflips[st.code]||[]};
+  const pin=top&&top.percent_in!=null?top.percent_in:(h26&&measure==='U.S. House votes'?h26.percent_in:null);
+  const pinMin=h26&&measure==='U.S. House votes'?h26.percent_min:null;
+  let ballotsPin='';
+  if(measure==='Official ballots'&&s&&s.official_results&&s.official_results.precincts_reporting)ballotsPin=s.official_results.precincts_reporting;
+  return {st,s,v,measure,chg,asof,url,h26,h22,ht,hchg,top,t22,pin,pinMin,ballotsPin,hf:hflips[st.code]||[]};
  });
  const hs=rows.filter(r=>r.h26),sum=(k,src)=>hs.reduce((a,r)=>a+(r[src][k]||0),0);
  const htAll=hs.reduce((a,r)=>a+r.ht,0),h2All=hs.reduce((a,r)=>a+(r.h22.dem+r.h22.rep+r.h22.other),0);
@@ -226,7 +230,9 @@ function renderAll(d,S,ALL){
  const hp=h=>h?`D ${f(h.dem)}<br>R ${f(h.rep)}<br>O ${f(h.other)}`:'<span class="mut">n/a</span>';
  body.innerHTML=rows.map(r=>{const flip=[...(r.hf.length?[r.hf.length+' House']:[]),...(r.top&&r.top.call==='P'?'':'')];
   const named=(r.hf.length?r.hf.length+' House to '+(r.hf.some(x=>x.to==='R')&&r.hf.some(x=>x.to==='D')?'both':r.hf[0].to):'');
-  return `<tr class="${r.hf.length?'flip':''}"><td>${r.s?`<a href="#${r.st.code}">${esc(r.st.name)}</a>`:esc(r.st.name)}</td><td>${r.v==null?'<span class="mut">n/a</span>':f(r.v)}<br><span class="mut">${esc(r.measure)}</span>${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener">Latest count, not certified</a>`:''}</td><td>${pct(r.chg)}</td><td>${hp(r.h26)}</td><td>${pct(r.hchg)}</td><td>${named||'<span class="mut">—</span>'}</td></tr>`;}).join('');
+  const exp=r.ballotsPin?esc(r.ballotsPin)+' of precincts':r.pin!=null?r.pin+'% expected vote'+(r.pinMin!=null&&r.pinMin+5<r.pin?' · lowest district '+r.pinMin+'%':''):'';
+  const chgCell=r.chg!=null?pct(r.chg):(r.hchg!=null?pct(r.hchg)+'<br><span class="mut">House votes</span>':'<span class="mut">n/a</span>');
+  return `<tr class="${r.hf.length?'flip':''}"><td>${r.s?`<a href="#${r.st.code}">${esc(r.st.name)}</a>`:esc(r.st.name)}</td><td>${r.v==null?'<span class="mut">n/a</span>':f(r.v)+(exp?' · '+exp:'')}<br><span class="mut">${esc(r.measure)}</span>${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener">Latest count, not certified</a>`:''}</td><td>${chgCell}</td><td>${r.h26?hp(r.h26)+(r.h26.percent_in!=null?'<br><span class="mut">'+r.h26.percent_in+'% expected vote'+(r.h26.percent_min!=null&&r.h26.percent_min+5<r.h26.percent_in?' · lowest '+r.h26.percent_min+'%':'')+'</span>':''):'<span class="mut">No voting House seat</span>'}</td><td>${pct(r.hchg)}</td><td>${named||'<span class="mut">—</span>'}</td></tr>`;}).join('');
  const box=document.getElementById('houseflips');
  if(box)box.innerHTML=`<h3>House seats CBS News lists as flipped</h3><p class="mut" style="font-size:.8rem">Updated Nov. 6, 2026, 12:42 PM EST. <a href="https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/" target="_blank" rel="noopener">CBS News</a>. The margin is the leader's share of votes counted on the NBC/AP page at 2:48 PM ET. Not certified. A blank margin means the current leader's party did not match the CBS report.</p><div class="tw"><table><thead><tr><th>District</th><th>To</th><th>Winner (CBS)</th><th>Was</th><th>Margin</th></tr></thead><tbody>${(ALL.house_flips||[]).map(fl=>`<tr><td>${esc(fl.state)}-${String(fl.district).padStart(2,'0')}</td><td>${esc(fl.to)}</td><td>${esc(fl.winner)}</td><td>${esc(fl.prior)}</td><td>${fl.margin_pts==null?'<span class="mut">n/a</span>':(fl.to==='D'?'D+':'R+')+Math.abs(fl.margin_pts).toFixed(1)}</td></tr>`).join('')}</tbody></table></div>`;
 }
