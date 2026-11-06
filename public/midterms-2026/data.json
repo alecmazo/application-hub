@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-06T11:25:00-08:00",
-  "lastUpdatedLabel": "Fri Nov 6, 2026, 11:25 AM PT",
+  "lastUpdated": "2026-11-06T12:10:00-08:00",
+  "lastUpdatedLabel": "Fri Nov 6, 2026, 12:10 PM PT",
   "notes": [
+    "Nov. 6, 12:10 PM PT: all 50 states and D.C. are in the Overview table. 2022, 2018, 2014 and 2010 ballots are UF Election Lab total ballots counted, the same measure. 2026 official ballots are Florida (8,335,497) and California (9,027,710, SOS statewide turnout, Nov. 6, 9:27 a.m.). Other tracked states still use the top contest as a labeled proxy. 2026 House votes by party are official only for California, Georgia and Texas. Florida District 10 is missing from the state page, so Florida's House total is n/a. A full national 2026 House popular vote is n/a.",
     "Nov. 6, 2026 update: Overview headline uses official ballots cast where a state election office published that figure (Florida: 8,335,497). California, Georgia and Texas published contest results; Texas SOS candidate totals from Nov. 4, 4:59 PM are kept beside higher AP counts and were not used to lower anything. Other states' SOS sites did not return a newer count in this retrieval, so their Nov. 4 AP/NBC contest votes stay in place and are labeled as a proxy, not ballots cast. A race is called only if it was already an AP call. Early-vote totals are no longer the Overview headline.",
     "Results refresh ~10:36 AM PT Nov 4: all 26 races refreshed from AP via NBC News firecracker (monotonic; never lowered). No NEW AP calls since 7:11 AM PT (AP uncalled-races list, ~9:41 AM PT). Still pending AP: KS Governor: Cindy Holscher leads by 5,578 votes (+0.5 pts), ~98.3% of expected vote in; AP has not called; AK Governor: Jonathan Kreiss-Tomkins leads by 42,044 votes (+19.9 pts), ~73.9% of expected vote in; AP has not called; ranked-choice tabulation Nov 18; AK U.S. Senate: Mary Peltola leads by 626 votes (+0.3 pts), ~74.3% of expected vote in; AP has not called; ranked-choice tabulation Nov 18. Overview now derives every count, margin and % reporting from the per-state race data.",
     "Results refresh ~7:11 AM PT Nov 4: NEW AP calls: AZ Governor Katie Hobbs (AP call ~12:25 AM PT per KJZZ); NV Governor Aaron Ford (AP story ~1:54 AM PT). Still pending AP: KS Gov (Holscher +0.5, ~97.9% in), AK Gov (RCV, ~73.9%), AK Sen (Peltola +0.3, RCV, ~74.3%). Counts monotonic from NBC Firecracker.",
@@ -24854,16 +24855,18 @@
         "Yuba": 8912
       },
       "official_results": {
-        "ballots_cast": null,
-        "ballots_is_proxy": true,
-        "ballots_measure": "No statewide ballots-cast total was in the Secretary of State returns feed. The governor contest (8,889,221 votes, 100% of precincts) is a proxy, not ballots cast.",
-        "as_of_label": "November 6, 2026, 9:27 a.m. (as printed by the CA SOS; California time)",
+        "ballots_cast": 9027710,
+        "ballots_is_proxy": false,
+        "ballots_measure": "Statewide voter turnout on the California Secretary of State reporting-status file (report type SF). Not the sum of one contest. County rows sum to this statewide row.",
+        "as_of_label": "November 6, 2026, 9:27 a.m. (statewide row; some county rows are earlier)",
         "source": "California Secretary of State",
-        "url": "https://api.sos.ca.gov/returns/governor",
+        "url": "https://media.sos.ca.gov/media/status_GG.json",
         "certified": false,
         "county_file": "official/CA.json",
         "precincts_reporting": "100% (23,860 of 23,860)",
-        "note": "Precincts reporting is not the same as share of expected vote. The expected-vote field on this race is unchanged at 59.3 because the SOS feed did not publish a higher expected-vote share."
+        "note": "Unofficial. 100% of precincts on this file. Turnout is 9,027,710 of 23,273,590 registered (38.8%). That is below California's 2022 total ballots (11,146,610), so the count may still be incomplete even though the file says every precinct has reported. Governor contest votes are a separate, smaller number.",
+        "registered_official": 23273590,
+        "turnout_pct": 38.8
       }
     },
     {

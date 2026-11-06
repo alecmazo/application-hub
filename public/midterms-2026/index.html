@@ -33,6 +33,7 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 .pb h4{margin:10px 0 2px;font-size:.85rem}.agg{background:linear-gradient(135deg,#17233a,#18202a);border:1px solid #2b3d5c;border-radius:16px;padding:16px;margin:14px 0}.agg h2{margin-top:0;border:0}
 .tag{font-size:.7rem;font-weight:700;border-radius:4px;padding:0 5px;margin-right:6px;white-space:nowrap}
 .tag.fact{color:#86efac;border:1px solid #166534}.tag.estimate{color:#fbbf24;border:1px solid #fbbf24}.tag.correlation{color:#93c5fd;border:1px solid #1d4ed8}.tag.interpretation{color:#f9a8d4;border:1px solid #9d174d}
+#allhead th{cursor:pointer;white-space:nowrap}tr.flip td{background:#14532d44}
 </style>
 </head>
 <body>
@@ -51,6 +52,10 @@ table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{padding:7px 8px
 <section id="why"></section>
 <h2 id="map-s">Tracked states</h2><div id="map"></div><p class="mut" style="text-align:center;font-size:.8rem">Tile map; click a highlighted state to open its tab.</p>
 <h2>Summary</h2><p class="mut" style="font-size:.8rem">Official ballots are blank (n/a) unless that state's election office published a turnout or ballots-cast total. "Top contest" is the race with the most votes counted and is a proxy, not ballots. Governor columns are the same office in both years (2022 is the sum of county baselines). Early and mail ballots are in the historical note below, not in this table.</p><div class="tw"><table><thead><tr><th>State</th><th>Official ballots</th><th>As of</th><th>Top contest votes</th><th>2022 turnout</th><th>2026 governor votes</th><th>2022 governor votes</th><th>% expected vote</th></tr></thead><tbody id="sum"></tbody></table></div>
+<h2 id="allstates-h">All 50 states and D.C.</h2>
+<div id="all-agg"></div>
+<p class="mut" id="all-note" style="font-size:.8rem"></p>
+<div class="tw"><table id="alltbl"><thead id="allhead"></thead><tbody id="allbody"></tbody></table></div>
 <h2 id="compare">2026 vs 2022, same measure</h2>
 <div class="legend" style="margin-bottom:8px"><span><i style="background:#9ca3af"></i>2022</span><span><i style="background:#3b82f6"></i>2026</span><span>n/a = the state has not published that figure. Governor votes are contest votes both years. Ballots are official turnout only.</span></div>
 <div id="cmp"></div>
@@ -187,8 +192,34 @@ let charts=[],cur='overview';const L0=S=>S.map(s=>s.code);const PARTY=["KS","IA"
 function show(t,quiet){if(!document.getElementById('p-'+t))t='overview';cur=t;document.getElementById('agg').style.display=t==='overview'?'':'none';document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('act',p.id==='p-'+t));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('act',b.dataset.t===t));if(location.hash.slice(1)!==t)history.replaceState(null,'','#'+t);if(!quiet)scrollTo({top:0});}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('#tabs button');if(b&&b.dataset.t)show(b.dataset.t)});
 addEventListener('hashchange',()=>show(location.hash.slice(1)));
+let allCtx=null,allSort={k:'name',dir:1};
+function renderAll(d,S,ALL){
+ const agg=document.getElementById('all-agg'),note=document.getElementById('all-note'),body=document.getElementById('allbody'),head=document.getElementById('allhead');
+ if(!agg)return;
+ if(!ALL||!ALL.states){note.textContent='The all-states file did not load.';return;}
+ const by=Object.fromEntries(S.map(s=>[s.code,s])),flips={};
+ for(const fl of ((d.why||{}).tracked_flips)||[])(flips[fl.state]=flips[fl.state]||[]).push(fl.office+' → '+fl.party);
+ const rows=ALL.states.map(st=>{const s=by[st.code];let v=null,proxy=false,asof='',url='';
+  if(s){const c=castRecord(s);v=c.v;proxy=!!c.proxy;asof=c.asof||'';url=c.url||'';}
+  const b22=s&&s.y2022&&s.y2022.total_turnout!=null?s.y2022.total_turnout:st.ballots['2022'];
+  const chg=(!proxy&&v!=null&&b22)?(100*v/b22-100):null;
+  return {st,s,v,proxy,asof,url,b22,chg,h26:st.house_2026,h22:st.house['2022'],flip:flips[st.code]||null,b18:st.ballots['2018'],b14:st.ballots['2014'],b10:st.ballots['2010']};});
+ const off=rows.filter(r=>r.v!=null&&!r.proxy),bSum=off.reduce((a,r)=>a+r.v,0),b22s=off.reduce((a,r)=>a+(r.b22||0),0);
+ const hs=rows.filter(r=>r.h26),hd=k=>hs.reduce((a,r)=>a+(r.h26[k]||0),0),h22=k=>hs.reduce((a,r)=>a+(r.h22[k]||0),0);
+ const ball22=rows.reduce((a,r)=>a+(r.b22||0),0);
+ agg.innerHTML=`<div class="kpis"><div class="kpi"><span class="mut">Official 2026 ballots, states that published them</span><b>${f(bSum)}</b><span class="mut" style="font-size:.7rem">${off.map(r=>r.st.code).join(', ')||'none'}. 2022 ballots, same states: ${f(b22s)} (${b22s?(100*bSum/b22s).toFixed(1)+'%':'n/a'}).</span></div><div class="kpi"><span class="mut">2026 House votes, official files only</span><b>D ${f(hd('dem'))}</b><span class="mut" style="font-size:.7rem">R ${f(hd('rep'))} · Other ${f(hd('other'))}. ${hs.map(r=>r.st.code).join(', ')||'none'}.</span></div><div class="kpi"><span class="mut">2022 House votes, those same states</span><b>D ${f(h22('dem'))}</b><span class="mut" style="font-size:.7rem">R ${f(h22('rep'))} · Other ${f(h22('other'))}. FEC, same states only.</span></div><div class="kpi"><span class="mut">2022 ballots, 50 states + D.C.</span><b>${f(ball22)}</b><span class="mut" style="font-size:.7rem">UF Election Lab total ballots counted. A full 2026 national ballots total is n/a.</span></div></div>`;
+ note.innerHTML=`${esc(ALL.house_2026_gap)} Ballots for 2010–2022: <a href="${esc(ALL.ballots_url)}" target="_blank" rel="noopener">${esc(ALL.ballots_source)}</a> ${esc(ALL.house_source)} Change vs 2022 is shown only when 2026 is official ballots, the same measure as the UF total. A contest proxy is not compared. Green rows are tracked statewide flips already called by AP. A full House flip list is n/a.`;
+ const val=r=>allSort.k==='name'?r.st.name:allSort.k==='b26'?r.v:allSort.k==='b22'?r.b22:allSort.k==='chg'?r.chg:allSort.k==='b18'?r.b18:allSort.k==='b14'?r.b14:allSort.k==='b10'?r.b10:allSort.k==='h26d'?r.h26&&r.h26.dem:allSort.k==='h22d'?r.h22.dem:r.st.name;
+ rows.sort((a,b)=>{const x=val(a),y=val(b);if(x==null&&y==null)return a.st.name.localeCompare(b.st.name);if(x==null)return 1;if(y==null)return -1;return (typeof x==='string'?x.localeCompare(y):x-y)*allSort.dir;});
+ const cols=[['name','State'],['b26','2026 count'],['b22','2022 ballots'],['chg','Change vs 2022'],['b18','2018 ballots'],['b14','2014 ballots'],['b10','2010 ballots'],['h26d','2026 House D'],['h22d','2022 House D'],['flip','Flipped seat']];
+ head.innerHTML='<tr>'+cols.map(([k,l])=>`<th data-k="${k}">${l}${allSort.k===k?(allSort.dir>0?' ▲':' ▼'):''}</th>`).join('')+'</tr>';
+ const cell=v=>v==null?'<span class="mut">n/a</span>':f(v);
+ const hp=h=>h?`D ${f(h.dem)}<br>R ${f(h.rep)}<br>O ${f(h.other)}`:'<span class="mut">n/a</span>';
+ body.innerHTML=rows.map(r=>`<tr class="${r.flip?'flip':''}"><td>${r.s?`<a href="#${r.st.code}">${esc(r.st.name)}</a>`:esc(r.st.name)}</td><td>${r.v==null?'<span class="mut">n/a</span>':f(r.v)+(r.proxy?' <span class="mut">proxy</span>':'')}${r.url?`<br><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.asof||'source')}</a>`:r.asof?`<br><span class="mut">${esc(r.asof)}</span>`:''}</td><td>${cell(r.b22)}</td><td>${r.chg==null?'<span class="mut">n/a</span>':(r.chg>=0?'+':'')+r.chg.toFixed(1)+'%'}</td><td>${cell(r.b18)}</td><td>${cell(r.b14)}</td><td>${cell(r.b10)}</td><td>${r.h26?hp(r.h26)+(r.h26.url?`<br><a href="${esc(r.h26.url)}" target="_blank" rel="noopener">${esc(r.h26.as_of)}</a>`:'') :'<span class="mut">n/a</span>'}</td><td>${hp(r.h22)}</td><td>${r.flip?esc(r.flip.join('; ')):'<span class="mut">n/a</span>'}</td></tr>`).join('');
+}
+document.addEventListener('click',e=>{const th=e.target.closest&&e.target.closest('#allhead th');if(!th||!allCtx)return;const k=th.dataset.k;if(allSort.k===k)allSort.dir*=-1;else{allSort.k=k;allSort.dir=k==='name'?1:-1;}renderAll(allCtx.d,allCtx.S,allCtx.ALL);});
 async function load(){
- const r=await fetch('data.json?t='+Date.now(),{cache:'no-store'});const d=await r.json();
+ const [r,ar]=await Promise.all([fetch('data.json?t='+Date.now(),{cache:'no-store'}),fetch('all-states.json?t='+Date.now(),{cache:'no-store'})]);const d=await r.json();const ALL=ar.ok?await ar.json():null;
  document.getElementById('upd').textContent=d.lastUpdatedLabel||d.lastUpdated||'pending';
  const S=d.states;
  for(const[c,n]of[['AK','Alaska'],['GA','Georgia']])if(!S.find(s=>s.code===c))S.push({code:c,name:n,placeholder:true,early_in_person:null,mail_returned:null,total_cast:null,registered:null,registered_note:'pending',early_data_as_of:'pending',election_day_turnout:null,expected_vote_counted_pct:null,polls_close_pt:'pending',y2022:{early_in_person:null,mail_returned:null,early_total:null,total_turnout:null,vep_turnout_pct:null,headline_results:'pending'},races:['Governor','U.S. Senate'].map(r=>({race:r,status:'pending',winner:null,party:null,margin:null,source:null,candidates:[],win_probability:{status:'results pending',values:null,source:null}})),feeds:[]});
@@ -306,6 +337,7 @@ async function load(){
  <h3>Flipped seats in the tracked states</h3><p class="mut" style="font-size:.8rem">Margins are computed from the votes on the state tabs. A race is listed only if AP called it and the party that held the office is not the party that won. ${esc(W.not_flips||'')}</p>
  <div class="tw"><table><thead><tr><th>State</th><th>Office</th><th>Was</th><th>Winner</th><th>Margin</th><th>Note</th></tr></thead><tbody>${(W.tracked_flips||[]).map(fl=>{const st=S.find(s=>s.code===fl.state);const race=(st&&st.races||[]).find(r=>r.race===fl.office);const m=race?raceStats(race).margin:null;return `<tr><td>${esc(fl.state)}</td><td>${esc(fl.office)}</td><td>${esc(fl.prior)}</td><td>${esc(fl.winner)} (${esc(fl.party)})</td><td>${race&&race.status==='called'?(m?esc(m):P):'not called'}</td><td>${esc(fl.note||'')}</td></tr>`}).join('')}</tbody></table></div>
  <h3>U.S. House flips, open seats, and the surveys</h3><p>${esc(W.house_flips_gap||'')}</p><p>${esc(W.open_seats_gap||'')}</p><div id="why-swings"></div>`:'';
+ allCtx={d,S,ALL};renderAll(d,S,ALL);
  document.getElementById('notes').innerHTML=(d.notes||[]).map(n=>`<li>${esc(n)}</li>`).join('');
  document.getElementById('src').innerHTML=d.sources.map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join('');
 }
