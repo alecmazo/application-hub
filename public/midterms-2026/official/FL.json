@@ -1,0 +1,484 @@
+{
+  "kind": "turnout",
+  "source": "Florida Department of State, Election Watch, County Reporting Status",
+  "url": "https://floridaelectionwatch.gov/CountyReportingStatus",
+  "retrieved": "2026-11-06",
+  "note": "Voter Turnout and Eligible Active Registered Voters. The page's own total row matches the county sum. The page does not print a last-updated clock; figures are as retrieved on Nov. 6, 2026. Unofficial until certified. This is ballots (voter turnout), not votes for one candidate.",
+  "statewide": {
+    "ballots": 8335497,
+    "registered": 13704495,
+    "turnout_pct": "60.82%",
+    "precincts_reporting": "100%"
+  },
+  "counties": [
+    {
+      "county": "Alachua",
+      "ballots": 105976,
+      "registered": 167143,
+      "turnout_pct": "63.4%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Baker",
+      "ballots": 9864,
+      "registered": 17899,
+      "turnout_pct": "55.11%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Bay",
+      "ballots": 70630,
+      "registered": 128668,
+      "turnout_pct": "54.89%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Bradford",
+      "ballots": 9768,
+      "registered": 16909,
+      "turnout_pct": "57.77%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Brevard",
+      "ballots": 271885,
+      "registered": 447257,
+      "turnout_pct": "60.79%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Broward",
+      "ballots": 666186,
+      "registered": 1103545,
+      "turnout_pct": "60.37%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Calhoun",
+      "ballots": 4330,
+      "registered": 7601,
+      "turnout_pct": "56.97%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Charlotte",
+      "ballots": 101185,
+      "registered": 155843,
+      "turnout_pct": "64.93%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Citrus",
+      "ballots": 75533,
+      "registered": 121391,
+      "turnout_pct": "62.22%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Clay",
+      "ballots": 93709,
+      "registered": 156247,
+      "turnout_pct": "59.97%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Collier",
+      "ballots": 172998,
+      "registered": 265678,
+      "turnout_pct": "65.12%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Columbia",
+      "ballots": 22710,
+      "registered": 41610,
+      "turnout_pct": "54.58%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Desoto",
+      "ballots": 9180,
+      "registered": 16080,
+      "turnout_pct": "57.09%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Dixie",
+      "ballots": 5649,
+      "registered": 10055,
+      "turnout_pct": "56.18%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Duval",
+      "ballots": 360840,
+      "registered": 655212,
+      "turnout_pct": "55.07%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Escambia",
+      "ballots": 116510,
+      "registered": 207445,
+      "turnout_pct": "56.16%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Flagler",
+      "ballots": 64378,
+      "registered": 100550,
+      "turnout_pct": "64.03%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Franklin",
+      "ballots": 5075,
+      "registered": 7608,
+      "turnout_pct": "66.71%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Gadsden",
+      "ballots": 17890,
+      "registered": 26870,
+      "turnout_pct": "66.58%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Gilchrist",
+      "ballots": 7857,
+      "registered": 12999,
+      "turnout_pct": "60.44%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Glades",
+      "ballots": 3842,
+      "registered": 6877,
+      "turnout_pct": "55.87%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Gulf",
+      "ballots": 6750,
+      "registered": 11194,
+      "turnout_pct": "60.3%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Hamilton",
+      "ballots": 4174,
+      "registered": 7168,
+      "turnout_pct": "58.23%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Hardee",
+      "ballots": 6058,
+      "registered": 11530,
+      "turnout_pct": "52.54%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Hendry",
+      "ballots": 10175,
+      "registered": 19438,
+      "turnout_pct": "52.35%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Hernando",
+      "ballots": 80680,
+      "registered": 138084,
+      "turnout_pct": "58.43%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Highlands",
+      "ballots": 39951,
+      "registered": 63379,
+      "turnout_pct": "63.04%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Hillsborough",
+      "ballots": 519837,
+      "registered": 823694,
+      "turnout_pct": "63.11%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Holmes",
+      "ballots": 6244,
+      "registered": 11453,
+      "turnout_pct": "54.52%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Indian River",
+      "ballots": 77961,
+      "registered": 119740,
+      "turnout_pct": "65.11%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Jackson",
+      "ballots": 15766,
+      "registered": 27516,
+      "turnout_pct": "57.3%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Jefferson",
+      "ballots": 7024,
+      "registered": 10029,
+      "turnout_pct": "70.04%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Lafayette",
+      "ballots": 2639,
+      "registered": 4271,
+      "turnout_pct": "61.79%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Lake",
+      "ballots": 178949,
+      "registered": 283780,
+      "turnout_pct": "63.06%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Lee",
+      "ballots": 306050,
+      "registered": 504633,
+      "turnout_pct": "60.65%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Leon",
+      "ballots": 125981,
+      "registered": 184523,
+      "turnout_pct": "68.27%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Levy",
+      "ballots": 18224,
+      "registered": 30448,
+      "turnout_pct": "59.85%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Liberty",
+      "ballots": 2699,
+      "registered": 4617,
+      "turnout_pct": "58.46%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Madison",
+      "ballots": 7038,
+      "registered": 10547,
+      "turnout_pct": "66.73%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Manatee",
+      "ballots": 183179,
+      "registered": 287882,
+      "turnout_pct": "63.63%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Marion",
+      "ballots": 164944,
+      "registered": 271268,
+      "turnout_pct": "60.8%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Martin",
+      "ballots": 76865,
+      "registered": 117229,
+      "turnout_pct": "65.57%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Miami-Dade",
+      "ballots": 794583,
+      "registered": 1313264,
+      "turnout_pct": "60.5%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Monroe",
+      "ballots": 32506,
+      "registered": 54704,
+      "turnout_pct": "59.42%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Nassau",
+      "ballots": 50767,
+      "registered": 82056,
+      "turnout_pct": "61.87%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Okaloosa",
+      "ballots": 77922,
+      "registered": 148349,
+      "turnout_pct": "52.53%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Okeechobee",
+      "ballots": 11202,
+      "registered": 20874,
+      "turnout_pct": "53.66%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Orange",
+      "ballots": 474350,
+      "registered": 820504,
+      "turnout_pct": "57.81%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Osceola",
+      "ballots": 132572,
+      "registered": 238063,
+      "turnout_pct": "55.69%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Palm Beach",
+      "ballots": 576527,
+      "registered": 889521,
+      "turnout_pct": "64.81%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Pasco",
+      "ballots": 241684,
+      "registered": 407676,
+      "turnout_pct": "59.28%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Pinellas",
+      "ballots": 406622,
+      "registered": 613797,
+      "turnout_pct": "66.25%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Polk",
+      "ballots": 259553,
+      "registered": 459892,
+      "turnout_pct": "56.44%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Putnam",
+      "ballots": 26633,
+      "registered": 45370,
+      "turnout_pct": "58.7%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Santa Rosa",
+      "ballots": 74870,
+      "registered": 144230,
+      "turnout_pct": "51.91%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Sarasota",
+      "ballots": 225126,
+      "registered": 334228,
+      "turnout_pct": "67.36%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Seminole",
+      "ballots": 196745,
+      "registered": 343307,
+      "turnout_pct": "57.31%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "St. Johns",
+      "ballots": 156860,
+      "registered": 243887,
+      "turnout_pct": "64.32%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "St. Lucie",
+      "ballots": 139005,
+      "registered": 246187,
+      "turnout_pct": "56.46%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Sumter",
+      "ballots": 95678,
+      "registered": 130072,
+      "turnout_pct": "73.56%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Suwannee",
+      "ballots": 15929,
+      "registered": 26996,
+      "turnout_pct": "59.01%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Taylor",
+      "ballots": 6996,
+      "registered": 11749,
+      "turnout_pct": "59.55%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Union",
+      "ballots": 4303,
+      "registered": 7316,
+      "turnout_pct": "58.82%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Volusia",
+      "ballots": 238164,
+      "registered": 401708,
+      "turnout_pct": "59.29%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Wakulla",
+      "ballots": 15192,
+      "registered": 25929,
+      "turnout_pct": "58.59%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Walton",
+      "ballots": 35445,
+      "registered": 63946,
+      "turnout_pct": "55.43%",
+      "precincts_reporting": "100%"
+    },
+    {
+      "county": "Washington",
+      "ballots": 9080,
+      "registered": 14960,
+      "turnout_pct": "60.7%",
+      "precincts_reporting": "100%"
+    }
+  ]
+}

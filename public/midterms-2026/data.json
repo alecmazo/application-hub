@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-04T10:36:00-08:00",
-  "lastUpdatedLabel": "Wed Nov 4, 2026, 10:36 AM PT",
+  "lastUpdated": "2026-11-06T11:25:00-08:00",
+  "lastUpdatedLabel": "Fri Nov 6, 2026, 11:25 AM PT",
   "notes": [
+    "Nov. 6, 2026 update: Overview headline uses official ballots cast where a state election office published that figure (Florida: 8,335,497). California, Georgia and Texas published contest results; Texas SOS candidate totals from Nov. 4, 4:59 PM are kept beside higher AP counts and were not used to lower anything. Other states' SOS sites did not return a newer count in this retrieval, so their Nov. 4 AP/NBC contest votes stay in place and are labeled as a proxy, not ballots cast. A race is called only if it was already an AP call. Early-vote totals are no longer the Overview headline.",
     "Results refresh ~10:36 AM PT Nov 4: all 26 races refreshed from AP via NBC News firecracker (monotonic; never lowered). No NEW AP calls since 7:11 AM PT (AP uncalled-races list, ~9:41 AM PT). Still pending AP: KS Governor: Cindy Holscher leads by 5,578 votes (+0.5 pts), ~98.3% of expected vote in; AP has not called; AK Governor: Jonathan Kreiss-Tomkins leads by 42,044 votes (+19.9 pts), ~73.9% of expected vote in; AP has not called; ranked-choice tabulation Nov 18; AK U.S. Senate: Mary Peltola leads by 626 votes (+0.3 pts), ~74.3% of expected vote in; AP has not called; ranked-choice tabulation Nov 18. Overview now derives every count, margin and % reporting from the per-state race data.",
     "Results refresh ~7:11 AM PT Nov 4: NEW AP calls: AZ Governor Katie Hobbs (AP call ~12:25 AM PT per KJZZ); NV Governor Aaron Ford (AP story ~1:54 AM PT). Still pending AP: KS Gov (Holscher +0.5, ~97.9% in), AK Gov (RCV, ~73.9%), AK Sen (Peltola +0.3, RCV, ~74.3%). Counts monotonic from NBC Firecracker.",
     "Results refresh ~11:46 PM PT: AP called MI U.S. Senate (El-Sayed); vote counts advanced from NBC Firecracker where monotonic; AZ/KS Gov/AK/NV still pending AP.",
@@ -2802,6 +2803,16 @@
         "Wilson": 2776,
         "Woodson": 1112,
         "Wyandotte": 43120
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://sos.ks.gov/elections/election-results.html",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -5333,6 +5344,16 @@
         "Woodbury": 33672,
         "Worth": 3421,
         "Wright": 4390
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://electionresults.iowa.gov/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -7882,6 +7903,16 @@
         "Williams": 13527,
         "Wood": 54502,
         "Wyandot": 9974
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://liveresults.ohiosos.gov/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -9769,6 +9800,16 @@
         "Winona": 22924,
         "Wright": 75758,
         "Yellow Medicine": 4572
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://electionresults.sos.mn.gov/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -10608,7 +10649,17 @@
           "source_url": "https://www.nbcnews.com/firecracker/api/v2/state-results/2026-elections/nevada-governor-results",
           "race": "Governor"
         }
-      ]
+      ],
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://silverstateelection.nv.gov/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
+      }
     },
     {
       "code": "MI",
@@ -12714,6 +12765,16 @@
         "Washtenaw": 200763,
         "Wayne": 721494,
         "Wexford": 15033
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://www.michigan.gov/sos/elections/election-results-and-data",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -14451,6 +14512,16 @@
         "Westmoreland": 143185,
         "Wyoming": 10891,
         "York": 179295
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://www.electionreturns.pa.gov/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -15374,6 +15445,16 @@
         "Santa Cruz": 12290,
         "Yavapai": 103505,
         "Yuma": 28786
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://results.arizona.vote/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -15404,20 +15485,20 @@
           "winner": "Byron Donalds",
           "party": "R",
           "margin": "+1.3 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Florida Division of Elections, Election Watch, unofficial https://floridaelectionwatch.gov/StateOffices/Governor retrieved Nov 6, 2026. Datto kept at the higher AP count (8,403); the Election Watch page shows 8,312.",
           "candidates": [
             {
               "name": "Byron Donalds",
               "party": "R",
               "incumbent": null,
-              "votes": 4132275,
-              "pct": 50
+              "votes": 4132334,
+              "pct": 50.0
             },
             {
               "name": "David Jolly",
               "party": "D",
               "incumbent": null,
-              "votes": 4024554,
+              "votes": 4024639,
               "pct": 48.7
             },
             {
@@ -15431,7 +15512,7 @@
               "name": "Charles Burkett",
               "party": "NPA",
               "incumbent": null,
-              "votes": 15238,
+              "votes": 15239,
               "pct": 0.2
             },
             {
@@ -15469,7 +15550,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "10:36 AM PT"
+          "votes_as_of": "retrieved Nov 6, 2026 (FL Election Watch)"
         },
         {
           "race": "U.S. Senate (special)",
@@ -15477,27 +15558,27 @@
           "winner": "Ashley Moody",
           "party": "R",
           "margin": "+2.9 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Florida Division of Elections, Election Watch, unofficial https://floridaelectionwatch.gov/FederalOffices/USSenator retrieved Nov 6, 2026",
           "candidates": [
             {
               "name": "Ashley Moody",
               "party": "R",
               "incumbent": null,
-              "votes": 4207947,
+              "votes": 4208004,
               "pct": 50.9
             },
             {
               "name": "Angie Nixon",
               "party": "D",
               "incumbent": null,
-              "votes": 3969186,
-              "pct": 48
+              "votes": 3969271,
+              "pct": 48.0
             },
             {
               "name": "Neil J. Gillespie",
               "party": "NPA",
               "incumbent": null,
-              "votes": 94534,
+              "votes": 94538,
               "pct": 1.1
             }
           ],
@@ -15507,7 +15588,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "10:36 AM PT"
+          "votes_as_of": "retrieved Nov 6, 2026 (FL Election Watch)"
         }
       ],
       "feeds": [
@@ -18419,6 +18500,20 @@
         "Wakulla": 15123,
         "Walton": 35259,
         "Washington": 9040
+      },
+      "official_results": {
+        "ballots_cast": 8335497,
+        "ballots_is_proxy": false,
+        "ballots_measure": "Voter turnout (ballots) on the Florida Election Watch county reporting page. Not the sum of one contest.",
+        "registered_official": 13704495,
+        "turnout_pct": 60.82,
+        "precincts_reporting": "100%",
+        "as_of_label": "Retrieved Nov. 6, 2026. The page does not print a clock. County total row: 8,335,497 ballots, 13,704,495 eligible active registered voters, 60.82%.",
+        "source": "Florida Department of State, Division of Elections, Election Watch",
+        "url": "https://floridaelectionwatch.gov/CountyReportingStatus",
+        "certified": false,
+        "county_file": "official/FL.json",
+        "note": "Unofficial until the state certifies. Election Day turnout by county on /ElectionDayTurnout is a different, smaller figure and is not used here."
       }
     },
     {
@@ -23399,6 +23494,29 @@
         "Young": 6599,
         "Zapata": 3253,
         "Zavala": 3078
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "Texas SOS labels the candidate column 'Ballots Cast', but that is votes for the candidate, not statewide turnout. No separate turnout total is on the results page. The Nov. 4 SOS candidate totals are below the later AP counts already stored, so the stored counts were not lowered.",
+        "as_of_label": "SOS page: 2026 November general election, updated 11/04/2026 04:59 PM (timezone not stated on the page)",
+        "source": "Texas Secretary of State",
+        "url": "https://electionresults.sos.state.tx.us/results.html",
+        "certified": false,
+        "sos_snapshot": {
+          "senate": {
+            "Ken Paxton": 4249373,
+            "James Talarico": 5444982,
+            "Ted Brown": 190237
+          },
+          "governor": {
+            "Greg Abbott": 4524527,
+            "Gina Hinojosa": 5230789,
+            "Pat Dixon": 148078
+          },
+          "polling_locations": "100%"
+        },
+        "note": "Not certified. Newer AP/NBC counts already in the race records exceed this snapshot and are kept."
       }
     },
     {
@@ -23429,21 +23547,21 @@
           "winner": "Xavier Becerra",
           "party": "D",
           "margin": "+28.0 pts",
-          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT",
+          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor",
           "candidates": [
             {
               "name": "Xavier Becerra",
               "party": "D",
               "incumbent": null,
-              "votes": 4982430,
-              "pct": 64
+              "votes": 5751214,
+              "pct": 64.7
             },
             {
               "name": "Steve Hilton",
               "party": "R",
               "incumbent": null,
-              "votes": 2804925,
-              "pct": 36
+              "votes": 3138007,
+              "pct": 35.3
             }
           ],
           "reporting_pct": 59.3,
@@ -23452,7 +23570,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "10:36 AM PT"
+          "votes_as_of": "Nov 6, 2026, 9:27 a.m. (CA SOS)"
         }
       ],
       "feeds": [
@@ -24734,6 +24852,18 @@
         "Tulare": 61571,
         "Yolo": 45948,
         "Yuba": 8912
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "No statewide ballots-cast total was in the Secretary of State returns feed. The governor contest (8,889,221 votes, 100% of precincts) is a proxy, not ballots cast.",
+        "as_of_label": "November 6, 2026, 9:27 a.m. (as printed by the CA SOS; California time)",
+        "source": "California Secretary of State",
+        "url": "https://api.sos.ca.gov/returns/governor",
+        "certified": false,
+        "county_file": "official/CA.json",
+        "precincts_reporting": "100% (23,860 of 23,860)",
+        "note": "Precincts reporting is not the same as share of expected vote. The expected-vote field on this race is unchanged at 59.3 because the SOS feed did not publish a higher expected-vote share."
       }
     },
     {
@@ -25426,7 +25556,17 @@
           "source_url": "https://www.nbcnews.com/politics/2026-elections/alaska-senate-results",
           "race": "U.S. Senate"
         }
-      ]
+      ],
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://www.elections.alaska.gov/",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
+      }
     },
     {
       "code": "GA",
@@ -25457,20 +25597,20 @@
           "winner": "Keisha Lance Bottoms",
           "party": "D",
           "margin": "+8.6 pts",
-          "source": "AP, AP race-call article verified ~8:45 PM PT https://apnews.com/article/georgia-governor-lance-bottom-jackson-midterm-election-67c22a38b9a6e4cad5584aa44acf106f | votes AP via NBC News, ~11:46 PM PT",
+          "source": "AP, AP race-call article verified ~8:45 PM PT https://apnews.com/article/georgia-governor-lance-bottom-jackson-midterm-election-67c22a38b9a6e4cad5584aa44acf106f | votes AP via NBC News, ~11:46 PM PT | Georgia Secretary of State media export created 2026-11-06T14:28:36Z; county precincts 2,581/2,581 https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
           "candidates": [
             {
               "name": "Keisha Lance Bottoms",
               "party": "D",
               "incumbent": null,
-              "votes": 2268462,
+              "votes": 2268509,
               "pct": 54.3
             },
             {
               "name": "Rick Jackson",
               "party": "R",
               "incumbent": null,
-              "votes": 1908261,
+              "votes": 1908599,
               "pct": 45.7
             }
           ],
@@ -25480,7 +25620,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "10:36 AM PT"
+          "votes_as_of": "Nov 6, 2026, 6:28 AM PT (GA SOS export)"
         },
         {
           "race": "U.S. Senate",
@@ -25488,21 +25628,21 @@
           "winner": "Jon Ossoff",
           "party": "D",
           "margin": "+18.0 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Georgia Secretary of State media export created 2026-11-06T14:28:36Z https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
           "candidates": [
             {
               "name": "Jon Ossoff",
               "party": "D, inc.",
               "incumbent": null,
-              "votes": 2463132,
-              "pct": 59
+              "votes": 2463192,
+              "pct": 59.0
             },
             {
               "name": "Mike Collins",
               "party": "R",
               "incumbent": null,
-              "votes": 1711322,
-              "pct": 41
+              "votes": 1711641,
+              "pct": 41.0
             }
           ],
           "reporting_pct": 98.7,
@@ -25511,7 +25651,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "10:36 AM PT"
+          "votes_as_of": "Nov 6, 2026, 6:28 AM PT (GA SOS export)"
         }
       ],
       "feeds": [
@@ -28251,6 +28391,18 @@
         "DeKalb": 321686,
         "McDuffie": 8266,
         "McIntosh": 5704
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "The export has no statewide ballots-cast total. Governor contest votes (4,177,108) are a proxy. County precincts for governor: 2,581 of 2,581.",
+        "as_of_label": "Export created 2026-11-06T14:28:36Z (6:28 AM PT)",
+        "source": "Georgia Secretary of State",
+        "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
+        "certified": false,
+        "county_file": "official/GA.json",
+        "precincts_reporting": "2,581/2,581 counties' governor precincts",
+        "note": "Vote-method reporting statuses in the export are 'Not Reported'. Expected-vote share on the race is unchanged at 98.7 because this file does not publish a higher expected-vote figure."
       }
     },
     {
@@ -29452,6 +29604,16 @@
         "Woodstock": 788,
         "Yarmouth": 5695,
         "York": 8531
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://www.maine.gov/sos/elections-voting/election-results-data",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     },
     {
@@ -30609,6 +30771,16 @@
         "Windsor": 94,
         "Wolfeboro": 4040,
         "Woodstock": 668
+      },
+      "official_results": {
+        "ballots_cast": null,
+        "ballots_is_proxy": true,
+        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
+        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
+        "source": "Statewide results",
+        "url": "https://www.sos.nh.gov/elections/elections/election-results",
+        "certified": false,
+        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
       }
     }
   ],
@@ -30873,6 +31045,50 @@
     {
       "title": "NBC News / AP Georgia Senate",
       "url": "https://www.nbcnews.com/politics/2026-elections/georgia-senate-results"
+    },
+    {
+      "title": "Reuters midterm results graphics, Nov. 6, 2026, 12:00 PM EST",
+      "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/"
+    },
+    {
+      "title": "Reuters, Latinos and county shifts, Nov. 5, 2026",
+      "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/2026-11-05/latino-results/"
+    },
+    {
+      "title": "Reuters factbox via StreetInsider, Nov. 4, 2026",
+      "url": "https://www.streetinsider.com/Reuters/Factbox-Seven+numbers+that+explain+Democrats%27+US+midterm+rout/27287966.html"
+    },
+    {
+      "title": "Florida Election Watch county reporting",
+      "url": "https://floridaelectionwatch.gov/CountyReportingStatus"
+    },
+    {
+      "title": "California Secretary of State governor returns",
+      "url": "https://api.sos.ca.gov/returns/governor"
+    },
+    {
+      "title": "Georgia Secretary of State results export",
+      "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json"
+    },
+    {
+      "title": "Texas Secretary of State election results",
+      "url": "https://electionresults.sos.state.tx.us/results.html"
+    },
+    {
+      "title": "American Presidency Project, midterm seat change",
+      "url": "https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections"
+    },
+    {
+      "title": "FEC Federal Elections 2022 (House popular vote; earlier years linked in the national table)",
+      "url": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
+    },
+    {
+      "title": "CBS News midterm live updates, Nov. 6, 2026",
+      "url": "https://www.cbsnews.com/live-updates/midterm-election-results-2026-democrats-house-senate-trump/"
+    },
+    {
+      "title": "Philadelphia Inquirer on the NYT House-margin estimate",
+      "url": "https://www.inquirer.com/politics/election/midterm-election-results-trump-rebuke-20261104.html"
     }
   ],
   "schema_version": 2,
@@ -37708,5 +37924,278 @@
         }
       ]
     }
+  },
+  "national": {
+    "as_of_label": "Nov. 6, 2026, 12:00 PM EST (9:00 AM PT)",
+    "source": "Reuters",
+    "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/",
+    "senate": {
+      "dem_caucus": 54,
+      "rep": 44,
+      "unresolved": 2,
+      "dem_won_this_year": 20,
+      "rep_won_this_year": 13,
+      "dem_not_up": 34,
+      "rep_not_up": 31,
+      "net_dem": 7,
+      "unresolved_note": "Reuters' Nov. 5 spending note and its Nov. 4 factbox name Alaska and Mississippi as the two uncalled Senate races. This dashboard does not treat either as called."
+    },
+    "house": {
+      "dem": 250,
+      "rep": 157,
+      "unresolved": 28,
+      "net_dem": 40,
+      "majority": 218,
+      "note": "250+157+28=435. Reuters labels this a Democratic gain of 40 seats and a Republican loss of 40. That is Reuters' net, not a figure recomputed here, and it is not final while 28 seats are unresolved."
+    },
+    "cbs_secondary": {
+      "as_of_label": "CBS News live blog, updated Nov. 6, 2026, 1:22 PM EST",
+      "url": "https://www.cbsnews.com/live-updates/midterm-election-results-2026-democrats-house-senate-trump/",
+      "note": "A different outlet and a different moment. CBS said Democrats held 214 House seats going into the election, had flipped 43 districts to Democrats and 2 to Republicans so far, and were on pace for about 256 House seats, with dozens of winners not yet projected. Not an AP call list and not mixed into the Reuters tally above."
+    },
+    "composition_note": "A single clerk.house.gov party-division row for the day before the election was not retrieved for this update. Reuters' +40 / +7 are the nets Reuters itself prints. The American Presidency Project lists 220 House seats and 20 Senate seats for the president's party to defend in 2026, which is the post-2024 baseline that project uses, not a vacancy-adjusted count of who was seated on Nov. 3.",
+    "history_source": "The American Presidency Project, Seats in Congress Gained/Lost by the President's Party in Midterm Elections. House and Senate changes are the project's calculations from clerk party-division pages. Brookings Vital Statistics differs by about one seat in some of these years because vacancies and party switches are counted differently; this table uses the Presidency Project only.",
+    "history_url": "https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections",
+    "history": [
+      {
+        "year": 2006,
+        "president": "George W. Bush",
+        "party": "R",
+        "house": -30,
+        "senate": -6
+      },
+      {
+        "year": 2010,
+        "president": "Barack Obama",
+        "party": "D",
+        "house": -63,
+        "senate": -6
+      },
+      {
+        "year": 2014,
+        "president": "Barack Obama",
+        "party": "D",
+        "house": -13,
+        "senate": -9
+      },
+      {
+        "year": 2018,
+        "president": "Donald J. Trump",
+        "party": "R",
+        "house": -41,
+        "senate": 2
+      },
+      {
+        "year": 2022,
+        "president": "Joseph R. Biden Jr.",
+        "party": "D",
+        "house": -9,
+        "senate": 1
+      },
+      {
+        "year": 2026,
+        "president": "Donald J. Trump",
+        "party": "R",
+        "house": -40,
+        "senate": -7,
+        "partial": true,
+        "note": "Reuters' called-seat net as of Nov. 6, 9:00 AM PT, with 28 House seats and 2 Senate seats still unresolved. Not comparable to the final historical rows until those races are called."
+      }
+    ],
+    "house_popular_vote_note": "FEC general-election votes cast for U.S. House candidates, the total row in each year's Federal Elections report, which includes D.C. and the territories as the FEC adds them. The same measure is used for every year below. A 2026 FEC report does not exist yet.",
+    "house_popular_vote": [
+      {
+        "year": 2006,
+        "dem": 42255280,
+        "rep": 35657353,
+        "other": 2542040,
+        "url": "https://www.fec.gov/resources/cms-content/documents/federalelections2006.pdf"
+      },
+      {
+        "year": 2010,
+        "dem": 39038317,
+        "rep": 44763085,
+        "other": 3332746,
+        "url": "https://www.fec.gov/resources/cms-content/documents/federalelections2010.pdf"
+      },
+      {
+        "year": 2014,
+        "dem": 36025716,
+        "rep": 40068014,
+        "other": 3125447,
+        "url": "https://www.fec.gov/resources/cms-content/documents/tables2014.pdf"
+      },
+      {
+        "year": 2018,
+        "dem": 61296952,
+        "rep": 50960112,
+        "other": 2820406,
+        "url": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf"
+      },
+      {
+        "year": 2022,
+        "dem": 51628838,
+        "rep": 54298205,
+        "other": 2246001,
+        "url": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
+      },
+      {
+        "year": 2026,
+        "dem": null,
+        "rep": null,
+        "other": null,
+        "note": "n/a. No FEC total. The New York Times estimated the Democratic margin in the national House vote at about 13 points as of early Nov. 4, which the Philadelphia Inquirer (Nov. 4, 2026, 9:58 a.m. ET) described as the largest for either party in a congressional election since at least 1976. That is an estimate while ballots were still being counted, not a vote total."
+      }
+    ]
+  },
+  "why": {
+    "label": "Interpretation is marked. Counts above are the figures the cited source printed, not a model run for this page.",
+    "tracked_flips": [
+      {
+        "state": "IA",
+        "office": "Governor",
+        "prior": "R (Kim Reynolds, 2022)",
+        "winner": "Rob Sand",
+        "party": "D",
+        "called": "AP",
+        "note": "Same office. 2022 headline in this file: Reynolds (R) defeated DeJear."
+      },
+      {
+        "state": "IA",
+        "office": "U.S. Senate",
+        "prior": "R (Joni Ernst held the seat; she is not on this ballot)",
+        "winner": "Josh Turek",
+        "party": "D",
+        "called": "AP",
+        "note": "Open-seat flip. Ballot is Hinson, Turek, Laehn."
+      },
+      {
+        "state": "OH",
+        "office": "Governor",
+        "prior": "R (Mike DeWine, 2022)",
+        "winner": "Amy Acton",
+        "party": "D",
+        "called": "AP",
+        "note": "Same office."
+      },
+      {
+        "state": "OH",
+        "office": "U.S. Senate (special)",
+        "prior": "R (Jon Husted held the appointed seat)",
+        "winner": "Sherrod Brown",
+        "party": "D",
+        "called": "AP",
+        "note": "Special election for the seat Husted held."
+      },
+      {
+        "state": "NV",
+        "office": "Governor",
+        "prior": "R (Joe Lombardo, incumbent on the ballot)",
+        "winner": "Aaron Ford",
+        "party": "D",
+        "called": "AP",
+        "note": "Incumbent lost."
+      },
+      {
+        "state": "TX",
+        "office": "Governor",
+        "prior": "R (Greg Abbott, incumbent on the ballot)",
+        "winner": "Gina Hinojosa",
+        "party": "D",
+        "called": "AP",
+        "note": "Incumbent lost. First Democratic governor of Texas in more than 30 years, as reported by Deutsche Welle's Nov. 5 account of the AP-called race."
+      },
+      {
+        "state": "TX",
+        "office": "U.S. Senate",
+        "prior": "R (John Cornyn held the seat; Paxton was the nominee)",
+        "winner": "James Talarico",
+        "party": "D",
+        "called": "AP",
+        "note": "Reuters factbox, Nov. 4: Talarico ahead by about 12 points. The margin on this page is computed from the stored votes."
+      },
+      {
+        "state": "GA",
+        "office": "Governor",
+        "prior": "R (Brian Kemp, 2022)",
+        "winner": "Keisha Lance Bottoms",
+        "party": "D",
+        "called": "AP",
+        "note": "Same office. 2022 headline: Kemp (R) defeated Abrams."
+      },
+      {
+        "state": "KS",
+        "office": "U.S. Senate",
+        "prior": "R (Roger Marshall, on the ballot)",
+        "winner": "Adam Hamilton",
+        "party": "D",
+        "called": "AP",
+        "note": "Reuters factbox, Nov. 4: first Democrat elected to the Senate from Kansas in 94 years. Marshall, not the 2022 Moran race, held this seat."
+      },
+      {
+        "state": "ME",
+        "office": "U.S. Senate",
+        "prior": "R (Susan Collins, incumbent on the ballot)",
+        "winner": "Troy Jackson",
+        "party": "D",
+        "called": "AP",
+        "note": "Incumbent lost."
+      }
+    ],
+    "not_flips": "Called holds in this set include FL governor (Donalds, R), FL Senate special (Moody, R), NH governor (Ayotte, R), MN governor (Klobuchar, DFL), MI governor (Benson, D), PA governor (Shapiro, D), AZ governor (Hobbs, D), CA governor (Becerra, D), GA Senate (Ossoff, D), NH Senate (Pappas, D), MN Senate (Flanagan, D), ME governor (Pingree, D). KS governor and both Alaska statewide races are not called by AP. Michigan Senate and Minnesota Senate were Democratic-held seats (Peters, Smith) and the Democratic nominee won; they are holds, and the incumbents were not on the ballot.",
+    "house_flips_gap": "A complete list of flipped U.S. House seats with vote margins was not available from a single official file on Nov. 6. Reuters' net is +40 Democratic House seats with 28 unresolved. Reuters' Nov. 4 factbox, without a vote margin, said J.D. Ford defeated incumbent Victoria Spartz in an Indiana district Donald Trump had carried by about 17 points, and that Democrats had won four seats Trump carried by more than 15 points. The vote margin in that House race is n/a here.",
+    "open_seats_gap": "A full national retirement roster was not re-counted from clerk or FEC filings for this update. Tracked open seats visible because the person who held the office is not on the ballot: Iowa Senate (Ernst), Ohio Senate special (Husted was the appointed incumbent and ran), Texas Senate (Cornyn; Paxton was the nominee), Minnesota Senate (Smith), Michigan Senate (Peters), New Hampshire Senate (Shaheen). Iowa governor was open after Reynolds. Do not treat this as a complete list.",
+    "items": [
+      {
+        "kind": "fact",
+        "text": "Reuters, Nov. 6, 2026, 9:00 AM PT: Senate Democratic caucus 54, Republicans 44, 2 unresolved, net D+7. House Democrats 250, Republicans 157, 28 unresolved, net D+40.",
+        "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/"
+      },
+      {
+        "kind": "fact",
+        "text": "President's-party seat change in prior midterms, American Presidency Project: 2006 House −30 / Senate −6; 2010 −63 / −6; 2014 −13 / −9; 2018 −41 / +2; 2022 −9 / +1. The 2026 Reuters net (−40 House / −7 Senate) is larger than 2022 and 2014 in the House and is not final.",
+        "url": "https://www.presidency.ucsb.edu/statistics/data/seats-congress-gainedlost-the-presidents-party-mid-term-elections"
+      },
+      {
+        "kind": "fact",
+        "text": "National House popular vote, FEC, same measure each year (general-election votes for House candidates): 2006 D 42,255,280 / R 35,657,353; 2010 D 39,038,317 / R 44,763,085; 2014 D 36,025,716 / R 40,068,014; 2018 D 61,296,952 / R 50,960,112; 2022 D 51,628,838 / R 54,298,205. The 2026 total is n/a.",
+        "url": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
+      },
+      {
+        "kind": "estimate",
+        "text": "The New York Times estimated the Democratic margin in the national House vote at about 13 points as of early Nov. 4, described by the Philadelphia Inquirer that morning as the largest for either party in a congressional election since at least 1976. That is an estimate, not a counted popular-vote total.",
+        "url": "https://www.inquirer.com/politics/election/midterm-election-results-trump-rebuke-20261104.html"
+      },
+      {
+        "kind": "correlation",
+        "text": "Outside spending did not line up with wins. Reuters' analysis of FEC independent expenditures: Republican-aligned groups spent $1.16 billion on Senate general-election races and $1.1 billion of that backed candidates who lost; Democratic-aligned groups spent $689 million, $677 million of it on winners. Alaska and Mississippi ($113.3 million combined) are omitted because those races were uncalled. In Texas, about $207 million more was spent on the Republican, including spending after donations from Elon Musk, and the Democrat won. Ohio and Michigan also had more Republican outside spending ($97 million and $76 million) and Democratic winners. This is a correlation. It does not show that spending caused the losses.",
+        "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/"
+      },
+      {
+        "kind": "correlation",
+        "text": "Reuters and USA Today county tallies, not individual ballots: in 64 majority-Latino counties with Senate races that were mostly counted, the Republican share was 14 points lower than Trump's 2024 share. Counties above 50% Hispanic voting-age population −14, counties 20–50% −10, counties under 20% −8. Hidalgo County, Texas, about −25; Miami-Dade, Florida, −10. That is an ecological correlation. It is not a count of how Latino voters marked their ballots.",
+        "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/2026-11-05/latino-results/"
+      },
+      {
+        "kind": "fact",
+        "text": "In SSRS exit polling cited by Reuters, 45% of Hispanic voters named the economy as the country's top issue. Janet Murguía of UnidosUS said Latino turnout reached as many as 14.5 million. That is her organization's statement, not a Census tally.",
+        "url": "https://www.reuters.com/graphics/US-ELECTIONS/GRAPHICS-BLOG/akpelkldzvr/2026-11-05/latino-results/"
+      },
+      {
+        "kind": "correlation",
+        "text": "Reuters factbox, Nov. 4, 2026, 10:54 AM EST, from county tallies with USA Today: Republicans' share of the vote was lower than Trump's 2024 share in 99% of about 2,200 counties mostly counted by Wednesday morning, and the Republican share across those counties was 8 points lower. Same ecological limit as the Latino-county figures. Counts were still moving that morning.",
+        "url": "https://www.streetinsider.com/Reuters/Factbox-Seven+numbers+that+explain+Democrats%27+US+midterm+rout/27287966.html"
+      },
+      {
+        "kind": "interpretation",
+        "text": "Associated Press, Nov. 4, described the result as voters' frustration with high prices, the Iran war, and government corruption. That is AP's reading of the election, not a number this page calculated.",
+        "url": "https://apnews.com/article/midterm-election-house-senate-democrats-republicans-trump-f126e12e05b579a327b98481c0ae2226"
+      },
+      {
+        "kind": "estimate",
+        "text": "Exit-poll swings for independents and voters 18–29 are computed on this page from demographics.json (AP VoteCast 2022 vs CNN Voter Poll 2026). The two surveys do not use the same method, so the swings are estimates. They are not official vote totals.",
+        "url": "demographics.json"
+      }
+    ]
   }
 }
