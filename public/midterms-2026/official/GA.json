@@ -1,1 +1,5255 @@
-{"source": "Georgia Secretary of State", "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json", "created_at": "2026-11-06T14:28:36.6828101Z", "counties": [{"county": "Echols County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 787}, {"name": "Jon Ossoff (I) (Dem)", "votes": 158}], "total": 945}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 814}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 131}], "total": 945}}, {"county": "Brantley County", "US Senate": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4717}, {"name": "Jon Ossoff (I) (Dem)", "votes": 771}], "total": 5488}, "Governor": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4928}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 570}], "total": 5498}}, {"county": "Ben Hill County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2720}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2163}], "total": 4883}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2957}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1950}], "total": 4907}}, {"county": "Schley County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1329}, {"name": "Jon Ossoff (I) (Dem)", "votes": 423}], "total": 1752}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1389}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 359}], "total": 1748}}, {"county": "Webster County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 576}, {"name": "Jon Ossoff (I) (Dem)", "votes": 474}], "total": 1050}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 610}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 444}], "total": 1054}}, {"county": "Turner County", "US Senate": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1661}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1303}], "total": 2964}, "Governor": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1764}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1206}], "total": 2970}}, {"county": "Banks County", "US Senate": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5927}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1323}], "total": 7250}, "Governor": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 6289}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1002}], "total": 7291}}, {"county": "Warren County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 888}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1190}], "total": 2078}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 947}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1146}], "total": 2093}}, {"county": "Chattooga County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5161}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1896}], "total": 7057}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5519}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1555}], "total": 7074}}, {"county": "Greene County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6814}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4348}], "total": 11162}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7490}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3687}], "total": 11177}}, {"county": "Lanier County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1721}, {"name": "Jon Ossoff (I) (Dem)", "votes": 933}], "total": 2654}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1836}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 823}], "total": 2659}}, {"county": "Bleckley County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3300}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1341}], "total": 4641}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3530}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1122}], "total": 4652}}, {"county": "Jenkins County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1441}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1058}], "total": 2499}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1554}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 965}], "total": 2519}}, {"county": "Randolph County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 998}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1352}], "total": 2350}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1087}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1273}], "total": 2360}}, {"county": "Pierce County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5948}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1074}], "total": 7022}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 6107}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 917}], "total": 7024}}, {"county": "Irwin County", "US Senate": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2296}, {"name": "Jon Ossoff (I) (Dem)", "votes": 973}], "total": 3269}, "Governor": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2500}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 787}], "total": 3287}}, {"county": "Treutlen County", "US Senate": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1453}, {"name": "Jon Ossoff (I) (Dem)", "votes": 780}], "total": 2233}, "Governor": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1518}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 720}], "total": 2238}}, {"county": "Liberty County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5119}, {"name": "Jon Ossoff (I) (Dem)", "votes": 11780}], "total": 16899}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5693}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 11221}], "total": 16914}}, {"county": "Stephens County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6866}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2420}], "total": 9286}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7295}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2002}], "total": 9297}}, {"county": "Evans County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2000}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1109}], "total": 3109}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2139}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 980}], "total": 3119}}, {"county": "Clay County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 468}, {"name": "Jon Ossoff (I) (Dem)", "votes": 636}], "total": 1104}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 489}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 618}], "total": 1107}}, {"county": "Polk County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9351}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3910}], "total": 13261}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 9968}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3312}], "total": 13280}}, {"county": "Wilkes County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2115}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1959}], "total": 4074}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2241}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1845}], "total": 4086}}, {"county": "Thomas County", "US Senate": {"precincts_reporting": 20, "precincts_participating": 20, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9301}, {"name": "Jon Ossoff (I) (Dem)", "votes": 7525}], "total": 16826}, "Governor": {"precincts_reporting": 20, "precincts_participating": 20, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 10002}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 6882}], "total": 16884}}, {"county": "Candler County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2216}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1176}], "total": 3392}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2335}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1061}], "total": 3396}}, {"county": "Lowndes County", "US Senate": {"precincts_reporting": 15, "precincts_participating": 15, "candidates": [{"name": "Mike Collins (Rep)", "votes": 17755}, {"name": "Jon Ossoff (I) (Dem)", "votes": 17817}], "total": 35572}, "Governor": {"precincts_reporting": 15, "precincts_participating": 15, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 18991}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 16596}], "total": 35587}}, {"county": "Chattahoochee County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 514}, {"name": "Jon Ossoff (I) (Dem)", "votes": 575}], "total": 1089}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 554}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 533}], "total": 1087}}, {"county": "Rabun County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5492}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2250}], "total": 7742}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5946}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1799}], "total": 7745}}, {"county": "Johnson County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2107}, {"name": "Jon Ossoff (I) (Dem)", "votes": 949}], "total": 3056}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2174}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 880}], "total": 3054}}, {"county": "Towns County", "US Senate": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5364}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1735}], "total": 7099}, "Governor": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5792}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1323}], "total": 7115}}, {"county": "Miller County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1398}, {"name": "Jon Ossoff (I) (Dem)", "votes": 556}], "total": 1954}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1474}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 492}], "total": 1966}}, {"county": "Cook County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3497}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1957}], "total": 5454}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3730}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1742}], "total": 5472}}, {"county": "Twiggs County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1653}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1703}], "total": 3356}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1738}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1626}], "total": 3364}}, {"county": "Wilcox County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1733}, {"name": "Jon Ossoff (I) (Dem)", "votes": 731}], "total": 2464}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1790}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 686}], "total": 2476}}, {"county": "Grady County", "US Senate": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4918}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3068}], "total": 7986}, "Governor": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5245}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2769}], "total": 8014}}, {"county": "Taliaferro County", "US Senate": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Mike Collins (Rep)", "votes": 306}, {"name": "Jon Ossoff (I) (Dem)", "votes": 493}], "total": 799}, "Governor": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 324}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 480}], "total": 804}}, {"county": "Tift County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 7756}, {"name": "Jon Ossoff (I) (Dem)", "votes": 5518}], "total": 13274}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 8483}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4835}], "total": 13318}}, {"county": "Appling County", "US Senate": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4628}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1548}], "total": 6176}, "Governor": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4819}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1375}], "total": 6194}}, {"county": "Oglethorpe County", "US Senate": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4233}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2572}], "total": 6805}, "Governor": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4542}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2292}], "total": 6834}}, {"county": "Taylor County", "US Senate": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1774}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1216}], "total": 2990}, "Governor": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1881}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1116}], "total": 2997}}, {"county": "Baldwin County", "US Senate": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6659}, {"name": "Jon Ossoff (I) (Dem)", "votes": 8409}], "total": 15068}, "Governor": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7278}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 7804}], "total": 15082}}, {"county": "Clinch County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1381}, {"name": "Jon Ossoff (I) (Dem)", "votes": 579}], "total": 1960}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1459}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 519}], "total": 1978}}, {"county": "Oconee County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 13797}, {"name": "Jon Ossoff (I) (Dem)", "votes": 8788}], "total": 22585}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 15470}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 7208}], "total": 22678}}, {"county": "Terrell County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1508}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1935}], "total": 3443}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1601}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1844}], "total": 3445}}, {"county": "Screven County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2879}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2323}], "total": 5202}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3079}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2120}], "total": 5199}}, {"county": "Elbert County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4554}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2496}], "total": 7050}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4739}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2340}], "total": 7079}}, {"county": "Franklin County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6830}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1650}], "total": 8480}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7141}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1364}], "total": 8505}}, {"county": "Stewart County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 522}, {"name": "Jon Ossoff (I) (Dem)", "votes": 902}], "total": 1424}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 564}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 872}], "total": 1436}}, {"county": "Berrien County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4497}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1318}], "total": 5815}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4754}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1071}], "total": 5825}}, {"county": "Jeff Davis County", "US Senate": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3114}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1013}], "total": 4127}, "Governor": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3299}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 869}], "total": 4168}}, {"county": "Monroe County", "US Senate": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9463}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4617}], "total": 14080}, "Governor": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 10031}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4087}], "total": 14118}}, {"county": "Marion County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1558}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1194}], "total": 2752}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1695}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1076}], "total": 2771}}, {"county": "Morgan County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6975}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3507}], "total": 10482}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7532}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2987}], "total": 10519}}, {"county": "Union County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 10829}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3410}], "total": 14239}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11647}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2631}], "total": 14278}}, {"county": "Lee County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 8318}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4960}], "total": 13278}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 8789}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4486}], "total": 13275}}, {"county": "Wayne County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 7058}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2716}], "total": 9774}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7397}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2395}], "total": 9792}}, {"county": "Catoosa County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 16195}, {"name": "Jon Ossoff (I) (Dem)", "votes": 7508}], "total": 23703}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 17530}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 6100}], "total": 23630}}, {"county": "Dodge County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4245}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2003}], "total": 6248}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4489}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1776}], "total": 6265}}, {"county": "Crisp County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3623}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2668}], "total": 6291}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3889}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2433}], "total": 6322}}, {"county": "Dooly County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1600}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1704}], "total": 3304}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1730}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1578}], "total": 3308}}, {"county": "Bryan County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 10262}, {"name": "Jon Ossoff (I) (Dem)", "votes": 7751}], "total": 18013}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11215}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 6778}], "total": 17993}}, {"county": "Wilkinson County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1885}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1809}], "total": 3694}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2024}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1690}], "total": 3714}}, {"county": "Ware County", "US Senate": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6689}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3549}], "total": 10238}, "Governor": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 6947}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3283}], "total": 10230}}, {"county": "Emanuel County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4773}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2525}], "total": 7298}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5010}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2317}], "total": 7327}}, {"county": "Walker County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 14976}, {"name": "Jon Ossoff (I) (Dem)", "votes": 6367}], "total": 21343}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 16212}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 5072}], "total": 21284}}, {"county": "Rockdale County", "US Senate": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6777}, {"name": "Jon Ossoff (I) (Dem)", "votes": 31988}], "total": 38765}, "Governor": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7906}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 30895}], "total": 38801}}, {"county": "Habersham County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 12932}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4459}], "total": 17391}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 13785}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3635}], "total": 17420}}, {"county": "Long County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2505}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2447}], "total": 4952}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2690}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2268}], "total": 4958}}, {"county": "Lincoln County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2581}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1278}], "total": 3859}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2723}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1138}], "total": 3861}}, {"county": "Murray County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 8486}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2836}], "total": 11322}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 9135}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2225}], "total": 11360}}, {"county": "Telfair County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2006}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1146}], "total": 3152}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2112}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1055}], "total": 3167}}, {"county": "Lamar County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5116}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2730}], "total": 7846}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5433}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2441}], "total": 7874}}, {"county": "Gilmer County", "US Senate": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Mike Collins (Rep)", "votes": 10334}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3628}], "total": 13962}, "Governor": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11073}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2926}], "total": 13999}}, {"county": "Brooks County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3085}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2366}], "total": 5451}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3252}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2203}], "total": 5455}}, {"county": "Wheeler County", "US Senate": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1207}, {"name": "Jon Ossoff (I) (Dem)", "votes": 583}], "total": 1790}, "Governor": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1266}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 534}], "total": 1800}}, {"county": "White County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9709}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2849}], "total": 12558}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 10457}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2129}], "total": 12586}}, {"county": "Camden County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 11434}, {"name": "Jon Ossoff (I) (Dem)", "votes": 7574}], "total": 19008}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 12104}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 6873}], "total": 18977}}, {"county": "Floyd County", "US Senate": {"precincts_reporting": 19, "precincts_participating": 19, "candidates": [{"name": "Mike Collins (Rep)", "votes": 19411}, {"name": "Jon Ossoff (I) (Dem)", "votes": 12830}], "total": 32241}, "Governor": {"precincts_reporting": 19, "precincts_participating": 19, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 21135}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 11125}], "total": 32260}}, {"county": "Dawson County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 10749}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3617}], "total": 14366}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11546}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2882}], "total": 14428}}, {"county": "Butts County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6187}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3388}], "total": 9575}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 6513}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3082}], "total": 9595}}, {"county": "Barrow County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 18654}, {"name": "Jon Ossoff (I) (Dem)", "votes": 14168}], "total": 32822}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 20493}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 12458}], "total": 32951}}, {"county": "Gordon County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 13283}, {"name": "Jon Ossoff (I) (Dem)", "votes": 5584}], "total": 18867}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 14341}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4579}], "total": 18920}}, {"county": "Montgomery County", "US Senate": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2031}, {"name": "Jon Ossoff (I) (Dem)", "votes": 918}], "total": 2949}, "Governor": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2164}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 805}], "total": 2969}}, {"county": "Colquitt County", "US Senate": {"precincts_reporting": 19, "precincts_participating": 19, "candidates": [{"name": "Mike Collins (Rep)", "votes": 8207}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4212}], "total": 12419}, "Governor": {"precincts_reporting": 19, "precincts_participating": 19, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 8647}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3787}], "total": 12434}}, {"county": "Peach County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4656}, {"name": "Jon Ossoff (I) (Dem)", "votes": 5980}], "total": 10636}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5069}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 5585}], "total": 10654}}, {"county": "Tattnall County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4222}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1992}], "total": 6214}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4551}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1693}], "total": 6244}}, {"county": "Upson County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6104}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3638}], "total": 9742}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 6472}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3321}], "total": 9793}}, {"county": "Jasper County", "US Senate": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5000}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1864}], "total": 6864}, "Governor": {"precincts_reporting": 3, "precincts_participating": 3, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5285}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1603}], "total": 6888}}, {"county": "Spalding County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 12362}, {"name": "Jon Ossoff (I) (Dem)", "votes": 13211}], "total": 25573}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 13474}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 12208}], "total": 25682}}, {"county": "Decatur County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4636}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3837}], "total": 8473}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4908}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3586}], "total": 8494}}, {"county": "Mitchell County", "US Senate": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3434}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3257}], "total": 6691}, "Governor": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3666}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3055}], "total": 6721}}, {"county": "Jefferson County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2672}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3280}], "total": 5952}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2864}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3131}], "total": 5995}}, {"county": "Seminole County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1524}, {"name": "Jon Ossoff (I) (Dem)", "votes": 982}], "total": 2506}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1599}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 906}], "total": 2505}}, {"county": "Dade County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4004}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1385}], "total": 5389}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4297}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1086}], "total": 5383}}, {"county": "Washington County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3625}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4258}], "total": 7883}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3904}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4041}], "total": 7945}}, {"county": "Early County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1850}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1735}], "total": 3585}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1922}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1663}], "total": 3585}}, {"county": "Atkinson County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1472}, {"name": "Jon Ossoff (I) (Dem)", "votes": 762}], "total": 2234}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1548}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 692}], "total": 2240}}, {"county": "Putnam County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6985}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3626}], "total": 10611}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7527}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3106}], "total": 10633}}, {"county": "Bulloch County", "US Senate": {"precincts_reporting": 16, "precincts_participating": 16, "candidates": [{"name": "Mike Collins (Rep)", "votes": 13562}, {"name": "Jon Ossoff (I) (Dem)", "votes": 11052}], "total": 24614}, "Governor": {"precincts_reporting": 16, "precincts_participating": 16, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 14646}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 9958}], "total": 24604}}, {"county": "Calhoun County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 636}, {"name": "Jon Ossoff (I) (Dem)", "votes": 999}], "total": 1635}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 677}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 956}], "total": 1633}}, {"county": "Richmond County", "US Senate": {"precincts_reporting": 65, "precincts_participating": 65, "candidates": [{"name": "Mike Collins (Rep)", "votes": 16049}, {"name": "Jon Ossoff (I) (Dem)", "votes": 50494}], "total": 66543}, "Governor": {"precincts_reporting": 65, "precincts_participating": 65, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 18242}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 48292}], "total": 66534}}, {"county": "Troup County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 12186}, {"name": "Jon Ossoff (I) (Dem)", "votes": 10961}], "total": 23147}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 13093}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 10113}], "total": 23206}}, {"county": "Laurens County", "US Senate": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Mike Collins (Rep)", "votes": 10749}, {"name": "Jon Ossoff (I) (Dem)", "votes": 7325}], "total": 18074}, "Governor": {"precincts_reporting": 13, "precincts_participating": 13, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11307}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 6803}], "total": 18110}}, {"county": "Whitfield County", "US Senate": {"precincts_reporting": 23, "precincts_participating": 23, "candidates": [{"name": "Mike Collins (Rep)", "votes": 16889}, {"name": "Jon Ossoff (I) (Dem)", "votes": 12943}], "total": 29832}, "Governor": {"precincts_reporting": 23, "precincts_participating": 23, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 18421}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 11454}], "total": 29875}}, {"county": "Hart County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 7707}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3069}], "total": 10776}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 8057}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2757}], "total": 10814}}, {"county": "Haralson County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9093}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2207}], "total": 11300}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 9664}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1669}], "total": 11333}}, {"county": "Macon County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1342}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2385}], "total": 3727}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1460}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2286}], "total": 3746}}, {"county": "Fayette County", "US Senate": {"precincts_reporting": 35, "precincts_participating": 35, "candidates": [{"name": "Mike Collins (Rep)", "votes": 26814}, {"name": "Jon Ossoff (I) (Dem)", "votes": 35404}], "total": 62218}, "Governor": {"precincts_reporting": 35, "precincts_participating": 35, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 30019}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 32221}], "total": 62240}}, {"county": "Jackson County", "US Senate": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Mike Collins (Rep)", "votes": 24085}, {"name": "Jon Ossoff (I) (Dem)", "votes": 11761}], "total": 35846}, "Governor": {"precincts_reporting": 4, "precincts_participating": 4, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 26120}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 9830}], "total": 35950}}, {"county": "Columbia County", "US Senate": {"precincts_reporting": 40, "precincts_participating": 40, "candidates": [{"name": "Mike Collins (Rep)", "votes": 36186}, {"name": "Jon Ossoff (I) (Dem)", "votes": 31391}], "total": 67577}, "Governor": {"precincts_reporting": 40, "precincts_participating": 40, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 39573}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 27965}], "total": 67538}}, {"county": "Paulding County", "US Senate": {"precincts_reporting": 20, "precincts_participating": 20, "candidates": [{"name": "Mike Collins (Rep)", "votes": 37357}, {"name": "Jon Ossoff (I) (Dem)", "votes": 37089}], "total": 74446}, "Governor": {"precincts_reporting": 20, "precincts_participating": 20, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 40670}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 33910}], "total": 74580}}, {"county": "Bacon County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2855}, {"name": "Jon Ossoff (I) (Dem)", "votes": 661}], "total": 3516}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2967}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 554}], "total": 3521}}, {"county": "McIntosh County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3306}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2391}], "total": 5697}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3541}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2163}], "total": 5704}}, {"county": "Bartow County", "US Senate": {"precincts_reporting": 17, "precincts_participating": 17, "candidates": [{"name": "Mike Collins (Rep)", "votes": 27257}, {"name": "Jon Ossoff (I) (Dem)", "votes": 14913}], "total": 42170}, "Governor": {"precincts_reporting": 17, "precincts_participating": 17, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 29478}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 12835}], "total": 42313}}, {"county": "Talbot County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1077}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1645}], "total": 2722}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1145}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1584}], "total": 2729}}, {"county": "Hall County", "US Senate": {"precincts_reporting": 31, "precincts_participating": 31, "candidates": [{"name": "Mike Collins (Rep)", "votes": 47581}, {"name": "Jon Ossoff (I) (Dem)", "votes": 30981}], "total": 78562}, "Governor": {"precincts_reporting": 31, "precincts_participating": 31, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 52183}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 26612}], "total": 78795}}, {"county": "Carroll County", "US Senate": {"precincts_reporting": 28, "precincts_participating": 28, "candidates": [{"name": "Mike Collins (Rep)", "votes": 27067}, {"name": "Jon Ossoff (I) (Dem)", "votes": 17798}], "total": 44865}, "Governor": {"precincts_reporting": 28, "precincts_participating": 28, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 29271}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 15694}], "total": 44965}}, {"county": "Pike County", "US Senate": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Mike Collins (Rep)", "votes": 7381}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1703}], "total": 9084}, "Governor": {"precincts_reporting": 8, "precincts_participating": 8, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7721}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1390}], "total": 9111}}, {"county": "Houston County", "US Senate": {"precincts_reporting": 17, "precincts_participating": 17, "candidates": [{"name": "Mike Collins (Rep)", "votes": 29577}, {"name": "Jon Ossoff (I) (Dem)", "votes": 35293}], "total": 64870}, "Governor": {"precincts_reporting": 17, "precincts_participating": 17, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 32178}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 32698}], "total": 64876}}, {"county": "Cherokee County", "US Senate": {"precincts_reporting": 42, "precincts_participating": 42, "candidates": [{"name": "Mike Collins (Rep)", "votes": 76320}, {"name": "Jon Ossoff (I) (Dem)", "votes": 50228}], "total": 126548}, "Governor": {"precincts_reporting": 42, "precincts_participating": 42, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 84222}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 42659}], "total": 126881}}, {"county": "Clayton County", "US Senate": {"precincts_reporting": 70, "precincts_participating": 70, "candidates": [{"name": "Mike Collins (Rep)", "votes": 8130}, {"name": "Jon Ossoff (I) (Dem)", "votes": 87689}], "total": 95819}, "Governor": {"precincts_reporting": 70, "precincts_participating": 70, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 9945}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 85913}], "total": 95858}}, {"county": "Crawford County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3165}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1491}], "total": 4656}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3337}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1328}], "total": 4665}}, {"county": "Toombs County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5151}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2593}], "total": 7744}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5469}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2297}], "total": 7766}}, {"county": "Fannin County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 8817}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2781}], "total": 11598}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 9373}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2236}], "total": 11609}}, {"county": "Henry County", "US Senate": {"precincts_reporting": 37, "precincts_participating": 37, "candidates": [{"name": "Mike Collins (Rep)", "votes": 26102}, {"name": "Jon Ossoff (I) (Dem)", "votes": 83476}], "total": 109578}, "Governor": {"precincts_reporting": 37, "precincts_participating": 37, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 29426}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 80272}], "total": 109698}}, {"county": "Lumpkin County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9455}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3428}], "total": 12883}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 10198}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2731}], "total": 12929}}, {"county": "Jones County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 7197}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4743}], "total": 11940}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7670}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4296}], "total": 11966}}, {"county": "Charlton County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2323}, {"name": "Jon Ossoff (I) (Dem)", "votes": 881}], "total": 3204}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2419}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 804}], "total": 3223}}, {"county": "Meriwether County", "US Senate": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Mike Collins (Rep)", "votes": 5075}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3916}], "total": 8991}, "Governor": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 5424}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3603}], "total": 9027}}, {"county": "Clarke County", "US Senate": {"precincts_reporting": 24, "precincts_participating": 24, "candidates": [{"name": "Mike Collins (Rep)", "votes": 9171}, {"name": "Jon Ossoff (I) (Dem)", "votes": 33511}], "total": 42682}, "Governor": {"precincts_reporting": 24, "precincts_participating": 24, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11173}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 31444}], "total": 42617}}, {"county": "DeKalb County", "US Senate": {"precincts_reporting": 191, "precincts_participating": 191, "candidates": [{"name": "Mike Collins (Rep)", "votes": 36253}, {"name": "Jon Ossoff (I) (Dem)", "votes": 285433}], "total": 321686}, "Governor": {"precincts_reporting": 191, "precincts_participating": 191, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 48834}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 271921}], "total": 320755}}, {"county": "Coffee County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 7339}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4486}], "total": 11825}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7744}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4119}], "total": 11863}}, {"county": "Cobb County", "US Senate": {"precincts_reporting": 148, "precincts_participating": 148, "candidates": [{"name": "Mike Collins (Rep)", "votes": 110573}, {"name": "Jon Ossoff (I) (Dem)", "votes": 225293}], "total": 335866}, "Governor": {"precincts_reporting": 148, "precincts_participating": 148, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 130388}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 205577}], "total": 335965}}, {"county": "Newton County", "US Senate": {"precincts_reporting": 17, "precincts_participating": 17, "candidates": [{"name": "Mike Collins (Rep)", "votes": 14549}, {"name": "Jon Ossoff (I) (Dem)", "votes": 32467}], "total": 47016}, "Governor": {"precincts_reporting": 17, "precincts_participating": 17, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 15971}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 31179}], "total": 47150}}, {"county": "Walton County", "US Senate": {"precincts_reporting": 15, "precincts_participating": 15, "candidates": [{"name": "Mike Collins (Rep)", "votes": 28355}, {"name": "Jon Ossoff (I) (Dem)", "votes": 16143}], "total": 44498}, "Governor": {"precincts_reporting": 15, "precincts_participating": 15, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 30588}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 14135}], "total": 44723}}, {"county": "Forsyth County", "US Senate": {"precincts_reporting": 29, "precincts_participating": 29, "candidates": [{"name": "Mike Collins (Rep)", "votes": 59584}, {"name": "Jon Ossoff (I) (Dem)", "votes": 47453}], "total": 107037}, "Governor": {"precincts_reporting": 29, "precincts_participating": 29, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 68091}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 39041}], "total": 107132}}, {"county": "Sumter County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4107}, {"name": "Jon Ossoff (I) (Dem)", "votes": 5504}], "total": 9611}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4423}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 5192}], "total": 9615}}, {"county": "Coweta County", "US Senate": {"precincts_reporting": 24, "precincts_participating": 24, "candidates": [{"name": "Mike Collins (Rep)", "votes": 38628}, {"name": "Jon Ossoff (I) (Dem)", "votes": 28085}], "total": 66713}, "Governor": {"precincts_reporting": 24, "precincts_participating": 24, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 42106}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 24732}], "total": 66838}}, {"county": "Bibb County", "US Senate": {"precincts_reporting": 31, "precincts_participating": 31, "candidates": [{"name": "Mike Collins (Rep)", "votes": 17313}, {"name": "Jon Ossoff (I) (Dem)", "votes": 37850}], "total": 55163}, "Governor": {"precincts_reporting": 31, "precincts_participating": 31, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 19221}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 36082}], "total": 55303}}, {"county": "McDuffie County", "US Senate": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4516}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3750}], "total": 8266}, "Governor": {"precincts_reporting": 7, "precincts_participating": 7, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4800}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3465}], "total": 8265}}, {"county": "Gwinnett County", "US Senate": {"precincts_reporting": 156, "precincts_participating": 156, "candidates": [{"name": "Mike Collins (Rep)", "votes": 98695}, {"name": "Jon Ossoff (I) (Dem)", "votes": 245140}], "total": 343835}, "Governor": {"precincts_reporting": 156, "precincts_participating": 156, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 116048}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 227898}], "total": 343946}}, {"county": "Heard County", "US Senate": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3483}, {"name": "Jon Ossoff (I) (Dem)", "votes": 925}], "total": 4408}, "Governor": {"precincts_reporting": 6, "precincts_participating": 6, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 3694}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 738}], "total": 4432}}, {"county": "Muscogee County", "US Senate": {"precincts_reporting": 25, "precincts_participating": 25, "candidates": [{"name": "Mike Collins (Rep)", "votes": 18662}, {"name": "Jon Ossoff (I) (Dem)", "votes": 43644}], "total": 62306}, "Governor": {"precincts_reporting": 25, "precincts_participating": 25, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 20763}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 41439}], "total": 62202}}, {"county": "Fulton County", "US Senate": {"precincts_reporting": 437, "precincts_participating": 437, "candidates": [{"name": "Mike Collins (Rep)", "votes": 92703}, {"name": "Jon Ossoff (I) (Dem)", "votes": 360922}], "total": 453625}, "Governor": {"precincts_reporting": 437, "precincts_participating": 437, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 118456}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 334235}], "total": 452691}}, {"county": "Hancock County", "US Senate": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Mike Collins (Rep)", "votes": 975}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2420}], "total": 3395}, "Governor": {"precincts_reporting": 10, "precincts_participating": 10, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1061}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2348}], "total": 3409}}, {"county": "Effingham County", "US Senate": {"precincts_reporting": 20, "precincts_participating": 20, "candidates": [{"name": "Mike Collins (Rep)", "votes": 16476}, {"name": "Jon Ossoff (I) (Dem)", "votes": 8940}], "total": 25416}, "Governor": {"precincts_reporting": 20, "precincts_participating": 20, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 17549}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 7871}], "total": 25420}}, {"county": "Harris County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 11298}, {"name": "Jon Ossoff (I) (Dem)", "votes": 5848}], "total": 17146}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 11966}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 5164}], "total": 17130}}, {"county": "Chatham County", "US Senate": {"precincts_reporting": 86, "precincts_participating": 86, "candidates": [{"name": "Mike Collins (Rep)", "votes": 36600}, {"name": "Jon Ossoff (I) (Dem)", "votes": 75230}], "total": 111830}, "Governor": {"precincts_reporting": 86, "precincts_participating": 86, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 41326}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 70190}], "total": 111516}}, {"county": "Douglas County", "US Senate": {"precincts_reporting": 25, "precincts_participating": 25, "candidates": [{"name": "Mike Collins (Rep)", "votes": 13922}, {"name": "Jon Ossoff (I) (Dem)", "votes": 45428}], "total": 59350}, "Governor": {"precincts_reporting": 25, "precincts_participating": 25, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 15761}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 43638}], "total": 59399}}, {"county": "Dougherty County", "US Senate": {"precincts_reporting": 23, "precincts_participating": 23, "candidates": [{"name": "Mike Collins (Rep)", "votes": 6398}, {"name": "Jon Ossoff (I) (Dem)", "votes": 20798}], "total": 27196}, "Governor": {"precincts_reporting": 23, "precincts_participating": 23, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 7069}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 20141}], "total": 27210}}, {"county": "Glascock County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 1066}, {"name": "Jon Ossoff (I) (Dem)", "votes": 149}], "total": 1215}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 1117}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 100}], "total": 1217}}, {"county": "Madison County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 8495}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3946}], "total": 12441}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 9134}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 3352}], "total": 12486}}, {"county": "Pickens County", "US Senate": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Mike Collins (Rep)", "votes": 11547}, {"name": "Jon Ossoff (I) (Dem)", "votes": 3716}], "total": 15263}, "Governor": {"precincts_reporting": 12, "precincts_participating": 12, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 12499}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 2848}], "total": 15347}}, {"county": "Burke County", "US Senate": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Mike Collins (Rep)", "votes": 3993}, {"name": "Jon Ossoff (I) (Dem)", "votes": 4677}], "total": 8670}, "Governor": {"precincts_reporting": 11, "precincts_participating": 11, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4281}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 4398}], "total": 8679}}, {"county": "Worth County", "US Senate": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Mike Collins (Rep)", "votes": 4635}, {"name": "Jon Ossoff (I) (Dem)", "votes": 2135}], "total": 6770}, "Governor": {"precincts_reporting": 9, "precincts_participating": 9, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 4894}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1903}], "total": 6797}}, {"county": "Baker County", "US Senate": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Mike Collins (Rep)", "votes": 623}, {"name": "Jon Ossoff (I) (Dem)", "votes": 516}], "total": 1139}, "Governor": {"precincts_reporting": 5, "precincts_participating": 5, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 664}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 476}], "total": 1140}}, {"county": "Quitman County", "US Senate": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Mike Collins (Rep)", "votes": 470}, {"name": "Jon Ossoff (I) (Dem)", "votes": 397}], "total": 867}, "Governor": {"precincts_reporting": 2, "precincts_participating": 2, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 495}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 376}], "total": 871}}, {"county": "Glynn County", "US Senate": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Mike Collins (Rep)", "votes": 18788}, {"name": "Jon Ossoff (I) (Dem)", "votes": 14692}], "total": 33480}, "Governor": {"precincts_reporting": 14, "precincts_participating": 14, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 20386}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 13060}], "total": 33446}}, {"county": "Pulaski County", "US Senate": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Mike Collins (Rep)", "votes": 2202}, {"name": "Jon Ossoff (I) (Dem)", "votes": 1131}], "total": 3333}, "Governor": {"precincts_reporting": 1, "precincts_participating": 1, "candidates": [{"name": "Rick Jackson (Rep)", "votes": 2315}, {"name": "Keisha Lance Bottoms (Dem)", "votes": 1026}], "total": 3341}}]}
+{
+  "source": "Georgia Secretary of State",
+  "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
+  "created_at": "2026-11-07T01:09:16.1496309Z",
+  "counties": [
+    {
+      "county": "Echols County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 787
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 158
+          }
+        ],
+        "total": 945
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 814
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 131
+          }
+        ],
+        "total": 945
+      }
+    },
+    {
+      "county": "Brantley County",
+      "US Senate": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4717
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 771
+          }
+        ],
+        "total": 5488
+      },
+      "Governor": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4928
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 570
+          }
+        ],
+        "total": 5498
+      }
+    },
+    {
+      "county": "Ben Hill County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2720
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2163
+          }
+        ],
+        "total": 4883
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2957
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1950
+          }
+        ],
+        "total": 4907
+      }
+    },
+    {
+      "county": "Schley County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1329
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 423
+          }
+        ],
+        "total": 1752
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1389
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 359
+          }
+        ],
+        "total": 1748
+      }
+    },
+    {
+      "county": "Webster County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 576
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 474
+          }
+        ],
+        "total": 1050
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 610
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 444
+          }
+        ],
+        "total": 1054
+      }
+    },
+    {
+      "county": "Turner County",
+      "US Senate": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1663
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1305
+          }
+        ],
+        "total": 2968
+      },
+      "Governor": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1766
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1208
+          }
+        ],
+        "total": 2974
+      }
+    },
+    {
+      "county": "Banks County",
+      "US Senate": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5927
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1323
+          }
+        ],
+        "total": 7250
+      },
+      "Governor": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 6289
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1002
+          }
+        ],
+        "total": 7291
+      }
+    },
+    {
+      "county": "Warren County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 888
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1190
+          }
+        ],
+        "total": 2078
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 947
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1146
+          }
+        ],
+        "total": 2093
+      }
+    },
+    {
+      "county": "Chattooga County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5161
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1897
+          }
+        ],
+        "total": 7058
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5519
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1556
+          }
+        ],
+        "total": 7075
+      }
+    },
+    {
+      "county": "Greene County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6814
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4348
+          }
+        ],
+        "total": 11162
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7490
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3687
+          }
+        ],
+        "total": 11177
+      }
+    },
+    {
+      "county": "Lanier County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1721
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 933
+          }
+        ],
+        "total": 2654
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1836
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 823
+          }
+        ],
+        "total": 2659
+      }
+    },
+    {
+      "county": "Bleckley County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3300
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1341
+          }
+        ],
+        "total": 4641
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3530
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1122
+          }
+        ],
+        "total": 4652
+      }
+    },
+    {
+      "county": "Jenkins County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1441
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1058
+          }
+        ],
+        "total": 2499
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1554
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 965
+          }
+        ],
+        "total": 2519
+      }
+    },
+    {
+      "county": "Randolph County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 998
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1352
+          }
+        ],
+        "total": 2350
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1087
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1273
+          }
+        ],
+        "total": 2360
+      }
+    },
+    {
+      "county": "Pierce County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5948
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1074
+          }
+        ],
+        "total": 7022
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 6107
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 917
+          }
+        ],
+        "total": 7024
+      }
+    },
+    {
+      "county": "Irwin County",
+      "US Senate": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2297
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 975
+          }
+        ],
+        "total": 3272
+      },
+      "Governor": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2501
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 789
+          }
+        ],
+        "total": 3290
+      }
+    },
+    {
+      "county": "Treutlen County",
+      "US Senate": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1453
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 780
+          }
+        ],
+        "total": 2233
+      },
+      "Governor": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1518
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 720
+          }
+        ],
+        "total": 2238
+      }
+    },
+    {
+      "county": "Liberty County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5122
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 11800
+          }
+        ],
+        "total": 16922
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5698
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 11239
+          }
+        ],
+        "total": 16937
+      }
+    },
+    {
+      "county": "Stephens County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6870
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2429
+          }
+        ],
+        "total": 9299
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7301
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2003
+          }
+        ],
+        "total": 9304
+      }
+    },
+    {
+      "county": "Evans County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2000
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1109
+          }
+        ],
+        "total": 3109
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2139
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 980
+          }
+        ],
+        "total": 3119
+      }
+    },
+    {
+      "county": "Clay County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 468
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 636
+          }
+        ],
+        "total": 1104
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 489
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 618
+          }
+        ],
+        "total": 1107
+      }
+    },
+    {
+      "county": "Polk County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9351
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3910
+          }
+        ],
+        "total": 13261
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 9968
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3312
+          }
+        ],
+        "total": 13280
+      }
+    },
+    {
+      "county": "Wilkes County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2115
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1968
+          }
+        ],
+        "total": 4083
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2241
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1854
+          }
+        ],
+        "total": 4095
+      }
+    },
+    {
+      "county": "Thomas County",
+      "US Senate": {
+        "precincts_reporting": 20,
+        "precincts_participating": 20,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9301
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 7525
+          }
+        ],
+        "total": 16826
+      },
+      "Governor": {
+        "precincts_reporting": 20,
+        "precincts_participating": 20,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 10002
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 6882
+          }
+        ],
+        "total": 16884
+      }
+    },
+    {
+      "county": "Candler County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2216
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1176
+          }
+        ],
+        "total": 3392
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2335
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1061
+          }
+        ],
+        "total": 3396
+      }
+    },
+    {
+      "county": "Lowndes County",
+      "US Senate": {
+        "precincts_reporting": 15,
+        "precincts_participating": 15,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 17755
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 17817
+          }
+        ],
+        "total": 35572
+      },
+      "Governor": {
+        "precincts_reporting": 15,
+        "precincts_participating": 15,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 18991
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 16596
+          }
+        ],
+        "total": 35587
+      }
+    },
+    {
+      "county": "Chattahoochee County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 514
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 575
+          }
+        ],
+        "total": 1089
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 554
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 533
+          }
+        ],
+        "total": 1087
+      }
+    },
+    {
+      "county": "Rabun County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5492
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2250
+          }
+        ],
+        "total": 7742
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5946
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1799
+          }
+        ],
+        "total": 7745
+      }
+    },
+    {
+      "county": "Johnson County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2107
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 949
+          }
+        ],
+        "total": 3056
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2174
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 880
+          }
+        ],
+        "total": 3054
+      }
+    },
+    {
+      "county": "Towns County",
+      "US Senate": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5366
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1741
+          }
+        ],
+        "total": 7107
+      },
+      "Governor": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5794
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1328
+          }
+        ],
+        "total": 7122
+      }
+    },
+    {
+      "county": "Miller County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1398
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 556
+          }
+        ],
+        "total": 1954
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1474
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 492
+          }
+        ],
+        "total": 1966
+      }
+    },
+    {
+      "county": "Cook County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3497
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1957
+          }
+        ],
+        "total": 5454
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3730
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1742
+          }
+        ],
+        "total": 5472
+      }
+    },
+    {
+      "county": "Twiggs County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1653
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1705
+          }
+        ],
+        "total": 3358
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1738
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1628
+          }
+        ],
+        "total": 3366
+      }
+    },
+    {
+      "county": "Wilcox County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1733
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 731
+          }
+        ],
+        "total": 2464
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1790
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 686
+          }
+        ],
+        "total": 2476
+      }
+    },
+    {
+      "county": "Grady County",
+      "US Senate": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4918
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3068
+          }
+        ],
+        "total": 7986
+      },
+      "Governor": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5245
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2769
+          }
+        ],
+        "total": 8014
+      }
+    },
+    {
+      "county": "Taliaferro County",
+      "US Senate": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 306
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 493
+          }
+        ],
+        "total": 799
+      },
+      "Governor": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 324
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 480
+          }
+        ],
+        "total": 804
+      }
+    },
+    {
+      "county": "Tift County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 7758
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 5520
+          }
+        ],
+        "total": 13278
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 8485
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4837
+          }
+        ],
+        "total": 13322
+      }
+    },
+    {
+      "county": "Appling County",
+      "US Senate": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4628
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1548
+          }
+        ],
+        "total": 6176
+      },
+      "Governor": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4819
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1375
+          }
+        ],
+        "total": 6194
+      }
+    },
+    {
+      "county": "Oglethorpe County",
+      "US Senate": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4233
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2572
+          }
+        ],
+        "total": 6805
+      },
+      "Governor": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4542
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2292
+          }
+        ],
+        "total": 6834
+      }
+    },
+    {
+      "county": "Taylor County",
+      "US Senate": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1774
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1216
+          }
+        ],
+        "total": 2990
+      },
+      "Governor": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1881
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1116
+          }
+        ],
+        "total": 2997
+      }
+    },
+    {
+      "county": "Baldwin County",
+      "US Senate": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6660
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 8410
+          }
+        ],
+        "total": 15070
+      },
+      "Governor": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7279
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 7806
+          }
+        ],
+        "total": 15085
+      }
+    },
+    {
+      "county": "Clinch County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1381
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 579
+          }
+        ],
+        "total": 1960
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1459
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 519
+          }
+        ],
+        "total": 1978
+      }
+    },
+    {
+      "county": "Oconee County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 13797
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 8788
+          }
+        ],
+        "total": 22585
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 15470
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 7208
+          }
+        ],
+        "total": 22678
+      }
+    },
+    {
+      "county": "Terrell County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1508
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1935
+          }
+        ],
+        "total": 3443
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1601
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1844
+          }
+        ],
+        "total": 3445
+      }
+    },
+    {
+      "county": "Screven County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2879
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2323
+          }
+        ],
+        "total": 5202
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3079
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2120
+          }
+        ],
+        "total": 5199
+      }
+    },
+    {
+      "county": "Elbert County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4554
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2496
+          }
+        ],
+        "total": 7050
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4739
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2340
+          }
+        ],
+        "total": 7079
+      }
+    },
+    {
+      "county": "Franklin County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6830
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1650
+          }
+        ],
+        "total": 8480
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7141
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1364
+          }
+        ],
+        "total": 8505
+      }
+    },
+    {
+      "county": "Stewart County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 522
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 905
+          }
+        ],
+        "total": 1427
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 564
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 875
+          }
+        ],
+        "total": 1439
+      }
+    },
+    {
+      "county": "Berrien County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4497
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1318
+          }
+        ],
+        "total": 5815
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4754
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1071
+          }
+        ],
+        "total": 5825
+      }
+    },
+    {
+      "county": "Jeff Davis County",
+      "US Senate": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3114
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1013
+          }
+        ],
+        "total": 4127
+      },
+      "Governor": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3299
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 869
+          }
+        ],
+        "total": 4168
+      }
+    },
+    {
+      "county": "Monroe County",
+      "US Senate": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9463
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4617
+          }
+        ],
+        "total": 14080
+      },
+      "Governor": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 10031
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4087
+          }
+        ],
+        "total": 14118
+      }
+    },
+    {
+      "county": "Marion County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1558
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1194
+          }
+        ],
+        "total": 2752
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1695
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1076
+          }
+        ],
+        "total": 2771
+      }
+    },
+    {
+      "county": "Morgan County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6975
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3509
+          }
+        ],
+        "total": 10484
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7532
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2989
+          }
+        ],
+        "total": 10521
+      }
+    },
+    {
+      "county": "Union County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 10829
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3410
+          }
+        ],
+        "total": 14239
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11647
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2631
+          }
+        ],
+        "total": 14278
+      }
+    },
+    {
+      "county": "Lee County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 8318
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4960
+          }
+        ],
+        "total": 13278
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 8789
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4486
+          }
+        ],
+        "total": 13275
+      }
+    },
+    {
+      "county": "Wayne County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 7059
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2718
+          }
+        ],
+        "total": 9777
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7398
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2397
+          }
+        ],
+        "total": 9795
+      }
+    },
+    {
+      "county": "Catoosa County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 16195
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 7508
+          }
+        ],
+        "total": 23703
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 17530
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 6100
+          }
+        ],
+        "total": 23630
+      }
+    },
+    {
+      "county": "Dodge County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4246
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2003
+          }
+        ],
+        "total": 6249
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4490
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1776
+          }
+        ],
+        "total": 6266
+      }
+    },
+    {
+      "county": "Crisp County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3623
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2668
+          }
+        ],
+        "total": 6291
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3889
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2433
+          }
+        ],
+        "total": 6322
+      }
+    },
+    {
+      "county": "Dooly County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1600
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1704
+          }
+        ],
+        "total": 3304
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1730
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1578
+          }
+        ],
+        "total": 3308
+      }
+    },
+    {
+      "county": "Bryan County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 10262
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 7751
+          }
+        ],
+        "total": 18013
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11215
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 6778
+          }
+        ],
+        "total": 17993
+      }
+    },
+    {
+      "county": "Wilkinson County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1885
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1809
+          }
+        ],
+        "total": 3694
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2024
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1690
+          }
+        ],
+        "total": 3714
+      }
+    },
+    {
+      "county": "Ware County",
+      "US Senate": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6689
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3551
+          }
+        ],
+        "total": 10240
+      },
+      "Governor": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 6948
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3284
+          }
+        ],
+        "total": 10232
+      }
+    },
+    {
+      "county": "Emanuel County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4774
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2525
+          }
+        ],
+        "total": 7299
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5011
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2317
+          }
+        ],
+        "total": 7328
+      }
+    },
+    {
+      "county": "Walker County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 14976
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 6367
+          }
+        ],
+        "total": 21343
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 16212
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 5072
+          }
+        ],
+        "total": 21284
+      }
+    },
+    {
+      "county": "Rockdale County",
+      "US Senate": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6777
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 31988
+          }
+        ],
+        "total": 38765
+      },
+      "Governor": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7906
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 30895
+          }
+        ],
+        "total": 38801
+      }
+    },
+    {
+      "county": "Habersham County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 12949
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4471
+          }
+        ],
+        "total": 17420
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 13804
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3643
+          }
+        ],
+        "total": 17447
+      }
+    },
+    {
+      "county": "Long County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2520
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2453
+          }
+        ],
+        "total": 4973
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2706
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2273
+          }
+        ],
+        "total": 4979
+      }
+    },
+    {
+      "county": "Lincoln County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2581
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1278
+          }
+        ],
+        "total": 3859
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2723
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1138
+          }
+        ],
+        "total": 3861
+      }
+    },
+    {
+      "county": "Murray County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 8486
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2836
+          }
+        ],
+        "total": 11322
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 9135
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2225
+          }
+        ],
+        "total": 11360
+      }
+    },
+    {
+      "county": "Telfair County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2006
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1146
+          }
+        ],
+        "total": 3152
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2112
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1055
+          }
+        ],
+        "total": 3167
+      }
+    },
+    {
+      "county": "Lamar County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5116
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2730
+          }
+        ],
+        "total": 7846
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5433
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2441
+          }
+        ],
+        "total": 7874
+      }
+    },
+    {
+      "county": "Gilmer County",
+      "US Senate": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 10334
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3628
+          }
+        ],
+        "total": 13962
+      },
+      "Governor": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11073
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2926
+          }
+        ],
+        "total": 13999
+      }
+    },
+    {
+      "county": "Brooks County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3085
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2366
+          }
+        ],
+        "total": 5451
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3252
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2203
+          }
+        ],
+        "total": 5455
+      }
+    },
+    {
+      "county": "Wheeler County",
+      "US Senate": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1207
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 583
+          }
+        ],
+        "total": 1790
+      },
+      "Governor": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1266
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 534
+          }
+        ],
+        "total": 1800
+      }
+    },
+    {
+      "county": "White County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9711
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2849
+          }
+        ],
+        "total": 12560
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 10459
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2129
+          }
+        ],
+        "total": 12588
+      }
+    },
+    {
+      "county": "Camden County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 11434
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 7581
+          }
+        ],
+        "total": 19015
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 12104
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 6880
+          }
+        ],
+        "total": 18984
+      }
+    },
+    {
+      "county": "Floyd County",
+      "US Senate": {
+        "precincts_reporting": 19,
+        "precincts_participating": 19,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 19420
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 12837
+          }
+        ],
+        "total": 32257
+      },
+      "Governor": {
+        "precincts_reporting": 19,
+        "precincts_participating": 19,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 21144
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 11132
+          }
+        ],
+        "total": 32276
+      }
+    },
+    {
+      "county": "Dawson County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 10754
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3620
+          }
+        ],
+        "total": 14374
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11551
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2885
+          }
+        ],
+        "total": 14436
+      }
+    },
+    {
+      "county": "Butts County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6187
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3388
+          }
+        ],
+        "total": 9575
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 6513
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3082
+          }
+        ],
+        "total": 9595
+      }
+    },
+    {
+      "county": "Barrow County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 18654
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 14171
+          }
+        ],
+        "total": 32825
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 20493
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 12461
+          }
+        ],
+        "total": 32954
+      }
+    },
+    {
+      "county": "Gordon County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 13283
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 5584
+          }
+        ],
+        "total": 18867
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 14341
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4579
+          }
+        ],
+        "total": 18920
+      }
+    },
+    {
+      "county": "Montgomery County",
+      "US Senate": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2031
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 918
+          }
+        ],
+        "total": 2949
+      },
+      "Governor": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2164
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 805
+          }
+        ],
+        "total": 2969
+      }
+    },
+    {
+      "county": "Colquitt County",
+      "US Senate": {
+        "precincts_reporting": 19,
+        "precincts_participating": 19,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 8207
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4212
+          }
+        ],
+        "total": 12419
+      },
+      "Governor": {
+        "precincts_reporting": 19,
+        "precincts_participating": 19,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 8647
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3787
+          }
+        ],
+        "total": 12434
+      }
+    },
+    {
+      "county": "Peach County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4656
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 5980
+          }
+        ],
+        "total": 10636
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5069
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 5585
+          }
+        ],
+        "total": 10654
+      }
+    },
+    {
+      "county": "Tattnall County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4222
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1992
+          }
+        ],
+        "total": 6214
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4551
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1693
+          }
+        ],
+        "total": 6244
+      }
+    },
+    {
+      "county": "Upson County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6104
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3638
+          }
+        ],
+        "total": 9742
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 6472
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3321
+          }
+        ],
+        "total": 9793
+      }
+    },
+    {
+      "county": "Jasper County",
+      "US Senate": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5000
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1864
+          }
+        ],
+        "total": 6864
+      },
+      "Governor": {
+        "precincts_reporting": 3,
+        "precincts_participating": 3,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5285
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1603
+          }
+        ],
+        "total": 6888
+      }
+    },
+    {
+      "county": "Spalding County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 12362
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 13211
+          }
+        ],
+        "total": 25573
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 13474
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 12208
+          }
+        ],
+        "total": 25682
+      }
+    },
+    {
+      "county": "Decatur County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4636
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3837
+          }
+        ],
+        "total": 8473
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4908
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3586
+          }
+        ],
+        "total": 8494
+      }
+    },
+    {
+      "county": "Mitchell County",
+      "US Senate": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3434
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3257
+          }
+        ],
+        "total": 6691
+      },
+      "Governor": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3666
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3055
+          }
+        ],
+        "total": 6721
+      }
+    },
+    {
+      "county": "Jefferson County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2672
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3280
+          }
+        ],
+        "total": 5952
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2864
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3131
+          }
+        ],
+        "total": 5995
+      }
+    },
+    {
+      "county": "Seminole County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1869
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1021
+          }
+        ],
+        "total": 2890
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1953
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 939
+          }
+        ],
+        "total": 2892
+      }
+    },
+    {
+      "county": "Dade County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4004
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1385
+          }
+        ],
+        "total": 5389
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4297
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1086
+          }
+        ],
+        "total": 5383
+      }
+    },
+    {
+      "county": "Washington County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3625
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4258
+          }
+        ],
+        "total": 7883
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3904
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4041
+          }
+        ],
+        "total": 7945
+      }
+    },
+    {
+      "county": "Early County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1850
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1735
+          }
+        ],
+        "total": 3585
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1922
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1663
+          }
+        ],
+        "total": 3585
+      }
+    },
+    {
+      "county": "Atkinson County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1472
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 762
+          }
+        ],
+        "total": 2234
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1548
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 692
+          }
+        ],
+        "total": 2240
+      }
+    },
+    {
+      "county": "Putnam County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6985
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3626
+          }
+        ],
+        "total": 10611
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7527
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3106
+          }
+        ],
+        "total": 10633
+      }
+    },
+    {
+      "county": "Bulloch County",
+      "US Senate": {
+        "precincts_reporting": 16,
+        "precincts_participating": 16,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 13562
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 11052
+          }
+        ],
+        "total": 24614
+      },
+      "Governor": {
+        "precincts_reporting": 16,
+        "precincts_participating": 16,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 14646
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 9958
+          }
+        ],
+        "total": 24604
+      }
+    },
+    {
+      "county": "Calhoun County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 636
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 999
+          }
+        ],
+        "total": 1635
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 677
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 956
+          }
+        ],
+        "total": 1633
+      }
+    },
+    {
+      "county": "Richmond County",
+      "US Senate": {
+        "precincts_reporting": 65,
+        "precincts_participating": 65,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 16066
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 50562
+          }
+        ],
+        "total": 66628
+      },
+      "Governor": {
+        "precincts_reporting": 65,
+        "precincts_participating": 65,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 18262
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 48358
+          }
+        ],
+        "total": 66620
+      }
+    },
+    {
+      "county": "Troup County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 12186
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 10961
+          }
+        ],
+        "total": 23147
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 13093
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 10113
+          }
+        ],
+        "total": 23206
+      }
+    },
+    {
+      "county": "Laurens County",
+      "US Senate": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 10751
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 7333
+          }
+        ],
+        "total": 18084
+      },
+      "Governor": {
+        "precincts_reporting": 13,
+        "precincts_participating": 13,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11309
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 6811
+          }
+        ],
+        "total": 18120
+      }
+    },
+    {
+      "county": "Whitfield County",
+      "US Senate": {
+        "precincts_reporting": 23,
+        "precincts_participating": 23,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 16889
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 12943
+          }
+        ],
+        "total": 29832
+      },
+      "Governor": {
+        "precincts_reporting": 23,
+        "precincts_participating": 23,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 18421
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 11454
+          }
+        ],
+        "total": 29875
+      }
+    },
+    {
+      "county": "Hart County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 7707
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3069
+          }
+        ],
+        "total": 10776
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 8057
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2757
+          }
+        ],
+        "total": 10814
+      }
+    },
+    {
+      "county": "Haralson County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9093
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2207
+          }
+        ],
+        "total": 11300
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 9664
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1669
+          }
+        ],
+        "total": 11333
+      }
+    },
+    {
+      "county": "Macon County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1342
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2385
+          }
+        ],
+        "total": 3727
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1460
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2286
+          }
+        ],
+        "total": 3746
+      }
+    },
+    {
+      "county": "Fayette County",
+      "US Senate": {
+        "precincts_reporting": 35,
+        "precincts_participating": 35,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 26824
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 35434
+          }
+        ],
+        "total": 62258
+      },
+      "Governor": {
+        "precincts_reporting": 35,
+        "precincts_participating": 35,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 30032
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 32246
+          }
+        ],
+        "total": 62278
+      }
+    },
+    {
+      "county": "Jackson County",
+      "US Senate": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 24096
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 11780
+          }
+        ],
+        "total": 35876
+      },
+      "Governor": {
+        "precincts_reporting": 4,
+        "precincts_participating": 4,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 26131
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 9847
+          }
+        ],
+        "total": 35978
+      }
+    },
+    {
+      "county": "Columbia County",
+      "US Senate": {
+        "precincts_reporting": 40,
+        "precincts_participating": 40,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 36186
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 31391
+          }
+        ],
+        "total": 67577
+      },
+      "Governor": {
+        "precincts_reporting": 40,
+        "precincts_participating": 40,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 39573
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 27965
+          }
+        ],
+        "total": 67538
+      }
+    },
+    {
+      "county": "Paulding County",
+      "US Senate": {
+        "precincts_reporting": 20,
+        "precincts_participating": 20,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 37357
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 37089
+          }
+        ],
+        "total": 74446
+      },
+      "Governor": {
+        "precincts_reporting": 20,
+        "precincts_participating": 20,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 40670
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 33910
+          }
+        ],
+        "total": 74580
+      }
+    },
+    {
+      "county": "Bacon County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2855
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 661
+          }
+        ],
+        "total": 3516
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2967
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 554
+          }
+        ],
+        "total": 3521
+      }
+    },
+    {
+      "county": "McIntosh County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3306
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2391
+          }
+        ],
+        "total": 5697
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3541
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2163
+          }
+        ],
+        "total": 5704
+      }
+    },
+    {
+      "county": "Bartow County",
+      "US Senate": {
+        "precincts_reporting": 17,
+        "precincts_participating": 17,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 27257
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 14913
+          }
+        ],
+        "total": 42170
+      },
+      "Governor": {
+        "precincts_reporting": 17,
+        "precincts_participating": 17,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 29478
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 12835
+          }
+        ],
+        "total": 42313
+      }
+    },
+    {
+      "county": "Talbot County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1077
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1645
+          }
+        ],
+        "total": 2722
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1145
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1584
+          }
+        ],
+        "total": 2729
+      }
+    },
+    {
+      "county": "Hall County",
+      "US Senate": {
+        "precincts_reporting": 31,
+        "precincts_participating": 31,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 47592
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 31011
+          }
+        ],
+        "total": 78603
+      },
+      "Governor": {
+        "precincts_reporting": 31,
+        "precincts_participating": 31,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 52196
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 26638
+          }
+        ],
+        "total": 78834
+      }
+    },
+    {
+      "county": "Carroll County",
+      "US Senate": {
+        "precincts_reporting": 28,
+        "precincts_participating": 28,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 27075
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 17808
+          }
+        ],
+        "total": 44883
+      },
+      "Governor": {
+        "precincts_reporting": 28,
+        "precincts_participating": 28,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 29279
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 15703
+          }
+        ],
+        "total": 44982
+      }
+    },
+    {
+      "county": "Pike County",
+      "US Senate": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 7381
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1703
+          }
+        ],
+        "total": 9084
+      },
+      "Governor": {
+        "precincts_reporting": 8,
+        "precincts_participating": 8,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7721
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1390
+          }
+        ],
+        "total": 9111
+      }
+    },
+    {
+      "county": "Houston County",
+      "US Senate": {
+        "precincts_reporting": 17,
+        "precincts_participating": 17,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 29590
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 35328
+          }
+        ],
+        "total": 64918
+      },
+      "Governor": {
+        "precincts_reporting": 17,
+        "precincts_participating": 17,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 32193
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 32731
+          }
+        ],
+        "total": 64924
+      }
+    },
+    {
+      "county": "Cherokee County",
+      "US Senate": {
+        "precincts_reporting": 42,
+        "precincts_participating": 42,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 76353
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 50263
+          }
+        ],
+        "total": 126616
+      },
+      "Governor": {
+        "precincts_reporting": 42,
+        "precincts_participating": 42,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 84255
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 42690
+          }
+        ],
+        "total": 126945
+      }
+    },
+    {
+      "county": "Clayton County",
+      "US Senate": {
+        "precincts_reporting": 70,
+        "precincts_participating": 70,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 8130
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 87689
+          }
+        ],
+        "total": 95819
+      },
+      "Governor": {
+        "precincts_reporting": 70,
+        "precincts_participating": 70,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 9945
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 85913
+          }
+        ],
+        "total": 95858
+      }
+    },
+    {
+      "county": "Crawford County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3165
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1491
+          }
+        ],
+        "total": 4656
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3337
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1328
+          }
+        ],
+        "total": 4665
+      }
+    },
+    {
+      "county": "Toombs County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5152
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2593
+          }
+        ],
+        "total": 7745
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5470
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2297
+          }
+        ],
+        "total": 7767
+      }
+    },
+    {
+      "county": "Fannin County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 8817
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2781
+          }
+        ],
+        "total": 11598
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 9373
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2236
+          }
+        ],
+        "total": 11609
+      }
+    },
+    {
+      "county": "Henry County",
+      "US Senate": {
+        "precincts_reporting": 37,
+        "precincts_participating": 37,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 26102
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 83476
+          }
+        ],
+        "total": 109578
+      },
+      "Governor": {
+        "precincts_reporting": 37,
+        "precincts_participating": 37,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 29426
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 80272
+          }
+        ],
+        "total": 109698
+      }
+    },
+    {
+      "county": "Lumpkin County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9455
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3428
+          }
+        ],
+        "total": 12883
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 10198
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2731
+          }
+        ],
+        "total": 12929
+      }
+    },
+    {
+      "county": "Jones County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 7201
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4750
+          }
+        ],
+        "total": 11951
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7675
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4302
+          }
+        ],
+        "total": 11977
+      }
+    },
+    {
+      "county": "Charlton County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2323
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 881
+          }
+        ],
+        "total": 3204
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2419
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 804
+          }
+        ],
+        "total": 3223
+      }
+    },
+    {
+      "county": "Meriwether County",
+      "US Senate": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 5075
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3916
+          }
+        ],
+        "total": 8991
+      },
+      "Governor": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 5424
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3603
+          }
+        ],
+        "total": 9027
+      }
+    },
+    {
+      "county": "Clarke County",
+      "US Senate": {
+        "precincts_reporting": 24,
+        "precincts_participating": 24,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 9173
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 33550
+          }
+        ],
+        "total": 42723
+      },
+      "Governor": {
+        "precincts_reporting": 24,
+        "precincts_participating": 24,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11178
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 31479
+          }
+        ],
+        "total": 42657
+      }
+    },
+    {
+      "county": "DeKalb County",
+      "US Senate": {
+        "precincts_reporting": 191,
+        "precincts_participating": 191,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 36253
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 285433
+          }
+        ],
+        "total": 321686
+      },
+      "Governor": {
+        "precincts_reporting": 191,
+        "precincts_participating": 191,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 48834
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 271921
+          }
+        ],
+        "total": 320755
+      }
+    },
+    {
+      "county": "Coffee County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 7339
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4486
+          }
+        ],
+        "total": 11825
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7744
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4119
+          }
+        ],
+        "total": 11863
+      }
+    },
+    {
+      "county": "Cobb County",
+      "US Senate": {
+        "precincts_reporting": 148,
+        "precincts_participating": 148,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 110573
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 225293
+          }
+        ],
+        "total": 335866
+      },
+      "Governor": {
+        "precincts_reporting": 148,
+        "precincts_participating": 148,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 130388
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 205577
+          }
+        ],
+        "total": 335965
+      }
+    },
+    {
+      "county": "Newton County",
+      "US Senate": {
+        "precincts_reporting": 17,
+        "precincts_participating": 17,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 14549
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 32467
+          }
+        ],
+        "total": 47016
+      },
+      "Governor": {
+        "precincts_reporting": 17,
+        "precincts_participating": 17,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 15971
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 31179
+          }
+        ],
+        "total": 47150
+      }
+    },
+    {
+      "county": "Walton County",
+      "US Senate": {
+        "precincts_reporting": 15,
+        "precincts_participating": 15,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 28355
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 16143
+          }
+        ],
+        "total": 44498
+      },
+      "Governor": {
+        "precincts_reporting": 15,
+        "precincts_participating": 15,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 30588
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 14135
+          }
+        ],
+        "total": 44723
+      }
+    },
+    {
+      "county": "Forsyth County",
+      "US Senate": {
+        "precincts_reporting": 29,
+        "precincts_participating": 29,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 59584
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 47453
+          }
+        ],
+        "total": 107037
+      },
+      "Governor": {
+        "precincts_reporting": 29,
+        "precincts_participating": 29,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 68091
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 39041
+          }
+        ],
+        "total": 107132
+      }
+    },
+    {
+      "county": "Sumter County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4107
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 5504
+          }
+        ],
+        "total": 9611
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4423
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 5192
+          }
+        ],
+        "total": 9615
+      }
+    },
+    {
+      "county": "Coweta County",
+      "US Senate": {
+        "precincts_reporting": 24,
+        "precincts_participating": 24,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 38628
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 28085
+          }
+        ],
+        "total": 66713
+      },
+      "Governor": {
+        "precincts_reporting": 24,
+        "precincts_participating": 24,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 42106
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 24732
+          }
+        ],
+        "total": 66838
+      }
+    },
+    {
+      "county": "Bibb County",
+      "US Senate": {
+        "precincts_reporting": 31,
+        "precincts_participating": 31,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 17313
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 37850
+          }
+        ],
+        "total": 55163
+      },
+      "Governor": {
+        "precincts_reporting": 31,
+        "precincts_participating": 31,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 19221
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 36082
+          }
+        ],
+        "total": 55303
+      }
+    },
+    {
+      "county": "McDuffie County",
+      "US Senate": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4517
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3754
+          }
+        ],
+        "total": 8271
+      },
+      "Governor": {
+        "precincts_reporting": 7,
+        "precincts_participating": 7,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4801
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3469
+          }
+        ],
+        "total": 8270
+      }
+    },
+    {
+      "county": "Gwinnett County",
+      "US Senate": {
+        "precincts_reporting": 156,
+        "precincts_participating": 156,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 98695
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 245140
+          }
+        ],
+        "total": 343835
+      },
+      "Governor": {
+        "precincts_reporting": 156,
+        "precincts_participating": 156,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 116048
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 227898
+          }
+        ],
+        "total": 343946
+      }
+    },
+    {
+      "county": "Heard County",
+      "US Senate": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3483
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 925
+          }
+        ],
+        "total": 4408
+      },
+      "Governor": {
+        "precincts_reporting": 6,
+        "precincts_participating": 6,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 3694
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 738
+          }
+        ],
+        "total": 4432
+      }
+    },
+    {
+      "county": "Muscogee County",
+      "US Senate": {
+        "precincts_reporting": 25,
+        "precincts_participating": 25,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 18662
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 43644
+          }
+        ],
+        "total": 62306
+      },
+      "Governor": {
+        "precincts_reporting": 25,
+        "precincts_participating": 25,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 20763
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 41439
+          }
+        ],
+        "total": 62202
+      }
+    },
+    {
+      "county": "Fulton County",
+      "US Senate": {
+        "precincts_reporting": 437,
+        "precincts_participating": 437,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 93123
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 363995
+          }
+        ],
+        "total": 457118
+      },
+      "Governor": {
+        "precincts_reporting": 437,
+        "precincts_participating": 437,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 119027
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 337159
+          }
+        ],
+        "total": 456186
+      }
+    },
+    {
+      "county": "Hancock County",
+      "US Senate": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 975
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2420
+          }
+        ],
+        "total": 3395
+      },
+      "Governor": {
+        "precincts_reporting": 10,
+        "precincts_participating": 10,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1061
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2348
+          }
+        ],
+        "total": 3409
+      }
+    },
+    {
+      "county": "Effingham County",
+      "US Senate": {
+        "precincts_reporting": 20,
+        "precincts_participating": 20,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 16476
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 8940
+          }
+        ],
+        "total": 25416
+      },
+      "Governor": {
+        "precincts_reporting": 20,
+        "precincts_participating": 20,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 17549
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 7871
+          }
+        ],
+        "total": 25420
+      }
+    },
+    {
+      "county": "Harris County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 11298
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 5848
+          }
+        ],
+        "total": 17146
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 11966
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 5164
+          }
+        ],
+        "total": 17130
+      }
+    },
+    {
+      "county": "Chatham County",
+      "US Senate": {
+        "precincts_reporting": 86,
+        "precincts_participating": 86,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 36600
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 75230
+          }
+        ],
+        "total": 111830
+      },
+      "Governor": {
+        "precincts_reporting": 86,
+        "precincts_participating": 86,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 41326
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 70190
+          }
+        ],
+        "total": 111516
+      }
+    },
+    {
+      "county": "Douglas County",
+      "US Senate": {
+        "precincts_reporting": 25,
+        "precincts_participating": 25,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 13922
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 45428
+          }
+        ],
+        "total": 59350
+      },
+      "Governor": {
+        "precincts_reporting": 25,
+        "precincts_participating": 25,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 15761
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 43638
+          }
+        ],
+        "total": 59399
+      }
+    },
+    {
+      "county": "Dougherty County",
+      "US Senate": {
+        "precincts_reporting": 23,
+        "precincts_participating": 23,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 6398
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 20798
+          }
+        ],
+        "total": 27196
+      },
+      "Governor": {
+        "precincts_reporting": 23,
+        "precincts_participating": 23,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 7069
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 20141
+          }
+        ],
+        "total": 27210
+      }
+    },
+    {
+      "county": "Glascock County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 1066
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 149
+          }
+        ],
+        "total": 1215
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 1117
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 100
+          }
+        ],
+        "total": 1217
+      }
+    },
+    {
+      "county": "Madison County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 8495
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3947
+          }
+        ],
+        "total": 12442
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 9134
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 3353
+          }
+        ],
+        "total": 12487
+      }
+    },
+    {
+      "county": "Pickens County",
+      "US Senate": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 11547
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 3716
+          }
+        ],
+        "total": 15263
+      },
+      "Governor": {
+        "precincts_reporting": 12,
+        "precincts_participating": 12,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 12499
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 2848
+          }
+        ],
+        "total": 15347
+      }
+    },
+    {
+      "county": "Burke County",
+      "US Senate": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 3993
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 4677
+          }
+        ],
+        "total": 8670
+      },
+      "Governor": {
+        "precincts_reporting": 11,
+        "precincts_participating": 11,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4281
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 4398
+          }
+        ],
+        "total": 8679
+      }
+    },
+    {
+      "county": "Worth County",
+      "US Senate": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 4635
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 2136
+          }
+        ],
+        "total": 6771
+      },
+      "Governor": {
+        "precincts_reporting": 9,
+        "precincts_participating": 9,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 4894
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1904
+          }
+        ],
+        "total": 6798
+      }
+    },
+    {
+      "county": "Baker County",
+      "US Senate": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 623
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 516
+          }
+        ],
+        "total": 1139
+      },
+      "Governor": {
+        "precincts_reporting": 5,
+        "precincts_participating": 5,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 664
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 476
+          }
+        ],
+        "total": 1140
+      }
+    },
+    {
+      "county": "Quitman County",
+      "US Senate": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 470
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 398
+          }
+        ],
+        "total": 868
+      },
+      "Governor": {
+        "precincts_reporting": 2,
+        "precincts_participating": 2,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 495
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 377
+          }
+        ],
+        "total": 872
+      }
+    },
+    {
+      "county": "Glynn County",
+      "US Senate": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 18789
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 14694
+          }
+        ],
+        "total": 33483
+      },
+      "Governor": {
+        "precincts_reporting": 14,
+        "precincts_participating": 14,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 20387
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 13062
+          }
+        ],
+        "total": 33449
+      }
+    },
+    {
+      "county": "Pulaski County",
+      "US Senate": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Mike Collins (Rep)",
+            "votes": 2202
+          },
+          {
+            "name": "Jon Ossoff (I) (Dem)",
+            "votes": 1131
+          }
+        ],
+        "total": 3333
+      },
+      "Governor": {
+        "precincts_reporting": 1,
+        "precincts_participating": 1,
+        "candidates": [
+          {
+            "name": "Rick Jackson (Rep)",
+            "votes": 2315
+          },
+          {
+            "name": "Keisha Lance Bottoms (Dem)",
+            "votes": 1026
+          }
+        ],
+        "total": 3341
+      }
+    }
+  ],
+  "note": "County governor and Senate votes from the Georgia SOS export. Not certified. Vote-method reporting statuses are Not Reported."
+}
