@@ -1,7 +1,7 @@
 {
   "source": "California Secretary of State",
   "url": "https://media.sos.ca.gov/media/governor.json",
-  "as_of": "November 6, 2026, 11:00 p.m.",
+  "as_of": "November 7, 2026, 5:48 p.m. PT",
   "race": "Governor",
   "counties": [
     {
@@ -353,17 +353,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 2037469,
-          "pct": 72.7
+          "votes": 2169409,
+          "pct": 73.0
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 764154,
-          "pct": 27.3
+          "votes": 801163,
+          "pct": 27.0
         }
       ],
-      "total": 2801623
+      "total": 2970572
     },
     {
       "county": "Madera County",
@@ -562,17 +562,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 507683,
-          "pct": 54.0
+          "votes": 538293,
+          "pct": 54.2
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 433007,
-          "pct": 46.0
+          "votes": 454414,
+          "pct": 45.8
         }
       ],
-      "total": 940690
+      "total": 992707
     },
     {
       "county": "Placer County",
@@ -619,17 +619,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 255926,
+          "votes": 273058,
           "pct": 57.7
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 187371,
+          "votes": 199833,
           "pct": 42.3
         }
       ],
-      "total": 443297
+      "total": 472891
     },
     {
       "county": "Sacramento County",
@@ -676,17 +676,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 276351,
-          "pct": 58.0
+          "votes": 326598,
+          "pct": 58.7
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 199709,
-          "pct": 42.0
+          "votes": 230021,
+          "pct": 41.3
         }
       ],
-      "total": 476060
+      "total": 556619
     },
     {
       "county": "San Diego County",
@@ -714,17 +714,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 251733,
-          "pct": 84.5
+          "votes": 272047,
+          "pct": 84.6
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 46175,
-          "pct": 15.5
+          "votes": 49530,
+          "pct": 15.4
         }
       ],
-      "total": 297908
+      "total": 321577
     },
     {
       "county": "San Joaquin County",
@@ -809,17 +809,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 277503,
-          "pct": 70.5
+          "votes": 304554,
+          "pct": 70.6
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 115879,
-          "pct": 29.5
+          "votes": 126660,
+          "pct": 29.4
         }
       ],
-      "total": 393382
+      "total": 431214
     },
     {
       "county": "Santa Cruz County",
@@ -828,17 +828,17 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 68975,
+          "votes": 77417,
           "pct": 79.1
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 18228,
+          "votes": 20468,
           "pct": 20.9
         }
       ],
-      "total": 87203
+      "total": 97885
     },
     {
       "county": "Shasta County",
@@ -1094,17 +1094,18 @@
         {
           "name": "Xavier Becerra",
           "party": "Dem",
-          "votes": 4863,
-          "pct": 43.1
+          "votes": 9680,
+          "pct": 42.9
         },
         {
           "name": "Steve Hilton",
           "party": "Rep",
-          "votes": 6430,
-          "pct": 56.9
+          "votes": 12889,
+          "pct": 57.1
         }
       ],
-      "total": 11293
+      "total": 22569
     }
-  ]
+  ],
+  "note": "Statewide file time. Counties below were higher than the Nov. 6 file; no county total was lower. Other counties were unchanged and were left as stored. Not certified."
 }
