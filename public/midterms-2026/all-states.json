@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are the latest AP counts on the NBC News House results page, summed by party across every district, pulled 9:03 AM PT Nov. 8, 2026 (12:03 PM ET). Percent in is the vote-weighted share of expected vote; the lowest district is also kept. They are not certified. Counts were raised only where the new figure was higher: Arizona, California, Colorado, Illinois, Maryland, Missouri, Nevada, New York, Pennsylvania and Washington. Connecticut, Vermont, and Texas's House other came in lower on this pull and were kept. Texas House other stays 43,622. Vermont stays at the Nov. 6 House totals. Florida's 10th District is still 0 votes in the feed, so its weighted percent ignores that empty district and the minimum is 0. D.C. has no voting House seat; its count is the attorney general race. Indiana, Missouri, North Dakota and Washington have no 2026 governor or Senate race, so the top line is the highest statewide contest on the NBC state page. Utah's top line is the House sum. California, Florida, Oregon and West Virginia have an official ballots-counted figure, which the table uses instead of the contest. California's official turnout is 10,523,187 as of 5:48 p.m. PT Nov. 7. The national total is the sum of the 50 states.",
+  "house_2026_gap": "2026 House votes are AP counts on the NBC News House results page at 12:08 PM ET (9:08 AM PT) on Nov. 9, summed by party. Not certified. Counts were not lowered where the Nov. 8 figure was higher. Florida's 10th District is still 0 votes. D.C. has no voting House seat. The national total is the sum of the 50 states. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -51,9 +51,9 @@
         "percent_in": 98.9,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -121,9 +121,9 @@
         "percent_in": 74.0,
         "percent_min": 74,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -201,26 +201,26 @@
         }
       },
       "house_2026": {
-        "dem": 1374853,
-        "rep": 1102706,
+        "dem": 1376612,
+        "rep": 1104341,
         "other": 44142,
         "districts": 9,
         "zero_districts": [],
-        "percent_in": 98.2,
-        "percent_min": 95.6,
+        "percent_in": 98.4,
+        "percent_min": 96.2,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2544255,
-        "percent_in": 98.2,
+        "total": 2547672,
+        "percent_in": 98.4,
         "call": "P",
         "leader": "Katie Hobbs",
         "party": "Dem",
-        "leader_votes": 1415725,
+        "leader_votes": 1417502,
         "candidates": [
           {
             "name": "Katie Hobbs",
@@ -253,9 +253,9 @@
             "votes": 7
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -302,9 +302,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -369,26 +369,26 @@
         }
       },
       "house_2026": {
-        "dem": 6940636,
-        "rep": 2989958,
+        "dem": 7047210,
+        "rep": 3011892,
         "other": 76313,
         "districts": 52,
         "zero_districts": [],
-        "percent_in": 77.0,
+        "percent_in": 79.0,
         "percent_min": 56.4,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 10348806,
-        "percent_in": 75,
+        "total": 10482746,
+        "percent_in": 76.6,
         "call": "P",
         "leader": "Xavier Becerra",
         "party": "Dem",
-        "leader_votes": 6773781,
+        "leader_votes": 6878756,
         "candidates": [
           {
             "name": "Xavier Becerra",
@@ -401,9 +401,9 @@
             "votes": 3575025
           }
         ],
-        "source": "Unofficial. California Secretary of State governor.json. Not certified.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://media.sos.ca.gov/media/governor.json",
-        "as_of": "November 7, 2026, 5:48 p.m. PT (California SOS). Same totals on NBC/AP at 9:03 AM PT Nov. 8."
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -450,9 +450,9 @@
         "percent_in": 96.3,
         "percent_min": 93.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -532,26 +532,26 @@
         }
       },
       "house_2026": {
-        "dem": 808459,
-        "rep": 460694,
-        "other": 16270,
+        "dem": 808516,
+        "rep": 460821,
+        "other": 16277,
         "districts": 5,
         "zero_districts": [],
         "percent_in": 98.4,
         "percent_min": 98.2,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 1298571,
-        "percent_in": 98.5,
+        "total": 1298653,
+        "percent_in": 98.4,
         "call": "P",
         "leader": "Ned Lamont",
         "party": "Dem",
-        "leader_votes": 773556,
+        "leader_votes": 773540,
         "candidates": [
           {
             "name": "Ned Lamont",
@@ -564,9 +564,9 @@
             "votes": 525015
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -610,9 +610,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -729,19 +729,19 @@
         }
       },
       "house_2026": {
-        "dem": 3866758,
-        "rep": 4041386,
+        "dem": 3866760,
+        "rep": 4041390,
         "other": 94624,
         "districts": 28,
         "zero_districts": [
           10
         ],
-        "percent_in": 99,
+        "percent_in": 99.0,
         "percent_min": 0,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. Districts at 0 votes: 10. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -809,26 +809,26 @@
         }
       },
       "house_2026": {
-        "dem": 2342772,
-        "rep": 1825455,
+        "dem": 2343334,
+        "rep": 1826193,
         "other": 0,
         "districts": 14,
         "zero_districts": [],
-        "percent_in": 99,
+        "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 4181543,
+        "total": 4182507,
         "percent_in": 99,
         "call": "P",
         "leader": "Keisha Lance Bottoms",
         "party": "Dem",
-        "leader_votes": 2271816,
+        "leader_votes": 2272150,
         "candidates": [
           {
             "name": "Keisha Lance Bottoms",
@@ -846,9 +846,9 @@
             "votes": 0
           }
         ],
-        "source": "Unofficial. Georgia Secretary of State. Not certified.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
-        "as_of": "4:23 PM PT, Nov. 7, 2026 (Georgia SOS export created 2026-11-08T00:23:59Z). A later NBC pull was lower and was not used."
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -895,9 +895,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -965,9 +965,9 @@
         "percent_in": 98.9,
         "percent_min": 98.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -1055,9 +1055,9 @@
         "percent_in": 95.4,
         "percent_min": 89.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -1130,9 +1130,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Secretary of State",
@@ -1191,26 +1191,26 @@
         }
       },
       "house_2026": {
-        "dem": 667208,
-        "rep": 650686,
-        "other": 29573,
+        "dem": 668875,
+        "rep": 651081,
+        "other": 29620,
         "districts": 4,
         "zero_districts": [],
         "percent_in": 98.9,
         "percent_min": 98.7,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 1365097,
+        "total": 1367206,
         "percent_in": 99,
         "call": "P",
         "leader": "Rob Sand",
         "party": "Dem",
-        "leader_votes": 757506,
+        "leader_votes": 759230,
         "candidates": [
           {
             "name": "Rob Sand",
@@ -1223,9 +1223,9 @@
             "votes": 607591
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -1269,12 +1269,12 @@
         "other": 29173,
         "districts": 4,
         "zero_districts": [],
-        "percent_in": 98.8,
-        "percent_min": 98.7,
+        "percent_in": 98.9,
+        "percent_min": 98.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1350,9 +1350,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1417,26 +1417,26 @@
         }
       },
       "house_2026": {
-        "dem": 645809,
-        "rep": 789442,
+        "dem": 645814,
+        "rep": 789454,
         "other": 23905,
         "districts": 6,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 1466069,
+        "total": 1466072,
         "percent_in": 99,
         "call": "P",
         "leader": "Julia Letlow",
         "party": "Rep",
-        "leader_votes": 745963,
+        "leader_votes": 745961,
         "candidates": [
           {
             "name": "Julia Letlow",
@@ -1449,9 +1449,9 @@
             "votes": 720106
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "2:50 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -1487,26 +1487,26 @@
         }
       },
       "house_2026": {
-        "dem": 414617,
-        "rep": 299607,
+        "dem": 415297,
+        "rep": 299882,
         "other": 125,
         "districts": 2,
         "zero_districts": [],
-        "percent_in": 95.0,
-        "percent_min": 92.4,
+        "percent_in": 98.4,
+        "percent_min": 97.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 710929,
-        "percent_in": 93.6,
+        "total": 713252,
+        "percent_in": 97.3,
         "call": "P",
         "leader": "Hannah Pingree",
         "party": "Dem",
-        "leader_votes": 387226,
+        "leader_votes": 388468,
         "candidates": [
           {
             "name": "Hannah Pingree",
@@ -1534,9 +1534,9 @@
             "votes": 57
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "2:49 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -1575,26 +1575,26 @@
         }
       },
       "house_2026": {
-        "dem": 1375419,
-        "rep": 619887,
-        "other": 19058,
+        "dem": 1400387,
+        "rep": 622932,
+        "other": 19487,
         "districts": 8,
         "zero_districts": [],
-        "percent_in": 86.4,
-        "percent_min": 77.9,
+        "percent_in": 87.5,
+        "percent_min": 80.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2020668,
-        "percent_in": 85.9,
+        "total": 2049030,
+        "percent_in": 87.1,
         "call": "P",
         "leader": "Wes Moore",
         "party": "Dem",
-        "leader_votes": 1289359,
+        "leader_votes": 1313420,
         "candidates": [
           {
             "name": "Wes Moore",
@@ -1617,9 +1617,9 @@
             "votes": 39357
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -1655,26 +1655,26 @@
         }
       },
       "house_2026": {
-        "dem": 1722855,
-        "rep": 507904,
+        "dem": 1722858,
+        "rep": 507905,
         "other": 110672,
         "districts": 9,
         "zero_districts": [],
         "percent_in": 92.6,
         "percent_min": 61.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2623000,
+        "total": 2623012,
         "percent_in": 99,
         "call": "P",
         "leader": "Maura Healey",
         "party": "Dem",
-        "leader_votes": 1625487,
+        "leader_votes": 1625493,
         "candidates": [
           {
             "name": "Maura Healey",
@@ -1692,9 +1692,9 @@
             "votes": 86279
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "2:49 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -1738,9 +1738,9 @@
         "percent_in": 96.2,
         "percent_min": 69.4,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1828,9 +1828,9 @@
         "percent_in": 98.8,
         "percent_min": 98.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1910,12 +1910,12 @@
         "other": 18980,
         "districts": 4,
         "zero_districts": [],
-        "percent_in": 96.9,
-        "percent_min": 96.3,
+        "percent_in": 97.4,
+        "percent_min": 96.7,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1988,9 +1988,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Amendment 3",
@@ -2057,9 +2057,9 @@
         "percent_in": 97.7,
         "percent_min": 97.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -2137,9 +2137,9 @@
         "percent_in": 97.2,
         "percent_min": 96.2,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2217,9 +2217,9 @@
         "percent_in": 98.3,
         "percent_min": 97.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2292,26 +2292,26 @@
         }
       },
       "house_2026": {
-        "dem": 365872,
-        "rep": 258083,
-        "other": 7470,
+        "dem": 366138,
+        "rep": 258250,
+        "other": 7478,
         "districts": 2,
         "zero_districts": [],
-        "percent_in": 98.9,
-        "percent_min": 98.8,
+        "percent_in": 99.0,
+        "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 636122,
-        "percent_in": 98.9,
+        "total": 636547,
+        "percent_in": 99,
         "call": "P",
         "leader": "Chris Pappas",
         "party": "Dem",
-        "leader_votes": 355720,
+        "leader_votes": 355965,
         "candidates": [
           {
             "name": "Chris Pappas",
@@ -2329,9 +2329,9 @@
             "votes": 12062
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "2:50 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "U.S. Senate",
@@ -2370,26 +2370,26 @@
         }
       },
       "house_2026": {
-        "dem": 1821441,
-        "rep": 1014401,
-        "other": 43957,
+        "dem": 1824143,
+        "rep": 1015145,
+        "other": 44009,
         "districts": 12,
         "zero_districts": [],
-        "percent_in": 96.2,
+        "percent_in": 96.3,
         "percent_min": 94.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 2918975,
-        "percent_in": 96.4,
+        "total": 2922463,
+        "percent_in": 96.5,
         "call": "P",
         "leader": "Cory Booker",
         "party": "Dem",
-        "leader_votes": 1819769,
+        "leader_votes": 1822397,
         "candidates": [
           {
             "name": "Cory Booker",
@@ -2412,9 +2412,9 @@
             "votes": 27382
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -2458,9 +2458,9 @@
         "percent_in": 98.5,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2520,26 +2520,26 @@
         }
       },
       "house_2026": {
-        "dem": 3715872,
-        "rep": 2256498,
+        "dem": 3716188,
+        "rep": 2256651,
         "other": 40687,
         "districts": 26,
         "zero_districts": [],
         "percent_in": 92.9,
         "percent_min": 83,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 6097359,
-        "percent_in": 93.1,
+        "total": 6097824,
+        "percent_in": 93.2,
         "call": "P",
         "leader": "Kathy Hochul",
         "party": "Dem",
-        "leader_votes": 3641811,
+        "leader_votes": 3642096,
         "candidates": [
           {
             "name": "Kathy Hochul",
@@ -2557,9 +2557,9 @@
             "votes": 12800
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -2600,12 +2600,12 @@
         "other": 52661,
         "districts": 14,
         "zero_districts": [],
-        "percent_in": 99,
+        "percent_in": 99.0,
         "percent_min": 98.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -2683,9 +2683,9 @@
         "percent_in": 98.3,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Attorney General",
@@ -2752,9 +2752,9 @@
         "percent_in": 97.8,
         "percent_min": 96.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -2835,9 +2835,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2917,12 +2917,12 @@
         "other": 21677,
         "districts": 6,
         "zero_districts": [],
-        "percent_in": 89.2,
-        "percent_min": 75.7,
+        "percent_in": 92.5,
+        "percent_min": 82.1,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3003,26 +3003,26 @@
         }
       },
       "house_2026": {
-        "dem": 2805169,
-        "rep": 2142578,
+        "dem": 2806337,
+        "rep": 2143024,
         "other": 17380,
         "districts": 17,
         "zero_districts": [],
-        "percent_in": 98.8,
-        "percent_min": 97.8,
+        "percent_in": 99.0,
+        "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 4987545,
+        "total": 4989023,
         "percent_in": 98.9,
         "call": "P",
         "leader": "Josh Shapiro",
         "party": "Dem",
-        "leader_votes": 3013980,
+        "leader_votes": 3015041,
         "candidates": [
           {
             "name": "Josh Shapiro",
@@ -3040,9 +3040,9 @@
             "votes": 64561
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -3087,11 +3087,11 @@
         "districts": 2,
         "zero_districts": [],
         "percent_in": 98.2,
-        "percent_min": 98,
+        "percent_min": 97.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3166,12 +3166,12 @@
         "other": 23026,
         "districts": 7,
         "zero_districts": [],
-        "percent_in": 99,
+        "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3254,9 +3254,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3324,9 +3324,9 @@
         "percent_in": 98.9,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3451,26 +3451,26 @@
         }
       },
       "house_2026": {
-        "dem": 5147224,
-        "rep": 4591369,
+        "dem": 5147937,
+        "rep": 4591917,
         "other": 43622,
         "districts": 38,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 97.7,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. A party total was kept when an earlier state-office snapshot was higher.",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 9905493,
+        "total": 9906766,
         "percent_in": 99,
         "call": "P",
         "leader": "Gina Hinojosa",
         "party": "Dem",
-        "leader_votes": 5231979,
+        "leader_votes": 5232679,
         "candidates": [
           {
             "name": "Gina Hinojosa",
@@ -3488,9 +3488,9 @@
             "votes": 148121
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "2:49 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -3529,24 +3529,24 @@
         }
       },
       "house_2026": {
-        "dem": 459077,
-        "rep": 468459,
-        "other": 66422,
+        "dem": 473511,
+        "rep": 478175,
+        "other": 68095,
         "districts": 4,
         "zero_districts": [],
-        "percent_in": 94.2,
-        "percent_min": 90.2,
+        "percent_in": 96.6,
+        "percent_min": 96.2,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. House, all districts",
-        "total": 993958,
-        "percent_in": 94.2,
+        "total": 1019781,
+        "percent_in": 96.6,
         "percent_min": 90.2,
-        "as_of": "8:58 AM PT, Nov. 7, 2026",
+        "as_of": "Nov. 9, 2026, 9:08 AM PT",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
         "source": "Latest count, not certified. No 2026 governor or Senate race. Total is the AP/NBC House vote summed across Utah's four districts."
       },
@@ -3592,9 +3592,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3674,26 +3674,26 @@
         }
       },
       "house_2026": {
-        "dem": 2096633,
-        "rep": 1420851,
-        "other": 58494,
+        "dem": 2111145,
+        "rep": 1423971,
+        "other": 59054,
         "districts": 11,
         "zero_districts": [],
-        "percent_in": 97.8,
-        "percent_min": 96,
+        "percent_in": 98.3,
+        "percent_min": 97.5,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. A party total was kept when an earlier state-office snapshot was higher.",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 3576438,
-        "percent_in": 97.8,
+        "total": 3594696,
+        "percent_in": 98.3,
         "call": "P",
         "leader": "Mark Warner",
         "party": "Dem",
-        "leader_votes": 2188657,
+        "leader_votes": 2203723,
         "candidates": [
           {
             "name": "Mark Warner",
@@ -3711,9 +3711,9 @@
             "votes": 9456
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -3754,12 +3754,12 @@
         "other": 12141,
         "districts": 10,
         "zero_districts": [],
-        "percent_in": 88.3,
-        "percent_min": 81.1,
+        "percent_in": 88.6,
+        "percent_min": 81.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "9:03 AM PT, Nov. 8, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Measure: Repeal millionaire tax",
@@ -3818,26 +3818,26 @@
         }
       },
       "house_2026": {
-        "dem": 180582,
-        "rep": 262491,
+        "dem": 180597,
+        "rep": 262510,
         "other": 6904,
         "districts": 2,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 456128,
+        "total": 456162,
         "percent_in": 99,
         "call": "P",
         "leader": "Shelley Moore Capito",
         "party": "Rep",
-        "leader_votes": 266067,
+        "leader_votes": 266088,
         "candidates": [
           {
             "name": "Shelley Moore Capito",
@@ -3855,9 +3855,9 @@
             "votes": 17139
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "2:50 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null,
       "official_ballots": {
@@ -3905,25 +3905,25 @@
       },
       "house_2026": {
         "dem": 1454885,
-        "rep": 1106268,
+        "rep": 1106269,
         "other": 25219,
         "districts": 8,
         "zero_districts": [],
-        "percent_in": 98.2,
-        "percent_min": 93.7,
+        "percent_in": 99.0,
+        "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2668665,
-        "percent_in": 98.9,
+        "total": 2668669,
+        "percent_in": 99,
         "call": "P",
         "leader": "David Crowley",
         "party": "Dem",
-        "leader_votes": 1440990,
+        "leader_votes": 1440993,
         "candidates": [
           {
             "name": "David Crowley",
@@ -3936,9 +3936,9 @@
             "votes": 1227675
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2022": null
     },
@@ -3982,9 +3982,9 @@
         "percent_in": 96.6,
         "percent_min": 96.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News, votes summed across U.S. House districts. Percent in is the vote-weighted share of expected vote. ",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "2:56 PM ET"
+        "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -4564,6 +4564,6 @@
     "label": "Latest count, not certified",
     "source": "AP via NBC News",
     "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-    "as_of": "9:03 AM PT, Nov. 8, 2026 (12:03 PM ET)"
+    "as_of": "Nov. 9, 2026, 9:08 AM PT"
   }
 }
