@@ -3592,7 +3592,7 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher. Certified House totals were not in the Nov. 10, 2026 certification report, so these votes stay the Nov. 9 AP count. House certified totals pending.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
         "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
@@ -3640,7 +3640,18 @@
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
         "as_of": "8:58 AM PT, Nov. 7, 2026"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 311510,
+        "registered": null,
+        "turnout_pct": 61.46,
+        "certified": true,
+        "certification_date": "2026-11-10",
+        "as_of": "Nov. 10, 2026, 2:27 PM PT",
+        "source": "Vermont Secretary of State Sarah Copeland Hanzas with the canvassing committee, certified Nov. 10, 2026. Statewide races and two constitutional amendments. Reported by WPTZ/NBC5, updated 5:27 PM EST (2:27 PM PT).",
+        "url": "https://www.mynbc5.com/article/committee-certifies-vt-record-breaking-midterm-results/74392260",
+        "measure": "Certified ballots cast. 61.46% of registered voters. The report does not print the registered-voter count."
+      }
     },
     {
       "code": "VA",
@@ -3982,7 +3993,7 @@
         "percent_in": 96.6,
         "percent_min": 96.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
+        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher. Certified House totals were not in the Nov. 10, 2026 certification report, so these votes stay the Nov. 9 AP count. House certified totals pending.",
         "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
         "as_of": "Nov. 9, 2026, 9:08 AM PT"
       },
@@ -4015,7 +4026,20 @@
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
         "as_of": "2:49 PM ET, Nov. 6, 2026"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 191713,
+        "registered": null,
+        "turnout_pct": null,
+        "voting_age_population": 461419,
+        "vap_turnout_pct": 41.5,
+        "certified": true,
+        "certification_date": "2026-11-10",
+        "as_of": "Nov. 10, 2026, 1:46 PM PT",
+        "source": "Wyoming State Canvassing Board, unanimous vote approving the State Abstract Certification, Nov. 10, 2026. Reported by Wyoming Public Radio, published 2:46 PM MST (1:46 PM PT). A 5% hand-count audit is still underway (deadline about Nov. 14-15). No recounts.",
+        "url": "https://www.wyomingpublicmedia.org/politics-government/2026-11-10/wyoming-certifies-the-general-election-as-officials-look-to-boost-turnout",
+        "measure": "Certified ballots cast. 41.5% of 461,419 estimated voting-age population, not a share of registered voters."
+      }
     }
   ],
   "house_flips": [
