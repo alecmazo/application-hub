@@ -169,6 +169,26 @@ export const CATALOG: CatalogEntry[] = [
     ],
   },
   {
+    id: "MarinFC-reports",
+    repo: "application-hub",
+    title: "MarinFC-reports",
+    tagline:
+      "Marin FC coaching reports for B2013-14 Blue. The dashboard lists every report; each report is its own page, so a single link can go to the coach.",
+    category: "live",
+    status: "live",
+    launchUrl: "https://alecmazo.github.io/application-hub/MarinFC-reports/",
+    alwaysShow: true,
+    preferTagline: true,
+    surfaces: [
+      {
+        label: "Report dashboard",
+        url: "https://alecmazo.github.io/application-hub/MarinFC-reports/",
+      },
+    ],
+    languageHint: "HTML",
+    tags: ["soccer", "Marin FC", "reports", "GitHub Pages"],
+  },
+  {
     id: "soccer-capture",
     repo: "soccer-capture",
     title: "Soccer Capture",
