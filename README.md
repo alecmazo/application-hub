@@ -32,6 +32,7 @@ Launching an app always hits its **deployed** URL (Pages / Vercel / portfolio), 
 | **Stem Spark** | https://alecmazo.github.io/stem-spark/ |
 | **Turf Pad Builder** | https://alecmazo.github.io/turf-pad-builder/ |
 | **Soccer Rankings** | https://alecmazo.github.io/application-hub/soccer-rankings (Matchday Cards default; CA Tables for MLS NEXT Homegrown/Academy + ECNL/ECNL-RL California conferences; display Pos = Pts then GD then GF then name — source place is not used for order; Refresh re-fetches only the open table from AthleteOne or League Viewer and updates that standings list; click a side for that conference’s games only; Marin FC 2013/14 ECNL highlighted only — not Blue 2014/15; unofficial composite among seeded teams) |
+| **MarinFC-reports** | https://alecmazo.github.io/application-hub/MarinFC-reports/ (dashboard of standalone coaching reports; add one by dropping a folder plus a `reports.json` entry — see `public/MarinFC-reports/README.md`) |
 | **Soccer Capture** | https://alecmazo.github.io/soccer-capture/ |
 | **Soccer Activate** | https://soccer-activate.vercel.app |
 | **DGA Capital Research** | https://portfolio.dgacapital.com |
@@ -49,7 +50,7 @@ npm run build        # production / Vercel SSR build
 
 ### Redeploy static Pages
 
-Push to `main` runs `.github/workflows/deploy-pages.yml` (`npm run build:spa` → GitHub Pages). The Soccer Rankings deep route is copied to `dist-spa/soccer-rankings/index.html` so `https://alecmazo.github.io/application-hub/soccer-rankings` works without a rewrite.
+Push to `main` runs `.github/workflows/deploy-pages.yml` (`npm run build:spa` → GitHub Pages). The Soccer Rankings deep route is copied to `dist-spa/soccer-rankings/index.html` so `https://alecmazo.github.io/application-hub/soccer-rankings` works without a rewrite. Static folders under `public/` (including `public/MarinFC-reports/` and `public/midterms-2026/`) are copied through as their own pages.
 
 ```bash
 npm run build:spa
