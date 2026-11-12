@@ -24871,7 +24871,7 @@
         "url": "https://media.sos.ca.gov/media/status_GG.json",
         "certified": false,
         "county_file": "official/CA.json",
-        "precincts_reporting": "23,860 of 23,860",
+        "precincts_reporting": "100% (23,860 of 23,860)",
         "note": "Unofficial. Statewide row November 12, 2026, 7:53 a.m.: 12,517,377 ballots, 23,273,590 registered, 53.8%. Replaces the prior official figure of 10,661,157. Precincts 23,860 of 23,860. The Secretary of State certifies the election on December 11, 2026.",
         "registered_official": 23273590,
         "turnout_pct": 53.8
