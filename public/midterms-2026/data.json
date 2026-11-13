@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-12T09:01:00-08:00",
-  "lastUpdatedLabel": "Thu Nov 12, 2026, 9:01 AM PT",
+  "lastUpdated": "2026-11-13T09:03:00-08:00",
+  "lastUpdatedLabel": "Fri Nov 13, 2026, 9:03 AM PT",
   "notes": [
+    "Nov. 13, 9:03 AM PT: The 50-state House vote is the AP election-results file at 9:03 AM PT where a party total was higher: D 66,170,769, R 49,932,457, Other 1,737,969. Counts that came in lower were kept: CT House Democratic, CT House Republican, GA House Democratic, GA House Republican, MO House Republican, MO House other, OR House other, SC House other, TX House other, VT House other. AP calls 254 Democratic House seats and 169 Republican seats, with 12 uncalled. Florida's 9th remains called for Darren Soto. Maine's 2nd was called for Paul LePage at 10:31 AM PT Nov. 12. Fox's balance bar at 8:52 AM PT still read 255 and 169 and was not used, because it does not match AP's called-party count. Senate remains 55-44, Alaska uncalled. AP called Kansas governor for Cindy Holscher at 2:43 PM PT Nov. 12 (Holscher 552,139, Masterson 544,878). California official ballots are 12,894,150 (SOS statewide row, Nov. 12, 8:46 p.m., 55.4% of 23,273,590 registered), up from 12,517,377. Oregon ballots counted are 1,983,461 as of 9:00 AM PT, up from 1,974,298; the page prints 3,109,145 active registered voters, 127 below the Nov. 12 page. Florida's second unofficial returns are 8,344,183 ballots, up from 8,344,087. Brevard County's row was 2 lower and was not lowered. South Carolina certified total voter turnout is 2,054,835 (commission met Nov. 11, announced Nov. 12), replacing the Senate-contest proxy of 2,041,487. Colorado reports 2,765,613 ballots returned as of 11:59 p.m. Nov. 11. Delaware's Nov. 9 board packet includes a Nov. 4 voter count of 382,936, replacing the Senate-contest proxy. Montana turnout is 493,868 as of 9:05 AM PT. Nebraska's unofficial ballots cast are 767,046. South Dakota is unchanged at 310,298 unofficial ballots. Vermont and Wyoming stay certified. No count was replaced by a lower certified total. Alaska's 133,537 ballots-received figure is absentee, early, and questioned ballots, not election-day precinct ballots, so it was not used as statewide turnout.",
     "Nov. 12, 9:01 AM PT: California official ballots are 12,517,377 (SOS 7:53 a.m., 53.8% of 23,273,590 registered), up from 10,661,157. Oregon ballots counted are 1,974,298 as of 8:45 AM PT, up from 1,891,605. South Dakota's results page, titled Unofficial Results, shows 310,298 ballots cast and 628,563 registered; that replaces the Senate-contest proxy of 305,098. The 50-state House vote is the 8:57 AM PT AP count on NBC News where higher: D 65,841,913, R 49,771,993, Other 1,725,042. House called seats on the Fox page citing AP calls, 8:50 AM PT: D 255, R 168, 12 uncalled. NBC's desk at the same hour counted 254 and 169 and was not used. AP called the Mississippi Senate race for Scott Colom on Nov. 11. Senate is 55-44 with Alaska still uncalled. Kansas governor and both Alaska races remain uncalled. Florida ballots are unchanged at 8,344,087. No count was replaced by a lower certified total. Oklahoma's State Election Board certified state and federal results on Nov. 10, but the results page retrieved this morning did not print a statewide ballots-cast total, so Oklahoma's row is unchanged. Vermont and Wyoming stay certified at 311,510 and 191,713. Their House votes are still not a certified House total.",
     "Nov. 11, 9:05 AM PT: Vermont certified its general election on Nov. 10. Official ballots cast are 311,510 (61.46% of registered voters), from the Secretary of State and canvassing committee, reported by WPTZ/NBC5, updated 2:27 PM PT. The previous Vermont figure in the table was a governor-contest proxy of 310,242, which is lower, so it was replaced by the certified ballot total and the contest votes were not lowered. Wyoming's State Canvassing Board certified the election the same day. Official ballots cast are 191,713 (41.5% of 461,419 estimated voting-age population), reported by Wyoming Public Radio, published 1:46 PM PT. A 5% hand-count audit is still underway, deadline about Nov. 14-15, and there were no recounts. The previous Wyoming figure in the table was a governor-contest proxy of 187,387, which is lower. Official ballots for states with a published total are now 21,863,984 (CA, FL, OR, VT, WV, WY), against 21,926,121 ballots in those states in 2022 (99.7%). Certified House totals for Vermont and Wyoming were not in those reports, so House votes are unchanged and still labeled latest count, not certified. House seats stay 254 Democratic and 162 Republican with 19 uncalled. Senate stays 54-44, with Alaska and Mississippi uncalled. Kansas governor, Alaska, and Mississippi are still not AP calls.",
     "Nov. 9, 9:08 AM PT: House popular vote refreshed from AP via NBC where higher. New 50-state sum D 64,221,966 R 49,079,294 Other 1,680,375. California official ballots 10,661,157 (SOS 7:43 a.m. Nov. 9), up from 10,523,187. Florida ballots unchanged at 8,344,087. Georgia SOS export 5:50 AM PT. No file checked this morning was marked certified. House called seats remain the Nov. 8 AP tally used here (D 254, R 162, 19 uncalled); NBC's own desk this morning counted 252 and 162 with 21 uncalled and was not used to lower the AP tally. Senate still 54-44, Alaska and Mississippi uncalled. Kansas governor still not an AP call.",
@@ -52,73 +53,73 @@
       "races": [
         {
           "race": "Governor",
-          "status": "pending",
-          "winner": null,
-          "party": null,
-          "margin": null,
-          "source": "AP via NBC News, ~7:11 AM PT Nov 4; too close to call; AP not called | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "status": "called",
+          "winner": "Cindy Holscher",
+          "party": "D",
+          "margin": "+0.7 pts",
+          "source": "AP via NBC News, ~7:11 AM PT Nov 4; too close to call; AP not called | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | AP election-results file called Cindy Holscher at 2:43 PM PT Nov. 12.",
           "candidates": [
             {
               "name": "Cindy Holscher",
               "party": "D",
               "incumbent": null,
-              "votes": 551581,
+              "votes": 552139,
               "pct": 50.3
             },
             {
               "name": "Ty Masterson",
               "party": "R",
               "incumbent": null,
-              "votes": 544102,
+              "votes": 544878,
               "pct": 49.7
             }
           ],
-          "reporting_pct": 98.9,
+          "reporting_pct": 98.2,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "leader_note": "Cindy Holscher leads by 7,638 votes (+0.7 pts), ~98.9% of expected vote in; AP has not called",
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "leader_note": "AP called Cindy Holscher on 2:43 PM PT Nov. 12. Holscher 552,139, Masterson 544,878, 98.2% of expected vote.",
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         },
         {
           "race": "U.S. Senate",
           "status": "called",
           "winner": "Adam Hamilton",
           "party": "D",
-          "margin": "+5.1 pts",
-          "source": "AP, AP race-call article ~8:28 PM PT https://apnews.com/article/senate-kansas-election-roger-marshall-adam-hamilton-7f09e5cc69e0ac8e618376e60ef311d8 | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "margin": "+5.0 pts",
+          "source": "AP, AP race-call article ~8:28 PM PT https://apnews.com/article/senate-kansas-election-roger-marshall-adam-hamilton-7f09e5cc69e0ac8e618376e60ef311d8 | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Roger Marshall",
               "party": "R",
               "incumbent": null,
-              "votes": 505994,
+              "votes": 506664,
               "pct": 46.0
             },
             {
               "name": "Adam Hamilton",
               "party": "D",
               "incumbent": null,
-              "votes": 561474,
+              "votes": 562044,
               "pct": 51.0
             },
             {
               "name": "David Graham",
               "party": "L",
               "incumbent": null,
-              "votes": 33233,
+              "votes": 33319,
               "pct": 3.0
             }
           ],
-          "reporting_pct": 98.9,
+          "reporting_pct": 98.7,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -2851,21 +2852,21 @@
           "status": "called",
           "winner": "Rob Sand",
           "party": "D",
-          "margin": "+11.0 pts",
-          "source": "AP, AP race-call article ~8:20 PM PT https://apnews.com/article/iowa-governor-election-rob-sand-zach-lahn-f047750beff005ec96ca9ae51b82045e | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "margin": "+11.1 pts",
+          "source": "AP, AP race-call article ~8:20 PM PT https://apnews.com/article/iowa-governor-election-rob-sand-zach-lahn-f047750beff005ec96ca9ae51b82045e | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Rob Sand",
               "party": "D",
               "incumbent": null,
-              "votes": 759578,
+              "votes": 759693,
               "pct": 55.5
             },
             {
               "name": "Zach Lahn",
               "party": "R",
               "incumbent": null,
-              "votes": 608186,
+              "votes": 608224,
               "pct": 44.5
             }
           ],
@@ -2875,28 +2876,28 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         },
         {
           "race": "U.S. Senate",
           "status": "called",
           "winner": "Josh Turek",
           "party": "D",
-          "margin": "+4.1 pts",
-          "source": "AP, AP live blog call ~8:35 PM PT (11:35 PM EST) https://apnews.com/live/midterm-election-2026 | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "margin": "+4.2 pts",
+          "source": "AP, AP live blog call ~8:35 PM PT (11:35 PM EST) https://apnews.com/live/midterm-election-2026 | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Ashley Hinson",
               "party": "R",
               "incumbent": null,
-              "votes": 631443,
+              "votes": 631475,
               "pct": 46.4
             },
             {
               "name": "Josh Turek",
               "party": "D",
               "incumbent": null,
-              "votes": 688619,
+              "votes": 688734,
               "pct": 50.6
             },
             {
@@ -2913,7 +2914,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -5393,82 +5394,82 @@
           "winner": "Amy Acton",
           "party": "D",
           "margin": "+7.9 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Amy Acton",
               "party": "D",
               "incumbent": null,
-              "votes": 2404216,
+              "votes": 2405094,
               "pct": 52.3
             },
             {
               "name": "Vivek Ramaswamy",
               "party": "R",
               "incumbent": null,
-              "votes": 2039834,
+              "votes": 2040653,
               "pct": 44.4
             },
             {
               "name": "Don Kissick",
               "party": "L",
               "incumbent": null,
-              "votes": 151884,
+              "votes": 151946,
               "pct": 3.3
             }
           ],
-          "reporting_pct": 98,
+          "reporting_pct": 97.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         },
         {
           "race": "U.S. Senate (special)",
           "status": "called",
           "winner": "Sherrod Brown",
           "party": "D",
-          "margin": "+4.9 pts",
-          "source": "AP, AP race-call article https://apnews.com/article/election-2026-ohio-senate-brown-husted-9e7ae9e1715c0e8203614aea6f71666d | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "margin": "+4.8 pts",
+          "source": "AP, AP race-call article https://apnews.com/article/election-2026-ohio-senate-brown-husted-9e7ae9e1715c0e8203614aea6f71666d | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Sherrod Brown",
               "party": "D",
               "incumbent": null,
-              "votes": 2301078,
+              "votes": 2301918,
               "pct": 50.0
             },
             {
               "name": "Jon Husted",
               "party": "R",
               "incumbent": null,
-              "votes": 2077855,
+              "votes": 2078670,
               "pct": 45.2
             },
             {
               "name": "William B. Redpath",
               "party": "L",
               "incumbent": null,
-              "votes": 128280,
+              "votes": 128333,
               "pct": 2.8
             },
             {
               "name": "Greg Levy",
               "party": "Other",
               "incumbent": null,
-              "votes": 94515,
+              "votes": 94567,
               "pct": 2.1
             }
           ],
-          "reporting_pct": 98,
+          "reporting_pct": 97.8,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -9849,28 +9850,28 @@
           "winner": "Aaron Ford",
           "party": "D",
           "margin": "+7.7 pts",
-          "source": "AP, AP race-call story ~1:54 AM PT Nov 4 (https://www.washingtonpost.com/politics/2026/11/04/race-call-ford-wins-nevada-governor/acc93508-d835-11f1-930a-e08f8086f5ac_story.html) | votes AP via NBC News, ~7:11 AM PT Nov 4; pct excl. None of These Candidates 13,997 in denominator | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "source": "AP, AP race-call story ~1:54 AM PT Nov 4 (https://www.washingtonpost.com/politics/2026/11/04/race-call-ford-wins-nevada-governor/acc93508-d835-11f1-930a-e08f8086f5ac_story.html) | votes AP via NBC News, ~7:11 AM PT Nov 4; pct excl. None of These Candidates 13,997 in denominator | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Joe Lombardo",
               "party": "R",
               "incumbent": null,
-              "votes": 480086,
-              "pct": 44.7
+              "votes": 480143,
+              "pct": 44.0
             },
             {
               "name": "Aaron Ford",
               "party": "D",
               "incumbent": null,
-              "votes": 562785,
-              "pct": 52.4
+              "votes": 562813,
+              "pct": 51.6
             },
             {
               "name": "Danielle Ford",
               "party": "No party",
               "incumbent": null,
-              "votes": 31713,
-              "pct": 3.0
+              "votes": 31718,
+              "pct": 2.9
             }
           ],
           "reporting_pct": 98.4,
@@ -9879,7 +9880,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -10750,20 +10751,20 @@
           "winner": "Abdul El-Sayed",
           "party": "D",
           "margin": "+7.1 pts",
-          "source": "AP, ~11:27 PM PT (2:27 a.m. EST Wed per Exa AP call timestamp); AP winner wire via 9NEWS (AP byline) https://www.9news.com/article/news/politics/elections/democrat-abdul-el-sayed-wins-election-us-senate-michigan/507-575c7945-804e-48ee-b376-83beed7c1a6f | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "source": "AP, ~11:27 PM PT (2:27 a.m. EST Wed per Exa AP call timestamp); AP winner wire via 9NEWS (AP byline) https://www.9news.com/article/news/politics/elections/democrat-abdul-el-sayed-wins-election-us-senate-michigan/507-575c7945-804e-48ee-b376-83beed7c1a6f | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Abdul El-Sayed",
               "party": "D",
               "incumbent": null,
-              "votes": 2520883,
+              "votes": 2520893,
               "pct": 52.5
             },
             {
               "name": "Mike Rogers",
               "party": "R",
               "incumbent": null,
-              "votes": 2181108,
+              "votes": 2181111,
               "pct": 45.5
             },
             {
@@ -10801,7 +10802,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -12813,28 +12814,28 @@
           "status": "called",
           "winner": "Josh Shapiro",
           "party": "D",
-          "margin": "+22.2 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "margin": "+22.3 pts",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Josh Shapiro",
               "party": "D",
               "incumbent": null,
-              "votes": 3022292,
+              "votes": 3025761,
               "pct": 60.5
             },
             {
               "name": "Stacy Garrity",
               "party": "R",
               "incumbent": null,
-              "votes": 1911404,
+              "votes": 1912496,
               "pct": 38.2
             },
             {
               "name": "Ken Krawchuk",
               "party": "L",
               "incumbent": null,
-              "votes": 64731,
+              "votes": 64814,
               "pct": 1.3
             }
           ],
@@ -12844,7 +12845,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -14560,35 +14561,35 @@
           "status": "called",
           "winner": "Katie Hobbs",
           "party": "D",
-          "margin": "+13.1 pts",
-          "source": "AP, AP race call ~12:25 AM PT Nov 4 (per KJZZ https://www.kjzz.org/elections/2026-11-03/arizona-governor-election-results-elex) | votes AP via NBC News, ~7:11 AM PT Nov 4 | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "margin": "+13.2 pts",
+          "source": "AP, AP race call ~12:25 AM PT Nov 4 (per KJZZ https://www.kjzz.org/elections/2026-11-03/arizona-governor-election-results-elex) | votes AP via NBC News, ~7:11 AM PT Nov 4 | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Katie Hobbs",
               "party": "D",
               "incumbent": null,
-              "votes": 1433772,
+              "votes": 1434813,
               "pct": 55.7
             },
             {
               "name": "Andy Biggs",
               "party": "R",
               "incumbent": null,
-              "votes": 1093643,
+              "votes": 1094388,
               "pct": 42.5
             },
             {
               "name": "Risa Lombardo",
               "party": "Green",
               "incumbent": null,
-              "votes": 24609,
+              "votes": 24644,
               "pct": 1.0
             },
             {
               "name": "Teri Ann Hourihan",
               "party": "No Labels",
               "incumbent": null,
-              "votes": 23493,
+              "votes": 23520,
               "pct": 0.9
             }
           ],
@@ -14598,7 +14599,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -18511,18 +18512,18 @@
         "Washington": 9040
       },
       "official_results": {
-        "ballots_cast": 8344087,
+        "ballots_cast": 8344183,
         "ballots_is_proxy": false,
         "ballots_measure": "Voter turnout (ballots) on the Florida Election Watch county reporting page. Not the sum of one contest.",
         "registered_official": 13704495,
         "turnout_pct": 60.89,
         "precincts_reporting": "100%",
-        "as_of_label": "Retrieved Nov. 7, 2026. The page does not print a clock. It is titled the 1st set of unofficial returns. County total row: 8,344,087 ballots, 13,704,495 eligible active registered voters, 60.89%.",
+        "as_of_label": "Retrieved Nov. 13, 2026. The page does not print a clock. It is titled the 2nd set of unofficial returns. County total row: 8,344,183 ballots, 13,704,495 eligible active registered voters, 60.89%.",
         "source": "Florida Department of State, Division of Elections, Election Watch",
         "url": "https://floridaelectionwatch.gov/CountyReportingStatus",
         "certified": false,
         "county_file": "official/FL.json",
-        "note": "Unofficial. This replaced the Nov. 6 retrieval of 8,335,497 because the state posted a higher ballots figure (8,344,087), not because a count was cut. Election Day turnout by county on /ElectionDayTurnout is a different, smaller figure and is not used here."
+        "note": "Unofficial. The 2nd set of unofficial returns replaced the stored 8,344,087 because the state total row is higher. Brevard County's row is 272,017, two below the 272,019 stored from the 1st set. That county figure was not lowered. The state's own total row is 8,344,183."
       }
     },
     {
@@ -23555,31 +23556,31 @@
           "status": "called",
           "winner": "Xavier Becerra",
           "party": "D",
-          "margin": "+30.9 pts",
-          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor | California Secretary of State governor.json, November 7, 2026, 5:48 p.m. PT: Becerra 6,773,781, Hilton 3,575,025. https://media.sos.ca.gov/media/governor.json. Same totals on NBC/AP at 9:03 AM PT Nov. 8. Expected vote on that NBC pull is 75%. Not certified. | California Secretary of State, November 9, 2026, 7:43 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 12, 2026, 7:53 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor",
+          "margin": "+31.2 pts",
+          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor | California Secretary of State governor.json, November 7, 2026, 5:48 p.m. PT: Becerra 6,773,781, Hilton 3,575,025. https://media.sos.ca.gov/media/governor.json. Same totals on NBC/AP at 9:03 AM PT Nov. 8. Expected vote on that NBC pull is 75%. Not certified. | California Secretary of State, November 9, 2026, 7:43 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 12, 2026, 7:53 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Xavier Becerra",
               "party": "D",
               "incumbent": null,
-              "votes": 8087056,
-              "pct": 65.7
+              "votes": 8312288,
+              "pct": 65.6
             },
             {
               "name": "Steve Hilton",
               "party": "R",
               "incumbent": null,
-              "votes": 4226022,
-              "pct": 34.3
+              "votes": 4356157,
+              "pct": 34.4
             }
           ],
-          "reporting_pct": 90.7,
+          "reporting_pct": 93.5,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -24863,18 +24864,18 @@
         "Yuba": 8912
       },
       "official_results": {
-        "ballots_cast": 12517377,
+        "ballots_cast": 12894150,
         "ballots_is_proxy": false,
         "ballots_measure": "Statewide voter turnout on the California Secretary of State reporting-status file (report type SF). Not the sum of one contest. County rows sum to this statewide row.",
-        "as_of_label": "November 12, 2026, 7:53 a.m. (as printed by the California Secretary of State)",
+        "as_of_label": "November 12, 2026, 8:46 p.m. (as printed by the California Secretary of State)",
         "source": "California Secretary of State",
         "url": "https://media.sos.ca.gov/media/status_GG.json",
         "certified": false,
         "county_file": "official/CA.json",
         "precincts_reporting": "100% (23,860 of 23,860)",
-        "note": "Unofficial. Statewide row November 12, 2026, 7:53 a.m.: 12,517,377 ballots, 23,273,590 registered, 53.8%. Replaces the prior official figure of 10,661,157. Precincts 23,860 of 23,860. The Secretary of State certifies the election on December 11, 2026.",
+        "note": "Unofficial. Statewide row November 12, 2026, 8:46 p.m.: 12,894,150 ballots, 23,273,590 registered, 55.4%. Replaces the prior official figure of 12,517,377. Precincts 23,860 of 23,860. The Secretary of State certifies the election on December 11, 2026.",
         "registered_official": 23273590,
-        "turnout_pct": 53.8
+        "turnout_pct": 55.4
       }
     },
     {
@@ -24906,45 +24907,45 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~7:11 AM PT Nov 4; RCV first-choice counts; NBC too early to call; no AP call | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "source": "AP via NBC News, ~7:11 AM PT Nov 4; RCV first-choice counts; NBC too early to call; no AP call | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Dave Bronson",
               "party": "R",
               "incumbent": null,
-              "votes": 34188,
-              "pct": 13.9
+              "votes": 34604,
+              "pct": 13.8
             },
             {
               "name": "Jonathan Kreiss-Tomkins",
               "party": "D",
               "incumbent": null,
-              "votes": 122353,
-              "pct": 49.8
+              "votes": 126195,
+              "pct": 50.2
             },
             {
               "name": "Treg Taylor",
               "party": "R",
               "incumbent": null,
-              "votes": 18012,
+              "votes": 18344,
               "pct": 7.3
             },
             {
               "name": "Bernadette Wilson",
               "party": "R",
               "incumbent": null,
-              "votes": 71231,
-              "pct": 29.0
+              "votes": 72282,
+              "pct": 28.8
             }
           ],
-          "reporting_pct": 85.9,
+          "reporting_pct": 87.7,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "leader_note": "Jonathan Kreiss-Tomkins leads by 42,044 votes (+19.9 pts), ~73.9% of expected vote in; AP has not called; ranked-choice tabulation Nov 18",
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "leader_note": "Jonathan Kreiss-Tomkins leads by 53,913 votes (+21.4 pts), ~87.7% of expected vote in; AP has not called. Ranked-choice results are not available until Nov. 18, once eligible ballots are reviewed and counted.",
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         },
         {
           "race": "U.S. Senate",
@@ -24952,45 +24953,45 @@
           "winner": null,
           "party": null,
           "margin": null,
-          "source": "AP via NBC News, ~7:11 AM PT Nov 4; RCV first-choice counts; NBC too early to call; no AP call | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+          "source": "AP via NBC News, ~7:11 AM PT Nov 4; RCV first-choice counts; NBC too early to call; no AP call | Latest count, not certified. AP via NBC News, 2:50 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/senate-results | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
           "candidates": [
             {
               "name": "Dan S. Sullivan",
               "party": "R, inc.",
               "incumbent": null,
-              "votes": 117512,
-              "pct": 47.3
+              "votes": 119357,
+              "pct": 47.0
             },
             {
               "name": "Mary Peltola",
               "party": "D",
               "incumbent": null,
-              "votes": 121487,
-              "pct": 48.9
+              "votes": 125157,
+              "pct": 49.2
             },
             {
               "name": "Gerald Heikes",
               "party": "R",
               "incumbent": null,
-              "votes": 5426,
+              "votes": 5490,
               "pct": 2.2
             },
             {
               "name": "Daniel J. Sullivan Jr.",
               "party": "R on list; no party on ballot per Ballotpedia",
               "incumbent": null,
-              "votes": 4100,
-              "pct": 1.6
+              "votes": 4199,
+              "pct": 1.7
             }
           ],
-          "reporting_pct": 86.2,
+          "reporting_pct": 87.9,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "leader_note": "Mary Peltola leads by 637 votes (+0.3 pts), ~74.3% of expected vote in; AP has not called; ranked-choice tabulation Nov 18",
-          "votes_as_of": "Nov. 12, 2026, 8:57 AM PT"
+          "leader_note": "Mary Peltola leads by 5,800 votes (+2.3 pts), ~87.9% of expected vote in; AP has not called. Ranked-choice results are not available until Nov. 18. The final regional count of absentee and questioned ballots is Nov. 18.",
+          "votes_as_of": "Nov. 13, 2026, 9:03 AM PT"
         }
       ],
       "feeds": [
@@ -37937,9 +37938,9 @@
     }
   },
   "national": {
-    "as_of_label": "Nov. 12, 2026, 8:58 AM PT",
-    "source": "House seats: Fox News House results page, citing Associated Press race calls, updated Nov. 12, 2026, 11:50 AM ET (8:50 AM PT). Senate seats: Fox News Senate page, updated Nov. 12, 2026, 11:58 AM ET (8:58 AM PT). The Associated Press called Mississippi for Scott Colom on Nov. 11.",
-    "url": "https://www.foxnews.com/elections/2026/midterm-results/house",
+    "as_of_label": "Nov. 13, 2026, 9:03 AM PT",
+    "source": "House seats and Senate calls: Associated Press election-results file, national metadata and progress, last updated 9:03 AM PT Nov. 13, 2026. Maine's 2nd District call timestamp on that file is 10:31 AM PT Nov. 12. The Kansas governor call timestamp is 2:43 PM PT Nov. 12.",
+    "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
     "senate": {
       "dem_caucus": 55,
       "rep": 44,
@@ -37949,15 +37950,15 @@
       "dem_not_up": 34,
       "rep_not_up": 31,
       "net_dem": 8,
-      "unresolved_note": "AP called the Mississippi Senate race for Scott Colom on Wednesday, Nov. 11. Fox News at 8:58 AM PT Nov. 12 shows Democrats 55 (34 not up, plus 8 seats, 8 flipped) and Republicans 44. Alaska is still uncalled: NBC at 8:57 AM PT has no call, with Peltola leading. Kansas governor is still not an AP call."
+      "unresolved_note": "Senate remains 55 Democratic and 44 Republican. Alaska is still uncalled. At 8:49 AM PT Nov. 13, Mary Peltola has 125,157 votes and Dan Sullivan has 119,357, 87.9% of expected vote. The Alaska Division of Elections says ranked-choice results will not be available until Nov. 18, 2026, and the final regional count of absentee and questioned ballots is Nov. 18. Alaska governor is still uncalled. AP called the Kansas governor's race for Cindy Holscher at 2:43 PM PT Nov. 12."
     },
     "house": {
-      "dem": 255,
-      "rep": 168,
+      "dem": 254,
+      "rep": 169,
       "unresolved": 12,
-      "net_dem": 42,
+      "net_dem": 41,
       "majority": 218,
-      "note": "255+168+12=435. Fox News, citing the Associated Press, updated Nov. 12, 2026, 11:50 AM ET (8:50 AM PT): Democrats 255 (+42 seats, 44 flipped) and Republicans 168 (minus 42 seats, 2 flipped). The latest AP call listed is Nov. 11, 11:10 AM ET, South Carolina District 2 for Joe Wilson. NBC's decision desk at 8:57 AM PT counted 254 Democratic and 169 Republican seats; that split is not used here. Both counts leave 12 seats uncalled."
+      "note": "254+169+12=435. AP's election-results file at 9:03 AM PT Nov. 13 marks 254 Democratic and 169 Republican House seats called, with 12 uncalled: Alaska 1, California 4, California 23, Colorado 4, Louisiana 5, Louisiana 6, Minnesota 1, North Carolina 3, North Carolina 5, North Carolina 7, North Carolina 10, and Tennessee 4. Florida's 9th remains called for Darren Soto (called 11:09 AM PT Nov. 10). Maine's 2nd was called for Paul LePage at 10:31 AM PT Nov. 12, after ranked-choice tabulation. Fox's balance bar at 8:52 AM PT still read 255 Democratic and 169 Republican. That bar does not match the 423 AP calls listed on the same Fox page, which are the same 423 races AP marks called, so the bar is not used. Called flips on the AP file are 44 to Democrats and 3 to Republicans. Net Democratic seats from those flips: 41. Twelve seats are still uncalled. Louisiana's secretary of state lists the next U.S. House election on Dec. 12; AP marks the 5th and 6th districts as runoffs."
     },
     "cbs_secondary": {
       "as_of_label": "CBS News live blog, updated Nov. 6, 2026, 1:22 PM EST",
@@ -38007,10 +38008,10 @@
         "year": 2026,
         "president": "Donald J. Trump",
         "party": "R",
-        "house": -42,
+        "house": -41,
         "senate": -8,
         "partial": true,
-        "note": "Fox News, citing AP calls, updated 8:50 AM PT Nov. 12: the president's party is minus 42 House seats on that page's label, with the called seats at 255 Democratic and 168 Republican and 12 uncalled. Senate minus 8 follows the AP call of Mississippi on Nov. 11; Fox shows Democrats 55 and Republicans 44. Alaska is still uncalled. Not comparable to the final historical rows."
+        "note": "AP election-results file, 9:03 AM PT Nov. 13: called House seats are 254 Democratic and 169 Republican, with 12 uncalled. Called flips are 44 Democratic and 3 Republican, so the president's party is minus 41 House seats on called flips. Senate minus 8. Alaska Senate is still uncalled. Not comparable to the final historical rows."
       }
     ],
     "house_popular_vote_note": "FEC general-election votes cast for U.S. House candidates, the total row in each year's Federal Elections report, which includes D.C. and the territories as the FEC adds them. The same measure is used for every year below. A 2026 FEC report does not exist yet.",

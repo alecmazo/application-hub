@@ -2,10 +2,10 @@
   "kind": "turnout",
   "source": "Florida Department of State, Election Watch, County Reporting Status",
   "url": "https://floridaelectionwatch.gov/CountyReportingStatus",
-  "retrieved": "2026-11-07",
-  "note": "1st set of unofficial returns. Voter turnout and eligible active registered voters. The page's own total row matches the county sum (8,344,087). The page does not print a last-updated clock. Not certified. This is ballots, not votes for one candidate. It replaces the Nov. 6 retrieval of 8,335,497.",
+  "retrieved": "2026-11-13",
+  "note": "2nd set of unofficial returns, retrieved Nov. 13, 2026. The page does not print a clock. The page's own total row is 8,344,183 ballots and 13,704,495 eligible active registered voters, 60.89%. Brevard County prints 272,017, two below the 272,019 stored from the 1st set; that county figure was not lowered, so the stored county rows sum to 8,344,185. Not certified.",
   "statewide": {
-    "ballots": 8344087,
+    "ballots": 8344183,
     "registered": 13704495,
     "turnout_pct": "60.89%",
     "precincts_reporting": "100%"
@@ -13,9 +13,9 @@
   "counties": [
     {
       "county": "Alachua",
-      "ballots": 106148,
+      "ballots": 106175,
       "registered": 167143,
-      "turnout_pct": "63.51%",
+      "turnout_pct": "63.52%",
       "precincts_reporting": "100%"
     },
     {
@@ -55,9 +55,9 @@
     },
     {
       "county": "Calhoun",
-      "ballots": 4330,
+      "ballots": 4331,
       "registered": 7601,
-      "turnout_pct": "56.97%",
+      "turnout_pct": "56.98%",
       "precincts_reporting": "100%"
     },
     {
@@ -111,7 +111,7 @@
     },
     {
       "county": "Duval",
-      "ballots": 361032,
+      "ballots": 361039,
       "registered": 655212,
       "turnout_pct": "55.1%",
       "precincts_reporting": "100%"
@@ -370,9 +370,9 @@
     },
     {
       "county": "Pinellas",
-      "ballots": 406842,
+      "ballots": 406905,
       "registered": 613797,
-      "turnout_pct": "66.28%",
+      "turnout_pct": "66.29%",
       "precincts_reporting": "100%"
     },
     {

@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are AP counts on the NBC News House results page at 8:57 AM PT on Nov. 12, summed by party. Not certified. Counts were not lowered where an earlier figure was higher. Florida's 10th District is still 0 votes. D.C. has no voting House seat. The national total is the sum of the 50 states. Official ballots are a separate measure.",
+  "house_2026_gap": "2026 House votes are AP counts in the AP election-results file at 9:03 AM PT on Nov. 13, summed by party. Not certified. Counts were not lowered where an earlier figure was higher. Florida's 10th District is still 0 votes. D.C. has no voting House seat. The national total is the sum of the 50 states. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -51,9 +51,9 @@
         "percent_in": 98.9,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -75,9 +75,9 @@
             "votes": 806270
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "2:49 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -113,46 +113,46 @@
         }
       },
       "house_2026": {
-        "dem": 18562,
-        "rep": 121324,
-        "other": 107903,
+        "dem": 19032,
+        "rep": 123241,
+        "other": 111186,
         "districts": 1,
         "zero_districts": [],
-        "percent_in": 86.1,
-        "percent_min": 86.1,
+        "percent_in": 88.0,
+        "percent_min": 88.0,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 248525,
-        "percent_in": 86.2,
+        "total": 254203,
+        "percent_in": 87.9,
         "call": "E",
         "leader": "Mary Peltola",
         "party": "Dem",
-        "leader_votes": 121487,
+        "leader_votes": 125157,
         "candidates": [
           {
             "name": "Mary Peltola",
             "party": "Dem",
-            "votes": 102962
+            "votes": 125157
           },
           {
             "name": "Dan S. Sullivan",
             "party": "Rep",
-            "votes": 102325
+            "votes": 119357
           },
           {
             "name": "Gerald Heikes",
             "party": "Rep",
-            "votes": 4846
+            "votes": 5490
           },
           {
             "name": "Daniel J. Sullivan Jr.",
             "party": "UDC",
-            "votes": 3600
+            "votes": 4199
           },
           {
             "name": " Total Write-ins",
@@ -160,9 +160,9 @@
             "votes": 0
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "U.S. Senate",
@@ -201,61 +201,61 @@
         }
       },
       "house_2026": {
-        "dem": 1393418,
-        "rep": 1115819,
-        "other": 44613,
+        "dem": 1394455,
+        "rep": 1116619,
+        "other": 44618,
         "districts": 9,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2575544,
+        "total": 2577394,
         "percent_in": 99,
         "call": "P",
         "leader": "Katie Hobbs",
         "party": "Dem",
-        "leader_votes": 1433772,
+        "leader_votes": 1434813,
         "candidates": [
           {
             "name": "Katie Hobbs",
             "party": "Dem",
-            "votes": 1415725
+            "votes": 1434813
           },
           {
             "name": "Andy Biggs",
             "party": "Rep",
-            "votes": 1081317
+            "votes": 1094388
           },
           {
             "name": "Risa Lombardo",
             "party": "Grn",
-            "votes": 24080
+            "votes": 24644
           },
           {
             "name": "Teri Ann Hourihan",
             "party": "NoL",
-            "votes": 23112
+            "votes": 23520
           },
           {
             "name": "Alice Novoa (write-in)",
             "party": "Rep",
-            "votes": 14
+            "votes": 18
           },
           {
             "name": "Gertritrude Gonzalez (write-in)",
             "party": "Rep",
-            "votes": 7
+            "votes": 11
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -302,9 +302,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -318,22 +318,22 @@
           {
             "name": "Tom Cotton",
             "party": "Rep",
-            "votes": 480627
+            "votes": 480802
           },
           {
             "name": "Hallie Shoffner",
             "party": "Dem",
-            "votes": 375647
+            "votes": 375831
           },
           {
             "name": "Jeff Wadlin",
             "party": "Lib",
-            "votes": 29485
+            "votes": 29488
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -369,41 +369,41 @@
         }
       },
       "house_2026": {
-        "dem": 8276449,
-        "rep": 3523262,
+        "dem": 8504120,
+        "rep": 3645129,
         "other": 98368,
         "districts": 52,
         "zero_districts": [],
-        "percent_in": 91.1,
-        "percent_min": 74.5,
+        "percent_in": 93.4,
+        "percent_min": 78.7,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 12308547,
-        "percent_in": 90.7,
+        "total": 12668445,
+        "percent_in": 93.5,
         "call": "P",
         "leader": "Xavier Becerra",
         "party": "Dem",
-        "leader_votes": 8084229,
+        "leader_votes": 8312288,
         "candidates": [
           {
             "name": "Xavier Becerra",
             "party": "Dem",
-            "votes": 6773781
+            "votes": 8312288
           },
           {
             "name": "Steve Hilton",
             "party": "Rep",
-            "votes": 3575025
+            "votes": 4356157
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://media.sos.ca.gov/media/governor.json",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -442,63 +442,74 @@
         }
       },
       "house_2026": {
-        "dem": 1592948,
-        "rep": 962103,
-        "other": 96817,
+        "dem": 1593026,
+        "rep": 962211,
+        "other": 96828,
         "districts": 8,
         "zero_districts": [],
         "percent_in": 97.0,
         "percent_min": 94.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 2669282,
+        "total": 2669484,
         "percent_in": 98.1,
         "call": "P",
         "leader": "John Hickenlooper",
         "party": "Dem",
-        "leader_votes": 1613608,
+        "leader_votes": 1613685,
         "candidates": [
           {
             "name": "John Hickenlooper",
             "party": "Dem",
-            "votes": 1609163
+            "votes": 1613685
           },
           {
             "name": "Mark Baisley",
             "party": "Rep",
-            "votes": 932741
+            "votes": 935255
           },
           {
             "name": "Bob Chew",
             "party": "FWD",
-            "votes": 70049
+            "votes": 70197
           },
           {
             "name": "Blake Huber",
             "party": "Lib",
-            "votes": 32507
+            "votes": 32659
           },
           {
             "name": "Adam Withrow",
             "party": "Uty",
-            "votes": 13409
+            "votes": 13478
           },
           {
             "name": "Christopher Baum",
             "party": "AVP",
-            "votes": 4184
+            "votes": 4210
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 2765613,
+        "registered": null,
+        "turnout_pct": null,
+        "certified": false,
+        "certification_date": null,
+        "as_of": "11:59 p.m. Nov. 11, 2026 (release dated Nov. 12)",
+        "source": "Colorado Secretary of State",
+        "url": "https://www.sos.state.co.us/pubs/newsRoom/pressReleases/2026/PR20261112BallotReturns.html",
+        "measure": "Ballots returned and processed by county clerks. The Nov. 12 release says 2,765,613 ballots returned statewide, data as of 11:59 p.m. Nov. 11. The press-release index listed no Nov. 13 release. Not certified."
+      }
     },
     {
       "code": "CT",
@@ -537,12 +548,12 @@
         "other": 16351,
         "districts": 5,
         "zero_districts": [],
-        "percent_in": 98.4,
-        "percent_min": 98.2,
+        "percent_in": 98.3,
+        "percent_min": 97.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -551,7 +562,7 @@
         "call": "P",
         "leader": "Ned Lamont",
         "party": "Dem",
-        "leader_votes": 773540,
+        "leader_votes": 773556,
         "candidates": [
           {
             "name": "Ned Lamont",
@@ -564,9 +575,9 @@
             "votes": 525015
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -604,15 +615,15 @@
       "house_2026": {
         "dem": 243687,
         "rep": 135016,
-        "other": 0,
+        "other": 212,
         "districts": 1,
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -626,19 +637,30 @@
           {
             "name": "Chris Coons",
             "party": "Dem",
-            "votes": 240347
+            "votes": 240587
           },
           {
             "name": "Mike Katz",
             "party": "Rep",
-            "votes": 137764
+            "votes": 137837
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 382936,
+        "registered": 810407,
+        "turnout_pct": null,
+        "certified": false,
+        "certification_date": null,
+        "as_of": "Nov. 4, 2026, 1:06 p.m., in the Nov. 9 State Board packet",
+        "source": "Delaware Department of Elections",
+        "url": "https://elections.delaware.gov/public/boardofelections/pdfs/BoardMeetingPacket_20261109.pdf",
+        "measure": "Voter counts by method in the department's report to the State Board of Elections. Absentee 20,634, early voting 129,584, polling place 232,718. The packet prints turnout as 47.49% of 810,407 registered voters. Not marked certified here: the packet is a recap, not a certification order."
+      }
     },
     {
       "code": "DC",
@@ -739,9 +761,9 @@
         "percent_in": 99.0,
         "percent_min": 0,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -755,22 +777,22 @@
           {
             "name": "Ashley Moody",
             "party": "Rep",
-            "votes": 4210782
+            "votes": 4211455
           },
           {
             "name": "Angie Nixon",
             "party": "Dem",
-            "votes": 3973000
+            "votes": 3974149
           },
           {
             "name": "Neil Gillespie",
             "party": "NPA",
-            "votes": 94628
+            "votes": 94665
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "U.S. Senate",
@@ -817,9 +839,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -833,12 +855,12 @@
           {
             "name": "Keisha Lance Bottoms",
             "party": "Dem",
-            "votes": 2271816
+            "votes": 2273861
           },
           {
             "name": "Rick Jackson",
             "party": "Rep",
-            "votes": 1909727
+            "votes": 1910910
           },
           {
             "name": " Total Write-ins",
@@ -846,9 +868,9 @@
             "votes": 0
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -895,9 +917,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -911,17 +933,17 @@
           {
             "name": "Josh Green",
             "party": "Dem",
-            "votes": 278652
+            "votes": 279445
           },
           {
             "name": "Gary Cordery",
             "party": "Rep",
-            "votes": 104926
+            "votes": 105258
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -965,13 +987,13 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 716113,
+        "total": 716164,
         "percent_in": 99,
         "call": "P",
         "leader": "Brad Little",
@@ -981,27 +1003,27 @@
           {
             "name": "Brad Little",
             "party": "Rep",
-            "votes": 407263
+            "votes": 408410
           },
           {
             "name": "Terri Pickens",
             "party": "Dem",
-            "votes": 230770
+            "votes": 231475
           },
           {
             "name": "John Stegner",
             "party": "Ind",
-            "votes": 54216
+            "votes": 54867
           },
           {
             "name": "Paul Sand",
             "party": "Lib",
-            "votes": 11543
+            "votes": 11569
           },
           {
             "name": " Pro-Life",
             "party": "CST",
-            "votes": 9488
+            "votes": 9508
           },
           {
             "name": "Jacob Burnett (write-in)",
@@ -1009,9 +1031,9 @@
             "votes": 335
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1047,46 +1069,46 @@
         }
       },
       "house_2026": {
-        "dem": 2593719,
-        "rep": 1525831,
-        "other": 20437,
+        "dem": 2607033,
+        "rep": 1527254,
+        "other": 20707,
         "districts": 17,
         "zero_districts": [],
-        "percent_in": 97.5,
+        "percent_in": 97.8,
         "percent_min": 95.1,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 4175749,
-        "percent_in": 97.7,
+        "total": 4190958,
+        "percent_in": 98.0,
         "call": "P",
         "leader": "JB Pritzker",
         "party": "Dem",
-        "leader_votes": 2527353,
+        "leader_votes": 2540792,
         "candidates": [
           {
             "name": "JB Pritzker",
             "party": "Dem",
-            "votes": 2458101
+            "votes": 2540792
           },
           {
             "name": "Darren Bailey",
             "party": "Rep",
-            "votes": 1495629
+            "votes": 1509625
           },
           {
             "name": "Collin Corbett",
             "party": "Ind",
-            "votes": 137448
+            "votes": 140541
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1130,9 +1152,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Secretary of State",
@@ -1191,41 +1213,41 @@
         }
       },
       "house_2026": {
-        "dem": 669184,
-        "rep": 651307,
-        "other": 29636,
+        "dem": 669301,
+        "rep": 651340,
+        "other": 29638,
         "districts": 4,
         "zero_districts": [],
         "percent_in": 98.9,
         "percent_min": 98.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 1367764,
+        "total": 1367917,
         "percent_in": 99,
         "call": "P",
         "leader": "Rob Sand",
         "party": "Dem",
-        "leader_votes": 759578,
+        "leader_votes": 759693,
         "candidates": [
           {
             "name": "Rob Sand",
             "party": "Dem",
-            "votes": 757506
+            "votes": 759693
           },
           {
             "name": "Zach Lahn",
             "party": "Rep",
-            "votes": 607591
+            "votes": 608224
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -1264,46 +1286,46 @@
         }
       },
       "house_2026": {
-        "dem": 522492,
-        "rep": 545554,
-        "other": 29203,
+        "dem": 522977,
+        "rep": 546319,
+        "other": 29259,
         "districts": 4,
         "zero_districts": [],
-        "percent_in": 98.9,
-        "percent_min": 98.8,
+        "percent_in": 98.7,
+        "percent_min": 98.5,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 1100701,
-        "percent_in": 98.9,
+        "total": 1102027,
+        "percent_in": 98.7,
         "call": "P",
         "leader": "Adam Hamilton",
         "party": "Dem",
-        "leader_votes": 561474,
+        "leader_votes": 562044,
         "candidates": [
           {
             "name": "Adam Hamilton",
             "party": "Dem",
-            "votes": 561143
+            "votes": 562044
           },
           {
             "name": "Roger Marshall",
             "party": "Rep",
-            "votes": 505558
+            "votes": 506664
           },
           {
             "name": "David Graham",
             "party": "Lib",
-            "votes": 33195
+            "votes": 33319
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "U.S. Senate",
@@ -1350,9 +1372,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1379,9 +1401,9 @@
             "votes": 29892
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "2:50 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1425,9 +1447,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1441,17 +1463,17 @@
           {
             "name": "Julia Letlow",
             "party": "Rep",
-            "votes": 745963
+            "votes": 746024
           },
           {
             "name": "Jamie Davis",
             "party": "Dem",
-            "votes": 720106
+            "votes": 720222
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1489,15 +1511,15 @@
       "house_2026": {
         "dem": 415297,
         "rep": 299882,
-        "other": 125,
+        "other": 6146,
         "districts": 2,
         "zero_districts": [],
         "percent_in": 98.4,
         "percent_min": 97.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -1511,17 +1533,17 @@
           {
             "name": "Hannah Pingree",
             "party": "Dem",
-            "votes": 387226
+            "votes": 388721
           },
           {
             "name": "Bobby Charles",
             "party": "Rep",
-            "votes": 265982
+            "votes": 267346
           },
           {
             "name": "Rick Bennett",
             "party": "Ind",
-            "votes": 57478
+            "votes": 57707
           },
           {
             "name": "Randy Wilcox (write-in)",
@@ -1534,9 +1556,9 @@
             "votes": 57
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -1575,51 +1597,51 @@
         }
       },
       "house_2026": {
-        "dem": 1426236,
-        "rep": 626636,
-        "other": 19770,
+        "dem": 1458460,
+        "rep": 633996,
+        "other": 20182,
         "districts": 8,
         "zero_districts": [],
-        "percent_in": 88.7,
+        "percent_in": 90.1,
         "percent_min": 80.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2079037,
-        "percent_in": 88.4,
+        "total": 2119399,
+        "percent_in": 90.1,
         "call": "P",
         "leader": "Wes Moore",
         "party": "Dem",
-        "leader_votes": 1337884,
+        "leader_votes": 1368151,
         "candidates": [
           {
             "name": "Wes Moore",
             "party": "Dem",
-            "votes": 1289359
+            "votes": 1368151
           },
           {
             "name": "Dan Cox",
             "party": "Rep",
-            "votes": 649689
+            "votes": 665170
           },
           {
             "name": "Andy Ellis",
             "party": "Grn",
-            "votes": 42263
+            "votes": 45026
           },
           {
             "name": "Cathy White",
             "party": "WCP",
-            "votes": 39357
+            "votes": 41052
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1655,46 +1677,46 @@
         }
       },
       "house_2026": {
-        "dem": 1724719,
-        "rep": 508481,
+        "dem": 1724771,
+        "rep": 508513,
         "other": 110858,
         "districts": 9,
         "zero_districts": [],
-        "percent_in": 92.6,
+        "percent_in": 89.8,
         "percent_min": 61.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2627066,
+        "total": 2627180,
         "percent_in": 99,
         "call": "P",
         "leader": "Maura Healey",
         "party": "Dem",
-        "leader_votes": 1628530,
+        "leader_votes": 1628580,
         "candidates": [
           {
             "name": "Maura Healey",
             "party": "Dem",
-            "votes": 1625487
+            "votes": 1628580
           },
           {
             "name": "Michael Minogue",
             "party": "Rep",
-            "votes": 911234
+            "votes": 912149
           },
           {
             "name": "Andrea James",
             "party": "Ind",
-            "votes": 86279
+            "votes": 86451
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1730,61 +1752,61 @@
         }
       },
       "house_2026": {
-        "dem": 2533194,
-        "rep": 2108969,
+        "dem": 2533204,
+        "rep": 2108972,
         "other": 102616,
         "districts": 13,
         "zero_districts": [],
-        "percent_in": 96.3,
+        "percent_in": 95.7,
         "percent_min": 69.4,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 4798074,
+        "total": 4798087,
         "percent_in": 98.3,
         "call": "P",
         "leader": "Abdul El-Sayed",
         "party": "Dem",
-        "leader_votes": 2520883,
+        "leader_votes": 2520893,
         "candidates": [
           {
             "name": "Abdul El-Sayed",
             "party": "Dem",
-            "votes": 2520388
+            "votes": 2520893
           },
           {
             "name": "Mike Rogers",
             "party": "Rep",
-            "votes": 2180541
+            "votes": 2181111
           },
           {
             "name": "Lydia Christensen",
             "party": "Lib",
-            "votes": 49697
+            "votes": 49707
           },
           {
             "name": "Tim Long",
             "party": "UST",
-            "votes": 26542
+            "votes": 26550
           },
           {
             "name": "Douglas Marsh",
             "party": "Grn",
-            "votes": 12562
+            "votes": 12564
           },
           {
             "name": "Walter Kristy",
             "party": "NLP",
-            "votes": 7261
+            "votes": 7262
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1828,9 +1850,9 @@
         "percent_in": 98.8,
         "percent_min": 98.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -1867,9 +1889,9 @@
             "votes": 3381
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "2:50 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1905,46 +1927,46 @@
         }
       },
       "house_2026": {
-        "dem": 447864,
-        "rep": 492669,
-        "other": 19173,
+        "dem": 452279,
+        "rep": 495019,
+        "other": 19307,
         "districts": 4,
         "zero_districts": [],
-        "percent_in": 98.8,
-        "percent_min": 98.6,
+        "percent_in": 99.0,
+        "percent_min": 99.0,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 964186,
-        "percent_in": 98.9,
+        "total": 970059,
+        "percent_in": 99.0,
         "call": "C",
         "leader": "Scott Colom",
         "party": "Dem",
-        "leader_votes": 474754,
+        "leader_votes": 478459,
         "candidates": [
           {
             "name": "Scott Colom",
             "party": "Dem",
-            "votes": 467930
+            "votes": 478459
           },
           {
             "name": "Cindy Hyde-Smith",
             "party": "Rep",
-            "votes": 465356
+            "votes": 471203
           },
           {
             "name": "Ty Pinkins",
             "party": "Ind",
-            "votes": 20028
+            "votes": 20397
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -1988,9 +2010,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Amendment 3",
@@ -2057,9 +2079,9 @@
         "percent_in": 98.7,
         "percent_min": 98.4,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -2073,29 +2095,40 @@
           {
             "name": "Kurt Alme",
             "party": "Rep",
-            "votes": 232916
+            "votes": 235549
           },
           {
             "name": "Seth Bodnar",
             "party": "Ind",
-            "votes": 181674
+            "votes": 184551
           },
           {
             "name": "Alani Bankhead",
             "party": "Dem",
-            "votes": 58555
+            "votes": 59950
           },
           {
             "name": "Kyle Austin",
             "party": "Lib",
-            "votes": 8869
+            "votes": 9013
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 493868,
+        "registered": 808879,
+        "turnout_pct": 61.06,
+        "certified": false,
+        "certification_date": null,
+        "as_of": "Nov. 13, 2026, 9:05 AM PT",
+        "source": "Montana Secretary of State",
+        "url": "https://electionresults.mt.gov/",
+        "measure": "Total turnout on the state results page. Results last updated 11/13/2026 10:05:24 AM MT (9:05 AM PT). 493,868 divided by 808,879 registered voters is 61.06%. Precincts fully reported 100%. The page does not say this total is certified."
+      }
     },
     {
       "code": "NE",
@@ -2129,53 +2162,64 @@
         }
       },
       "house_2026": {
-        "dem": 312534,
-        "rep": 405770,
-        "other": 37759,
+        "dem": 312596,
+        "rep": 405935,
+        "other": 37787,
         "districts": 3,
         "zero_districts": [],
         "percent_in": 97.7,
-        "percent_min": 96.9,
+        "percent_min": 96.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 758914,
-        "percent_in": 97.7,
+        "total": 759170,
+        "percent_in": 97.8,
         "call": "P",
         "leader": "Jim Pillen",
         "party": "Rep",
-        "leader_votes": 382501,
+        "leader_votes": 382657,
         "candidates": [
           {
             "name": "Jim Pillen",
             "party": "Rep",
-            "votes": 381371
+            "votes": 382657
           },
           {
             "name": "Lynne Walz",
             "party": "Dem",
-            "votes": 321162
+            "votes": 322850
           },
           {
             "name": "Brett Lindstrom",
             "party": "AFi",
-            "votes": 33332
+            "votes": 33445
           },
           {
             "name": "Rick Beard",
             "party": "LMN",
-            "votes": 20063
+            "votes": 20218
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 767046,
+        "registered": 1265162,
+        "turnout_pct": 60.63,
+        "certified": false,
+        "certification_date": null,
+        "as_of": "Retrieved Nov. 13, 2026, morning PT. The page does not print a clock.",
+        "source": "Nebraska Secretary of State",
+        "url": "https://electionresults.nebraska.gov/",
+        "measure": "Ballots cast on the state results page. The page is titled Unofficial Results. 767,046 divided by 1,265,162 registered voters is 60.63%. Precincts fully reported 100%."
+      }
     },
     {
       "code": "NV",
@@ -2209,51 +2253,51 @@
         }
       },
       "house_2026": {
-        "dem": 615857,
-        "rep": 430329,
-        "other": 36111,
+        "dem": 615885,
+        "rep": 430383,
+        "other": 36119,
         "districts": 4,
         "zero_districts": [],
         "percent_in": 98.4,
-        "percent_min": 97.7,
+        "percent_min": 97.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 1090632,
+        "total": 1090725,
         "percent_in": 98.4,
         "call": "P",
         "leader": "Aaron Ford",
         "party": "Dem",
-        "leader_votes": 562785,
+        "leader_votes": 562813,
         "candidates": [
           {
             "name": "Aaron Ford",
             "party": "Dem",
-            "votes": 562396
+            "votes": 562813
           },
           {
             "name": "Joe Lombardo",
             "party": "Rep",
-            "votes": 479571
+            "votes": 480143
           },
           {
             "name": "Danielle Ford",
             "party": "NPA",
-            "votes": 31654
+            "votes": 31718
           },
           {
             "name": " None of These Candidates",
             "party": "NPD",
-            "votes": 16015
+            "votes": 16051
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -2300,9 +2344,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -2316,22 +2360,22 @@
           {
             "name": "Chris Pappas",
             "party": "Dem",
-            "votes": 355720
+            "votes": 356425
           },
           {
             "name": "John Sununu",
             "party": "Rep",
-            "votes": 268340
+            "votes": 268712
           },
           {
             "name": "Edmond Laplante",
             "party": "CST",
-            "votes": 12062
+            "votes": 12081
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "U.S. Senate",
@@ -2370,51 +2414,51 @@
         }
       },
       "house_2026": {
-        "dem": 1837090,
-        "rep": 1018308,
-        "other": 44457,
+        "dem": 1845211,
+        "rep": 1020821,
+        "other": 44906,
         "districts": 12,
         "zero_districts": [],
-        "percent_in": 97.4,
+        "percent_in": 97.5,
         "percent_min": 95.8,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 2936569,
-        "percent_in": 97.5,
+        "total": 2948075,
+        "percent_in": 97.7,
         "call": "P",
         "leader": "Cory Booker",
         "party": "Dem",
-        "leader_votes": 1833369,
+        "leader_votes": 1841923,
         "candidates": [
           {
             "name": "Cory Booker",
             "party": "Dem",
-            "votes": 1819769
+            "votes": 1841923
           },
           {
             "name": "Justin Murphy",
             "party": "Rep",
-            "votes": 1023549
+            "votes": 1029247
           },
           {
             "name": "Veronica Fernandez",
             "party": "Oth",
-            "votes": 48275
+            "votes": 49078
           },
           {
             "name": "Joanne Kuniansky",
             "party": "Oth",
-            "votes": 27382
+            "votes": 27827
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -2458,9 +2502,9 @@
         "percent_in": 98.5,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2482,9 +2526,9 @@
             "votes": 309436
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -2520,46 +2564,46 @@
         }
       },
       "house_2026": {
-        "dem": 3726227,
-        "rep": 2261960,
-        "other": 40731,
+        "dem": 3728412,
+        "rep": 2262898,
+        "other": 40735,
         "districts": 26,
         "zero_districts": [],
-        "percent_in": 94.6,
+        "percent_in": 93.7,
         "percent_min": 85.9,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 6112383,
+        "total": 6115393,
         "percent_in": 95.3,
         "call": "P",
         "leader": "Kathy Hochul",
         "party": "Dem",
-        "leader_votes": 3651632,
+        "leader_votes": 3653608,
         "candidates": [
           {
             "name": "Kathy Hochul",
             "party": "Dem",
-            "votes": 3641811
+            "votes": 3653608
           },
           {
             "name": "Bruce Blakeman",
             "party": "Rep",
-            "votes": 2442748
+            "votes": 2448918
           },
           {
             "name": " Total Write-ins",
             "party": "Oth",
-            "votes": 12800
+            "votes": 12867
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -2595,51 +2639,51 @@
         }
       },
       "house_2026": {
-        "dem": 2398165,
-        "rep": 1758784,
-        "other": 53041,
+        "dem": 2398564,
+        "rep": 1758980,
+        "other": 53055,
         "districts": 14,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 4222770,
+        "total": 4223380,
         "percent_in": 99,
         "call": "P",
         "leader": "Roy Cooper",
         "party": "Dem",
-        "leader_votes": 2481018,
+        "leader_votes": 2481426,
         "candidates": [
           {
             "name": "Roy Cooper",
             "party": "Dem",
-            "votes": 2467972
+            "votes": 2481426
           },
           {
             "name": "Michael Whatley",
             "party": "Rep",
-            "votes": 1643114
+            "votes": 1649141
           },
           {
             "name": "Shannon Bray",
             "party": "Lib",
-            "votes": 55727
+            "votes": 56097
           },
           {
             "name": "Michael Dublin",
             "party": "Grn",
-            "votes": 36405
+            "votes": 36716
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -2680,12 +2724,12 @@
         "other": 13886,
         "districts": 1,
         "zero_districts": [],
-        "percent_in": 98.3,
-        "percent_min": 98.3,
+        "percent_in": 99.0,
+        "percent_min": 99.0,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Attorney General",
@@ -2744,51 +2788,51 @@
         }
       },
       "house_2026": {
-        "dem": 2318481,
-        "rep": 2178276,
-        "other": 53402,
+        "dem": 2319338,
+        "rep": 2179136,
+        "other": 53407,
         "districts": 15,
         "zero_districts": [],
         "percent_in": 97.8,
         "percent_min": 96.6,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 4601728,
+        "total": 4603488,
         "percent_in": 97.8,
         "call": "P",
         "leader": "Sherrod Brown",
         "party": "Dem",
-        "leader_votes": 2301078,
+        "leader_votes": 2301918,
         "candidates": [
           {
             "name": "Sherrod Brown",
             "party": "Dem",
-            "votes": 2301042
+            "votes": 2301918
           },
           {
             "name": "Jon Husted",
             "party": "Rep",
-            "votes": 2077748
+            "votes": 2078670
           },
           {
             "name": "William Redpath",
             "party": "Lib",
-            "votes": 128272
+            "votes": 128333
           },
           {
             "name": "Greg Levy",
             "party": "Ind",
-            "votes": 94509
+            "votes": 94567
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "U.S. Senate",
@@ -2835,9 +2879,9 @@
         "percent_in": 100.0,
         "percent_min": 100,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2851,32 +2895,32 @@
           {
             "name": "Mike Mazzei",
             "party": "Rep",
-            "votes": 581706
+            "votes": 582039
           },
           {
             "name": "Cyndi Munson",
             "party": "Dem",
-            "votes": 514342
+            "votes": 514776
           },
           {
             "name": "Robert Brooks",
             "party": "Ind",
-            "votes": 11649
+            "votes": 11660
           },
           {
             "name": "Jerry Griffin",
             "party": "Ind",
-            "votes": 7433
+            "votes": 7441
           },
           {
             "name": "Orlando Bush",
             "party": "Ind",
-            "votes": 5009
+            "votes": 5014
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -2917,16 +2961,16 @@
         "other": 21677,
         "districts": 6,
         "zero_districts": [],
-        "percent_in": 94.1,
+        "percent_in": 93.9,
         "percent_min": 89,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 1907001,
+        "total": 1907106,
         "percent_in": 94,
         "call": "P",
         "leader": "Tina Kotek",
@@ -2936,17 +2980,17 @@
           {
             "name": "Tina Kotek",
             "party": "Dem",
-            "votes": 1000012
+            "votes": 1015091
           },
           {
             "name": "Christine Drazan",
             "party": "Rep",
-            "votes": 819566
+            "votes": 834774
           },
           {
             "name": "Brett Smith",
             "party": "PAG",
-            "votes": 53563
+            "votes": 54660
           },
           {
             "name": " Total Write-ins",
@@ -2954,21 +2998,21 @@
             "votes": 2581
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 1974298,
-        "registered": 3109272,
-        "turnout_pct": 63.5,
+        "ballots": 1983461,
+        "registered": 3109145,
+        "turnout_pct": 63.79,
         "certified": false,
         "certification_date": null,
-        "as_of": "Nov. 12, 2026, 8:45 AM PT",
+        "as_of": "Nov. 13, 2026, 9:00 AM PT",
         "source": "Oregon Secretary of State",
         "url": "https://results.oregonvotes.gov/",
-        "measure": "Ballots counted on the state results page. Results last updated 11/12/2026, 8:45 AM PT. The page does not say certified."
+        "measure": "Ballots counted on the state results page. Results last updated 11/13/2026, 9:00 AM PT. Active registered voters on that page are 3,109,145. The page does not say certified."
       }
     },
     {
@@ -3003,46 +3047,46 @@
         }
       },
       "house_2026": {
-        "dem": 2815397,
-        "rep": 2145364,
+        "dem": 2818938,
+        "rep": 2146734,
         "other": 17424,
         "districts": 17,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 4998427,
+        "total": 5003071,
         "percent_in": 99,
         "call": "P",
         "leader": "Josh Shapiro",
         "party": "Dem",
-        "leader_votes": 3022292,
+        "leader_votes": 3025761,
         "candidates": [
           {
             "name": "Josh Shapiro",
             "party": "Dem",
-            "votes": 3013980
+            "votes": 3025761
           },
           {
             "name": "Stacy Garrity",
             "party": "Rep",
-            "votes": 1909004
+            "votes": 1912496
           },
           {
             "name": "Ken Krawchuk",
             "party": "Lib",
-            "votes": 64561
+            "votes": 64814
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -3081,51 +3125,51 @@
         }
       },
       "house_2026": {
-        "dem": 233118,
-        "rep": 118805,
+        "dem": 233127,
+        "rep": 118806,
         "other": 6951,
         "districts": 2,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 360396,
+        "total": 360406,
         "percent_in": 99,
         "call": "P",
         "leader": "Jack Reed",
         "party": "Dem",
-        "leader_votes": 240686,
+        "leader_votes": 240694,
         "candidates": [
           {
             "name": "Jack Reed",
             "party": "Dem",
-            "votes": 240069
+            "votes": 240694
           },
           {
             "name": "Raymond McKay",
             "party": "Rep",
-            "votes": 105346
+            "votes": 105454
           },
           {
             "name": "Michael Bahry",
             "party": "Ind",
-            "votes": 13536
+            "votes": 13563
           },
           {
             "name": " Total Write-ins",
             "party": "Oth",
-            "votes": 694
+            "votes": 695
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -3169,13 +3213,13 @@
         "percent_in": 100.0,
         "percent_min": 100,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 2041487,
+        "total": 2041498,
         "percent_in": 100,
         "call": "P",
         "leader": "Annie Andrews",
@@ -3185,12 +3229,12 @@
           {
             "name": "Annie Andrews",
             "party": "Dem",
-            "votes": 1043719
+            "votes": 1044001
           },
           {
             "name": "Darline Graham",
             "party": "Rep",
-            "votes": 951904
+            "votes": 952191
           },
           {
             "name": "Kasie Whitener",
@@ -3205,14 +3249,25 @@
           {
             "name": " Total Write-ins",
             "party": "Oth",
-            "votes": 4898
+            "votes": 4899
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 2054835,
+        "registered": null,
+        "turnout_pct": 59.8,
+        "certified": true,
+        "certification_date": "2026-11-11",
+        "as_of": "Nov. 12, 2026 announcement",
+        "source": "South Carolina State Election Commission. The commission met Nov. 11, 2026 and certified the statewide general election. The announcement is dated Nov. 12, 2026.",
+        "url": "https://scvotes.gov/state-election-commission-certifies-2026-statewide-general-election/",
+        "measure": "Certified total voter turnout. Early voting 1,043,810, absentee 44,167, Election Day 966,858. The announcement prints 59.8% of active registered voters and does not print the registered-voter count. This replaces the Senate-contest proxy."
+      }
     },
     {
       "code": "SD",
@@ -3254,9 +3309,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3278,9 +3333,9 @@
             "votes": 120509
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "2:50 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null,
       "official_ballots": {
@@ -3335,9 +3390,9 @@
         "percent_in": 98.9,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3424,9 +3479,9 @@
             "votes": 494
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "2:49 PM ET, Nov. 6, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -3470,9 +3525,9 @@
         "percent_in": 99.0,
         "percent_min": 97.7,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3486,22 +3541,22 @@
           {
             "name": "Gina Hinojosa",
             "party": "Dem",
-            "votes": 5231979
+            "votes": 5232690
           },
           {
             "name": "Greg Abbott",
             "party": "Rep",
-            "votes": 4525393
+            "votes": 4525990
           },
           {
             "name": "Pat Dixon",
             "party": "Lib",
-            "votes": 148121
+            "votes": 148140
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -3540,17 +3595,17 @@
         }
       },
       "house_2026": {
-        "dem": 477026,
-        "rep": 480141,
-        "other": 68841,
+        "dem": 478987,
+        "rep": 481385,
+        "other": 69121,
         "districts": 4,
         "zero_districts": [],
-        "percent_in": 97.1,
+        "percent_in": 97.3,
         "percent_min": 96.2,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. House, all districts",
@@ -3595,22 +3650,22 @@
         }
       },
       "house_2026": {
-        "dem": 198754,
-        "rep": 94071,
+        "dem": 198758,
+        "rep": 94078,
         "other": 11920,
         "districts": 1,
         "zero_districts": [],
-        "percent_in": 99.0,
-        "percent_min": 99,
+        "percent_in": 100.0,
+        "percent_min": 100.0,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher. Certified House totals were not in the Nov. 10, 2026 certification report, so these votes stay the Nov. 9 AP count. House certified totals pending.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 310242,
-        "percent_in": 99,
+        "total": 310255,
+        "percent_in": 100.0,
         "call": "P",
         "leader": "Phil Scott",
         "party": "Rep",
@@ -3624,7 +3679,7 @@
           {
             "name": "Amanda Janoo",
             "party": "Dem",
-            "votes": 141618
+            "votes": 141631
           },
           {
             "name": "Brian Judd",
@@ -3647,9 +3702,9 @@
             "votes": 445
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News.",
+        "source": "Latest count, not certified. AP via NBC News. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "8:58 AM PT, Nov. 7, 2026"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null,
       "official_ballots": {
@@ -3696,46 +3751,46 @@
         }
       },
       "house_2026": {
-        "dem": 2125465,
-        "rep": 1430679,
-        "other": 59817,
+        "dem": 2141172,
+        "rep": 1433701,
+        "other": 60311,
         "districts": 11,
         "zero_districts": [],
         "percent_in": 98.9,
-        "percent_min": 98.3,
+        "percent_min": 98.4,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 3616441,
+        "total": 3635671,
         "percent_in": 99,
         "call": "P",
         "leader": "Mark Warner",
         "party": "Dem",
-        "leader_votes": 2218725,
+        "leader_votes": 2234930,
         "candidates": [
           {
             "name": "Mark Warner",
             "party": "Dem",
-            "votes": 2188657
+            "votes": 2234930
           },
           {
             "name": "Bert Mizusawa",
             "party": "Rep",
-            "votes": 1378325
+            "votes": 1391025
           },
           {
             "name": " Total Write-ins",
             "party": "Oth",
-            "votes": 9456
+            "votes": 9716
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -3771,17 +3826,17 @@
         }
       },
       "house_2026": {
-        "dem": 1957211,
-        "rep": 1125624,
-        "other": 13530,
+        "dem": 1973320,
+        "rep": 1139060,
+        "other": 13738,
         "districts": 10,
         "zero_districts": [],
-        "percent_in": 96.4,
-        "percent_min": 92.2,
+        "percent_in": 97.3,
+        "percent_min": 94.2,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Measure: Repeal millionaire tax",
@@ -3848,9 +3903,9 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3864,22 +3919,22 @@
           {
             "name": "Shelley Moore Capito",
             "party": "Rep",
-            "votes": 266067
+            "votes": 266772
           },
           {
             "name": "Rachel Fetty Anderson",
             "party": "Dem",
-            "votes": 172922
+            "votes": 173656
           },
           {
             "name": "S. Wilson",
             "party": "CST",
-            "votes": 17139
+            "votes": 17183
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null,
       "official_ballots": {
@@ -3934,13 +3989,13 @@
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 12:08 PM ET (9:08 AM PT) Nov. 9, 2026, summed by party. Not certified. A party total was not lowered when the Nov. 8 figure was higher.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2668669,
+        "total": 2668670,
         "percent_in": 99,
         "call": "P",
         "leader": "David Crowley",
@@ -3950,17 +4005,17 @@
           {
             "name": "David Crowley",
             "party": "Dem",
-            "votes": 1440990
+            "votes": 1440993
           },
           {
             "name": "Tom Tiffany",
             "party": "Rep",
-            "votes": 1227675
+            "votes": 1227677
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9.",
+        "source": "Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 9, 2026, 9:08 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null
     },
@@ -3998,15 +4053,15 @@
       "house_2026": {
         "dem": 61689,
         "rep": 99906,
-        "other": 21628,
+        "other": 22659,
         "districts": 1,
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100,
         "label": "Latest count, not certified",
-        "source": "AP via NBC News House results, 8:57 AM PT Nov. 12, 2026, summed by party. Not certified. A party total was not lowered when an earlier figure was higher. Certified House totals were not in the Nov. 10 certification report, so these votes stay the latest AP count and are not a certified House total.",
-        "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -4020,22 +4075,22 @@
           {
             "name": "Eric Barlow",
             "party": "Rep",
-            "votes": 128480
+            "votes": 128496
           },
           {
             "name": "Rebecca Bextel",
             "party": "CST",
-            "votes": 31438
+            "votes": 31444
           },
           {
             "name": "Kenneth Casner",
             "party": "Dem",
-            "votes": 27469
+            "votes": 27472
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12.",
+        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 12, 2026, 8:57 AM PT"
+        "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
       "top_2022": null,
       "official_ballots": {
@@ -4597,8 +4652,8 @@
   ],
   "house_2026_source": {
     "label": "Latest count, not certified",
-    "source": "AP via NBC News",
-    "url": "https://www.nbcnews.com/politics/2026-elections/house-results",
-    "as_of": "Nov. 12, 2026, 8:57 AM PT"
+    "source": "Associated Press election-results file",
+    "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+    "as_of": "Nov. 13, 2026, 9:03 AM PT"
   }
 }
