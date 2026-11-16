@@ -40,3 +40,7 @@ Files live in `public/MarinFC-reports/` so the GitHub Pages build copies them as
 4. Do not add the report, or this section, to a sitemap.
 
 Push to `main`. The Pages workflow publishes `public/` with the rest of the site.
+
+## Season trend report (stable slug)
+
+`season-trend-ab0e5977a9e9` is the year-to-date season trend report. Keep that folder name. After every future game, overwrite `public/MarinFC-reports/season-trend-ab0e5977a9e9/index.html` in place and update that entry's `date` in `reports.json` (and the description if the summary changes). The live URL stays `https://alecmazo.github.io/application-hub/MarinFC-reports/season-trend-ab0e5977a9e9/`. Per-game reports still get a new folder each time.
