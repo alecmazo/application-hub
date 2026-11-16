@@ -9,11 +9,11 @@
  * browser-capable path: it reflects the page Origin and forwards `X-Referer`
  * so AthleteOne returns the real table.
  *
- * Academy's schedule JSON is ~13 MB. A single Jina GET of that URL resets
- * (503) while Homegrown's ~7 MB schedule succeeds. Jina POST `customHeader`
- * forwards `Range`, so the Academy schedule is stitched from ~3.5 MB pieces
- * and cached for a few minutes so the next age/conference does not download
- * it again. Nothing here invents scores.
+ * The standings JSON (about 5–6.5 MB, including current results) comes back
+ * from one Jina GET. The separate Academy schedule is ~13 MB and a single GET
+ * resets (503). Jina POST `customHeader` forwards `Range`, so a file that is
+ * too large is stitched from ~3.5 MB pieces and cached for a few minutes.
+ * Nothing here invents scores.
  */
 const JINA_READER_PREFIX = "https://r.jina.ai/";
 const PROXY_TIMEOUT_MS = 12_000;
@@ -286,8 +286,8 @@ async function fetchMlsByRanges(canonical: string, tried: string[]): Promise<str
 
 /**
  * League Viewer JSON that works on GitHub Pages.
- * Dev proxy first, then one Jina GET, then ranged POST for the Academy schedule.
- * A successful body is reused for a few minutes (the origin cache is ~4 min).
+ * Dev proxy first, then one Jina GET, then ranged POST if that GET cannot
+ * return the file. A successful body is reused for a few minutes.
  */
 export async function fetchMlsDocument(
   canonical: string,
@@ -321,9 +321,7 @@ export async function fetchMlsDocument(
       const text = await fetchFirstText([reader], tried);
       if (text) return text;
     }
-    if (kind === "schedule" && !useRanges) {
-      return fetchMlsByRanges(canonical, tried);
-    }
+    if (!useRanges) return fetchMlsByRanges(canonical, tried);
     return null;
   })();
 

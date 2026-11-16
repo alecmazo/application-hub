@@ -5,13 +5,15 @@ Sources (same JSON the official standings viewer loads from mlssoccer.com/mlsnex
 
   Homegrown (Allstate):
     https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-league-26-27.json
-    https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json
     Viewer: https://mls-assist.theintelligenceplatform.com/#/standings/mls-next-league-26-27
 
   Academy:
     https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-2-academy-division-26-27.json
-    https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json
     Viewer: https://mls-assist.theintelligenceplatform.com/#/standings/mls-next-2-academy-division-26-27
+
+Version 2 of those standings files embeds the current results. The separate
+schedule JSON can lag that embed, so it is only used when a standings file has
+no events array. Flex is a different competition and is not counted.
 
 Never invents scores. 26/27 U13 = 2014 birth year (Homegrown rules).
 """
@@ -135,6 +137,106 @@ def fetch_json(url: str, cache_name: str, fallback_page: str | None = None) -> t
     return json.loads(raw.decode()), source
 
 
+def age_group_names(standings: dict) -> dict[int, str]:
+    season = standings.get("competition_season") or {}
+    return {
+        int(group["id"]): str(group.get("name") or "")
+        for group in (season.get("age_groups") or [])
+        if group.get("id") is not None
+    }
+
+
+def league_brackets(standings: dict) -> list[dict]:
+    """League / Academy brackets. Flex is not the conference table."""
+    season = standings.get("competition_season") or {}
+    stages = season.get("competition_season_stages") or []
+    if stages:
+        primary: list[dict] = []
+        for stage in stages:
+            if re.search(r"flex", str(stage.get("name") or ""), re.I):
+                continue
+            primary.extend(stage.get("competition_brackets") or [])
+        if primary:
+            return primary
+    return list(season.get("competition_brackets") or [])
+
+
+def bracket_age(bracket: dict, ages: dict[int, str]) -> str | None:
+    age_id = bracket.get("age_group_id")
+    if isinstance(age_id, int) and age_id in ages:
+        parsed = parse_age(ages[age_id])
+        if parsed:
+            return parsed
+    return parse_age(bracket.get("age_group"))
+
+
+def team_identity(row: dict) -> tuple[int, str, object] | None:
+    if row.get("organisation_id") is not None:
+        return int(row["organisation_id"]), row.get("name") or "Unknown", row.get("squad_id")
+    org = row.get("team") or {}
+    if org.get("organisation_id") is None:
+        return None
+    return int(org["organisation_id"]), org.get("name") or "Unknown", org.get("squad_id")
+
+
+def flex_competition_ids(standings: dict) -> set[int]:
+    season = standings.get("competition_season") or {}
+    return {
+        int(comp["id"])
+        for comp in (season.get("competitions") or [])
+        if comp.get("id") is not None and re.search(r"flex", str(comp.get("name") or ""), re.I)
+    }
+
+
+def organisation_names(standings: dict) -> dict[int, str]:
+    season = standings.get("competition_season") or {}
+    return {
+        int(org["id"]): org.get("name") or "Unknown"
+        for org in (season.get("organisations") or [])
+        if org.get("id") is not None
+    }
+
+
+def inactive_squad(event: dict) -> bool:
+    text = f"{event.get('home_squad_name') or ''} {event.get('away_squad_name') or ''}"
+    return bool(re.search(r"inactive", text, re.I))
+
+
+def iter_result_events(standings: dict, schedule: dict | None):
+    """Current results from the standings embed, else a legacy schedule file."""
+    season = standings.get("competition_season") or {}
+    embedded = season.get("events")
+    if embedded:
+        flex = flex_competition_ids(standings)
+        names = organisation_names(standings)
+        for event in embedded:
+            if inactive_squad(event):
+                continue
+            comp_id = event.get("competition_id")
+            if comp_id in flex:
+                continue
+            hid = event.get("home_organisation_id")
+            aid = event.get("away_organisation_id")
+            if event.get("home_organisation") or hid is None:
+                yield event
+                continue
+            shaped = dict(event)
+            shaped["home_organisation"] = {"id": hid, "name": names.get(int(hid), "Unknown")}
+            shaped["away_organisation"] = {
+                "id": aid,
+                "name": names.get(int(aid), "Unknown") if aid is not None else "Unknown",
+            }
+            yield shaped
+        return
+    for event in (schedule or {}).get("events") or []:
+        comp = event.get("competition") or {}
+        if re.search(r"flex", str(comp.get("name") or ""), re.I):
+            continue
+        if inactive_squad(event):
+            continue
+        yield event
+
+
 def parse_age(value: object) -> str | None:
     if isinstance(value, dict):
         value = value.get("name") or value.get("code") or ""
@@ -229,22 +331,29 @@ def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict
         f"standings-{division}-26-27.json",
         fallback_page=feed.get("page"),
     )
-    schedule, schedule_src = fetch_json(
-        feed["scheduleUrl"],
-        f"schedule-{division}-26-27.json",
-        fallback_page=feed.get("page"),
-    )
+    season = standings.get("competition_season") or {}
+    schedule = None
+    schedule_src = "standings-events"
+    if not season.get("events"):
+        schedule, schedule_src = fetch_json(
+            feed["scheduleUrl"],
+            f"schedule-{division}-26-27.json",
+            fallback_page=feed.get("page"),
+        )
     source = (
         "ui-fallback"
         if "ui-fallback" in (standings_src, schedule_src)
+        else "standings-events"
+        if schedule is None
         else "api"
     )
-    brackets = standings["competition_season"]["competition_brackets"]
-    events = schedule.get("events") or []
+    ages = age_group_names(standings)
+    brackets = league_brackets(standings)
+    events = list(iter_result_events(standings, schedule))
 
     teams: dict[tuple[int, str, str], dict] = {}
     for br in brackets:
-        age = parse_age(br.get("age_group"))
+        age = bracket_age(br, ages)
         if age not in AGE_BANDS:
             continue
         if br.get("gender") and br["gender"] != "male":
@@ -252,15 +361,15 @@ def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict
         conference = br.get("name") or ""
         rows = br.get("standings") or []
         for row in rows:
-            org = row.get("team") or {}
-            oid = org.get("organisation_id")
-            if oid is None:
+            ident = team_identity(row)
+            if ident is None:
                 continue
+            oid, name, squad_id = ident
             key = (int(oid), age, division)
             teams[key] = {
                 "orgId": int(oid),
-                "squadId": org.get("squad_id"),
-                "name": org.get("name") or "Unknown",
+                "squadId": squad_id,
+                "name": name,
                 "ageBand": age,
                 "birthYear": MLS_NEXT_BAND_BIRTH_YEAR[age],
                 "division": division,
@@ -352,7 +461,7 @@ def ingest_feed(feed: dict) -> tuple[dict[tuple[int, str, str], dict], list[dict
                 "d": rec["d"],
                 "l": rec["l"],
                 "asOf": as_of,
-                "note": f"{feed['label']} 26/27 public schedule (completed games only)",
+                "note": f"{feed['label']} 26/27 public results (completed games only)",
             }
 
     return teams, compact_matches, source
@@ -446,8 +555,8 @@ def ingest() -> dict:
         ],
         "notes": {
             "ageMap": "Official 2026-27 Homegrown: U13=2014 BY, U14=2013, U15=2012, U16=2011. No Homegrown U12.",
-            "scores": "Only completed public schedule rows with both scores. Nothing invented.",
-            "divisions": "Homegrown = mls-next-league-26-27; Academy = mls-next-2-academy-division-26-27.",
+            "scores": "Only completed League/Academy results with both scores, read from the standings file's embedded events. Flex is excluded. Nothing invented.",
+            "divisions": "Homegrown = mls-next-league-26-27; Academy = mls-next-2-academy-division-26-27. Version 2 brackets live under competition_season_stages.",
             "fallback": (
                 "Prefer the public League Viewer JSON. Official UI "
                 "mlssoccer.com/mlsnext/standings/homegrown_division/ is used only "

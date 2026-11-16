@@ -177,6 +177,9 @@ export function useSoccerRankings() {
   const [standingsAsOf, setStandingsAsOf] = useState<string | null>(null);
   const [pageView, setPageViewState] = useState<PageView>(DEFAULT_PAGE_VIEW);
   const [caTableFocus, setCaTableFocus] = useState<LeagueTableRow | null>(null);
+  const [liveTableScope, setLiveTableScope] = useState<LiveRefreshPrioritize | null>(
+    null,
+  );
 
   useEffect(() => {
     document.title = "Soccer Rankings";
@@ -437,6 +440,8 @@ export function useSoccerRankings() {
     caTableFocus,
     openTableRow,
     setCaTableFocus,
+    liveTableScope,
+    setLiveTableScope,
     caInYear,
     showMethod,
     setShowMethod,

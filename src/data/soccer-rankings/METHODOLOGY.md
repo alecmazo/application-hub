@@ -55,10 +55,10 @@ The composite ranking list is **not** a conference table. Official standings liv
 
 In-browser **Refresh** re-fetches **only the table on screen** (one pathway + tier + conference + age, such as ECNL Northern Cal BU13 or MLS NEXT Homegrown Northwest U13). It does not walk every California conference or age.
 
-- MLS NEXT: that division’s League Viewer standings JSON plus the schedule JSON, filtered to teams in the open conference and age. W–D–L / GF–GA stay **completed schedule games only**.
+- MLS NEXT: that division’s League Viewer standings JSON, filtered to teams in the open conference and age. Version 2 of that file embeds the current results. W–D–L / GF–GA are **completed League / Academy games only** (Flex is a different competition and is not counted). The separate schedule JSON can lag that embed, so it is only a fallback when the standings file has no events.
 - ECNL: one AthleteOne `get-conference-standings` call for that conference and age (Referer/Origin `https://theecnl.com`). HTML is W–L–D; the app stores W–D–L. Then `get-individual-team-info` for teams on that table only. Published RESULTS overlay the expand list; unpublished stays N/A.
 
-Local dev and `vite preview` use the `/athleteone-api` and `/mls-next-api` proxies. GitHub Pages is static: the browser cannot set Referer, and those APIs do not allow `github.io`. Refresh there goes through the Jina reader (`https://r.jina.ai/…`) with `X-Referer: https://theecnl.com` and `X-No-Cache: true`. Academy’s schedule JSON is about 13 MB; a single Jina GET of that file returns 503, so Pages stitches it with ranged Jina POSTs (`customHeader.Range`, ~3.5 MB pieces) and reuses the body for a few minutes. Homegrown still uses one GET. A blocked pull leaves the shipped rows and shows an error. Nothing is invented.
+Local dev and `vite preview` use the `/athleteone-api` and `/mls-next-api` proxies. GitHub Pages is static: the browser cannot set Referer, and those APIs do not allow `github.io`. Refresh there goes through the Jina reader (`https://r.jina.ai/…`) with `X-No-Cache: true` (`X-Referer: https://theecnl.com` for AthleteOne). The standings JSON is about 5–6.5 MB and returns from one GET. A file that is too large for one GET (the old Academy schedule, about 13 MB, returns 503) is stitched with ranged Jina POSTs (`customHeader.Range`, ~3.5 MB pieces) and reused for a few minutes. A blocked pull leaves the shipped rows and shows an error. Nothing is invented.
 
 **CA Tables** view (age tabs + pathway + conference):
 
@@ -73,7 +73,7 @@ Columns: **Pos, Team, GP, W, D, L, GF, GA, GD, Pts** (+ PPG).
 - Clicking a CA table side expands that row (and the Cards right panel) into **that conference’s games only** — opponents and W/D/L, scores only when AthleteOne team-info RESULTS or MLS NEXT League Viewer published both. **Played (scored) first**, then schedule rows with no published FT, then upcoming. ECNL uses `get-individual-team-info/{orgId}/{eventId}/{clubId}/{teamId}` (`displayTeamInfo(org,event,team,club)` → that path; orgId=12). Club-wide `get-club-schedules-by-eventID-and-clubID` is fallback only. Unpublished stays N/A. Nothing invented.
 - **Pts** = **3×W + D** (standard). AthleteOne also publishes PPG = Pts/GP; the snapshot Marin U13 line is 4 pts / 3 GP = 1.33 PPG.
 - **W–D–L** is the app order. AthleteOne HTML is **W–L–D**; ingest converts (Marin BU14 2-1-0 → 2-0-1).
-- MLS NEXT W–D–L / GF–GA are **completed League Viewer schedule games only**. Unplayed sides stay 0 GP — not invented.
+- MLS NEXT W–D–L / GF–GA are **completed League Viewer games only** (from the standings file’s embedded results; Flex excluded). Unplayed sides stay 0 GP — not invented.
 - Marin FC (not Blue 2014/15) is highlighted. Home listing remains Marin FC 2013/14 ECNL (`gs-56506`).
 - Age U12 is **Pre-ECNL** and **Pre-MLS NEXT**, not the U13+ ECNL (org 12) or Homegrown/Academy feeds. Pre-ECNL boys is AthleteOne org **22**, season **87** (`theecnl.com` Pre-ECNL page): Northern Cal event **4368** (published table, currently no rows) and Southern Cal event **4370** (four flights — Tier I Blue, Tier I Gold, Tier II Gold, Tier II Blue — each its own table). Pre-MLS NEXT has no public League Viewer JSON; mlssoccer.com only embeds Homegrown `mls-next-league-26-27` and Academy `mls-next-2-academy-division-26-27`, both starting at U13. That pathway shows an empty state instead of a failed download.
 
@@ -125,7 +125,7 @@ Marin FC home listing remains `gs-56506` (2013/14 ECNL). Blue / Red / Steel **20
 
 ## MLS NEXT records + SOS
 
-Public **League Viewer JSON** (same files the official standings viewer loads). Prefer these APIs over HTML scrape. Ingest: `python3 scripts/ingest-mls-next.py`. Team **Refresh** hits the schedule JSON via `/mls-next-api` (dev/preview) or the Jina reader on GitHub Pages (ranged POST for the Academy schedule).
+Public **League Viewer JSON** (same files the official standings viewer loads). Prefer these APIs over HTML scrape. Ingest: `python3 scripts/ingest-mls-next.py`. Standings version 2 puts brackets under `competition_season_stages` and embeds current results on that document. Team **Refresh** reads those embedded results (the separate schedule JSON is fallback only; it can lag the standings file by weeks). Dev/preview uses `/mls-next-api`. GitHub Pages uses the Jina reader, with ranged POST if one GET cannot return the file.
 
 | Division | Standings | Schedule | Official UI (fallback discovery only) |
 | --- | --- | --- | --- |

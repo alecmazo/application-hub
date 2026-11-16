@@ -1,6 +1,7 @@
 import meta from "@/data/soccer-rankings/matches-meta.json";
 import mlsNextPublic from "@/data/soccer-rankings/mls-next-public.json";
 import { listMlsPublicTeams } from "./league-tables";
+import { eventsFromMlsDocument, MLS_NEXT_FEEDS } from "./mls-next-document";
 import { fetchMlsDocument } from "./public-fetch";
 import type {
   CompactMatch,
@@ -392,16 +393,13 @@ function recordFromMatches(
   return { w, d, l };
 }
 
-const MLS_NEXT_SCHEDULE_URLS = [
-  {
-    division: "homegrown" as const,
-    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json",
-  },
-  {
-    division: "academy" as const,
-    url: "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json",
-  },
-];
+const MLS_NEXT_SCHEDULE_URLS = MLS_NEXT_FEEDS.map((feed) => ({
+  division: feed.division,
+  url: feed.scheduleUrl,
+  standingsUrl: feed.standingsUrl,
+  file: feed.file,
+  label: feed.label,
+}));
 
 function emptyResult(
   partial: Partial<MatchLoadResult> & { endpointsTried: string[] },
@@ -589,24 +587,31 @@ async function fetchLiveMlsNext(
     (f) => !division || f.division === division,
   );
   for (const feed of feeds) {
-    const file = feed.url.split("/").pop() ?? "";
-    const text = await fetchMlsDocument(feed.url, file, "schedule", tried);
-    if (!text) continue;
-    let data: unknown;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      continue;
+    const standingsText = await fetchMlsDocument(
+      feed.standingsUrl,
+      feed.file,
+      "standings",
+      tried,
+    );
+    let events: Array<Record<string, unknown>> = [];
+    if (standingsText) {
+      try {
+        events = eventsFromMlsDocument(JSON.parse(standingsText) as Record<string, unknown>);
+      } catch {
+        events = [];
+      }
     }
-    const events =
-      data && typeof data === "object" && Array.isArray((data as { events?: unknown[] }).events)
-        ? (data as { events: Record<string, unknown>[] }).events
-        : [];
+    if (!events.length) {
+      const scheduleText = await fetchMlsDocument(feed.url, feed.file, "schedule", tried);
+      if (!scheduleText) continue;
+      try {
+        events = eventsFromMlsDocument(JSON.parse(scheduleText) as Record<string, unknown>);
+      } catch {
+        continue;
+      }
+    }
     const rows: CompactMatch[] = [];
-    const label =
-      feed.division === "homegrown"
-        ? "MLS NEXT Homegrown 26/27"
-        : "MLS NEXT Academy 26/27";
+    const label = `${feed.label} 26/27`;
     for (const ev of events) {
       const ho = (ev.home_organisation as { id?: number; name?: string }) || {};
       const ao = (ev.away_organisation as { id?: number; name?: string }) || {};

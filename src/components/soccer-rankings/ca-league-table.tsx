@@ -49,6 +49,7 @@ export function CaLeagueTables() {
     caTableFocus,
     openTableRow,
     setCaTableFocus,
+    setLiveTableScope,
   } = useRankings();
   const [pathway, setPathway] = useState<CaTablePathway>("ecnl");
   const [tier, setTier] = useState<CaTableTier>("ecnl");
@@ -84,6 +85,11 @@ export function CaLeagueTables() {
   useEffect(() => {
     if (refreshingStandings) setDetailsOpen(false);
   }, [refreshingStandings]);
+
+  useEffect(() => {
+    setLiveTableScope({ pathway, tier, conference, ageBand: year });
+    return () => setLiveTableScope(null);
+  }, [pathway, tier, conference, year, setLiveTableScope]);
 
   const rows = useMemo(
     () =>

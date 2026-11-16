@@ -18,13 +18,14 @@ export function StandingsRefreshButton({
   className?: string;
   label?: string;
 }) {
-  const { refreshStandings, refreshingStandings } = useRankings();
-  const scope = prioritize ? tableScopeLabel(prioritize) : "this table";
+  const { refreshStandings, refreshingStandings, liveTableScope } = useRankings();
+  const target = prioritize ?? liveTableScope ?? undefined;
+  const scope = target ? tableScopeLabel(target) : "this table";
   return (
     <Button
       type="button"
       size={size}
-      onClick={() => void refreshStandings(prioritize)}
+      onClick={() => void refreshStandings(target)}
       disabled={refreshingStandings}
       aria-busy={refreshingStandings}
       aria-label={refreshingStandings ? `Refreshing ${scope}` : `${label} ${scope}`}
