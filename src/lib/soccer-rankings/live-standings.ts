@@ -5,8 +5,10 @@
  * Cal BU13, or MLS NEXT Homegrown Northwest U13). Other conferences and ages
  * stay on the shipped rows.
  *
- * MLS NEXT: that division's League Viewer standings + schedule JSON. W–D–L /
- * GF–GA are completed schedule games for teams on this table only.
+ * MLS NEXT: that division's League Viewer standings JSON. Version 2 embeds the
+ * current results on the same document; the separate schedule file can lag by
+ * weeks, so it is only a fallback. W–D–L / GF–GA are completed League / Academy
+ * games for teams on this table only (Flex is a different competition).
  * ECNL: one AthleteOne get-conference-standings call for this conference and
  * age, then get-individual-team-info for teams on that table.
  *
@@ -20,10 +22,15 @@ import {
   type CaTablePathway,
   type CaTableTier,
   type EcnlHydrateRow,
-  type MlsHydrateRow,
 } from "./league-tables";
 import { refreshEcnlSchedules } from "./league-matches";
 import { applyLiveMlsMatches, type MlsNextOverlayMatch } from "./matches";
+import {
+  eventsFromMlsDocument,
+  MLS_NEXT_FEEDS,
+  parseMlsStandingsFeed,
+  type MlsParsedTeam,
+} from "./mls-next-document";
 import {
   athleteOneAttempts,
   fetchFirstText,
@@ -31,32 +38,13 @@ import {
 } from "./public-fetch";
 import type { AgeBand } from "./types";
 
+export { MLS_NEXT_FEEDS };
+
 export const ATHLETEONE_HOST =
   "https://api.athleteone.com/api/Script/get-conference-standings";
 export const ATHLETEONE_ORG_ID = 12;
 export const ATHLETEONE_VIEWER =
   "https://theecnl.com/sports/2023/8/8/ECNLB_0808235537.aspx";
-
-export const MLS_NEXT_FEEDS = [
-  {
-    division: "homegrown" as const,
-    label: "MLS NEXT Homegrown",
-    standingsUrl:
-      "https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-league-26-27.json",
-    scheduleUrl:
-      "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-league-26-27.json",
-    file: "mls-next-league-26-27.json",
-  },
-  {
-    division: "academy" as const,
-    label: "MLS NEXT Academy",
-    standingsUrl:
-      "https://mls-assist.theintelligenceplatform.com/data/standings/mls-next-2-academy-division-26-27.json",
-    scheduleUrl:
-      "https://mls-assist.theintelligenceplatform.com/data/schedule/mls-next-2-academy-division-26-27.json",
-    file: "mls-next-2-academy-division-26-27.json",
-  },
-];
 
 const MLS_NEXT_BAND_BIRTH_YEAR: Record<string, number> = {
   U12: 2015,
@@ -197,7 +185,14 @@ export function compiledStamp(): string {
     }).formatToParts(new Date());
     const grab = (type: Intl.DateTimeFormatPartTypes) =>
       parts.find((p) => p.type === type)?.value ?? "";
-    return `${grab("year")}-${grab("month")}-${grab("day")}T${grab("hour")}:${grab("minute")}-07:00`;
+    const offset = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      timeZoneName: "longOffset",
+    })
+      .formatToParts(new Date())
+      .find((p) => p.type === "timeZoneName")
+      ?.value.match(/GMT([+-]\d{2}:\d{2})/)?.[1];
+    return `${grab("year")}-${grab("month")}-${grab("day")}T${grab("hour")}:${grab("minute")}${offset ?? "-08:00"}`;
   } catch {
     return new Date().toISOString().slice(0, 16);
   }
@@ -334,124 +329,8 @@ export function parseAthleteOneStandings(
   return rows;
 }
 
-type MlsTeamLive = MlsHydrateRow & {
-  orgId: number;
-  name: string;
-  ageBand: string;
-  division: "homegrown" | "academy";
-  divisionLabel: string;
-  birthYear?: number;
-};
-
-type TiebreakerEntry = { value?: string; description?: string };
-
-/** "17 goals / 4 matches" → 17. Per-match floats are not used. */
-function describedCount(entry: TiebreakerEntry | undefined): number | null {
-  const description = entry?.description ?? "";
-  const match = description.match(
-    /^(-?\d+)\s+(goals|gd|wins|losses|ties|matches|points)\b/i,
-  );
-  if (match) return Number(match[1]);
-  if (entry?.value != null && /^-?\d+$/.test(entry.value)) return Number(entry.value);
-  return null;
-}
-
-function recordsFromTiebreakers(
-  raw: unknown,
-  asOf: string,
-  label: string,
-): {
-  played: number;
-  gf: number;
-  ga: number;
-  w: number;
-  d: number;
-  l: number;
-  asOf: string;
-  note: string;
-} | null {
-  if (!raw || typeof raw !== "object") return null;
-  const tb = raw as Record<string, TiebreakerEntry>;
-  const played = describedCount(tb.matches_played);
-  const w = describedCount(tb.won_penalty_shootout);
-  const l = describedCount(tb.loss_penalty_shootout);
-  const d = describedCount(tb.tie_penalty_shootout);
-  const gf = describedCount(tb.goals_for_per_match);
-  const ga = describedCount(tb.goals_against_per_match);
-  if (
-    played == null ||
-    w == null ||
-    l == null ||
-    d == null ||
-    gf == null ||
-    ga == null ||
-    played <= 0
-  ) {
-    return null;
-  }
-  return {
-    played,
-    gf,
-    ga,
-    w,
-    d,
-    l,
-    asOf,
-    note: `${label} 26/27 standings (completed games only)`,
-  };
-}
-
-export function parseMlsStandingsFeed(
-  data: Record<string, unknown>,
-  division: "homegrown" | "academy",
-  label: string,
-  asOf = "",
-): Map<string, MlsTeamLive> {
-  const teams = new Map<string, MlsTeamLive>();
-  const season = data.competition_season as
-    | { competition_brackets?: Array<Record<string, unknown>> }
-    | undefined;
-  for (const br of season?.competition_brackets ?? []) {
-    const age = parseAge(br.age_group);
-    if (!age || age === "U12") continue;
-    if (br.gender && br.gender !== "male") continue;
-    const conference = String(br.name ?? "");
-    const rows = (br.standings as Array<Record<string, unknown>>) ?? [];
-    for (const row of rows) {
-      const org = (row.team as { organisation_id?: number; name?: string }) || {};
-      if (org.organisation_id == null) continue;
-      const key = `${org.organisation_id}|${age}|${division}`;
-      const fromTable = recordsFromTiebreakers(row.tiebreaker_values, asOf, label);
-      teams.set(key, {
-        orgId: Number(org.organisation_id),
-        name: org.name || "Unknown",
-        ageBand: age,
-        birthYear: MLS_NEXT_BAND_BIRTH_YEAR[age],
-        division,
-        divisionLabel: label,
-        conference,
-        conferenceRank: typeof row.position === "number" ? row.position : null,
-        conferenceSize: rows.length,
-        record: fromTable
-          ? {
-              w: fromTable.w,
-              d: fromTable.d,
-              l: fromTable.l,
-              asOf: fromTable.asOf,
-              note: fromTable.note,
-            }
-          : null,
-        played: fromTable?.played ?? 0,
-        gf: fromTable?.gf ?? 0,
-        ga: fromTable?.ga ?? 0,
-      });
-    }
-  }
-  return teams;
-}
-
 export function applyMlsScheduleRecords(
-  teams: Map<string, MlsTeamLive>,
+  teams: Map<string, MlsParsedTeam>,
   events: Array<Record<string, unknown>>,
   division: "homegrown" | "academy",
   label: string,
@@ -521,7 +400,7 @@ export function applyMlsScheduleRecords(
       row = {
         orgId: Number(oid),
         name: "Unknown",
-        ageBand: age,
+        ageBand: age as AgeBand,
         birthYear: MLS_NEXT_BAND_BIRTH_YEAR[age],
         division,
         divisionLabel: label,
@@ -544,7 +423,7 @@ export function applyMlsScheduleRecords(
         d: rec.d,
         l: rec.l,
         asOf,
-        note: `${label} 26/27 public schedule (completed games only)`,
+        note: `${label} 26/27 public results (completed games only)`,
       };
     }
   }
@@ -732,71 +611,65 @@ function preEcnlRowsForConference(
   return rows;
 }
 
+async function resultEventsForFeed(
+  feed: (typeof MLS_NEXT_FEEDS)[number],
+  standings: Record<string, unknown>,
+  tried: string[],
+  errors: string[],
+): Promise<Array<Record<string, unknown>>> {
+  const embedded = eventsFromMlsDocument(standings);
+  if (embedded.length) return embedded;
+  const scheduleText = await fetchMlsDocument(
+    feed.scheduleUrl,
+    feed.file,
+    "schedule",
+    tried,
+  );
+  if (!scheduleText) {
+    errors.push(
+      `MLS NEXT ${feed.label} had no embedded results, and the schedule JSON was blocked or empty.`,
+    );
+    return [];
+  }
+  try {
+    return eventsFromMlsDocument(JSON.parse(scheduleText) as Record<string, unknown>);
+  } catch {
+    errors.push(`MLS NEXT ${feed.label} schedule was not JSON.`);
+    return [];
+  }
+}
+
 async function ingestMlsTable(
   scope: LiveRefreshPrioritize,
   asOf: string,
   tried: string[],
   errors: string[],
-): Promise<{ teams: MlsTeamLive[]; matches: MlsNextOverlayMatch[] } | null> {
+): Promise<{ teams: MlsParsedTeam[]; matches: MlsNextOverlayMatch[] } | null> {
   const division = scope.tier === "academy" ? "academy" : "homegrown";
   const feed = MLS_NEXT_FEEDS.find((item) => item.division === division);
   if (!feed) {
     errors.push(`No MLS NEXT feed for ${scope.tier}.`);
     return null;
   }
-  const [standingsText, scheduleText] = await Promise.all([
-    fetchMlsDocument(feed.standingsUrl, feed.file, "standings", tried),
-    fetchMlsDocument(feed.scheduleUrl, feed.file, "schedule", tried),
-  ]);
+  const standingsText = await fetchMlsDocument(
+    feed.standingsUrl,
+    feed.file,
+    "standings",
+    tried,
+  );
   if (!standingsText) {
     errors.push(`MLS NEXT ${feed.label} standings JSON was blocked or empty.`);
     return null;
   }
-  if (!scheduleText) {
-    const parsedOnly = (() => {
-      try {
-        return JSON.parse(standingsText) as Record<string, unknown>;
-      } catch {
-        return null;
-      }
-    })();
-    if (!parsedOnly) {
-      errors.push(`MLS NEXT ${feed.label} returned data that was not JSON.`);
-      return null;
-    }
-    const partial = parseMlsStandingsFeed(parsedOnly, feed.division, feed.label, asOf);
-    const teams = [...partial.values()].filter(
-      (row) => row.ageBand === scope.ageBand && row.conference === scope.conference,
-    );
-    const withRecords = teams.filter((row) => (row.played ?? 0) > 0);
-    if (!teams.length) {
-      errors.push(
-        `MLS NEXT has no ${scope.conference} ${scope.ageBand} rows in the ${feed.label} standings. Nothing was invented.`,
-      );
-      return null;
-    }
-    if (!withRecords.length) {
-      errors.push(
-        `MLS NEXT ${feed.label} schedule JSON was blocked or empty, and this age has no published W–D–L on the standings feed. This table was not changed.`,
-      );
-      return null;
-    }
-    errors.push(
-      `Schedule JSON was blocked. W–D–L below are from the standings feed only, for sides that have published them.`,
-    );
-    return { teams, matches: [] };
-  }
   let standings: Record<string, unknown>;
-  let schedule: Record<string, unknown>;
   try {
     standings = JSON.parse(standingsText) as Record<string, unknown>;
-    schedule = JSON.parse(scheduleText) as Record<string, unknown>;
   } catch {
     errors.push(`MLS NEXT ${feed.label} returned data that was not JSON.`);
     return null;
   }
   const parsed = parseMlsStandingsFeed(standings, feed.division, feed.label, asOf);
-  const teams = new Map<string, MlsTeamLive>();
+  const teams = new Map<string, MlsParsedTeam>();
   for (const [key, row] of parsed) {
     if (row.ageBand === scope.ageBand && row.conference === scope.conference) {
       teams.set(key, row);
@@ -808,21 +681,24 @@ async function ingestMlsTable(
     );
     return null;
   }
-  if (!Array.isArray(schedule.events)) {
+  const events = await resultEventsForFeed(feed, standings, tried, errors);
+  if (!events.length) {
+    const withRecords = [...teams.values()].filter((row) => (row.played ?? 0) > 0);
+    if (!withRecords.length) {
+      errors.push(
+        `MLS NEXT ${feed.label} results were blocked or empty, and this age has no published W–D–L on the standings feed. This table was not changed.`,
+      );
+      return null;
+    }
     errors.push(
-      `MLS NEXT ${feed.label} schedule had no events array. W–D–L were not changed.`,
+      `Results feed was blocked. W–D–L below are from the standings feed only, for sides that have published them.`,
     );
-    return null;
+    return { teams: [...teams.values()], matches: [] };
   }
   const orgIds = new Set<number>([...teams.values()].map((row) => row.orgId));
-  const matches = applyMlsScheduleRecords(
-    teams,
-    schedule.events as Array<Record<string, unknown>>,
-    feed.division,
-    feed.label,
-    asOf,
-    { onlyOrgIds: orgIds },
-  );
+  const matches = applyMlsScheduleRecords(teams, events, feed.division, feed.label, asOf, {
+    onlyOrgIds: orgIds,
+  });
   return { teams: [...teams.values()], matches };
 }
 
