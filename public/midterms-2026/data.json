@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-19T09:21:00-08:00",
-  "lastUpdatedLabel": "Thu Nov 19, 2026, 9:21 AM PT",
+  "lastUpdated": "2026-11-20T09:13:00-08:00",
+  "lastUpdatedLabel": "Fri Nov 20, 2026, 9:13 AM PT",
   "notes": [
+    "Nov. 20, 9:13 AM PT: No new AP call. House stays 257 Democratic and 172 Republican, with 6 uncalled: Louisiana 5 and 6 (Dec. 12 runoffs), Minnesota 1, North Carolina 5, North Carolina 10, and Tennessee 4. Senate stays 56-44. The 50-state House vote, where the AP file was higher, is D 66,841,561, R 50,192,904, Other 1,775,436. California official ballots are 13,446,512 (SOS 6:05 p.m. Nov. 19), up from 13,420,948, not certified. Oregon's counted ballots are unchanged at 1,996,770. Florida remains certified at 8,345,654. No count was replaced by a lower certified total.",
     "Nov. 19, 9:21 AM PT: AP called Alaska's at-large House seat for Nick Begich (R) at 6:27 PM PT Nov. 18. Not a flip. House called seats are 257 Democratic and 172 Republican, with 6 uncalled: Louisiana 5 and 6 (Dec. 12 runoffs), Minnesota 1, North Carolina 5, North Carolina 10, and Tennessee 4. Senate stays 56-44. The 50-state House vote, where the AP file was higher, is D 66,807,388, R 50,178,838, Other 1,775,105. California official ballots are 13,420,948 (SOS 5:21 p.m. Nov. 18), up from 13,409,838, not certified. Oregon ballots counted are 1,996,770 as of 9:15 AM PT, up from 1,995,149. Florida remains certified at 8,345,654. North Dakota's State Canvassing Board certified 239,442 ballots on Nov. 18, replacing the attorney-general contest proxy of 232,155. No count was replaced by a lower certified total.",
     "Nov. 18, 9:22 AM PT: AP called North Carolina 3 for Raymond Smith (D) at 12:45 PM PT Nov. 17, and the Alaska Senate for Mary Peltola (D) at 7:19 PM PT Nov. 17. House called seats are 257 Democratic and 171 Republican, with 7 uncalled: Alaska at-large (ranked choice), Louisiana 5 and 6 (Dec. 12 runoffs), Minnesota 1, North Carolina 5, North Carolina 10, and Tennessee 4. Senate is 56-44, with no seat uncalled. The 50-state House vote, where the AP file was higher, is D 66,772,818, R 50,164,215, Other 1,774,283. Lower party totals were kept: CT dem, CT rep, GA dem, GA rep, MO rep, NC dem, NC rep, NC other, OH other, OR other, SC other, TX other, VT other, WA other. California official ballots are 13,409,838 (SOS 5:25 p.m. Nov. 17), up from 13,386,237, not certified. Oregon ballots counted are 1,995,149 as of 9:15 AM PT, up from 1,992,936. South Carolina's published certified total remains 2,054,835. Florida remains certified at 8,345,654. No count was replaced by a lower certified total.",
     "Nov. 17, 9:21 AM PT: AP called North Carolina 7 for David Rouzer (R) at 12:54 PM PT Nov. 16 and California 23 for Jay Obernolte (R) at 5:29 PM PT Nov. 16. House called seats are 256 Democratic and 171 Republican, with 8 uncalled: Alaska at-large (ranked choice), Louisiana 5 and 6 (Dec. 12 runoffs), Minnesota 1, North Carolina 3, North Carolina 5, North Carolina 10, and Tennessee 4. Alaska Senate is still too early to call. The 50-state House vote, where the AP file was higher, is D 66,707,788, R 50,140,960, Other 1,770,801. Lower party totals were kept: CT dem, CT rep, GA dem, GA rep, MO rep, NC dem, NC rep, NC other, OH other, OR other, SC other, TX other, VT other. California official ballots are 13,386,237 (SOS 7:12 p.m. Nov. 16), up from 13,212,237, not certified. Florida's Elections Canvassing Commission certified the Nov. 3 results on Nov. 17; Election Watch shows 8,345,654 ballots, up from 8,344,183. Oregon ballots counted are 1,992,936 as of 9:15 AM PT, up from 1,992,463. Senate stays 55-44. No count was replaced by a lower certified total.",
@@ -5398,37 +5399,37 @@
           "winner": "Amy Acton",
           "party": "D",
           "margin": "+7.9 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | Latest count, not certified. AP election-results file, 9:01 AM PT Nov. 14. | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19.",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | Latest count, not certified. AP election-results file, 9:01 AM PT Nov. 14. | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19. | Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
           "candidates": [
             {
               "name": "Amy Acton",
               "party": "D",
               "incumbent": null,
-              "votes": 2412438,
+              "votes": 2414371,
               "pct": 52.3
             },
             {
               "name": "Vivek Ramaswamy",
               "party": "R",
               "incumbent": null,
-              "votes": 2047600,
+              "votes": 2049057,
               "pct": 44.4
             },
             {
               "name": "Don Kissick",
               "party": "L",
               "incumbent": null,
-              "votes": 152533,
+              "votes": 152659,
               "pct": 3.3
             }
           ],
-          "reporting_pct": 98.3,
+          "reporting_pct": 98.4,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 19, 2026, 9:22 AM PT"
+          "votes_as_of": "Nov. 20, 2026, 9:13 AM PT"
         },
         {
           "race": "U.S. Senate (special)",
@@ -5436,27 +5437,27 @@
           "winner": "Sherrod Brown",
           "party": "D",
           "margin": "+4.8 pts",
-          "source": "AP, AP race-call article https://apnews.com/article/election-2026-ohio-senate-brown-husted-9e7ae9e1715c0e8203614aea6f71666d | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | Latest count, not certified. AP election-results file, 9:01 AM PT Nov. 14. | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19.",
+          "source": "AP, AP race-call article https://apnews.com/article/election-2026-ohio-senate-brown-husted-9e7ae9e1715c0e8203614aea6f71666d | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | Latest count, not certified. AP election-results file, 9:01 AM PT Nov. 14. | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19. | Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
           "candidates": [
             {
               "name": "Sherrod Brown",
               "party": "D",
               "incumbent": null,
-              "votes": 2308785,
+              "votes": 2310585,
               "pct": 50.0
             },
             {
               "name": "Jon Husted",
               "party": "R",
               "incumbent": null,
-              "votes": 2086306,
+              "votes": 2087796,
               "pct": 45.2
             },
             {
               "name": "William B. Redpath",
               "party": "L",
               "incumbent": null,
-              "votes": 128943,
+              "votes": 129079,
               "pct": 2.8
             },
             {
@@ -5467,13 +5468,13 @@
               "pct": 2.0
             }
           ],
-          "reporting_pct": 98.3,
+          "reporting_pct": 98.4,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 19, 2026, 9:22 AM PT"
+          "votes_as_of": "Nov. 20, 2026, 9:13 AM PT"
         }
       ],
       "feeds": [
@@ -12819,7 +12820,7 @@
           "winner": "Josh Shapiro",
           "party": "D",
           "margin": "+22.4 pts",
-          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | Latest count, not certified. AP election-results file, 9:01 AM PT Nov. 14. | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19.",
+          "source": "AP via NBC News (previously called) | votes AP via NBC News, ~11:46 PM PT | Latest count, not certified. AP via NBC News, 2:49 PM ET, Nov. 6, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:03 PM ET (9:03 AM PT), Nov. 8, 2026. https://www.nbcnews.com/politics/2026-elections/governor-results | Latest count, not certified. AP via NBC News, 12:08 PM ET Nov. 9. | Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | Latest count, not certified. AP election-results file, 9:01 AM PT Nov. 14. | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19. | Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
           "candidates": [
             {
               "name": "Josh Shapiro",
@@ -12832,7 +12833,7 @@
               "name": "Stacy Garrity",
               "party": "R",
               "incumbent": null,
-              "votes": 1914345,
+              "votes": 1914346,
               "pct": 38.1
             },
             {
@@ -12849,7 +12850,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 19, 2026, 9:22 AM PT"
+          "votes_as_of": "Nov. 20, 2026, 9:13 AM PT"
         }
       ],
       "feeds": [
@@ -23561,30 +23562,30 @@
           "winner": "Xavier Becerra",
           "party": "D",
           "margin": "+31.2 pts",
-          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor | California Secretary of State governor.json, November 7, 2026, 5:48 p.m. PT: Becerra 6,773,781, Hilton 3,575,025. https://media.sos.ca.gov/media/governor.json. Same totals on NBC/AP at 9:03 AM PT Nov. 8. Expected vote on that NBC pull is 75%. Not certified. | California Secretary of State, November 9, 2026, 7:43 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 12, 2026, 7:53 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | California Secretary of State, November 13, 2026, 7:09 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19.",
+          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor | California Secretary of State governor.json, November 7, 2026, 5:48 p.m. PT: Becerra 6,773,781, Hilton 3,575,025. https://media.sos.ca.gov/media/governor.json. Same totals on NBC/AP at 9:03 AM PT Nov. 8. Expected vote on that NBC pull is 75%. Not certified. | California Secretary of State, November 9, 2026, 7:43 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 12, 2026, 7:53 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | California Secretary of State, November 13, 2026, 7:09 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19. | Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
           "candidates": [
             {
               "name": "Xavier Becerra",
               "party": "D",
               "incumbent": null,
-              "votes": 8667526,
+              "votes": 8685226,
               "pct": 65.6
             },
             {
               "name": "Steve Hilton",
               "party": "R",
               "incumbent": null,
-              "votes": 4542197,
+              "votes": 4549552,
               "pct": 34.4
             }
           ],
-          "reporting_pct": 98.5,
+          "reporting_pct": 98.7,
           "win_probability": {
             "status": "results pending",
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 19, 2026, 9:22 AM PT"
+          "votes_as_of": "Nov. 20, 2026, 9:13 AM PT"
         }
       ],
       "feeds": [
@@ -24868,18 +24869,18 @@
         "Yuba": 8912
       },
       "official_results": {
-        "ballots_cast": 13420948,
+        "ballots_cast": 13446512,
         "ballots_is_proxy": false,
         "ballots_measure": "Statewide voter turnout on the California Secretary of State reporting-status file (report type SF). Not the sum of one contest. County rows sum to this statewide row.",
-        "as_of_label": "November 18, 2026, 5:21 p.m. (as printed by the California Secretary of State)",
+        "as_of_label": "November 19, 2026, 6:05 p.m. (as printed by the California Secretary of State)",
         "source": "California Secretary of State",
         "url": "https://media.sos.ca.gov/media/status_GG.json",
         "certified": false,
         "county_file": "official/CA.json",
         "precincts_reporting": "100% (23,860 of 23,860)",
-        "note": "Unofficial. Statewide row November 18, 2026, 5:21 p.m.: 13,420,948 ballots, 23,273,590 registered, 57.7%. Replaces the prior official figure of 13,409,838. Precincts 23,860 of 23,860. The Secretary of State certifies the election on December 11, 2026.",
+        "note": "Unofficial. Statewide row November 19, 2026, 6:05 p.m.: 13,446,512 ballots, 23,273,590 registered, 57.8%. Replaces the prior official figure of 13,420,948. Precincts 23,860 of 23,860. The Secretary of State certifies the election on December 11, 2026.",
         "registered_official": 23273590,
-        "turnout_pct": 57.7
+        "turnout_pct": 57.8
       }
     },
     {
@@ -37942,8 +37943,8 @@
     }
   },
   "national": {
-    "as_of_label": "Nov. 19, 2026, 9:22 AM PT",
-    "source": "Associated Press election-results file, checked Nov. 19, 2026, 9:22 AM PT. https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+    "as_of_label": "Nov. 20, 2026, 9:13 AM PT",
+    "source": "Associated Press election-results file, checked Nov. 20, 2026, 9:13 AM PT. https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
     "senate": {
       "dem_caucus": 56,
@@ -37962,7 +37963,7 @@
       "unresolved": 6,
       "net_dem": 43,
       "majority": 218,
-      "note": "257+172+6=435. AP election-results file at 9:22 AM PT Nov. 19: 257 Democratic and 172 Republican House seats called. New call since Nov. 18: Alaska at-large for Nick Begich (R) at 6:27 PM PT Nov. 18 (2026-11-19T02:27:11Z). Not a flip. Still uncalled: Louisiana 5 and Louisiana 6 (runoffs Dec. 12), Minnesota 1, North Carolina 5, North Carolina 10, and Tennessee 4. Called flips remain 46 Democratic and 3 Republican. Net Democratic seats from those flips: 43."
+      "note": "257+172+6=435. AP election-results file at 9:13 AM PT Nov. 20: still 257 Democratic and 172 Republican House seats called. No new call since Alaska at-large for Nick Begich at 6:27 PM PT Nov. 18. Still uncalled: Louisiana 5 and Louisiana 6 (runoffs Dec. 12), Minnesota 1, North Carolina 5, North Carolina 10, and Tennessee 4. Called flips remain 46 Democratic and 3 Republican. Net Democratic seats from those flips: 43."
     },
     "cbs_secondary": {
       "as_of_label": "CBS News live blog, updated Nov. 6, 2026, 1:22 PM EST",
@@ -38015,7 +38016,7 @@
         "house": -43,
         "senate": -9,
         "partial": true,
-        "note": "AP election-results file, 9:22 AM PT Nov. 19: called House seats are 257 Democratic and 172 Republican, with 6 uncalled. Called flips remain 46 Democratic and 3 Republican, so the president's party is minus 43 House seats on called flips. Senate minus 9. Not comparable to the final historical rows."
+        "note": "AP election-results file, 9:13 AM PT Nov. 20: called House seats are still 257 Democratic and 172 Republican, with 6 uncalled. Called flips remain 46 Democratic and 3 Republican, so the president's party is minus 43 House seats on called flips. Senate minus 9. Not comparable to the final historical rows."
       }
     ],
     "house_popular_vote_note": "FEC general-election votes cast for U.S. House candidates, the total row in each year's Federal Elections report, which includes D.C. and the territories as the FEC adds them. The same measure is used for every year below. A 2026 FEC report does not exist yet.",
