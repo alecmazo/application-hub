@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are the AP election-results file at 9:13 AM PT on Nov. 20, summed by party. Not certified. Counts were not lowered where an earlier figure was higher. Called seats are unchanged: 257 Democratic and 172 Republican, with 6 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
+  "house_2026_gap": "2026 House votes are the AP election-results file at 9:16 AM PT on Nov. 21, summed by party. Counts were not lowered except where every House district in the state is marked certified. Called seats are 257 Democratic and 173 Republican, with 5 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -831,26 +831,26 @@
         }
       },
       "house_2026": {
-        "dem": 2344885,
-        "rep": 1826667,
-        "other": 0,
+        "dem": 2344946,
+        "rep": 1826685,
+        "other": 338,
         "districts": 14,
         "zero_districts": [],
-        "percent_in": 99.0,
+        "percent_in": 100.0,
         "percent_min": 99,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified. Every U.S. House district in this state is marked certified in the AP file.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 4184771,
-        "percent_in": 99,
+        "total": 4185654,
+        "percent_in": 100.0,
         "call": "P",
-        "leader": "Keisha Lance Bottoms",
+        "leader": "Keisha Bottoms",
         "party": "Dem",
-        "leader_votes": 2273861,
+        "leader_votes": 2273918,
         "candidates": [
           {
             "name": "Keisha Lance Bottoms",
@@ -868,9 +868,9 @@
             "votes": 0
           }
         ],
-        "source": "Latest count, not certified. AP via NBC News, 8:57 AM PT Nov. 12. | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 21.",
         "url": "https://results.sos.ga.gov/cdn/results/Georgia/export-11032026GeneralAndSpecialElection.json",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -1069,26 +1069,26 @@
         }
       },
       "house_2026": {
-        "dem": 2643029,
-        "rep": 1534922,
+        "dem": 2643465,
+        "rep": 1535165,
         "other": 21052,
         "districts": 17,
         "zero_districts": [],
         "percent_in": 98.5,
         "percent_min": 95.1,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 4234022,
+        "total": 4234705,
         "percent_in": 98.8,
         "call": "P",
         "leader": "JB Pritzker",
         "party": "Dem",
-        "leader_votes": 2575040,
+        "leader_votes": 2575452,
         "candidates": [
           {
             "name": "JB Pritzker",
@@ -1106,9 +1106,9 @@
             "votes": 140541
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 21.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2022": null
     },
@@ -1677,26 +1677,26 @@
         }
       },
       "house_2026": {
-        "dem": 1725510,
-        "rep": 508825,
-        "other": 110907,
+        "dem": 1760716,
+        "rep": 519477,
+        "other": 117902,
         "districts": 9,
         "zero_districts": [],
-        "percent_in": 92.6,
+        "percent_in": 96.3,
         "percent_min": 61.8,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2628318,
-        "percent_in": 99,
+        "total": 2714111,
+        "percent_in": 100.0,
         "call": "P",
         "leader": "Maura Healey",
         "party": "Dem",
-        "leader_votes": 1629281,
+        "leader_votes": 1691156,
         "candidates": [
           {
             "name": "Maura Healey",
@@ -1714,9 +1714,9 @@
             "votes": 86451
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 21.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2022": null
     },
@@ -2414,26 +2414,26 @@
         }
       },
       "house_2026": {
-        "dem": 1876824,
-        "rep": 1030074,
-        "other": 45609,
+        "dem": 1877202,
+        "rep": 1030215,
+        "other": 45634,
         "districts": 12,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 95.8,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:22 AM PT Nov. 19, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 19, 2026, 9:22 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
-        "total": 2990178,
+        "total": 2990722,
         "percent_in": 99.0,
         "call": "P",
         "leader": "Cory Booker",
         "party": "Dem",
-        "leader_votes": 1873095,
+        "leader_votes": 1873468,
         "candidates": [
           {
             "name": "Cory Booker",
@@ -2456,9 +2456,9 @@
             "votes": 27827
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 21.",
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
-        "as_of": "Nov. 19, 2026, 9:22 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2022": null
     },
@@ -2564,26 +2564,26 @@
         }
       },
       "house_2026": {
-        "dem": 3744355,
-        "rep": 2270280,
-        "other": 40805,
+        "dem": 3746878,
+        "rep": 2271096,
+        "other": 40810,
         "districts": 26,
         "zero_districts": [],
         "percent_in": 96.3,
         "percent_min": 85.9,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 6138470,
+        "total": 6141704,
         "percent_in": 96.2,
         "call": "P",
         "leader": "Kathy Hochul",
         "party": "Dem",
-        "leader_votes": 3668494,
+        "leader_votes": 3670764,
         "candidates": [
           {
             "name": "Kathy Hochul",
@@ -2601,9 +2601,9 @@
             "votes": 12867
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 21.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2022": null
     },
@@ -2799,17 +2799,17 @@
         }
       },
       "house_2026": {
-        "dem": 2328026,
-        "rep": 2189111,
+        "dem": 2340723,
+        "rep": 2191689,
         "other": 53438,
         "districts": 15,
         "zero_districts": [],
-        "percent_in": 98.3,
+        "percent_in": 98.5,
         "percent_min": 96.6,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3015,15 +3015,15 @@
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 1996770,
+        "ballots": 2000055,
         "registered": 3109188,
-        "turnout_pct": 64.22,
+        "turnout_pct": 64.33,
         "certified": false,
         "certification_date": null,
-        "as_of": "Nov. 19, 2026, 9:15 AM PT",
+        "as_of": "Nov. 21, 2026, 9:15 AM PT",
         "source": "Oregon Secretary of State",
         "url": "https://results.oregonvotes.gov/",
-        "measure": "Ballots counted on the state results page. Results last updated 11/19/2026, 9:15 AM PT. The page printed 3,109,150 active registered voters, which is lower than the figure already stored, so the registered figure was not lowered. The page does not say certified."
+        "measure": "Ballots counted on the state results page. Results last updated 11/21/2026, 9:15 AM PT. The page printed 3,109,150 active registered voters, which is lower than the figure already stored, so the registered figure was not lowered. The page does not say certified."
       }
     },
     {
@@ -3218,15 +3218,15 @@
       "house_2026": {
         "dem": 978511,
         "rep": 1031274,
-        "other": 23026,
+        "other": 23016,
         "districts": 7,
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified. Every U.S. House district in this state is marked certified in the AP file.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -3663,15 +3663,15 @@
       "house_2026": {
         "dem": 198758,
         "rep": 94078,
-        "other": 11920,
+        "other": 11839,
         "districts": 1,
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100.0,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified. Every U.S. House district in this state is marked certified in the AP file.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 21, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -4665,6 +4665,6 @@
     "label": "Latest count, not certified",
     "source": "Associated Press election-results file",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-    "as_of": "Nov. 20, 2026, 9:13 AM PT"
+    "as_of": "Nov. 21, 2026, 9:16 AM PT"
   }
 }
