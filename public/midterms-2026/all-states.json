@@ -1,6 +1,6 @@
 {
   "measure_ballots": "Total ballots counted, the same column for 2010, 2014, 2018 and 2022.",
-  "ballots_source": "Michael McDonald, UF Election Lab, Turnout 1980\u20132022 v1.2, field TOTAL_BALLOTS_COUNTED. United States row is not used; the page sums the 50 states and D.C.",
+  "ballots_source": "Michael McDonald, UF Election Lab, Turnout 1980–2022 v1.2, field TOTAL_BALLOTS_COUNTED. United States row is not used; the page sums the 50 states and D.C.",
   "ballots_url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv",
   "house_source": "FEC Federal Elections reports, general-election votes for U.S. House candidates by party. A blank party cell is stored as 0 (no votes reported for that party). Territories are not in this table. The national FEC total, which includes D.C. and territories, stays in the national section.",
   "house_urls": {
@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are the AP election-results file at 9:16 AM PT on Nov. 21, summed by party. Counts were not lowered except where every House district in the state is marked certified. Called seats are 257 Democratic and 173 Republican, with 5 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
+  "house_2026_gap": "2026 House votes are the AP election-results file checked at 9:40 AM PT on Nov. 22, summed by party. No state party total was higher than the figure already stored. Counts were not lowered. The AP national row was lower and was not used. Called seats are 257 Democratic and 173 Republican, with 5 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. Every U.S. House district is marked certified in the AP file for Arkansas, Delaware, Georgia, Idaho, Louisiana, North Dakota, Oklahoma, South Carolina, South Dakota, Vermont, and Wyoming. D.C. has no voting House seat. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -79,7 +79,18 @@
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
         "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 1693621,
+        "registered": 3852947,
+        "turnout_pct": 43.96,
+        "certified": false,
+        "certification_date": null,
+        "as_of": "Nov. 4, 2026, 11:16 a.m. The page does not print a time zone (9:16 a.m. PT if Central).",
+        "source": "Alabama Secretary of State, unofficial statewide results",
+        "url": "https://www2.alabamavotes.gov/electionNight/statewideResultsByContest.aspx?ecode=1001305",
+        "measure": "Total ballots cast on the unofficial statewide results page. 1,693,621 ballots, 3,852,947 registered, 43.96%, 67 of 67 counties. Last updated 11/04/2026 11:16:06 AM. The page says the results are unofficial. Replaces the governor-contest proxy."
+      }
     },
     {
       "code": "AK",
@@ -301,10 +312,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 99,
-        "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -335,7 +346,18 @@
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
         "as_of": "Nov. 20, 2026, 9:13 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 895505,
+        "registered": 1856404,
+        "turnout_pct": 48.24,
+        "certified": true,
+        "certification_date": "2026-11-19",
+        "as_of": "Nov. 19, 2026, 8:36 a.m. PT",
+        "source": "Arkansas Secretary of State election-results feed. isOfficial is true. The results site labels that status Official Results.",
+        "url": "https://www.sos.arkansas.gov/elections/research/election-results",
+        "measure": "Official ballots cast. 895,505 ballots, 1,856,404 registered, 48.24%. Feed last updated 2026-11-19T16:36:52Z (8:36 a.m. PT). Replaces the Senate-contest proxy."
+      }
     },
     {
       "code": "CA",
@@ -383,27 +405,27 @@
       },
       "top_2026": {
         "office": "Governor",
-        "total": 13234778,
-        "percent_in": 98.7,
+        "total": 13277433,
+        "percent_in": 100.0,
         "call": "P",
         "leader": "Xavier Becerra",
         "party": "Dem",
-        "leader_votes": 8685226,
+        "leader_votes": 8715921,
         "candidates": [
           {
             "name": "Xavier Becerra",
             "party": "Dem",
-            "votes": 8312288
+            "votes": 8715921
           },
           {
             "name": "Steve Hilton",
             "party": "Rep",
-            "votes": 4356157
+            "votes": 4561512
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
-        "url": "https://media.sos.ca.gov/media/governor.json",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "source": "California Secretary of State statewide returns, November 21, 2026, 4:37 p.m. Not certified. Higher than the prior AP contest total.",
+        "url": "https://api.sos.ca.gov/returns/governor",
+        "as_of": "November 21, 2026, 4:37 p.m. PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -500,15 +522,15 @@
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 2765613,
+        "ballots": 2765912,
         "registered": null,
         "turnout_pct": null,
         "certified": false,
         "certification_date": null,
-        "as_of": "11:59 p.m. Nov. 11, 2026 (release dated Nov. 12)",
+        "as_of": "11:59 p.m. MT Nov. 12, 2026 (10:59 p.m. PT). Release dated Nov. 13, 2026.",
         "source": "Colorado Secretary of State",
-        "url": "https://www.sos.state.co.us/pubs/newsRoom/pressReleases/2026/PR20261112BallotReturns.html",
-        "measure": "Ballots returned and processed by county clerks. The Nov. 12 release says 2,765,613 ballots returned statewide, data as of 11:59 p.m. Nov. 11. The press-release index listed no Nov. 13 release. Not certified."
+        "url": "https://www.sos.state.co.us/pubs/newsRoom/pressReleases/2026/PR20261113BallotReturns.html",
+        "measure": "Ballots returned and processed by county clerks. The Nov. 13 release says 2,765,912 ballots returned statewide, data as of 11:59 p.m. Nov. 12. Up from 2,765,613 as of 11:59 p.m. Nov. 11. Not certified. A Nov. 19 release said county canvass boards approve the final tally by Nov. 25."
       }
     },
     {
@@ -620,10 +642,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -986,10 +1008,10 @@
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -1446,10 +1468,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 99,
-        "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:22 AM PT Nov. 19, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 19, 2026, 9:22 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -2119,15 +2141,15 @@
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 493868,
+        "ballots": 494042,
         "registered": 808879,
-        "turnout_pct": 61.06,
+        "turnout_pct": 61.08,
         "certified": false,
         "certification_date": null,
-        "as_of": "Nov. 13, 2026, 9:05 AM PT",
+        "as_of": "Nov. 20, 2026, 9:40 a.m. MT (8:40 a.m. PT)",
         "source": "Montana Secretary of State",
-        "url": "https://electionresults.mt.gov/",
-        "measure": "Total turnout on the state results page. Results last updated 11/13/2026 10:05:24 AM MT (9:05 AM PT). 493,868 divided by 808,879 registered voters is 61.06%. Precincts fully reported 100%. The page does not say this total is certified."
+        "url": "https://electionresults.mt.gov/VoterTurnoutDetails.aspx",
+        "measure": "Total turnout on the state results page. Results last updated 11/20/2026 9:40:17 AM MT (8:40 AM PT). 494,042 divided by 808,879 registered voters is 61.08%. Up from 493,868. The page does not say this total is certified."
       }
     },
     {
@@ -2210,15 +2232,15 @@
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 767046,
+        "ballots": 779787,
         "registered": 1265162,
-        "turnout_pct": 60.63,
+        "turnout_pct": 61.67,
         "certified": false,
         "certification_date": null,
-        "as_of": "Retrieved Nov. 13, 2026, morning PT. The page does not print a clock.",
+        "as_of": "Retrieved Nov. 22, 2026, morning PT. The page does not print a clock.",
         "source": "Nebraska Secretary of State",
         "url": "https://electionresults.nebraska.gov/",
-        "measure": "Ballots cast on the state results page. The page is titled Unofficial Results. 767,046 divided by 1,265,162 registered voters is 60.63%. Precincts fully reported 100%."
+        "measure": "Ballots cast on the state results page. The page is titled Unofficial Results. 779,787 ballots cast. The page prints 1,264,446 registered voters and 61.67% turnout. That registered figure is lower than 1,265,162 already stored, so registered voters were not lowered. Up from 767,046 ballots."
       }
     },
     {
@@ -2685,7 +2707,18 @@
         "url": "https://www.nbcnews.com/politics/2026-elections/senate-results",
         "as_of": "Nov. 13, 2026, 9:03 AM PT"
       },
-      "top_2022": null
+      "top_2022": null,
+      "official_ballots": {
+        "ballots": 4242639,
+        "registered": 7885046,
+        "turnout_pct": 53.81,
+        "certified": false,
+        "certification_date": null,
+        "as_of": "Nov. 21, 2026, 5:18 p.m. Eastern (2:18 p.m. PT)",
+        "source": "North Carolina State Board of Elections, unofficial statewide results file. County rows in the same file are labeled official. The state canvass is set for Nov. 24.",
+        "url": "https://er.ncsbe.gov/enr/20261103/data/county.txt",
+        "measure": "Ballots cast (bct) on the statewide row. The row is titled 11/03/2026 UNOFFICIAL GENERAL ELECTION RESULTS - STATEWIDE. 4,242,639 ballots, 7,885,046 registered, 53.81%, precincts 2,626 of 2,626. Updated November 21, 2026, 5:18 p.m. Replaces the Senate-contest proxy."
+      }
     },
     {
       "code": "ND",
@@ -2726,10 +2759,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 99.0,
-        "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:22 AM PT Nov. 19, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 19, 2026, 9:22 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "Attorney General",
@@ -2756,15 +2789,15 @@
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 239442,
+        "ballots": 239445,
         "registered": null,
         "turnout_pct": null,
         "certified": true,
         "certification_date": "2026-11-18",
         "as_of": "Nov. 18, 2026, 12:12 p.m. CT (10:12 AM PT)",
-        "source": "North Dakota Secretary of State. The State Canvassing Board certified the 2026 general election on Nov. 18, 2026. 239,442 eligible voters cast ballots, 39.8% turnout. North Dakota does not print that share as a percent of registered voters.",
+        "source": "North Dakota Secretary of State. The State Canvassing Board certified the 2026 general election on Nov. 18, 2026. The page now prints 239,445 eligible voters cast ballots, 39.8% turnout, replacing 239,442 previously recorded from this page. North Dakota does not print that share as a percent of registered voters.",
         "url": "https://www.sos.nd.gov/news/state-canvassing-board-certifies-2026-general-election-results",
-        "measure": "Certified ballots cast. 39.8% of eligible voters. Replaces the attorney-general contest proxy of 232,155."
+        "measure": "Certified ballots cast. 39.8% of eligible voters. The certified page now prints 239,445, replacing 239,442 previously recorded from this page."
       }
     },
     {
@@ -2889,10 +2922,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3020,10 +3053,10 @@
         "turnout_pct": 64.33,
         "certified": false,
         "certification_date": null,
-        "as_of": "Nov. 21, 2026, 9:15 AM PT",
+        "as_of": "Nov. 22, 2026, 9:15 AM PT",
         "source": "Oregon Secretary of State",
         "url": "https://results.oregonvotes.gov/",
-        "measure": "Ballots counted on the state results page. Results last updated 11/21/2026, 9:15 AM PT. The page printed 3,109,150 active registered voters, which is lower than the figure already stored, so the registered figure was not lowered. The page does not say certified."
+        "measure": "Ballots counted on the state results page. Results last updated 11/22/2026, 9:15 AM PT. Ballots counted are unchanged at 2,000,055. The page printed 3,109,150 active registered voters, which is lower than the figure already stored, so the registered figure was not lowered. The page does not say certified."
       }
     },
     {
@@ -3319,10 +3352,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 99,
-        "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:20 AM PT Nov. 17, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 17, 2026, 9:20 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "U.S. Senate",
@@ -4069,10 +4102,10 @@
         "zero_districts": [],
         "percent_in": 100.0,
         "percent_min": 100,
-        "label": "Latest count, not certified",
-        "source": "AP House results file, 9:03 AM PT Nov. 13, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "label": "Certified",
+        "source": "AP election-results file, 9:40 AM PT Nov. 22, 2026, summed by party. Every U.S. House district in this state is marked certified in the AP file (isCertified true, results type certified, tabulation status Vote Certified). The vote totals matched the figures already stored, so they were not rewritten.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 13, 2026, 9:03 AM PT"
+        "as_of": "Nov. 22, 2026, 9:40 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -4544,10 +4577,10 @@
       "state": "CA",
       "district": 41,
       "to": "D",
-      "winner": "Linda S\u00e1nchez",
+      "winner": "Linda Sánchez",
       "prior": "Mitch Clemmons",
       "margin_pts": 33.2,
-      "nbc_leader": "Linda S\u00e1nchez",
+      "nbc_leader": "Linda Sánchez",
       "note": "",
       "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
       "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
@@ -4665,6 +4698,6 @@
     "label": "Latest count, not certified",
     "source": "Associated Press election-results file",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-    "as_of": "Nov. 21, 2026, 9:16 AM PT"
+    "as_of": "Nov. 22, 2026, 9:40 AM PT"
   }
 }
