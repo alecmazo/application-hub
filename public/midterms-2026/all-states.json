@@ -1,6 +1,6 @@
 {
   "measure_ballots": "Total ballots counted, the same column for 2010, 2014, 2018 and 2022.",
-  "ballots_source": "Michael McDonald, UF Election Lab, Turnout 1980–2022 v1.2, field TOTAL_BALLOTS_COUNTED. United States row is not used; the page sums the 50 states and D.C.",
+  "ballots_source": "Michael McDonald, UF Election Lab, Turnout 1980\u20132022 v1.2, field TOTAL_BALLOTS_COUNTED. United States row is not used; the page sums the 50 states and D.C.",
   "ballots_url": "https://election.lab.ufl.edu/data-downloads/turnoutdata/Turnout_1980_2022_v1.2.csv",
   "house_source": "FEC Federal Elections reports, general-election votes for U.S. House candidates by party. A blank party cell is stored as 0 (no votes reported for that party). Territories are not in this table. The national FEC total, which includes D.C. and territories, stays in the national section.",
   "house_urls": {
@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are the AP election-results file checked at 9:40 AM PT on Nov. 22, summed by party. No state party total was higher than the figure already stored. Counts were not lowered. The AP national row was lower and was not used. Called seats are 257 Democratic and 173 Republican, with 5 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. Every U.S. House district is marked certified in the AP file for Arkansas, Delaware, Georgia, Idaho, Louisiana, North Dakota, Oklahoma, South Carolina, South Dakota, Vermont, and Wyoming. D.C. has no voting House seat. Official ballots are a separate measure.",
+  "house_2026_gap": "2026 House votes are the AP election-results file at 9:16 AM PT on Nov. 23, summed by party. Counts were not lowered unless every House district in the state is marked certified. Called seats are 258 Democratic and 173 Republican, with 4 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -391,17 +391,17 @@
         }
       },
       "house_2026": {
-        "dem": 8880260,
-        "rep": 3798232,
-        "other": 111663,
+        "dem": 8910778,
+        "rep": 3807524,
+        "other": 112919,
         "districts": 52,
         "zero_districts": [],
-        "percent_in": 98.5,
+        "percent_in": 98.7,
         "percent_min": 78.7,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 23, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 23, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -1619,26 +1619,26 @@
         }
       },
       "house_2026": {
-        "dem": 1558938,
-        "rep": 650834,
-        "other": 22203,
+        "dem": 1560930,
+        "rep": 650962,
+        "other": 22273,
         "districts": 8,
         "zero_districts": [],
-        "percent_in": 97.6,
+        "percent_in": 98.8,
         "percent_min": 80.9,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 23, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 23, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 2244391,
-        "percent_in": 98.1,
+        "total": 2246871,
+        "percent_in": 99.0,
         "call": "P",
         "leader": "Wes Moore",
         "party": "Dem",
-        "leader_votes": 1468655,
+        "leader_votes": 1470907,
         "candidates": [
           {
             "name": "Wes Moore",
@@ -1661,9 +1661,9 @@
             "votes": 41052
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 23.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 23, 2026, 9:16 AM PT"
       },
       "top_2022": null
     },
@@ -3091,26 +3091,26 @@
         }
       },
       "house_2026": {
-        "dem": 2832541,
-        "rep": 2148713,
+        "dem": 2832605,
+        "rep": 2148719,
         "other": 17628,
         "districts": 17,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 99,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 23, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 23, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Governor",
-        "total": 5019055,
+        "total": 5019124,
         "percent_in": 99,
         "call": "P",
         "leader": "Josh Shapiro",
         "party": "Dem",
-        "leader_votes": 3039717,
+        "leader_votes": 3039780,
         "candidates": [
           {
             "name": "Josh Shapiro",
@@ -3128,9 +3128,9 @@
             "votes": 64814
           }
         ],
-        "source": "Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20.",
+        "source": "Latest count, not certified. AP election-results file, 9:16 AM PT Nov. 23.",
         "url": "https://www.nbcnews.com/politics/2026-elections/governor-results",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 23, 2026, 9:16 AM PT"
       },
       "top_2022": {
         "office": "Governor",
@@ -3870,17 +3870,17 @@
         }
       },
       "house_2026": {
-        "dem": 2009507,
-        "rep": 1157730,
+        "dem": 2010095,
+        "rep": 1157930,
         "other": 13981,
         "districts": 10,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 94.2,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:13 AM PT Nov. 20, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:16 AM PT Nov. 23, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 20, 2026, 9:13 AM PT"
+        "as_of": "Nov. 23, 2026, 9:16 AM PT"
       },
       "top_2026": {
         "office": "Measure: Repeal millionaire tax",
@@ -4577,10 +4577,10 @@
       "state": "CA",
       "district": 41,
       "to": "D",
-      "winner": "Linda Sánchez",
+      "winner": "Linda S\u00e1nchez",
       "prior": "Mitch Clemmons",
       "margin_pts": 33.2,
-      "nbc_leader": "Linda Sánchez",
+      "nbc_leader": "Linda S\u00e1nchez",
       "note": "",
       "source": "CBS News, updated Nov. 6, 2026, 12:42 PM EST. Margin, when shown, is from AP votes on the NBC House page at 2:48 PM ET, not a CBS margin.",
       "url": "https://www.cbsnews.com/news/house-districts-flipped-2026-midterm-elections/"
@@ -4698,6 +4698,6 @@
     "label": "Latest count, not certified",
     "source": "Associated Press election-results file",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-    "as_of": "Nov. 22, 2026, 9:40 AM PT"
+    "as_of": "Nov. 23, 2026, 9:16 AM PT"
   }
 }
