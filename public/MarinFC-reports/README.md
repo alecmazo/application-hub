@@ -1,10 +1,18 @@
 # MarinFC-reports
 
-Static dashboard of Marin FC coaching reports. It is served with the app hub at `/MarinFC-reports/` (live: `https://alecmazo.github.io/application-hub/MarinFC-reports/`).
+Static reports for Marin FC B2013-14 Blue, served at `/MarinFC-reports/` (live: `https://alecmazo.github.io/application-hub/MarinFC-reports/`).
 
-`index.html` reads `reports.json` and renders one card per report. Report pages are standalone: they do not link to this dashboard, the hub, or each other.
+`index.html` is the hub: Game Reports on one side, Trends on the other (tabs on a narrow screen). Game reports are listed newest first with opponent, date, and score. Do not add a link to this section from the public application-hub home page.
 
-Files live in `public/MarinFC-reports/` so the GitHub Pages build copies them as-is. Do not add this path to the SPA deep-route copy in `vite.config.spa.ts` — that would replace the dashboard with the hub app.
+Each report page is standalone HTML. It links back only to this hub (`../`) and has a Print / Save PDF button that calls `window.print()`. Print CSS hides that chrome and the in-page contents nav, keeps chart and row breaks from splitting awkwardly, uses Letter paper, and sets `print-color-adjust: exact`. Every report and the hub include:
+
+```html
+<meta name="robots" content="noindex,nofollow">
+```
+
+Do not add this path to a sitemap.
+
+Files live in `public/MarinFC-reports/` so the GitHub Pages build copies them as-is. Do not add this path to the SPA deep-route copy in `vite.config.spa.ts` — that would replace the hub with the app.
 
 ## Add a report
 
@@ -16,13 +24,7 @@ Files live in `public/MarinFC-reports/` so the GitHub Pages build copies them as
 
    Example: `passing-and-control-91f2292b8b5f`.
 
-2. Create `public/MarinFC-reports/<folder>/index.html`. Keep the page self-contained. It must include:
-
-   ```html
-   <meta name="robots" content="noindex,nofollow">
-   ```
-
-   Do not add a link, button, or script that goes to the dashboard, the hub, another report, or any parent path (`../`). In-page anchors (`#section`) are fine.
+2. Create `public/MarinFC-reports/<folder>/index.html`. Keep the page self-contained. It must include the robots meta, a Print / Save PDF button, and a relative "All reports" link to this hub (`../`). In-page anchors (`#section`) are fine. Do not link to the public application-hub home page.
 
 3. Append one object to the `reports` array in `reports.json`:
 
@@ -35,12 +37,14 @@ Files live in `public/MarinFC-reports/` so the GitHub Pages build copies them as
    }
    ```
 
-   `slug` must match the folder name. `date` is `YYYY-MM-DD`. The dashboard lists newer dates first.
+   `slug` must match the folder name. `date` is `YYYY-MM-DD`.
 
-4. Do not add the report, or this section, to a sitemap.
+4. If it is a per-game report, also add the game id and live slug to `GAME_SLUGS` in the local generator (`/workspace/veo/share/season_reports.py`) so the hub lists opponent, date, and score. If it is a trend/analysis page, add it to `TREND_REPORTS`. Then regenerate the hub.
+
+5. Do not add the report, or this section, to a sitemap.
 
 Push to `main`. The Pages workflow publishes `public/` with the rest of the site.
 
 ## Season trend report (stable slug)
 
-`season-trend-ab0e5977a9e9` is the year-to-date season trend report. Keep that folder name. After every future game, overwrite `public/MarinFC-reports/season-trend-ab0e5977a9e9/index.html` in place and update that entry's `date` in `reports.json` (and the description if the summary changes). The live URL stays `https://alecmazo.github.io/application-hub/MarinFC-reports/season-trend-ab0e5977a9e9/`. Per-game reports still get a new folder each time.
+`season-trend-ab0e5977a9e9` is the year-to-date season trend report. Keep that folder name. After every future game, overwrite `public/MarinFC-reports/season-trend-ab0e5977a9e9/index.html` in place (keep the Print / Save PDF chrome) and update that entry's `date` in `reports.json` (and the description if the summary changes). The live URL stays `https://alecmazo.github.io/application-hub/MarinFC-reports/season-trend-ab0e5977a9e9/`. Per-game reports still get a new folder each time.
