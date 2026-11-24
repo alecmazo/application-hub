@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are the AP election-results file at 9:16 AM PT on Nov. 23, summed by party. Counts were not lowered unless every House district in the state is marked certified. Called seats are 258 Democratic and 173 Republican, with 4 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
+  "house_2026_gap": "2026 House votes are the AP election-results file at 9:20 AM PT on Nov. 24, summed by party. Counts were not lowered unless every House district in the state is marked certified. Called seats are 259 Democratic and 173 Republican, with 3 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -391,17 +391,17 @@
         }
       },
       "house_2026": {
-        "dem": 8910778,
-        "rep": 3807524,
+        "dem": 8915633,
+        "rep": 3809005,
         "other": 112919,
         "districts": 52,
         "zero_districts": [],
-        "percent_in": 98.7,
+        "percent_in": 98.9,
         "percent_min": 78.7,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:16 AM PT Nov. 23, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
+        "source": "AP election-results file, 9:20 AM PT Nov. 24, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 23, 2026, 9:16 AM PT"
+        "as_of": "Nov. 24, 2026, 9:20 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -1091,17 +1091,17 @@
         }
       },
       "house_2026": {
-        "dem": 2643465,
-        "rep": 1535165,
+        "dem": 2643638,
+        "rep": 1535229,
         "other": 21052,
         "districts": 17,
         "zero_districts": [],
         "percent_in": 98.5,
         "percent_min": 95.1,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:16 AM PT Nov. 21, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
+        "source": "AP election-results file, 9:20 AM PT Nov. 24, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 21, 2026, 9:16 AM PT"
+        "as_of": "Nov. 24, 2026, 9:20 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -2709,15 +2709,15 @@
       },
       "top_2022": null,
       "official_ballots": {
-        "ballots": 4242639,
+        "ballots": 4242664,
         "registered": 7885046,
         "turnout_pct": 53.81,
         "certified": false,
         "certification_date": null,
-        "as_of": "Nov. 21, 2026, 5:18 p.m. Eastern (2:18 p.m. PT)",
-        "source": "North Carolina State Board of Elections, unofficial statewide results file. County rows in the same file are labeled official. The state canvass is set for Nov. 24.",
+        "as_of": "Nov. 23, 2026, 7:35 p.m. Eastern (4:35 p.m. PT)",
+        "source": "North Carolina State Board of Elections, unofficial statewide results file. The State Board met Nov. 24 to certify most contests, but this statewide row is still labeled unofficial.",
         "url": "https://er.ncsbe.gov/enr/20261103/data/county.txt",
-        "measure": "Ballots cast (bct) on the statewide row. The row is titled 11/03/2026 UNOFFICIAL GENERAL ELECTION RESULTS - STATEWIDE. 4,242,639 ballots, 7,885,046 registered, 53.81%, precincts 2,626 of 2,626. Updated November 21, 2026, 5:18 p.m. Replaces the Senate-contest proxy."
+        "measure": "Ballots cast (bct) on the statewide row. The row is still titled 11/03/2026 UNOFFICIAL GENERAL ELECTION RESULTS - STATEWIDE. 4,242,664 ballots, 7,885,046 registered, 53.81%, precincts 2,626 of 2,626. Updated November 23, 2026, 7:35 p.m. Replaces 4,242,639."
       }
     },
     {
@@ -3426,17 +3426,17 @@
         }
       },
       "house_2026": {
-        "dem": 896352,
-        "rep": 1095906,
-        "other": 39360,
+        "dem": 896486,
+        "rep": 1095951,
+        "other": 39365,
         "districts": 9,
         "zero_districts": [],
         "percent_in": 98.9,
         "percent_min": 98.3,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:20 AM PT Nov. 17, 2026, summed by party. Not certified. A party total was not lowered when the new figure was lower.",
+        "source": "AP election-results file, 9:20 AM PT Nov. 24, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 17, 2026, 9:20 AM PT"
+        "as_of": "Nov. 24, 2026, 9:20 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -3870,17 +3870,17 @@
         }
       },
       "house_2026": {
-        "dem": 2010095,
-        "rep": 1157930,
+        "dem": 2011456,
+        "rep": 1158668,
         "other": 13981,
         "districts": 10,
         "zero_districts": [],
         "percent_in": 99.0,
         "percent_min": 94.2,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, 9:16 AM PT Nov. 23, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
+        "source": "AP election-results file, 9:20 AM PT Nov. 24, 2026, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 23, 2026, 9:16 AM PT"
+        "as_of": "Nov. 24, 2026, 9:20 AM PT"
       },
       "top_2026": {
         "office": "Measure: Repeal millionaire tax",
@@ -4698,6 +4698,6 @@
     "label": "Latest count, not certified",
     "source": "Associated Press election-results file",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-    "as_of": "Nov. 23, 2026, 9:16 AM PT"
+    "as_of": "Nov. 24, 2026, 9:20 AM PT"
   }
 }
