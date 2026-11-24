@@ -1,504 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex,nofollow" />
-    <meta name="theme-color" content="#0a1628" />
-    <title>MarinFC-reports</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #0a1628;
-        --elevated: #0f1f35;
-        --card: #12233c;
-        --fg: #e8eef6;
-        --muted: #8fa3bc;
-        --primary: #5bb8d4;
-        --primary-fg: #061018;
-        --border: color-mix(in oklab, #e8eef6 12%, transparent);
-        --danger: #e07070;
-        --sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-        --display: "Fraunces", ui-serif, Georgia, serif;
-        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        color-scheme: dark;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100dvh;
-        color: var(--fg);
-        font-family: var(--sans);
-        line-height: 1.5;
-        background:
-          radial-gradient(
-            900px 480px at 12% -10%,
-            color-mix(in oklab, var(--primary) 14%, transparent),
-            transparent 60%
-          ),
-          radial-gradient(
-            700px 420px at 92% 0%,
-            color-mix(in oklab, #2a4a78 30%, transparent),
-            transparent 55%
-          ),
-          var(--bg);
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: var(--primary);
-      }
-
-      .page {
-        width: min(72rem, calc(100% - 2rem));
-        margin: 0 auto;
-        padding: 2rem 0 4rem;
-      }
-
-      .kicker {
-        margin: 0 0 0.35rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .kicker a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .kicker a:hover {
-        color: var(--primary);
-      }
-
-      h1 {
-        margin: 0;
-        font-family: var(--display);
-        font-size: clamp(1.8rem, 4vw, 2.4rem);
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        line-height: 1.15;
-      }
-
-      .lede {
-        max-width: 40rem;
-        margin: 0.85rem 0 0;
-        color: var(--muted);
-        font-size: 1rem;
-      }
-
-      .meta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1rem;
-        margin-top: 1.25rem;
-        color: var(--muted);
-        font-family: var(--mono);
-        font-size: 0.78rem;
-      }
-
-      .list {
-        display: grid;
-        gap: 1rem;
-        margin-top: 1.75rem;
-      }
-
-      @media (min-width: 720px) {
-        .list {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .card {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        min-width: 0;
-        padding: 1.15rem 1.15rem 1rem;
-        border: 1px solid var(--border);
-        border-radius: 1.25rem;
-        background: color-mix(in oklab, var(--card) 92%, transparent);
-        box-shadow: 0 1px 0 color-mix(in oklab, #fff 4%, transparent) inset;
-        transition:
-          transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
-          border-color 200ms ease,
-          box-shadow 200ms ease;
-      }
-
-      .card:hover {
-        transform: translateY(-2px);
-        border-color: color-mix(in oklab, var(--primary) 35%, transparent);
-        box-shadow: 0 12px 40px -20px color-mix(in oklab, #000 70%, transparent);
-      }
-
-      .card h2 {
-        margin: 0;
-        font-family: var(--display);
-        font-size: 1.25rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        line-height: 1.3;
-      }
-
-      .date {
-        margin: 0.35rem 0 0;
-        color: var(--muted);
-        font-family: var(--mono);
-        font-size: 0.78rem;
-        font-variant-numeric: tabular-nums;
-      }
-
-      .desc {
-        margin: 0;
-        flex: 1;
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .path {
-        margin: 0;
-        overflow-wrap: anywhere;
-        color: color-mix(in oklab, var(--muted) 85%, var(--fg));
-        font-family: var(--mono);
-        font-size: 0.72rem;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.25rem;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 0.55rem 0.95rem;
-        border-radius: 0.75rem;
-        border: 1px solid transparent;
-        font: 600 0.92rem/1 var(--sans);
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: var(--primary-fg);
-      }
-
-      .btn-primary:hover {
-        filter: brightness(1.06);
-      }
-
-      .btn-outline {
-        background: transparent;
-        border-color: var(--border);
-        color: var(--fg);
-      }
-
-      .btn-outline:hover {
-        border-color: color-mix(in oklab, var(--primary) 45%, transparent);
-        background: color-mix(in oklab, var(--primary) 10%, transparent);
-      }
-
-      .btn[aria-pressed="true"] {
-        border-color: color-mix(in oklab, var(--primary) 50%, transparent);
-        color: var(--primary);
-      }
-
-      .status,
-      .empty {
-        margin-top: 1.5rem;
-        padding: 1rem 1.1rem;
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        background: var(--elevated);
-        color: var(--muted);
-      }
-
-      .status[data-kind="error"] {
-        border-color: color-mix(in oklab, var(--danger) 45%, transparent);
-        color: var(--fg);
-      }
-
-      .sr {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      @media (max-width: 480px) {
-        .page {
-          width: min(72rem, calc(100% - 1.25rem));
-          padding-top: 1.35rem;
-        }
-
-        .actions {
-          flex-direction: column;
-        }
-
-        .btn {
-          width: 100%;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .card,
-        .card:hover {
-          transition: none;
-          transform: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <p class="kicker"><a href="../">Application hub</a></p>
-      <h1>MarinFC-reports</h1>
-      <p class="lede">
-        Marin FC coaching reports. Open one here, or copy its link to send that
-        report on its own. A report page does not link back to this list or to
-        any other report.
-      </p>
-      <p class="meta-row" id="count">Loading reports…</p>
-      <div id="status" class="status" hidden></div>
-      <div class="list" id="list"></div>
-      <p class="sr" id="live" aria-live="polite"></p>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="theme-color" content="#1a365d"/>
+<title>Marin FC B2013-14 Blue · Reports</title>
+<style>
+:root {
+  --navy: #1a365d;
+  --text: #1a202c;
+  --muted: #4a5568;
+  --border: #e2e8f0;
+  --hair: #edf2f7;
+  --bg: #ffffff;
+  --page: #f4f7fb;
+  --success: #276749;
+  --success-bg: #c6f6d5;
+  --danger: #c53030;
+  --danger-bg: #fed7d7;
+  --draw: #744210;
+  --draw-bg: #fefcbf;
+  --us: #2b6cb0;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--page);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  background: var(--bg);
+  min-height: 100dvh;
+}
+header.hero {
+  border-bottom: 3px solid var(--navy);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+header.hero p.kicker {
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+header.hero h1 {
+  margin: 0 0 0.55rem;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  color: var(--navy);
+}
+header.hero .lede { margin: 0; color: var(--muted); max-width: 40rem; }
+.tab-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.tab-bar {
+  display: none;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+  padding: 0.25rem;
+  background: var(--page);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.tab-bar .tab {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.45rem 0.7rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.tab-bar .tab .count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: inherit;
+  background: var(--hair);
+  border-radius: 999px;
+  padding: 0.1rem 0.4rem;
+}
+.panel h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+.section-lede { margin: 0 0 0.9rem; color: var(--muted); font-size: 0.92rem; }
+.cards { display: flex; flex-direction: column; gap: 0.75rem; }
+a.card {
+  display: block;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 0 var(--hair);
+}
+a.card:hover {
+  border-color: var(--us);
+  box-shadow: 0 6px 18px -12px rgba(26, 54, 93, 0.45);
+}
+a.card.featured { border-color: var(--navy); border-width: 2px; }
+.card .top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--navy);
+}
+.card .date { margin: 0; color: var(--muted); font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+.card .blurb { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.92rem; }
+.score {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+.badge.W { background: var(--success-bg); color: var(--success); }
+.badge.L { background: var(--danger-bg); color: var(--danger); }
+.badge.D { background: var(--draw-bg); color: var(--draw); }
+.card .go {
+  margin: 0.55rem 0 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--us);
+}
+.note { margin: 0.9rem 0 0; color: var(--muted); font-size: 0.88rem; }
+.group-label {
+  margin: 1.1rem 0 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; }
+@media (min-width: 800px) {
+  header.hero h1 { font-size: 2rem; }
+  .tab-bar { display: none; }
+  .panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    align-items: start;
+  }
+  .panel {
+    display: block;
+    padding: 0.2rem 0.15rem 0 0;
+  }
+  .panel + .panel { padding-left: 1.5rem; border-left: 1px solid var(--border); }
+}
+@media (max-width: 799px) {
+  .page { padding: 1rem 0.75rem 2.5rem; }
+  .tab-bar { display: flex; }
+  .panels { display: block; }
+  .panel { display: none; }
+  #tab-games:checked ~ .panels #games,
+  #tab-trends:checked ~ .panels #trends { display: block; }
+  #tab-games:checked ~ .tab-bar label[for="tab-games"],
+  #tab-trends:checked ~ .tab-bar label[for="tab-trends"] {
+    background: var(--bg);
+    color: var(--navy);
+    box-shadow: 0 1px 2px rgba(26, 54, 93, 0.12);
+  }
+  #tab-games:checked ~ .tab-bar label[for="tab-games"] .count,
+  #tab-trends:checked ~ .tab-bar label[for="tab-trends"] .count {
+    background: #d4e4f5;
+    color: var(--navy);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  a.card { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+  <p class="kicker">Marin FC B2013-14 Blue · Veo analytics</p>
+  <h1>Reports</h1>
+  <p class="lede">Game reports on one side, season trends on the other. Open a report, then use Print / Save PDF if you want a copy to email.</p>
+</header>
+<input type="radio" name="hub-panel" id="tab-games" class="tab-input" checked>
+<input type="radio" name="hub-panel" id="tab-trends" class="tab-input">
+<div class="tab-bar" role="tablist" aria-label="Report sections">
+  <label for="tab-games" class="tab">Game Reports <span class="count">1</span></label>
+  <label for="tab-trends" class="tab">Trends <span class="count">3</span></label>
+</div>
+<div class="panels">
+  <section class="panel" id="games">
+    <h2>Game Reports</h2>
+    <p class="section-lede">Newest first. Each card shows the opponent, date, and score.</p>
+    <div class="cards">
+<a class="card" href="game-davis-legacy-2026-11-15-9c86fb2e5fba/"><div class="top"><h3>Davis Legacy</h3><p class="date">Nov 15, 2026</p></div><div class="score"><span class="badge W">W</span>5–0</div><p class="go">Open game report</p></a>
     </div>
-    <noscript>
-      <p class="status" style="width: min(72rem, calc(100% - 2rem)); margin: 1rem auto">
-        This dashboard needs JavaScript to read reports.json.
-      </p>
-    </noscript>
-    <script>
-      const SLUG = /^[A-Za-z0-9][A-Za-z0-9_-]{7,80}$/;
-      const listEl = document.getElementById("list");
-      const statusEl = document.getElementById("status");
-      const countEl = document.getElementById("count");
-      const liveEl = document.getElementById("live");
-
-      function directoryBase() {
-        const here = new URL(document.baseURI);
-        let path = here.pathname;
-        if (path.endsWith("/index.html")) path = path.slice(0, -"index.html".length);
-        if (!path.endsWith("/")) path += "/";
-        return new URL(path, here.origin);
-      }
-
-      function reportUrl(slug) {
-        return new URL(encodeURI(slug) + "/", directoryBase()).href;
-      }
-
-      function formatDate(iso) {
-        const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
-        if (!match) return null;
-        const year = Number(match[1]);
-        const month = Number(match[2]);
-        const day = Number(match[3]);
-        const utc = new Date(Date.UTC(year, month - 1, day));
-        if (
-          utc.getUTCFullYear() !== year ||
-          utc.getUTCMonth() !== month - 1 ||
-          utc.getUTCDate() !== day
-        ) {
-          return null;
-        }
-        return new Intl.DateTimeFormat("en-US", {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-          timeZone: "UTC",
-        }).format(utc);
-      }
-
-      function showStatus(message, kind) {
-        statusEl.hidden = false;
-        statusEl.dataset.kind = kind || "info";
-        statusEl.textContent = message;
-      }
-
-      function clearStatus() {
-        statusEl.hidden = true;
-        statusEl.textContent = "";
-        delete statusEl.dataset.kind;
-      }
-
-      function card(report) {
-        const article = document.createElement("article");
-        article.className = "card";
-
-        const h2 = document.createElement("h2");
-        h2.textContent = report.title;
-
-        const date = document.createElement("p");
-        date.className = "date";
-        date.textContent = report.dateLabel;
-
-        const desc = document.createElement("p");
-        desc.className = "desc";
-        desc.textContent = report.description;
-
-        const path = document.createElement("p");
-        path.className = "path";
-        const url = new URL(report.href);
-        path.textContent = url.pathname;
-
-        const actions = document.createElement("div");
-        actions.className = "actions";
-
-        const open = document.createElement("a");
-        open.className = "btn btn-primary";
-        open.href = report.href;
-        open.textContent = "Open";
-
-        const copy = document.createElement("button");
-        copy.type = "button";
-        copy.className = "btn btn-outline";
-        copy.textContent = "Copy link";
-        copy.setAttribute("aria-label", "Copy link to " + report.title);
-        copy.addEventListener("click", () => copyLink(copy, report.href, report.title));
-
-        actions.append(open, copy);
-        article.append(h2, date, desc, path, actions);
-        return article;
-      }
-
-      async function copyLink(button, href, title) {
-        let ok = false;
-        try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(href);
-            ok = true;
-          }
-        } catch {
-          ok = false;
-        }
-        if (!ok) {
-          const input = document.createElement("textarea");
-          input.value = href;
-          input.setAttribute("readonly", "");
-          input.style.position = "fixed";
-          input.style.left = "-9999px";
-          document.body.append(input);
-          input.select();
-          try {
-            ok = document.execCommand("copy");
-          } catch {
-            ok = false;
-          }
-          input.remove();
-        }
-        if (ok) {
-          button.textContent = "Copied";
-          button.setAttribute("aria-pressed", "true");
-          liveEl.textContent = "Copied link for " + title;
-          window.setTimeout(() => {
-            button.textContent = "Copy link";
-            button.removeAttribute("aria-pressed");
-          }, 1800);
-        } else {
-          button.textContent = "Copy failed";
-          liveEl.textContent = "Could not copy the link. The address is shown on the card.";
-          window.setTimeout(() => {
-            button.textContent = "Copy link";
-          }, 1800);
-        }
-      }
-
-      function normalize(raw, index) {
-        if (!raw || typeof raw !== "object") return null;
-        const slug = typeof raw.slug === "string" ? raw.slug.trim() : "";
-        const title = typeof raw.title === "string" ? raw.title.trim() : "";
-        const description =
-          typeof raw.description === "string" ? raw.description.trim() : "";
-        const date = typeof raw.date === "string" ? raw.date.trim() : "";
-        const dateLabel = formatDate(date);
-        if (!SLUG.test(slug) || !title || !description || !dateLabel) return null;
-        return { slug, title, description, date, dateLabel, index, href: reportUrl(slug) };
-      }
-
-      async function load() {
-        const manifestUrl = new URL("reports.json", directoryBase());
-        let payload;
-        try {
-          const res = await fetch(manifestUrl, { cache: "no-store" });
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          payload = await res.json();
-        } catch {
-          countEl.textContent = "Could not load reports";
-          showStatus(
-            "reports.json did not load. Check that the file sits next to this page.",
-            "error",
-          );
-          return;
-        }
-
-        const rows = Array.isArray(payload.reports) ? payload.reports : null;
-        if (!rows) {
-          countEl.textContent = "Could not load reports";
-          showStatus("reports.json needs a reports array.", "error");
-          return;
-        }
-
-        const reports = [];
-        let skipped = 0;
-        rows.forEach((row, index) => {
-          const item = normalize(row, index);
-          if (item) reports.push(item);
-          else skipped += 1;
-        });
-
-        reports.sort((a, b) => {
-          if (a.date !== b.date) return a.date < b.date ? 1 : -1;
-          return a.index - b.index;
-        });
-
-        listEl.replaceChildren();
-        if (reports.length === 0) {
-          countEl.textContent = "No reports yet";
-          showStatus("Add a folder and one entry in reports.json. See the README in this folder.", "info");
-          return;
-        }
-
-        clearStatus();
-        if (skipped) {
-          showStatus(
-            skipped +
-              (skipped === 1 ? " entry was" : " entries were") +
-              " skipped. Each report needs a slug, title, YYYY-MM-DD date, and description.",
-            "error",
-          );
-        }
-        countEl.textContent =
-          reports.length + (reports.length === 1 ? " report" : " reports");
-        const frag = document.createDocumentFragment();
-        reports.forEach((report) => frag.append(card(report)));
-        listEl.append(frag);
-      }
-
-      load();
-    </script>
-  </body>
+    <p class="note">A written game report is posted after the match is reviewed. The Season Trend report covers all 11 games through Nov 15, 2026.</p>
+  </section>
+  <section class="panel" id="trends">
+    <h2>Trends</h2>
+    <p class="section-lede">The year-to-date trend report, plus earlier multi-game analysis.</p>
+    <div class="cards">
+<a class="card featured" href="season-trend-ab0e5977a9e9/"><div class="top"><h3>Season Trend Report (YTD)</h3><p class="date">Updated through Nov 15, 2026 · 11 games</p></div><p class="blurb">Team and player trends across every game this season, updated after each match.</p><p class="go">Open season trend</p></a>
+    </div>
+    <p class="group-label">Earlier analysis</p><div class="cards"><a class="card" href="passing-and-control-91f2292b8b5f/"><div class="top"><h3>Passing &amp; Control</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Coach report from 10 Veo recordings, Sep 7–Nov 8, 2026.</p><p class="go">Open report</p></a>
+<a class="card" href="player-data-last-4-7d3f4a3eaae6/"><div class="top"><h3>Player Data, Last 4 Games</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Per-player addendum for San Juan, MVLA, Newark, and Folsom.</p><p class="go">Open report</p></a></div>
+  </section>
+</div>
+<footer class="page-foot">These pages are not indexed. Share a report by copying its link, or save a PDF from the report page.</footer>
+</div>
+</body>
 </html>
