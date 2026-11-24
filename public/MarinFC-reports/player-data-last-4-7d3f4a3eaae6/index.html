@@ -297,13 +297,78 @@ button.btn-print:focus-visible { outline: 2px solid var(--us); outline-offset: 2
   }
   .report-chrome, .no-print, nav.toc { display: none !important; }
 }
+
+.report-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: -0.25rem 0 1rem;
+  padding: 0.65rem 0 0.75rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+}
+.report-chrome a.back {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.report-chrome a.back:hover { text-decoration: underline; }
+button.btn-print {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: #fff;
+  font: 700 0.9rem/1 inherit;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button.btn-print:hover { background: #163154; }
+button.btn-print:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+.chrome-actions { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+button.btn-delete {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.8rem/1 inherit;
+  padding: 0.45rem 0.4rem;
+  min-height: 44px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button.btn-delete:hover { color: var(--danger); background: var(--danger-bg); }
+button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  .report-chrome, .no-print, nav.toc, .btn-delete, .chrome-actions, .card-actions { display: none !important; }
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 <div class="report-chrome no-print">
   <a class="back" href="../">All reports</a>
-  <button type="button" class="btn-print" onclick="window.print()">Print / Save PDF</button>
+  <div class="chrome-actions">
+    <button type="button" class="btn-print" onclick="window.print()">Print / Save PDF</button>
+    <button type="button" class="btn-delete no-print" data-title="Addendum: Player Data, Last 4 Games (San Juan, MVLA, Newark, Folsom)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20player-data-last-4-7d3f4a3eaae6&amp;labels=delete-report&amp;body=Please%20remove%20report%20Addendum%3A%20Player%20Data%2C%20Last%204%20Games%20%28San%20Juan%2C%20MVLA%2C%20Newark%2C%20Folsom%29%20%28slug%20player-data-last-4-7d3f4a3eaae6%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button>
+  </div>
 </div>
 
 <header class="hero">
@@ -315,5 +380,14 @@ button.btn-print:focus-visible { outline: 2px solid var(--us); outline-offset: 2
 
 <footer class="page-foot">Shareable copy of the coaching report. Jersey-number references are unchanged from the source analysis. Data read November 10, 2026.</footer>
 </div>
+<script>
+function requestDelete(btn) {
+  var title = btn.getAttribute("data-title");
+  var url = btn.getAttribute("data-url");
+  if (confirm("Request deletion of " + title + "? This opens a GitHub issue; the report is removed after review.")) {
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+}
+</script>
 </body>
 </html>
