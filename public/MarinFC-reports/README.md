@@ -4,7 +4,7 @@ Static reports for Marin FC B2013-14 Blue, served at `/MarinFC-reports/` (live: 
 
 `index.html` is the hub: Game Reports on one side, Trends on the other (tabs on a narrow screen). Game reports are listed newest first with opponent, date, and score. Do not add a link to this section from the public application-hub home page.
 
-Each report page is standalone HTML. It links back only to this hub (`../`) and has a Print / Save PDF button that calls `window.print()`. Print CSS hides that chrome and the in-page contents nav, keeps chart and row breaks from splitting awkwardly, uses Letter paper, and sets `print-color-adjust: exact`. Every report and the hub include:
+Each report page is standalone HTML. It links back only to this hub (`../`) and has a Print / Save PDF button that calls `window.print()`. A low-emphasis Request delete control on the hub cards and on each report bar asks for confirmation, then opens a prefilled GitHub issue; the report is removed after review, not immediately. Print CSS hides that chrome and the in-page contents nav, keeps chart and row breaks from splitting awkwardly, uses Letter paper, and sets `print-color-adjust: exact`. Every report and the hub include:
 
 ```html
 <meta name="robots" content="noindex,nofollow">
