@@ -1,0 +1,12 @@
+{
+  "name": "marin-fc-delete",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/delete-worker.test.js",
+    "dry-run": "npx wrangler deploy --dry-run --outdir dist-dry"
+  },
+  "devDependencies": {
+    "wrangler": "^4.50.0"
+  }
+}

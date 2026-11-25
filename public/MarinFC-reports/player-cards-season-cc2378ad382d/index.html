@@ -264,6 +264,11 @@ button.btn-delete {
 }
 button.btn-delete:hover { color: var(--danger); background: var(--danger-bg); }
 button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+.delete-status {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
 @media print {
   * {
     -webkit-print-color-adjust: exact !important;
@@ -320,7 +325,7 @@ h3.sub { margin:1.1rem 0 0.35rem; font-size:1.02rem; color:var(--navy); }
   <a class="back" href="../">All reports</a>
   <div class="chrome-actions">
     <button type="button" class="btn-print" onclick="window.print()">Print / Save PDF</button>
-    <button type="button" class="btn-delete no-print" data-title="Player Cards (Full Season)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20player-cards-season-cc2378ad382d&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Player%20Cards%20%28Full%20Season%29%20%28slug%20player-cards-season-cc2378ad382d%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button>
+    
   </div>
 </div>
 <header class="hero">
@@ -600,13 +605,72 @@ h3.sub { margin:1.1rem 0 0.35rem; font-size:1.02rem; color:var(--navy); }
 <footer class="page-foot">Shareable player cards. Players are listed by jersey number and first name. Built from Veo player stats; minutes are approximate.</footer>
 </div>
 <script>
-function requestDelete(btn) {
-  var title = btn.getAttribute("data-title");
-  var url = btn.getAttribute("data-url");
-  if (confirm("Request deletion of " + title + "? This opens a GitHub issue; the report is removed after review.")) {
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
+var DELETE_API_URL = "https://marin-fc-delete.alecmazo.workers.dev";
+var DELETE_PASS_KEY = "marin-fc-delete-passcode";
+var HIDDEN_REPORTS_KEY = "marin-fc-hidden-reports";
+
+function hiddenReportSlugs() {
+  try { return JSON.parse(localStorage.getItem(HIDDEN_REPORTS_KEY) || "[]"); }
+  catch (e) { return []; }
 }
+function rememberHiddenReport(slug) {
+  var hidden = hiddenReportSlugs();
+  if (hidden.indexOf(slug) < 0) hidden.push(slug);
+  localStorage.setItem(HIDDEN_REPORTS_KEY, JSON.stringify(hidden));
+}
+function hideLocallyDeletedReports() {
+  hiddenReportSlugs().forEach(function (slug) {
+    document.querySelectorAll('a[href="' + slug + '/"]').forEach(function (a) {
+      var card = a.closest("article.card");
+      if (card) card.remove();
+    });
+  });
+}
+function setDeleteStatus(btn, text) {
+  var box = (btn.parentElement && btn.parentElement.querySelector(".delete-status")) || btn;
+  if (box === btn) { btn.textContent = text; }
+  else { box.textContent = text; }
+}
+function requestDelete(btn) {
+  var slug = btn.getAttribute("data-slug") || "";
+  if (!slug || btn.getAttribute("data-busy") === "1") return;
+  if (!confirm("Delete this report permanently?")) return;
+  var pass = localStorage.getItem(DELETE_PASS_KEY) || "";
+  if (!pass) {
+    pass = window.prompt("Enter the delete passcode.", "") || "";
+    if (!pass) return;
+  }
+  btn.setAttribute("data-busy", "1");
+  btn.disabled = true;
+  setDeleteStatus(btn, "Deleting…");
+  fetch(DELETE_API_URL, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ slug: slug, passcode: pass })
+  }).then(function (res) {
+    return res.json().then(function (data) { return { res: res, data: data }; }).catch(function () {
+      return { res: res, data: {} };
+    });
+  }).then(function (out) {
+    if (out.res.ok && out.data && out.data.ok) {
+      localStorage.setItem(DELETE_PASS_KEY, pass);
+      rememberHiddenReport(slug);
+      setDeleteStatus(btn, "Deleted. The hub updates in about 2 minutes.");
+      setTimeout(function () { window.location.href = "../"; }, 900);
+      return;
+    }
+    if (out.res.status === 401) localStorage.removeItem(DELETE_PASS_KEY);
+    var err = (out.data && out.data.error) ? out.data.error : "Could not delete this report.";
+    setDeleteStatus(btn, err);
+    btn.disabled = false;
+    btn.removeAttribute("data-busy");
+  }).catch(function () {
+    setDeleteStatus(btn, "Could not reach the delete service.");
+    btn.disabled = false;
+    btn.removeAttribute("data-busy");
+  });
+}
+document.addEventListener("DOMContentLoaded", hideLocallyDeletedReports);
 </script>
 </body>
 </html>

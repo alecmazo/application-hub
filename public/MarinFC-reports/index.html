@@ -174,6 +174,12 @@ button.btn-delete {
 }
 button.btn-delete:hover { color: var(--danger); background: var(--danger-bg); }
 button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+.delete-status {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-left: 0.25rem;
+}
 .card .top {
   display: flex;
   align-items: baseline;
@@ -289,7 +295,7 @@ footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid 
     <h2>Game Reports</h2>
     <p class="section-lede">Newest first. Each card shows the opponent, date, and score.</p>
     <div class="cards">
-<article class="card"><a class="card-main" href="game-davis-legacy-2026-11-15-9c86fb2e5fba/"><div class="top"><h3>Davis Legacy</h3><p class="date">Nov 15, 2026</p></div><div class="score"><span class="badge W">W</span>5–0</div><p class="go">Open game report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Game Report: Marin 5-0 Davis Legacy (Nov 15)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20game-davis-legacy-2026-11-15-9c86fb2e5fba&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Game%20Report%3A%20Marin%205-0%20Davis%20Legacy%20%28Nov%2015%29%20%28slug%20game-davis-legacy-2026-11-15-9c86fb2e5fba%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article>
+<article class="card"><a class="card-main" href="game-davis-legacy-2026-11-15-9c86fb2e5fba/"><div class="top"><h3>Davis Legacy</h3><p class="date">Nov 15, 2026</p></div><div class="score"><span class="badge W">W</span>5–0</div><p class="go">Open game report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-slug="game-davis-legacy-2026-11-15-9c86fb2e5fba" data-title="Game Report: Marin 5-0 Davis Legacy (Nov 15)" onclick="requestDelete(this)">Delete</button><span class="delete-status" aria-live="polite"></span></div></article>
     </div>
     <p class="note">A written game report is posted after the match is reviewed. The Season Trend report covers all 11 games through Nov 15, 2026.</p>
   </section>
@@ -297,25 +303,84 @@ footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid 
     <h2>Trends</h2>
     <p class="section-lede">The year-to-date trend report, last-5 and full-season player cards, and pro-style analytics, plus earlier multi-game analysis.</p>
     <div class="cards">
-<article class="card featured"><a class="card-main" href="season-trend-ab0e5977a9e9/"><div class="top"><h3>Season Trend Report (YTD)</h3><p class="date">Updated through Nov 15, 2026 · 11 games</p></div><p class="blurb">Team and player trends across every game this season, updated after each match.</p><p class="go">Open season trend</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Season Trend Report (YTD)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20season-trend-ab0e5977a9e9&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Season%20Trend%20Report%20%28YTD%29%20%28slug%20season-trend-ab0e5977a9e9%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article>
-<article class="card"><a class="card-main" href="player-cards-4333cd65c796/"><div class="top"><h3>Player Cards (Last 5 Games)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">FC-style cards for every rostered player, rated as squad percentiles from the most recent 5 games.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Player Cards (Last 5 Games)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20player-cards-4333cd65c796&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Player%20Cards%20%28Last%205%20Games%29%20%28slug%20player-cards-4333cd65c796%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article>
-<article class="card"><a class="card-main" href="player-cards-season-cc2378ad382d/"><div class="top"><h3>Player Cards (Full Season)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">The same FC-style cards and improvement notes, rated from all 11 games this season.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Player Cards (Full Season)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20player-cards-season-cc2378ad382d&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Player%20Cards%20%28Full%20Season%29%20%28slug%20player-cards-season-cc2378ad382d%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article>
-<article class="card"><a class="card-main" href="pro-analytics-6feface8946d/"><div class="top"><h3>Pro-Style Analytics (YTD)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">UEFA, FIFA and pro-analytics measures our Veo data supports, using every season game that has each statistic.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Pro-Style Analytics (YTD)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20pro-analytics-6feface8946d&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Pro-Style%20Analytics%20%28YTD%29%20%28slug%20pro-analytics-6feface8946d%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article>
+<article class="card featured"><a class="card-main" href="season-trend-ab0e5977a9e9/"><div class="top"><h3>Season Trend Report (YTD)</h3><p class="date">Updated through Nov 15, 2026 · 11 games</p></div><p class="blurb">Team and player trends across every game this season, updated after each match.</p><p class="go">Open season trend</p></a></article>
+<article class="card"><a class="card-main" href="player-cards-4333cd65c796/"><div class="top"><h3>Player Cards (Last 5 Games)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">FC-style cards for every rostered player, rated as squad percentiles from the most recent 5 games.</p><p class="go">Open report</p></a></article>
+<article class="card"><a class="card-main" href="player-cards-season-cc2378ad382d/"><div class="top"><h3>Player Cards (Full Season)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">The same FC-style cards and improvement notes, rated from all 11 games this season.</p><p class="go">Open report</p></a></article>
+<article class="card"><a class="card-main" href="pro-analytics-6feface8946d/"><div class="top"><h3>Pro-Style Analytics (YTD)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">UEFA, FIFA and pro-analytics measures our Veo data supports, using every season game that has each statistic.</p><p class="go">Open report</p></a></article>
     </div>
-    <p class="group-label">Earlier analysis</p><div class="cards"><article class="card"><a class="card-main" href="passing-and-control-91f2292b8b5f/"><div class="top"><h3>Passing &amp; Control</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Coach report from 10 Veo recordings, Sep 7–Nov 8, 2026.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Marin FC B2013-14 Blue: Passing &amp; Control Report (Veo, Sep 7–Nov 8, 2026)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20passing-and-control-91f2292b8b5f&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Marin%20FC%20B2013-14%20Blue%3A%20Passing%20%26%20Control%20Report%20%28Veo%2C%20Sep%207%E2%80%93Nov%208%2C%202026%29%20%28slug%20passing-and-control-91f2292b8b5f%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article>
-<article class="card"><a class="card-main" href="player-data-last-4-7d3f4a3eaae6/"><div class="top"><h3>Player Data, Last 4 Games</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Per-player addendum for San Juan, MVLA, Newark, and Folsom.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-title="Addendum: Player Data, Last 4 Games (San Juan, MVLA, Newark, Folsom)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20player-data-last-4-7d3f4a3eaae6&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Addendum%3A%20Player%20Data%2C%20Last%204%20Games%20%28San%20Juan%2C%20MVLA%2C%20Newark%2C%20Folsom%29%20%28slug%20player-data-last-4-7d3f4a3eaae6%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button></div></article></div>
+    <p class="group-label">Earlier analysis</p><div class="cards"><article class="card"><a class="card-main" href="passing-and-control-91f2292b8b5f/"><div class="top"><h3>Passing &amp; Control</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Coach report from 10 Veo recordings, Sep 7–Nov 8, 2026.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-slug="passing-and-control-91f2292b8b5f" data-title="Marin FC B2013-14 Blue: Passing &amp; Control Report (Veo, Sep 7–Nov 8, 2026)" onclick="requestDelete(this)">Delete</button><span class="delete-status" aria-live="polite"></span></div></article>
+<article class="card"><a class="card-main" href="player-data-last-4-7d3f4a3eaae6/"><div class="top"><h3>Player Data, Last 4 Games</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Per-player addendum for San Juan, MVLA, Newark, and Folsom.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-slug="player-data-last-4-7d3f4a3eaae6" data-title="Addendum: Player Data, Last 4 Games (San Juan, MVLA, Newark, Folsom)" onclick="requestDelete(this)">Delete</button><span class="delete-status" aria-live="polite"></span></div></article></div>
   </section>
 </div>
 <footer class="page-foot">These pages are not indexed. Share a report by copying its link, or save a PDF from the report page.</footer>
 </div>
 <script>
-function requestDelete(btn) {
-  var title = btn.getAttribute("data-title");
-  var url = btn.getAttribute("data-url");
-  if (confirm("Request deletion of " + title + "? This opens a GitHub issue; the report is removed after review.")) {
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
+var DELETE_API_URL = "https://marin-fc-delete.alecmazo.workers.dev";
+var DELETE_PASS_KEY = "marin-fc-delete-passcode";
+var HIDDEN_REPORTS_KEY = "marin-fc-hidden-reports";
+
+function hiddenReportSlugs() {
+  try { return JSON.parse(localStorage.getItem(HIDDEN_REPORTS_KEY) || "[]"); }
+  catch (e) { return []; }
 }
+function rememberHiddenReport(slug) {
+  var hidden = hiddenReportSlugs();
+  if (hidden.indexOf(slug) < 0) hidden.push(slug);
+  localStorage.setItem(HIDDEN_REPORTS_KEY, JSON.stringify(hidden));
+}
+function hideLocallyDeletedReports() {
+  hiddenReportSlugs().forEach(function (slug) {
+    document.querySelectorAll('a[href="' + slug + '/"]').forEach(function (a) {
+      var card = a.closest("article.card");
+      if (card) card.remove();
+    });
+  });
+}
+function setDeleteStatus(btn, text) {
+  var box = (btn.parentElement && btn.parentElement.querySelector(".delete-status")) || btn;
+  if (box === btn) { btn.textContent = text; }
+  else { box.textContent = text; }
+}
+function requestDelete(btn) {
+  var slug = btn.getAttribute("data-slug") || "";
+  if (!slug || btn.getAttribute("data-busy") === "1") return;
+  if (!confirm("Delete this report permanently?")) return;
+  var pass = localStorage.getItem(DELETE_PASS_KEY) || "";
+  if (!pass) {
+    pass = window.prompt("Enter the delete passcode.", "") || "";
+    if (!pass) return;
+  }
+  btn.setAttribute("data-busy", "1");
+  btn.disabled = true;
+  setDeleteStatus(btn, "Deleting…");
+  fetch(DELETE_API_URL, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ slug: slug, passcode: pass })
+  }).then(function (res) {
+    return res.json().then(function (data) { return { res: res, data: data }; }).catch(function () {
+      return { res: res, data: {} };
+    });
+  }).then(function (out) {
+    if (out.res.ok && out.data && out.data.ok) {
+      localStorage.setItem(DELETE_PASS_KEY, pass);
+      rememberHiddenReport(slug);
+      setDeleteStatus(btn, "Deleted. The hub updates in about 2 minutes.");
+      setTimeout(function () { window.location.href = "../"; }, 900);
+      return;
+    }
+    if (out.res.status === 401) localStorage.removeItem(DELETE_PASS_KEY);
+    var err = (out.data && out.data.error) ? out.data.error : "Could not delete this report.";
+    setDeleteStatus(btn, err);
+    btn.disabled = false;
+    btn.removeAttribute("data-busy");
+  }).catch(function () {
+    setDeleteStatus(btn, "Could not reach the delete service.");
+    btn.disabled = false;
+    btn.removeAttribute("data-busy");
+  });
+}
+document.addEventListener("DOMContentLoaded", hideLocallyDeletedReports);
 </script>
 
 <script>
@@ -332,7 +397,7 @@ function requestGenerate() {
     + "1. Pull the Veo match report (read-only).\n"
     + "2. Build the game report.\n"
     + "3. Update the Season Trend report (YTD).\n"
-    + "4. Update Player Cards (YTD).\n"
+    + "4. Update last-5 and full-season Player Cards.\n"
     + "5. Update Pro-Style Analytics (YTD).\n"
     + "6. Open a PR for approval. Do not merge until approved.\n";
   var url = "https://github.com/alecmazo/application-hub/issues/new"
