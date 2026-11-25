@@ -4,6 +4,11 @@
       "slug": "game-test-delete-788e21e9e7c9",
       "title": "Throwaway delete test",
       "deleted_at": "2026-11-25T22:36:46Z"
+    },
+    {
+      "slug": "player-data-last-4-7d3f4a3eaae6",
+      "title": "Addendum: Player Data, Last 4 Games (San Juan, MVLA, Newark, Folsom)",
+      "deleted_at": "2026-11-25T22:41:38Z"
     }
   ]
 }
