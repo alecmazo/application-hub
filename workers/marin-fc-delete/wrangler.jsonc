@@ -5,8 +5,8 @@
   "compatibility_date": "2026-11-25",
   "account_id": "e0140ac52d1d8ca60890824b26848e45",
   "workers_dev": true,
-  // Secrets (set with `wrangler secret put`, never committed):
-  //   DELETE_PASSCODE       — shared passcode Alec chooses
+  // Secrets (set with `wrangler secret put` or the API, never committed):
+  //   DELETE_PASSCODE_HASH  — SHA-256 hex of the shared passcode (plaintext is not stored)
   //   DELETE_GITHUB_TOKEN   — fine-grained PAT: Contents Write + Actions Write on alecmazo/application-hub
   "vars": {
     "REPO": "alecmazo/application-hub",

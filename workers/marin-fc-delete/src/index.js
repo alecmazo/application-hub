@@ -1,7 +1,8 @@
 /**
  * One-tap Delete for Marin FC report pages on GitHub Pages.
  * Validates the passcode and slug, then dispatches delete-report.yml.
- * Secrets: DELETE_PASSCODE, DELETE_GITHUB_TOKEN (never log their values).
+ * Secrets: DELETE_PASSCODE_HASH (SHA-256 hex of the passcode), DELETE_GITHUB_TOKEN.
+ * Never log their values.
  */
 
 export const PROTECTED_SLUGS = new Set([
@@ -18,13 +19,17 @@ export function isAllowedSlug(slug) {
   return typeof slug === "string" && SLUG_RE.test(slug) && !PROTECTED_SLUGS.has(slug);
 }
 
-export async function hashesMatch(a, b) {
-  const enc = new TextEncoder();
-  const ha = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode(String(a ?? ""))));
-  const hb = new Uint8Array(await crypto.subtle.digest("SHA-256", enc.encode(String(b ?? ""))));
-  if (ha.byteLength !== hb.byteLength) return false;
+export async function sha256hex(s) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(String(s ?? "")));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+export async function hashesMatch(submitted, storedHashHex) {
+  const got = await sha256hex(submitted);
+  const want = String(storedHashHex ?? "").trim().toLowerCase();
+  if (got.length !== want.length) return false;
   let diff = 0;
-  for (let i = 0; i < ha.byteLength; i++) diff |= ha[i] ^ hb[i];
+  for (let i = 0; i < got.length; i++) diff |= got.charCodeAt(i) ^ want.charCodeAt(i);
   return diff === 0;
 }
 
@@ -97,7 +102,7 @@ export default {
     if (origin !== allowed) {
       return json({ error: "Forbidden." }, 403, origin, allowed);
     }
-    if (!env.DELETE_PASSCODE || !env.DELETE_GITHUB_TOKEN) {
+    if (!env.DELETE_PASSCODE_HASH || !env.DELETE_GITHUB_TOKEN) {
       return json({ error: "Delete service is not configured." }, 503, origin, allowed);
     }
 
@@ -110,7 +115,7 @@ export default {
     const slug = typeof body.slug === "string" ? body.slug.trim() : "";
     const passcode = typeof body.passcode === "string" ? body.passcode : "";
 
-    if (!(await hashesMatch(passcode, env.DELETE_PASSCODE))) {
+    if (!(await hashesMatch(passcode, env.DELETE_PASSCODE_HASH))) {
       return json({ error: "Incorrect passcode." }, 401, origin, allowed);
     }
     if (!isAllowedSlug(slug)) {

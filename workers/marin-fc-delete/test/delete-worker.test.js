@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { isAllowedSlug, hashesMatch, PROTECTED_SLUGS } from "../src/index.js";
+import { isAllowedSlug, hashesMatch, sha256hex, PROTECTED_SLUGS } from "../src/index.js";
 
 test("rejects protected YTD, hub-adjacent, and invalid slugs", () => {
   for (const slug of PROTECTED_SLUGS) {
@@ -21,9 +21,12 @@ test("allows existing deletable report slugs", () => {
   }
 });
 
-test("passcode comparison is hash-based and rejects mismatches", async () => {
-  assert.equal(await hashesMatch("secret", "secret"), true);
-  assert.equal(await hashesMatch("secret", "Secret"), false);
-  assert.equal(await hashesMatch("", ""), true);
-  assert.equal(await hashesMatch("a", "b"), false);
+test("passcode comparison checks SHA-256 hex of the submitted value", async () => {
+  const hash = await sha256hex("secret");
+  assert.equal(hash.length, 64);
+  assert.equal(await hashesMatch("secret", hash), true);
+  assert.equal(await hashesMatch("secret", hash.toUpperCase()), true);
+  assert.equal(await hashesMatch("Secret", hash), false);
+  assert.equal(await hashesMatch("secret", await sha256hex("other")), false);
+  assert.equal(await hashesMatch("", hash), false);
 });
