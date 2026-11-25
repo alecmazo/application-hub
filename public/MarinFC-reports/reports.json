@@ -1,12 +1,6 @@
 {
   "reports": [
     {
-      "slug": "player-data-last-4-7d3f4a3eaae6",
-      "title": "Addendum: Player Data, Last 4 Games (San Juan, MVLA, Newark, Folsom)",
-      "date": "2026-11-10",
-      "description": "Per-player addendum for San Juan (0\u20130), MVLA (1\u20133), Newark (1\u20131), and Folsom (0\u20137). Unsuccessful passes are weighted by position. Information for a short trial, not a verdict on any player."
-    },
-    {
       "slug": "game-davis-legacy-2026-11-15-9c86fb2e5fba",
       "title": "Game Report: Marin 5-0 Davis Legacy (Nov 15, 2026)",
       "date": "2026-11-18",
