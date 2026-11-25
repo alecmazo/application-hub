@@ -1,0 +1,44 @@
+name: Delete Marin FC report
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Folder name under public/MarinFC-reports to remove
+        required: true
+        type: string
+
+# The workflow commits the removal to main. Season stats are not changed.
+permissions:
+  contents: write
+
+concurrency:
+  group: delete-marin-report
+  cancel-in-progress: false
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove the report page
+        env:
+          DELETE_SLUG: ${{ inputs.slug }}
+        run: python3 scripts/delete_marin_report.py "$DELETE_SLUG"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/MarinFC-reports
+          if git diff --cached --quiet; then
+            echo "Nothing to commit (already deleted?)"
+            exit 0
+          fi
+          slug="${{ inputs.slug }}"
+          git commit -m "Delete Marin FC report: ${slug}"
+          git push
