@@ -13,6 +13,12 @@
       "description": "Aggregate team and player trends across all games, updated after each game."
     },
     {
+      "slug": "player-cards-latest-d2130e467695",
+      "title": "Player Cards (Latest Game)",
+      "date": "2026-11-25",
+      "description": "FC-style cards from only the most recent game (currently Davis, Nov 15), with a priority note on each card. PAC uses that game's top speed. Players under 20 minutes are listed without an overall. Formula and coverage are on the page."
+    },
+    {
       "slug": "player-cards-4333cd65c796",
       "title": "Player Cards (Last 5 Games)",
       "date": "2026-11-25",
