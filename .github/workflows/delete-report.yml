@@ -9,8 +9,11 @@ on:
         type: string
 
 # The workflow commits the removal to main. Season stats are not changed.
+# A push made with GITHUB_TOKEN does not start other on:push workflows,
+# so after a successful delete commit we dispatch deploy-pages.yml.
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: delete-marin-report
@@ -31,14 +34,23 @@ jobs:
         run: python3 scripts/delete_marin_report.py "$DELETE_SLUG"
 
       - name: Commit and push
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/MarinFC-reports
           if git diff --cached --quiet; then
             echo "Nothing to commit (already deleted?)"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           slug="${{ inputs.slug }}"
           git commit -m "Delete Marin FC report: ${slug}"
           git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy the live site
+        if: steps.commit.outputs.committed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-pages.yml --ref main
