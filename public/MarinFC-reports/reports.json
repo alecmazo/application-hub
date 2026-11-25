@@ -27,14 +27,14 @@
     {
       "slug": "player-cards-4333cd65c796",
       "title": "Player Cards (YTD)",
-      "date": "2026-11-24",
-      "description": "FC-style cards for every rostered player, rated as squad percentiles from Veo player stats (5 games). Formula and minimum-minutes rule on the page."
+      "date": "2026-11-25",
+      "description": "FC-style cards for every rostered player, rated as squad percentiles from every season game that has Veo player stats (5 of 11 games so far). Formula and coverage are on the page."
     },
     {
       "slug": "pro-analytics-6feface8946d",
       "title": "Pro-Style Analytics (YTD)",
-      "date": "2026-11-24",
-      "description": "UEFA-, FIFA- and pro-analytics-style measures our Veo data supports: team metrics, opponent profiles, shape options, per-70 player evaluation and methodology."
+      "date": "2026-11-25",
+      "description": "UEFA-, FIFA- and pro-analytics-style measures our Veo data supports, using every season game that has each statistic: team metrics, opponent profiles, shape options, per-70 player evaluation and methodology."
     }
   ]
 }
