@@ -41,6 +41,12 @@
       "title": "Pro-Style Analytics (YTD)",
       "date": "2026-11-25",
       "description": "UEFA-, FIFA- and pro-analytics-style measures our Veo data supports, using every season game that has each statistic: team metrics, opponent profiles, shape options, per-70 player evaluation and methodology."
+    },
+    {
+      "slug": "game-test-delete-788e21e9e7c9",
+      "title": "Throwaway delete test",
+      "date": "2026-11-25",
+      "description": "Temporary page used only to test one-tap Delete. Not a real game report."
     }
   ]
 }
