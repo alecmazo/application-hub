@@ -32,7 +32,7 @@ body {
   font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 .page {
-  max-width: 1100px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 1.25rem 1rem 3rem;
   background: var(--bg);
@@ -221,6 +221,132 @@ button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 
   font-size: 0.9rem;
   color: var(--us);
 }
+
+/* Player Cards column — game-menu tiles. Other columns keep the existing card style. */
+.play-tiles { display: flex; flex-direction: column; gap: 0.85rem; }
+article.play-tile {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: 1px solid rgba(246, 224, 94, 0.4);
+  border-radius: 14px;
+  background: #081018;
+  box-shadow: 0 0 0 1px #0b1a33, 0 10px 28px -10px rgba(7, 17, 31, 0.85), 0 0 22px rgba(246, 224, 94, 0.14);
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+article.play-tile:hover, article.play-tile:focus-within {
+  border-color: #f6e05e;
+  box-shadow: 0 0 28px rgba(246, 224, 94, 0.42), 0 14px 32px -8px rgba(7, 17, 31, 0.9);
+  transform: translateY(-3px);
+}
+a.play-main { display: block; text-decoration: none; color: inherit; }
+a.play-main:focus-visible { outline: 2px solid #f6e05e; outline-offset: 3px; }
+.play-arena {
+  position: relative;
+  height: 10.6rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 120%, rgba(246,224,94,0.18), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.04), transparent 42%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.035) 0 2px, transparent 2px 30px),
+    repeating-linear-gradient(0deg, rgba(28, 72, 36, 0.4) 0 15px, rgba(16, 44, 24, 0.5) 15px 30px),
+    linear-gradient(180deg, #0b1a33 0%, #10243a 38%, #0a1f16 100%);
+}
+.play-arena::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 58%;
+  width: 5.2rem; height: 5.2rem;
+  margin: -2.6rem 0 0 -2.6rem;
+  border: 1px solid rgba(246,224,94,0.28);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.play-arena::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 80% at 50% 40%, transparent 40%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
+}
+.play-crest {
+  position: absolute;
+  left: 0.7rem; top: 0.6rem;
+  height: 2.45rem; width: auto;
+  filter: drop-shadow(0 0 8px rgba(246,224,94,0.5));
+  z-index: 2;
+}
+.play-fan {
+  position: absolute;
+  inset: 1.55rem 0.45rem 0.35rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+}
+.mini-fc {
+  width: 4.45rem;
+  aspect-ratio: 3 / 4;
+  clip-path: polygon(5% 0, 95% 0, 100% 5%, 100% 86%, 90% 95.5%, 50% 100%, 10% 95.5%, 0 86%, 0 5%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  position: relative;
+  color: #1c1406;
+  background: linear-gradient(165deg, #fff1b0 0%, #e8c354 18%, #c8961e 55%, #7a5a0c 100%);
+}
+.mini-fc.silver {
+  color: #16181c;
+  background: linear-gradient(165deg, #f7f9fc 0%, #c5ccd4 18%, #8e98a3 55%, #4a5158 100%);
+}
+.mini-fc.bronze {
+  color: #1a1008;
+  background: linear-gradient(165deg, #f0c894 0%, #c4844a 18%, #8d5524 55%, #3e220c 100%);
+}
+.mini-fc.club {
+  color: #f6e05e;
+  background: linear-gradient(165deg, #2c5a96 0%, #1a365d 40%, #0b1a33 100%);
+}
+.mini-fc .ovr { font-size: 1.35rem; font-weight: 900; line-height: 0.9; font-variant-numeric: tabular-nums; }
+.mini-fc .who { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.02em; margin-top: 0.18rem; text-align: center; padding: 0 0.15rem; line-height: 1.15; }
+.mini-fc:nth-child(1) { transform: rotate(-15deg) translate(10px, 10px); z-index: 1; }
+.mini-fc:nth-child(2) { transform: rotate(0deg) translate(0, -8px); z-index: 3; }
+.mini-fc:nth-child(3) { transform: rotate(15deg) translate(-10px, 10px); z-index: 2; }
+.play-body {
+  padding: 0.8rem 0.95rem 1rem;
+  background: linear-gradient(180deg, #102033, #081018);
+}
+.play-tile h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  color: #f6e05e;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+}
+.play-tile .blurb { margin: 0.3rem 0 0; color: #c5d0de; font-size: 0.88rem; }
+.play-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.7rem;
+  padding: 0.45rem 1.2rem;
+  min-height: 40px;
+  background: linear-gradient(180deg, #fff1b0, #e8c354 42%, #c8961e);
+  color: #1a1408;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(246,224,94,0.45);
+}
+article.play-tile:hover .play-cta, article.play-tile:focus-within .play-cta {
+  box-shadow: 0 0 24px rgba(246,224,94,0.75);
+}
+#cards-col h2 { color: var(--navy); }
 .note { margin: 0.9rem 0 0; color: var(--muted); font-size: 0.88rem; }
 .group-label {
   margin: 1.1rem 0 0.5rem;
@@ -231,42 +357,52 @@ button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 
   color: var(--muted);
 }
 footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; }
-@media (min-width: 800px) {
+@media (min-width: 960px) {
   header.hero h1 { font-size: 2rem; }
+  header.hero .lede { max-width: 52rem; }
   .tab-bar { display: none; }
   .panels {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.75rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
     align-items: start;
   }
   .panel {
     display: block;
-    padding: 0.2rem 0.15rem 0 0;
+    padding: 0.2rem 0.1rem 0 0;
   }
-  .panel + .panel { padding-left: 1.5rem; border-left: 1px solid var(--border); }
+  .panel + .panel { padding-left: 1.25rem; border-left: 1px solid var(--border); }
 }
-@media (max-width: 799px) {
+@media (max-width: 959px) {
   .page { padding: 1rem 0.75rem 2.5rem; }
   .tab-bar { display: flex; }
+  .tab-bar .tab { font-size: 0.8rem; text-align: center; line-height: 1.15; padding: 0.4rem 0.35rem; }
   .panels { display: block; }
   .panel { display: none; }
   #tab-games:checked ~ .panels #games,
-  #tab-trends:checked ~ .panels #trends { display: block; }
+  #tab-trends:checked ~ .panels #trends,
+  #tab-cards:checked ~ .panels #cards-col { display: block; }
   #tab-games:checked ~ .tab-bar label[for="tab-games"],
-  #tab-trends:checked ~ .tab-bar label[for="tab-trends"] {
+  #tab-trends:checked ~ .tab-bar label[for="tab-trends"],
+  #tab-cards:checked ~ .tab-bar label[for="tab-cards"] {
     background: var(--bg);
     color: var(--navy);
     box-shadow: 0 1px 2px rgba(26, 54, 93, 0.12);
   }
   #tab-games:checked ~ .tab-bar label[for="tab-games"] .count,
-  #tab-trends:checked ~ .tab-bar label[for="tab-trends"] .count {
+  #tab-trends:checked ~ .tab-bar label[for="tab-trends"] .count,
+  #tab-cards:checked ~ .tab-bar label[for="tab-cards"] .count {
     background: #d4e4f5;
     color: var(--navy);
   }
 }
 @media (prefers-reduced-motion: reduce) {
   article.card, article.card:hover { box-shadow: none; }
+  article.play-tile, article.play-tile:hover, article.play-tile:focus-within {
+    transform: none;
+    transition: none;
+    box-shadow: 0 0 0 1px #0b1a33, 0 8px 20px -10px rgba(7, 17, 31, 0.8);
+  }
 }
 @media print {
   .btn-delete, .card-actions, .no-print, .generate-bar, .btn-generate { display: none !important; }
@@ -278,7 +414,7 @@ footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid 
 <header class="hero">
   <p class="kicker">Marin FC B2013-14 Blue · Veo analytics</p>
   <h1>Reports</h1>
-  <p class="lede">Game reports on one side, season trends on the other. Open a report, then use Print / Save PDF if you want a copy to email.</p>
+  <p class="lede">Game reports, season trends, and player cards. Open a report, then use Print / Save PDF if you want a copy to email.</p>
 </header>
 <div class="generate-bar no-print">
   <button type="button" class="btn-generate" onclick="requestGenerate()">New game report from Veo</button>
@@ -286,9 +422,11 @@ footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid 
 </div>
 <input type="radio" name="hub-panel" id="tab-games" class="tab-input" checked>
 <input type="radio" name="hub-panel" id="tab-trends" class="tab-input">
+<input type="radio" name="hub-panel" id="tab-cards" class="tab-input">
 <div class="tab-bar" role="tablist" aria-label="Report sections">
   <label for="tab-games" class="tab">Game Reports <span class="count">1</span></label>
-  <label for="tab-trends" class="tab">Trends <span class="count">6</span></label>
+  <label for="tab-trends" class="tab">Trends <span class="count">4</span></label>
+  <label for="tab-cards" class="tab">Player Cards <span class="count">2</span></label>
 </div>
 <div class="panels">
   <section class="panel" id="games">
@@ -301,15 +439,21 @@ footer.page-foot { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid 
   </section>
   <section class="panel" id="trends">
     <h2>Trends</h2>
-    <p class="section-lede">The year-to-date trend report, last-5 and full-season player cards, and pro-style analytics, plus earlier multi-game analysis.</p>
+    <p class="section-lede">The year-to-date trend report and pro-style analytics, plus earlier multi-game analysis.</p>
     <div class="cards">
 <article class="card featured"><a class="card-main" href="season-trend-ab0e5977a9e9/"><div class="top"><h3>Season Trend Report (YTD)</h3><p class="date">Updated through Nov 15, 2026 · 11 games</p></div><p class="blurb">Team and player trends across every game this season, updated after each match.</p><p class="go">Open season trend</p></a></article>
-<article class="card"><a class="card-main" href="player-cards-4333cd65c796/"><div class="top"><h3>Player Cards (Last 5 Games)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">FC-style cards for every rostered player, rated as squad percentiles from the most recent 5 games.</p><p class="go">Open report</p></a></article>
-<article class="card"><a class="card-main" href="player-cards-season-cc2378ad382d/"><div class="top"><h3>Player Cards (Full Season)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">The same FC-style cards and improvement notes, rated from all 11 games this season.</p><p class="go">Open report</p></a></article>
 <article class="card"><a class="card-main" href="pro-analytics-6feface8946d/"><div class="top"><h3>Pro-Style Analytics (YTD)</h3><p class="date">Nov 25, 2026</p></div><p class="blurb">UEFA, FIFA and pro-analytics measures our Veo data supports, using every season game that has each statistic.</p><p class="go">Open report</p></a></article>
     </div>
     <p class="group-label">Earlier analysis</p><div class="cards"><article class="card"><a class="card-main" href="passing-and-control-91f2292b8b5f/"><div class="top"><h3>Passing &amp; Control</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Coach report from 10 Veo recordings, Sep 7–Nov 8, 2026.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-slug="passing-and-control-91f2292b8b5f" data-title="Marin FC B2013-14 Blue: Passing &amp; Control Report (Veo, Sep 7–Nov 8, 2026)" onclick="requestDelete(this)">Delete</button><span class="delete-status" aria-live="polite"></span></div></article>
 <article class="card"><a class="card-main" href="player-data-last-4-7d3f4a3eaae6/"><div class="top"><h3>Player Data, Last 4 Games</h3><p class="date">Nov 10, 2026</p></div><p class="blurb">Per-player addendum for San Juan, MVLA, Newark, and Folsom.</p><p class="go">Open report</p></a><div class="card-actions no-print"><button type="button" class="btn-delete no-print" data-slug="player-data-last-4-7d3f4a3eaae6" data-title="Addendum: Player Data, Last 4 Games (San Juan, MVLA, Newark, Folsom)" onclick="requestDelete(this)">Delete</button><span class="delete-status" aria-live="polite"></span></div></article></div>
+  </section>
+  <section class="panel" id="cards-col">
+    <h2>Player Cards</h2>
+    <p class="section-lede">A game-style look at the squad. Open a set to see every player&rsquo;s card, overall, and a top priority to work on.</p>
+    <div class="play-tiles">
+<article class="play-tile"><a class="play-main" href="player-cards-4333cd65c796/"><div class="play-arena"><img class="play-crest" src="assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/><div class="play-fan" aria-hidden="true"><div class="mini-fc gold"><div class="ovr">79</div><div class="who">#27 Bruce</div></div><div class="mini-fc gold"><div class="ovr">71</div><div class="who">#10 Mateo</div></div><div class="mini-fc gold"><div class="ovr">70</div><div class="who">#45 Joe</div></div></div></div><div class="play-body"><h3>Player Cards (Last 5 Games)</h3><p class="blurb">Every rostered player, rated from the most recent 5 games, with a priority to work on.</p><span class="play-cta">PLAY</span></div></a></article>
+<article class="play-tile"><a class="play-main" href="player-cards-season-cc2378ad382d/"><div class="play-arena"><img class="play-crest" src="assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/><div class="play-fan" aria-hidden="true"><div class="mini-fc gold"><div class="ovr">80</div><div class="who">#27 Bruce</div></div><div class="mini-fc gold"><div class="ovr">73</div><div class="who">#42 Giancarlo</div></div><div class="mini-fc gold"><div class="ovr">73</div><div class="who">#45 Joe</div></div></div></div><div class="play-body"><h3>Player Cards (Full Season)</h3><p class="blurb">The same cards and improvement notes, rated from all 11 games this season.</p><span class="play-cta">PLAY</span></div></a></article>
+    </div>
   </section>
 </div>
 <footer class="page-foot">These pages are not indexed. Share a report by copying its link, or save a PDF from the report page.</footer>
