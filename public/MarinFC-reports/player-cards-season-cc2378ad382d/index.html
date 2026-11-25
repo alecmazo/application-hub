@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Player Cards (Full Season)</title>
+<style>
+:root {
+  --navy: #1a365d;
+  --text: #1a202c;
+  --muted: #4a5568;
+  --border: #e2e8f0;
+  --hair: #edf2f7;
+  --bg: #ffffff;
+  --page: #f7fafc;
+  --info-bg: #ebf8ff;
+  --info-border: #2b6cb0;
+  --success: #276749;
+  --success-bg: #c6f6d5;
+  --warning: #975a16;
+  --warning-bg: #fefcbf;
+  --danger: #c53030;
+  --danger-bg: #fed7d7;
+  --us: #2b6cb0;
+  --opp: #c05621;
+  --ref: #718096;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--page);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  background: var(--bg);
+}
+header.hero {
+  border-bottom: 3px solid var(--navy);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+header.hero p.kicker {
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+header.hero h1 {
+  margin: 0 0 0.6rem;
+  font-size: 1.55rem;
+  line-height: 1.25;
+  color: var(--navy);
+}
+header.hero .summary { margin: 0; color: var(--muted); }
+.callout {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info-border);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0 1.25rem;
+  border-radius: 0 6px 6px 0;
+}
+.callout .lead { font-weight: 700; color: var(--navy); margin: 0 0 0.25rem; }
+.callout p { margin: 0; }
+nav.toc {
+  background: var(--page);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem 0.7rem;
+  margin: 0 0 1.5rem;
+}
+nav.toc h2 { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--navy); }
+nav.toc ol {
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  columns: 1;
+}
+nav.toc a { color: var(--navy); text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+section.block { margin: 1.75rem 0 2rem; }
+section.block > h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+  color: var(--navy);
+  break-after: avoid;
+}
+.caption { margin: 0 0 0.85rem; color: var(--muted); font-size: 0.92rem; }
+p { margin: 0.7rem 0; }
+.props {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: 0 0 1rem;
+}
+.props div { border-bottom: 1px solid var(--hair); padding: 0.3rem 0; }
+.props dt { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 700; }
+.props dd { margin: 0.1rem 0 0; }
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin: 0 0 1rem;
+}
+.metric {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+}
+.metric.warning { border-color: #ecc94b; background: #fffff0; }
+.metric.success { border-color: #9ae6b4; background: #f0fff4; }
+.metric .val { font-size: 1.45rem; font-weight: 800; color: var(--navy); line-height: 1.1; }
+.metric.warning .val { color: var(--warning); }
+.metric.success .val { color: var(--success); }
+.metric .lbl { font-weight: 700; margin-top: 0.2rem; }
+.metric .det { color: var(--muted); font-size: 0.88rem; }
+.rows { display: flex; flex-direction: column; gap: 0.7rem; }
+.rowcard {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  break-inside: avoid;
+}
+.rowcard h3 { margin: 0 0 0.3rem; font-size: 1.02rem; color: var(--navy); }
+.rowcard p { margin: 0; }
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0.6rem 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.swipe-hint { display: none; font-size: 0.8rem; color: var(--muted); margin: 0 0 0.3rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.86rem;
+  background: #fff;
+}
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.38rem 0.45rem;
+  vertical-align: top;
+  text-align: left;
+}
+th { background: #edf2f7; color: var(--navy); font-weight: 700; white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.nowrap { white-space: nowrap; }
+.tone-success { color: var(--success); font-weight: 700; }
+.tone-warning { color: var(--warning); font-weight: 700; }
+.tone-danger { color: var(--danger); font-weight: 700; }
+.chart {
+  margin: 0.8rem 0 1.1rem;
+  break-inside: avoid;
+  background: #fff;
+}
+.chart svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.pies {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0.8rem 0 1rem;
+}
+.steps { counter-reset: step; margin: 0.6rem 0 1rem; padding: 0; list-style: none; }
+.steps li {
+  position: relative;
+  padding: 0.6rem 0.6rem 0.6rem 2.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0 0 0.55rem;
+  break-inside: avoid;
+}
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0.6rem; top: 0.65rem;
+  width: 1.5rem; height: 1.5rem;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps h3 { margin: 0 0 0.25rem; font-size: 1.02rem; color: var(--navy); }
+.steps p { margin: 0; }
+ul.bullets { margin: 0.4rem 0 1rem; padding-left: 1.2rem; }
+ul.bullets li { margin: 0.3rem 0; }
+.sources { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+footer.page-foot { margin-top: 1.5rem; color: var(--muted); font-size: 0.8rem; }
+@media (min-width: 640px) {
+  header.hero h1 { font-size: 1.85rem; }
+  .props { grid-template-columns: 1fr 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  nav.toc ol { columns: 2; }
+  .pies { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 639px) {
+  .swipe-hint { display: block; }
+  .wrap { padding: 1rem 0.75rem 2.5rem; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 0.32rem 0.35rem; }
+}
+.report-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: -0.25rem 0 1rem;
+  padding: 0.65rem 0 0.75rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+}
+.report-chrome a.back {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.report-chrome a.back:hover { text-decoration: underline; }
+button.btn-print {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: #fff;
+  font: 700 0.9rem/1 inherit;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button.btn-print:hover { background: #163154; }
+button.btn-print:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+.chrome-actions { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+button.btn-delete {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.8rem/1 inherit;
+  padding: 0.45rem 0.4rem;
+  min-height: 44px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button.btn-delete:hover { color: var(--danger); background: var(--danger-bg); }
+button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  .report-chrome, .no-print, nav.toc, .btn-delete, .chrome-actions, .card-actions { display: none !important; }
+  body { background: #fff; font-size: 9.5pt; line-height: 1.4; }
+  .wrap { max-width: none; padding: 0; }
+  .swipe-hint { display: none !important; }
+  .table-scroll { overflow: visible; border: none; }
+  a { color: inherit; text-decoration: none; }
+  header.hero h1 { font-size: 16.5pt; }
+  section.block { margin: 12pt 0 14pt; }
+  section.block > h2 { font-size: 13pt; break-after: avoid; page-break-after: avoid; }
+  .metric .val { font-size: 14pt; }
+  .callout, .rowcard, .steps li, .metric, .chart, .chart svg, .pies, .qgrid, .qcard { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, th { break-inside: avoid; page-break-inside: avoid; }
+  nav.toc { break-after: avoid; }
+  table.keep { break-inside: avoid; page-break-inside: avoid; }
+  .sources, footer.page-foot { break-before: avoid; page-break-before: avoid; margin-top: 0.5rem; }
+}
+@page {
+  size: letter;
+  margin: 0.5in 0.5in 0.6in;
+  @bottom-center {
+    content: counter(page);
+    font-size: 8pt;
+    color: #718096;
+  }
+}
+
+.qgrid { display:grid; grid-template-columns:1fr; gap:0.65rem; margin:0.6rem 0 1rem; }
+.qcard { border:1px solid var(--border); border-radius:8px; padding:0.7rem 0.85rem; }
+.qcard.start { border-left:4px solid var(--us); }
+.qcard.rot { border-left:4px solid var(--ref); }
+.qcard h3 { margin:0 0 0.2rem; font-size:1rem; color:var(--navy); }
+.qcard .big { font-size:1.3rem; font-weight:800; color:var(--navy); }
+.qcard p { margin:0.25rem 0 0; font-size:0.9rem; }
+.tag { display:inline-block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;
+       padding:0.05rem 0.4rem; border-radius:4px; margin-left:0.3rem; vertical-align:middle; }
+.tag.exact { background:var(--success-bg); color:var(--success); }
+.tag.inferred { background:var(--warning-bg); color:var(--warning); }
+.tag.staff { background:var(--info-bg); color:var(--info-border); }
+h3.sub { margin:1.1rem 0 0.35rem; font-size:1.02rem; color:var(--navy); }
+@media (min-width:640px){ .qgrid { grid-template-columns:1fr 1fr; } }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="report-chrome no-print">
+  <a class="back" href="../">All reports</a>
+  <div class="chrome-actions">
+    <button type="button" class="btn-print" onclick="window.print()">Print / Save PDF</button>
+    <button type="button" class="btn-delete no-print" data-title="Player Cards (Full Season)" data-url="https://github.com/alecmazo/application-hub/issues/new?title=Delete%20Marin%20report%3A%20player-cards-season-cc2378ad382d&amp;labels=delete-report&amp;assignees=alecmazo&amp;body=Please%20remove%20report%20Player%20Cards%20%28Full%20Season%29%20%28slug%20player-cards-season-cc2378ad382d%29%20from%20MarinFC-reports." onclick="requestDelete(this)">Request delete</button>
+  </div>
+</div>
+<header class="hero">
+  <p class="kicker">Marin FC B2013-14 Blue · Veo analytics</p>
+  <h1>Player Cards (Full Season)</h1>
+  <p class="summary">FC-style player cards for every rostered player with Veo player data in all 11 games this season (N. Nevada, COSC, Sta Clara, LAFC, Solar, Eastside, San Juan, MVLA, Newark, Folsom, Davis), updated through Nov 15, 2026. Ratings are squad percentiles from tagged Veo numbers.</p>
+</header>
+
+<style>
+.cards-window {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+}
+.cards-window a {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #c9c2b3;
+  background: #fff;
+  color: #1a365d;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.cards-window a.on {
+  background: #1a365d;
+  color: #fff;
+  border-color: #1a365d;
+}
+.cards-window a:focus-visible { outline: 2px solid #1a365d; outline-offset: 2px; }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem 1rem;
+  margin: 1rem 0 1.4rem;
+  padding: 0.25rem 0.1rem 0.5rem;
+}
+.fc-wrap {
+  filter: drop-shadow(0 10px 18px rgba(20, 16, 8, 0.38));
+  transition: transform 0.35s ease, filter 0.35s ease;
+  transform-origin: center center;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.fc {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  padding: 0.65rem 0.85rem 1.55rem;
+  display: flex;
+  flex-direction: column;
+  clip-path: polygon(5% 0, 95% 0, 100% 5%, 100% 86%, 90% 95.5%, 50% 100%, 10% 95.5%, 0 86%, 0 5%);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color: #1a1408;
+}
+.fc-foil, .fc-shine { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.fc-foil {
+  background:
+    repeating-linear-gradient(125deg, rgba(255,255,255,0.14) 0 1px, rgba(255,255,255,0) 1px 7px),
+    radial-gradient(120% 70% at 18% 0%, rgba(255,255,255,0.35), transparent 55%),
+    radial-gradient(80% 50% at 100% 100%, rgba(0,0,0,0.18), transparent 60%);
+  mix-blend-mode: soft-light;
+}
+.fc-shine {
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%);
+  transform: translateX(-130%);
+  opacity: 0.7;
+  mix-blend-mode: overlay;
+}
+.fc .fc-top, .fc .fc-banner, .fc .fc-stats, .fc .fc-foot { position: relative; z-index: 2; }
+.fc-top { display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.35rem; align-items: center; flex: 0 0 auto; }
+.fc-rating { padding-top: 0.1rem; }
+.fc .ovr {
+  font-size: 2.55rem;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.fc .pos {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+}
+.fc .alts {
+  margin-top: 0.08rem;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+  opacity: 0.78;
+}
+.fc-hero { position: relative; display: flex; justify-content: center; align-items: center; min-height: 0; }
+.fc-num {
+  position: absolute;
+  right: 0; top: 12%;
+  font-size: 2.5rem; font-weight: 900; line-height: 1;
+  opacity: 0.07; letter-spacing: -0.06em;
+  pointer-events: none; user-select: none;
+}
+.fc-crest {
+  width: auto; height: 7.1rem; max-width: 86%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.28));
+}
+.fc-banner {
+  z-index: 2;
+  margin: 0.4rem -0.2rem 0.4rem;
+  padding: 0.34rem 0.5rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.32));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 0 rgba(0,0,0,0.15);
+}
+.fc-banner span {
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fc-stats {
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 0.12rem 0.7rem;
+  align-items: stretch;
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.1rem 0.1rem;
+}
+.fc-stats .rule { background: currentColor; opacity: 0.4; border-radius: 1px; }
+.fc-stats .col { display: flex; flex-direction: column; gap: 0.14rem; }
+.fc-stats .col.left div { display: flex; align-items: baseline; justify-content: flex-start; gap: 0.45rem; }
+.fc-stats .col.right div { display: flex; align-items: baseline; justify-content: flex-end; gap: 0.45rem; flex-direction: row-reverse; }
+.fc-stats span { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; opacity: 0.8; }
+.fc-stats b { font-size: 1.12rem; font-weight: 900; letter-spacing: -0.02em; }
+.fc-foot {
+  margin-top: 0.4rem;
+  padding: 0 0.05rem 0.1rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  opacity: 0.82;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  line-height: 1.25;
+}
+.fc-priority {
+  margin: 0.45rem 0.1rem 0.1rem;
+  padding: 0.4rem 0.5rem;
+  background: #f4f1ea;
+  border: 1px solid #d9d2c4;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #1a1d22;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.fc-priority div + div { margin-top: 0.18rem; }
+.fc-priority span.label {
+  display: inline-block;
+  min-width: 4.4em;
+  margin-right: 0.28rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+.fc .flag { background: rgba(0,0,0,0.18); border-radius: 3px; padding: 0 0.3rem; font-weight: 700; }
+
+/* Metallic tiers */
+.fc.gold {
+  color: #1c1406;
+  background:
+    linear-gradient(165deg, #fff1b0 0%, #e8c354 16%, #f7e392 32%, #c8961e 50%, #f3d56a 68%, #a67c12 86%, #7a5a0c 100%);
+}
+.fc.gold .ovr { color: #2a1a00; }
+.fc.gold .fc-banner { color: #fff8dc; background: linear-gradient(180deg, #8a6210, #5c4008); }
+
+.fc.silver {
+  color: #16181c;
+  background:
+    linear-gradient(165deg, #f7f9fc 0%, #c5ccd4 16%, #eef1f4 32%, #8e98a3 50%, #d9dee4 68%, #6f7882 86%, #4a5158 100%);
+}
+.fc.silver .ovr { color: #1a1d22; }
+.fc.silver .fc-banner { color: #f7f9fc; background: linear-gradient(180deg, #4e565e, #2d3238); }
+
+.fc.bronze {
+  color: #1a1008;
+  background:
+    linear-gradient(165deg, #f0c894 0%, #c4844a 16%, #e4b07a 32%, #8d5524 50%, #d49a5e 68%, #6a3c16 86%, #3e220c 100%);
+}
+.fc.bronze .ovr { color: #2a1408; }
+.fc.bronze .fc-banner { color: #fff4e6; background: linear-gradient(180deg, #6a3c16, #3e220c); }
+
+.fc.club {
+  color: #f7f3e8;
+  background:
+    linear-gradient(165deg, #2c5a96 0%, #1a365d 22%, #3a6eae 40%, #0f2442 58%, #234e85 78%, #0b1a33 100%);
+}
+.fc.club .ovr { color: #f6e05e; }
+.fc.club .fc-banner { color: #fff8dc; background: linear-gradient(180deg, #163154, #0b1a33); }
+.fc.club .flag { background: rgba(255,255,255,0.16); }
+
+@media (hover: hover) and (pointer: fine) {
+  .fc-wrap:hover {
+    transform: perspective(900px) rotateY(-7deg) rotateX(5deg) translateY(-6px) scale(1.03);
+    filter: drop-shadow(0 16px 24px rgba(20, 16, 8, 0.45));
+    z-index: 3;
+  }
+  .fc-wrap:hover .fc-shine {
+    transform: translateX(130%);
+    transition: transform 0.7s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc-wrap, .fc-shine { transition: none !important; }
+  .fc-wrap:hover { transform: none; filter: drop-shadow(0 10px 18px rgba(20, 16, 8, 0.38)); }
+  .fc-shine { display: none; }
+}
+@media (max-width: 640px) {
+  .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 0.55rem; padding: 0.2rem 0; }
+  .fc { padding: 0.48rem 0.62rem 1.25rem; }
+  .fc .ovr { font-size: 1.85rem; }
+  .fc .pos { font-size: 0.64rem; }
+  .fc .alts { font-size: 0.42rem; }
+  .fc-crest { height: 5.1rem; }
+  .fc-num { font-size: 2rem; }
+  .fc-banner span { font-size: 0.8rem; }
+  .fc-stats { gap: 0.1rem 0.4rem; }
+  .fc-stats b { font-size: 0.95rem; }
+  .fc-stats span { font-size: 0.58rem; }
+  .fc-foot { font-size: 0.6rem; }
+  .fc-priority { font-size: 0.62rem; padding: 0.32rem 0.4rem; margin-top: 0.35rem; }
+  .fc-priority span.label { min-width: 3.7em; font-size: 0.54rem; }
+  .cards-window a { font-size: 0.74rem; padding: 0.3rem 0.65rem; }
+}
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 10pt 8pt; }
+  .fc-wrap { filter: drop-shadow(0 0 0 transparent); transform: none !important; }
+  .fc-shine { display: none; }
+  .fc { padding: 5pt 8pt 16pt; }
+  .fc .ovr { font-size: 18pt; }
+  .fc-crest { height: 52pt; }
+  .fc-banner span { font-size: 9pt; }
+  .fc-stats b { font-size: 10pt; }
+  .fc-priority {
+    font-size: 7.5pt;
+    padding: 4pt 5pt;
+    background: #f4f1ea !important;
+    border: 0.5pt solid #c8c0b0;
+  }
+  .fc-priority span.label { font-size: 6.5pt; min-width: 3.6em; }
+  .cards-window { margin-bottom: 8pt; }
+  .cards-window a { border: 0.5pt solid #999; }
+  .cards-window a.on { background: #1a365d !important; color: #fff !important; }
+}
+</style>
+<nav class="cards-window" aria-label="Card window"><a href="../player-cards-4333cd65c796/">Last 5 games</a><a href="../player-cards-season-cc2378ad382d/" class="on" aria-current="page">Full season</a></nav><aside class="callout"><p class="lead">How these ratings work</p><p>Every number is a squad percentile: it shows where a player’s tagged numbers sit within this team, scaled to 41–89, using all 11 games this season. It is not a comparison with other teams. Veo minutes are approximate, and cards under 60 minutes are marked Small sample. The full formula is at the bottom of this page.</p></aside><p class="caption">These cards use all 11 games this season (N. Nevada, COSC, Sta Clara, LAFC, Solar, Eastside, San Juan, MVLA, Newark, Folsom, Davis). Passing, dribbles, interceptions, duels and loose-ball recoveries come from 10 of these games (N. Nevada, COSC, Sta Clara, LAFC, Solar, San Juan, MVLA, Newark, Folsom, Davis); Eastside's table does not include those columns, so those rates use only the minutes from games that have them. Saves, used for the goalkeeper overall, come from 5 of these games (N. Nevada, COSC, Sta Clara, LAFC, Solar). Average speed, used in PAC, is a minutes-weighted figure from these games (N. Nevada, COSC, Sta Clara, LAFC, Solar, Eastside, San Juan, MVLA, Newark, Folsom, Davis). When a new game is added, these cards include it.</p><section class="block" id="cards"><h2>Squad cards</h2><p class="caption">Sorted by overall. For most players, position is the role most often listed in these games. For some players it is set to the team's current role, with occasional positions shown in smaller type; overall uses the main position's formula. PAC = season-best top speed, average speed and high-intensity runs; SHO = attempts and goals; PAS = completion, weighted turnovers (v2) and involvement; DRI = dribble attempts; DEF = interceptions, tackles, recoveries; PHY = duels and high-intensity runs. Goalkeeper cards replace SHO and DRI with SAV (saves per 70). Card colour follows the overall: gold 70+, silver 65–69, bronze below. A card with no overall uses the club colours and shows a dash. Each card has a priority note: the Veo metric that would raise overall the most if it reached the squad top quartile, with a second metric when that also raises overall.</p><div class="cards-grid"><div class="fc-wrap"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">80</div><div class="pos">ST</div><div class="alts">RB · RW</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#27 Bruce</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>84</b></div><div><span>PAS</span><b>66</b></div><div><span>DEF</span><b>53</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>81</b></div><div><span>DRI</span><b>79</b></div><div><span>PHY</span><b>83</b></div></div></div><div class="fc-foot"><span>11 games · ~444 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>passes/70 21.3 → 28.4 (OVR +1)</div></div></div><div class="fc-wrap"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">73</div><div class="pos">AM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#42 Giancarlo</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>44</b></div><div><span>PAS</span><b>77</b></div><div><span>DEF</span><b>76</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>88</b></div><div><span>DRI</span><b>73</b></div><div><span>PHY</span><b>66</b></div></div></div><div class="fc-foot"><span>11 games · ~406 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>HIR/70 3.4 → 12.8 (OVR +4)</div><div><span class="label">Then</span>dribbles/70 1.6 → 1.9 (OVR +1)</div></div></div><div class="fc-wrap"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">73</div><div class="pos">LB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#45 Joe</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>78</b></div><div><span>PAS</span><b>63</b></div><div><span>DEF</span><b>76</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>52</b></div><div><span>DRI</span><b>85</b></div><div><span>PHY</span><b>72</b></div></div></div><div class="fc-foot"><span>10 games · ~503 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>WT/70 (v2) 28.2 → 8.1 (OVR +4)</div><div><span class="label">Then</span>tackles/70 3.3 → 3.6 (OVR +1)</div></div></div><div class="fc-wrap"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">70</div><div class="pos">CB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#5 Brooks</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>62</b></div><div><span>PAS</span><b>64</b></div><div><span>DEF</span><b>83</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>46</b></div><div><span>DRI</span><b>57</b></div><div><span>PHY</span><b>57</b></div></div></div><div class="fc-foot"><span>11 games · ~634 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>duels/70 6.4 → 14.8 (OVR +3)</div><div><span class="label">Then</span>WT/70 (v2) 25.7 → 8.1 (OVR +3)</div></div></div><div class="fc-wrap"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">70</div><div class="pos">CM</div><div class="alts">ST</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#9 Santi</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>54</b></div><div><span>PAS</span><b>77</b></div><div><span>DEF</span><b>65</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>74</b></div><div><span>DRI</span><b>76</b></div><div><span>PHY</span><b>63</b></div></div></div><div class="fc-foot"><span>11 games · ~348 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>HIR/70 3.6 → 12.8 (OVR +4)</div><div><span class="label">Then</span>passes/70 22.6 → 28.4 (OVR +2)</div></div></div><div class="fc-wrap"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">70</div><div class="pos">DM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#10 Mateo</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>60</b></div><div><span>PAS</span><b>73</b></div><div><span>DEF</span><b>75</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>54</b></div><div><span>DRI</span><b>82</b></div><div><span>PHY</span><b>59</b></div></div></div><div class="fc-foot"><span>9 games · ~447 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>WT/70 (v2) 19.1 → 8.1 (OVR +3)</div><div><span class="label">Then</span>HIR/70 5.5 → 12.8 (OVR +2)</div></div></div><div class="fc-wrap"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">69</div><div class="pos">W</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#50 Bradley</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>79</b></div><div><span>PAS</span><b>65</b></div><div><span>DEF</span><b>76</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>63</b></div><div><span>DRI</span><b>63</b></div><div><span>PHY</span><b>79</b></div></div></div><div class="fc-foot"><span>11 games · ~401 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 1.1 → 1.9 (OVR +4)</div><div><span class="label">Then</span>HIR/70 10.1 → 12.8 (OVR +1)</div></div></div><div class="fc-wrap"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">68</div><div class="pos">RB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#14 Lucien</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>76</b></div><div><span>PAS</span><b>60</b></div><div><span>DEF</span><b>61</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>48</b></div><div><span>DRI</span><b>88</b></div><div><span>PHY</span><b>73</b></div></div></div><div class="fc-foot"><span>7 games · ~300 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>WT/70 (v2) 23.9 → 8.1 (OVR +3)</div><div><span class="label">Then</span>tackles/70 3.0 → 3.6 (OVR +2)</div></div></div><div class="fc-wrap"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">66</div><div class="pos">ST/W</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#28 Brody</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>80</b></div><div><span>PAS</span><b>58</b></div><div><span>DEF</span><b>63</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>63</b></div><div><span>DRI</span><b>42</b></div><div><span>PHY</span><b>83</b></div></div></div><div class="fc-foot"><span>11 games · ~254 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>attempts/70 0.3 → 1.6 (OVR +5)</div><div><span class="label">Then</span>dribbles/70 0.0 → 1.9 (OVR +5)</div></div></div><div class="fc-wrap"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">65</div><div class="pos">RW</div><div class="alts">LW</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#7 Michael</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>55</b></div><div><span>PAS</span><b>63</b></div><div><span>DEF</span><b>49</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>76</b></div><div><span>DRI</span><b>70</b></div><div><span>PHY</span><b>58</b></div></div></div><div class="fc-foot"><span>11 games · ~477 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 1.6 → 1.9 (OVR +2)</div><div><span class="label">Then</span>HIR/70 6.8 → 12.8 (OVR +2)</div></div></div><div class="fc-wrap"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">65</div><div class="pos">—</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#16 Joshua</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>70</b></div><div><span>PAS</span><b>64</b></div><div><span>DEF</span><b>65</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>79</b></div><div><span>DRI</span><b>54</b></div><div><span>PHY</span><b>59</b></div></div></div><div class="fc-foot"><span>2 games · ~96 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 0.7 → 1.9 (OVR +4)</div><div><span class="label">Then</span>duels/70 5.1 → 14.8 (OVR +4)</div></div></div><div class="fc-wrap"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">64</div><div class="pos">CM</div><div class="alts">ST</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#99 Miller</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>61</b></div><div><span>PAS</span><b>78</b></div><div><span>DEF</span><b>48</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>68</b></div><div><span>DRI</span><b>45</b></div><div><span>PHY</span><b>60</b></div></div></div><div class="fc-foot"><span>11 games · ~406 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 0.5 → 1.9 (OVR +4)</div><div><span class="label">Then</span>HIR/70 5.0 → 12.8 (OVR +3)</div></div></div><div class="fc-wrap"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">61</div><div class="pos">CDM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#17 Graham</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>51</b></div><div><span>PAS</span><b>63</b></div><div><span>DEF</span><b>68</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>57</b></div><div><span>DRI</span><b>67</b></div><div><span>PHY</span><b>52</b></div></div></div><div class="fc-foot"><span>11 games · ~340 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>HIR/70 3.7 → 12.8 (OVR +4)</div><div><span class="label">Then</span>WT/70 (v2) 17.9 → 8.1 (OVR +3)</div></div></div><div class="fc-wrap"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">60</div><div class="pos">CDM</div><div class="alts">ST</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#54 Rylen</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>71</b></div><div><span>PAS</span><b>59</b></div><div><span>DEF</span><b>49</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>71</b></div><div><span>DRI</span><b>60</b></div><div><span>PHY</span><b>75</b></div></div></div><div class="fc-foot"><span>11 games · ~526 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>pass completion 36% → 52% (OVR +5)</div><div><span class="label">Then</span>interceptions/70 1.6 → 3.5 (OVR +4)</div></div></div><div class="fc-wrap"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">59</div><div class="pos">CDM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#20 Deacon</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>54</b></div><div><span>PAS</span><b>57</b></div><div><span>DEF</span><b>73</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>67</b></div><div><span>DRI</span><b>48</b></div><div><span>PHY</span><b>47</b></div></div></div><div class="fc-foot"><span>9 games · ~381 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>pass completion 45% → 52% (OVR +4)</div><div><span class="label">Then</span>WT/70 (v2) 19.7 → 8.1 (OVR +4)</div></div></div><div class="fc-wrap"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">58</div><div class="pos">GK</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#0 Julian</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>40</b></div><div><span>PAS</span><b>72</b></div><div><span>DEF</span><b>59</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SAV</span><b>59</b></div><div><span>PHY</span><b>40</b></div><div><span></span><b></b></div></div></div><div class="fc-foot"><span>10 games · ~597 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>saves/70 2.6 → 7.0 (OVR +12)</div><div><span class="label">Then</span>HIR/70 0.1 → 12.8 (OVR +3)</div></div></div><div class="fc-wrap"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">57</div><div class="pos">CB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#23 Harry</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>61</b></div><div><span>PAS</span><b>52</b></div><div><span>DEF</span><b>60</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>51</b></div><div><span>DRI</span><b>51</b></div><div><span>PHY</span><b>54</b></div></div></div><div class="fc-foot"><span>9 games · ~507 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>tackles/70 2.9 → 3.6 (OVR +4)</div><div><span class="label">Then</span>duels/70 5.9 → 14.8 (OVR +4)</div></div></div></div></section><section class="block" id="table"><h2>Card numbers</h2><p class="swipe-hint">Swipe or scroll sideways to see every column.</p><div class="table-scroll"><table><thead><tr><th class="">Player</th><th class="">Role</th><th class="num">G</th><th class="num">Min</th><th class="num">OVR</th><th class="num">PAC</th><th class="num">SHO</th><th class="num">PAS</th><th class="num">DRI</th><th class="num">DEF</th><th class="num">PHY</th><th class="num">SAV</th><th class="">Priority</th></tr></thead><tbody><tr><td class="">#27 Bruce</td><td class="">ST (RB, RW)</td><td class="num">11</td><td class="num">444</td><td class="num">80</td><td class="num">84</td><td class="num">81</td><td class="num">66</td><td class="num">79</td><td class="num">53</td><td class="num">83</td><td class="num">—</td><td class="">passes/70 21.3 → 28.4 (OVR +1)</td></tr><tr><td class="">#42 Giancarlo</td><td class="">AM</td><td class="num">11</td><td class="num">406</td><td class="num">73</td><td class="num">44</td><td class="num">88</td><td class="num">77</td><td class="num">73</td><td class="num">76</td><td class="num">66</td><td class="num">—</td><td class="">HIR/70 3.4 → 12.8 (OVR +4); dribbles/70 1.6 → 1.9 (OVR +1)</td></tr><tr><td class="">#45 Joe</td><td class="">LB</td><td class="num">10</td><td class="num">503</td><td class="num">73</td><td class="num">78</td><td class="num">52</td><td class="num">63</td><td class="num">85</td><td class="num">76</td><td class="num">72</td><td class="num">—</td><td class="">WT/70 (v2) 28.2 → 8.1 (OVR +4); tackles/70 3.3 → 3.6 (OVR +1)</td></tr><tr><td class="">#5 Brooks</td><td class="">CB</td><td class="num">11</td><td class="num">634</td><td class="num">70</td><td class="num">62</td><td class="num">46</td><td class="num">64</td><td class="num">57</td><td class="num">83</td><td class="num">57</td><td class="num">—</td><td class="">duels/70 6.4 → 14.8 (OVR +3); WT/70 (v2) 25.7 → 8.1 (OVR +3)</td></tr><tr><td class="">#9 Santi</td><td class="">CM (ST)</td><td class="num">11</td><td class="num">348</td><td class="num">70</td><td class="num">54</td><td class="num">74</td><td class="num">77</td><td class="num">76</td><td class="num">65</td><td class="num">63</td><td class="num">—</td><td class="">HIR/70 3.6 → 12.8 (OVR +4); passes/70 22.6 → 28.4 (OVR +2)</td></tr><tr><td class="">#10 Mateo</td><td class="">DM</td><td class="num">9</td><td class="num">447</td><td class="num">70</td><td class="num">60</td><td class="num">54</td><td class="num">73</td><td class="num">82</td><td class="num">75</td><td class="num">59</td><td class="num">—</td><td class="">WT/70 (v2) 19.1 → 8.1 (OVR +3); HIR/70 5.5 → 12.8 (OVR +2)</td></tr><tr><td class="">#50 Bradley</td><td class="">W</td><td class="num">11</td><td class="num">401</td><td class="num">69</td><td class="num">79</td><td class="num">63</td><td class="num">65</td><td class="num">63</td><td class="num">76</td><td class="num">79</td><td class="num">—</td><td class="">dribbles/70 1.1 → 1.9 (OVR +4); HIR/70 10.1 → 12.8 (OVR +1)</td></tr><tr><td class="">#14 Lucien</td><td class="">RB</td><td class="num">7</td><td class="num">300</td><td class="num">68</td><td class="num">76</td><td class="num">48</td><td class="num">60</td><td class="num">88</td><td class="num">61</td><td class="num">73</td><td class="num">—</td><td class="">WT/70 (v2) 23.9 → 8.1 (OVR +3); tackles/70 3.0 → 3.6 (OVR +2)</td></tr><tr><td class="">#28 Brody</td><td class="">ST/W</td><td class="num">11</td><td class="num">254</td><td class="num">66</td><td class="num">80</td><td class="num">63</td><td class="num">58</td><td class="num">42</td><td class="num">63</td><td class="num">83</td><td class="num">—</td><td class="">attempts/70 0.3 → 1.6 (OVR +5); dribbles/70 0.0 → 1.9 (OVR +5)</td></tr><tr><td class="">#7 Michael</td><td class="">RW (LW)</td><td class="num">11</td><td class="num">477</td><td class="num">65</td><td class="num">55</td><td class="num">76</td><td class="num">63</td><td class="num">70</td><td class="num">49</td><td class="num">58</td><td class="num">—</td><td class="">dribbles/70 1.6 → 1.9 (OVR +2); HIR/70 6.8 → 12.8 (OVR +2)</td></tr><tr><td class="">#16 Joshua</td><td class="">—</td><td class="num">2</td><td class="num">96</td><td class="num">65</td><td class="num">70</td><td class="num">79</td><td class="num">64</td><td class="num">54</td><td class="num">65</td><td class="num">59</td><td class="num">—</td><td class="">dribbles/70 0.7 → 1.9 (OVR +4); duels/70 5.1 → 14.8 (OVR +4)</td></tr><tr><td class="">#99 Miller</td><td class="">CM (ST)</td><td class="num">11</td><td class="num">406</td><td class="num">64</td><td class="num">61</td><td class="num">68</td><td class="num">78</td><td class="num">45</td><td class="num">48</td><td class="num">60</td><td class="num">—</td><td class="">dribbles/70 0.5 → 1.9 (OVR +4); HIR/70 5.0 → 12.8 (OVR +3)</td></tr><tr><td class="">#17 Graham</td><td class="">CDM</td><td class="num">11</td><td class="num">340</td><td class="num">61</td><td class="num">51</td><td class="num">57</td><td class="num">63</td><td class="num">67</td><td class="num">68</td><td class="num">52</td><td class="num">—</td><td class="">HIR/70 3.7 → 12.8 (OVR +4); WT/70 (v2) 17.9 → 8.1 (OVR +3)</td></tr><tr><td class="">#54 Rylen</td><td class="">CDM (ST)</td><td class="num">11</td><td class="num">526</td><td class="num">60</td><td class="num">71</td><td class="num">71</td><td class="num">59</td><td class="num">60</td><td class="num">49</td><td class="num">75</td><td class="num">—</td><td class="">pass completion 36% → 52% (OVR +5); interceptions/70 1.6 → 3.5 (OVR +4)</td></tr><tr><td class="">#20 Deacon</td><td class="">CDM</td><td class="num">9</td><td class="num">381</td><td class="num">59</td><td class="num">54</td><td class="num">67</td><td class="num">57</td><td class="num">48</td><td class="num">73</td><td class="num">47</td><td class="num">—</td><td class="">pass completion 45% → 52% (OVR +4); WT/70 (v2) 19.7 → 8.1 (OVR +4)</td></tr><tr><td class="">#0 Julian</td><td class="">GK</td><td class="num">10</td><td class="num">597</td><td class="num">58</td><td class="num">40</td><td class="num">—</td><td class="num">72</td><td class="num">—</td><td class="num">59</td><td class="num">40</td><td class="num">59</td><td class="">saves/70 2.6 → 7.0 (OVR +12); HIR/70 0.1 → 12.8 (OVR +3)</td></tr><tr><td class="">#23 Harry</td><td class="">CB</td><td class="num">9</td><td class="num">507</td><td class="num">57</td><td class="num">61</td><td class="num">51</td><td class="num">52</td><td class="num">51</td><td class="num">60</td><td class="num">54</td><td class="num">—</td><td class="">tackles/70 2.9 → 3.6 (OVR +4); duels/70 5.9 → 14.8 (OVR +4)</td></tr></tbody></table></div></section><section class="block" id="formula"><h2>Formula</h2><ul class='bullets'><li>Reference pool: outfield players with at least 60 capped minutes (16 players). Each input becomes a squad percentile (ties count half).</li><li>Face stat = 40 + 50 × weighted percentile.</li><li>PAC = 30% season-best top speed + 30% average speed + 40% high-intensity runs/70; SHO = 50% attempts/70 + 50% goals/70; PAS = 40% pass % + 40% weighted turnovers/70 (v2) (lower is better) + 20% passes/70; DRI = 100% dribbles/70; DEF = 40% interceptions/70 + 40% tackles/70 + 20% loose-ball recoveries/70; PHY = 60% duels/70 + 40% high-intensity runs/70. Per-70 inputs use minutes capped at 70 per game, except that PAC&#x27;s top-speed input is each player&#x27;s best tagged figure for the whole season. PAC&#x27;s average-speed input is a minutes-weighted Veo Average speed from the same games as the other card stats (only games that recorded that column). Weighted turnovers v2 use the zone-risk weights on the Pro-Style Analytics page.</li><li>Overall = role-weighted average of the face stats (CB: DEF 40, PAS 25, PHY 20, PAC 15; FB: DEF 30, PAS 25, PAC 20, PHY 15, DRI 10; DM: PAS 35, DEF 30, PHY 20, PAC 10, DRI 5; CM / hybrid: PAS 35, DEF 15, PHY 15, SHO 15, DRI 10, PAC 10; AM: PAS 30, SHO 25, DRI 20, PAC 15, PHY 10; W: PAC 25, DRI 25, SHO 20, PAS 20, PHY 10; ST: SHO 40, PAC 20, PHY 15, DRI 15, PAS 10). When a current team role is set on the card, that main position&#x27;s weights are used. Priority (on each card): the Veo input that would raise overall the most under the main position&#x27;s weights if it reached the squad top quartile in the reference pool (bottom quartile for weighted turnovers, where lower is better); the estimate is the card formula rerun with only that input changed, and a second input is listed when it also raises overall. Inputs Veo does not record are left out. When a goalkeeper has an overall, saves/70 is compared with the documented reference of 7 per 70, not a squad quartile.</li><li>Goalkeepers: PAC, PAS, DEF and PHY are squad percentiles against the same outfield pool. SAV is saves/70 mapped to the same 40–90 scale (0 saves/70 = 40, 7 or more = 90), because a one-keeper percentile would always sit at 65. Overall = SAV 40, PAS 20, DEF 20, PAC 10, PHY 10. The save rate uses only games whose table includes a Saves column. Jerseys Veo tagged by mistake and games missed through injury are left out.</li></ul></section><section class="block" id="weights"><h2>How our weights compare with EA SPORTS FC / FIFA cards</h2><p>Our cards use the same six face-stat labels as EA SPORTS FC (previously FIFA) so the layout is familiar, but the numbers are squad percentiles from Veo, not EA ratings. The table below shows the inputs and weights used here next to EA's official sub-attribute weights for each face stat. UEFA is listed separately because it does not publish card ratings.</p><div class="table-scroll"><table class="keep"><thead><tr><th class="">Face stat</th><th class="">Our inputs and weights</th><th class="">EA SPORTS FC official sub-attribute weights</th></tr></thead><tbody><tr><td class="">PAC</td><td class="">30% season-best top speed; 30% average speed; 40% high-intensity runs/70</td><td class="">55% Sprint Speed; 45% Acceleration</td></tr><tr><td class="">SHO</td><td class="">50% attempts/70; 50% goals/70</td><td class="">45% Finishing; 20% Shot Power; 20% Long Shots; 5% Positioning; 5% Volleys; 5% Penalties</td></tr><tr><td class="">PAS</td><td class="">40% pass %; 40% weighted turnovers/70 (v2) (lower is better); 20% passes/70</td><td class="">35% Short Passing; 20% Vision; 20% Crossing; 15% Long Passing; 5% FK Accuracy; 5% Curve</td></tr><tr><td class="">DRI</td><td class="">100% dribbles/70</td><td class="">50% Dribbling; 35% Ball Control; 10% Agility; 5% Balance; 0% Reactions; 0% Composure</td></tr><tr><td class="">DEF</td><td class="">40% interceptions/70; 40% tackles/70; 20% loose-ball recoveries/70</td><td class="">30% Defensive Awareness; 30% Standing Tackle; 20% Interceptions; 10% Heading Accuracy; 10% Sliding Tackle</td></tr><tr><td class="">PHY</td><td class="">60% duels/70; 40% high-intensity runs/70</td><td class="">50% Strength; 25% Stamina; 20% Aggression; 5% Jumping</td></tr></tbody></table></div><p>One correction worth spelling out: in EA's official DRI formula, Reactions and Composure are both 0%. They appear on the player bio, but they do not enter the DRI face stat. DRI is 50% Dribbling, 35% Ball Control, 10% Agility and 5% Balance.</p><h3 class="sub">Overall (position weights)</h3><p>Our overall is a weighted mix of the six face stats, using the player's main position:</p><div class="table-scroll"><table class="keep"><thead><tr><th class="">Our position</th><th class="">Face-stat weights</th></tr></thead><tbody><tr><td class="">CB</td><td class="">PAC 15, PAS 25, DEF 40, PHY 20</td></tr><tr><td class="">FB</td><td class="">PAC 20, PAS 25, DRI 10, DEF 30, PHY 15</td></tr><tr><td class="">DM</td><td class="">PAC 10, PAS 35, DRI 5, DEF 30, PHY 20</td></tr><tr><td class="">CM</td><td class="">PAC 10, SHO 15, PAS 35, DRI 10, DEF 15, PHY 15</td></tr><tr><td class="">AM</td><td class="">PAC 15, SHO 25, PAS 30, DRI 20, PHY 10</td></tr><tr><td class="">W</td><td class="">PAC 25, SHO 20, PAS 20, DRI 25, PHY 10</td></tr><tr><td class="">ST</td><td class="">PAC 20, SHO 40, PAS 10, DRI 15, PHY 15</td></tr><tr><td class="">Hybrid</td><td class="">Same as CM</td></tr></tbody></table></div><p>EA's overall is not a mix of the six face stats the way ours is. It is a position-specific weighted average of the individual attributes (finishing, short passing, defensive awareness, and so on). EA has not published official overall-position weights for FC 25. The last detailed public breakdown is from FIFA 19. In that structure, strikers lean on finishing and attacking positioning, centre backs on tackling and defensive awareness, and midfielders on passing and vision.</p><h3 class="sub">UEFA</h3><p>UEFA does not publish FIFA-style card ratings. Its technical observers and performance-analysis unit use match video plus physical and technical metrics — for example passes, shots, crosses, distances covered, line-breaking passes and pressing — in competition technical reports, not a 40–99 overall.</p><h3 class="sub">Why ours differ</h3><p>The difference is the data. Veo does not export EA's individual attributes (acceleration versus sprint speed, finishing versus shot power, short passing versus vision, and the rest), and it has no heading, stamina or strength ratings. The weights here map the closest available Veo columns onto the same six face-stat categories so players can be compared within this squad.</p><h3 class="sub">Sources</h3><ul class='bullets'><li>FIFAUTeam, FC 25 Attributes Guide, based on information Electronic Arts provided to its data reviewers (fifauteam.com/fc-25-attributes).</li><li>SuperCoinsy, EA FC 25 player attributes, which publishes the same official face-stat split, including Heading Accuracy at 10% of DEF (supercoinsy.com/article/ea-sports-fc-25-player-attributes). The current FIFAUTeam guide lists Heading Accuracy as an attribute but does not include a Heading Accuracy section with a weight line.</li><li>FIFAUTeam, Player Ratings Guide for FIFA 19, for the last detailed public position-overall attribute weights (fifauteam.com/player-ratings-guide-fifa-19/). EA has not published an official FC 25 update of those overall-position weights.</li><li>UEFA, technical observer and performance-analysis notes for the Champions League and club-competition technical reports (uefa.com).</li></ul></section>
+<footer class="page-foot">Shareable player cards. Players are listed by jersey number and first name. Built from Veo player stats; minutes are approximate.</footer>
+</div>
+<script>
+function requestDelete(btn) {
+  var title = btn.getAttribute("data-title");
+  var url = btn.getAttribute("data-url");
+  if (confirm("Request deletion of " + title + "? This opens a GitHub issue; the report is removed after review.")) {
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+}
+</script>
+</body>
+</html>
