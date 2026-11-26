@@ -11,6 +11,7 @@ export const PROTECTED_SLUGS = new Set([
   "player-cards-4333cd65c796",
   "player-cards-season-cc2378ad382d",
   "player-cards-latest-d2130e467695",
+  "player-cards-newark-7cee276873b1",
   "pro-analytics-6feface8946d",
 ]);
 

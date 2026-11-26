@@ -19,6 +19,12 @@
       "description": "FC-style cards from only the most recent game (currently Davis, Nov 15), with a priority note on each card. PAC uses that game's top speed. Players under 20 minutes are listed without an overall. Formula and coverage are on the page."
     },
     {
+      "slug": "player-cards-newark-7cee276873b1",
+      "title": "Player Cards (Newark)",
+      "date": "2026-11-26",
+      "description": "FC-style cards from the Newark FC game only (Nov 1, 2026, 1\u20131), with a priority note on each card. PAC uses that game's top speed. Players under 20 minutes are listed without an overall. This page stays on Newark when a newer match is added. Formula and coverage are on the page."
+    },
+    {
       "slug": "player-cards-4333cd65c796",
       "title": "Player Cards (Last 5 Games)",
       "date": "2026-11-25",
