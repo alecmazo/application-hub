@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Player Cards (Newark)</title>
+<style>
+:root {
+  --navy: #1a365d;
+  --text: #1a202c;
+  --muted: #4a5568;
+  --border: #e2e8f0;
+  --hair: #edf2f7;
+  --bg: #ffffff;
+  --page: #f7fafc;
+  --info-bg: #ebf8ff;
+  --info-border: #2b6cb0;
+  --success: #276749;
+  --success-bg: #c6f6d5;
+  --warning: #975a16;
+  --warning-bg: #fefcbf;
+  --danger: #c53030;
+  --danger-bg: #fed7d7;
+  --us: #2b6cb0;
+  --opp: #c05621;
+  --ref: #718096;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--page);
+  font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  background: var(--bg);
+}
+header.hero {
+  border-bottom: 3px solid var(--navy);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+header.hero p.kicker {
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+header.hero h1 {
+  margin: 0 0 0.6rem;
+  font-size: 1.55rem;
+  line-height: 1.25;
+  color: var(--navy);
+}
+header.hero .summary { margin: 0; color: var(--muted); }
+.callout {
+  background: var(--info-bg);
+  border-left: 4px solid var(--info-border);
+  padding: 0.85rem 1rem;
+  margin: 1rem 0 1.25rem;
+  border-radius: 0 6px 6px 0;
+}
+.callout .lead { font-weight: 700; color: var(--navy); margin: 0 0 0.25rem; }
+.callout p { margin: 0; }
+nav.toc {
+  background: var(--page);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem 0.7rem;
+  margin: 0 0 1.5rem;
+}
+nav.toc h2 { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--navy); }
+nav.toc ol {
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  columns: 1;
+}
+nav.toc a { color: var(--navy); text-decoration: none; }
+nav.toc a:hover { text-decoration: underline; }
+section.block { margin: 1.75rem 0 2rem; }
+section.block > h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.25rem;
+  color: var(--navy);
+  break-after: avoid;
+}
+.caption { margin: 0 0 0.85rem; color: var(--muted); font-size: 0.92rem; }
+p { margin: 0.7rem 0; }
+.props {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: 0 0 1rem;
+}
+.props div { border-bottom: 1px solid var(--hair); padding: 0.3rem 0; }
+.props dt { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 700; }
+.props dd { margin: 0.1rem 0 0; }
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin: 0 0 1rem;
+}
+.metric {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  background: #fff;
+}
+.metric.warning { border-color: #ecc94b; background: #fffff0; }
+.metric.success { border-color: #9ae6b4; background: #f0fff4; }
+.metric .val { font-size: 1.45rem; font-weight: 800; color: var(--navy); line-height: 1.1; }
+.metric.warning .val { color: var(--warning); }
+.metric.success .val { color: var(--success); }
+.metric .lbl { font-weight: 700; margin-top: 0.2rem; }
+.metric .det { color: var(--muted); font-size: 0.88rem; }
+.rows { display: flex; flex-direction: column; gap: 0.7rem; }
+.rowcard {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  break-inside: avoid;
+}
+.rowcard h3 { margin: 0 0 0.3rem; font-size: 1.02rem; color: var(--navy); }
+.rowcard p { margin: 0; }
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0.6rem 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.swipe-hint { display: none; font-size: 0.8rem; color: var(--muted); margin: 0 0 0.3rem; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.86rem;
+  background: #fff;
+}
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.38rem 0.45rem;
+  vertical-align: top;
+  text-align: left;
+}
+th { background: #edf2f7; color: var(--navy); font-weight: 700; white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.nowrap { white-space: nowrap; }
+.tone-success { color: var(--success); font-weight: 700; }
+.tone-warning { color: var(--warning); font-weight: 700; }
+.tone-danger { color: var(--danger); font-weight: 700; }
+.chart {
+  margin: 0.8rem 0 1.1rem;
+  break-inside: avoid;
+  background: #fff;
+}
+.chart svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.pies {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0.8rem 0 1rem;
+}
+.steps { counter-reset: step; margin: 0.6rem 0 1rem; padding: 0; list-style: none; }
+.steps li {
+  position: relative;
+  padding: 0.6rem 0.6rem 0.6rem 2.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 0 0 0.55rem;
+  break-inside: avoid;
+}
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0.6rem; top: 0.65rem;
+  width: 1.5rem; height: 1.5rem;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps h3 { margin: 0 0 0.25rem; font-size: 1.02rem; color: var(--navy); }
+.steps p { margin: 0; }
+ul.bullets { margin: 0.4rem 0 1rem; padding-left: 1.2rem; }
+ul.bullets li { margin: 0.3rem 0; }
+.sources { margin-top: 2rem; padding-top: 0.8rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+footer.page-foot { margin-top: 1.5rem; color: var(--muted); font-size: 0.8rem; }
+@media (min-width: 640px) {
+  header.hero h1 { font-size: 1.85rem; }
+  .props { grid-template-columns: 1fr 1fr; }
+  .metrics { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  nav.toc ol { columns: 2; }
+  .pies { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 639px) {
+  .swipe-hint { display: block; }
+  .wrap { padding: 1rem 0.75rem 2.5rem; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 0.32rem 0.35rem; }
+}
+.report-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: -0.25rem 0 1rem;
+  padding: 0.65rem 0 0.75rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+}
+.report-chrome a.back {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.report-chrome a.back:hover { text-decoration: underline; }
+button.btn-print {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: #fff;
+  font: 700 0.9rem/1 inherit;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button.btn-print:hover { background: #163154; }
+button.btn-print:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+.chrome-actions { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+button.btn-delete {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.8rem/1 inherit;
+  padding: 0.45rem 0.4rem;
+  min-height: 44px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+button.btn-delete:hover { color: var(--danger); background: var(--danger-bg); }
+button.btn-delete:focus-visible { outline: 2px solid var(--us); outline-offset: 2px; }
+.delete-status {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  .report-chrome, .no-print, nav.toc, .btn-delete, .chrome-actions, .card-actions { display: none !important; }
+  body { background: #fff; font-size: 9.5pt; line-height: 1.4; }
+  .wrap { max-width: none; padding: 0; }
+  .swipe-hint { display: none !important; }
+  .table-scroll { overflow: visible; border: none; }
+  a { color: inherit; text-decoration: none; }
+  header.hero h1 { font-size: 16.5pt; }
+  section.block { margin: 12pt 0 14pt; }
+  section.block > h2 { font-size: 13pt; break-after: avoid; page-break-after: avoid; }
+  .metric .val { font-size: 14pt; }
+  .callout, .rowcard, .steps li, .metric, .chart, .chart svg, .pies, .qgrid, .qcard { break-inside: avoid; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, th { break-inside: avoid; page-break-inside: avoid; }
+  nav.toc { break-after: avoid; }
+  table.keep { break-inside: avoid; page-break-inside: avoid; }
+  .sources, footer.page-foot { break-before: avoid; page-break-before: avoid; margin-top: 0.5rem; }
+}
+@page {
+  size: letter;
+  margin: 0.5in 0.5in 0.6in;
+  @bottom-center {
+    content: counter(page);
+    font-size: 8pt;
+    color: #718096;
+  }
+}
+
+.qgrid { display:grid; grid-template-columns:1fr; gap:0.65rem; margin:0.6rem 0 1rem; }
+.qcard { border:1px solid var(--border); border-radius:8px; padding:0.7rem 0.85rem; }
+.qcard.start { border-left:4px solid var(--us); }
+.qcard.rot { border-left:4px solid var(--ref); }
+.qcard h3 { margin:0 0 0.2rem; font-size:1rem; color:var(--navy); }
+.qcard .big { font-size:1.3rem; font-weight:800; color:var(--navy); }
+.qcard p { margin:0.25rem 0 0; font-size:0.9rem; }
+.tag { display:inline-block; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em;
+       padding:0.05rem 0.4rem; border-radius:4px; margin-left:0.3rem; vertical-align:middle; }
+.tag.exact { background:var(--success-bg); color:var(--success); }
+.tag.inferred { background:var(--warning-bg); color:var(--warning); }
+.tag.staff { background:var(--info-bg); color:var(--info-border); }
+h3.sub { margin:1.1rem 0 0.35rem; font-size:1.02rem; color:var(--navy); }
+@media (min-width:640px){ .qgrid { grid-template-columns:1fr 1fr; } }
+
+</style>
+</head>
+<body class="game-ui">
+<div class="wrap">
+<div class="report-chrome no-print">
+  <a class="back" href="../">All reports</a>
+  <div class="chrome-actions">
+    <button type="button" class="btn-print" onclick="window.print()">Print / Save PDF</button>
+    
+  </div>
+</div>
+<header class="hero hud"><img class="hud-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/><div class="hud-copy"><p class="kicker">Marin FC B2013-14 Blue · Squad</p><h1>Player Cards (Newark)</h1><p class="hud-line">Newark FC · Nov 1, 2026 · D 1–1</p><p class="summary">FC-style player cards for every rostered player with Veo player data in the Newark game, vs Newark FC on Nov 1, 2026. Ratings are squad percentiles from tagged Veo numbers in that match. This page stays on this game when a newer match is added.</p></div></header>
+
+<style>
+.cards-window {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1rem;
+}
+.cards-window a {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid #c9c2b3;
+  background: #fff;
+  color: #1a365d;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.cards-window a.on {
+  background: #1a365d;
+  color: #fff;
+  border-color: #1a365d;
+}
+.cards-window a:focus-visible { outline: 2px solid #1a365d; outline-offset: 2px; }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem 1rem;
+  margin: 1rem 0 1.4rem;
+  padding: 0.25rem 0.1rem 0.5rem;
+}
+.fc-wrap {
+  filter: drop-shadow(0 10px 18px rgba(20, 16, 8, 0.38));
+  transition: transform 0.35s ease, filter 0.35s ease;
+  transform-origin: center center;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.fc {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  padding: 0.65rem 0.85rem 1.55rem;
+  display: flex;
+  flex-direction: column;
+  clip-path: polygon(5% 0, 95% 0, 100% 5%, 100% 86%, 90% 95.5%, 50% 100%, 10% 95.5%, 0 86%, 0 5%);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color: #1a1408;
+}
+.fc-foil, .fc-shine { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.fc-foil {
+  background:
+    repeating-linear-gradient(125deg, rgba(255,255,255,0.14) 0 1px, rgba(255,255,255,0) 1px 7px),
+    radial-gradient(120% 70% at 18% 0%, rgba(255,255,255,0.35), transparent 55%),
+    radial-gradient(80% 50% at 100% 100%, rgba(0,0,0,0.18), transparent 60%);
+  mix-blend-mode: soft-light;
+}
+.fc-shine {
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.55) 50%, transparent 65%);
+  transform: translateX(-130%);
+  opacity: 0.7;
+  mix-blend-mode: overlay;
+}
+.fc .fc-top, .fc .fc-banner, .fc .fc-stats, .fc .fc-foot { position: relative; z-index: 2; }
+.fc-top { display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.35rem; align-items: center; flex: 0 0 auto; }
+.fc-rating { padding-top: 0.1rem; }
+.fc .ovr {
+  font-size: 2.55rem;
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.fc .pos {
+  margin-top: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+}
+.fc .alts {
+  margin-top: 0.08rem;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+  opacity: 0.78;
+}
+.fc-hero { position: relative; display: flex; justify-content: center; align-items: center; min-height: 0; }
+.fc-num {
+  position: absolute;
+  right: 0; top: 12%;
+  font-size: 2.5rem; font-weight: 900; line-height: 1;
+  opacity: 0.07; letter-spacing: -0.06em;
+  pointer-events: none; user-select: none;
+}
+.fc-crest {
+  width: auto; height: 7.1rem; max-width: 86%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.28));
+}
+.fc-banner {
+  z-index: 2;
+  margin: 0.4rem -0.2rem 0.4rem;
+  padding: 0.34rem 0.5rem;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.32));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 0 rgba(0,0,0,0.15);
+}
+.fc-banner span {
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fc-stats {
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  gap: 0.12rem 0.7rem;
+  align-items: stretch;
+  font-variant-numeric: tabular-nums;
+  padding: 0 0.1rem 0.1rem;
+}
+.fc-stats .rule { background: currentColor; opacity: 0.4; border-radius: 1px; }
+.fc-stats .col { display: flex; flex-direction: column; gap: 0.14rem; }
+.fc-stats .col.left div { display: flex; align-items: baseline; justify-content: flex-start; gap: 0.45rem; }
+.fc-stats .col.right div { display: flex; align-items: baseline; justify-content: flex-end; gap: 0.45rem; flex-direction: row-reverse; }
+.fc-stats span { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; opacity: 0.8; }
+.fc-stats b { font-size: 1.12rem; font-weight: 900; letter-spacing: -0.02em; }
+.fc-foot {
+  margin-top: 0.4rem;
+  padding: 0 0.05rem 0.1rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  opacity: 0.82;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  line-height: 1.25;
+}
+.fc-priority {
+  margin: 0.45rem 0.1rem 0.1rem;
+  padding: 0.4rem 0.5rem;
+  background: #f4f1ea;
+  border: 1px solid #d9d2c4;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #1a1d22;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.fc-priority div + div { margin-top: 0.18rem; }
+.fc-priority span.label {
+  display: inline-block;
+  min-width: 4.4em;
+  margin-right: 0.28rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+.fc .flag { background: rgba(0,0,0,0.18); border-radius: 3px; padding: 0 0.3rem; font-weight: 700; }
+
+/* Metallic tiers */
+.fc.gold {
+  color: #1c1406;
+  background:
+    linear-gradient(165deg, #fff1b0 0%, #e8c354 16%, #f7e392 32%, #c8961e 50%, #f3d56a 68%, #a67c12 86%, #7a5a0c 100%);
+}
+.fc.gold .ovr { color: #2a1a00; }
+.fc.gold .fc-banner { color: #fff8dc; background: linear-gradient(180deg, #8a6210, #5c4008); }
+
+.fc.silver {
+  color: #16181c;
+  background:
+    linear-gradient(165deg, #f7f9fc 0%, #c5ccd4 16%, #eef1f4 32%, #8e98a3 50%, #d9dee4 68%, #6f7882 86%, #4a5158 100%);
+}
+.fc.silver .ovr { color: #1a1d22; }
+.fc.silver .fc-banner { color: #f7f9fc; background: linear-gradient(180deg, #4e565e, #2d3238); }
+
+.fc.bronze {
+  color: #1a1008;
+  background:
+    linear-gradient(165deg, #f0c894 0%, #c4844a 16%, #e4b07a 32%, #8d5524 50%, #d49a5e 68%, #6a3c16 86%, #3e220c 100%);
+}
+.fc.bronze .ovr { color: #2a1408; }
+.fc.bronze .fc-banner { color: #fff4e6; background: linear-gradient(180deg, #6a3c16, #3e220c); }
+
+.fc.club {
+  color: #f7f3e8;
+  background:
+    linear-gradient(165deg, #2c5a96 0%, #1a365d 22%, #3a6eae 40%, #0f2442 58%, #234e85 78%, #0b1a33 100%);
+}
+.fc.club .ovr { color: #f6e05e; }
+.fc.club .fc-banner { color: #fff8dc; background: linear-gradient(180deg, #163154, #0b1a33); }
+.fc.club .flag { background: rgba(255,255,255,0.16); }
+
+@media (hover: hover) and (pointer: fine) {
+  .fc-wrap:hover {
+    transform: perspective(900px) rotateY(-7deg) rotateX(5deg) translateY(-6px) scale(1.03);
+    filter: drop-shadow(0 16px 24px rgba(20, 16, 8, 0.45));
+    z-index: 3;
+  }
+  .fc-wrap:hover .fc-shine {
+    transform: translateX(130%);
+    transition: transform 0.7s ease;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc-wrap, .fc-shine { transition: none !important; }
+  .fc-wrap:hover { transform: none; filter: drop-shadow(0 10px 18px rgba(20, 16, 8, 0.38)); }
+  .fc-shine { display: none; }
+}
+@media (max-width: 640px) {
+  .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 0.55rem; padding: 0.2rem 0; }
+  .fc { padding: 0.48rem 0.62rem 1.25rem; }
+  .fc .ovr { font-size: 1.85rem; }
+  .fc .pos { font-size: 0.64rem; }
+  .fc .alts { font-size: 0.42rem; }
+  .fc-crest { height: 5.1rem; }
+  .fc-num { font-size: 2rem; }
+  .fc-banner span { font-size: 0.8rem; }
+  .fc-stats { gap: 0.1rem 0.4rem; }
+  .fc-stats b { font-size: 0.95rem; }
+  .fc-stats span { font-size: 0.58rem; }
+  .fc-foot { font-size: 0.6rem; }
+  .fc-priority { font-size: 0.62rem; padding: 0.32rem 0.4rem; margin-top: 0.35rem; }
+  .fc-priority span.label { min-width: 3.7em; font-size: 0.54rem; }
+  .cards-window a { font-size: 0.74rem; padding: 0.3rem 0.65rem; }
+}
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .cards-grid { grid-template-columns: repeat(3, 1fr); gap: 10pt 8pt; }
+  .fc-wrap { filter: drop-shadow(0 0 0 transparent); transform: none !important; }
+  .fc-shine { display: none; }
+  .fc { padding: 5pt 8pt 16pt; }
+  .fc .ovr { font-size: 18pt; }
+  .fc-crest { height: 52pt; }
+  .fc-banner span { font-size: 9pt; }
+  .fc-stats b { font-size: 10pt; }
+  .fc-priority {
+    font-size: 7.5pt;
+    padding: 4pt 5pt;
+    background: #f4f1ea !important;
+    border: 0.5pt solid #c8c0b0;
+  }
+  .fc-priority span.label { font-size: 6.5pt; min-width: 3.6em; }
+  .cards-window { margin-bottom: 8pt; }
+  .cards-window a { border: 0.5pt solid #999; }
+  .cards-window a.on { background: #1a365d !important; color: #fff !important; }
+}
+
+/* Game-style squad screen (cards pages only; body.game-ui is set by shell()). */
+body.game-ui {
+  color: #e6edf5;
+  background-color: #070d18;
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(246,224,94,0.14), transparent 50%),
+    radial-gradient(ellipse 70% 45% at 50% 110%, rgba(43,108,176,0.18), transparent 55%),
+    repeating-linear-gradient(90deg, transparent 0 47px, rgba(255,255,255,0.017) 47px 48px),
+    linear-gradient(180deg, #07111f 0%, #0a1830 42%, #08101c 100%);
+  background-attachment: fixed;
+}
+body.game-ui .wrap {
+  background: transparent;
+  max-width: 1180px;
+}
+body.game-ui .report-chrome {
+  background: rgba(8, 16, 28, 0.94);
+  border-bottom: 1px solid rgba(246,224,94,0.28);
+  backdrop-filter: blur(8px);
+}
+body.game-ui .report-chrome a.back { color: #f6e05e; }
+body.game-ui button.btn-print {
+  background: linear-gradient(180deg, #2a4a78, #1a365d);
+  border-color: rgba(246,224,94,0.45);
+}
+body.game-ui header.hero.hud {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem 1.1rem;
+  align-items: center;
+  border-bottom: 1px solid rgba(246,224,94,0.35);
+  background:
+    linear-gradient(90deg, rgba(246,224,94,0.1), transparent 60%),
+    linear-gradient(180deg, rgba(16,36,64,0.65), transparent);
+  padding: 0.85rem 0.15rem 1.05rem;
+  margin: 0 0 1.1rem;
+}
+body.game-ui .hud-crest {
+  height: 4.5rem;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(246,224,94,0.5));
+}
+body.game-ui header.hero p.kicker { color: #f6e05e; }
+body.game-ui header.hero h1 { color: #fff8dc; letter-spacing: 0.02em; }
+body.game-ui header.hero .summary { color: #c5d0de; }
+body.game-ui .callout {
+  background: rgba(16, 36, 64, 0.78);
+  border-left-color: #f6e05e;
+  color: #e6edf5;
+}
+body.game-ui .callout .lead { color: #f6e05e; }
+body.game-ui .caption,
+body.game-ui footer.page-foot { color: #c5d0de; }
+body.game-ui section.block > h2 { color: #f6e05e; }
+body.game-ui table { background: rgba(8,16,28,0.75); color: #e6edf5; }
+body.game-ui th { background: #13233d; color: #f6e05e; }
+body.game-ui td, body.game-ui th { border-bottom-color: #243656; }
+body.game-ui .table-scroll { border-color: #243656; }
+body.game-ui ul.bullets { color: #e6edf5; }
+body.game-ui .cards-window a {
+  background: rgba(16,36,64,0.85);
+  color: #f6e05e;
+  border-color: rgba(246,224,94,0.4);
+}
+body.game-ui .cards-window a.on {
+  background: linear-gradient(180deg, #f7e392, #c8961e);
+  color: #1a1408;
+  border-color: #e8c354;
+}
+.squad-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.15rem;
+  margin: 0 0 1rem;
+  align-items: center;
+}
+.squad-controls .group { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.squad-controls .lbl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f6e05e;
+  margin-right: 0.2rem;
+}
+.squad-controls button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(246,224,94,0.35);
+  background: rgba(16,36,64,0.85);
+  color: #e6edf5;
+  font: 700 0.75rem/1 inherit;
+  padding: 0.4rem 0.7rem;
+  min-height: 36px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.squad-controls button.on {
+  background: linear-gradient(180deg, #f7e392, #c8961e);
+  color: #1a1408;
+  border-color: #e8c354;
+}
+.squad-controls button:focus-visible { outline: 2px solid #f6e05e; outline-offset: 2px; }
+body.game-ui .fc-wrap.gold { filter: drop-shadow(0 0 14px rgba(232,195,84,0.55)) drop-shadow(0 12px 20px rgba(0,0,0,0.55)); }
+body.game-ui .fc-wrap.silver { filter: drop-shadow(0 0 12px rgba(200,210,220,0.4)) drop-shadow(0 12px 20px rgba(0,0,0,0.55)); }
+body.game-ui .fc-wrap.bronze { filter: drop-shadow(0 0 12px rgba(196,132,74,0.45)) drop-shadow(0 12px 20px rgba(0,0,0,0.55)); }
+body.game-ui .fc-wrap.club { filter: drop-shadow(0 0 12px rgba(43,108,176,0.45)) drop-shadow(0 12px 20px rgba(0,0,0,0.55)); }
+@keyframes fc-shine-sweep {
+  0%, 55% { transform: translateX(-130%); }
+  75%, 100% { transform: translateX(130%); }
+}
+body.game-ui .fc-shine { animation: fc-shine-sweep 5.5s ease-in-out infinite; }
+body.game-ui .fc-priority {
+  background: rgba(244, 241, 234, 0.96);
+  border-color: rgba(201, 176, 90, 0.55);
+  color: #1a1d22;
+}
+body.game-ui .hud-line {
+  margin: 0.2rem 0 0.35rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.92rem;
+  color: #f6e05e;
+  font-variant-numeric: tabular-nums;
+}
+.limited-row {
+  margin: 0.6rem 0 1.1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(246,224,94,0.3);
+  border-radius: 10px;
+  background: rgba(16,36,64,0.72);
+  color: #e6edf5;
+}
+.limited-row h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  color: #f6e05e;
+}
+.limited-row p { margin: 0; color: #c5d0de; font-size: 0.88rem; }
+.limited-row ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.55rem 0 0;
+}
+.limited-row li {
+  background: rgba(8,16,28,0.7);
+  border: 1px solid rgba(246,224,94,0.28);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+@media print {
+  body.game-ui .hud-line { color: #1a365d !important; }
+  .limited-row {
+    background: #f7fafc !important;
+    border: 0.5pt solid #c8c0b0;
+    color: #1a202c !important;
+  }
+  .limited-row h3 { color: #1a365d !important; }
+  .limited-row p { color: #4a5568 !important; }
+  .limited-row li { background: #fff !important; border: 0.5pt solid #c8c0b0; }
+}
+@media (hover: hover) and (pointer: fine) {
+  body.game-ui .fc-wrap:hover {
+    transform: perspective(900px) rotateY(-8deg) rotateX(6deg) translateY(-8px) scale(1.04);
+    z-index: 3;
+  }
+  body.game-ui .fc-wrap.gold:hover { filter: drop-shadow(0 0 20px rgba(246,224,94,0.75)) drop-shadow(0 16px 24px rgba(0,0,0,0.6)); }
+  body.game-ui .fc-wrap.silver:hover { filter: drop-shadow(0 0 18px rgba(220,228,236,0.6)) drop-shadow(0 16px 24px rgba(0,0,0,0.6)); }
+  body.game-ui .fc-wrap.bronze:hover { filter: drop-shadow(0 0 18px rgba(212,154,94,0.6)) drop-shadow(0 16px 24px rgba(0,0,0,0.6)); }
+  body.game-ui .fc-wrap.club:hover { filter: drop-shadow(0 0 18px rgba(90,150,220,0.6)) drop-shadow(0 16px 24px rgba(0,0,0,0.6)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.game-ui .fc-shine { animation: none !important; display: none; }
+  body.game-ui .fc-wrap, body.game-ui .fc-wrap:hover {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 640px) {
+  body.game-ui header.hero.hud { grid-template-columns: auto 1fr; gap: 0.55rem 0.7rem; align-items: start; }
+  body.game-ui .hud-crest { height: 3.2rem; margin-top: 0.15rem; }
+  body.game-ui header.hero h1 { font-size: 1.25rem; }
+  .squad-controls button { font-size: 0.7rem; padding: 0.35rem 0.55rem; min-height: 34px; }
+}
+@media print {
+  body.game-ui, body.game-ui .wrap {
+    background: #fff !important;
+    background-image: none !important;
+    color: #1a202c !important;
+  }
+  body.game-ui header.hero.hud {
+    background: none !important;
+    border-bottom: 3px solid #1a365d;
+    display: grid;
+  }
+  body.game-ui header.hero h1,
+  body.game-ui header.hero p.kicker,
+  body.game-ui section.block > h2 { color: #1a365d !important; }
+  body.game-ui header.hero .summary,
+  body.game-ui .caption,
+  body.game-ui footer.page-foot { color: #4a5568 !important; }
+  body.game-ui .hud-crest { height: 42pt; filter: none; }
+  body.game-ui .callout { background: #ebf8ff !important; border-left-color: #2b6cb0; color: #1a202c !important; }
+  body.game-ui .callout .lead { color: #1a365d !important; }
+  body.game-ui table { background: #fff !important; color: #1a202c !important; }
+  body.game-ui th { background: #edf2f7 !important; color: #1a365d !important; }
+  body.game-ui td, body.game-ui th { border-bottom-color: #e2e8f0 !important; }
+  body.game-ui .table-scroll { border-color: #e2e8f0; }
+  body.game-ui ul.bullets { color: #1a202c !important; }
+  body.game-ui .squad-controls { display: none !important; }
+  body.game-ui .fc-wrap {
+    display: block !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  body.game-ui .fc-shine { display: none !important; animation: none !important; }
+  body.game-ui .cards-window a { background: #fff !important; color: #1a365d !important; border-color: #999; }
+  body.game-ui .cards-window a.on { background: #1a365d !important; color: #fff !important; }
+  body.game-ui .fc-priority { background: #f4f1ea !important; color: #1a1d22 !important; }
+}
+</style>
+<nav class="cards-window" aria-label="Card window"><a href="../player-cards-latest-d2130e467695/">Latest game</a><a href="../player-cards-4333cd65c796/">Last 5 games</a><a href="../player-cards-season-cc2378ad382d/">Full season</a><a href="../player-cards-newark-7cee276873b1/" class="on" aria-current="page">Newark</a></nav><section class="block" id="cards"><h2>Squad cards</h2><div class="squad-controls no-print" role="toolbar" aria-label="Sort and filter cards"><div class="group"><span class="lbl">Filter</span><button type="button" data-role="filter" data-value="all" class="on" aria-pressed="true">All</button><button type="button" data-role="filter" data-value="ST" aria-pressed="false">ST</button><button type="button" data-role="filter" data-value="W" aria-pressed="false">W</button><button type="button" data-role="filter" data-value="AM" aria-pressed="false">AM</button><button type="button" data-role="filter" data-value="CM" aria-pressed="false">CM</button><button type="button" data-role="filter" data-value="DM" aria-pressed="false">DM</button><button type="button" data-role="filter" data-value="FB" aria-pressed="false">FB</button><button type="button" data-role="filter" data-value="CB" aria-pressed="false">CB</button><button type="button" data-role="filter" data-value="GK" aria-pressed="false">GK</button></div><div class="group"><span class="lbl">Sort</span><button type="button" data-role="sort" data-value="ovr" class="on" aria-pressed="true">Overall</button><button type="button" data-role="sort" data-value="pos" aria-pressed="false">Position</button><button type="button" data-role="sort" data-value="num" aria-pressed="false">Number</button></div></div><div class="cards-grid"><div class="fc-wrap gold" data-ovr="75" data-num="7" data-pos="W" data-gk="0"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">75</div><div class="pos">RW</div><div class="alts">LW</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#7 Michael</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>76</b></div><div><span>PAS</span><b>63</b></div><div><span>DEF</span><b>63</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>88</b></div><div><span>DRI</span><b>78</b></div><div><span>PHY</span><b>61</b></div></div></div><div class="fc-foot"><span>1 game · ~42 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>duels/70 8.3 → 21.3 (OVR +2)</div><div><span class="label">Then</span>pass completion 40% → 58% (OVR +1)</div></div></div><div class="fc-wrap gold" data-ovr="72" data-num="99" data-pos="CM" data-gk="0"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">72</div><div class="pos">CM</div><div class="alts">ST</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#99 Miller</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>67</b></div><div><span>PAS</span><b>79</b></div><div><span>DEF</span><b>62</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>74</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>75</b></div></div></div><div class="fc-foot"><span>1 game · ~45 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 0.0 → 1.2 (OVR +2)</div><div><span class="label">Then</span>passes/70 17.1 → 26.8 (OVR +2)</div></div></div><div class="fc-wrap gold" data-ovr="71" data-num="54" data-pos="DM" data-gk="0"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">71</div><div class="pos">CDM</div><div class="alts">ST</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#54 Rylen</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>82</b></div><div><span>PAS</span><b>74</b></div><div><span>DEF</span><b>66</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>70</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>69</b></div></div></div><div class="fc-foot"><span>1 game · ~69 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>interceptions/70 0.0 → 2.6 (OVR +3)</div><div><span class="label">Then</span>duels/70 13.2 → 21.3 (OVR +2)</div></div></div><div class="fc-wrap gold" data-ovr="70" data-num="28" data-pos="ST" data-gk="0"><article class="fc gold"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">70</div><div class="pos">ST/W</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#28 Brody</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>78</b></div><div><span>PAS</span><b>74</b></div><div><span>DEF</span><b>68</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>72</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>64</b></div></div></div><div class="fc-foot"><span>1 game · ~25 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 0.0 → 1.2 (OVR +3)</div><div><span class="label">Then</span>duels/70 11.2 → 21.3 (OVR +2)</div></div></div><div class="fc-wrap silver" data-ovr="66" data-num="9" data-pos="CM" data-gk="0"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">66</div><div class="pos">CM</div><div class="alts">ST</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#9 Santi</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>54</b></div><div><span>PAS</span><b>74</b></div><div><span>DEF</span><b>65</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>68</b></div></div></div><div class="fc-foot"><span>1 game · ~29 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>HIR/70 0.0 → 10.7 (OVR +3)</div><div><span class="label">Then</span>dribbles/70 0.0 → 1.2 (OVR +2)</div></div></div><div class="fc-wrap silver" data-ovr="65" data-num="10" data-pos="DM" data-gk="0"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">65</div><div class="pos">DM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#10 Mateo</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>56</b></div><div><span>PAS</span><b>78</b></div><div><span>DEF</span><b>55</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>88</b></div><div><span>PHY</span><b>58</b></div></div></div><div class="fc-foot"><span>1 game · ~61 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>HIR/70 2.3 → 10.7 (OVR +4)</div><div><span class="label">Then</span>interceptions/70 0.0 → 2.6 (OVR +4)</div></div></div><div class="fc-wrap silver" data-ovr="65" data-num="17" data-pos="DM" data-gk="0"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">65</div><div class="pos">CDM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#17 Graham</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>49</b></div><div><span>PAS</span><b>65</b></div><div><span>DEF</span><b>67</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>83</b></div><div><span>PHY</span><b>64</b></div></div></div><div class="fc-foot"><span>1 game · ~46 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>HIR/70 3.0 → 10.7 (OVR +3)</div><div><span class="label">Then</span>WT/70 (v2) 11.8 → 6.5 (OVR +2)</div></div></div><div class="fc-wrap silver" data-ovr="65" data-num="50" data-pos="W" data-gk="0"><article class="fc silver"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">65</div><div class="pos">W</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#50 Bradley</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>71</b></div><div><span>PAS</span><b>60</b></div><div><span>DEF</span><b>67</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>84</b></div></div></div><div class="fc-foot"><span>1 game · ~26 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 0.0 → 1.2 (OVR +4)</div><div><span class="label">Then</span>pass completion 38% → 58% (OVR +2)</div></div></div><div class="fc-wrap bronze" data-ovr="64" data-num="27" data-pos="ST" data-gk="0"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">64</div><div class="pos">ST</div><div class="alts">RB · RW</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#27 Bruce</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>64</b></div><div><span>PAS</span><b>61</b></div><div><span>DEF</span><b>62</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>83</b></div><div><span>PHY</span><b>55</b></div></div></div><div class="fc-foot"><span>1 game · ~69 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>attempts/70 0.0 → 1.9 (OVR +3)</div><div><span class="label">Then</span>duels/70 9.1 → 21.3 (OVR +2)</div></div></div><div class="fc-wrap bronze" data-ovr="64" data-num="45" data-pos="FB" data-gk="0"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">64</div><div class="pos">LB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#45 Joe</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>81</b></div><div><span>PAS</span><b>52</b></div><div><span>DEF</span><b>62</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>70</b></div></div></div><div class="fc-foot"><span>1 game · ~70 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>WT/70 (v2) 43.8 → 6.5 (OVR +4)</div><div><span class="label">Then</span>pass completion 32% → 58% (OVR +3)</div></div></div><div class="fc-wrap bronze" data-ovr="63" data-num="42" data-pos="AM" data-gk="0"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">63</div><div class="pos">AM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#42 Giancarlo</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>51</b></div><div><span>PAS</span><b>67</b></div><div><span>DEF</span><b>70</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>69</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>68</b></div></div></div><div class="fc-foot"><span>1 game · ~43 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>dribbles/70 0.0 → 1.2 (OVR +4)</div><div><span class="label">Then</span>HIR/70 3.3 → 10.7 (OVR +3)</div></div></div><div class="fc-wrap bronze" data-ovr="62" data-num="23" data-pos="CB" data-gk="0"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">62</div><div class="pos">CB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#23 Harry</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>67</b></div><div><span>PAS</span><b>55</b></div><div><span>DEF</span><b>62</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>65</b></div></div></div><div class="fc-foot"><span>1 game · ~54 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>interceptions/70 1.3 → 2.6 (OVR +3)</div><div><span class="label">Then</span>WT/70 (v2) 32.5 → 6.5 (OVR +3)</div></div></div><div class="fc-wrap bronze" data-ovr="60" data-num="20" data-pos="DM" data-gk="0"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">60</div><div class="pos">CDM</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#20 Deacon</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>56</b></div><div><span>PAS</span><b>50</b></div><div><span>DEF</span><b>75</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>60</b></div></div></div><div class="fc-foot"><span>1 game · ~34 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>pass completion 25% → 58% (OVR +5)</div><div><span class="label">Then</span>WT/70 (v2) 23.9 → 6.5 (OVR +4)</div></div></div><div class="fc-wrap bronze" data-ovr="59" data-num="5" data-pos="CB" data-gk="0"><article class="fc bronze"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">59</div><div class="pos">CB</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#5 Brooks</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>59</b></div><div><span>PAS</span><b>59</b></div><div><span>DEF</span><b>65</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>60</b></div><div><span>DRI</span><b>58</b></div><div><span>PHY</span><b>49</b></div></div></div><div class="fc-foot"><span>1 game · ~70 min</span></div></article><div class="fc-priority"><div><span class="label">Priority</span>tackles/70 0.0 → 7.0 (OVR +6)</div><div><span class="label">Then</span>duels/70 7.0 → 21.3 (OVR +4)</div></div></div><div class="fc-wrap club" data-ovr="" data-num="0" data-pos="GK" data-gk="1"><article class="fc club"><div class="fc-foil"></div><div class="fc-shine"></div><div class="fc-top"><div class="fc-rating"><div class="ovr">—</div><div class="pos">GK</div></div><div class="fc-hero"><img class="fc-crest" src="../assets/marinfc-logo.png" alt="Marin FC crest" width="200" height="219"/></div></div><div class="fc-banner"><span>#0 Julian</span></div><div class="fc-stats"><div class="col left"><div><span>PAC</span><b>—</b></div><div><span>PAS</span><b>—</b></div><div><span>DEF</span><b>—</b></div></div><div class="rule" aria-hidden="true"></div><div class="col right"><div><span>SHO</span><b>—</b></div><div><span>DRI</span><b>—</b></div><div><span>PHY</span><b>—</b></div></div></div><div class="fc-foot"><span>1 game · ~70 min</span><span>No overall: no Veo save data</span></div></article><div class="fc-priority">There isn’t enough save data for an overall or a priority.</div></div></div>
+<script>
+(function(){
+  var grid = document.querySelector(".cards-grid");
+  var bar = document.querySelector(".squad-controls");
+  if (!grid || !bar) return;
+  var wraps = Array.prototype.slice.call(grid.querySelectorAll(".fc-wrap"));
+  function apply(){
+    var filtBtn = bar.querySelector('[data-role="filter"].on');
+    var sortBtn = bar.querySelector('[data-role="sort"].on');
+    var filt = filtBtn ? filtBtn.getAttribute("data-value") : "all";
+    var sort = sortBtn ? sortBtn.getAttribute("data-value") : "ovr";
+    var list = wraps.slice();
+    list.sort(function(a, b){
+      if (sort === "num") return (+a.getAttribute("data-num")) - (+b.getAttribute("data-num"));
+      if (sort === "pos") {
+        var c = (a.getAttribute("data-pos") || "ZZ").localeCompare(b.getAttribute("data-pos") || "ZZ");
+        return c || ((+a.getAttribute("data-num")) - (+b.getAttribute("data-num")));
+      }
+      var ao = a.getAttribute("data-ovr") === "" ? -1 : +a.getAttribute("data-ovr");
+      var bo = b.getAttribute("data-ovr") === "" ? -1 : +b.getAttribute("data-ovr");
+      return (bo - ao) || ((+a.getAttribute("data-num")) - (+b.getAttribute("data-num")));
+    });
+    list.forEach(function(el){
+      var show = (filt === "all") || el.getAttribute("data-pos") === filt;
+      el.hidden = !show;
+      grid.appendChild(el);
+    });
+  }
+  bar.addEventListener("click", function(e){
+    var btn = e.target.closest("button[data-role]");
+    if (!btn) return;
+    var role = btn.getAttribute("data-role");
+    bar.querySelectorAll('button[data-role="'+role+'"]').forEach(function(b){ b.classList.remove("on"); b.setAttribute("aria-pressed","false"); });
+    btn.classList.add("on");
+    btn.setAttribute("aria-pressed","true");
+    apply();
+  });
+})();
+</script>
+<p class="caption">These cards use only the Newark game (Nov 1, 2026, Newark FC, 1–1). A card with an overall is for a player with at least 20 approximate Veo minutes in that game. PAC's top-speed input is each player's top speed from this game, not a season-best. None of these games includes a Saves column, so the goalkeeper card has no overall. Average speed, used in PAC, is a minutes-weighted figure from these games (Newark). These cards stay on this game when a new match is added.</p><p class="caption">Sorted by overall (or by the filter and sort chips above). For most players, position is the role most often listed in these games. For some players it is set to the team's current role, with occasional positions shown in smaller type; overall uses the main position's formula. PAC = this game's top speed, average speed and high-intensity runs; SHO = attempts and goals; PAS = completion, weighted turnovers (v2) and involvement; DRI = dribble attempts; DEF = interceptions, tackles, recoveries; PHY = duels and high-intensity runs. Goalkeeper cards replace SHO and DRI with SAV (saves per 70). Card colour follows the overall: gold 70+, silver 65–69, bronze below. A card with no overall uses the club colours and shows a dash. Each card has a priority note: the Veo metric that would raise overall the most if it reached the squad top quartile, with a second metric when that also raises overall.</p><aside class="callout"><p class="lead">How these ratings work</p><p>Every number is a squad percentile: it shows where a player’s tagged numbers sit within this team, scaled to 41–89, using the Newark game. It is not a comparison with other teams. Veo minutes are approximate. A card with an overall requires at least 20 approximate Veo minutes in this game. Players under that threshold are listed under Limited minutes, without an overall. The full formula is at the bottom of this page.</p></aside><p class="caption">No card yet (no Veo player rows in these games): #14 Lucien, #16 Joshua.</p></section><section class="block" id="table"><h2>Card numbers</h2><p class="swipe-hint">Swipe or scroll sideways to see every column.</p><div class="table-scroll"><table><thead><tr><th class="">Player</th><th class="">Role</th><th class="num">G</th><th class="num">Min</th><th class="num">OVR</th><th class="num">PAC</th><th class="num">SHO</th><th class="num">PAS</th><th class="num">DRI</th><th class="num">DEF</th><th class="num">PHY</th><th class="num">SAV</th><th class="">Priority</th></tr></thead><tbody><tr><td class="">#7 Michael</td><td class="">RW (LW)</td><td class="num">1</td><td class="num">42</td><td class="num">75</td><td class="num">76</td><td class="num">88</td><td class="num">63</td><td class="num">78</td><td class="num">63</td><td class="num">61</td><td class="num">—</td><td class="">duels/70 8.3 → 21.3 (OVR +2); pass completion 40% → 58% (OVR +1)</td></tr><tr><td class="">#99 Miller</td><td class="">CM (ST)</td><td class="num">1</td><td class="num">45</td><td class="num">72</td><td class="num">67</td><td class="num">74</td><td class="num">79</td><td class="num">58</td><td class="num">62</td><td class="num">75</td><td class="num">—</td><td class="">dribbles/70 0.0 → 1.2 (OVR +2); passes/70 17.1 → 26.8 (OVR +2)</td></tr><tr><td class="">#54 Rylen</td><td class="">CDM (ST)</td><td class="num">1</td><td class="num">69</td><td class="num">71</td><td class="num">82</td><td class="num">70</td><td class="num">74</td><td class="num">58</td><td class="num">66</td><td class="num">69</td><td class="num">—</td><td class="">interceptions/70 0.0 → 2.6 (OVR +3); duels/70 13.2 → 21.3 (OVR +2)</td></tr><tr><td class="">#28 Brody</td><td class="">ST/W</td><td class="num">1</td><td class="num">25</td><td class="num">70</td><td class="num">78</td><td class="num">72</td><td class="num">74</td><td class="num">58</td><td class="num">68</td><td class="num">64</td><td class="num">—</td><td class="">dribbles/70 0.0 → 1.2 (OVR +3); duels/70 11.2 → 21.3 (OVR +2)</td></tr><tr><td class="">#9 Santi</td><td class="">CM (ST)</td><td class="num">1</td><td class="num">29</td><td class="num">66</td><td class="num">54</td><td class="num">60</td><td class="num">74</td><td class="num">58</td><td class="num">65</td><td class="num">68</td><td class="num">—</td><td class="">HIR/70 0.0 → 10.7 (OVR +3); dribbles/70 0.0 → 1.2 (OVR +2)</td></tr><tr><td class="">#10 Mateo</td><td class="">DM</td><td class="num">1</td><td class="num">61</td><td class="num">65</td><td class="num">56</td><td class="num">60</td><td class="num">78</td><td class="num">88</td><td class="num">55</td><td class="num">58</td><td class="num">—</td><td class="">HIR/70 2.3 → 10.7 (OVR +4); interceptions/70 0.0 → 2.6 (OVR +4)</td></tr><tr><td class="">#17 Graham</td><td class="">CDM</td><td class="num">1</td><td class="num">46</td><td class="num">65</td><td class="num">49</td><td class="num">60</td><td class="num">65</td><td class="num">83</td><td class="num">67</td><td class="num">64</td><td class="num">—</td><td class="">HIR/70 3.0 → 10.7 (OVR +3); WT/70 (v2) 11.8 → 6.5 (OVR +2)</td></tr><tr><td class="">#50 Bradley</td><td class="">W</td><td class="num">1</td><td class="num">26</td><td class="num">65</td><td class="num">71</td><td class="num">60</td><td class="num">60</td><td class="num">58</td><td class="num">67</td><td class="num">84</td><td class="num">—</td><td class="">dribbles/70 0.0 → 1.2 (OVR +4); pass completion 38% → 58% (OVR +2)</td></tr><tr><td class="">#27 Bruce</td><td class="">ST (RB, RW)</td><td class="num">1</td><td class="num">69</td><td class="num">64</td><td class="num">64</td><td class="num">60</td><td class="num">61</td><td class="num">83</td><td class="num">62</td><td class="num">55</td><td class="num">—</td><td class="">attempts/70 0.0 → 1.9 (OVR +3); duels/70 9.1 → 21.3 (OVR +2)</td></tr><tr><td class="">#45 Joe</td><td class="">LB</td><td class="num">1</td><td class="num">70</td><td class="num">64</td><td class="num">81</td><td class="num">60</td><td class="num">52</td><td class="num">58</td><td class="num">62</td><td class="num">70</td><td class="num">—</td><td class="">WT/70 (v2) 43.8 → 6.5 (OVR +4); pass completion 32% → 58% (OVR +3)</td></tr><tr><td class="">#42 Giancarlo</td><td class="">AM</td><td class="num">1</td><td class="num">43</td><td class="num">63</td><td class="num">51</td><td class="num">69</td><td class="num">67</td><td class="num">58</td><td class="num">70</td><td class="num">68</td><td class="num">—</td><td class="">dribbles/70 0.0 → 1.2 (OVR +4); HIR/70 3.3 → 10.7 (OVR +3)</td></tr><tr><td class="">#23 Harry</td><td class="">CB</td><td class="num">1</td><td class="num">54</td><td class="num">62</td><td class="num">67</td><td class="num">60</td><td class="num">55</td><td class="num">58</td><td class="num">62</td><td class="num">65</td><td class="num">—</td><td class="">interceptions/70 1.3 → 2.6 (OVR +3); WT/70 (v2) 32.5 → 6.5 (OVR +3)</td></tr><tr><td class="">#20 Deacon</td><td class="">CDM</td><td class="num">1</td><td class="num">34</td><td class="num">60</td><td class="num">56</td><td class="num">60</td><td class="num">50</td><td class="num">58</td><td class="num">75</td><td class="num">60</td><td class="num">—</td><td class="">pass completion 25% → 58% (OVR +5); WT/70 (v2) 23.9 → 6.5 (OVR +4)</td></tr><tr><td class="">#5 Brooks</td><td class="">CB</td><td class="num">1</td><td class="num">70</td><td class="num">59</td><td class="num">59</td><td class="num">60</td><td class="num">59</td><td class="num">58</td><td class="num">65</td><td class="num">49</td><td class="num">—</td><td class="">tackles/70 0.0 → 7.0 (OVR +6); duels/70 7.0 → 21.3 (OVR +4)</td></tr><tr><td class="">#0 Julian</td><td class="">GK</td><td class="num">1</td><td class="num">70</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="">There isn’t enough save data</td></tr></tbody></table></div></section><section class="block" id="formula"><h2>Formula</h2><ul class='bullets'><li>Reference pool: outfield players with at least 20 capped minutes (14 players). Each input becomes a squad percentile (ties count half).</li><li>Face stat = 40 + 50 × weighted percentile.</li><li>PAC = 30% this game&#x27;s top speed + 30% average speed + 40% high-intensity runs/70; SHO = 50% attempts/70 + 50% goals/70; PAS = 40% pass % + 40% weighted turnovers/70 (v2) (lower is better) + 20% passes/70; DRI = 100% dribbles/70; DEF = 40% interceptions/70 + 40% tackles/70 + 20% loose-ball recoveries/70; PHY = 60% duels/70 + 40% high-intensity runs/70. Per-70 inputs use minutes capped at 70 per game, except that PAC&#x27;s top-speed input is each player&#x27;s top speed from this game, not a season-best. PAC&#x27;s average-speed input is this game&#x27;s minutes-weighted Veo Average speed (only if that column was recorded). Weighted turnovers v2 use the zone-risk weights on the Pro-Style Analytics page.</li><li>Overall = role-weighted average of the face stats (CB: DEF 40, PAS 25, PHY 20, PAC 15; FB: DEF 30, PAS 25, PAC 20, PHY 15, DRI 10; DM: PAS 35, DEF 30, PHY 20, PAC 10, DRI 5; CM / hybrid: PAS 35, DEF 15, PHY 15, SHO 15, DRI 10, PAC 10; AM: PAS 30, SHO 25, DRI 20, PAC 15, PHY 10; W: PAC 25, DRI 25, SHO 20, PAS 20, PHY 10; ST: SHO 40, PAC 20, PHY 15, DRI 15, PAS 10). When a current team role is set on the card, that main position&#x27;s weights are used. Priority (on each card): the Veo input that would raise overall the most under the main position&#x27;s weights if it reached the squad top quartile in the reference pool (bottom quartile for weighted turnovers, where lower is better); the estimate is the card formula rerun with only that input changed, and a second input is listed when it also raises overall. Inputs Veo does not record are left out. When a goalkeeper has an overall, saves/70 is compared with the documented reference of 7 per 70, not a squad quartile.</li><li>Goalkeepers: PAC, PAS, DEF and PHY are squad percentiles against the same outfield pool. SAV is saves/70 mapped to the same 40–90 scale (0 saves/70 = 40, 7 or more = 90), because a one-keeper percentile would always sit at 65. Overall = SAV 40, PAS 20, DEF 20, PAC 10, PHY 10. The save rate uses only games whose table includes a Saves column. Jerseys Veo tagged by mistake and games missed through injury are left out.</li></ul></section><section class="block" id="weights"><h2>How our weights compare with EA SPORTS FC / FIFA cards</h2><p>Our cards use the same six face-stat labels as EA SPORTS FC (previously FIFA) so the layout is familiar, but the numbers are squad percentiles from Veo, not EA ratings. The table below shows the inputs and weights used here next to EA's official sub-attribute weights for each face stat. UEFA is listed separately because it does not publish card ratings.</p><div class="table-scroll"><table class="keep"><thead><tr><th class="">Face stat</th><th class="">Our inputs and weights</th><th class="">EA SPORTS FC official sub-attribute weights</th></tr></thead><tbody><tr><td class="">PAC</td><td class="">30% season-best top speed; 30% average speed; 40% high-intensity runs/70</td><td class="">55% Sprint Speed; 45% Acceleration</td></tr><tr><td class="">SHO</td><td class="">50% attempts/70; 50% goals/70</td><td class="">45% Finishing; 20% Shot Power; 20% Long Shots; 5% Positioning; 5% Volleys; 5% Penalties</td></tr><tr><td class="">PAS</td><td class="">40% pass %; 40% weighted turnovers/70 (v2) (lower is better); 20% passes/70</td><td class="">35% Short Passing; 20% Vision; 20% Crossing; 15% Long Passing; 5% FK Accuracy; 5% Curve</td></tr><tr><td class="">DRI</td><td class="">100% dribbles/70</td><td class="">50% Dribbling; 35% Ball Control; 10% Agility; 5% Balance; 0% Reactions; 0% Composure</td></tr><tr><td class="">DEF</td><td class="">40% interceptions/70; 40% tackles/70; 20% loose-ball recoveries/70</td><td class="">30% Defensive Awareness; 30% Standing Tackle; 20% Interceptions; 10% Heading Accuracy; 10% Sliding Tackle</td></tr><tr><td class="">PHY</td><td class="">60% duels/70; 40% high-intensity runs/70</td><td class="">50% Strength; 25% Stamina; 20% Aggression; 5% Jumping</td></tr></tbody></table></div><p>One correction worth spelling out: in EA's official DRI formula, Reactions and Composure are both 0%. They appear on the player bio, but they do not enter the DRI face stat. DRI is 50% Dribbling, 35% Ball Control, 10% Agility and 5% Balance.</p><h3 class="sub">Overall (position weights)</h3><p>Our overall is a weighted mix of the six face stats, using the player's main position:</p><div class="table-scroll"><table class="keep"><thead><tr><th class="">Our position</th><th class="">Face-stat weights</th></tr></thead><tbody><tr><td class="">CB</td><td class="">PAC 15, PAS 25, DEF 40, PHY 20</td></tr><tr><td class="">FB</td><td class="">PAC 20, PAS 25, DRI 10, DEF 30, PHY 15</td></tr><tr><td class="">DM</td><td class="">PAC 10, PAS 35, DRI 5, DEF 30, PHY 20</td></tr><tr><td class="">CM</td><td class="">PAC 10, SHO 15, PAS 35, DRI 10, DEF 15, PHY 15</td></tr><tr><td class="">AM</td><td class="">PAC 15, SHO 25, PAS 30, DRI 20, PHY 10</td></tr><tr><td class="">W</td><td class="">PAC 25, SHO 20, PAS 20, DRI 25, PHY 10</td></tr><tr><td class="">ST</td><td class="">PAC 20, SHO 40, PAS 10, DRI 15, PHY 15</td></tr><tr><td class="">Hybrid</td><td class="">Same as CM</td></tr></tbody></table></div><p>EA's overall is not a mix of the six face stats the way ours is. It is a position-specific weighted average of the individual attributes (finishing, short passing, defensive awareness, and so on). EA has not published official overall-position weights for FC 25. The last detailed public breakdown is from FIFA 19. In that structure, strikers lean on finishing and attacking positioning, centre backs on tackling and defensive awareness, and midfielders on passing and vision.</p><h3 class="sub">UEFA</h3><p>UEFA does not publish FIFA-style card ratings. Its technical observers and performance-analysis unit use match video plus physical and technical metrics — for example passes, shots, crosses, distances covered, line-breaking passes and pressing — in competition technical reports, not a 40–99 overall.</p><h3 class="sub">Why ours differ</h3><p>The difference is the data. Veo does not export EA's individual attributes (acceleration versus sprint speed, finishing versus shot power, short passing versus vision, and the rest), and it has no heading, stamina or strength ratings. The weights here map the closest available Veo columns onto the same six face-stat categories so players can be compared within this squad.</p><h3 class="sub">Sources</h3><ul class='bullets'><li>FIFAUTeam, FC 25 Attributes Guide, based on information Electronic Arts provided to its data reviewers (fifauteam.com/fc-25-attributes).</li><li>SuperCoinsy, EA FC 25 player attributes, which publishes the same official face-stat split, including Heading Accuracy at 10% of DEF (supercoinsy.com/article/ea-sports-fc-25-player-attributes). The current FIFAUTeam guide lists Heading Accuracy as an attribute but does not include a Heading Accuracy section with a weight line.</li><li>FIFAUTeam, Player Ratings Guide for FIFA 19, for the last detailed public position-overall attribute weights (fifauteam.com/player-ratings-guide-fifa-19/). EA has not published an official FC 25 update of those overall-position weights.</li><li>UEFA, technical observer and performance-analysis notes for the Champions League and club-competition technical reports (uefa.com).</li></ul></section>
+<footer class="page-foot">Shareable player cards. Players are listed by jersey number and first name. Built from Veo player stats; minutes are approximate.</footer>
+</div>
+<script>
+var DELETE_API_URL = "https://marin-fc-delete.alecmazo.workers.dev";
+var DELETE_PASS_KEY = "marin-fc-delete-passcode";
+var HIDDEN_REPORTS_KEY = "marin-fc-hidden-reports";
+
+function hiddenReportSlugs() {
+  try { return JSON.parse(localStorage.getItem(HIDDEN_REPORTS_KEY) || "[]"); }
+  catch (e) { return []; }
+}
+function rememberHiddenReport(slug) {
+  var hidden = hiddenReportSlugs();
+  if (hidden.indexOf(slug) < 0) hidden.push(slug);
+  localStorage.setItem(HIDDEN_REPORTS_KEY, JSON.stringify(hidden));
+}
+function hideLocallyDeletedReports() {
+  hiddenReportSlugs().forEach(function (slug) {
+    document.querySelectorAll('a[href="' + slug + '/"]').forEach(function (a) {
+      var card = a.closest("article.card");
+      if (card) card.remove();
+    });
+  });
+}
+function setDeleteStatus(btn, text) {
+  var box = (btn.parentElement && btn.parentElement.querySelector(".delete-status")) || btn;
+  if (box === btn) { btn.textContent = text; }
+  else { box.textContent = text; }
+}
+function requestDelete(btn) {
+  var slug = btn.getAttribute("data-slug") || "";
+  if (!slug || btn.getAttribute("data-busy") === "1") return;
+  if (!confirm("Delete this report permanently?")) return;
+  var pass = localStorage.getItem(DELETE_PASS_KEY) || "";
+  if (!pass) {
+    pass = window.prompt("Enter the delete passcode.", "") || "";
+    if (!pass) return;
+  }
+  btn.setAttribute("data-busy", "1");
+  btn.disabled = true;
+  setDeleteStatus(btn, "Deleting…");
+  fetch(DELETE_API_URL, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ slug: slug, passcode: pass })
+  }).then(function (res) {
+    return res.json().then(function (data) { return { res: res, data: data }; }).catch(function () {
+      return { res: res, data: {} };
+    });
+  }).then(function (out) {
+    if (out.res.ok && out.data && out.data.ok) {
+      localStorage.setItem(DELETE_PASS_KEY, pass);
+      rememberHiddenReport(slug);
+      setDeleteStatus(btn, "Deleted. The hub updates in about 2 minutes.");
+      setTimeout(function () { window.location.href = "../"; }, 900);
+      return;
+    }
+    if (out.res.status === 401) localStorage.removeItem(DELETE_PASS_KEY);
+    var err = (out.data && out.data.error) ? out.data.error : "Could not delete this report.";
+    setDeleteStatus(btn, err);
+    btn.disabled = false;
+    btn.removeAttribute("data-busy");
+  }).catch(function () {
+    setDeleteStatus(btn, "Could not reach the delete service.");
+    btn.disabled = false;
+    btn.removeAttribute("data-busy");
+  });
+}
+document.addEventListener("DOMContentLoaded", hideLocallyDeletedReports);
+</script>
+</body>
+</html>

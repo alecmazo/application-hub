@@ -2,7 +2,7 @@
 
 Cloudflare Worker that accepts a one-tap Delete from the Marin FC reports hub (GitHub Pages). It checks a passcode and a report slug, then dispatches `.github/workflows/delete-report.yml` on `alecmazo/application-hub`.
 
-CORS is limited to `https://alecmazo.github.io`. Year-to-date pages (Season Trend, both Player Cards pages, Pro-Style Analytics) and `assets` cannot be deleted this way.
+CORS is limited to `https://alecmazo.github.io`. Year-to-date pages (Season Trend, Player Cards pages including fixed single-game pages, Pro-Style Analytics) and `assets` cannot be deleted this way.
 
 ## Secrets (do not commit)
 
