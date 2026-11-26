@@ -19,6 +19,7 @@ PROTECTED_SLUGS = frozenset({
     "season-trend-ab0e5977a9e9",
     "player-cards-4333cd65c796",
     "player-cards-season-cc2378ad382d",
+    "player-cards-latest-d2130e467695",
     "pro-analytics-6feface8946d",
 })
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,80}$")
