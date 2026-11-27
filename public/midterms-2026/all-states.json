@@ -9,7 +9,7 @@
     "2018": "https://www.fec.gov/resources/cms-content/documents/federalelections2018.pdf",
     "2022": "https://www.fec.gov/resources/cms-content/documents/federalelections2022.pdf"
   },
-  "house_2026_gap": "2026 House votes are the AP election-results file at Nov. 26, 2026, 9:22 AM PT, summed by party. Counts were not lowered unless every House district in the state is marked certified. Called seats are unchanged: 259 Democratic and 173 Republican, with 3 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
+  "house_2026_gap": "2026 House votes are the AP election-results file at Nov. 27, 2026, 9:14 AM PT, summed by party. Counts were not lowered unless every House district in the state is marked certified. Called seats are unchanged: 259 Democratic and 173 Republican, with 3 uncalled. Louisiana's 5th and 6th districts are Dec. 12 runoffs. D.C. has no voting House seat. Official ballots are a separate measure.",
   "states": [
     {
       "code": "AL",
@@ -271,6 +271,17 @@
       "top_2022": {
         "office": "Governor",
         "total": 2566491
+      },
+      "official_ballots": {
+        "ballots": 2608915,
+        "registered": 4374827,
+        "turnout_pct": 59.63,
+        "certified": true,
+        "certification_date": "2026-11-23",
+        "as_of": "Nov. 23, 2026",
+        "source": "Arizona Secretary of State. The statewide canvass was signed Nov. 23, 2026, and the office released the voter numbers the same day. The release does not print a clock.",
+        "url": "https://azsos.gov/news/1092",
+        "measure": "Certified votes cast, 2,608,915. Turnout 59.63%. The release says 4,374,827 eligible voters; that is the same count as the office's registered-voter total. This replaces the governor-contest proxy."
       }
     },
     {
@@ -391,17 +402,17 @@
         }
       },
       "house_2026": {
-        "dem": 8922111,
-        "rep": 3810643,
-        "other": 113093,
+        "dem": 8934682,
+        "rep": 3814408,
+        "other": 114569,
         "districts": 52,
         "zero_districts": [],
-        "percent_in": 98.9,
-        "percent_min": 98.37,
+        "percent_in": 99.0,
+        "percent_min": 98.74,
         "label": "Latest count, not certified",
-        "source": "AP election-results file, Nov. 26, 2026, 9:22 AM PT, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
+        "source": "AP election-results file, Nov. 27, 2026, 9:14 AM PT, summed by party. A party total was not lowered unless every House district in the state is marked certified.",
         "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-        "as_of": "Nov. 26, 2026, 9:22 AM PT"
+        "as_of": "Nov. 27, 2026, 9:14 AM PT"
       },
       "top_2026": {
         "office": "Governor",
@@ -4709,6 +4720,6 @@
     "label": "Latest count, not certified",
     "source": "Associated Press election-results file",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
-    "as_of": "Nov. 26, 2026, 9:22 AM PT"
+    "as_of": "Nov. 27, 2026, 9:14 AM PT"
   }
 }

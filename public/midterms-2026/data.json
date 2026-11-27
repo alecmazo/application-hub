@@ -1,7 +1,8 @@
 {
-  "lastUpdated": "2026-11-26T09:22:00-08:00",
-  "lastUpdatedLabel": "Thu Nov 26, 2026, 9:22 AM PT",
+  "lastUpdated": "2026-11-27T09:14:00-08:00",
+  "lastUpdatedLabel": "Fri Nov 27, 2026, 9:14 AM PT",
   "notes": [
+    "Nov. 27, 9:14 AM PT: No new AP call. House stays 259 Democratic and 173 Republican, with 3 uncalled: Louisiana 5 and 6 (Dec. 12 runoffs) and Minnesota 1. Senate stays 56-44. The 50-state House vote is D 66,968,911, R 50,231,435, Other 1,789,168. California House votes rose in the AP file. Governor Xavier Becerra is 8,740,760 and Steve Hilton is 4,571,085, above the Nov. 25 Secretary of State report. Official ballots stay 13,522,931; that statewide file is still November 25, 6:54 p.m., and it is not certified. Arizona certified the election on Nov. 23: 2,608,915 votes cast, 59.63% of 4,374,827 eligible voters, the same count as registered voters. Oregon's results page, updated 9:00 AM PT, still shows 2,009,313 ballots counted. A Nov. 16 bulletin's 2,037,005 was unofficial ballot-return data and was not final. North Carolina's statewide file is still labeled unofficial at 4,242,667. Michigan's Nov. 23 canvass said more than 4.8 million ballots and did not print an exact total.",
     "Nov. 26, 9:22 AM PT: No new AP call. House stays 259 Democratic and 173 Republican, with 3 uncalled: Louisiana 5 and 6 (Dec. 12 runoffs) and Minnesota 1. Senate stays 56-44. The 50-state House vote is D 66,956,340, R 50,227,670, Other 1,787,692. California official ballots are 13,522,931 (SOS 6:54 p.m. Nov. 25), up from 13,503,304, not certified. Governor Xavier Becerra is 8,740,676 and Steve Hilton is 4,571,042, from that same SOS report. Oregon ballots counted are 2,009,313 as of 9:15 AM PT, up from 2,000,688. The page prints 3,106,679 active registered voters; 3,109,199 was kept because it is higher. New Mexico certified the election on Nov. 24: 731,602 ballots, 49.78% of 1,469,718 registered voters. Iowa's Nov. 24 canvass certified 1,382,511 ballots, the same total already on file. The announcement's 62.35% of registered voters replaces 63.47%, which was that ballot total divided by the results file's turnout base of 2,178,374. The governor race waits for the legislature on Jan. 12, 2027. Hawaii and Rhode Island House districts are marked certified in the AP file; those vote totals did not change. Expected vote rose for Michigan, from 96.3% to 99.0%, and Connecticut, from 98.3% to 98.4%. Vote totals there were not lowered. Connecticut canvassed congressional results on Nov. 25 and did not publish a statewide ballots total.",
     "Nov. 25, 9:21 AM PT: No new AP call. House stays 259 Democratic and 173 Republican, with 3 uncalled: Louisiana 5 and 6 (Dec. 12 runoffs) and Minnesota 1. Senate stays 56-44. The 50-state House vote is D 66,955,951, R 50,227,620, Other 1,787,692. California official ballots are 13,503,304 (SOS 5:13 p.m. Nov. 24), up from 13,494,849, not certified. Oregon ballots counted are 2,000,688 as of 9:15 AM PT, up from 2,000,055. North Carolina's statewide file, still labeled unofficial, shows 4,242,667 ballots as of 7:14 a.m. PT Nov. 24, up from 4,242,664. Iowa governor and Senate, and the Iowa and Utah House totals, are marked certified in the AP file; where those certified figures were lower, they replaced the earlier counts. Certified replacements that lowered a count: Rob Sand 759,705 to 759,570; Zach Lahn 608,231 to 608,025; Ashley Hinson 631,482 to 631,276; Josh Turek 688,746 to 688,613; Thomas Laehn 42,122 to 41,829; IA House dem 669,311 to 669,151; IA House rep 651,345 to 651,142; UT House dem 491,232 to 491,225; UT House rep 485,355 to 485,346; UT House other 70,277 to 70,276.",
     "Nov. 24, 9:20 AM PT: AP called Tennessee 4 for Victoria Broderick (D) at 9:12 AM PT, a flip. House called seats are 259 Democratic and 173 Republican, with 3 uncalled: Louisiana 5 and 6 (Dec. 12 runoffs) and Minnesota 1. Senate stays 56-44. The 50-state House vote, where the AP file was higher, is D 66,932,547, R 50,219,306, Other 1,784,039. California official ballots are 13,494,849 (SOS 8:47 p.m. Nov. 23), up from 13,487,928, not certified. North Carolina's statewide results file, still labeled unofficial, shows 4,242,664 ballots as of 4:35 p.m. PT Nov. 23, up from 4,242,639. Oregon and Florida ballot totals are unchanged. No count was replaced by a lower certified total.",
@@ -15471,14 +15472,16 @@
         "Yuma": 28786
       },
       "official_results": {
-        "ballots_cast": null,
-        "ballots_is_proxy": true,
-        "ballots_measure": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast.",
-        "as_of_label": "No newer official file retrieved Nov. 6, 2026",
-        "source": "Statewide results",
-        "url": "https://results.arizona.vote/",
-        "certified": false,
-        "note": "On Nov. 6, 2026 this state's election-office results site did not return a machine-readable statewide ballots-cast total or a candidate count higher than the figures already stored. The race votes below are the Nov. 4 AP/NBC counts and were not lowered. They are votes in the contest, not ballots cast."
+        "ballots_cast": 2608915,
+        "ballots_is_proxy": false,
+        "ballots_measure": "Certified votes cast. Arizona Secretary of State, Nov. 23, 2026: 2,608,915 votes cast, 4,374,827 eligible voters, 59.63% turnout. That eligible-voter count is the same as the office's registered-voter total. This replaces the governor-contest proxy.",
+        "as_of_label": "Certified Nov. 23, 2026. The release does not print a clock.",
+        "source": "Arizona Secretary of State. Official statewide canvass signed Nov. 23, 2026. Voter-numbers release the same day.",
+        "url": "https://azsos.gov/news/1092",
+        "certified": true,
+        "note": "Certified Nov. 23, 2026. Votes cast 2,608,915. Eligible voters 4,374,827, matching the registered-voter total. Turnout 59.63%.",
+        "turnout_pct": 59.63,
+        "registered_official": 4374827
       }
     },
     {
@@ -23571,20 +23574,20 @@
           "winner": "Xavier Becerra",
           "party": "D",
           "margin": "+31.3 pts",
-          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor | California Secretary of State governor.json, November 7, 2026, 5:48 p.m. PT: Becerra 6,773,781, Hilton 3,575,025. https://media.sos.ca.gov/media/governor.json. Same totals on NBC/AP at 9:03 AM PT Nov. 8. Expected vote on that NBC pull is 75%. Not certified. | California Secretary of State, November 9, 2026, 7:43 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 12, 2026, 7:53 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | California Secretary of State, November 13, 2026, 7:09 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19. | Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20. | California Secretary of State, November 20, 2026, 6:26 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State statewide returns, November 21, 2026, 4:37 p.m. Becerra 8,715,921, Hilton 4,561,512. Not certified. | California Secretary of State, November 23, 2026, 8:47 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 24, 2026, 5:13 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 25, 2026, 6:54 p.m., 100% of precincts. Becerra 8,740,676, Hilton 4,571,042. https://api.sos.ca.gov/returns/governor",
+          "source": "AP, AP race-call article ~8:01 PM PT https://apnews.com/article/california-governor-election-becerra-hilton-newsom-aae9829ede7e3f0c5e4512d5732d4df3 | votes AP via NBC News, ~11:46 PM PT | California Secretary of State, November 6, 2026, 9:27 a.m., 100% of precincts (23,860 of 23,860) https://api.sos.ca.gov/returns/governor | California Secretary of State governor.json, November 7, 2026, 5:48 p.m. PT: Becerra 6,773,781, Hilton 3,575,025. https://media.sos.ca.gov/media/governor.json. Same totals on NBC/AP at 9:03 AM PT Nov. 8. Expected vote on that NBC pull is 75%. Not certified. | California Secretary of State, November 9, 2026, 7:43 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 12, 2026, 7:53 a.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:03 AM PT Nov. 13. | California Secretary of State, November 13, 2026, 7:09 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | Latest count, not certified. AP election-results file, 9:20 AM PT Nov. 17. | Latest count, not certified. AP election-results file, 9:25 AM PT Nov. 18. | Latest count, not certified. AP election-results file, 9:22 AM PT Nov. 19. | Latest count, not certified. AP election-results file, 9:13 AM PT Nov. 20. | California Secretary of State, November 20, 2026, 6:26 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State statewide returns, November 21, 2026, 4:37 p.m. Becerra 8,715,921, Hilton 4,561,512. Not certified. | California Secretary of State, November 23, 2026, 8:47 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 24, 2026, 5:13 p.m., 100% of precincts. https://api.sos.ca.gov/returns/governor | California Secretary of State, November 25, 2026, 6:54 p.m., 100% of precincts. Becerra 8,740,676, Hilton 4,571,042. https://api.sos.ca.gov/returns/governor | AP election-results file, 7:46 AM PT Nov. 27. Becerra 8,740,760, Hilton 4,571,085. Higher than the California Secretary of State report of Nov. 25, 6:54 p.m. (8,740,676 and 4,571,042). Not certified.",
           "candidates": [
             {
               "name": "Xavier Becerra",
               "party": "D",
               "incumbent": null,
-              "votes": 8740676,
+              "votes": 8740760,
               "pct": 65.7
             },
             {
               "name": "Steve Hilton",
               "party": "R",
               "incumbent": null,
-              "votes": 4571042,
+              "votes": 4571085,
               "pct": 34.3
             }
           ],
@@ -23594,7 +23597,7 @@
             "values": null,
             "source": null
           },
-          "votes_as_of": "Nov. 25, 2026, 6:54 p.m. PT"
+          "votes_as_of": "Nov. 27, 2026, 7:46 AM PT"
         }
       ],
       "feeds": [
@@ -37952,8 +37955,8 @@
     }
   },
   "national": {
-    "as_of_label": "Nov. 26, 2026, 9:22 AM PT",
-    "source": "Associated Press election-results file, checked Nov. 26, 2026, 9:22 AM PT. https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
+    "as_of_label": "Nov. 27, 2026, 9:14 AM PT",
+    "source": "Associated Press election-results file, checked Nov. 27, 2026, 9:14 AM PT. https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
     "url": "https://apnews.com/projects/elections-2026/united-states-results/us-house-results/",
     "senate": {
       "dem_caucus": 56,
@@ -37972,7 +37975,7 @@
       "unresolved": 3,
       "net_dem": 45,
       "majority": 218,
-      "note": "259+173+3=435. AP election-results file at Nov. 26, 2026, 9:22 AM PT: still 259 Democratic and 173 Republican House seats called. No new call. Still uncalled: Louisiana 5 and Louisiana 6 (runoffs Dec. 12) and Minnesota 1. Called flips remain 48 Democratic and 3 Republican. Net Democratic seats from those flips: 45."
+      "note": "259+173+3=435. AP election-results file at Nov. 27, 2026, 9:14 AM PT: still 259 Democratic and 173 Republican House seats called. No new call. Still uncalled: Louisiana 5 and Louisiana 6 (runoffs Dec. 12) and Minnesota 1. Called flips remain 48 Democratic and 3 Republican. Net Democratic seats from those flips: 45."
     },
     "cbs_secondary": {
       "as_of_label": "CBS News live blog, updated Nov. 6, 2026, 1:22 PM EST",
@@ -38025,7 +38028,7 @@
         "house": -45,
         "senate": -9,
         "partial": true,
-        "note": "AP election-results file, Nov. 26, 2026, 9:22 AM PT: called House seats are still 259 Democratic and 173 Republican, with 3 uncalled. Called flips remain 48 Democratic and 3 Republican, so the president's party is minus 45 House seats on called flips. Senate minus 9. Not comparable to the final historical rows."
+        "note": "AP election-results file, Nov. 27, 2026, 9:14 AM PT: called House seats are still 259 Democratic and 173 Republican, with 3 uncalled. Called flips remain 48 Democratic and 3 Republican, so the president's party is minus 45 House seats on called flips. Senate minus 9. Not comparable to the final historical rows."
       }
     ],
     "house_popular_vote_note": "FEC general-election votes cast for U.S. House candidates, the total row in each year's Federal Elections report, which includes D.C. and the territories as the FEC adds them. The same measure is used for every year below. A 2026 FEC report does not exist yet.",
